@@ -43,7 +43,7 @@ export async function POST(req: Request) {
   const from = process.env.EMAIL_FROM;
   const emailConfigured = Boolean(apiKey && from);
 
-  if (emailConfigured) {
+  if (apiKey && from) {
     const resend = new Resend(apiKey);
     const html = `
       <p>Thanks for your purchase. Your Pivotum profiles are ready — links are valid for 7 days:</p>
