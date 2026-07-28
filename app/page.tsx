@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { careers, careerRange, careerCount } from "@/data/careers";
+import { scoreTier } from "@/lib/tier";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
@@ -31,7 +32,7 @@ export default function Home() {
               <div className="lp-eyebrow">
                 <b>Pivotum</b> · The AI career index · Fall 2026
               </div>
-              <h1 className="lp-h1">Help your kid choose a career AI won&rsquo;t hollow out.</h1>
+              <h1 className="lp-h1">Help your kid choose a career that lasts.</h1>
               <p className="lp-lede">
                 We score {careerCount} careers on how exposed they are to AI — the same six
                 factors, re-scored every six months, with the reasoning shown. The biggest decision
@@ -49,15 +50,18 @@ export default function Home() {
 
             <div className="lp-contrast" aria-hidden="true">
               <div className="lp-contrast-item">
-                <span className="lp-num-lo">
-                  <span className="mark">2.8</span>
+                <span className="lp-draw dual safe">
+                  2.8
+                  <svg viewBox="0 0 120 62" aria-hidden="true">
+                    <path d={HAND} />
+                  </svg>
                 </span>
                 <span className="lp-cap">
                   <b>Bedside nursing</b>protected by hands, trust &amp; law
                 </span>
               </div>
               <div className="lp-contrast-item">
-                <span className="lp-draw big">
+                <span className="lp-draw dual delay">
                   8.1
                   <svg viewBox="0 0 120 62" aria-hidden="true">
                     <path d={HAND} />
@@ -101,8 +105,8 @@ export default function Home() {
           <div className="lp-index-head">
             <h2>Every career, scored</h2>
             <p className="sub">
-              From the most protected track to the most exposed. The circled number is the safest
-              role in each field — tap any career for its free sampler.
+              Each row runs from a field&rsquo;s most protected role to its most exposed. A green
+              circle marks a genuinely low-exposure entry; tap any career for its free sampler.
             </p>
           </div>
 
@@ -125,7 +129,8 @@ export default function Home() {
                     <span className="idx-seg" style={{ left: `${left}%`, width: `${width}%` }} />
                   </span>
                   <span className="idx-nums">
-                    <span className="idx-low">{safest.toFixed(1)}</span>&ndash;{exposed.toFixed(1)}
+                    <span className={`idx-low ${scoreTier(safest)}`}>{safest.toFixed(1)}</span>&ndash;
+                    {exposed.toFixed(1)}
                   </span>
                 </>
               );
