@@ -12,24 +12,35 @@ function secret(): string {
   return s;
 }
 
-export function signDownload(slug: string, token: string, expMs: number): string {
-  const payload = `${slug}|${token}|${expMs}`;
+/** Which of a career's two PDFs a link points at. */
+export type ProfileKind = "parent" | "student";
+
+export function signDownload(
+  slug: string,
+  kind: ProfileKind,
+  token: string,
+  expMs: number,
+): string {
+  const payload = `${slug}|${kind}|${token}|${expMs}`;
   const sig = crypto.createHmac("sha256", secret()).update(payload).digest("base64url");
   return Buffer.from(`${payload}|${sig}`).toString("base64url");
 }
 
-export function verifyDownload(d: string): { slug: string; token: string } | null {
+export function verifyDownload(
+  d: string,
+): { slug: string; kind: ProfileKind; token: string } | null {
   try {
     const decoded = Buffer.from(d, "base64url").toString("utf8");
-    const [slug, token, expStr, sig] = decoded.split("|");
-    if (!slug || !token || !expStr || !sig) return null;
+    const [slug, kind, token, expStr, sig] = decoded.split("|");
+    if (!slug || !kind || !token || !expStr || !sig) return null;
+    if (kind !== "parent" && kind !== "student") return null;
     const expected = crypto
       .createHmac("sha256", secret())
-      .update(`${slug}|${token}|${expStr}`)
+      .update(`${slug}|${kind}|${token}|${expStr}`)
       .digest("base64url");
     if (!crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))) return null;
     if (Date.now() > Number(expStr)) return null;
-    return { slug, token };
+    return { slug, kind, token };
   } catch {
     return null;
   }

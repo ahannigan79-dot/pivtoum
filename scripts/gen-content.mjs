@@ -208,7 +208,13 @@ function parseSampler(slug, md) {
     description: `${name} AI exposure score, Fall 2026 edition. Scored on six factors with a three-year trend.`,
     edition: "Fall 2026", datePublished: "2026-07-01", dateModified: "2026-07-28",
     quickAnswer, headlineScore, headlineTrack, tracks, factors, workedFactor, faqs, related,
-    hasFullProfile: ["nursing", "medicine", "law", "business", "psychology"].includes(slug),
+    hasFullProfile: [
+      // Careers with real parent + student PDFs loaded (sellable). Add a slug
+      // here as its PDFs go live; keep in sync with profiles-src/.
+      "nursing", "medicine", "law", "business", "psychology",
+      "accounting", "architecture", "design", "engineering", "finance",
+      "journalism", "marketing", "teaching", "trades",
+    ].includes(slug),
   };
 }
 

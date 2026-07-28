@@ -5,7 +5,10 @@ import { SITE } from "@/lib/site";
  * (Georgia for reading, Arial for labels) to survive email clients. Returns both
  * an HTML and a plain-text part.
  */
-export function purchaseEmail(links: { name: string; url: string }[], token: string) {
+export function purchaseEmail(
+  items: { name: string; parentUrl: string; studentUrl: string }[],
+  token: string,
+) {
   const ink = "#211E1B";
   const inkSoft = "#57534D";
   const pencil = "#8C857A";
@@ -13,12 +16,15 @@ export function purchaseEmail(links: { name: string; url: string }[], token: str
   const pen = "#AC3A34";
   const yellow = "#FFE26A";
 
-  const rows = links
+  const link = (url: string, label: string) =>
+    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
+
+  const rows = items
     .map(
-      (l) => `
-      <tr><td style="padding:12px 0;border-bottom:1px solid ${rule};">
-        <span style="font-family:Georgia,'Times New Roman',serif;font-size:16px;color:${ink};">${l.name}</span>
-        <a href="${l.url}" style="float:right;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.05em;text-transform:uppercase;color:${pen};text-decoration:none;">Download PDF &rarr;</a>
+      (it) => `
+      <tr><td style="padding:14px 0;border-bottom:1px solid ${rule};">
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;color:${ink};margin-bottom:6px;">${it.name}</div>
+        <div>${link(it.parentUrl, "Full profile")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
       </td></tr>`,
     )
     .join("");
@@ -53,7 +59,12 @@ export function purchaseEmail(links: { name: string; url: string }[], token: str
 
   const text =
     `Your Pivotum profiles are ready — download links valid for 7 days:\n\n` +
-    links.map((l) => `• ${l.name}: ${l.url}`).join("\n") +
+    items
+      .map(
+        (it) =>
+          `• ${it.name}\n    Full profile:    ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
+      )
+      .join("\n\n") +
     `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
     `Your Spring 2027 updates are included — we'll email them when they publish.\n\n` +
     `Re-open your selection page any time: ${SITE.url}/claim/${token}\n\n` +

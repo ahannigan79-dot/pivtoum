@@ -35,10 +35,18 @@ export async function POST(req: Request) {
   }
 
   const exp = Date.now() + SEVEN_DAYS_MS;
-  const links = selected.map((slug) => ({
+  const dl = (slug: string, kind: "parent" | "student") =>
+    `${SITE.url}/api/download?d=${signDownload(slug, kind, token, exp)}`;
+  const items = selected.map((slug) => ({
     name: getCareer(slug)?.name ?? slug,
-    url: `${SITE.url}/api/download?d=${signDownload(slug, token, exp)}`,
+    parentUrl: dl(slug, "parent"),
+    studentUrl: dl(slug, "student"),
   }));
+  // Flat list for the plain-text part and the email-not-configured fallback.
+  const links = items.flatMap((it) => [
+    { name: `${it.name} — Full profile`, url: it.parentUrl },
+    { name: `${it.name} — Student version`, url: it.studentUrl },
+  ]);
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
@@ -46,7 +54,7 @@ export async function POST(req: Request) {
 
   if (apiKey && from) {
     const resend = new Resend(apiKey);
-    const { html, text } = purchaseEmail(links, token);
+    const { html, text } = purchaseEmail(items, token);
     const { error } = await resend.emails.send({
       from,
       to: order.email,
@@ -63,7 +71,7 @@ export async function POST(req: Request) {
   // flow is still testable. Once Resend is configured, delivery is by email only.
   return NextResponse.json({
     ok: true,
-    delivered: links.length,
+    delivered: items.length,
     email: order.email,
     emailed: emailConfigured,
     links: emailConfigured ? undefined : links,
