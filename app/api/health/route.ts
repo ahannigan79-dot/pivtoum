@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { list } from "@vercel/blob";
 import { ensureSchema } from "@/lib/db";
+import { blobToken } from "@/lib/blob";
 
 export const dynamic = "force-dynamic";
 
@@ -20,14 +21,13 @@ export async function GET() {
     result.postgresReason = (e as Error).message.slice(0, 140);
   }
 
-  // Key off the token first — list() can resolve without one, so relying on it
-  // alone gives a false "ok".
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  const token = blobToken();
+  if (!token) {
     result.blob = "not configured";
-    result.blobReason = "BLOB_READ_WRITE_TOKEN is not set on this deployment";
+    result.blobReason = "no *BLOB*TOKEN* env var found at runtime";
   } else {
     try {
-      await list({ limit: 1 });
+      await list({ limit: 1, token });
       result.blob = "ok";
     } catch (e) {
       result.blob = "error";
@@ -40,6 +40,8 @@ export async function GET() {
     DATABASE_URL: Boolean(process.env.DATABASE_URL),
     BLOB_READ_WRITE_TOKEN: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
   };
+  // Names only (never values) so we can see what Vercel actually called the token.
+  result.blobEnvVars = Object.keys(process.env).filter((k) => /blob/i.test(k));
 
   const ok = result.postgres === "ok" && result.blob === "ok";
   return NextResponse.json(result, { status: ok ? 200 : 503 });

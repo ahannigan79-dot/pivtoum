@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { list } from "@vercel/blob";
 import { verifyDownload } from "@/lib/download";
+import { blobToken } from "@/lib/blob";
 
 /**
  * Gate a Blob PDF behind a signed, 7-day link. PDFs are uploaded to the Blob
@@ -13,7 +14,7 @@ export async function GET(req: Request) {
   const verified = verifyDownload(d);
   if (!verified) return new NextResponse("This link is invalid or has expired.", { status: 403 });
 
-  const { blobs } = await list({ prefix: `profiles/${verified.slug}` });
+  const { blobs } = await list({ prefix: `profiles/${verified.slug}`, token: blobToken() });
   const pdf = blobs.find((b) => b.pathname.endsWith(".pdf"));
   if (!pdf) return new NextResponse("Profile not found.", { status: 404 });
 
