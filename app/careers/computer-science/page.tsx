@@ -53,7 +53,8 @@ export default function ComputerSciencePage() {
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
           The complete profile — published free, in full, so you can judge the depth before
-          buying anything.
+          buying anything. There&rsquo;s also a{" "}
+          <Link href="/careers/computer-science/student">free student version →</Link>
         </p>
         <CS />
         <SiteFooter />

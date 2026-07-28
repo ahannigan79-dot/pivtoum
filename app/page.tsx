@@ -181,7 +181,10 @@ export default function Home() {
               Get the full profiles
             </Link>
             <Link className="lp-btn ghost" href="/careers/computer-science">
-              Read one free
+              Read the full profile free
+            </Link>
+            <Link className="lp-btn ghost" href="/careers/computer-science/student">
+              Read the student version free
             </Link>
           </div>
         </section>
