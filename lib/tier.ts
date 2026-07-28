@@ -13,3 +13,11 @@ export function scoreTier(score: number): Tier {
   if (score >= 6.5) return "exposed";
   return "mid";
 }
+
+/**
+ * Binary green/red flag for a career's headline circle (career pages).
+ * Split at 6.5 — the natural gap in the data, so no headline is borderline.
+ */
+export function headlineFlag(score: number): "safe" | "exposed" {
+  return score >= 6.5 ? "exposed" : "safe";
+}
