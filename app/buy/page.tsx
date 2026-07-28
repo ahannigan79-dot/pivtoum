@@ -14,7 +14,7 @@ export default function BuyPage() {
   return (
     <div className="page">
       <div className="body">
-        <div className="crumb" style={{ paddingTop: "3.25rem" }}>
+        <div className="crumb" style={{ paddingTop: "1.5rem" }}>
           <span>
             <Link href="/">Pivotum</Link>
           </span>

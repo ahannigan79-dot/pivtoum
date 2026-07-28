@@ -23,12 +23,12 @@ export default function Home() {
     <div className="page">
       <div className="body">
         <header>
-          <div className="crumb">
-            <span>Pivotum</span>
-            <i>/</i>
-            <span>Fall 2026</span>
-          </div>
           <h1>How exposed is your career to AI?</h1>
+          <p className="hero-finding">
+            Bedside nursing scores <strong>2.8</strong>. Entry-level software scores{" "}
+            <strong>8.1</strong>.{" "}
+            <span className="hl">The safest degrees aren&rsquo;t the ones you&rsquo;d guess.</span>
+          </p>
           <p className="kicker">
             {careerCount} careers, scored the same way on a fixed, published methodology and
             re-scored every six months. Each bar runs from the most protected track to the most

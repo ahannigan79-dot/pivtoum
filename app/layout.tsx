@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Literata, Archivo } from "next/font/google";
 import { SITE } from "@/lib/site";
+import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
 const literata = Literata({
@@ -29,7 +30,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${literata.variable} ${archivo.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
