@@ -410,7 +410,7 @@ export const careers: Career[] = [
       "veterinary",
       "computer-science"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "architecture",
@@ -776,7 +776,7 @@ export const careers: Career[] = [
       "transport",
       "business"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "cybersecurity",
@@ -898,7 +898,7 @@ export const careers: Career[] = [
       "law",
       "trades"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "data-science",
@@ -1020,7 +1020,7 @@ export const careers: Career[] = [
       "finance",
       "business"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "dentistry",
@@ -1142,7 +1142,7 @@ export const careers: Career[] = [
       "veterinary",
       "pharmacy"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "design",
@@ -2529,7 +2529,7 @@ export const careers: Career[] = [
       "veterinary",
       "computer-science"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "psychology",
@@ -3419,7 +3419,7 @@ export const careers: Career[] = [
       "agriculture",
       "computer-science"
     ],
-    "hasFullProfile": false
+    "hasFullProfile": true
   },
   {
     "slug": "computer-science",

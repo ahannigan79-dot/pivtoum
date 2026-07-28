@@ -214,6 +214,9 @@ function parseSampler(slug, md) {
       "nursing", "medicine", "law", "business", "psychology",
       "accounting", "architecture", "design", "engineering", "finance",
       "journalism", "marketing", "teaching", "trades",
+      // Set 2
+      "allied-health", "construction", "cybersecurity", "data-science",
+      "dentistry", "pharmacy", "veterinary",
     ].includes(slug),
   };
 }

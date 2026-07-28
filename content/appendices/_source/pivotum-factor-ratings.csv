@@ -1,0 +1,119 @@
+career,slug,track,A_2023,A_2025,A_2026,E_2023,E_2025,E_2026,P,T,R,J,contrib_A,contrib_E,contrib_P,contrib_T,contrib_R,contrib_J,score_2023,score_2025,score_2026,movement
+Nursing,nursing,"Bedside RN (hospital, acute care)",4.3,5.0,6.1,1.5,1.8,2.0,9.2,9.5,9.5,8.8,2.135,0.3,0.12,0.075,0.05,0.12,2.1,2.4,2.8,0.7
+Nursing,nursing,Community / home health nursing,4.1,4.6,5.4,1.8,2.0,2.2,8.8,9.5,9.5,8.2,1.89,0.33,0.18,0.075,0.05,0.18,2.2,2.4,2.7,0.5
+Nursing,nursing,"Specialist clinical (ICU, ED, peri-op)",3.4,3.9,4.8,1.8,2.0,2.0,9.0,9.5,9.5,8.5,1.68,0.3,0.15,0.075,0.05,0.15,1.9,2.1,2.4,0.5
+Nursing,nursing,Nurse practitioner / advanced practice,4.9,5.7,6.4,2.0,2.2,2.5,8.0,9.5,9.5,8.5,2.24,0.375,0.3,0.075,0.05,0.15,2.6,2.9,3.2,0.6
+Nursing,nursing,Telehealth triage,3.9,5.7,6.6,3.5,4.0,4.5,2.0,7.0,9.0,5.5,2.31,0.675,1.2,0.45,0.1,0.45,4.1,4.8,5.2,1.1
+Nursing,nursing,Utilization review / case management (desk),3.4,5.1,6.1,4.0,4.5,5.0,1.5,6.0,8.5,5.0,2.135,0.75,1.275,0.6,0.15,0.5,4.3,5.0,5.4,1.1
+Medicine,medicine,Surgery,3.9,4.1,4.5,1.0,1.2,1.5,9.5,9.5,9.5,9.0,1.575,0.225,0.075,0.075,0.05,0.1,1.8,1.9,2.1,0.3
+Medicine,medicine,Emergency medicine,4.3,4.8,5.5,1.0,1.2,1.5,9.0,9.5,9.5,9.2,1.925,0.225,0.15,0.075,0.05,0.08,2.0,2.2,2.5,0.5
+Medicine,medicine,Primary care / family medicine,4.8,5.3,6.0,1.0,1.2,1.5,8.0,9.5,9.5,8.5,2.1,0.225,0.3,0.075,0.05,0.15,2.4,2.6,2.9,0.5
+Medicine,medicine,Anesthesiology,5.6,6.1,6.6,1.0,1.2,1.5,8.0,9.5,9.5,8.5,2.31,0.225,0.3,0.075,0.05,0.15,2.7,2.9,3.1,0.4
+Medicine,medicine,Psychiatry,6.0,6.7,7.4,1.2,1.5,1.8,6.0,9.5,9.5,9.0,2.59,0.27,0.6,0.075,0.05,0.1,3.1,3.4,3.7,0.6
+Medicine,medicine,Pathology,6.2,7.5,8.6,1.5,1.8,2.0,5.0,8.0,9.5,7.0,3.01,0.3,0.75,0.3,0.05,0.3,3.8,4.3,4.7,0.9
+Medicine,medicine,Radiology,6.3,7.6,8.9,1.5,1.8,2.0,4.5,8.0,9.5,7.0,3.115,0.3,0.825,0.3,0.05,0.3,3.9,4.4,4.9,1.0
+Dentistry,dentistry,Oral & maxillofacial surgery,4.2,4.6,4.8,1.2,1.5,1.8,9.5,9.5,9.5,8.5,1.68,0.27,0.075,0.075,0.05,0.15,2.0,2.2,2.3,0.3
+Dentistry,dentistry,General dentistry,4.7,5.1,5.6,1.5,1.8,2.0,9.3,9.5,9.5,8.0,1.96,0.3,0.105,0.075,0.05,0.2,2.3,2.5,2.7,0.4
+Dentistry,dentistry,Dental hygiene,4.7,5.2,5.7,1.8,2.0,2.2,9.2,9.0,9.0,7.0,1.995,0.33,0.12,0.15,0.1,0.3,2.6,2.8,3.0,0.4
+Dentistry,dentistry,Orthodontics,5.6,6.7,7.7,2.0,2.2,2.5,8.5,9.0,9.5,7.0,2.695,0.375,0.225,0.15,0.05,0.3,3.0,3.4,3.8,0.8
+Dentistry,dentistry,Dental laboratory technology,3.5,4.4,5.1,4.5,5.0,5.5,5.0,4.0,3.0,4.5,1.785,0.825,0.75,0.9,0.7,0.55,4.8,5.2,5.5,0.7
+Veterinary Medicine,veterinary,Emergency & critical care,4.4,4.8,5.3,1.2,1.5,1.8,9.5,9.5,9.5,9.2,1.855,0.27,0.075,0.075,0.05,0.08,2.0,2.2,2.4,0.4
+Veterinary Medicine,veterinary,Large animal / mixed practice,4.3,4.7,5.4,1.2,1.5,1.8,9.5,9.3,9.5,9.0,1.89,0.27,0.075,0.105,0.05,0.1,2.0,2.2,2.5,0.5
+Veterinary Medicine,veterinary,Veterinary specialist / surgery,4.3,4.7,5.4,1.2,1.5,1.8,9.5,9.3,9.5,9.0,1.89,0.27,0.075,0.105,0.05,0.1,2.0,2.2,2.5,0.5
+Veterinary Medicine,veterinary,Small animal general practice,4.6,5.3,5.8,1.5,1.8,2.0,9.2,9.3,9.5,9.0,2.03,0.3,0.12,0.105,0.05,0.1,2.2,2.5,2.7,0.5
+Veterinary Medicine,veterinary,Veterinary nurse / technician,4.4,4.9,5.6,1.8,2.0,2.2,9.2,8.5,8.5,8.0,1.96,0.33,0.12,0.225,0.15,0.2,2.5,2.7,3.0,0.5
+Veterinary Medicine,veterinary,Lab / diagnostic veterinary roles,4.5,5.4,6.4,3.5,4.0,4.5,4.0,5.0,6.0,5.5,2.24,0.675,0.9,0.75,0.4,0.45,4.6,5.0,5.4,0.8
+Physical Therapy & Allied Health,allied-health,Physical therapy (hands-on),4.1,4.5,5.2,1.2,1.5,1.8,9.5,9.3,9.3,8.5,1.82,0.27,0.075,0.105,0.07,0.15,2.0,2.2,2.5,0.5
+Physical Therapy & Allied Health,allied-health,Occupational therapy,4.3,4.7,5.5,1.2,1.5,1.8,9.4,9.3,9.3,8.5,1.925,0.27,0.09,0.105,0.07,0.15,2.1,2.3,2.6,0.5
+Physical Therapy & Allied Health,allied-health,Speech-language pathology,5.2,5.7,6.4,1.5,1.8,2.0,8.5,9.3,9.3,8.5,2.24,0.3,0.225,0.105,0.07,0.15,2.6,2.8,3.1,0.5
+Physical Therapy & Allied Health,allied-health,Respiratory therapy,5.1,5.6,6.3,1.5,1.8,2.0,8.8,9.0,9.3,8.2,2.205,0.3,0.18,0.15,0.07,0.18,2.6,2.8,3.1,0.5
+Physical Therapy & Allied Health,allied-health,Diagnostic imaging technologist,4.9,6.1,7.0,2.5,3.0,3.4,7.5,7.0,8.5,5.5,2.45,0.51,0.375,0.45,0.15,0.45,3.5,4.0,4.4,0.9
+Physical Therapy & Allied Health,allied-health,Records / screen-based allied roles,4.6,5.9,7.1,4.5,5.0,5.5,1.5,5.5,7.0,4.5,2.485,0.825,1.275,0.675,0.3,0.55,5.1,5.6,6.1,1.0
+Pharmacy,pharmacy,Clinical / hospital pharmacy,5.0,5.7,6.4,2.5,2.8,3.2,5.0,8.5,9.5,7.5,2.24,0.48,0.75,0.225,0.05,0.25,3.4,3.7,4.0,0.6
+Pharmacy,pharmacy,Ambulatory & specialty pharmacy,5.5,6.2,6.9,2.8,3.2,3.5,4.5,8.2,9.5,7.0,2.415,0.525,0.825,0.27,0.05,0.3,3.8,4.1,4.4,0.6
+Pharmacy,pharmacy,Community / retail pharmacy,5.3,6.3,7.0,3.2,3.6,4.0,3.5,7.5,9.5,5.5,2.45,0.6,0.975,0.375,0.05,0.45,4.2,4.6,4.9,0.7
+Pharmacy,pharmacy,Pharmacy technician,4.6,5.8,6.7,4.0,4.5,5.0,3.5,5.5,6.5,4.0,2.345,0.75,0.975,0.675,0.35,0.6,4.8,5.3,5.7,0.9
+Pharmacy,pharmacy,Central fill / mail order,5.8,7.2,8.4,5.5,6.2,6.8,2.0,4.0,8.5,3.0,2.94,1.02,1.2,0.9,0.15,0.7,5.8,6.4,6.9,1.1
+Psychology,psychology,Clinical psychologist (licensed),5.0,6.0,6.7,2.0,2.4,2.8,6.5,9.5,9.5,9.0,2.345,0.42,0.525,0.075,0.05,0.1,2.8,3.2,3.5,0.7
+Psychology,psychology,Counselor / psychotherapist (licensed),5.7,6.4,7.4,2.2,2.6,3.0,6.0,9.5,9.2,8.8,2.59,0.45,0.6,0.075,0.08,0.12,3.2,3.5,3.9,0.7
+Psychology,psychology,School psychologist,5.5,6.4,7.4,2.2,2.6,3.0,6.0,9.3,9.0,8.5,2.59,0.45,0.6,0.105,0.1,0.15,3.2,3.6,4.0,0.8
+Psychology,psychology,Research / academic psychology,4.8,6.0,7.4,5.0,5.6,6.2,2.0,5.5,2.5,6.5,2.59,0.93,1.2,0.675,0.75,0.35,5.4,5.9,6.5,1.1
+Psychology,psychology,Organizational / HR-adjacent roles,5.0,6.4,7.6,5.5,6.2,6.8,1.5,5.0,1.5,5.5,2.66,1.02,1.275,0.75,0.85,0.45,5.9,6.5,7.0,1.1
+Psychology,psychology,"Degree only, no further qualification",4.9,6.1,7.3,5.8,6.4,7.0,1.5,4.5,1.0,5.0,2.555,1.05,1.275,0.825,0.9,0.5,6.1,6.6,7.1,1.0
+Computer Science,computer-science,Embedded / safety-critical systems,4.6,5.3,6.2,3.0,3.5,4.0,4.0,7.5,6.0,7.5,2.17,0.6,0.9,0.375,0.4,0.25,4.0,4.3,4.7,0.7
+Computer Science,computer-science,Security engineering,4.2,5.1,5.8,3.5,4.0,4.5,1.0,7.0,3.5,8.5,2.03,0.675,1.35,0.45,0.65,0.15,4.6,5.0,5.3,0.7
+Computer Science,computer-science,Senior engineer / architect,3.6,4.5,5.4,3.0,3.5,4.0,1.0,7.0,1.0,8.0,1.89,0.6,1.35,0.45,0.9,0.2,4.6,5.0,5.4,0.8
+Computer Science,computer-science,ML / AI engineering,4.5,5.5,6.5,3.0,4.0,5.0,1.0,6.5,1.0,8.0,2.275,0.75,1.35,0.525,0.9,0.2,5.0,5.5,6.0,1.0
+Computer Science,computer-science,Backend / infrastructure,5.3,6.6,7.5,4.5,5.5,6.0,1.0,5.5,1.0,6.5,2.625,0.9,1.35,0.675,0.9,0.35,5.8,6.4,6.8,1.0
+Computer Science,computer-science,Frontend / application development,6.0,7.3,8.5,5.5,6.5,7.0,1.0,4.5,1.0,5.0,2.975,1.05,1.35,0.825,0.9,0.5,6.5,7.1,7.6,1.1
+Computer Science,computer-science,Entry-level developer,5.1,7.4,8.8,5.0,7.0,8.5,1.0,4.0,1.0,4.0,3.08,1.275,1.35,0.9,0.9,0.6,6.3,7.4,8.1,1.8
+Data Science,data-science,ML / AI engineer,4.3,5.4,6.5,3.5,4.2,5.0,1.0,6.5,1.0,8.0,2.275,0.75,1.35,0.525,0.9,0.2,5.0,5.5,6.0,1.0
+Data Science,data-science,Senior data scientist,5.0,6.4,7.2,4.0,4.8,5.5,1.0,6.0,1.0,7.0,2.52,0.825,1.35,0.6,0.9,0.3,5.5,6.1,6.5,1.0
+Data Science,data-science,Data engineer,5.7,6.8,7.9,4.5,5.2,6.0,1.0,5.5,1.0,6.0,2.765,0.9,1.35,0.675,0.9,0.4,6.0,6.5,7.0,1.0
+Data Science,data-science,Analytics engineer / BI developer,5.7,7.3,8.4,5.5,6.5,7.2,1.0,4.5,1.0,5.0,2.94,1.08,1.35,0.825,0.9,0.5,6.4,7.1,7.6,1.2
+Data Science,data-science,Entry data analyst,5.9,7.7,9.4,6.0,7.0,7.8,1.0,4.0,1.0,4.0,3.29,1.17,1.35,0.9,0.9,0.6,6.7,7.5,8.2,1.5
+Cybersecurity,cybersecurity,Incident response / threat hunting,3.2,4.1,5.1,4.0,4.5,5.0,1.0,7.5,3.5,9.0,1.785,0.75,1.35,0.375,0.65,0.1,4.2,4.6,5.0,0.8
+Cybersecurity,cybersecurity,Security architecture,4.3,5.2,6.1,4.0,4.5,5.0,1.0,7.0,3.5,8.5,2.135,0.75,1.35,0.45,0.65,0.15,4.7,5.1,5.5,0.8
+Cybersecurity,cybersecurity,Penetration testing / offensive,4.6,5.5,6.5,4.2,4.8,5.2,1.5,6.5,3.0,8.5,2.275,0.78,1.275,0.525,0.7,0.15,4.9,5.3,5.7,0.8
+Cybersecurity,cybersecurity,GRC / compliance,4.6,5.8,6.7,4.5,5.2,5.8,1.0,6.0,5.0,5.5,2.345,0.87,1.35,0.6,0.5,0.45,5.2,5.7,6.1,0.9
+Cybersecurity,cybersecurity,SOC analyst (tier 1),5.3,6.9,8.3,5.5,6.5,7.2,1.0,4.5,3.0,4.5,2.905,1.08,1.35,0.825,0.7,0.55,6.1,6.8,7.4,1.3
+Engineering,engineering,Electrical power & grid,5.7,6.4,7.1,2.5,2.8,3.2,7.0,8.5,9.0,8.5,2.485,0.48,0.45,0.225,0.1,0.15,3.3,3.6,3.9,0.6
+Engineering,engineering,"Civil / structural (PE, site-based)",6.0,6.7,7.4,2.5,2.8,3.2,7.0,8.5,9.0,8.5,2.59,0.48,0.45,0.225,0.1,0.15,3.4,3.7,4.0,0.6
+Engineering,engineering,Mechanical (industrial),6.3,6.8,7.5,3.0,3.2,3.6,6.0,8.0,8.5,8.0,2.625,0.54,0.6,0.3,0.15,0.2,3.9,4.1,4.4,0.5
+Engineering,engineering,Manufacturing / process,6.8,7.5,7.9,3.5,3.8,4.2,5.5,7.5,8.0,7.5,2.765,0.63,0.675,0.375,0.2,0.25,4.4,4.7,4.9,0.5
+Engineering,engineering,"Design & analysis (desk, CAD-centred)",6.0,7.4,8.6,4.5,5.2,5.8,2.0,6.5,7.0,6.0,3.01,0.87,1.2,0.525,0.3,0.4,5.2,5.8,6.3,1.1
+Architecture,architecture,Construction administration / site,7.4,8.1,9.1,3.0,3.4,3.8,7.5,8.5,8.5,8.0,3.185,0.57,0.375,0.225,0.15,0.2,4.0,4.3,4.7,0.7
+Architecture,architecture,Licensed architect / design lead,7.8,8.5,9.4,3.2,3.6,4.0,6.5,8.5,8.5,8.0,3.29,0.6,0.525,0.225,0.15,0.2,4.3,4.6,5.0,0.7
+Architecture,architecture,"Specialist (sustainability, computational)",8.1,9.1,9.8,3.5,3.8,4.2,5.0,8.0,8.0,8.0,3.43,0.63,0.75,0.3,0.2,0.2,4.8,5.2,5.5,0.7
+Architecture,architecture,Technical / BIM coordination,6.8,8.0,8.9,4.5,5.0,5.5,2.5,5.5,5.5,5.0,3.115,0.825,1.125,0.675,0.45,0.5,5.8,6.3,6.7,0.9
+Architecture,architecture,Production drafting,6.1,8.3,9.7,5.5,6.5,7.2,2.0,4.5,5.0,4.0,3.395,1.08,1.2,0.825,0.5,0.6,6.1,7.0,7.6,1.5
+Skilled Trades,trades,Electrician — service & maintenance,3.9,4.4,4.9,1.5,1.8,2.0,9.5,8.5,9.0,9.0,1.715,0.3,0.075,0.225,0.1,0.1,2.1,2.3,2.5,0.4
+Skilled Trades,trades,Plumbing / HVAC — service,4.1,4.5,5.0,1.5,1.8,2.0,9.5,8.5,8.8,8.8,1.75,0.3,0.075,0.225,0.12,0.12,2.2,2.4,2.6,0.4
+Skilled Trades,trades,Welding & fabrication — site work,4.5,5.0,5.4,2.0,2.2,2.5,9.2,7.5,7.5,8.2,1.89,0.375,0.12,0.375,0.25,0.18,2.8,3.0,3.2,0.4
+Skilled Trades,trades,Construction site trades,4.3,5.0,5.7,2.0,2.4,2.8,9.2,7.5,7.0,8.0,1.995,0.42,0.12,0.375,0.3,0.2,2.8,3.1,3.4,0.6
+Skilled Trades,trades,Production line / prefab / modular,3.9,5.1,6.4,3.5,4.0,4.5,8.0,5.0,4.5,5.0,2.24,0.675,0.3,0.75,0.55,0.5,4.0,4.5,5.0,1.0
+Construction Management,construction,Site superintendent,4.3,5.1,5.5,2.0,2.2,2.5,8.5,8.5,6.0,8.5,1.925,0.375,0.225,0.225,0.4,0.15,2.8,3.1,3.3,0.5
+Construction Management,construction,Construction project manager,5.5,6.2,6.7,2.5,2.8,3.0,7.0,8.0,5.5,8.0,2.345,0.45,0.45,0.3,0.45,0.2,3.7,4.0,4.2,0.5
+Construction Management,construction,Estimator / quantity surveyor,6.2,7.1,8.1,4.0,4.5,5.0,2.5,6.0,4.0,6.0,2.835,0.75,1.125,0.6,0.6,0.4,5.5,5.9,6.3,0.8
+Construction Management,construction,Scheduler / planner,6.6,7.6,8.8,4.5,5.0,5.5,2.0,5.0,3.5,5.0,3.08,0.825,1.2,0.75,0.65,0.5,6.1,6.5,7.0,0.9
+Construction Management,construction,Preconstruction / document coordination,6.9,8.0,8.9,5.0,5.6,6.2,1.5,4.5,3.0,4.5,3.115,0.93,1.275,0.825,0.7,0.55,6.5,7.0,7.4,0.9
+Business & Management,business,General management / P&L ownership,4.0,4.7,5.7,3.0,3.4,3.8,2.5,8.5,2.0,8.0,1.995,0.57,1.125,0.225,0.8,0.2,4.2,4.5,4.9,0.7
+Business & Management,business,Supply chain & operations,4.1,4.7,5.7,3.2,3.6,4.0,3.5,7.5,2.0,7.5,1.995,0.6,0.975,0.375,0.8,0.25,4.3,4.6,5.0,0.7
+Business & Management,business,HR / people,4.0,4.7,5.4,4.0,4.4,4.8,1.5,7.5,2.5,7.0,1.89,0.72,1.275,0.375,0.75,0.3,4.7,5.0,5.3,0.6
+Business & Management,business,Project management,4.1,5.0,5.8,5.0,5.6,6.2,1.5,6.0,1.5,6.0,2.03,0.93,1.275,0.6,0.85,0.4,5.3,5.7,6.1,0.8
+Business & Management,business,Business analyst / coordinator,4.9,7.0,8.5,6.5,7.0,7.5,1.5,4.5,1.5,4.5,2.975,1.125,1.275,0.825,0.85,0.55,6.2,7.0,7.6,1.4
+Accounting,accounting,Audit / CPA advisory,5.9,6.9,7.9,3.2,3.6,4.0,1.5,8.5,9.5,7.0,2.765,0.6,1.275,0.225,0.05,0.3,4.4,4.8,5.2,0.8
+Accounting,accounting,Tax advisory (complex),6.6,7.5,8.5,3.5,4.0,4.4,1.5,8.0,9.0,7.0,2.975,0.66,1.275,0.3,0.1,0.3,4.8,5.2,5.6,0.8
+Accounting,accounting,Management accounting / controller,6.1,7.4,8.0,4.5,5.0,5.5,1.5,7.0,4.0,6.5,2.8,0.825,1.275,0.45,0.6,0.35,5.5,6.0,6.3,0.8
+Accounting,accounting,Routine tax preparation,6.9,8.1,9.1,5.5,6.0,6.5,1.5,5.5,6.5,4.5,3.185,0.975,1.275,0.675,0.35,0.55,6.1,6.6,7.0,0.9
+Accounting,accounting,Bookkeeping / transactional,6.6,8.0,9.2,6.5,7.2,7.8,1.5,4.0,3.0,3.5,3.22,1.17,1.275,0.9,0.7,0.65,6.8,7.4,7.9,1.1
+Finance,finance,Wealth / financial advisory,4.4,5.0,6.0,3.0,3.4,3.8,1.5,9.0,7.5,7.5,2.1,0.57,1.275,0.15,0.25,0.25,3.9,4.2,4.6,0.7
+Finance,finance,Risk & compliance,4.7,5.4,6.6,3.5,3.9,4.4,1.0,7.5,6.5,7.5,2.31,0.66,1.35,0.375,0.35,0.25,4.5,4.8,5.3,0.8
+Finance,finance,Investment banking (senior),5.0,6.0,7.0,3.8,4.2,4.6,1.0,7.5,4.0,7.5,2.45,0.69,1.35,0.375,0.6,0.25,4.9,5.3,5.7,0.8
+Finance,finance,Corporate finance / FP&A,6.4,7.3,8.2,4.8,5.3,5.8,1.0,6.0,3.0,6.0,2.87,0.87,1.35,0.6,0.7,0.4,6.0,6.4,6.8,0.8
+Finance,finance,Entry analyst / research,5.7,7.8,9.4,6.0,7.2,8.0,1.0,4.0,3.0,4.5,3.29,1.2,1.35,0.9,0.7,0.55,6.4,7.3,8.0,1.6
+Law,law,Trial litigator / advocacy,5.6,6.1,6.9,3.5,4.2,5.0,4.0,8.5,9.5,8.5,2.415,0.75,0.9,0.225,0.05,0.15,3.8,4.1,4.5,0.7
+Law,law,Regulatory & compliance counsel,4.6,5.4,6.5,4.0,4.8,5.6,1.5,8.0,9.0,8.0,2.275,0.84,1.275,0.3,0.1,0.2,4.1,4.5,5.0,0.9
+Law,law,In-house counsel,4.6,5.7,6.5,4.2,5.0,5.8,1.0,8.0,8.5,7.5,2.275,0.87,1.35,0.3,0.15,0.25,4.3,4.8,5.2,0.9
+Law,law,Transactional / corporate associate,5.1,6.4,7.7,5.5,6.5,7.5,1.0,6.5,8.0,6.0,2.695,1.125,1.35,0.525,0.2,0.4,5.1,5.7,6.3,1.2
+Law,law,Junior associate / document review,4.8,7.6,9.1,7.0,8.5,9.5,1.0,3.5,7.0,3.5,3.185,1.425,1.35,0.975,0.3,0.65,6.0,7.2,7.9,1.9
+Graphic & Visual Design,design,Creative direction / brand identity,4.0,4.9,5.9,3.5,4.0,4.5,1.0,7.5,1.0,7.5,2.065,0.675,1.35,0.375,0.9,0.25,4.8,5.2,5.6,0.8
+Graphic & Visual Design,design,UX / product design,4.6,5.5,6.4,4.0,4.5,5.0,1.0,7.0,1.0,7.0,2.24,0.75,1.35,0.45,0.9,0.3,5.2,5.6,6.0,0.8
+Graphic & Visual Design,design,"Motion, 3D & technical craft",5.3,6.7,7.8,5.0,5.8,6.5,1.5,5.5,1.0,5.5,2.73,0.975,1.275,0.675,0.9,0.45,5.9,6.5,7.0,1.1
+Graphic & Visual Design,design,Illustration / commercial art,5.5,7.1,8.2,5.5,6.5,7.2,1.5,4.5,1.0,4.5,2.87,1.08,1.275,0.825,0.9,0.55,6.3,7.0,7.5,1.2
+Graphic & Visual Design,design,Production / execution design,4.9,7.4,8.7,6.5,8.0,9.0,1.0,3.0,1.0,3.0,3.045,1.35,1.35,1.05,0.9,0.7,6.7,7.8,8.4,1.7
+Journalism & Media,journalism,Investigative reporting,4.9,5.5,6.1,6.5,7.0,7.5,6.0,8.5,1.0,9.0,2.135,1.125,0.6,0.225,0.9,0.1,4.5,4.8,5.1,0.6
+Journalism & Media,journalism,Specialist / trade reporting,5.4,6.1,6.8,7.0,7.4,7.8,4.5,7.5,1.0,8.5,2.38,1.17,0.825,0.375,0.9,0.15,5.2,5.5,5.8,0.6
+Journalism & Media,journalism,Data journalism,5.2,6.2,7.1,7.2,7.6,8.0,2.5,6.5,1.0,7.5,2.485,1.2,1.125,0.525,0.9,0.25,5.7,6.1,6.5,0.8
+Journalism & Media,journalism,General news reporting,6.0,7.0,7.7,7.5,7.9,8.3,3.5,6.0,1.0,7.0,2.695,1.245,0.975,0.6,0.9,0.3,6.0,6.4,6.7,0.7
+Journalism & Media,journalism,Desk / aggregation & rewrite,5.5,7.6,8.8,8.0,8.5,9.0,1.0,3.5,1.0,3.5,3.08,1.35,1.35,0.975,0.9,0.65,7.0,7.8,8.3,1.3
+Marketing & Communications,marketing,Brand strategy / marketing leadership,3.5,4.1,5.4,3.5,4.0,4.5,1.0,7.0,1.0,7.5,1.89,0.675,1.35,0.45,0.9,0.25,4.7,5.0,5.5,0.8
+Marketing & Communications,marketing,Marketing science / analytics,4.6,5.5,6.4,4.2,4.8,5.4,1.0,6.0,1.0,7.0,2.24,0.81,1.35,0.6,0.9,0.3,5.4,5.8,6.2,0.8
+Marketing & Communications,marketing,Product marketing,4.7,5.6,6.8,4.5,5.0,5.6,1.0,5.5,1.0,6.5,2.38,0.84,1.35,0.675,0.9,0.35,5.6,6.0,6.5,0.9
+Marketing & Communications,marketing,Campaign management,5.1,6.6,7.4,5.5,6.2,6.8,1.0,4.5,1.0,5.0,2.59,1.02,1.35,0.825,0.9,0.5,6.2,6.8,7.2,1.0
+Marketing & Communications,marketing,Content & social execution,4.5,7.0,8.3,6.5,8.0,9.0,1.0,3.0,1.0,3.5,2.905,1.35,1.35,1.05,0.9,0.65,6.5,7.6,8.2,1.7
+Teaching,teaching,Special education,5.7,6.2,6.6,1.5,1.8,2.0,9.0,9.5,9.0,8.5,2.31,0.3,0.15,0.075,0.1,0.15,2.7,2.9,3.1,0.4
+Teaching,teaching,Elementary / early years,6.9,7.4,7.8,1.8,2.0,2.2,9.0,9.5,9.0,8.0,2.73,0.33,0.15,0.075,0.1,0.2,3.2,3.4,3.6,0.4
+Teaching,teaching,Secondary — STEM subjects,7.2,7.7,8.2,1.8,2.0,2.2,8.8,9.3,9.0,7.8,2.87,0.33,0.18,0.105,0.1,0.22,3.4,3.6,3.8,0.4
+Teaching,teaching,Secondary — general subjects,7.9,8.4,8.8,2.0,2.2,2.5,8.8,9.3,9.0,7.5,3.08,0.375,0.18,0.105,0.1,0.25,3.7,3.9,4.1,0.4
+Teaching,teaching,Online instruction / tutoring,4.4,6.1,7.6,4.5,5.2,5.8,1.5,5.0,3.0,4.5,2.66,0.87,1.275,0.75,0.7,0.55,5.5,6.2,6.8,1.3

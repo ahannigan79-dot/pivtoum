@@ -87,6 +87,13 @@ tbody td{ padding:.24cm .3cm; border-bottom:1px solid var(--rule);
 tbody tr:last-child td{ border-bottom:1px solid var(--rule); }
 th.num,td.num{ text-align:right; }
 
+/* appendix */
+.appendix{ break-before:page; }
+pre{ background:#faf7f0; border:1px solid var(--rule); border-radius:3px;
+  padding:.4cm .5cm; margin:.35cm 0 .6cm; overflow-x:auto; }
+pre code{ font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:9pt; line-height:1.5; color:var(--ink); white-space:pre; }
+
 /* callout / blockquote */
 blockquote{ margin:.4cm 0 .6cm; padding:.35cm .55cm; border-left:2.5px solid var(--hl-meth);
   background:rgba(96,142,208,.06); color:var(--ink-soft); }
