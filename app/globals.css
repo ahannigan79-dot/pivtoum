@@ -121,11 +121,14 @@ header { padding: 2rem 0 0; }
   position: relative; display: inline-block; line-height: 1;
 }
 .wordmark-text { position: relative; z-index: 1; }
-.wordmark-hl {
-  position: absolute; left: -.12em; width: calc(100% + .24em);
-  bottom: .06em; height: .66em; z-index: 0; overflow: visible; pointer-events: none;
+.wordmark-ring {
+  position: absolute; left: -.34em; right: -.34em; top: -.2em; bottom: -.2em;
+  width: calc(100% + .68em); height: calc(100% + .4em);
+  z-index: 0; overflow: visible; pointer-events: none;
 }
-.wordmark-hl path { stroke: rgba(var(--hl), .85); }
+.wordmark-ring path {
+  fill: none; stroke: rgba(var(--hl), .9); stroke-width: 8; stroke-linecap: round;
+}
 .site-header .wordmark { font-size: 1.2rem; }
 
 @media (max-width: 34rem) {

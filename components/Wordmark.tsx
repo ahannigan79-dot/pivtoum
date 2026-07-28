@@ -1,23 +1,17 @@
-/** The Pivotum wordmark — Literata swept through with a hand-drawn highlighter squiggle. */
+/** The Pivotum wordmark — Literata inside a hand-drawn yellow highlighter loop. */
 export function Wordmark() {
   return (
     <span className="wordmark">
+      <span className="wordmark-text">Pivotum</span>
       <svg
-        className="wordmark-hl"
-        viewBox="0 0 300 24"
+        className="wordmark-ring"
+        viewBox="0 0 290 94"
         preserveAspectRatio="none"
         aria-hidden="true"
         focusable="false"
       >
-        <path
-          d="M3 13 C 40 4 72 21 110 12 C 148 4 186 21 224 12 C 258 5 284 18 297 12"
-          fill="none"
-          strokeWidth="11"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
+        <path d="M250 20 C 200 6 90 4 40 20 C 6 32 6 62 46 76 C 112 90 212 87 258 68 C 288 53 281 29 232 17" />
       </svg>
-      <span className="wordmark-text">Pivotum</span>
     </span>
   );
 }
