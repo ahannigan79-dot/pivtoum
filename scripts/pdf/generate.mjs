@@ -25,13 +25,43 @@ function careerMeta(slug) {
   const src = readFileSync(join(REPO, "data/careers.ts"), "utf8");
   const at = src.indexOf(`"slug": "${slug}"`);
   if (at < 0) throw new Error(`slug ${slug} not found in data/careers.ts`);
-  const block = src.slice(at, at + 4000);
+  const block = src.slice(at, at + 5000);
+  const fStart = block.indexOf('"factors"');
+  const fSeg = block.slice(fStart, block.indexOf("]", fStart) + 1);
+  const factors = [...fSeg.matchAll(
+    /"question":\s*"([^"]+)"[\s\S]*?"rating":\s*([\d.]+)[\s\S]*?"direction":\s*"([^"]+)"/g,
+  )].map((m) => ({ question: m[1], rating: Number(m[2]), direction: m[3] }));
   return {
     title: /"title":\s*"([^"]+)"/.exec(block)[1],
     name: /"name":\s*"([^"]+)"/.exec(block)[1],
     score: Number(/"headlineScore":\s*([\d.]+)/.exec(block)[1]),
     track: /"headlineTrack":\s*"([^"]+)"/.exec(block)[1],
+    factors,
   };
+}
+
+// Fixed methodology weights, in the same order as the six factors.
+const FACTOR_WEIGHTS = [35, 15, 15, 15, 10, 10];
+
+function appendix(meta) {
+  const rows = meta.factors
+    .map((f, i) => {
+      const exp = f.direction === "exposure";
+      const effect = exp
+        ? `<span style="color:#B4503F;font-weight:600">Exposure ↑</span>`
+        : `<span style="color:#2F7D57;font-weight:600">Protection ↓</span>`;
+      return `<tr><td>${esc(f.question)}</td><td class="num">${FACTOR_WEIGHTS[i] ?? ""}%</td><td class="num">${f.rating.toFixed(1)}</td><td>${effect}</td></tr>`;
+    })
+    .join("");
+  return `<section class="sheet"><hr>
+    <h1>Appendix — technical scoring</h1>
+    <p>The factor scores behind the headline number, shown for the <strong>${esc(meta.track)}</strong> track. Each factor is rated 0–10 and carries a fixed weight; <em>exposure</em> factors push the score up, <em>protection</em> factors pull it down. Full method at pivotum.ai/methodology.</p>
+    <table>
+      <thead><tr><th>Factor</th><th class="num">Weight</th><th class="num">Rating</th><th>Effect</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <p style="font-family:var(--sans);font-size:8.5pt;color:var(--pencil);margin-top:.3cm">Scores run 0–10, where 10 is most exposed to what AI can already do. Re-scored every six months.</p>
+  </section>`;
 }
 const EDITION = /EDITION\s*=\s*"([^"]+)"/.exec(readFileSync(join(REPO, "lib/site.ts"), "utf8"))[1];
 
@@ -164,10 +194,11 @@ async function main() {
   const body = mdToHtml(stripTitleBlock(raw));
   const cover = kind === "student" ? coverStudent(firstH1) : coverParent(meta);
   const legend = kind === "student" ? "" : `<section>${LEGEND}<hr></section>`;
+  const appx = kind === "student" || !meta.factors.length ? "" : appendix(meta);
 
   const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"></head>
-<body>${cover}${legend}<section class="sheet">${body}</section></body></html>`;
+<body>${cover}${legend}<section class="sheet">${body}</section>${appx}</body></html>`;
   const htmlPath = join(tmpdir(), `pivotum_${slug}_${kind}.html`);
   writeFileSync(htmlPath, html);
 
