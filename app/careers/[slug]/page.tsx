@@ -5,6 +5,7 @@ import { getCareer } from "@/data/careers";
 import { careerMdx, samplerSlugs } from "@/content/careers/registry";
 import { SITE } from "@/lib/site";
 import { CareerHeader } from "@/components/CareerHeader";
+import { ScoreBadge } from "@/components/ScoreBadge";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { ScoreTable } from "@/components/ScoreTable";
 import { FactorList } from "@/components/FactorList";
@@ -107,6 +108,7 @@ export default async function CareerPage({
     <div className="page">
       <div className="body">
         <CareerHeader career={career} />
+        <ScoreBadge career={career} />
         <QuickAnswer career={career} />
         <Body components={components} />
         <SiteFooter />

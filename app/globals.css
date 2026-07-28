@@ -16,7 +16,7 @@
   --hl2: 163, 214, 190;   /* green  — protection */
   --hl3: 247, 166, 166;   /* coral  — exposure */
   --hl4: 166, 198, 236;   /* blue   — method and honesty */
-  --col: 34rem;
+  --col: 40rem;
   --margin-col: 11rem;
 
   --serif: var(--font-literata), Georgia, serif;
@@ -165,7 +165,31 @@ h1 {
 }
 .quick p { margin: 0; font-size: 1.125rem; line-height: 1.6; }
 
-/* ---- The circled score --------------------------------------------------- */
+/* ---- The score badge (big hand-drawn circle, hero stat) ------------------ */
+.score-badge { display: flex; align-items: center; gap: 1.25rem; margin: 1.6rem 0 2.25rem; }
+.score-badge-circle {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 2.7rem; letter-spacing: -.02em; line-height: 1;
+  padding: .3em .42em; flex-shrink: 0;
+}
+.score-badge-circle svg {
+  position: absolute; inset: -.28em -.16em; width: calc(100% + .32em);
+  height: calc(100% + .56em); overflow: visible; pointer-events: none;
+}
+.score-badge-circle path {
+  fill: none; stroke: var(--pen); stroke-width: 2.5; stroke-linecap: round;
+  stroke-dasharray: 340; stroke-dashoffset: 340;
+  animation: draw 1.1s cubic-bezier(.4, .1, .3, 1) .5s forwards;
+}
+.score-badge-label .k {
+  display: block; font-family: var(--sans); font-size: .6875rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--pencil);
+}
+.score-badge-label .d {
+  display: block; font-family: var(--sans); font-size: 1rem; color: var(--ink); margin-top: .2rem;
+}
+
+/* ---- The circled score (inline) ------------------------------------------ */
 .circled { position: relative; display: inline-block; padding: .1em .55em; font-weight: 600; }
 .circled svg {
   position: absolute; inset: -.55em -.35em; width: calc(100% + .7em);
@@ -220,6 +244,11 @@ td:first-child { text-align: left; padding-right: 1rem; line-height: 1.35; }
 }
 tr.top td { background: linear-gradient(90deg, rgba(var(--hl), .30), rgba(var(--hl), .16)); }
 tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(--hl2), .14)); }
+
+/* Airier score table — closer to the printed profile */
+.scores { font-size: .975rem; }
+.scores th { padding-bottom: .7rem; }
+.scores td { padding-top: .85rem; padding-bottom: .85rem; }
 
 /* ---- Two-column "takes / can't touch" grid ------------------------------- */
 .cols { border-top: 1.5px solid var(--ink); margin: 1.2rem 0 1.4rem; }
@@ -445,6 +474,7 @@ footer {
 }
 @media (prefers-reduced-motion: reduce) {
   .hl { background-size: 100% 100%; animation: none; }
-  .circled path { stroke-dashoffset: 0; animation: none; }
+  .circled path,
+  .score-badge-circle path { stroke-dashoffset: 0; animation: none; }
   * { transition: none !important; }
 }
