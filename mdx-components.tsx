@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { CareerCount } from "@/components/CareerCount";
 
 /**
  * Global MDX element defaults. The design system is driven by element selectors
@@ -6,5 +7,5 @@ import type { MDXComponents } from "mdx/types";
  * data-bound components (ScoreTable, FactorList, …) at render time.
  */
 export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return { ...components };
+  return { CareerCount, ...components };
 }
