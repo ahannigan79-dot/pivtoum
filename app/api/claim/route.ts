@@ -4,6 +4,7 @@ import { getOrder, markClaimed } from "@/lib/db";
 import { isClaimable } from "@/lib/profiles";
 import { getCareer } from "@/data/careers";
 import { signDownload, SEVEN_DAYS_MS } from "@/lib/download";
+import { purchaseEmail } from "@/lib/emails";
 import { SITE } from "@/lib/site";
 
 /**
@@ -45,18 +46,13 @@ export async function POST(req: Request) {
 
   if (apiKey && from) {
     const resend = new Resend(apiKey);
-    const html = `
-      <p>Thanks for your purchase. Your Pivotum profiles are ready — links are valid for 7 days:</p>
-      <ul>${links.map((l) => `<li><a href="${l.url}">${l.name} — full profile (PDF)</a></li>`).join("")}</ul>
-      <p>Each includes a version written directly to the student and the technical scoring appendix.
-      Your Spring 2027 updates are included; we'll email them when they publish.</p>
-      <p>You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}">${SITE.url}/claim/${token}</a>.</p>
-    `;
+    const { html, text } = purchaseEmail(links, token);
     const { error } = await resend.emails.send({
       from,
       to: order.email,
       subject: "Your Pivotum profiles",
       html,
+      text,
     });
     if (error) return NextResponse.json({ error: "Could not send email." }, { status: 502 });
   }
