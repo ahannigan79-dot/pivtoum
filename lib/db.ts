@@ -1,4 +1,4 @@
-import { sql } from "@vercel/postgres";
+import { createPool, type VercelPool } from "@vercel/postgres";
 
 /**
  * Orders. One row per completed checkout, keyed by the Stripe Checkout Session
@@ -14,10 +14,22 @@ export interface Order {
   created_at: string;
 }
 
+// Lazy pool so a missing connection string never breaks the build. Accepts
+// either POSTGRES_URL (Vercel Postgres) or DATABASE_URL (Neon/marketplace).
+let pool: VercelPool | null = null;
+function db(): VercelPool {
+  if (!pool) {
+    const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+    if (!connectionString) throw new Error("No Postgres connection string (POSTGRES_URL / DATABASE_URL)");
+    pool = createPool({ connectionString });
+  }
+  return pool;
+}
+
 let ready = false;
 export async function ensureSchema(): Promise<void> {
   if (ready) return;
-  await sql`
+  await db().sql`
     CREATE TABLE IF NOT EXISTS orders (
       token       TEXT PRIMARY KEY,
       email       TEXT NOT NULL,
@@ -32,7 +44,7 @@ export async function ensureSchema(): Promise<void> {
 
 export async function upsertOrder(token: string, email: string, packSize: number): Promise<void> {
   await ensureSchema();
-  await sql`
+  await db().sql`
     INSERT INTO orders (token, email, pack_size)
     VALUES (${token}, ${email}, ${packSize})
     ON CONFLICT (token) DO NOTHING;
@@ -41,13 +53,13 @@ export async function upsertOrder(token: string, email: string, packSize: number
 
 export async function getOrder(token: string): Promise<Order | null> {
   await ensureSchema();
-  const { rows } = await sql<Order>`SELECT * FROM orders WHERE token = ${token} LIMIT 1;`;
+  const { rows } = await db().sql<Order>`SELECT * FROM orders WHERE token = ${token} LIMIT 1;`;
   return rows[0] ?? null;
 }
 
 export async function markClaimed(token: string, selected: string[]): Promise<void> {
   await ensureSchema();
-  await sql`
+  await db().sql`
     UPDATE orders
     SET claimed = TRUE, selected = ${JSON.stringify(selected)}::jsonb
     WHERE token = ${token};
