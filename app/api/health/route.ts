@@ -20,12 +20,19 @@ export async function GET() {
     result.postgresReason = (e as Error).message.slice(0, 140);
   }
 
-  try {
-    await list({ limit: 1 });
-    result.blob = "ok";
-  } catch (e) {
-    result.blob = "error";
-    result.blobReason = (e as Error).message.slice(0, 140);
+  // Key off the token first — list() can resolve without one, so relying on it
+  // alone gives a false "ok".
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    result.blob = "not configured";
+    result.blobReason = "BLOB_READ_WRITE_TOKEN is not set on this deployment";
+  } else {
+    try {
+      await list({ limit: 1 });
+      result.blob = "ok";
+    } catch (e) {
+      result.blob = "error";
+      result.blobReason = (e as Error).message.slice(0, 140);
+    }
   }
 
   result.env = {
