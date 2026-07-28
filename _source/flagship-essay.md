@@ -1,0 +1,226 @@
+# Helping Your Kid Pick a Career Just Got Harder
+
+### We scored thirty careers against AI. The safest ones surprised us.
+
+*Pivotum · Fall 2026 edition*
+
+---
+
+Computer science graduates in the United States now face a higher unemployment rate than fine arts graduates.
+
+That is Federal Reserve data, not a provocation.
+
+We came across it trying to answer a question at our own kitchen table. We build AI systems for a living, and we have teenagers — which turns out to be an uncomfortable combination. You spend the day deploying the technology and the evening failing to answer your own child's questions about it.
+
+So we went looking for a straight answer about which careers actually hold up. We could not find one. Careers advice has not caught up, the reporting is either breathless or dismissive, and the people who understand it best are inside these professions rather than writing guidance for families. In the end we decided to build the answer ourselves, which is what this is.
+
+The Federal Reserve number matters because it describes a labor market that has quietly inverted the single most common piece of advice given to teenagers for the past twenty years. Learn to code. Do something with computers. Anything but art.
+
+That advice is still being given. School careers offices give it. Well-meaning uncles give it at Christmas. It was reasonable when it was formed, and it is now, for a large number of the young people receiving it, actively bad.
+
+But the part that should hold your attention is worse than "some degrees are riskier than others."
+
+**Your child can choose exactly the right profession and still end up on the wrong side of it.**
+
+A nurse working at a bedside scores 2.8 out of 10 on our exposure scale. A nurse doing telephone triage — same license, same training, same person — scores 5.4. A trial lawyer scores 4.5; a document-review associate at the same firm scores 7.9. A senior software architect, 5.4; the graduate developer sitting next to them, 8.1.
+
+Same qualification. Often the same building. Roughly double the exposure.
+
+And this is why the question most parents are asking has stopped being useful. *Is this degree safe?* has no good answer any more, because professions are no longer moving as a unit. They are pulling apart from the inside, and which side of that split your child lands on now matters more than which profession they pick.
+
+So we measured it. Thirty careers, around sixty distinct tracks inside them, every one scored the same way — a paramedic and a paralegal put through the identical process — plus reconstructed scores for 2023 and 2025 so we could see how fast the ground is moving. The method sits at the bottom of this piece and it is deliberately dull.
+
+Five things came out of it. Every one contradicts advice that is still being given in schools today.
+
+---
+
+## 1. Nothing is dying. Everything is splitting.
+
+Start with the reassuring half, because it is real. Almost nothing on our list is disappearing.
+
+Legal employment in the United States hit a ten-year high in early 2026 — in the same period that first-pass document review was largely automated. Nursing faces a projected shortfall of more than 250,000 registered nurses by 2028. Accounting is losing people to retirement faster than it can replace them.
+
+This is why the public argument keeps talking past itself. One side points at automated tasks and predicts collapse. The other points at employment figures and calls it hype. Both are looking at real data and reaching opposite conclusions, because both are looking at the wrong level.
+
+The movement is not between professions. It is inside them.
+
+Every profession we scored contains protected work and exposed work, and the distance between the two is widening. A creative director sits at 5.6 while a production designer sits at 8.4. Bookkeeping is at 7.9; the CPA signing the audit is at 5.2. These are not different careers. They are the same career at different altitudes, and the ladder between them is getting harder to climb — which is finding three.
+
+For a family, that changes what you are choosing. Not a profession, but a position inside one. And most degree programs are still being sold as though the first thing were the only decision that mattered.
+
+---
+
+## 2. Put the same job behind a screen and it gets twice as risky
+
+If you want one heuristic, this is it. Across every category we scored, the same work becomes roughly twice as exposed when it moves behind a screen.
+
+| Same qualification | In person | On a screen |
+|---|---|---|
+| Nursing | 2.8 | 5.4 |
+| Teaching | 3.6 | 6.8 |
+| Medicine | 2.9 | 4.9 |
+| Engineering | 4.0 | 6.3 |
+| Allied health | 2.5 | 4.4 |
+| Skilled trades | 2.5 | 5.0 |
+
+We did not go looking for this pattern. It emerged from applying the same six factors to every track, and then held everywhere we tested it.
+
+The reason is not mysterious. Work that requires a body in a room with another body — hands on a patient, presence in a classroom, judgment on an unfamiliar site — resists automation for reasons that have nothing to do with how clever the model is. Robotics lags software by decades, and it lags furthest in unpredictable environments.
+
+The last row is the one worth sitting with. The trades split as well: a service electrician diagnosing a fault in a sixty-year-old building scores 2.5, while the same skills on a production line or in modular construction score 5.0. So the protection was never working with your hands. It was working with your hands somewhere unpredictable, which is a much narrower claim and a much more useful one.
+
+---
+
+## 3. The ladder into the professions is being pulled up
+
+This is the finding we consider most important, and the one that gets the least attention.
+
+AI has not, in the main, replaced professionals. It has absorbed the tasks that junior professionals used to do. Document review. Boilerplate code. First-draft analysis. Grunt research. Content production. Reconciliation.
+
+Those tasks were not just work. They were the apprenticeship. They were how a person built the judgment that eventually made them senior.
+
+The numbers describe the squeeze precisely. Employment for software developers aged 22 to 25 fell nearly 20% from its late-2022 peak. New graduates fell to around 7% of big-tech hires, down more than half from pre-pandemic levels. In law, only 38% of 2025 associate hires came directly from graduating classes, down from 46% two years earlier — while lateral hiring of experienced lawyers rose. Firms are buying judgment rather than building it.
+
+So a profession can be simultaneously healthy and closed. Legal employment at a ten-year high, and the graduate route to it narrowing. That is not a contradiction; it is the defining pattern of this moment.
+
+For anyone under twenty-five this matters more than any individual score on our list. A safe profession you cannot enter is not a safe bet, and the question to put to any path is not only whether the job will exist but whether you can still get in and get good before the bottom rungs go.
+
+---
+
+## 4. The most protected entry route we found requires no degree at all
+
+The single most protected route into work that we scored is not a degree. It is an apprenticeship.
+
+We did not want that result. It is inconvenient, it cuts against the assumptions of most of the people likely to read this, and we checked it more carefully than anything else in the index. It held.
+
+The mechanism is licensing, and it works in a way we had not anticipated: not by protecting the job, but by protecting the way in.
+
+Where a license legally mandates supervised experience, the on-ramp cannot be automated away. A nursing student cannot qualify without clinical hours. A doctor cannot exist without residency. A teacher needs classroom practice; an electrician, an apprenticeship; an architect, logged experience; a CPA, supervised hours. The training requirement is written into law, so it survives whatever the technology does.
+
+Where entry is purely market-driven — software, marketing, design, business analysis, journalism — nothing prevents employers from simply hiring fewer juniors. And that is exactly what they have done.
+
+This produces a genuinely counterintuitive result. The most protected entry route we scored belongs not to a technology career but to the skilled trades, where apprenticeships are paid, legally embedded, and chronically undersubscribed while an aging workforce retires. Analysis of job postings found skilled-trades demand grew 27% over four years, outpacing desk-based professional roles by 19 percentage points — over the same period that unemployment among recent college graduates reached its highest level in more than a decade outside the pandemic.
+
+The path with no tuition debt and a strengthening on-ramp is the one most families never seriously consider.
+
+But licensing is not a law of nature. It is a political artifact, and it is fought over constantly, usually by people with a commercial interest in loosening it. Scope-of-practice battles run in state legislatures every year. Telehealth restrictions that had stood for decades were suspended in a matter of weeks in 2020 and never fully returned.
+
+So the strongest protection in this index is also the one that could change fastest, and it would not change through a technical breakthrough. It would change through a committee vote. If a legislature decides an AI triage system can operate without a licensed nurse signing off, or that a portion of supervised clinical hours can be logged in simulation rather than on a ward, a 2.8 becomes something else quite quickly.
+
+We do not think that is imminent. We do think anyone relying on this protection should watch statehouses as closely as they watch labs, and that is not advice you will hear anywhere else.
+
+---
+
+## 5. Four things protect work, and one of them is on borrowed time
+
+Every protection we score has a shelf life, and treating them as equivalent is a mistake.
+
+**Regulatory and licensing protection is the most durable.** It moves at the speed of legislation and public trust, not technology. No advance in model capability repeals a scope-of-practice rule.
+
+**Human trust and accountability is nearly as durable.** People want a human present when they are frightened, and institutions want a human to hold responsible when something goes wrong. Both are socially rooted and erode slowly, if at all.
+
+**Judgment under novelty is real but eroding.** Handling situations that do not match the pattern is exactly where AI has been weakest — and exactly where capability is now advancing fastest. This is protection with a clock on it.
+
+**Physical protection is the strongest today and the most fragile over a long horizon.** It is the one thing physical AI directly targets. A seventeen-year-old entering a hands-on profession will practice for forty years, and this is the assumption most likely to change within that span.
+
+There is a caution underneath all four. Every "AI can't do X" boundary has so far proved temporary — nuance, images, multi-step reasoning, each of them a settled limitation until it wasn't. Which is why, as above, we publish where each protection stands and how far it has moved rather than where it will end up. The durability ranking is not a forecast — it is an ordering, and orderings are the thing the front line actually reveals.
+
+---
+
+## What this means, depending on who you are
+
+**If you are choosing a degree:** the choice of *program* now matters more than the choice of subject, and how much more depends entirely on the field. Where employers have pulled back from supplying entry-level experience — software, law, marketing, design, business analysis — the degree has to supply it instead, and most degrees are not set up to. Where the on-ramp is still intact because a license requires it, this matters far less. So the first thing to establish about any course is which of those two worlds it feeds into. In the first, mandatory placements, real industry projects, employer pipelines and honest first-destination outcome data stop being nice-to-haves and become the qualification itself.
+
+**If you are advising a teenager:** widen before you narrow. The safest category we scored was not technology or finance. It was work that helps people — nursing, medicine, allied health, midwifery, paramedicine, teaching, the caring and clinical professions. Twelve of the seventeen careers in that group scored below 4.0. Very few families are told this.
+
+**If you are already mid-career:** the useful question is which side of the split you are on. Work that is executional, screen-based, and pattern-following is where the pressure is. Work that carries accountability, requires presence, or handles the cases nobody wrote a procedure for is where it isn't.
+
+**And for everyone:** the most valuable emerging skill is not operating these tools. It is recognizing when they are confidently wrong, which requires knowing your own field well enough to catch a plausible-sounding error. That is domain expertise doing a new job, not a new skill replacing it, and it means the fundamentals matter more now rather than less.
+
+One more thing, which applies to all four groups. Whatever you conclude from this, put a date on it.
+
+This is our first edition, so we cannot yet tell you which of our own judgments aged badly. We will be able to in the spring. But the backcast — the reconstructed 2023 and 2025 scores described at the top — already contains something worth flagging. Every heavily exposed track we scored moved *less* between 2025 and 2026 than it did in the two years before — junior law rose 1.2 points and then 0.7, entry-level software 1.1 and then 0.7, and the pattern repeats across design, marketing and architecture. Meanwhile the two safest clinical tracks in the whole index did the opposite: bedside nursing and patient-facing medicine both moved slightly faster in the most recent period than in the one before.
+
+The numbers are small and we would not build a thesis on them yet. The shape is still worth noticing. It suggests the easy displacement has largely happened at the exposed end, and that what movement is left is slower, and starting to reach into work that had previously not moved at all.
+
+### One qualification that matters more than any single score
+
+These scores measure exposure to what AI can already do. They do not measure how much of it your future employer has actually installed.
+
+Those are very different things, and the gap between them is often years. Capability arrives first at large, well-capitalized organizations with the budget and the technical staff to deploy it. It arrives much later at small practices, rural providers, public-sector employers, regional firms and anywhere operating on thin margins. Some of that gap is measured in a decade.
+
+So the same job title can carry quite different day-to-day exposure depending on where you do it. A nurse at a large teaching hospital running ambient documentation is already working in the world these numbers describe. A nurse at a small rural facility may not encounter any of it for years. Both are nurses. Only one is living in the present tense of this index.
+
+We score the frontier on purpose, because that is what makes it a leading indicator — it tells you where things are heading, not where the average workplace currently sits. But if you are making a decision on this basis, the lag is real and worth understanding correctly. **It is a buffer, not a shelter.** It buys time. It does not change direction, and it is not something you can plan a thirty-year career around.
+
+---
+
+## How we know any of this
+
+*If you've read this far and want to know why you should believe a word of it, this is that section.*
+
+**First, a word about the older scores.** We also scored every career for 2023 and 2025. Since we were not publishing in those years, those figures are reconstructions rather than records: today's method applied to what was actually known at the time. We call it the backcast, we label it wherever it appears, and it is the weakest part of the dataset — scoring the past while knowing how it turned out invites a bias we can reduce but not eliminate. We did it anyway, because a single year's scores tell you where things stand and nothing at all about how fast they are moving. Speed turned out to matter more than position.
+
+Nobody knows what these systems will be able to do in five years. The people building them disagree, publicly and sharply. Anyone who tells a seventeen-year-old confidently what the labor market looks like in 2035 is guessing with a straight face.
+
+So we don't forecast. We don't publish predicted future scores, and we won't.
+
+But there is a large space between prediction and ignorance, and it is where this index lives. Displacement leaves traces long before it reaches the headlines — in hiring decisions, in what juniors are handed on their first day, in what professional bodies quietly rewrite. Those traces are observable now. They don't tell you when something arrives. They tell you the direction, and often the order.
+
+Seven signals we watch:
+
+**What firms do with graduate hiring, rather than what they say about AI.** This is the most honest indicator available, because it is money rather than opinion. In law, only 38% of 2025 associate hires came straight from graduating classes, down from 46% two years earlier, while lateral hiring rose. In technology, new graduates fell to around 7% of big-tech hires. Executives were still saying AI augments rather than replaces throughout. The hiring told a different story.
+
+**What the newest person on a team is actually given to do.** Job titles change slowly; the contents of a job change fast. When a first-year lawyer edits machine-generated drafts instead of writing fifty discovery responses, or a junior developer reviews generated code instead of writing functions, the profession has already changed regardless of what the headcount says. This is why the single most useful question you can ask any practitioner is: *what are the new people on your team doing, and how is that different from when you started?*
+
+**What professional bodies rewrite.** These institutions are conservative by design and move only when they have to. So when the AICPA launches an initiative to redefine what early-career accountants need to know, or nursing bodies issue new competency frameworks around evaluating AI-generated content, that is a profession formally acknowledging its own ground has shifted. It is a slow signal, and a highly reliable one.
+
+**Where approvals and investment concentrate.** Roughly three-quarters of AI-enabled medical device authorisations have been in radiology. That does not tell you radiologists are in trouble. It tells you precisely where capability is arriving first, and which specialties get to watch it happen before everyone else does.
+
+**Where regulators draw lines.** Several US states have moved to prohibit AI from delivering licensed therapy. That is not a technology signal; it is a social one — and it tells you which protections are being actively reinforced rather than quietly eroded. Regulation moving *toward* a profession is one of the strongest protective signals there is.
+
+**What practitioners work around.** Where experienced people route around a system, the system is failing, whatever the vendor claims. Adoption statistics measure deployment. Workarounds measure whether it actually works.
+
+**Deliberate counter-moves.** Some law firms are now reserving work for manual completion specifically to preserve its training value. That is a profession stating out loud that it has a pipeline problem and choosing to bear a cost to fix it. Firms do not sacrifice efficiency for sentiment.
+
+None of these tells you a date. Together they tell you which parts of which jobs are moving, in what order, and how far the ground shifted in the last three years rather than how it might shift in the next ten.
+
+That is the whole claim. We measure the present carefully and repeatedly, and let the trend do the work a forecast would otherwise have to do badly.
+
+It also means this document has a shelf life measured in months rather than years. That is why every edition carries a date on the front, and why the honest instruction to anyone reading is to check that date before relying on anything underneath it.
+
+---
+
+## Where we might be wrong
+
+We think a methodology that only argues for itself is not a methodology.
+
+**Our scores are judgment, not measurement.** They are anchored, consistently applied and evidence-informed, but two careful analysts could differ by a point on several factors.
+
+**We measure protection of the practice, not the volume of it.** Regulation may guarantee that a human does the work without guaranteeing how many humans are needed. Our framework does not capture that, and it is a real gap.
+
+**We do not capture ordinary oversupply.** Some entry-level markets are difficult because too many graduates are chasing them, not because AI took the jobs. Our scores cannot tell those apart.
+
+**One of our own scores is contradicted by the labor market.** We score diagnostic medical specialties at 4.9 because image reading is precisely what AI does well. Yet radiology posts sit unfilled, residency programs match at close to 100%, and the shortage has deepened for a decade while displacement was being predicted. We publish the number anyway, with the disagreement stated, because bending a score to match an outcome would make every trend we publish meaningless.
+
+**We are probably wrong about at least one thing we currently feel confident about.** We cannot yet tell you which — this is the first edition, and that judgment will only be available in hindsight. It is worth saying out loud now, before we have a record to be measured against, that we expect to be publishing corrections rather than victory laps.
+
+**And the strongest argument against our entry-path finding is a good one.** Cutting junior hiring may simply be a mistake that corrects itself — no juniors today means no seniors tomorrow, and firms will eventually be forced to rebuild the pipeline. We think the displacement is structural. But the logic is sound, and if graduate hiring rebounds, our scores should come down and we will say so.
+
+---
+
+## The method, briefly
+
+Every career is scored 1–10, where 10 is most exposed, using six factors with fixed weights: how much of the work AI can already do (35%), how badly the entry path is eroding (15%), physical and in-person requirement (15%), human trust and accountability (15%), regulatory and licensing protection (10%), and judgment under novelty (10%).
+
+Exposure factors and protection factors carry equal weight, which is deliberate: it means protection can outweigh automatability. It is why a job with a great deal of automatable paperwork can still score low.
+
+The weights do not change between editions. If we re-tuned them, a score moving from 6 to 7 might only mean we had changed the ruler. Because the ruler is fixed, movement means something.
+
+We re-score every six months. Anyone claiming a permanent answer about AI and careers is selling one — and anyone claiming to know where it ends is guessing. What can be done honestly is to measure the present carefully, repeatedly, and the same way each time. That is what this is.
+
+---
+
+*The full Fall 2026 index — thirty careers, complete factor scores, three-year history, program evaluation checklists and the questions to ask an admissions office — is available at pivotum.ai. Individual career profiles are free to read.*
+
+*Pivotum is published independently by an AI practitioner working in enterprise delivery, and kept separate from that employer — which is why it carries no personal byline. We would rather you checked the method than trusted the author, so the method is published in full.*

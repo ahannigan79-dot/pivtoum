@@ -1,36 +1,310 @@
+/* ============================================================================
+   Pivotum design system — "a marked-up textbook"
+   Ported from _source/reference/nursing.html, essentially unchanged.
+   Fonts are supplied by next/font as --font-literata / --font-archivo.
+   ============================================================================ */
+
 :root {
-  --background: #0b1220;
-  --foreground: #f5f7fa;
-  --muted: #9aa7bd;
-  --accent: #4f8cff;
-  --card: #131c2e;
-  --border: #223049;
-  --max-width: 720px;
+  --paper: #FEFEFC;       /* near-white, barely warm */
+  --paper-edge: #F6F5F1;
+  --ink: #211E1B;         /* warm near-black, never pure black */
+  --ink-soft: #57534D;
+  --pencil: #8C857A;      /* margin notes */
+  --rule: #E7E4DC;
+  --pen: #AC3A34;         /* marking red — ONLY for marks, never fills or buttons */
+  --hl:  255, 226, 110;   /* yellow — the finding */
+  --hl2: 163, 214, 190;   /* green  — protection */
+  --hl3: 247, 166, 166;   /* coral  — exposure */
+  --hl4: 166, 198, 236;   /* blue   — method and honesty */
+  --col: 34rem;
+  --margin-col: 11rem;
+
+  --serif: var(--font-literata), Georgia, serif;
+  --sans: var(--font-archivo), system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
   margin: 0;
-  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  font-optical-sizing: auto;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.page { max-width: calc(var(--col) + var(--margin-col) + 3rem); margin: 0 auto; padding: 0 1.5rem 7rem; }
+.body { max-width: var(--col); position: relative; }
+
+/* ---- Margin notes -------------------------------------------------------- */
+.note {
+  position: absolute; left: calc(var(--col) + 2.1rem); width: var(--margin-col);
+  font-family: var(--sans); font-size: .75rem; line-height: 1.5;
+  color: var(--pencil); font-style: italic; transform: rotate(-.45deg); transform-origin: left top;
+}
+.note:nth-of-type(even) { transform: rotate(.5deg); }
+.note b {
+  font-style: normal; font-weight: 600; color: var(--pen); display: block; margin-bottom: .15rem;
+  font-size: .625rem; letter-spacing: .09em; text-transform: uppercase;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+/* ---- Highlighter strokes ------------------------------------------------- */
+.hl {
+  background-image: linear-gradient(102deg,
+      rgba(var(--hl), 0) .4%, rgba(var(--hl), .62) 2.2%, rgba(var(--hl), .52) 50%,
+      rgba(var(--hl), .66) 96%, rgba(var(--hl), 0) 99.6%);
+  background-repeat: no-repeat; background-size: 0% 100%;
+  padding: .08em .22em; margin: 0 -.22em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  animation: sweep .55s cubic-bezier(.3, .8, .4, 1) forwards;
+}
+.hl.d2 { animation-delay: .35s; }
+.hl.g {
+  background-image: linear-gradient(102deg,
+      rgba(var(--hl2), 0) .4%, rgba(var(--hl2), .6) 2.2%, rgba(var(--hl2), .5) 50%,
+      rgba(var(--hl2), .62) 96%, rgba(var(--hl2), 0) 99.6%);
+}
+.hl.r {
+  background-image: linear-gradient(102deg,
+      rgba(var(--hl3), 0) .4%, rgba(var(--hl3), .55) 2.2%, rgba(var(--hl3), .45) 50%,
+      rgba(var(--hl3), .58) 96%, rgba(var(--hl3), 0) 99.6%);
+}
+.hl.b {
+  background-image: linear-gradient(102deg,
+      rgba(var(--hl4), 0) .4%, rgba(var(--hl4), .55) 2.2%, rgba(var(--hl4), .45) 50%,
+      rgba(var(--hl4), .58) 96%, rgba(var(--hl4), 0) 99.6%);
+}
+@keyframes sweep { to { background-size: 100% 100%; } }
+
+.pen-u {
+  background-image: linear-gradient(transparent 84%, rgba(172, 58, 52, .42) 84%,
+      rgba(172, 58, 52, .42) 93%, transparent 93%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ---- Marker legend ------------------------------------------------------- */
+.key {
+  display: flex; gap: 1.1rem; flex-wrap: wrap; font-family: var(--sans);
+  font-size: .625rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pencil);
+  margin: 0 0 2rem; padding-bottom: .9rem; border-bottom: 1px solid var(--rule);
+}
+.key span { display: flex; align-items: center; gap: .35rem; }
+.key i { width: .85rem; height: .55rem; border-radius: 1px; display: inline-block; }
+
+/* ---- Header -------------------------------------------------------------- */
+header { padding: 3.25rem 0 0; }
+.crumb {
+  font-family: var(--sans); font-size: .6875rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--pencil);
+  display: flex; gap: .6rem; align-items: center; flex-wrap: wrap;
+}
+.crumb i { font-style: normal; color: var(--pen); }
+.crumb a { color: inherit; text-decoration: none; }
+.crumb a:hover { color: var(--pen); }
+h1 {
+  font-weight: 600; font-size: clamp(1.9rem, 5.2vw, 2.6rem); line-height: 1.14;
+  letter-spacing: -.018em; margin: .9rem 0 .5rem; font-variation-settings: "opsz" 60;
+}
+.kicker { color: var(--ink-soft); font-size: 1.0625rem; margin: 0 0 2.25rem; }
+
+/* ---- Quick answer -------------------------------------------------------- */
+.quick {
+  border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--rule);
+  padding: 1.4rem 0 1.5rem; margin: 0 0 2.25rem;
+}
+.quick .lbl {
+  font-family: var(--sans); font-size: .625rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin-bottom: .7rem;
+}
+.quick p { margin: 0; font-size: 1.125rem; line-height: 1.6; }
+
+/* ---- The circled score --------------------------------------------------- */
+.circled { position: relative; display: inline-block; padding: .1em .55em; font-weight: 600; }
+.circled svg {
+  position: absolute; inset: -.55em -.35em; width: calc(100% + .7em);
+  height: calc(100% + 1.1em); overflow: visible; pointer-events: none;
+}
+.circled path {
+  fill: none; stroke: var(--pen); stroke-width: 2; stroke-linecap: round;
+  stroke-dasharray: 340; stroke-dashoffset: 340;
+  animation: draw 1s cubic-bezier(.4, .1, .3, 1) .9s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ---- Prose --------------------------------------------------------------- */
+h2 {
+  font-weight: 600; font-size: 1.3125rem; line-height: 1.25; letter-spacing: -.012em;
+  margin: 3rem 0 .8rem; font-variation-settings: "opsz" 40;
+}
+h3 {
+  font-family: var(--sans); font-weight: 600; font-size: .6875rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin: 2rem 0 .55rem;
+}
+p { margin: 0 0 1.05rem; }
+strong { font-weight: 600; }
+a { color: var(--pen); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--pen); outline-offset: 3px; border-radius: 2px; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+em { font-style: italic; }
+.fine { font-size: .875rem; color: var(--ink-soft); margin: 0 0 .4rem; }
+
+/* ---- Tables -------------------------------------------------------------- */
+table { width: 100%; border-collapse: collapse; margin: 1.1rem 0 1.4rem; font-size: .9375rem; }
+th {
+  font-family: var(--sans); font-weight: 600; font-size: .625rem;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--pencil);
+  text-align: right; padding: 0 0 .5rem; border-bottom: 1.5px solid var(--ink);
+}
+th:first-child { text-align: left; }
+td { padding: .6rem 0; border-bottom: 1px solid var(--rule); text-align: right; font-variant-numeric: tabular-nums; }
+td:first-child { text-align: left; padding-right: 1rem; line-height: 1.35; }
+.scores { table-layout: fixed; }
+.scores th, .scores td { padding-left: .55rem; white-space: nowrap; }
+.scores th:first-child, .scores td:first-child { padding-left: 0; white-space: normal; width: auto; }
+.scores th:nth-child(2), .scores td:nth-child(2),
+.scores th:nth-child(3), .scores td:nth-child(3),
+.scores th:nth-child(4), .scores td:nth-child(4) { width: 3rem; }
+.scores th:nth-child(5), .scores td:nth-child(5) { width: 3.6rem; }
+.scores th:last-child, .scores td:last-child { width: 6.4rem; white-space: normal; padding-left: .8rem; }
+.now { font-weight: 600; font-size: 1.0625rem; }
+.band {
+  font-family: var(--sans); font-size: .625rem; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--pencil);
+}
+tr.top td { background: linear-gradient(90deg, rgba(var(--hl), .30), rgba(var(--hl), .16)); }
+tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(--hl2), .14)); }
+
+/* ---- Two-column "takes / can't touch" grid ------------------------------- */
+.cols { border-top: 1.5px solid var(--ink); margin: 1.2rem 0 1.4rem; }
+.row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: .65rem 0;
+  border-bottom: 1px solid var(--rule); font-size: .9375rem; line-height: 1.4;
+}
+.row.head {
+  font-family: var(--sans); font-size: .625rem; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--pencil); padding: .55rem 0;
+}
+.row .r { color: var(--ink-soft); }
+
+/* ---- Six-factor list ----------------------------------------------------- */
+.factor {
+  display: grid; grid-template-columns: 1fr 2.6rem; gap: .75rem; align-items: baseline;
+  padding: .55rem 0; border-bottom: 1px solid var(--rule); font-size: .9375rem; line-height: 1.35;
+}
+.factor.first { border-top: 1.5px solid var(--ink); }
+.factor b { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.factor.up b { color: var(--pen); }
+
+/* ---- Worked example ------------------------------------------------------ */
+.worked {
+  background: var(--paper-edge); padding: 1.5rem 1.6rem; margin: 1.6rem 0;
+  border-left: 2px solid var(--pen);
+}
+.worked h3 { margin-top: 0; }
+.worked p:last-child { margin-bottom: 0; }
+
+/* ---- Ranked list --------------------------------------------------------- */
+ol.ranked { counter-reset: r; list-style: none; padding: 0; margin: 1rem 0 1.4rem; }
+ol.ranked li {
+  counter-increment: r; position: relative; padding-left: 2rem;
+  margin-bottom: .7rem; font-size: .9375rem; line-height: 1.5;
+}
+ol.ranked li::before {
+  content: counter(r); position: absolute; left: 0; top: .15rem;
+  font-family: var(--sans); font-size: .6875rem; font-weight: 600; color: var(--pen);
+  width: 1.3rem; height: 1.3rem; border: 1px solid var(--rule); border-radius: 50%;
+  display: grid; place-items: center; background: #fff;
+}
+
+/* ---- FAQ ----------------------------------------------------------------- */
+.faq { border-top: 1.5px solid var(--ink); margin: 1.2rem 0 1.4rem; }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  cursor: pointer; padding: .7rem 0; list-style: none; font-size: .9375rem;
+  font-weight: 500; display: flex; gap: .75rem; align-items: baseline;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; margin-left: auto; font-family: var(--sans); color: var(--pen); font-size: .9375rem; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq .a { padding: 0 0 .9rem; font-size: .9375rem; color: var(--ink-soft); line-height: 1.55; }
+.faq summary:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
+
+/* ---- Related profiles ---------------------------------------------------- */
+.rel { display: grid; gap: .35rem; margin: 1rem 0 1.4rem; border-top: 1.5px solid var(--ink); padding-top: .4rem; }
+.rel a {
+  display: flex; gap: .75rem; align-items: baseline; padding: .5rem 0;
+  border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: .9375rem;
+}
+.rel a:hover { color: var(--pen); }
+.rel .s {
+  margin-left: auto; font-family: var(--sans); font-size: .75rem; color: var(--pencil);
+  text-align: right; flex-shrink: 0;
+}
+
+/* ---- Free vs full comparison --------------------------------------------- */
+.incl { border-top: 1.5px solid var(--ink); margin: 1.2rem 0 2rem; }
+.incl div {
+  display: grid; grid-template-columns: 1fr 3.2rem 3.2rem; gap: .5rem; padding: .5rem 0;
+  border-bottom: 1px solid var(--rule); font-size: .9375rem; line-height: 1.35;
+}
+.incl div.h {
+  font-family: var(--sans); font-size: .625rem; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--pencil);
+}
+.incl span { text-align: center; font-family: var(--sans); font-size: .8125rem; }
+.incl span:first-child { text-align: left; font-family: var(--serif); font-size: .9375rem; }
+.yes { color: var(--pen); font-weight: 600; }
+.no { color: #D6D2C9; }
+
+/* ---- Buy block ----------------------------------------------------------- */
+.buy { border-top: 1.5px solid var(--ink); padding-top: 1.4rem; margin-top: 2.5rem; }
+.buy h2 { margin-top: 0; }
+.tiers { display: grid; gap: .5rem; margin: 1.1rem 0 1rem; }
+.tier {
+  display: flex; align-items: baseline; gap: .85rem; padding: .75rem .9rem;
+  border: 1px solid var(--rule); background: #fff; text-decoration: none; color: var(--ink);
+  transition: border-color .15s, background .15s;
+}
+.tier:hover { border-color: var(--pen); background: var(--paper-edge); }
+.tier .n { font-weight: 600; }
+.tier .p { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tier.best { border-color: var(--ink); }
+.tier .tag {
+  font-family: var(--sans); font-size: .5625rem; font-weight: 600;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--pen); border: 1px solid var(--pen);
+  padding: .12rem .35rem; border-radius: 2px;
+}
+
+/* ---- Footer -------------------------------------------------------------- */
+footer {
+  margin-top: 3.5rem; padding-top: 1.3rem; border-top: 1px solid var(--rule);
+  font-family: var(--sans); font-size: .6875rem; line-height: 1.7; color: var(--pencil);
+}
+
+/* ---- Responsive ---------------------------------------------------------- */
+@media (max-width: 62rem) {
+  .page { max-width: var(--col); }
+  .note {
+    position: static; width: auto; margin: .9rem 0 1.3rem; padding-left: .9rem;
+    border-left: 2px solid rgba(var(--hl), .9);
+  }
+}
+@media (max-width: 34rem) {
+  .row { grid-template-columns: 1fr; gap: .15rem; }
+  .row.head span:last-child { display: none; }
+  .row .r::before { content: "\21B3 "; color: var(--pencil); }
+  .incl div { grid-template-columns: 1fr 2.6rem 2.6rem; }
+  table { font-size: .875rem; }
+  .scores th:nth-child(2), .scores td:nth-child(2),
+  .scores th:nth-child(3), .scores td:nth-child(3) { display: none; }
+  .scores th:nth-child(4), .scores td:nth-child(4) { width: 2.9rem; }
+  .scores th:nth-child(5), .scores td:nth-child(5) { width: 3.2rem; }
+  .scores th:last-child, .scores td:last-child { width: 4.6rem; font-size: .5625rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl { background-size: 100% 100%; animation: none; }
+  .circled path { stroke-dashoffset: 0; animation: none; }
+  * { transition: none !important; }
 }
