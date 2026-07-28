@@ -1,16 +1,22 @@
 import Link from "next/link";
-import { careers, careerRange } from "@/data/careers";
+import type { Metadata } from "next";
+import { careers, careerRange, careerCount } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { SiteFooter } from "@/components/SiteFooter";
 
-/**
- * Interim index. The full index (range bars, sorted by safest track, print
- * layout) is built in a later step; this lists what's published so far.
- */
+export const metadata: Metadata = {
+  title: "How exposed is your career to AI? — Pivotum",
+  description:
+    "Every career we track, scored for AI exposure on the same six factors — ranked from most protected to most exposed. Free samplers for parents and students choosing a degree.",
+  alternates: { canonical: "/" },
+};
+
+const DOMAIN = 10; // scores run 1–10
+
 export default function Home() {
-  const sorted = [...careers].sort(
-    (a, b) => careerRange(a).safest - careerRange(b).safest,
-  );
+  const rows = careers
+    .map((c) => ({ c, ...careerRange(c) }))
+    .sort((a, b) => a.safest - b.safest || a.exposed - b.exposed);
 
   return (
     <div className="page">
@@ -23,32 +29,62 @@ export default function Home() {
           </div>
           <h1>How exposed is your career to AI?</h1>
           <p className="kicker">
-            Twenty-something careers, scored the same way on a fixed methodology, re-scored every
-            six months. Free samplers — nothing gated.
+            {careerCount} careers, scored the same way on a fixed, published methodology and
+            re-scored every six months. Each bar runs from the most protected track to the most
+            exposed. Free samplers — nothing gated.{" "}
+            <Link href="/methodology">How we score →</Link>
           </p>
         </header>
 
-        <div className="rel">
-          {sorted.map((c) => {
-            const { safest, exposed } = careerRange(c);
-            const range =
-              safest === exposed ? safest.toFixed(1) : `${safest.toFixed(1)}–${exposed.toFixed(1)}`;
+        {/* Screen: range bars */}
+        <div className="index">
+          <div className="idx-scale">
+            <span>Career</span>
+            <span className="idx-ends">
+              <span>Safest 0</span>
+              <span>10 Most exposed</span>
+            </span>
+            <span />
+          </div>
+          {rows.map(({ c, safest, exposed }) => {
+            const left = (safest / DOMAIN) * 100;
+            const width = Math.max(((exposed - safest) / DOMAIN) * 100, 1.5);
+            const range = safest === exposed ? safest.toFixed(1) : `${safest.toFixed(1)}–${exposed.toFixed(1)}`;
             const inner = (
               <>
-                <span>{c.name}</span>
-                <span className="s">{range}</span>
+                <span className="idx-name">{c.name}</span>
+                <span className="idx-track">
+                  <span className="idx-seg" style={{ left: `${left}%`, width: `${width}%` }} />
+                </span>
+                <span className="idx-nums">{range}</span>
               </>
             );
             return hasSamplerPage(c.slug) ? (
-              <Link key={c.slug} href={`/careers/${c.slug}`}>
+              <Link key={c.slug} className="idx-row" href={`/careers/${c.slug}`}>
                 {inner}
               </Link>
             ) : (
-              <a key={c.slug} aria-disabled="true">
+              <span key={c.slug} className="idx-row">
                 {inner}
-              </a>
+              </span>
             );
           })}
+        </div>
+
+        {/* Print: two numeric columns, no bars */}
+        <div className="index-print">
+          <div className="ipr-head">
+            <span>Career</span>
+            <span>Safest</span>
+            <span>Most exposed</span>
+          </div>
+          {rows.map(({ c, safest, exposed }) => (
+            <div className="ipr-row" key={c.slug}>
+              <span>{c.name}</span>
+              <span>{safest.toFixed(1)}</span>
+              <span>{exposed.toFixed(1)}</span>
+            </div>
+          ))}
         </div>
 
         <SiteFooter />
