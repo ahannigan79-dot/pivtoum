@@ -32,19 +32,22 @@ function db(): VercelPool {
 let ready = false;
 export async function ensureSchema(): Promise<void> {
   if (ready) return;
-  await db().sql`
+  // Postgres forbids bind parameters inside DDL DEFAULT clauses, so the trusted
+  // EDITION constant is inlined as an escaped literal here (not via `sql`).
+  const editionDefault = `'${EDITION.replace(/'/g, "''")}'`;
+  await db().query(`
     CREATE TABLE IF NOT EXISTS orders (
       token       TEXT PRIMARY KEY,
       email       TEXT NOT NULL,
       pack_size   INTEGER NOT NULL,
-      edition     TEXT NOT NULL DEFAULT ${EDITION},
+      edition     TEXT NOT NULL DEFAULT ${editionDefault},
       claimed     BOOLEAN NOT NULL DEFAULT FALSE,
       selected    JSONB NOT NULL DEFAULT '[]'::jsonb,
       created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
-  `;
+  `);
   // Add the column for tables created before edition tracking existed.
-  await db().sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${EDITION};`;
+  await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${editionDefault};`);
   ready = true;
 }
 
