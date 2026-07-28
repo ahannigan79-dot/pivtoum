@@ -14,7 +14,6 @@ export function purchaseEmail(
   const pencil = "#8C857A";
   const rule = "#E7E4DC";
   const pen = "#AC3A34";
-  const yellow = "#FFE26A";
 
   const link = (url: string, label: string) =>
     `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
@@ -34,8 +33,8 @@ export function purchaseEmail(
     <tr><td align="center" style="padding:32px 16px;">
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
         <tr><td style="padding:34px 36px 26px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:bold;color:${ink};letter-spacing:-.01em;">Pivotum</div>
-          <div style="height:7px;width:82px;background:${yellow};margin-top:-4px;border-radius:1px;"></div>
+          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your profiles &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 16px;">Your profiles are ready</div>
