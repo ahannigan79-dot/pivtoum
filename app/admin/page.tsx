@@ -67,7 +67,10 @@ export default async function AdminPage() {
       <div style={{ fontFamily: "var(--sans)", fontSize: ".68rem", letterSpacing: ".12em", textTransform: "uppercase", color: "var(--pen)", fontWeight: 600 }}>
         Pivotum · Admin
       </div>
-      <h1 style={{ margin: ".4rem 0 1.6rem" }}>Sales &amp; orders</h1>
+      <h1 style={{ margin: ".4rem 0 .4rem" }}>Sales &amp; orders</h1>
+      <p style={{ color: "var(--ink-soft)", margin: "0 0 1.6rem" }}>
+        <a href="/admin/profiles" style={{ color: "var(--pen)" }}>View all documents →</a>
+      </p>
 
       {error ? (
         <p style={{ color: "var(--pen)" }}>Could not load orders: {error}</p>
