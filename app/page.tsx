@@ -105,8 +105,9 @@ export default function Home() {
           <div className="lp-index-head">
             <h2>Every career, scored</h2>
             <p className="sub">
-              Each row runs from a field&rsquo;s most protected role to its most exposed. A green
-              circle marks a genuinely low-exposure entry; tap any career for its free sampler.
+              Each row runs from a field&rsquo;s most protected role to its most exposed. Green marks
+              a genuinely low-exposure entry; red, one that&rsquo;s highly exposed. Tap any career for
+              its free sampler.
             </p>
           </div>
 
@@ -129,8 +130,13 @@ export default function Home() {
                     <span className="idx-seg" style={{ left: `${left}%`, width: `${width}%` }} />
                   </span>
                   <span className="idx-nums">
-                    <span className={`idx-low ${scoreTier(safest)}`}>{safest.toFixed(1)}</span>&ndash;
-                    {exposed.toFixed(1)}
+                    <span className={`idx-lo ${scoreTier(safest) === "safe" ? "safe" : ""}`}>
+                      {safest.toFixed(1)}
+                    </span>
+                    &ndash;
+                    <span className={`idx-hi ${scoreTier(exposed) === "exposed" ? "exposed" : ""}`}>
+                      {exposed.toFixed(1)}
+                    </span>
                   </span>
                 </>
               );

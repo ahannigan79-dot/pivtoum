@@ -499,14 +499,11 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-index-head h2 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; letter-spacing: -.01em; margin: 0 0 .3rem; }
 .lp-index-head .sub { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: 0 0 1.4rem; }
 .lp .idx-track { background: #F1F1EF; }
-.idx-low { position: relative; font-weight: 600; color: var(--ink); padding: 0 .32em; margin-left: .1em; }
-/* circle only the notable ends: green = safe (≤4), red = exposed (≥6.5); mid stays plain */
-.idx-low.safe::after, .idx-low.exposed::after {
-  content: ""; position: absolute; inset: -.22em -.02em; border: 1.5px solid; border-radius: 50%; transform: rotate(-8deg);
-}
-.idx-low.safe::after { border-color: var(--pen-safe); }
-.idx-low.exposed::after { border-color: var(--pen); }
-.idx-low.mid { padding: 0; margin-left: 0; }
+/* No circles in the index — colour the range numbers by tier instead, so red
+   shows up where high exposure actually lives (the exposed end). The circle
+   stays special to the hero and the career pages. */
+.idx-lo.safe { color: var(--pen-safe); font-weight: 600; }
+.idx-hi.exposed { color: var(--pen); font-weight: 600; }
 
 .lp-closing { padding: 3rem 0 1.5rem; border-top: 1px solid var(--rule); text-align: center; }
 .lp-closing h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; letter-spacing: -.01em; margin: 0 0 .5rem; }
