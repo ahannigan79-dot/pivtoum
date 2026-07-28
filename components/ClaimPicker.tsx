@@ -20,6 +20,7 @@ export function ClaimPicker({
   const [selected, setSelected] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [links, setLinks] = useState<{ name: string; url: string }[] | null>(null);
 
   const full = selected.length >= packSize;
 
@@ -39,7 +40,12 @@ export function ClaimPicker({
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
       setStatus("done");
-      setMessage(`Sent ${data.delivered} profile(s) to ${data.email}. The links are valid for 7 days.`);
+      if (data.links?.length) {
+        setLinks(data.links);
+        setMessage(`Your ${data.delivered} profile(s) are ready — links valid for 7 days:`);
+      } else {
+        setMessage(`Sent ${data.delivered} profile(s) to ${data.email}. The links are valid for 7 days.`);
+      }
     } else {
       setStatus("error");
       setMessage(data.error ?? "Something went wrong. Please try again.");
@@ -48,9 +54,22 @@ export function ClaimPicker({
 
   if (status === "done") {
     return (
-      <p className="claim-note">
-        <strong>Done.</strong> {message}
-      </p>
+      <div className="claim-note">
+        <p>
+          <strong>Done.</strong> {message}
+        </p>
+        {links ? (
+          <ul>
+            {links.map((l) => (
+              <li key={l.url}>
+                <a href={l.url} target="_blank" rel="noreferrer">
+                  {l.name} — full profile (PDF)
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     );
   }
 

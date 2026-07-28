@@ -41,27 +41,35 @@ export async function POST(req: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
-  if (!apiKey || !from) {
-    return NextResponse.json({ error: "Email delivery is not configured." }, { status: 503 });
+  const emailConfigured = Boolean(apiKey && from);
+
+  if (emailConfigured) {
+    const resend = new Resend(apiKey);
+    const html = `
+      <p>Thanks for your purchase. Your Pivotum profiles are ready — links are valid for 7 days:</p>
+      <ul>${links.map((l) => `<li><a href="${l.url}">${l.name} — full profile (PDF)</a></li>`).join("")}</ul>
+      <p>Each includes a version written directly to the student and the technical scoring appendix.
+      Your Spring 2027 updates are included; we'll email them when they publish.</p>
+      <p>You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}">${SITE.url}/claim/${token}</a>.</p>
+    `;
+    const { error } = await resend.emails.send({
+      from,
+      to: order.email,
+      subject: "Your Pivotum profiles",
+      html,
+    });
+    if (error) return NextResponse.json({ error: "Could not send email." }, { status: 502 });
   }
 
-  const resend = new Resend(apiKey);
-  const html = `
-    <p>Thanks for your purchase. Your Pivotum profiles are ready — links are valid for 7 days:</p>
-    <ul>${links.map((l) => `<li><a href="${l.url}">${l.name} — full profile (PDF)</a></li>`).join("")}</ul>
-    <p>Each includes a version written directly to the student and the technical scoring appendix.
-    Your Spring 2027 updates are included; we'll email them when they publish.</p>
-    <p>You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}">${SITE.url}/claim/${token}</a>.</p>
-  `;
-
-  const { error } = await resend.emails.send({
-    from,
-    to: order.email,
-    subject: "Your Pivotum profiles",
-    html,
-  });
-  if (error) return NextResponse.json({ error: "Could not send email." }, { status: 502 });
-
   if (!order.claimed) await markClaimed(token, selected);
-  return NextResponse.json({ ok: true, delivered: links.length, email: order.email });
+
+  // When email isn't wired up yet, hand the signed links straight back so the
+  // flow is still testable. Once Resend is configured, delivery is by email only.
+  return NextResponse.json({
+    ok: true,
+    delivered: links.length,
+    email: order.email,
+    emailed: emailConfigured,
+    links: emailConfigured ? undefined : links,
+  });
 }
