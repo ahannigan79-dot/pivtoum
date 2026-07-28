@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { careers, careerRange, careerCount } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { SiteFooter } from "@/components/SiteFooter";
+import { EmailSignup } from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "How exposed is your career to AI? — Pivotum",
@@ -87,6 +88,7 @@ export default function Home() {
           ))}
         </div>
 
+        <EmailSignup />
         <SiteFooter />
       </div>
     </div>

@@ -271,6 +271,29 @@ ol.ranked li::before {
 .tier .n { font-weight: 600; }
 .tier .p { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
 .tier.best { border-color: var(--ink); }
+button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
+.tiers form { margin: 0; }
+
+/* ---- Claim picker -------------------------------------------------------- */
+.claim-grid { display: grid; gap: .5rem; margin: 1.2rem 0; border-top: 1.5px solid var(--ink); }
+.claim-opt {
+  display: flex; align-items: baseline; gap: .75rem; padding: .7rem .2rem;
+  border-bottom: 1px solid var(--rule); cursor: pointer; font-size: .9375rem;
+}
+.claim-opt input { accent-color: var(--pen); }
+.claim-opt.disabled { opacity: .45; cursor: not-allowed; }
+.claim-opt .s { margin-left: auto; font-family: var(--sans); font-size: .75rem; color: var(--pencil); }
+.claim-bar {
+  display: flex; align-items: center; gap: 1rem; margin: 1.2rem 0;
+  font-family: var(--sans); font-size: .8125rem; color: var(--ink-soft);
+}
+.claim-submit {
+  font: inherit; font-family: var(--sans); font-weight: 600; font-size: .8125rem;
+  letter-spacing: .04em; text-transform: uppercase; color: #fff; background: var(--pen);
+  border: 0; padding: .7rem 1.3rem; border-radius: 2px; cursor: pointer;
+}
+.claim-submit:disabled { background: var(--pencil); cursor: not-allowed; }
+.claim-note { font-size: .875rem; color: var(--ink-soft); }
 .tier .tag {
   font-family: var(--sans); font-size: .5625rem; font-weight: 600;
   letter-spacing: .09em; text-transform: uppercase; color: var(--pen); border: 1px solid var(--pen);
@@ -328,6 +351,26 @@ ol.ranked li::before {
   }
   .ipr-row span:not(:first-child), .ipr-head span:not(:first-child) { text-align: right; }
 }
+
+/* ---- Email signup -------------------------------------------------------- */
+.signup { margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+.signup-label {
+  display: block; font-family: var(--sans); font-size: .625rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin-bottom: .6rem;
+}
+.signup-row { display: flex; gap: .5rem; max-width: 24rem; }
+.signup-row input {
+  flex: 1; font: inherit; font-size: .9375rem; padding: .55rem .7rem;
+  background: #fff; color: var(--ink); border: 1px solid var(--rule); border-radius: 2px;
+}
+.signup-row input:focus-visible { outline: 2px solid var(--pen); outline-offset: 1px; }
+.signup-row button {
+  font-family: var(--sans); font-weight: 600; font-size: .75rem; letter-spacing: .04em;
+  text-transform: uppercase; color: #fff; background: var(--ink); border: 0;
+  padding: 0 1.1rem; border-radius: 2px; cursor: pointer;
+}
+.signup-row button:hover { background: var(--pen); }
+.signup-note { font-size: .875rem; color: var(--ink-soft); margin: .8rem 0 0; }
 
 /* ---- Footer -------------------------------------------------------------- */
 footer {
