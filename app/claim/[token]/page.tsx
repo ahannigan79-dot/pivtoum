@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getOrder, upsertOrder, type Order } from "@/lib/db";
 import { getStripe } from "@/lib/stripe";
+import { EDITION } from "@/lib/site";
 import { claimableCareers } from "@/lib/profiles";
 import { careerRange } from "@/data/careers";
 import { ClaimPicker } from "@/components/ClaimPicker";
@@ -18,8 +19,9 @@ async function loadOrder(token: string): Promise<Order | null> {
     if (session.payment_status === "paid") {
       const email = session.customer_details?.email ?? session.customer_email ?? "";
       const packSize = Number(session.metadata?.pack_size ?? 0);
+      const edition = session.metadata?.edition ?? EDITION;
       if (email && packSize > 0) {
-        await upsertOrder(token, email, packSize);
+        await upsertOrder(token, email, packSize, edition);
         return getOrder(token).catch(() => null);
       }
     }

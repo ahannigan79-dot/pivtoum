@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { getPack } from "@/lib/packs";
-import { SITE } from "@/lib/site";
+import { SITE, EDITION } from "@/lib/site";
 
 /** /buy posts here. Creates a hosted Stripe Checkout session and redirects to it. */
 export async function POST(req: Request) {
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         },
       },
     ],
-    metadata: { pack_size: String(pack.size) },
+    metadata: { pack_size: String(pack.size), edition: EDITION },
     // Stripe substitutes {CHECKOUT_SESSION_ID}; that id is also the claim token.
     success_url: `${SITE.url}/claim/{CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE.url}/buy`,

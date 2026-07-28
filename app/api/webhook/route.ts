@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { getStripe } from "@/lib/stripe";
 import { upsertOrder } from "@/lib/db";
+import { EDITION } from "@/lib/site";
 
 /** Stripe → order. Verifies the signature against the raw body, then records the order. */
 export async function POST(req: Request) {
@@ -23,8 +24,9 @@ export async function POST(req: Request) {
     const session = event.data.object as Stripe.Checkout.Session;
     const email = session.customer_details?.email ?? session.customer_email ?? "";
     const packSize = Number(session.metadata?.pack_size ?? 0);
+    const edition = session.metadata?.edition ?? EDITION;
     if (email && packSize > 0) {
-      await upsertOrder(session.id, email, packSize);
+      await upsertOrder(session.id, email, packSize, edition);
     }
   }
 

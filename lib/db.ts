@@ -1,14 +1,17 @@
 import { createPool, type VercelPool } from "@vercel/postgres";
+import { EDITION } from "@/lib/site";
 
 /**
  * Orders. One row per completed checkout, keyed by the Stripe Checkout Session
  * id (which is also the claim token). Re-visitable until claimed; re-issuable
- * after. `selected` holds the chosen career slugs once claimed.
+ * after. `selected` holds the chosen career slugs once claimed; `edition`
+ * records which edition the purchase was for.
  */
 export interface Order {
   token: string;
   email: string;
   pack_size: number;
+  edition: string;
   claimed: boolean;
   selected: string[];
   created_at: string;
@@ -34,19 +37,27 @@ export async function ensureSchema(): Promise<void> {
       token       TEXT PRIMARY KEY,
       email       TEXT NOT NULL,
       pack_size   INTEGER NOT NULL,
+      edition     TEXT NOT NULL DEFAULT ${EDITION},
       claimed     BOOLEAN NOT NULL DEFAULT FALSE,
       selected    JSONB NOT NULL DEFAULT '[]'::jsonb,
       created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `;
+  // Add the column for tables created before edition tracking existed.
+  await db().sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${EDITION};`;
   ready = true;
 }
 
-export async function upsertOrder(token: string, email: string, packSize: number): Promise<void> {
+export async function upsertOrder(
+  token: string,
+  email: string,
+  packSize: number,
+  edition: string,
+): Promise<void> {
   await ensureSchema();
   await db().sql`
-    INSERT INTO orders (token, email, pack_size)
-    VALUES (${token}, ${email}, ${packSize})
+    INSERT INTO orders (token, email, pack_size, edition)
+    VALUES (${token}, ${email}, ${packSize}, ${edition})
     ON CONFLICT (token) DO NOTHING;
   `;
 }
@@ -64,4 +75,10 @@ export async function markClaimed(token: string, selected: string[]): Promise<vo
     SET claimed = TRUE, selected = ${JSON.stringify(selected)}::jsonb
     WHERE token = ${token};
   `;
+}
+
+export async function getAllOrders(): Promise<Order[]> {
+  await ensureSchema();
+  const { rows } = await db().sql<Order>`SELECT * FROM orders ORDER BY created_at DESC;`;
+  return rows;
 }

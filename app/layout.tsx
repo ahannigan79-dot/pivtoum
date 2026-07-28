@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Literata, Archivo } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
@@ -33,6 +35,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SiteHeader />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
