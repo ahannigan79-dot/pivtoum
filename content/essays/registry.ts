@@ -18,7 +18,7 @@ export const essays: EssayMeta[] = [
     description:
       "We scored every career against AI. The safest ones surprised us — and the pattern behind them changes how to think about choosing a degree.",
     datePublished: "2026-07-01",
-    dateModified: "2026-07-28",
+    dateModified: "2026-07-29",
   },
 ];
 

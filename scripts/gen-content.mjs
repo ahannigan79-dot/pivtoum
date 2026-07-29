@@ -217,6 +217,9 @@ function parseSampler(slug, md) {
       // Set 2
       "allied-health", "construction", "cybersecurity", "data-science",
       "dentistry", "pharmacy", "veterinary",
+      // Set 3 (final)
+      "agriculture", "hospitality", "life-sciences", "social-work",
+      "translation", "transport",
     ].includes(slug),
   };
 }

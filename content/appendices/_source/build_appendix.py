@@ -21,6 +21,9 @@ CAREER_NAME = {
  'accounting':'Accounting', 'finance':'Finance', 'law':'Law',
  'design':'Graphic & Visual Design', 'journalism':'Journalism & Media',
  'marketing':'Marketing & Communications', 'teaching':'Teaching',
+ 'agriculture':'Agriculture', 'hospitality':'Hospitality',
+ 'life-sciences':'Life Sciences', 'social-work':'Social Work',
+ 'translation':'Translation', 'transport':'Transport',
 }
 
 BANDS = [(3.0,'Very low'),(4.5,'Low'),(5.5,'Moderate'),(7.0,'Moderate–High'),(11,'High')]
