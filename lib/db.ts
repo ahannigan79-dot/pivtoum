@@ -48,6 +48,13 @@ export async function ensureSchema(): Promise<void> {
   `);
   // Add the column for tables created before edition tracking existed.
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${editionDefault};`);
+  // Newsletter / next-edition sign-ups from the landing page.
+  await db().query(`
+    CREATE TABLE IF NOT EXISTS subscribers (
+      email       TEXT PRIMARY KEY,
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
   ready = true;
 }
 
@@ -83,5 +90,27 @@ export async function markClaimed(token: string, selected: string[]): Promise<vo
 export async function getAllOrders(): Promise<Order[]> {
   await ensureSchema();
   const { rows } = await db().sql<Order>`SELECT * FROM orders ORDER BY created_at DESC;`;
+  return rows;
+}
+
+export async function addSubscriber(email: string): Promise<void> {
+  await ensureSchema();
+  await db().sql`
+    INSERT INTO subscribers (email) VALUES (${email.toLowerCase()})
+    ON CONFLICT (email) DO NOTHING;
+  `;
+}
+
+export async function subscriberCount(): Promise<number> {
+  await ensureSchema();
+  const { rows } = await db().sql<{ n: number }>`SELECT COUNT(*)::int AS n FROM subscribers;`;
+  return rows[0]?.n ?? 0;
+}
+
+export async function getAllSubscribers(): Promise<{ email: string; created_at: string }[]> {
+  await ensureSchema();
+  const { rows } = await db().sql<{ email: string; created_at: string }>`
+    SELECT email, created_at FROM subscribers ORDER BY created_at DESC;
+  `;
   return rows;
 }

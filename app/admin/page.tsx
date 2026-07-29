@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllOrders, type Order } from "@/lib/db";
+import { getAllOrders, subscriberCount, type Order } from "@/lib/db";
 import { getPack } from "@/lib/packs";
 import { getCareer } from "@/data/careers";
 
@@ -25,9 +25,11 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 export default async function AdminPage() {
   let orders: Order[] = [];
+  let subscribers = 0;
   let error: string | null = null;
   try {
     orders = await getAllOrders();
+    subscribers = await subscriberCount();
   } catch (e) {
     error = (e as Error).message;
   }
@@ -81,6 +83,7 @@ export default async function AdminPage() {
             <Stat label="Revenue" value={money(revenue)} />
             <Stat label="Claimed" value={`${claimed}/${orders.length}`} />
             <Stat label="Profiles delivered" value={String([...profileCounts.values()].reduce((a, b) => a + b, 0))} />
+            <Stat label="Subscribers" value={String(subscribers)} />
           </div>
 
           <h2 style={{ fontSize: "1.15rem" }}>By edition</h2>
