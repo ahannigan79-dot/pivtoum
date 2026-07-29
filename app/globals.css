@@ -266,12 +266,24 @@ tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(-
 
 /* ---- Six-factor list ----------------------------------------------------- */
 .factor {
-  display: grid; grid-template-columns: 1fr 2.6rem; gap: .75rem; align-items: baseline;
+  display: grid; grid-template-columns: 1fr 7rem 2.6rem; gap: .75rem; align-items: center;
   padding: .55rem 0; border-bottom: 1px solid var(--rule); font-size: .9375rem; line-height: 1.35;
 }
 .factor.first { border-top: 1.5px solid var(--ink); }
-.factor b { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.factor b { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; align-self: baseline; }
 .factor.up b { color: var(--pen); }
+.factor-bar {
+  height: .55rem; background: var(--paper-edge); border-radius: 4px;
+  position: relative; overflow: hidden;
+}
+.factor-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px;
+  background: rgba(var(--hl2), .85);
+}
+.factor.up .factor-fill { background: rgba(var(--hl3), .9); }
+@media (max-width: 34rem) {
+  .factor { grid-template-columns: 1fr 4rem 2.2rem; gap: .5rem; }
+}
 
 /* ---- Worked example ------------------------------------------------------ */
 .worked {

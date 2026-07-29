@@ -1,6 +1,10 @@
 import type { Career } from "@/data/careers";
 
-/** The six-factor list. Exposure factors render their rating in --pen (class up). */
+/**
+ * The six-factor list. Each factor shows a bar scaled to its 0–10 rating,
+ * coloured coral for exposure and green for protection (the site's highlight
+ * palette). Exposure ratings also render in --pen.
+ */
 export function FactorList({ career }: { career: Career }) {
   return (
     <div>
@@ -11,6 +15,9 @@ export function FactorList({ career }: { career: Career }) {
         return (
           <div key={i} className={cls}>
             <span>{f.question}</span>
+            <span className="factor-bar" aria-hidden="true">
+              <span className="factor-fill" style={{ width: `${f.rating * 10}%` }} />
+            </span>
             <b>{f.rating.toFixed(1)}</b>
           </div>
         );

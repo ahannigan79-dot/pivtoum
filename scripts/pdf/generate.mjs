@@ -40,6 +40,19 @@ function careerMeta(slug) {
   };
 }
 
+// A compact visual of the six factor ratings (0–10), coloured by direction.
+// Injected into the parent profile right after the "six factors" heading.
+function factorBars(meta) {
+  if (!meta.factors.length) return "";
+  const rows = meta.factors
+    .map((f) => {
+      const dir = f.direction === "exposure" ? "exp" : "prot";
+      return `<div class="fbar"><span class="fq">${esc(f.question)}</span><span class="ftrack"><span class="ffill ${dir}" style="width:${f.rating * 10}%"></span></span><span class="fval">${f.rating.toFixed(1)}</span></div>`;
+    })
+    .join("");
+  return `<div class="fbars">${rows}<div class="flegend"><span><i class="exp"></i>Exposure raises the score</span><span><i class="prot"></i>Protection lowers it</span></div></div>`;
+}
+
 // The technical scoring appendix (audit trail) is authored in
 // content/appendices/<slug>-03-scoring-appendix.md and rendered as the last
 // section of the parent PDF. Returns "" if there's no appendix for this slug.
@@ -189,7 +202,12 @@ async function main() {
   const meta = careerMeta(slug);
   const raw = readFileSync(mdPath, "utf8");
   const firstH1 = /^#\s+(.*)$/m.exec(raw)?.[1] ?? meta.name;
-  const body = mdToHtml(stripTitleBlock(raw));
+  let body = mdToHtml(stripTitleBlock(raw));
+  // Parent only: drop the factor-rating visual in right after the six-factors heading.
+  if (kind !== "student") {
+    const bars = factorBars(meta);
+    if (bars) body = body.replace(/(<h[12]>[^<]*six factors[^<]*<\/h[12]>)/i, `$1${bars}`);
+  }
   const cover = kind === "student" ? coverStudent(firstH1) : coverParent(meta);
   const legend = kind === "student" ? "" : `<section>${LEGEND}<hr></section>`;
   const appx = kind === "student" ? "" : appendix(slug);
