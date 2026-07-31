@@ -127,6 +127,8 @@ header { padding: 2rem 0 0; }
 }
 .wordmark-hl path { fill: none; stroke: rgba(var(--hl), .8); }
 .site-header .wordmark { font-size: 1.2rem; }
+/* Brand logo image (header/samplers) */
+.wordmark-logo { display: block; height: 1.75rem; width: auto; }
 
 @media (max-width: 34rem) {
   .site-header .inner { padding: .7rem 1.1rem; }
