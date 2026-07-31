@@ -20,7 +20,8 @@ h1,h2,h3{ break-after:avoid; }
 table,tr,figure,.legend,.callout{ break-inside:avoid; }
 
 /* ---- cover ---- */
-.brandmark{ margin:0 0 2.2cm; }
+.brandmark{ margin:0 0 2.2cm; width:6.1cm; }
+.brandmark svg{ width:100%; height:auto; display:block; }
 .wordmark{ font-family:var(--serif); font-weight:600; font-size:21pt; letter-spacing:-.01em;
   color:var(--ink); position:relative; display:inline-block; line-height:1; }
 .wordmark-text{ position:relative; z-index:1; }

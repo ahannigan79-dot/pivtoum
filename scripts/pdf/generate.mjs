@@ -157,7 +157,10 @@ function stripTitleBlock(md) {
 
 // ---- brand marks ----
 const CIRCLE = `<svg viewBox="0 0 120 62" preserveAspectRatio="none"><path d="M96 12C78 3 40 4 22 16 4 28 9 47 30 55c21 8 60 4 74-9 12-11 6-27-16-35-10-4-25-4-34-1" fill="none" stroke-width="2.4" stroke-linecap="round"/></svg>`;
-const WORDMARK = `<div class="brandmark"><span class="wordmark"><span class="wordmark-text">Pivotum</span><svg class="wordmark-hl" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M5 11 L 295 9" stroke-width="13" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span></div>`;
+// The committed brand logo (bright hand-drawn wordmark), inlined so the PDF
+// cover uses the exact same mark as the site header and email.
+const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
+const WORDMARK = `<div class="brandmark">${LOGO_SVG}</div>`;
 
 function coverParent(meta) {
   const col = meta.score < 6.5 ? "var(--pen-safe)" : "var(--pen)";
