@@ -4,7 +4,7 @@ import { careers, careerRange, careerCount } from "@/data/careers";
 import { scoreTier } from "@/lib/tier";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { SiteFooter } from "@/components/SiteFooter";
-import { EmailSignup } from "@/components/EmailSignup";
+import { SubscribeForm } from "@/components/SubscribeForm";
 
 export const metadata: Metadata = {
   title: "Pivotum — Which careers is AI reshaping?",
@@ -189,7 +189,7 @@ export default function Home() {
           </div>
         </section>
 
-        <EmailSignup />
+        <SubscribeForm variant="panel" source="index" />
         <SiteFooter />
       </div>
     </div>
