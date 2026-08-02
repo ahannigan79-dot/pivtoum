@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetaPixel } from "@/components/MetaPixel";
+import { GoogleAds } from "@/components/GoogleAds";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${literata.variable} ${archivo.variable}`}>
       <body>
         <MetaPixel />
+        <GoogleAds />
         <SiteHeader />
         {children}
         <ConsentBanner />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackPixel } from "@/lib/pixel";
+import { gtagConversion, GADS_LEAD_LABEL } from "@/lib/google";
 
 interface EmailSignupProps {
   /** Bold prompt above the field. */
@@ -31,7 +32,10 @@ export function EmailSignup({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     });
-    if (res.ok) trackPixel("Lead");
+    if (res.ok) {
+      trackPixel("Lead");
+      gtagConversion(GADS_LEAD_LABEL);
+    }
     setStatus(res.ok ? "done" : "error");
   }
 
