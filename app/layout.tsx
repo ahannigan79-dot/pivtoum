@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
+import { MetaPixel } from "@/components/MetaPixel";
 import "./globals.css";
 
 const literata = Literata({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${literata.variable} ${archivo.variable}`}>
       <body>
+        <MetaPixel />
         <SiteHeader />
         {children}
         <Analytics />
