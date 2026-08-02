@@ -3,7 +3,23 @@
 import { useState } from "react";
 import { trackPixel } from "@/lib/pixel";
 
-export function EmailSignup() {
+interface EmailSignupProps {
+  /** Bold prompt above the field. */
+  label?: string;
+  /** Optional supporting line under the label. */
+  sub?: string;
+  /** Button text. */
+  cta?: string;
+  /** Confirmation shown after a successful signup. */
+  done?: string;
+}
+
+export function EmailSignup({
+  label = "Get the next edition",
+  sub,
+  cta = "Notify me",
+  done = "Thanks — we’ll email you when the next edition publishes.",
+}: EmailSignupProps = {}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
 
@@ -20,16 +36,15 @@ export function EmailSignup() {
   }
 
   if (status === "done") {
-    return (
-      <p className="signup-note">Thanks — we&rsquo;ll email you when the next edition publishes.</p>
-    );
+    return <p className="signup-note">{done}</p>;
   }
 
   return (
     <form className="signup" onSubmit={submit}>
       <label className="signup-label" htmlFor="signup-email">
-        Get the next edition
+        {label}
       </label>
+      {sub ? <p className="signup-sub">{sub}</p> : null}
       <div className="signup-row">
         <input
           id="signup-email"
@@ -40,7 +55,7 @@ export function EmailSignup() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <button type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "…" : "Notify me"}
+          {status === "sending" ? "…" : cta}
         </button>
       </div>
       {status === "error" ? <p className="signup-note">Something went wrong — try again.</p> : null}
