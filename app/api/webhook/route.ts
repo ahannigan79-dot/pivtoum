@@ -25,8 +25,9 @@ export async function POST(req: Request) {
     const email = session.customer_details?.email ?? session.customer_email ?? "";
     const packSize = Number(session.metadata?.pack_size ?? 0);
     const edition = session.metadata?.edition ?? EDITION;
+    const acknowledgedAt = session.metadata?.acknowledged_at ?? null;
     if (email && packSize > 0) {
-      await upsertOrder(session.id, email, packSize, edition);
+      await upsertOrder(session.id, email, packSize, edition, acknowledgedAt);
     }
   }
 

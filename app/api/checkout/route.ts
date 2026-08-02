@@ -9,6 +9,17 @@ export async function POST(req: Request) {
   const pack = getPack(Number(form.get("pack")));
   if (!pack) return NextResponse.json({ error: "Unknown pack." }, { status: 400 });
 
+  // Required acknowledgement: analysis-not-advice + immediate delivery. The buy
+  // form blocks submission until it's ticked; re-check here in case of a direct
+  // POST, and record it with the order via the Stripe session metadata.
+  if (form.get("ack") !== "1") {
+    return NextResponse.json(
+      { error: "Please tick the acknowledgement to continue." },
+      { status: 400 },
+    );
+  }
+  const acknowledgedAt = new Date().toISOString();
+
   // Graceful state until Stripe keys are configured, so a live "buy" click
   // never crashes.
   if (!process.env.STRIPE_SECRET_KEY) {
@@ -38,7 +49,13 @@ export async function POST(req: Request) {
         },
       },
     ],
-    metadata: { pack_size: String(pack.size), edition: EDITION },
+    metadata: {
+      pack_size: String(pack.size),
+      edition: EDITION,
+      acknowledged: "true",
+      acknowledged_at: acknowledgedAt,
+      ack_terms: "analysis-not-advice-v1",
+    },
     // Stripe substitutes {CHECKOUT_SESSION_ID}; that id is also the claim token.
     success_url: `${SITE.url}/claim/{CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE.url}/buy`,

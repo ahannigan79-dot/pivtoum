@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetaPixel } from "@/components/MetaPixel";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import "./globals.css";
 
 const literata = Literata({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MetaPixel />
         <SiteHeader />
         {children}
+        <ConsentBanner />
         <Analytics />
         <SpeedInsights />
       </body>

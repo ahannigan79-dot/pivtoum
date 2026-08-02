@@ -13,6 +13,8 @@ export function SiteFooter() {
       <br />
       Analysis and scoring judgments are ours. Drafting is AI-assisted &mdash;{" "}
       <a href="/methodology#how-this-is-written">how this is written</a>.
+      <br />
+      <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> · <a href="/refunds">Refunds</a>
     </footer>
   );
 }

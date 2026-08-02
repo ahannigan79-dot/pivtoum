@@ -15,6 +15,7 @@ export interface Order {
   claimed: boolean;
   selected: string[];
   created_at: string;
+  acknowledged_at: string | null;
 }
 
 // Lazy pool so a missing connection string never breaks the build. Accepts
@@ -48,6 +49,8 @@ export async function ensureSchema(): Promise<void> {
   `);
   // Add the column for tables created before edition tracking existed.
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${editionDefault};`);
+  // Records the pre-purchase acknowledgement (analysis-not-advice + immediate delivery).
+  await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS acknowledged_at TIMESTAMPTZ;`);
   // Newsletter / next-edition sign-ups from the landing page.
   await db().query(`
     CREATE TABLE IF NOT EXISTS subscribers (
@@ -63,11 +66,12 @@ export async function upsertOrder(
   email: string,
   packSize: number,
   edition: string,
+  acknowledgedAt?: string | null,
 ): Promise<void> {
   await ensureSchema();
   await db().sql`
-    INSERT INTO orders (token, email, pack_size, edition)
-    VALUES (${token}, ${email}, ${packSize}, ${edition})
+    INSERT INTO orders (token, email, pack_size, edition, acknowledged_at)
+    VALUES (${token}, ${email}, ${packSize}, ${edition}, ${acknowledgedAt ?? null})
     ON CONFLICT (token) DO NOTHING;
   `;
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PACKS } from "@/lib/packs";
+import { BuyPacks } from "@/components/BuyPacks";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
@@ -28,18 +28,7 @@ export default function BuyPage() {
           haven&rsquo;t ruled out. Pick a pack — you choose which profiles after checkout.
         </p>
 
-        <div className="tiers">
-          {PACKS.map((p) => (
-            <form key={p.size} action="/api/checkout" method="post">
-              <input type="hidden" name="pack" value={p.size} />
-              <button type="submit" className={`tier${p.tag ? " best" : ""}`}>
-                <span className="n">{p.label}</span>
-                {p.tag ? <span className="tag">{p.tag}</span> : null}
-                <span className="p">{p.price}</span>
-              </button>
-            </form>
-          ))}
-        </div>
+        <BuyPacks />
 
         <p className="fine">
           Each includes a short version written directly to the student and the technical scoring

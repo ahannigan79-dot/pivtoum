@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { addSubscriber } from "@/lib/db";
 
 /**
- * Email capture for the next edition. Stored in Postgres (we own the list); if
- * Kit (ConvertKit) or a Substack publication is also configured, the address is
- * mirrored there too. Both mirrors are best-effort and never block the signup.
+ * Email capture for the next edition. Stored in Postgres (we own the list); if a
+ * Substack publication is configured, the address is mirrored there too. The
+ * mirror is best-effort and never blocks the signup.
  */
 export async function POST(req: Request) {
   const { email } = await req.json().catch(() => ({ email: "" }));
@@ -16,21 +16,6 @@ export async function POST(req: Request) {
     await addSubscriber(email);
   } catch {
     return NextResponse.json({ error: "Could not save your email." }, { status: 500 });
-  }
-
-  // Optional mirror to Kit, best-effort — its failure doesn't fail the signup.
-  const apiKey = process.env.KIT_API_KEY;
-  const formId = process.env.KIT_FORM_ID;
-  if (apiKey && formId) {
-    try {
-      await fetch(`https://api.convertkit.com/v3/forms/${formId}/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ api_key: apiKey, email }),
-      });
-    } catch {
-      /* ignore — Postgres already has it */
-    }
   }
 
   // Optional mirror to Substack, best-effort. Substack has no official API; this

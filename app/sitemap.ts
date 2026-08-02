@@ -27,5 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/careers/computer-science/student`, changeFrequency: "monthly", priority: 0.7 },
     ...careerPages,
     ...essayPages,
+    { url: `${base}/terms`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/refunds`, changeFrequency: "yearly", priority: 0.3 },
   ];
 }
