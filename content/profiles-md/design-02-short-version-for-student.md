@@ -7,7 +7,7 @@
 We'll be straight with you, because you'll find this out anyway and you'd rather hear it
 properly than in fragments.
 
-We scored twenty-seven careers on how exposed they are to AI. **Production and execution
+We scored twenty-eight careers on how exposed they are to AI. **Production and execution
 design came out at 8.4 out of 10 — the highest score of anything we measured.**
 
 Creative direction scored 5.6. UX and product design 6.0.

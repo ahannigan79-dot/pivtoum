@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 Licensed architecture: **5.0** out of 10 — mid-range, and reasonably protected.
 

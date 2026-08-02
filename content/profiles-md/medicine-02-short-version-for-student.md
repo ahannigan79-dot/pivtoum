@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Medicine came out near the bottom of the risk range — meaning safe. Surgery scored 2.1 out of 10, ==the lowest score of anything we measured==.
+We scored twenty-eight careers on how exposed they are to AI. Medicine came out near the bottom of the risk range — meaning safe. Surgery scored 2.1 out of 10, ==the lowest score of anything we measured==.
 
 An entry-level software developer scored 8.1.
 

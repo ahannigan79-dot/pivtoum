@@ -7,7 +7,7 @@
 We're going to be straighter with you here than in any other one of these, because you deserve
 the actual numbers rather than a softened version.
 
-We scored twenty-seven careers on how exposed they are to AI. Desk journalism — rewriting,
+We scored twenty-eight careers on how exposed they are to AI. Desk journalism — rewriting,
 aggregating, routine news production — came out at **8.3 out of 10**.
 
 Investigative reporting came out at **5.1**.

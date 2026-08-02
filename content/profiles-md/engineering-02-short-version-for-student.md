@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 Licensed, site-based engineering: **4.0** out of 10.
 

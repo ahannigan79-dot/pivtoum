@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 General dentistry: **2.7 out of 10.** Oral surgery: **2.3.**
 

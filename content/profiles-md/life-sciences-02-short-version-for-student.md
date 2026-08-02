@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Biology produced a result that
+We scored twenty-eight careers on how exposed they are to AI. Biology produced a result that
 surprises almost everyone.
 
 **Wet lab and bench research: 5.2 out of 10.**

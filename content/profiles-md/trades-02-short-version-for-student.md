@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 A service electrician: **2.5** out of 10 — one of the lowest scores we found anywhere.
 

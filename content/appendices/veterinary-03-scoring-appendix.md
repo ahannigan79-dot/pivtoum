@@ -30,7 +30,7 @@ Two exposure factors carry 50% of the weight; three protection factors carry 40%
 ### How the 0–10 raw ratings are anchored
 
 Every factor is rated on its own 0–10 scale before weighting. The anchors are
-identical across all twenty-seven careers, which is what makes the scores
+identical across all twenty-eight careers, which is what makes the scores
 comparable.
 
 **Task automatability (A)** — *what share of the working week could a capable

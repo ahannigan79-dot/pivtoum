@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 Statutory child protection: **3.3 out of 10.** Adult safeguarding: **3.8.**
 

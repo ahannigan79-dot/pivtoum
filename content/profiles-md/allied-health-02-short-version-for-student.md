@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 Hands-on physical therapy: **2.5 out of 10.** ==+That's the lowest score of anything we
 measured except surgery.==

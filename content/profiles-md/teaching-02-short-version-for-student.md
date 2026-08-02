@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Classroom teaching came out at
+We scored twenty-eight careers on how exposed they are to AI. Classroom teaching came out at
 **3.6** out of 10 — one of the lower scores we found.
 
 Entry-level software development scored 8.1.
