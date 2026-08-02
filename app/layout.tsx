@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   },
   description:
     "Pivotum scores careers on how exposed they are to AI, on a fixed published methodology, re-scored every six months. Free samplers for parents and students choosing a degree.",
+  verification: {
+    other: { "facebook-domain-verification": "s9vudqllxjp89v7ou91g0ssnhev02p" },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
