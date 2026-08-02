@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmailSignup } from "@/components/EmailSignup";
 
 export interface Pack {
   size: number;
@@ -39,6 +40,12 @@ export function BuyBlock() {
         <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link> We
         publish computer science in full so you can judge the depth before buying anything.
       </p>
+      <EmailSignup
+        label="Not ready for the full profiles yet?"
+        sub="We re-score every career every six months and publish what moved. Get the next edition — and the essays — free."
+        cta="Keep me posted"
+        done="You’re on the list. We’ll email you when the scores move."
+      />
     </div>
   );
 }

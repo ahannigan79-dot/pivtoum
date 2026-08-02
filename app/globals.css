@@ -505,6 +505,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 }
 .signup-row button:hover { background: var(--pen); }
 .signup-note { font-size: .875rem; color: var(--ink-soft); margin: .8rem 0 0; }
+.signup-sub { font-size: .875rem; color: var(--ink-soft); margin: .35rem 0 .9rem; max-width: 30rem; line-height: 1.5; }
 
 /* ============================================================================
    Landing page — scoped under .lp so it never touches the document pages.
