@@ -21,7 +21,7 @@ export async function POST(req: Request) {
   // Optional mirror to Substack, best-effort. Substack has no official API; this
   // posts to the same free-subscribe endpoint its own embed form uses, so it can
   // change without notice — its failure never fails the signup.
-  const substack = process.env.SUBSTACK_PUBLICATION_URL;
+  const substack = process.env.SUBSTACK_PUBLICATION_URL ?? "https://pivotum.substack.com";
   if (substack) {
     const base = substack.replace(/\/+$/, "");
     try {
