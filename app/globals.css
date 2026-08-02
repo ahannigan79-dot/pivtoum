@@ -293,6 +293,14 @@ tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(-
   border-left: 2px solid var(--pen);
 }
 .worked h3 { margin-top: 0; }
+
+/* AI-use disclosure on /methodology — a statement of position, not fine print. */
+.disclosure {
+  background: var(--paper-edge); padding: 1.5rem 1.6rem; margin: 1.6rem 0;
+  border: 1px solid var(--rule); border-left: 3px solid var(--pen); border-radius: 2px;
+}
+.disclosure > :first-child { margin-top: 0; }
+.disclosure > :last-child { margin-bottom: 0; }
 .worked p:last-child { margin-bottom: 0; }
 
 /* ---- Ranked list --------------------------------------------------------- */
