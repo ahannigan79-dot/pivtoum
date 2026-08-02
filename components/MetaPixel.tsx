@@ -1,0 +1,61 @@
+"use client";
+
+import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef } from "react";
+import { META_PIXEL_ID, trackPixel } from "@/lib/pixel";
+
+/**
+ * Fires a PageView on client-side navigations. The base snippet below already
+ * sends the first PageView on load, so the initial run here is skipped to avoid
+ * double-counting. Wrapped in Suspense because useSearchParams opts the subtree
+ * into client rendering.
+ */
+function RouteChangePageViews() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isFirst = useRef(true);
+
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    trackPixel("PageView");
+  }, [pathname, searchParams]);
+
+  return null;
+}
+
+/** Meta Pixel base install. Renders nothing unless a pixel id is configured. */
+export function MetaPixel() {
+  if (!META_PIXEL_ID) return null;
+
+  return (
+    <>
+      <Script id="meta-pixel" strategy="afterInteractive">
+        {`!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
+      </Script>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          alt=""
+        />
+      </noscript>
+      <Suspense fallback={null}>
+        <RouteChangePageViews />
+      </Suspense>
+    </>
+  );
+}

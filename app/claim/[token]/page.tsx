@@ -4,8 +4,10 @@ import { getStripe } from "@/lib/stripe";
 import { EDITION } from "@/lib/site";
 import { claimableCareers } from "@/lib/profiles";
 import { careerRange } from "@/data/careers";
+import { getPack } from "@/lib/packs";
 import { ClaimPicker } from "@/components/ClaimPicker";
 import { ResendButton } from "@/components/ResendButton";
+import { PurchasePixel } from "@/components/PurchasePixel";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const dynamic = "force-dynamic";
@@ -54,6 +56,10 @@ export default async function ClaimPage({ params }: { params: Promise<{ token: s
           <i>/</i>
           <span>Your profiles</span>
         </div>
+
+        {order ? (
+          <PurchasePixel token={token} value={(getPack(order.pack_size)?.priceCents ?? 0) / 100} />
+        ) : null}
 
         {!order ? (
           <>

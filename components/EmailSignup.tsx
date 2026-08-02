@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackPixel } from "@/lib/pixel";
 
 export function EmailSignup() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ export function EmailSignup() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     });
+    if (res.ok) trackPixel("Lead");
     setStatus(res.ok ? "done" : "error");
   }
 

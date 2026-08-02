@@ -3,8 +3,8 @@ import { addSubscriber } from "@/lib/db";
 
 /**
  * Email capture for the next edition. Stored in Postgres (we own the list); if
- * Kit (ConvertKit) is also configured, the address is forwarded there too, but
- * Kit is optional and never blocks the signup.
+ * Kit (ConvertKit) or a Substack publication is also configured, the address is
+ * mirrored there too. Both mirrors are best-effort and never block the signup.
  */
 export async function POST(req: Request) {
   const { email } = await req.json().catch(() => ({ email: "" }));
@@ -27,6 +27,31 @@ export async function POST(req: Request) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ api_key: apiKey, email }),
+      });
+    } catch {
+      /* ignore — Postgres already has it */
+    }
+  }
+
+  // Optional mirror to Substack, best-effort. Substack has no official API; this
+  // posts to the same free-subscribe endpoint its own embed form uses, so it can
+  // change without notice — its failure never fails the signup.
+  const substack = process.env.SUBSTACK_PUBLICATION_URL;
+  if (substack) {
+    const base = substack.replace(/\/+$/, "");
+    try {
+      await fetch(`${base}/api/v1/free`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          first_url: `${base}/`,
+          first_referrer: "",
+          current_url: `${base}/`,
+          referral_code: "",
+          source: "embed",
+          should_not_show_recommendations: false,
+        }),
       });
     } catch {
       /* ignore — Postgres already has it */
