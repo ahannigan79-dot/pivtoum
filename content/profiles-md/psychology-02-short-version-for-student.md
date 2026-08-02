@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Psychology produced the strangest result in the whole index.
+We scored twenty-eight careers on how exposed they are to AI. Psychology produced the strangest result in the whole index.
 
 A licensed clinical psychologist scores **3.5** out of 10 — one of the safest careers we measured.
 

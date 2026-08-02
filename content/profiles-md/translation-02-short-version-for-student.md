@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 General document translation came out at **8.8 out of 10** — ==-the highest score of anything we
 measured anywhere.==

@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Business landed in an unusual place.
+We scored twenty-eight careers on how exposed they are to AI. Business landed in an unusual place.
 
 Not the worst score. But ==the only field in the whole index with no safe end==.
 

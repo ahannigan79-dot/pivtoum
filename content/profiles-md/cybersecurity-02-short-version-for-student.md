@@ -8,7 +8,7 @@ You've probably seen the number: **4.8 million unfilled cybersecurity jobs world
 
 It's real. It's also being sold to you in a way that leaves out the part that matters.
 
-We scored twenty-seven careers on AI exposure. Incident response and threat hunting came out at
+We scored twenty-eight careers on AI exposure. Incident response and threat hunting came out at
 **5.0 out of 10**. Tier-one SOC analyst work — ==-the exact role most people are told to start
 in — came out at 7.4.==
 

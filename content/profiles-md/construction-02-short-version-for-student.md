@@ -6,7 +6,7 @@
 
 Or maybe you aren't — because almost nobody mentions this one.
 
-We scored twenty-seven careers on how exposed they are to AI. A site superintendent came out at
+We scored twenty-eight careers on how exposed they are to AI. A site superintendent came out at
 **3.3 out of 10**.
 
 That's better than **licensed engineering (4.0)**. Better than **architecture (5.0)**. Better

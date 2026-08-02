@@ -6,7 +6,7 @@
 
 You've probably been told driving jobs are finished because of self-driving trucks.
 
-We scored twenty-seven careers on AI exposure. Here's what we actually found:
+We scored twenty-eight careers on AI exposure. Here's what we actually found:
 
 **Local delivery: 3.4 out of 10. Long-haul trucking: 4.5. Emergency and specialist vehicles:
 2.8.**

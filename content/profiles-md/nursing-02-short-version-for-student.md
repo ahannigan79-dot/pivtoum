@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Nursing came out at **2.8 out of 10**, where 10 means most at risk.
+We scored twenty-eight careers on how exposed they are to AI. Nursing came out at **2.8 out of 10**, where 10 means most at risk.
 
 An entry-level software developer scored 8.1.
 

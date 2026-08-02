@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 A licensed CPA doing audit and advisory: **5.2** out of 10.
 

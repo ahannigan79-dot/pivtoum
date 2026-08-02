@@ -7,7 +7,7 @@
 This is the one where we're least sure of our own answer, and you should know that before
 anything else.
 
-We scored twenty-seven careers on AI exposure. Entry-level data analysis came out at **8.2 out
+We scored twenty-eight careers on AI exposure. Entry-level data analysis came out at **8.2 out
 of 10** — one of the highest.
 
 ==+And the Bureau of Labor Statistics projects this occupation growing 33.5% by 2034 — the

@@ -7,7 +7,7 @@
 If you've wanted this since you were about nine, you're in good company — and that's worth
 saying up front, because the instinct is a good one.
 
-We scored twenty-seven careers on how exposed they are to AI. Small animal practice came out at
+We scored twenty-eight careers on how exposed they are to AI. Small animal practice came out at
 **2.7 out of 10**. Large animal and emergency work: **2.5**.
 
 ==+Those are among the lowest scores we found anywhere.== Entry-level software development is

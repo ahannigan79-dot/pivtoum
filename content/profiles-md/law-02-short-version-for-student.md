@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI. Law came out with ==the widest internal split of any licensed profession we measured==.
+We scored twenty-eight careers on how exposed they are to AI. Law came out with ==the widest internal split of any licensed profession we measured==.
 
 A trial lawyer scores 4.5 out of 10. A junior associate doing document review scores 7.9.
 

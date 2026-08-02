@@ -4,7 +4,7 @@
 
 ---
 
-We scored twenty-seven careers on how exposed they are to AI.
+We scored twenty-eight careers on how exposed they are to AI.
 
 **Livestock husbandry: 3.4 out of 10. Field farming: 4.0.**
 
