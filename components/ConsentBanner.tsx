@@ -2,19 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { META_PIXEL_ID } from "@/lib/pixel";
-import { getConsent, setConsent } from "@/lib/consent";
+import { setConsent, shouldPromptConsent } from "@/lib/consent";
 
 /**
- * First-visit advertising-consent prompt. Only appears when a Meta pixel is
- * configured and the visitor hasn't chosen yet. Accept loads the pixel; decline
- * stores the choice and the pixel never loads. Fixed to the bottom of the
- * viewport so it causes no layout shift.
+ * First-visit advertising-consent prompt. Shown only where prior opt-in is
+ * required (EU/EEA/UK/CH) and the visitor hasn't chosen yet — elsewhere the
+ * pixel uses an opt-out model and no banner appears. Accept loads the pixel;
+ * decline stores the choice. Fixed to the viewport bottom so it causes no
+ * layout shift.
  */
 export function ConsentBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (META_PIXEL_ID && getConsent() === null) setShow(true);
+    if (META_PIXEL_ID && shouldPromptConsent()) setShow(true);
   }, []);
 
   if (!show) return null;
