@@ -8,7 +8,7 @@
  */
 export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "AW-18367563898";
 export const GADS_LEAD_LABEL = process.env.NEXT_PUBLIC_GADS_LEAD_LABEL ?? "mIR_CNrr-tocEPqQq7ZE";
-export const GADS_PURCHASE_LABEL = process.env.NEXT_PUBLIC_GADS_PURCHASE_LABEL ?? "";
+export const GADS_PURCHASE_LABEL = process.env.NEXT_PUBLIC_GADS_PURCHASE_LABEL ?? "mIvyCPep5NocEPqQq7ZE";
 
 type ConversionParams = { value?: number; currency?: string };
 
