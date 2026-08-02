@@ -10,6 +10,9 @@ export function SiteFooter() {
       editions.
       <br />
       Re-scored every six months. We publish where we might be wrong.
+      <br />
+      Analysis and scoring judgments are ours. Drafting is AI-assisted &mdash;{" "}
+      <a href="/methodology#how-this-is-written">how this is written</a>.
     </footer>
   );
 }
