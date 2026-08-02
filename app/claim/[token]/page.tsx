@@ -22,8 +22,9 @@ async function loadOrder(token: string): Promise<Order | null> {
       const email = session.customer_details?.email ?? session.customer_email ?? "";
       const packSize = Number(session.metadata?.pack_size ?? 0);
       const edition = session.metadata?.edition ?? EDITION;
+      const acknowledgedAt = session.metadata?.acknowledged_at ?? null;
       if (email && packSize > 0) {
-        await upsertOrder(token, email, packSize, edition);
+        await upsertOrder(token, email, packSize, edition, acknowledgedAt);
         return getOrder(token).catch(() => null);
       }
     }

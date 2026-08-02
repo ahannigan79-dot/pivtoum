@@ -2,14 +2,15 @@
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { META_PIXEL_ID, trackPixel } from "@/lib/pixel";
+import { getConsent, CONSENT_EVENT } from "@/lib/consent";
 
 /**
- * Fires a PageView on client-side navigations. The base snippet below already
- * sends the first PageView on load, so the initial run here is skipped to avoid
- * double-counting. Wrapped in Suspense because useSearchParams opts the subtree
- * into client rendering.
+ * Fires a PageView on client-side navigations. The base snippet already sends
+ * the first PageView when the pixel loads, so the initial run here is skipped
+ * to avoid double-counting. Wrapped in Suspense because useSearchParams opts the
+ * subtree into client rendering.
  */
 function RouteChangePageViews() {
   const pathname = usePathname();
@@ -27,9 +28,23 @@ function RouteChangePageViews() {
   return null;
 }
 
-/** Meta Pixel base install. Renders nothing unless a pixel id is configured. */
+/**
+ * Meta Pixel base install. Renders nothing — and loads no script — unless a
+ * pixel id is configured AND the visitor has granted advertising consent.
+ * Reacts to a consent change in the same tab so accepting loads the pixel
+ * without a reload.
+ */
 export function MetaPixel() {
-  if (!META_PIXEL_ID) return null;
+  const [granted, setGranted] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setGranted(getConsent() === "granted");
+    sync();
+    window.addEventListener(CONSENT_EVENT, sync);
+    return () => window.removeEventListener(CONSENT_EVENT, sync);
+  }, []);
+
+  if (!META_PIXEL_ID || !granted) return null;
 
   return (
     <>
