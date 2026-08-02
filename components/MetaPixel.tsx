@@ -4,7 +4,7 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { META_PIXEL_ID, trackPixel } from "@/lib/pixel";
-import { getConsent, CONSENT_EVENT } from "@/lib/consent";
+import { pixelAllowed, CONSENT_EVENT } from "@/lib/consent";
 
 /**
  * Fires a PageView on client-side navigations. The base snippet already sends
@@ -30,21 +30,22 @@ function RouteChangePageViews() {
 
 /**
  * Meta Pixel base install. Renders nothing — and loads no script — unless a
- * pixel id is configured AND the visitor has granted advertising consent.
+ * pixel id is configured AND the pixel is allowed for this visitor: granted in
+ * opt-in regions, on by default (unless GPC/declined) in opt-out regions.
  * Reacts to a consent change in the same tab so accepting loads the pixel
  * without a reload.
  */
 export function MetaPixel() {
-  const [granted, setGranted] = useState(false);
+  const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const sync = () => setGranted(getConsent() === "granted");
+    const sync = () => setAllowed(pixelAllowed());
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);
   }, []);
 
-  if (!META_PIXEL_ID || !granted) return null;
+  if (!META_PIXEL_ID || !allowed) return null;
 
   return (
     <>
