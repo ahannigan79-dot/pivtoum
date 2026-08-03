@@ -437,16 +437,24 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 /* ---- Index: range bars (screen) ------------------------------------------ */
 .index { margin: 1.4rem 0; border-top: 1.5px solid var(--ink); }
 .idx-scale {
-  display: grid; grid-template-columns: 12rem 1fr 4.2rem; gap: 1rem;
+  display: grid; grid-template-columns: 12rem 1fr 4.2rem 6.6rem; gap: 1rem;
   font-family: var(--sans); font-size: .5625rem; letter-spacing: .08em; text-transform: uppercase;
   color: var(--pencil); padding: .5rem 0;
 }
 .idx-scale .idx-ends { display: flex; justify-content: space-between; }
+.idx-head-go { text-align: right; }
 .idx-row {
-  display: grid; grid-template-columns: 12rem 1fr 4.2rem; gap: 1rem; align-items: center;
+  display: grid; grid-template-columns: 12rem 1fr 4.2rem 6.6rem; gap: 1rem; align-items: center;
   padding: .6rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink);
 }
 .idx-row:hover, .idx-row:hover .idx-name { color: var(--pen); }
+/* Per-row "Free sample →" affordance: makes every row read as a tappable link. */
+.idx-go {
+  display: inline-flex; align-items: center; justify-content: flex-end; gap: .3rem;
+  font-family: var(--sans); font-size: .75rem; white-space: nowrap; color: var(--pencil);
+}
+.idx-row:hover .idx-go { color: var(--pen); }
+.idx-go-i { width: .8rem; height: .8rem; flex: none; }
 .idx-name { font-size: .9375rem; line-height: 1.3; }
 .idx-track {
   position: relative; height: .55rem; background: var(--paper-edge);
@@ -466,7 +474,10 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 @media (max-width: 34rem) {
-  .idx-row, .idx-scale { grid-template-columns: 8.5rem 1fr 3.4rem; gap: .6rem; }
+  .idx-row, .idx-scale { grid-template-columns: 7.5rem 1fr 3.4rem 1.1rem; gap: .5rem; }
+  /* On mobile, drop the text and keep just the arrow so each row still reads as tappable. */
+  .idx-go-t, .idx-head-go { display: none; }
+  .idx-go { color: var(--pen); }
 }
 
 /* ---- Index: two numeric columns (print only) ----------------------------- */
@@ -557,7 +568,13 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 
 .lp-index { padding: .5rem 0 2rem; }
 .lp-index-head h2 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; letter-spacing: -.01em; margin: 0 0 .3rem; }
-.lp-index-head .sub { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: 0 0 1.4rem; }
+.lp-index-head .sub { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: 0 0 .6rem; }
+.idx-free {
+  font-family: var(--sans); font-size: .9rem; line-height: 1.4; color: var(--ink);
+  margin: 0 0 1.4rem; padding: .55rem .8rem; border-radius: 4px;
+  background: rgba(var(--hl), .5); border: 1px solid rgba(var(--hl), .9);
+}
+.idx-free strong { font-weight: 700; }
 .lp .idx-track { background: #F1F1EF; }
 /* No circles in the index — colour the range numbers by tier instead, so red
    shows up where high exposure actually lives (the exposed end). The circle
