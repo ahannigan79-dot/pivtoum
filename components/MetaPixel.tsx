@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { META_PIXEL_ID, trackPixel } from "@/lib/pixel";
 import { pixelAllowed, CONSENT_EVENT } from "@/lib/consent";
+import { isProductionHost } from "@/lib/host";
 
 /**
  * Fires a PageView on client-side navigations. The base snippet already sends
@@ -39,7 +40,7 @@ export function MetaPixel() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const sync = () => setAllowed(pixelAllowed());
+    const sync = () => setAllowed(pixelAllowed() && isProductionHost());
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);

@@ -1,4 +1,5 @@
 import { track } from "@vercel/analytics";
+import { isProductionHost } from "@/lib/host";
 
 /** Values Vercel Web Analytics accepts on a custom event. */
 type EventValue = string | number | boolean | null;
@@ -15,6 +16,7 @@ type EventValue = string | number | boolean | null;
  * lead_signup for newsletter captures.
  */
 export function trackEvent(name: string, props?: Record<string, EventValue>): void {
+  if (!isProductionHost()) return; // keep preview/staging testing out of the funnel
   try {
     track(name, props);
   } catch {
