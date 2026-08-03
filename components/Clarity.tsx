@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { CLARITY_ID } from "@/lib/clarity";
 import { pixelAllowed, CONSENT_EVENT } from "@/lib/consent";
+import { isProductionHost } from "@/lib/host";
 
 /**
  * Microsoft Clarity install. Renders nothing — and loads no script — unless a
@@ -16,7 +17,7 @@ export function Clarity() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const sync = () => setAllowed(pixelAllowed());
+    const sync = () => setAllowed(pixelAllowed() && isProductionHost());
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);

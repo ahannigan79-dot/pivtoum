@@ -4,6 +4,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { GOOGLE_ADS_ID } from "@/lib/google";
 import { pixelAllowed, CONSENT_EVENT } from "@/lib/consent";
+import { isProductionHost } from "@/lib/host";
 
 /**
  * Google Ads (gtag.js) base tag. Loads only when a tag id is configured AND the
@@ -14,7 +15,7 @@ export function GoogleAds() {
   const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    const sync = () => setAllowed(pixelAllowed());
+    const sync = () => setAllowed(pixelAllowed() && isProductionHost());
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);
