@@ -3,8 +3,9 @@
  * that sets cookies and records anonymised sessions, so it loads under the SAME
  * consent rules as the Meta pixel (see lib/consent.ts + components/Clarity).
  *
- * The project id is public but account-specific, so — unlike the pixel — it has
- * no baked default. Set NEXT_PUBLIC_CLARITY_ID to switch Clarity on; while it is
- * empty, Clarity never loads and nothing about the site changes.
+ * The live project id is baked in as the default, so no env var is needed. Set
+ * NEXT_PUBLIC_CLARITY_ID only to OVERRIDE it (e.g. a separate test project); it
+ * is public and inlined at build time, so a redeploy is required to take effect.
+ * It still loads only after the visitor accepts (same consent gate as the pixel).
  */
-export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "";
+export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "xwqvux3bby";
