@@ -6,6 +6,7 @@ import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetaPixel } from "@/components/MetaPixel";
 import { GoogleAds } from "@/components/GoogleAds";
+import { Clarity } from "@/components/Clarity";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import "./globals.css";
 
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <MetaPixel />
         <GoogleAds />
+        <Clarity />
         <SiteHeader />
         {children}
         <ConsentBanner />

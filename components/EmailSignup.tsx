@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { trackPixel } from "@/lib/pixel";
 import { gtagConversion, GADS_LEAD_LABEL } from "@/lib/google";
+import { trackEvent } from "@/lib/analytics";
 
 interface EmailSignupProps {
   /** Bold prompt above the field. */
@@ -35,6 +36,7 @@ export function EmailSignup({
     if (res.ok) {
       trackPixel("Lead");
       gtagConversion(GADS_LEAD_LABEL);
+      trackEvent("lead_signup");
     }
     setStatus(res.ok ? "done" : "error");
   }
