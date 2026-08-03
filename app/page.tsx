@@ -106,8 +106,11 @@ export default function Home() {
             <h2>Every career, scored</h2>
             <p className="sub">
               Each row runs from a field&rsquo;s most protected role to its most exposed. Green marks
-              a genuinely low-exposure entry; red, one that&rsquo;s highly exposed. Tap any career for
-              its free sampler.
+              a genuinely low-exposure entry; red, one that&rsquo;s highly exposed.
+            </p>
+            <p className="idx-free">
+              <strong>Every career below is a free sampler.</strong> Tap any row to read the full
+              reasoning and sources &mdash; no signup, no payment.
             </p>
           </div>
 
@@ -119,10 +122,12 @@ export default function Home() {
                 <span>10 Most exposed</span>
               </span>
               <span />
+              <span className="idx-head-go">Free sample</span>
             </div>
             {rows.map(({ c, safest, exposed }) => {
               const left = (safest / DOMAIN) * 100;
               const width = Math.max(((exposed - safest) / DOMAIN) * 100, 1.5);
+              const isLink = hasSamplerPage(c.slug);
               const inner = (
                 <>
                   <span className="idx-name">{c.name}</span>
@@ -138,9 +143,26 @@ export default function Home() {
                       {exposed.toFixed(1)}
                     </span>
                   </span>
+                  <span className="idx-go" aria-hidden="true">
+                    {isLink ? (
+                      <>
+                        <span className="idx-go-t">Free sample</span>
+                        <svg viewBox="0 0 16 16" className="idx-go-i">
+                          <path
+                            d="M3 8h9M9 4l4 4-4 4"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </>
+                    ) : null}
+                  </span>
                 </>
               );
-              return hasSamplerPage(c.slug) ? (
+              return isLink ? (
                 <Link key={c.slug} className="idx-row" href={`/careers/${c.slug}`}>
                   {inner}
                 </Link>
