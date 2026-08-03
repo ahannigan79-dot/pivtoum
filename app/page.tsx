@@ -127,7 +127,11 @@ export default function Home() {
             {rows.map(({ c, safest, exposed }) => {
               const left = (safest / DOMAIN) * 100;
               const width = Math.max(((exposed - safest) / DOMAIN) * 100, 1.5);
-              const isLink = hasSamplerPage(c.slug);
+              // Every field links to its free sampler; computer science instead
+              // has a full free profile at the same route, labelled accordingly.
+              const isFreeProfile = c.slug === "computer-science";
+              const isLink = hasSamplerPage(c.slug) || isFreeProfile;
+              const goLabel = isFreeProfile ? "Free profile" : "Free sample";
               const inner = (
                 <>
                   <span className="idx-name">{c.name}</span>
@@ -146,7 +150,7 @@ export default function Home() {
                   <span className="idx-go" aria-hidden="true">
                     {isLink ? (
                       <>
-                        <span className="idx-go-t">Free sample</span>
+                        <span className="idx-go-t">{goLabel}</span>
                         <svg viewBox="0 0 16 16" className="idx-go-i">
                           <path
                             d="M3 8h9M9 4l4 4-4 4"
