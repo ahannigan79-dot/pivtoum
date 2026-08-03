@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PACKS } from "@/lib/packs";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Pack chooser with the required pre-purchase acknowledgement. The pack buttons
@@ -13,13 +14,22 @@ import { PACKS } from "@/lib/packs";
 export function BuyPacks() {
   const [ack, setAck] = useState(false);
 
+  // Funnel anchor: how many reach the buy page at all (the denominator for
+  // ack-checked → checkout_start → purchase).
+  useEffect(() => {
+    trackEvent("buy_page_view");
+  }, []);
+
   return (
     <>
       <label className="ack">
         <input
           type="checkbox"
           checked={ack}
-          onChange={(e) => setAck(e.target.checked)}
+          onChange={(e) => {
+            setAck(e.target.checked);
+            if (e.target.checked) trackEvent("buy_ack_checked");
+          }}
           aria-describedby="ack-text"
         />
         <span id="ack-text">
@@ -38,6 +48,7 @@ export function BuyPacks() {
               className={`tier${p.tag ? " best" : ""}`}
               disabled={!ack}
               aria-disabled={!ack}
+              onClick={() => trackEvent("checkout_start", { pack: p.size })}
             >
               <span className="n">{p.label}</span>
               {p.tag ? <span className="tag">{p.tag}</span> : null}

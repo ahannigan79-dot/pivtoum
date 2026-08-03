@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { trackPixel } from "@/lib/pixel";
 import { gtagConversion, GADS_PURCHASE_LABEL } from "@/lib/google";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Fires the Meta Pixel and Google Ads Purchase conversions once per order. The
@@ -28,6 +29,7 @@ export function PurchasePixel({
     }
     trackPixel("Purchase", { value, currency });
     gtagConversion(GADS_PURCHASE_LABEL, { value, currency });
+    trackEvent("purchase", { value, currency });
   }, [token, value, currency]);
 
   return null;

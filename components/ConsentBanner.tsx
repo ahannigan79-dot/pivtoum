@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { META_PIXEL_ID } from "@/lib/pixel";
+import { CLARITY_ID } from "@/lib/clarity";
 import { setConsent, shouldPromptConsent } from "@/lib/consent";
 
 /**
@@ -15,7 +16,7 @@ export function ConsentBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (META_PIXEL_ID && shouldPromptConsent()) setShow(true);
+    if ((META_PIXEL_ID || CLARITY_ID) && shouldPromptConsent()) setShow(true);
   }, []);
 
   if (!show) return null;
@@ -26,10 +27,11 @@ export function ConsentBanner() {
   }
 
   return (
-    <div className="consent" role="dialog" aria-label="Advertising consent">
+    <div className="consent" role="dialog" aria-label="Analytics and advertising consent">
       <p className="consent-text">
-        We use a Meta pixel to measure our advertising — but only if you agree. Decline and the site
-        works exactly the same. <a href="/privacy">How we use data</a>.
+        We use analytics and a Meta pixel to understand how the site is used and measure our
+        advertising — but only if you agree. Decline and the site works exactly the same.{" "}
+        <a href="/privacy">How we use data</a>.
       </p>
       <div className="consent-actions">
         <button type="button" className="consent-btn decline" onClick={() => choose("denied")}>
