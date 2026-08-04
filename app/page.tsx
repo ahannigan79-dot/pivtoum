@@ -216,7 +216,7 @@ export default function Home() {
         </section>
 
         <section id="subscribe">
-          <EmailSignup sub="New careers scored, and the findings that change how you see a degree — like why pharmacy scores worse than nursing. By email, no spam." />
+          <EmailSignup sub="Our essays and new career scores, straight to your inbox — like why pharmacy scores worse than nursing. Free, no spam." />
         </section>
         <SiteFooter />
       </div>
