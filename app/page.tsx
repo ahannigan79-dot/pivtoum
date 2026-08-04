@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { careers, careerRange, careerCount } from "@/data/careers";
 import { scoreTier } from "@/lib/tier";
 import { hasSamplerPage } from "@/content/careers/registry";
+import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
 
@@ -46,6 +47,7 @@ export default function Home() {
                   How we score
                 </Link>
               </div>
+              <p className="lp-creed">{SITE.creed}</p>
             </div>
 
             <div className="lp-contrast" aria-hidden="true">
