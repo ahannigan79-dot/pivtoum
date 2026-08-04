@@ -17,10 +17,10 @@ interface EmailSignupProps {
 }
 
 export function EmailSignup({
-  label = "Get the next edition",
-  sub,
-  cta = "Notify me",
-  done = "Thanks — we’ll email you when the next edition publishes.",
+  label = "Get the next edition — free",
+  sub = "We re-score careers every six months and publish what changes. By email, no spam — unsubscribe anytime.",
+  cta = "Subscribe",
+  done = "You’re in — watch your inbox for the next edition.",
 }: EmailSignupProps = {}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
