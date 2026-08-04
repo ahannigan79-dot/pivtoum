@@ -113,6 +113,7 @@ header { padding: 2rem 0 0; }
 .site-nav-link:hover { color: var(--pen); }
 .site-nav-cta {
   color: var(--ink); border: 1px solid var(--rule); border-radius: 2px; padding: .35rem .6rem;
+  white-space: nowrap;
 }
 .site-nav-cta:hover { border-color: var(--pen); color: var(--pen); }
 
@@ -135,6 +136,9 @@ header { padding: 2rem 0 0; }
   .site-header nav { gap: .7rem; }
   .site-nav-link { font-size: .62rem; letter-spacing: .06em; }
   .site-nav-cta { padding: .3rem .5rem; }
+  /* Keep the mobile header uncrowded: drop the most secondary link so
+     Subscribe fits alongside Careers, Essays and Get profiles. */
+  .nav-hide-sm { display: none; }
 }
 
 /* ---- Home hero ----------------------------------------------------------- */
@@ -498,6 +502,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 }
 
 /* ---- Email signup -------------------------------------------------------- */
+#subscribe { scroll-margin-top: 2rem; }
 .signup { margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
 .signup-label {
   display: block; font-family: var(--sans); font-size: .625rem; font-weight: 600;

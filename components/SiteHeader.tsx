@@ -10,14 +10,17 @@ export function SiteHeader() {
           <Wordmark />
         </Link>
         <nav>
-          <Link className="site-nav-link" href="/">
+          <Link className="site-nav-link nav-hide-sm" href="/">
             Careers
           </Link>
-          <Link className="site-nav-link" href="/methodology">
+          <Link className="site-nav-link nav-hide-sm" href="/methodology">
             Methodology
           </Link>
-          <Link className="site-nav-link" href="/essays/helping-your-kid-pick-a-career">
+          <Link className="site-nav-link nav-hide-sm" href="/essays/helping-your-kid-pick-a-career">
             Essays
+          </Link>
+          <Link className="site-nav-link" href="/#subscribe">
+            Subscribe
           </Link>
           <Link className="site-nav-link site-nav-cta" href="/buy">
             Get profiles
