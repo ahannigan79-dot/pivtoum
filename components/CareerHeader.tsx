@@ -7,7 +7,11 @@ export function CareerHeader({ career }: { career: Career }) {
     <header>
       <div className="crumb">
         <span>
-          <Link href="/">Pivotum Profile</Link>
+          <Link href="/">Pivotum</Link>
+        </span>
+        <i>/</i>
+        <span>
+          <Link href="/#index">All careers</Link>
         </span>
         <i>/</i>
         <span>{career.name}</span>
