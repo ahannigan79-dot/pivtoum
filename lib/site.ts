@@ -2,6 +2,8 @@
 export const SITE = {
   name: "Pivotum",
   tagline: "Help your kid choose a career that lasts.",
+  /** The trust line — who we are and why we care. Shown site-wide. */
+  creed: "We build AI for a living, and we’re figuring out our own teenagers’ futures alongside yours.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pivotum.ai",
 } as const;
 

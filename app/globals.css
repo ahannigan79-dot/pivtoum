@@ -603,6 +603,15 @@ footer {
   margin-top: 3.5rem; padding-top: 1.3rem; border-top: 1px solid var(--rule);
   font-family: var(--sans); font-size: .6875rem; line-height: 1.7; color: var(--pencil);
 }
+/* The trust line — deliberately set apart from the fine print around it. */
+.footer-creed {
+  font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.5;
+  color: var(--ink); margin: 0 0 1.2rem; max-width: 36rem;
+}
+.lp-creed {
+  font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5;
+  color: var(--ink-soft); margin: 1.4rem 0 0; max-width: 30rem;
+}
 
 /* ---- Responsive ---------------------------------------------------------- */
 @media (max-width: 62rem) {
