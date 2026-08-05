@@ -36,7 +36,7 @@ export default function YourCareer() {
               </p>
               <div className="lp-cta-row">
                 <a className="lp-btn" href="#index">
-                  Find your career
+                  Check your exposure
                 </a>
                 <Link className="lp-btn ghost" href="/methodology">
                   How we score
@@ -69,26 +69,18 @@ export default function YourCareer() {
           <CareerIndex rows={indexRows} />
         </section>
 
-        {/* Closing */}
+        {/* Closing — audience-building, not a parent-profile push */}
         <section className="lp-closing">
-          <h2>Thinking about a move?</h2>
+          <h2>Keep an eye on your field</h2>
           <p>
-            The full profiles cover where each track is headed, which parts are most exposed, and
-            what actually holds &mdash; for the field you&rsquo;re in, or the one you&rsquo;re
-            weighing.
+            We re-score every six months and publish what changes &mdash; the findings that shift
+            how a career reads, like why pharmacy scores worse than nursing. Get them by email as
+            the ground moves.
           </p>
-          <div className="lp-cta-row">
-            <Link className="lp-btn" href="/buy">
-              Get the full profiles
-            </Link>
-            <Link className="lp-btn ghost" href="/careers/computer-science">
-              Read one profile free
-            </Link>
-          </div>
         </section>
 
         <section id="subscribe">
-          <EmailSignup sub="New careers scored, and the findings that change how you see a job — like why pharmacy scores worse than nursing. Free, no spam." />
+          <EmailSignup />
         </section>
         <SiteFooter />
       </div>
