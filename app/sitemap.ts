@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: base, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/your-career`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/methodology`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/careers/computer-science/student`, changeFrequency: "monthly", priority: 0.7 },
     ...careerPages,

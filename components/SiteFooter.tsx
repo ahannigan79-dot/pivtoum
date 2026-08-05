@@ -1,10 +1,10 @@
 import { careerCount } from "@/data/careers";
 import { SITE } from "@/lib/site";
 
-export function SiteFooter() {
+export function SiteFooter({ creed = SITE.creed }: { creed?: string } = {}) {
   return (
     <footer>
-      <p className="footer-creed">{SITE.creed}</p>
+      <p className="footer-creed">{creed}</p>
       {careerCount} careers, scored the same way. Scores measure exposure to what AI can already
       do &mdash; not how much any particular employer has deployed.
       <br />
@@ -16,7 +16,8 @@ export function SiteFooter() {
       Analysis and scoring judgments are ours. Drafting is AI-assisted &mdash;{" "}
       <a href="/methodology#how-this-is-written">how this is written</a>.
       <br />
-      <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> · <a href="/refunds">Refunds</a>
+      <a href="/methodology#press">Press</a> · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> ·{" "}
+      <a href="/refunds">Refunds</a>
     </footer>
   );
 }
