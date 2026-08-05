@@ -628,6 +628,9 @@ footer {
   font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5;
   color: var(--ink-soft); margin: 1.4rem 0 0; max-width: 30rem;
 }
+.lp-selfcheck { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: .7rem 0 0; }
+.lp-selfcheck a { color: var(--pen); text-decoration: none; font-weight: 600; }
+.lp-selfcheck a:hover { text-decoration: underline; }
 
 /* ---- Responsive ---------------------------------------------------------- */
 @media (max-width: 62rem) {

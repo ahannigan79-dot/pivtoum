@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { careers, careerRange, careerCount } from "@/data/careers";
-import { scoreTier } from "@/lib/tier";
-import { hasSamplerPage } from "@/content/careers/registry";
+import { careerCount } from "@/data/careers";
 import { SITE } from "@/lib/site";
+import { buildIndexRows } from "@/lib/career-index";
 import { CareerIndex } from "@/components/CareerIndex";
+import { HeroContrast } from "@/components/HeroContrast";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
 
@@ -15,28 +15,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const HAND =
-  "M96 12C78 3 40 4 22 16 4 28 9 47 30 55c21 8 60 4 74-9 12-11 6-27-16-35-10-4-25-4-34-1";
-
 export default function Home() {
-  const rows = careers
-    .map((c) => ({ c, ...careerRange(c) }))
-    .sort((a, b) => a.safest - b.safest || a.exposed - b.exposed);
-
-  // Minimal, serialisable rows for the interactive (sortable) index component.
-  const indexRows = rows.map(({ c, safest, exposed }) => {
-    const isFreeProfile = c.slug === "computer-science";
-    return {
-      slug: c.slug,
-      name: c.name,
-      safest,
-      exposed,
-      loSafe: scoreTier(safest) === "safe",
-      hiExposed: scoreTier(exposed) === "exposed",
-      isLink: hasSamplerPage(c.slug) || isFreeProfile,
-      goLabel: isFreeProfile ? "Free profile" : "Free sample",
-    };
-  });
+  const indexRows = buildIndexRows();
 
   return (
     <div className="lp">
@@ -63,32 +43,12 @@ export default function Home() {
                 </Link>
               </div>
               <p className="lp-creed">{SITE.creed}</p>
+              <p className="lp-selfcheck">
+                Not choosing for a teenager? <Link href="/your-career">Check for yourself &rarr;</Link>
+              </p>
             </div>
 
-            <div className="lp-contrast" aria-hidden="true">
-              <div className="lp-contrast-item">
-                <span className="lp-draw dual safe">
-                  2.8
-                  <svg viewBox="0 0 120 62" aria-hidden="true">
-                    <path d={HAND} />
-                  </svg>
-                </span>
-                <span className="lp-cap">
-                  <b>Bedside nursing</b>protected by hands, trust &amp; law
-                </span>
-              </div>
-              <div className="lp-contrast-item">
-                <span className="lp-draw dual delay">
-                  8.1
-                  <svg viewBox="0 0 120 62" aria-hidden="true">
-                    <path d={HAND} />
-                  </svg>
-                </span>
-                <span className="lp-cap">
-                  <b>Entry-level software</b>2nd most exposed of {careerCount}
-                </span>
-              </div>
-            </div>
+            <HeroContrast />
           </div>
         </section>
 
@@ -140,11 +100,11 @@ export default function Home() {
               <span>Safest</span>
               <span>Most exposed</span>
             </div>
-            {rows.map(({ c, safest, exposed }) => (
-              <div className="ipr-row" key={c.slug}>
-                <span>{c.name}</span>
-                <span>{safest.toFixed(1)}</span>
-                <span>{exposed.toFixed(1)}</span>
+            {indexRows.map((r) => (
+              <div className="ipr-row" key={r.slug}>
+                <span>{r.name}</span>
+                <span>{r.safest.toFixed(1)}</span>
+                <span>{r.exposed.toFixed(1)}</span>
               </div>
             ))}
           </div>
