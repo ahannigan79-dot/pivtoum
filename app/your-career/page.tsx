@@ -82,7 +82,7 @@ export default function YourCareer() {
         <section id="subscribe">
           <EmailSignup />
         </section>
-        <SiteFooter />
+        <SiteFooter creed={SITE.creedWorker} />
       </div>
     </div>
   );
