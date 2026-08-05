@@ -4,6 +4,7 @@ import { careers, careerRange, careerCount } from "@/data/careers";
 import { scoreTier } from "@/lib/tier";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { SITE } from "@/lib/site";
+import { CareerIndex } from "@/components/CareerIndex";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
 
@@ -14,7 +15,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const DOMAIN = 10; // scores run 1–10
 const HAND =
   "M96 12C78 3 40 4 22 16 4 28 9 47 30 55c21 8 60 4 74-9 12-11 6-27-16-35-10-4-25-4-34-1";
 
@@ -22,6 +22,21 @@ export default function Home() {
   const rows = careers
     .map((c) => ({ c, ...careerRange(c) }))
     .sort((a, b) => a.safest - b.safest || a.exposed - b.exposed);
+
+  // Minimal, serialisable rows for the interactive (sortable) index component.
+  const indexRows = rows.map(({ c, safest, exposed }) => {
+    const isFreeProfile = c.slug === "computer-science";
+    return {
+      slug: c.slug,
+      name: c.name,
+      safest,
+      exposed,
+      loSafe: scoreTier(safest) === "safe",
+      hiExposed: scoreTier(exposed) === "exposed",
+      isLink: hasSamplerPage(c.slug) || isFreeProfile,
+      goLabel: isFreeProfile ? "Free profile" : "Free sample",
+    };
+  });
 
   return (
     <div className="lp">
@@ -116,69 +131,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="index">
-            <div className="idx-scale">
-              <span>Career</span>
-              <span className="idx-ends">
-                <span>Safest 0</span>
-                <span>10 Most exposed</span>
-              </span>
-              <span />
-              <span className="idx-head-go">Free sample</span>
-            </div>
-            {rows.map(({ c, safest, exposed }) => {
-              const left = (safest / DOMAIN) * 100;
-              const width = Math.max(((exposed - safest) / DOMAIN) * 100, 1.5);
-              // Every field links to its free sampler; computer science instead
-              // has a full free profile at the same route, labelled accordingly.
-              const isFreeProfile = c.slug === "computer-science";
-              const isLink = hasSamplerPage(c.slug) || isFreeProfile;
-              const goLabel = isFreeProfile ? "Free profile" : "Free sample";
-              const inner = (
-                <>
-                  <span className="idx-name">{c.name}</span>
-                  <span className="idx-track">
-                    <span className="idx-seg" style={{ left: `${left}%`, width: `${width}%` }} />
-                  </span>
-                  <span className="idx-nums">
-                    <span className={`idx-lo ${scoreTier(safest) === "safe" ? "safe" : ""}`}>
-                      {safest.toFixed(1)}
-                    </span>
-                    &ndash;
-                    <span className={`idx-hi ${scoreTier(exposed) === "exposed" ? "exposed" : ""}`}>
-                      {exposed.toFixed(1)}
-                    </span>
-                  </span>
-                  <span className="idx-go" aria-hidden="true">
-                    {isLink ? (
-                      <>
-                        <span className="idx-go-t">{goLabel}</span>
-                        <svg viewBox="0 0 16 16" className="idx-go-i">
-                          <path
-                            d="M3 8h9M9 4l4 4-4 4"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.6"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </>
-                    ) : null}
-                  </span>
-                </>
-              );
-              return isLink ? (
-                <Link key={c.slug} className="idx-row" href={`/careers/${c.slug}`}>
-                  {inner}
-                </Link>
-              ) : (
-                <span key={c.slug} className="idx-row">
-                  {inner}
-                </span>
-              );
-            })}
-          </div>
+          <CareerIndex rows={indexRows} />
 
           {/* Print: two numeric columns, no bars */}
           <div className="index-print">
