@@ -42,7 +42,7 @@ export default function YourCareer() {
                   How we score
                 </Link>
               </div>
-              <p className="lp-creed">{SITE.creed}</p>
+              <p className="lp-creed">{SITE.creedWorker}</p>
               <p className="lp-selfcheck">
                 Choosing for a teenager instead? <Link href="/">Check for your kid &rarr;</Link>
               </p>
