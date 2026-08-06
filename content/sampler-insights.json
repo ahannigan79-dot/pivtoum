@@ -1,0 +1,11 @@
+{
+  "_comment": "PDF-only per-track analysis. Injected into the sampler PDF after the score table by scripts/pdf/generate-sampler.mjs. NOT used on the web sampler, so the emailed PDF is worth more than the free page. Keyed by career slug, then by exact track name as it appears in the table's first column.",
+  "veterinary": {
+    "Emergency & critical care": "A patient that can't speak, crashing in real time — the hardest call to automate, and the safest corner of the field.",
+    "Large animal / mixed practice": "Out on the farm, hands on animals that resist being handled: physical, unpredictable, hard for a screen to touch.",
+    "Veterinary specialist / surgery": "Surgery on a live patient whose condition shifts as you work — judgment AI can assist, but not own.",
+    "Small animal general practice": "The everyday clinic, protected by touch and trust; the automation lands on the notes and admin around the edges.",
+    "Veterinary nurse / technician": "A notch higher — more of the role is records, scheduling and routine that software now absorbs.",
+    "Lab / diagnostic veterinary roles": "The outlier at 5.4: step away from the animal and behind a screen, and exposure roughly doubles — the pattern in every field we score."
+  }
+}

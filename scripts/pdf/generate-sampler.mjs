@@ -34,6 +34,15 @@ function careerMeta(slug) {
   };
 }
 
+function insightsFor(slug) {
+  try {
+    const all = JSON.parse(readFileSync(join(REPO, "content/sampler-insights.json"), "utf8"));
+    return all[slug] ?? null;
+  } catch {
+    return null;
+  }
+}
+
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 function inline(s) {
   s = esc(s);
@@ -150,12 +159,32 @@ async function main() {
   const meta = careerMeta(slug);
   const raw = readFileSync(join(REPO, "_source/samplers", `${slug}-sampler-free.md`), "utf8");
   const firstH1 = /^#\s+(.*)$/m.exec(raw)?.[1] ?? meta.name;
-  const body = mdToHtml(stripTitleBlock(raw));
+  let body = mdToHtml(stripTitleBlock(raw));
+
+  // PDF-only extra: a brief read on each track, injected right after the score
+  // table. Lives in content/sampler-insights.json, not the _source markdown, so
+  // it never reaches the web sampler — the emailed PDF is worth more than the page.
+  const notes = insightsFor(slug);
+  if (notes && body.includes("</table>")) {
+    const items = Object.entries(notes)
+      .map(([t, n]) => `<li><strong>${esc(t)}</strong> — ${inline(n)}</li>`)
+      .join("");
+    const block = `<div class="tracknotes"><p class="tn-h">What each track tells you</p><ul>${items}</ul><p class="tn-f">The full profile scores all six factors behind each of these — and names the sub-track that splits the field in two.</p></div>`;
+    body = body.replace("</table>", "</table>" + block);
+  }
+
   const cover = coverSampler(meta, firstH1);
   const legend = `<section>${LEGEND}<hr></section>`;
 
   const html = `<!doctype html><html><head><meta charset="utf-8">
-<link rel="stylesheet" href="file://${join(DIR, "brand.css")}"></head>
+<link rel="stylesheet" href="file://${join(DIR, "brand.css")}">
+<style>
+  .tracknotes{ margin:.3rem 0 1.3rem; padding:.85rem 1.1rem; border-left:3px solid rgba(255,226,110,.95); background:rgba(255,226,110,.10); border-radius:3px; }
+  .tracknotes .tn-h{ font-family:var(--sans); font-size:8.5pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--pencil); margin:0 0 .55rem; }
+  .tracknotes ul{ margin:0; padding-left:1rem; }
+  .tracknotes li{ margin:0 0 .4rem; font-size:10.5pt; line-height:1.45; }
+  .tracknotes .tn-f{ font-family:var(--sans); font-size:8.5pt; color:var(--pencil); margin:.65rem 0 0; }
+</style></head>
 <body>${cover}${legend}<section class="sheet">${body}</section></body></html>`;
   const htmlPath = join(tmpdir(), `pivotum_sampler_${slug}.html`);
   writeFileSync(htmlPath, html);
