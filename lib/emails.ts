@@ -71,3 +71,74 @@ export function purchaseEmail(
 
   return { html, text };
 }
+
+/**
+ * The "here's your free PDF" email — the trojan horse. Delivers the requested
+ * sampler/index PDF up top (with the subscriber offer surfaced in the opening
+ * line), then makes the case for the paid profiles and hands over the discount
+ * code. Same branded, table-based, inline-styled construction as purchaseEmail.
+ */
+export function pdfWelcomeEmail(opts: {
+  pdfUrl: string;
+  pdfLabel: string; // e.g. "Veterinary Medicine sampler" or "all 28 scores"
+  code: string; // e.g. "PARENT20"
+  discountLabel: string; // e.g. "20% off"
+  expiresDays: number; // e.g. 7
+  buyUrl: string;
+}) {
+  const { pdfUrl, pdfLabel, code, discountLabel, expiresDays, buyUrl } = opts;
+  const ink = "#211E1B";
+  const inkSoft = "#57534D";
+  const pencil = "#8C857A";
+  const rule = "#E7E4DC";
+  const pen = "#AC3A34";
+  const hl = "#FFE26E";
+
+  const button = (url: string, label: string, bg: string) =>
+    `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
+
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+    <tr><td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+        <tr><td style="padding:34px 36px 26px;">
+          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your free Pivotum PDF, plus ${discountLabel} for subscribers.</span>
+
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 14px;">Here&rsquo;s your PDF &mdash; and ${discountLabel} inside</div>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Your <strong>${pdfLabel}</strong> is ready below. And because you subscribed, there&rsquo;s <strong>${discountLabel} the full profiles</strong> waiting with the code <strong>${code}</strong> &mdash; good for ${expiresDays} days.</p>
+
+          <p style="margin:0 0 26px;">${button(pdfUrl, "Download your PDF", ink)}</p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pen};margin:0 0 8px;">Why the full profile matters</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">The sampler tells you where a career stands. The full profile is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; this is how you make it on evidence, not a hunch.</p>
+          </td></tr></table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
+            <p style="margin:0;">${button(buyUrl, "Get the profiles", pen)}</p>
+          </td></tr></table>
+        </td></tr>
+        <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.7;color:${pencil};margin:0;">28 careers, scored the same way. Scores measure exposure to what AI can already do &mdash; not how much any employer has deployed. Re-scored every six months. We publish where we might be wrong.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+
+  const text =
+    `Here's your PDF — and ${discountLabel} inside.\n\n` +
+    `Your ${pdfLabel} is ready to download:\n${pdfUrl}\n\n` +
+    `Because you subscribed, here's ${discountLabel} the full profiles with code ${code} — good for ${expiresDays} days.\n\n` +
+    `WHY THE FULL PROFILE MATTERS\n` +
+    `The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; this is how you make it on evidence, not a hunch.\n\n` +
+    `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
+    `Pivotum — 28 careers, scored the same way.`;
+
+  return { html, text };
+}
