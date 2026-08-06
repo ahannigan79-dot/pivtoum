@@ -30,10 +30,15 @@ export function BuyBlock() {
       />
 
       <div className="buy-secondary">
-        <h3>Ready to go deeper?</h3>
-        <p className="fine">
-          The full six-factor profile for the careers your kid is actually weighing — the
-          sub-tracks, the trend, the sources. Most families are choosing between two or three.
+        <h3>Choose the degree with your eyes open</h3>
+        <p>
+          A degree is one of the biggest bets your family will make — years of your kid&rsquo;s life
+          and tens of thousands in cost. The full profile is how you make it on evidence, not a
+          hunch: all six factors scored and explained, the sub-tracks that split a field in two (the
+          specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every
+          source, and a version written to your kid. For the two or three careers they&rsquo;re
+          seriously weighing, it&rsquo;s the difference between hoping you&rsquo;re right and knowing
+          why.
         </p>
         <div className="tiers">
           {PACKS.map((p) => (

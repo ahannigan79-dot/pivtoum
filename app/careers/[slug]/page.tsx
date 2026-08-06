@@ -18,6 +18,7 @@ import { FullProfileTable } from "@/components/FullProfileTable";
 import { BuyBlock } from "@/components/BuyBlock";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageView } from "@/components/PageView";
+import { StarterKitCta } from "@/components/StarterKitCta";
 
 export const dynamicParams = false;
 
@@ -63,7 +64,12 @@ export default async function CareerPage({
   const { default: Body } = await loader();
 
   const components: MDXComponents = {
-    ScoreTable: () => <ScoreTable career={career} />,
+    ScoreTable: () => (
+      <>
+        <StarterKitCta />
+        <ScoreTable career={career} />
+      </>
+    ),
     FactorList: () => <FactorList career={career} />,
     WorkedExample: ({ children }: { children?: React.ReactNode }) => (
       <WorkedExample career={career}>{children}</WorkedExample>

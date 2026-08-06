@@ -25,8 +25,16 @@ export default function BuyPage() {
 
         <h1>Get the full profiles</h1>
         <p className="kicker">
-          Most families are weighing two or three careers seriously, and a few more they
-          haven&rsquo;t ruled out. Pick a pack — you choose which profiles after checkout.
+          The score tells you where a career stands. The full profile is how you actually choose —
+          so you&rsquo;re backing the best possible path for your kid on evidence, not a hunch.
+        </p>
+        <p>
+          Each profile gives you all six factors scored and explained, the sub-tracks that split a
+          field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the
+          three-year trend so you know which way it&rsquo;s moving, every source behind the numbers,
+          and a version written directly to your kid. A degree is one of the biggest bets your family
+          will make — most families weigh two or three careers seriously. Pick a pack; choose which
+          profiles after checkout.
         </p>
 
         <BuyPacks />

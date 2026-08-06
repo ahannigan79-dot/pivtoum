@@ -66,14 +66,33 @@ export default function StarterKitPage() {
           messy, unpredictable place — or judgment that can&rsquo;t be written down — is not.
         </p>
 
-        <h2>How to read the result</h2>
+        <h2>Score it, then read it</h2>
         <p>
-          Mostly &ldquo;protected&rdquo; answers means the work has a real moat. Mostly the other way
-          means it&rsquo;s exposed — <em>no matter how prestigious the title sounds.</em> The one
-          thing to remember: <strong>the line runs through the job title, not around it.</strong> The
-          same profession can hold a safe path and a doomed one — a trial litigator and a
-          document-review associate are both lawyers. So don&rsquo;t ask &ldquo;is medicine safe?&rdquo;
-          Ask &ldquo;which <em>version</em> of it is my kid aiming at?&rdquo;
+          <strong>Give the career one point for every &ldquo;protected&rdquo; answer</strong> —
+          unpredictable, human-accountable, and can&rsquo;t-be-reduced-to-a-screen.
+        </p>
+        <ul>
+          <li>
+            <strong>3 — a real moat.</strong> Among the safest work there is. AI chips at the edges
+            (the admin, the paperwork) but not the core.
+          </li>
+          <li>
+            <strong>2 — protected, with a catch.</strong> One exposed answer almost always points to
+            a specific weak spot — a track, a specialty, or the entry-level rung. Steer them to the
+            protected version of the field, not away from the field.
+          </li>
+          <li>
+            <strong>0–1 — exposed.</strong> The title won&rsquo;t save it. Look hard at what
+            they&rsquo;d actually do all day: if it&rsquo;s the repeatable, screen-able,
+            no-one-accountable part, the score is telling you something.
+          </li>
+        </ul>
+        <p>
+          And the one thing to remember whatever the number:{" "}
+          <strong>the line runs through the job title, not around it.</strong> The same profession
+          holds a safe path and a doomed one — a trial litigator and a document-review associate are
+          both lawyers. So don&rsquo;t ask &ldquo;is medicine safe?&rdquo; Ask &ldquo;which{" "}
+          <em>version</em> of it is my kid aiming at?&rdquo;
         </p>
 
         <h2>How to raise it with your teenager (without a fight)</h2>
@@ -97,11 +116,14 @@ export default function StarterKitPage() {
         </ul>
 
         <div className="buy" style={{ marginTop: "2.5rem" }}>
-          <h2>When you&rsquo;re ready to go past three questions</h2>
+          <h2>When you&rsquo;re ready to choose, not just check</h2>
           <p>
-            The test tells you the shape. The full profiles give you the whole picture for the
-            careers your kid is <em>actually</em> weighing — all six factors, the sub-tracks that
-            split a field in two, the three-year trend, and the sources behind every number.
+            The test tells you the shape. The full profile is how you actually <em>choose</em> — the
+            whole picture for the careers your kid is weighing: all six factors scored and explained,
+            the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one
+            that isn&rsquo;t), the three-year trend so you know which way it&rsquo;s moving, every
+            source behind the numbers, and a version written directly to your kid. A degree is one of
+            the biggest bets your family will make — this is how you make it on evidence, not a hunch.
           </p>
           <p className="fine">
             <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link>{" "}

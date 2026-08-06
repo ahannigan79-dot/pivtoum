@@ -4,6 +4,7 @@ import { careerCount } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { buildIndexRows } from "@/lib/career-index";
 import { CareerIndex } from "@/components/CareerIndex";
+import { StarterKitCta } from "@/components/StarterKitCta";
 import { HeroContrast } from "@/components/HeroContrast";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
@@ -91,6 +92,7 @@ export default function Home() {
             </p>
           </div>
 
+          <StarterKitCta />
           <CareerIndex rows={indexRows} />
 
           {/* Print: two numeric columns, no bars */}
