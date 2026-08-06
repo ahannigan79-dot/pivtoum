@@ -113,7 +113,7 @@ export function pdfWelcomeEmail(opts: {
           <p style="margin:0 0 24px;">${button(pdfUrl, "Download your PDF", ink)}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kids&rsquo; futures alongside you. The sampler tells you where a career stands. The <strong>full profile</strong> is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; the profile is how you make it on evidence, not a hunch.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>full profile</strong> is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; the profile is how you make it on evidence, not a hunch.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
@@ -136,7 +136,7 @@ export function pdfWelcomeEmail(opts: {
   const text =
     `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
     `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
-    `I started Pivotum because I work in AI for a living and I'm figuring out my own kids' futures alongside you. The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; the profile is how you make it on evidence, not a hunch.\n\n` +
+    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; the profile is how you make it on evidence, not a hunch.\n\n` +
     `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
