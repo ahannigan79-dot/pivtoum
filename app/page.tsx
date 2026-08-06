@@ -43,9 +43,6 @@ export default function Home() {
                 </Link>
               </div>
               <p className="lp-creed">{SITE.creed}</p>
-              <p className="lp-selfcheck">
-                Not choosing for a teenager? <Link href="/your-career">Check for yourself &rarr;</Link>
-              </p>
             </div>
 
             <HeroContrast />
