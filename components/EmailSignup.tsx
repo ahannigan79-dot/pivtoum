@@ -14,18 +14,18 @@ interface EmailSignupProps {
   cta?: string;
   /** Confirmation shown after a successful signup. */
   done?: string;
-  /** Where to send the reader after signup to collect the lead magnet. Pass null to disable. */
-  deliver?: string | null;
+  /** Which PDF to email: a sampler slug, or "index" for all 28 scores. */
+  source?: string;
   /** Drop the top border/margin when the form leads a block rather than closing one. */
   flush?: boolean;
 }
 
 export function EmailSignup({
-  label = "Get the free Parent’s AI-Proofing Starter Kit",
-  sub = "The three-question test to size up any career your kid names, how to read it, and how to raise it with your teenager — plus each new essay. Free, no spam, unsubscribe anytime.",
-  cta = "Send me the kit",
-  done = "You’re in — your Starter Kit is ready below, and the next essay is on its way.",
-  deliver = "/starter-kit",
+  label = "Email me all 28 AI-exposure scores (PDF)",
+  sub = "One page, safest to most exposed, with the breakdown — plus each new essay. Free, no spam, unsubscribe anytime.",
+  cta = "Email me the PDF",
+  done = "Check your inbox — your PDF (and a subscriber discount) is on its way.",
+  source = "index",
   flush = false,
 }: EmailSignupProps = {}) {
   const [email, setEmail] = useState("");
@@ -38,7 +38,7 @@ export function EmailSignup({
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, source }),
     });
     if (res.ok) {
       trackPixel("Lead");
@@ -52,13 +52,6 @@ export function EmailSignup({
     return (
       <div className={cls}>
         <p className="signup-note">{done}</p>
-        {deliver ? (
-          <p className="signup-note">
-            <a className="signup-deliver" href={deliver}>
-              Open your Starter Kit &rarr;
-            </a>
-          </p>
-        ) : null}
       </div>
     );
   }

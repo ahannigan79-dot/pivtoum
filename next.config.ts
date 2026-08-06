@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   // at runtime and push them to Blob.
   outputFileTracingIncludes: {
     "/api/upload-profiles": ["./profiles-src/**"],
+    "/api/upload-samplers": ["./samplers-src/**"],
   },
 };
 

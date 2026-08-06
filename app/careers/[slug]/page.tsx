@@ -66,7 +66,7 @@ export default async function CareerPage({
   const components: MDXComponents = {
     ScoreTable: () => (
       <>
-        <StarterKitCta />
+        <StarterKitCta source={career.slug} title={career.name} />
         <ScoreTable career={career} />
       </>
     ),
