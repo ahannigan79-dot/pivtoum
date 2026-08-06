@@ -4,6 +4,7 @@ import CS from "@/content/full/computer-science.mdx";
 import { getCareer } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
+import { EmailSignup } from "@/components/EmailSignup";
 
 const career = getCareer("computer-science")!;
 
@@ -57,6 +58,10 @@ export default function ComputerSciencePage() {
           <Link href="/careers/computer-science/student">free student version →</Link>
         </p>
         <CS />
+        <EmailSignup
+          label="Want the test behind this profile?"
+          sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new essay and edition. Free, no spam."
+        />
         <SiteFooter />
       </div>
       <script

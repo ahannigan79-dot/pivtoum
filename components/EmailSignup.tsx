@@ -14,16 +14,23 @@ interface EmailSignupProps {
   cta?: string;
   /** Confirmation shown after a successful signup. */
   done?: string;
+  /** Where to send the reader after signup to collect the lead magnet. Pass null to disable. */
+  deliver?: string | null;
+  /** Drop the top border/margin when the form leads a block rather than closing one. */
+  flush?: boolean;
 }
 
 export function EmailSignup({
-  label = "Get our articles and newsletter — free",
-  sub = "Essays on how AI is reshaping careers, plus each new edition of the index. By email — free, no spam, unsubscribe anytime.",
-  cta = "Subscribe",
-  done = "You’re in — watch your inbox for our next piece.",
+  label = "Get the free Parent’s AI-Proofing Starter Kit",
+  sub = "The three-question test to size up any career your kid names, how to read it, and how to raise it with your teenager — plus each new essay. Free, no spam, unsubscribe anytime.",
+  cta = "Send me the kit",
+  done = "You’re in — your Starter Kit is ready below, and the next essay is on its way.",
+  deliver = "/starter-kit",
+  flush = false,
 }: EmailSignupProps = {}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const cls = flush ? "signup signup-flush" : "signup";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -42,11 +49,22 @@ export function EmailSignup({
   }
 
   if (status === "done") {
-    return <p className="signup-note">{done}</p>;
+    return (
+      <div className={cls}>
+        <p className="signup-note">{done}</p>
+        {deliver ? (
+          <p className="signup-note">
+            <a className="signup-deliver" href={deliver}>
+              Open your Starter Kit &rarr;
+            </a>
+          </p>
+        ) : null}
+      </div>
+    );
   }
 
   return (
-    <form className="signup" onSubmit={submit}>
+    <form className={cls} onSubmit={submit}>
       <label className="signup-label" htmlFor="signup-email">
         {label}
       </label>

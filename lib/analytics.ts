@@ -12,8 +12,9 @@ type EventValue = string | number | boolean | null;
  * These events are cookieless and aggregate — the same privacy footing as the
  * pageview analytics already disclosed — so they need no consent gate.
  *
- * Funnel: buy_page_view → buy_ack_checked → checkout_start → purchase, plus
- * lead_signup for newsletter captures.
+ * Funnel:
+ *   Top:  sampler_view / essay_view → lead_signup   (content → subscribe)
+ *   Buy:  buy_page_view → buy_ack_checked → checkout_start → purchase
  */
 export function trackEvent(name: string, props?: Record<string, EventValue>): void {
   if (!isProductionHost()) return; // keep preview/staging testing out of the funnel

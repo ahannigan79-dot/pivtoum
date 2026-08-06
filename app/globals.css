@@ -538,6 +538,12 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .signup-row button:hover { background: var(--pen); }
 .signup-note { font-size: .875rem; color: var(--ink-soft); margin: .8rem 0 0; }
 .signup-sub { font-size: .875rem; color: var(--ink-soft); margin: .35rem 0 .9rem; max-width: 30rem; line-height: 1.5; }
+/* When the form leads a block (e.g. the primary CTA) rather than closing one. */
+.signup-flush { margin-top: 1rem; padding-top: 0; border-top: none; }
+.signup-deliver { font-weight: 600; color: var(--pen); }
+/* The demoted "ready to buy" tier of BuyBlock, under the free lead capture. */
+.buy-secondary { margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid var(--rule); }
+.buy-secondary h3 { margin: 0 0 .3rem; }
 
 /* ============================================================================
    Landing page — scoped under .lp so it never touches the document pages.

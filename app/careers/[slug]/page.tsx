@@ -17,6 +17,7 @@ import { RelatedCareers } from "@/components/RelatedCareers";
 import { FullProfileTable } from "@/components/FullProfileTable";
 import { BuyBlock } from "@/components/BuyBlock";
 import { SiteFooter } from "@/components/SiteFooter";
+import { PageView } from "@/components/PageView";
 
 export const dynamicParams = false;
 
@@ -107,6 +108,7 @@ export default async function CareerPage({
   return (
     <div className="page">
       <div className="body">
+        <PageView event="sampler_view" />
         <CareerHeader career={career} />
         <ScoreBadge career={career} />
         <QuickAnswer career={career} />

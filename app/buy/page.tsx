@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BuyPacks } from "@/components/BuyPacks";
 import { SiteFooter } from "@/components/SiteFooter";
+import { EmailSignup } from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "Get the full profiles",
@@ -38,6 +39,11 @@ export default function BuyPage() {
           <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link> We
           publish computer science in full so you can judge the depth before buying anything.
         </p>
+
+        <EmailSignup
+          label="Not ready to buy? Start free."
+          sub="Grab the Parent’s AI-Proofing Starter Kit — the three-question test — plus each new essay and edition. Free, no spam."
+        />
 
         <SiteFooter />
       </div>
