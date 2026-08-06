@@ -106,15 +106,14 @@ export function pdfWelcomeEmail(opts: {
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your free Pivotum PDF, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 14px;">Here&rsquo;s your PDF &mdash; and ${discountLabel} inside</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Hi &mdash; I&rsquo;m ${SITE.founder}, I built Pivotum</div>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Your <strong>${pdfLabel}</strong> is ready below. And because you subscribed, there&rsquo;s <strong>${discountLabel} the full profiles</strong> waiting with the code <strong>${code}</strong> &mdash; good for ${expiresDays} days.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the full profiles</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
 
-          <p style="margin:0 0 26px;">${button(pdfUrl, "Download your PDF", ink)}</p>
+          <p style="margin:0 0 24px;">${button(pdfUrl, "Download your PDF", ink)}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pen};margin:0 0 8px;">Why the full profile matters</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">The sampler tells you where a career stands. The full profile is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; this is how you make it on evidence, not a hunch.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kids&rsquo; futures alongside you. The sampler tells you where a career stands. The <strong>full profile</strong> is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; the profile is how you make it on evidence, not a hunch.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
@@ -122,6 +121,9 @@ export function pdfWelcomeEmail(opts: {
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
             <p style="margin:0;">${button(buyUrl, "Get the profiles", pen)}</p>
           </td></tr></table>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">Either way, I hope the PDF helps. Reply any time &mdash; I read every one.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${inkSoft};margin:0;">&mdash; ${SITE.founder}, founder, Pivotum</p>
         </td></tr>
         <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.7;color:${pencil};margin:0;">28 careers, scored the same way. Scores measure exposure to what AI can already do &mdash; not how much any employer has deployed. Re-scored every six months. We publish where we might be wrong.</p>
@@ -132,13 +134,11 @@ export function pdfWelcomeEmail(opts: {
   </body></html>`;
 
   const text =
-    `Here's your PDF — and ${discountLabel} inside.\n\n` +
-    `Your ${pdfLabel} is ready to download:\n${pdfUrl}\n\n` +
-    `Because you subscribed, here's ${discountLabel} the full profiles with code ${code} — good for ${expiresDays} days.\n\n` +
-    `WHY THE FULL PROFILE MATTERS\n` +
-    `The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; this is how you make it on evidence, not a hunch.\n\n` +
+    `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
+    `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
+    `I started Pivotum because I work in AI for a living and I'm figuring out my own kids' futures alongside you. The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; the profile is how you make it on evidence, not a hunch.\n\n` +
     `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
-    `Pivotum — 28 careers, scored the same way.`;
+    `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };
 }

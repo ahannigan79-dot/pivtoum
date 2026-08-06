@@ -4,6 +4,7 @@ import { addSubscriber } from "@/lib/db";
 import { getCareer } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { pdfWelcomeEmail } from "@/lib/emails";
+import { mintLeadPromoCode } from "@/lib/stripe";
 import { SITE } from "@/lib/site";
 
 /**
@@ -59,13 +60,17 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
   if (apiKey && from) {
+    const expiresDays = 7;
+    // A unique single-use code per subscriber; falls back to a shared code if
+    // Stripe / the lead coupon isn't configured.
+    const code = (await mintLeadPromoCode(expiresDays)) ?? "PARENT20";
     try {
       const { html, text } = pdfWelcomeEmail({
         pdfUrl,
         pdfLabel,
-        code: "PARENT20",
+        code,
         discountLabel: "20% off",
-        expiresDays: 7,
+        expiresDays,
         buyUrl: `${SITE.url}/buy`,
       });
       const resend = new Resend(apiKey);
