@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { essayMdx, essaySlugs, getEssay } from "@/content/essays/registry";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
+import { EmailSignup } from "@/components/EmailSignup";
+import { PageView } from "@/components/PageView";
 
 export const dynamicParams = false;
 
@@ -60,6 +62,7 @@ export default async function EssayPage({
   return (
     <div className="page">
       <div className="body">
+        <PageView event="essay_view" />
         <div className="crumb" style={{ paddingTop: "1.5rem" }}>
           <span>
             <Link href="/">Pivotum</Link>
@@ -68,6 +71,7 @@ export default async function EssayPage({
           <span>Essays</span>
         </div>
         <Essay />
+        <EmailSignup />
         <SiteFooter />
       </div>
       <script

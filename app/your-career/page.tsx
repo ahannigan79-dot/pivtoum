@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description:
     `Worried AI is coming for your job? Pivotum scores ${careerCount} careers on AI exposure — the same six factors, re-scored every six months, with the reasoning shown. Find your field and see exactly where it stands.`,
   alternates: { canonical: "/your-career" },
+  // Paused for now — focusing on the parent/kid audience. Unlinked + noindex,
+  // kept in place so it's a one-line change to bring back.
+  robots: { index: false, follow: true },
 };
 
 export default function YourCareer() {

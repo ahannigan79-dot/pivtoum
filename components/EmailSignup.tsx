@@ -14,16 +14,23 @@ interface EmailSignupProps {
   cta?: string;
   /** Confirmation shown after a successful signup. */
   done?: string;
+  /** Which PDF to email: a sampler slug, or "index" for all 28 scores. */
+  source?: string;
+  /** Drop the top border/margin when the form leads a block rather than closing one. */
+  flush?: boolean;
 }
 
 export function EmailSignup({
-  label = "Get our articles and newsletter — free",
-  sub = "Essays on how AI is reshaping careers, plus each new edition of the index. By email — free, no spam, unsubscribe anytime.",
-  cta = "Subscribe",
-  done = "You’re in — watch your inbox for our next piece.",
+  label = "Email me all 28 AI-exposure scores (PDF)",
+  sub = "One page, safest to most exposed, with the breakdown — plus each new essay. Free, no spam, unsubscribe anytime.",
+  cta = "Email me the PDF",
+  done = "Check your inbox — your PDF (and a subscriber discount) is on its way.",
+  source = "index",
+  flush = false,
 }: EmailSignupProps = {}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const cls = flush ? "signup signup-flush" : "signup";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,7 +38,7 @@ export function EmailSignup({
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, source }),
     });
     if (res.ok) {
       trackPixel("Lead");
@@ -42,11 +49,15 @@ export function EmailSignup({
   }
 
   if (status === "done") {
-    return <p className="signup-note">{done}</p>;
+    return (
+      <div className={cls}>
+        <p className="signup-note">{done}</p>
+      </div>
+    );
   }
 
   return (
-    <form className="signup" onSubmit={submit}>
+    <form className={cls} onSubmit={submit}>
       <label className="signup-label" htmlFor="signup-email">
         {label}
       </label>

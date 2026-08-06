@@ -4,9 +4,9 @@ import { careerCount } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { buildIndexRows } from "@/lib/career-index";
 import { CareerIndex } from "@/components/CareerIndex";
+import { StarterKitCta } from "@/components/StarterKitCta";
 import { HeroContrast } from "@/components/HeroContrast";
 import { SiteFooter } from "@/components/SiteFooter";
-import { EmailSignup } from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "Pivotum — Which careers is AI reshaping?",
@@ -43,9 +43,6 @@ export default function Home() {
                 </Link>
               </div>
               <p className="lp-creed">{SITE.creed}</p>
-              <p className="lp-selfcheck">
-                Not choosing for a teenager? <Link href="/your-career">Check for yourself &rarr;</Link>
-              </p>
             </div>
 
             <HeroContrast />
@@ -91,6 +88,7 @@ export default function Home() {
             </p>
           </div>
 
+          <StarterKitCta />
           <CareerIndex rows={indexRows} />
 
           {/* Print: two numeric columns, no bars */}
@@ -131,7 +129,7 @@ export default function Home() {
         </section>
 
         <section id="subscribe">
-          <EmailSignup sub="Our essays and new career scores, straight to your inbox — like why pharmacy scores worse than nursing. Free, no spam." />
+          <StarterKitCta />
         </section>
         <SiteFooter />
       </div>

@@ -1,6 +1,8 @@
 /** Site-wide constants. Domain can be overridden via NEXT_PUBLIC_SITE_URL. */
 export const SITE = {
   name: "Pivotum",
+  /** The founder — emails go out in his voice to sound human, not corporate. */
+  founder: "Adam",
   tagline: "Help your kid choose a career that lasts.",
   /** The trust line — who we are and why we care. Shown site-wide (parent framing). */
   creed: "We build AI for a living, and we’re figuring out our own teenagers’ futures alongside yours.",
