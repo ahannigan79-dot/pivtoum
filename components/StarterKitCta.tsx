@@ -15,7 +15,7 @@ export function StarterKitCta({ source = "index", title }: { source?: string; ti
         {isSampler ? (
           <>
             <strong>Email me the {title} write-up</strong> — the full sampler as a PDF to keep,
-            print, and talk through with your partner.
+            print, and talk through with your family.
           </>
         ) : (
           <>
