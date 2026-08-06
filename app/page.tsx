@@ -7,7 +7,6 @@ import { CareerIndex } from "@/components/CareerIndex";
 import { StarterKitCta } from "@/components/StarterKitCta";
 import { HeroContrast } from "@/components/HeroContrast";
 import { SiteFooter } from "@/components/SiteFooter";
-import { EmailSignup } from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "Pivotum — Which careers is AI reshaping?",
@@ -133,7 +132,7 @@ export default function Home() {
         </section>
 
         <section id="subscribe">
-          <EmailSignup />
+          <StarterKitCta />
         </section>
         <SiteFooter />
       </div>

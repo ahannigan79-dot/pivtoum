@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EmailSignup } from "@/components/EmailSignup";
+import { StarterKitCta } from "@/components/StarterKitCta";
 
 export interface Pack {
   size: number;
@@ -15,19 +15,10 @@ export const PACKS: Pack[] = [
   { size: 5, label: "5 profiles", price: "$39", tag: "Most families" },
 ];
 
-export function BuyBlock() {
+export function BuyBlock({ source = "index", title }: { source?: string; title?: string }) {
   return (
     <div className="buy">
-      <h2>Start free: the Parent&rsquo;s AI-Proofing Starter Kit</h2>
-      <p className="fine">
-        Not buying today? Start here. The three-question test we use to score careers — so you
-        can size up any path your kid names — plus how to raise it with your teenager. Free.
-      </p>
-      <EmailSignup
-        flush
-        label="Where should we send it?"
-        sub="The Starter Kit now, then each new essay and edition of the index. Free, no spam, unsubscribe anytime."
-      />
+      <StarterKitCta source={source} title={title} />
 
       <div className="buy-secondary">
         <h3>Choose the degree with your eyes open</h3>

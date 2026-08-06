@@ -79,7 +79,7 @@ export default async function CareerPage({
     FaqList: () => <FaqList career={career} />,
     RelatedCareers: () => <RelatedCareers career={career} />,
     FullProfileTable: () => <FullProfileTable career={career} />,
-    BuyBlock: () => <BuyBlock />,
+    BuyBlock: () => <BuyBlock source={career.slug} title={career.name} />,
     ol: (props: React.HTMLAttributes<HTMLOListElement>) => <ol className="ranked" {...props} />,
   };
 
