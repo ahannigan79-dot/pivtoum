@@ -45,27 +45,25 @@ export default function StarterKitPage() {
           answer is a point in the career&rsquo;s favour.
         </p>
 
-        <h3>1. Is the work unpredictable — or the same steps repeated?</h3>
         <p>
-          Is every day a different situation that has to be read and responded to in the moment
-          (a new patient, a new site, a new fault)? Or is it the same procedure run over and over?
-          <strong> Repeatable and predictable is exposed.</strong> Adaptive, different-every-time
-          work is protected — that&rsquo;s the single strongest signal there is.
+          <strong>1. Is the work unpredictable — or the same steps repeated?</strong> Is every day
+          a different situation that has to be read and responded to in the moment (a new patient, a
+          new site, a new fault)? Or is it the same procedure run over and over? Repeatable and
+          predictable is <em>exposed</em>. Adaptive, different-every-time work is protected —
+          that&rsquo;s the single strongest signal there is.
         </p>
-
-        <h3>2. Does a human have to be accountable for it?</h3>
         <p>
-          Does someone need a person they can <em>trust and hold responsible</em> — licensed, on
-          the hook when it goes wrong, signing their name to the decision? Or is the output just
-          material that feeds someone else&rsquo;s call? <strong>No accountability is exposed.</strong>{" "}
-          A licence, a signature, or real liability is protection AI can&rsquo;t hold.
+          <strong>2. Does a human have to be accountable for it?</strong> Does someone need a person
+          they can trust and hold responsible — licensed, on the hook when it goes wrong, signing
+          their name to the decision? Or is the output just material that feeds someone else&rsquo;s
+          call? No accountability is <em>exposed</em>. A licence, a signature, or real liability is
+          protection AI can&rsquo;t hold.
         </p>
-
-        <h3>3. Could the whole thing be done on a screen, as a fixed procedure?</h3>
         <p>
-          If the work can be reduced to steps and run on a screen, it&rsquo;s in the machine&rsquo;s
-          strike zone. <strong>Screen-able and rule-able is exposed.</strong> Work that needs a body
-          in a messy, unpredictable place — or judgment that can&rsquo;t be written down — is not.
+          <strong>3. Could the whole thing be done on a screen, as a fixed procedure?</strong> If
+          the work can be reduced to steps and run on a screen, it&rsquo;s in the machine&rsquo;s
+          strike zone. Screen-able and rule-able is <em>exposed</em>. Work that needs a body in a
+          messy, unpredictable place — or judgment that can&rsquo;t be written down — is not.
         </p>
 
         <h2>How to read the result</h2>
