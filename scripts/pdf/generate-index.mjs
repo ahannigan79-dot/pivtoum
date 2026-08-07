@@ -74,50 +74,52 @@ function rowHtml(c) {
   const hi = (c.exposed / 10) * 100;
   const safeCol = c.safest <= 4 ? "var(--pen-safe)" : "var(--ink)";
   const expCol = c.exposed >= 6.5 ? "var(--pen)" : "var(--ink)";
-  const note = INSIGHTS[c.name] ? `<tr class="ixnoterow"><td colspan="3" class="ixnote">${esc(INSIGHTS[c.name])}</td></tr>` : "";
-  return `<tr class="ixrow">
-    <td class="ixname">${esc(c.name)}</td>
-    <td class="ixbar"><span class="track"><span class="fill" style="left:${lo}%;width:${hi - lo}%"></span></span></td>
-    <td class="ixnum"><b style="color:${safeCol}">${c.safest.toFixed(1)}</b><span class="dash">–</span><b style="color:${expCol}">${c.exposed.toFixed(1)}</b></td>
-  </tr>${note}`;
+  const note = INSIGHTS[c.name] ? `<div class="ixnote">${esc(INSIGHTS[c.name])}</div>` : "";
+  return `<div class="ixitem">
+    <div class="ixtop">
+      <span class="ixname">${esc(c.name)}</span>
+      <span class="ixbar"><span class="track"><span class="fill" style="left:${lo}%;width:${hi - lo}%"></span></span></span>
+      <span class="ixnum"><b style="color:${safeCol}">${c.safest.toFixed(1)}</b><span class="dash">–</span><b style="color:${expCol}">${c.exposed.toFixed(1)}</b></span>
+    </div>${note}
+  </div>`;
 }
 
 async function main() {
   const [outPdf] = process.argv.slice(2);
   if (!outPdf) { console.error("usage: generate-index.mjs <out.pdf>"); process.exit(1); }
 
-  const rows = careers().map(rowHtml).join("");
   const styles = `
-    .ixhead{display:flex;align-items:baseline;justify-content:space-between;font-family:var(--sans);
-      font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:6px 0 2px;}
-    table.index{width:100%;border-collapse:collapse;margin:.4rem 0 0;}
-    table.index td{vertical-align:middle;}
-    .ixrow td{padding:8px 0 3px;border-bottom:none;}
-    .ixnoterow td{padding:0 0 9px;border-bottom:1px solid var(--rule);}
-    .ixnote{font-family:var(--serif);font-size:9pt;color:var(--ink-soft);line-height:1.42;padding-right:8%;}
-    .ixname{font-family:var(--serif);font-size:11pt;color:var(--ink);width:34%;padding-right:12px;}
-    .ixbar{width:46%;}
-    .ixbar .track{position:relative;display:block;height:9px;border-radius:5px;background:#EFEDE6;}
-    .ixbar .fill{position:absolute;top:0;height:9px;border-radius:5px;background:rgba(255,226,110,.92);}
-    .ixnum{width:20%;text-align:right;font-family:var(--sans);font-size:10.5pt;font-variant-numeric:tabular-nums;white-space:nowrap;}
-    .ixnum .dash{color:var(--pencil);padding:0 3px;}
-    .scalerow{display:flex;justify-content:space-between;font-family:var(--sans);font-size:8pt;
-      letter-spacing:.05em;text-transform:uppercase;color:var(--pencil);margin-top:6px;}`;
+    .brandmark{ margin:0 0 .7cm; width:5cm; }
+    .ixtitle{ font-family:var(--serif); font-weight:600; font-size:26pt; line-height:1.1; letter-spacing:-.01em; margin:.15cm 0 .35cm; }
+    .ixintro{ font-size:10.5pt; color:var(--ink-soft); line-height:1.5; max-width:17cm; margin:0 0 .55cm; }
+    .ixintro p{ margin:0 0 .35cm; }
+    .ixintro b{ color:var(--ink); }
+    .ixhead{ display:flex; gap:12px; align-items:baseline; font-family:var(--sans); font-size:8pt; letter-spacing:.06em; text-transform:uppercase; color:var(--pencil); padding:0 0 6px; border-bottom:1.5px solid var(--ink); }
+    .ixhead .hn{ flex:0 0 33%; } .ixhead .hb{ flex:1 1 auto; text-align:center; } .ixhead .hr{ flex:0 0 15%; text-align:right; }
+    .ixitem{ break-inside:avoid; padding:9px 0 10px; border-bottom:1px solid var(--rule); }
+    .ixtop{ display:flex; gap:12px; align-items:center; }
+    .ixname{ flex:0 0 33%; font-family:var(--serif); font-size:11pt; color:var(--ink); }
+    .ixbar{ flex:1 1 auto; }
+    .ixbar .track{ position:relative; display:block; height:9px; border-radius:5px; background:#EFEDE6; }
+    .ixbar .fill{ position:absolute; top:0; height:9px; border-radius:5px; background:rgba(255,226,110,.92); }
+    .ixnum{ flex:0 0 15%; text-align:right; font-family:var(--sans); font-size:10.5pt; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .ixnum .dash{ color:var(--pencil); padding:0 3px; }
+    .ixnote{ font-family:var(--serif); font-size:9pt; color:var(--ink-soft); line-height:1.42; margin:3px 0 0; padding-right:8%; }
+    .ixfoot{ break-inside:avoid; font-size:9.5pt; color:var(--ink-soft); line-height:1.5; margin:.5cm 0 0; }`;
 
   const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
-  <section class="cover" style="page-break-after:avoid">
-    <div class="brandmark">${LOGO_SVG}</div>
-    <div class="kicker">The Degree Risk Index · ${EDITION} Edition</div>
-    <h1>Every career, scored</h1>
-    <p class="sub">All 28, from safest to most exposed. Each bar runs from a field's most protected role to its most exposed one — the same six factors, the same weights, applied to every career. 1–10, where 10 is most exposed to AI.</p>
-  </section>
-  <section class="sheet">
-    <div class="ixhead"><span>Career</span><span>Safest 0 &nbsp;·····&nbsp; 10 Most exposed</span><span>Range</span></div>
-    <table class="index"><tbody>${rows}</tbody></table>
-    <p class="sub" style="margin-top:14px;font-size:9.5pt">Green marks a genuinely low-exposure entry (≤4.0); red, one that's highly exposed (≥6.5). Re-scored every six months. We publish where we might be wrong — the full reasoning and sources for every career are free at pivotum.ai.</p>
-  </section>
+  <div class="brandmark">${LOGO_SVG}</div>
+  <div class="kicker">The Degree Risk Index · ${EDITION} Edition</div>
+  <h1 class="ixtitle">Every career, scored</h1>
+  <div class="ixintro">
+    <p><b>How we score.</b> Every career is rated 1–10 for AI exposure, where 10 is most at risk — the same six factors and the same weights applied to all 28, so a vet and a paralegal are measured the same way. The score reflects exposure to what AI can already do, not how much any employer has chosen to deploy.</p>
+    <p><b>What the bar shows.</b> Each runs from a field's most protected role to its most exposed, because the biggest risk isn't picking the wrong field — it's picking the wrong path inside it. The same job title routinely holds both a safe career and a doomed one. As a rule, the safe end is unpredictable, hands-on and human-accountable; the exposed end is whatever can be reduced to a screen.</p>
+  </div>
+  <div class="ixhead"><span class="hn">Career</span><span class="hb">Safest 0 &nbsp;·····&nbsp; 10 Most exposed</span><span class="hr">Range</span></div>
+  ${careers().map(rowHtml).join("")}
+  <p class="ixfoot">Green marks a genuinely low-exposure entry (≤4.0); red, one that's highly exposed (≥6.5). Re-scored every six months — we publish where we might be wrong, and the full reasoning and sources for every career are free at pivotum.ai.</p>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_index.html`);
