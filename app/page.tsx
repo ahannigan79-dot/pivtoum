@@ -34,14 +34,12 @@ export default function Home() {
                 factors, re-scored every six months, with the reasoning shown. The biggest decision
                 on the table, made with evidence instead of fear.
               </p>
-              <div className="lp-cta-row">
-                <a className="lp-btn" href="#index">
-                  See all {careerCount} careers
-                </a>
-                <Link className="lp-btn ghost" href="/methodology">
-                  How we score
-                </Link>
-              </div>
+              <StarterKitCta />
+              <p className="lp-hero-browse">
+                Prefer to look first? <a href="#index">See all {careerCount} careers free &rarr;</a>
+                <span className="dot"> · </span>
+                <Link href="/methodology">How we score</Link>
+              </p>
               <p className="lp-creed">{SITE.creed}</p>
             </div>
 

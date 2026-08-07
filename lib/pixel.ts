@@ -3,7 +3,7 @@
  * NEXT_PUBLIC_META_PIXEL_ID is set, so the site runs identically with or
  * without it configured.
  */
-export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "26889950424011995";
+export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "2688950424011995";
 
 type PixelParams = Record<string, unknown>;
 
