@@ -19,8 +19,9 @@ export function StarterKitCta({ source = "index", title }: { source?: string; ti
           </>
         ) : (
           <>
-            <strong>Email me all 28 scores</strong> — the whole index as a one-page PDF, safest to
-            most exposed.
+            <strong>Email me the full 28-career index</strong> — a PDF that goes beyond the table: a
+            plain-English read on every score (where each career is safe, where it&rsquo;s exposed)
+            and the thinking behind the numbers. Yours to keep, print and share.
           </>
         )}
       </p>
