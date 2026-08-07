@@ -21,8 +21,8 @@ interface EmailSignupProps {
 }
 
 export function EmailSignup({
-  label = "Email me all 28 AI-exposure scores (PDF)",
-  sub = "One page, safest to most exposed, with the breakdown — plus each new essay. Free, no spam, unsubscribe anytime.",
+  label = "Email me the full 28-career index (PDF)",
+  sub = "Every career scored, each with a plain-English read on where it’s safe and where it’s exposed — plus each new essay. Free, no spam, unsubscribe anytime.",
   cta = "Email me the PDF",
   done = "Check your inbox — your PDF (and a subscriber discount) is on its way.",
   source = "index",
