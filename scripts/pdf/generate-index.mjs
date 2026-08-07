@@ -36,16 +36,50 @@ function careers() {
 
 const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
 
+// A one-line read per career — the safe end vs the exposed end — so this PDF is
+// worth more than the bare ranked list on the homepage. Keyed by the career name.
+const INSIGHTS = {
+  "Medicine": "Surgery and the bedside are the safest work we score; radiology, read off a screen, is the exposed edge.",
+  "Dentistry": "Hands in a mouth stay safe — it's the dental lab bench that quietly automated a decade ago.",
+  "Nursing": "The protection lives at the bedside, not the qualification; telehealth triage scores nearly double.",
+  "Veterinary Medicine": "A patient that can't describe anything keeps clinical work safe; lab and diagnostic roles are the exposed corner.",
+  "Skilled Trades": "The moat was never 'working with your hands' — it was working somewhere unpredictable. A production line isn't.",
+  "Allied Health": "Bodies, trust, licensure and unpredictability at once; the screen-based corner scores far higher.",
+  "Teaching": "A classroom isn't an information-delivery problem; teaching through a screen is a different trajectory entirely.",
+  "Social Work": "Protected by something rarer than a license — statutory authority over a person's life; case coordination is the exposed part.",
+  "Construction": "On the site, one of the safest jobs there is; in the office attached to it, one of the most exposed.",
+  "Psychology": "A license makes it one of the safest careers; the bare degree lands in ordinary graduate exposure — the widest promise-vs-reality gap we score.",
+  "Engineering": "Point technical aptitude at the physical world (a PE and a site) and it's safe; point it at a CAD desk and it isn't.",
+  "Agriculture": "Hands-on farm management holds; the tech-forward 'precision ag' version is the more exposed one.",
+  "Hospitality": "Human presence substantially is the product; only the back-office booking desk is heavily exposed.",
+  "Transport": "The office job coordinating the vehicles scores higher than anyone actually driving one.",
+  "Translation": "Court and medical interpreting stays safe; general document translation is the single most-exposed job in the index.",
+  "Pharmacy": "The surprise of healthcare — fully licensed and clinical, yet the most exposed health profession bar radiology.",
+  "Law": "The widest split of any licensed profession — the trial litigator is safe, the document-review associate isn't. Both are lawyers.",
+  "Finance": "It protects the person in the room with the client, and offers almost nothing to the analyst preparing the materials.",
+  "Architecture": "The stamp and the site are real protection; the drafting years that used to lead there are automating out from under it.",
+  "Computer science": "Not dying — its entrance is. Safe at the senior end on judgment; the entry rung is the second-highest score in the index.",
+  "Business & Management": "The most-taken degree points at the exposed end; the protected destinations exist, but the route runs through the jobs being automated.",
+  "Life Sciences": "The terminal is more exposed than the bench — the computational branch and the bare degree score highest.",
+  "Cybersecurity": "Safer than most of tech because the adversary keeps changing — but 'safer than software' isn't 'safe.' Tier-one work is exposed.",
+  "Journalism": "Original reporting is barely touched; desk aggregation sits near the top — though the industry's real problem predates AI.",
+  "Accounting": "It all turns on the license — the CPA signature is a legal monopoly; the bookkeeping beneath it is among the most automatable work we score.",
+  "Marketing": "No license, no physical requirement, no structural moat — every bit of protection sits at the senior end and has to be earned.",
+  "Graphic Design": "The one field where AI took the craft itself — production design is the single most-exposed job; only direction holds.",
+  "Data Science": "Closest to the technology, and it didn't protect it — entry analysis is among the most exposed work in the index.",
+};
+
 function rowHtml(c) {
   const lo = (c.safest / 10) * 100;
   const hi = (c.exposed / 10) * 100;
   const safeCol = c.safest <= 4 ? "var(--pen-safe)" : "var(--ink)";
   const expCol = c.exposed >= 6.5 ? "var(--pen)" : "var(--ink)";
-  return `<tr>
+  const note = INSIGHTS[c.name] ? `<tr class="ixnoterow"><td colspan="3" class="ixnote">${esc(INSIGHTS[c.name])}</td></tr>` : "";
+  return `<tr class="ixrow">
     <td class="ixname">${esc(c.name)}</td>
     <td class="ixbar"><span class="track"><span class="fill" style="left:${lo}%;width:${hi - lo}%"></span></span></td>
     <td class="ixnum"><b style="color:${safeCol}">${c.safest.toFixed(1)}</b><span class="dash">–</span><b style="color:${expCol}">${c.exposed.toFixed(1)}</b></td>
-  </tr>`;
+  </tr>${note}`;
 }
 
 async function main() {
@@ -57,7 +91,10 @@ async function main() {
     .ixhead{display:flex;align-items:baseline;justify-content:space-between;font-family:var(--sans);
       font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:6px 0 2px;}
     table.index{width:100%;border-collapse:collapse;margin:.4rem 0 0;}
-    table.index td{padding:7px 0;border-bottom:1px solid var(--rule);vertical-align:middle;}
+    table.index td{vertical-align:middle;}
+    .ixrow td{padding:8px 0 3px;border-bottom:none;}
+    .ixnoterow td{padding:0 0 9px;border-bottom:1px solid var(--rule);}
+    .ixnote{font-family:var(--serif);font-size:9pt;color:var(--ink-soft);line-height:1.42;padding-right:8%;}
     .ixname{font-family:var(--serif);font-size:11pt;color:var(--ink);width:34%;padding-right:12px;}
     .ixbar{width:46%;}
     .ixbar .track{position:relative;display:block;height:9px;border-radius:5px;background:#EFEDE6;}
