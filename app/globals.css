@@ -650,6 +650,10 @@ footer {
 .lp-selfcheck { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: .7rem 0 0; }
 .lp-selfcheck a { color: var(--pen); text-decoration: none; font-weight: 600; }
 .lp-selfcheck a:hover { text-decoration: underline; }
+.lp-hero-browse { font-family: var(--sans); font-size: .82rem; color: var(--pencil); margin: .9rem 0 0; }
+.lp-hero-browse a { color: var(--pen); text-decoration: none; font-weight: 600; }
+.lp-hero-browse a:hover { text-decoration: underline; }
+.lp-hero-browse .dot { color: var(--rule); }
 
 /* ---- Responsive ---------------------------------------------------------- */
 @media (max-width: 62rem) {
