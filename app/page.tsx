@@ -86,7 +86,6 @@ export default function Home() {
             </p>
           </div>
 
-          <StarterKitCta />
           <CareerIndex rows={indexRows} />
 
           {/* Print: two numeric columns, no bars */}
