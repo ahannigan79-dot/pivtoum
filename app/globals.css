@@ -117,6 +117,20 @@ header { padding: 2rem 0 0; }
 }
 .site-nav-cta:hover { border-color: var(--pen); color: var(--pen); }
 
+/* Mobile menu toggle (hamburger) — hidden on desktop, shown ≤34rem */
+.nav-toggle { display: none; background: none; border: 0; padding: .4rem; margin: -.4rem -.2rem -.4rem 0;
+  cursor: pointer; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.nav-toggle-bars { display: block; width: 22px; height: 14px; position: relative; }
+.nav-toggle-bars span { position: absolute; left: 0; width: 100%; height: 2px; background: currentColor;
+  border-radius: 2px; transition: transform .18s ease, opacity .18s ease, top .18s ease; }
+.nav-toggle-bars span:nth-child(1) { top: 0; }
+.nav-toggle-bars span:nth-child(2) { top: 6px; }
+.nav-toggle-bars span:nth-child(3) { top: 12px; }
+.nav-toggle-bars[data-open="true"] span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.nav-toggle-bars[data-open="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle-bars[data-open="true"] span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+.nav-panel { display: none; }
+
 .wordmark {
   font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; color: var(--ink);
   position: relative; display: inline-block; line-height: 1;
@@ -133,12 +147,28 @@ header { padding: 2rem 0 0; }
 
 @media (max-width: 34rem) {
   .site-header .inner { padding: .7rem 1.1rem; }
-  .site-header nav { gap: .7rem; }
-  .site-nav-link { font-size: .62rem; letter-spacing: .06em; }
-  .site-nav-cta { padding: .3rem .5rem; }
-  /* Keep the mobile header uncrowded: drop the most secondary link so
-     Subscribe fits alongside Careers, Articles and Get profiles. */
-  .nav-hide-sm { display: none; }
+  /* Collapse the inline nav into a menu so every link stays reachable on
+     phones (Careers, Methodology and Articles were hidden before). */
+  .site-header .site-nav { display: none; }
+  .nav-toggle { display: block; }
+  .nav-panel {
+    display: flex; flex-direction: column; padding: .3rem 1.1rem 1rem;
+    border-top: 1px solid var(--rule); background: var(--paper);
+  }
+  .nav-panel-link {
+    font-family: var(--sans); font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
+    padding: .85rem .1rem; border-bottom: 1px solid var(--rule);
+  }
+  .nav-panel-link:hover { color: var(--pen); }
+  .nav-panel-cta {
+    color: var(--ink); border: 1px solid var(--rule); border-radius: 2px;
+    text-align: center; padding: .8rem; margin-top: .7rem;
+  }
+  .nav-panel-cta:hover { border-color: var(--pen); color: var(--pen); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle-bars span { transition: none; }
 }
 
 /* ---- Home hero ----------------------------------------------------------- */
