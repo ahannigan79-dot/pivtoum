@@ -106,12 +106,15 @@ export async function POST(req: Request) {
       }
     }
 
-    // Fire the custom event that starts the Resend nurture automation
-    // (Automations › trigger: "Custom event" = `pdf_requested`). The contact
-    // was added just above, so the drip has someone to act on. Best-effort:
-    // a missing event definition or API hiccup never blocks the signup.
+    // Fire the custom event that starts the matching Resend nurture automation
+    // (Automations › trigger: "Custom event"). The two lead types get different
+    // opening emails: index leads are nudged toward the free samplers, sampler
+    // leads toward the full profile. The contact was added just above, so the
+    // drip has someone to act on. Best-effort: a missing event definition or
+    // API hiccup never blocks the signup.
+    const nurtureEvent = slug === "index" ? "index_requested" : "sampler_requested";
     try {
-      await resend.events.send({ event: "pdf_requested", email });
+      await resend.events.send({ event: nurtureEvent, email });
     } catch {
       /* best-effort — the nurture drip is a bonus on top of the saved signup */
     }
