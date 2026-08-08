@@ -85,38 +85,38 @@ export async function POST(req: Request) {
       /* delivery is best-effort — the address is already on the list */
     }
 
-    // Enrol the lead in our Resend audience so the nurture automation
-    // (Resend › Automations, triggered by "contact added to audience") drips
-    // the follow-up sequence. We attach the subscriber's discount code as a
-    // `promo_code` contact property so the day-6 reminder email can surface it
-    // via a {{promo_code}} merge tag. Best-effort throughout: if that property
-    // isn't defined in Resend yet (or the contact already exists) we retry the
-    // plain add, and any failure still never blocks the saved signup.
+    // Enrol the lead + fire the custom event that starts the matching nurture
+    // automation (index leads → free samplers, sampler leads → full profile).
+    // NOTE: the Resend SDK returns { data, error } and does NOT throw on API
+    // errors, so we branch on `error` — a bare try/catch only catches network
+    // throws. We attach the discount code as a `promo_code` property, retrying a
+    // plain add if that property isn't defined yet or the contact already
+    // exists. Logged so we can see exactly what Resend returns. Best-effort:
+    // nothing here ever blocks the already-saved signup.
+    const nurtureEvent = slug === "index" ? "index_requested" : "sampler_requested";
     try {
-      await resend.contacts.create({
+      let contact = await resend.contacts.create({
         email,
         unsubscribed: false,
         properties: { promo_code: code },
       });
-    } catch {
-      try {
-        await resend.contacts.create({ email, unsubscribed: false });
-      } catch {
-        /* best-effort — nurture enrolment is a bonus on top of the saved signup */
+      if (contact.error) {
+        contact = await resend.contacts.create({ email, unsubscribed: false });
       }
-    }
-
-    // Fire the custom event that starts the matching Resend nurture automation
-    // (Automations › trigger: "Custom event"). The two lead types get different
-    // opening emails: index leads are nudged toward the free samplers, sampler
-    // leads toward the full profile. The contact was added just above, so the
-    // drip has someone to act on. Best-effort: a missing event definition or
-    // API hiccup never blocks the signup.
-    const nurtureEvent = slug === "index" ? "index_requested" : "sampler_requested";
-    try {
-      await resend.events.send({ event: nurtureEvent, email });
-    } catch {
-      /* best-effort — the nurture drip is a bonus on top of the saved signup */
+      const event = await resend.events.send({ event: nurtureEvent, email });
+      console.log(
+        "[nurture]",
+        JSON.stringify({
+          email,
+          nurtureEvent,
+          contactId: contact.data?.id ?? null,
+          contactError: contact.error ?? null,
+          eventData: event.data ?? null,
+          eventError: event.error ?? null,
+        }),
+      );
+    } catch (err) {
+      console.log("[nurture] threw", String(err));
     }
   }
 
