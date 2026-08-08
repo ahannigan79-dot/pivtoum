@@ -104,19 +104,15 @@ export async function POST(req: Request) {
         contact = await resend.contacts.create({ email, unsubscribed: false });
       }
       const event = await resend.events.send({ event: nurtureEvent, email });
-      console.log(
-        "[nurture]",
-        JSON.stringify({
-          email,
+      if (contact.error || event.error) {
+        console.error("[nurture] enrolment error", {
           nurtureEvent,
-          contactId: contact.data?.id ?? null,
           contactError: contact.error ?? null,
-          eventData: event.data ?? null,
           eventError: event.error ?? null,
-        }),
-      );
+        });
+      }
     } catch (err) {
-      console.log("[nurture] threw", String(err));
+      console.error("[nurture] threw", String(err));
     }
   }
 
