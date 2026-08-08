@@ -105,6 +105,16 @@ export async function POST(req: Request) {
         /* best-effort — nurture enrolment is a bonus on top of the saved signup */
       }
     }
+
+    // Fire the custom event that starts the Resend nurture automation
+    // (Automations › trigger: "Custom event" = `pdf_requested`). The contact
+    // was added just above, so the drip has someone to act on. Best-effort:
+    // a missing event definition or API hiccup never blocks the signup.
+    try {
+      await resend.events.send({ event: "pdf_requested", email });
+    } catch {
+      /* best-effort — the nurture drip is a bonus on top of the saved signup */
+    }
   }
 
   return NextResponse.json({ ok: true });
