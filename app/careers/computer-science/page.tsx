@@ -60,7 +60,7 @@ export default function ComputerSciencePage() {
         <CS />
         <EmailSignup
           label="Want the test behind this profile?"
-          sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new essay and edition. Free, no spam."
+          sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new article and edition. Free, no spam."
         />
         <SiteFooter />
       </div>

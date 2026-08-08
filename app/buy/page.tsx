@@ -50,7 +50,7 @@ export default function BuyPage() {
 
         <EmailSignup
           label="Not ready to buy? Start free."
-          sub="Grab the Parent’s AI-Proofing Starter Kit — the three-question test — plus each new essay and edition. Free, no spam."
+          sub="Grab the Parent’s AI-Proofing Starter Kit — the three-question test — plus each new article and edition. Free, no spam."
         />
 
         <SiteFooter />

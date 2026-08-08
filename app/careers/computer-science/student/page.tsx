@@ -46,7 +46,7 @@ export default function ComputerScienceStudentPage() {
         <CSStudent />
         <EmailSignup
           label="Parents: get the test behind our scores"
-          sub="The free Starter Kit — the three-question test to size up any career, plus each new essay and edition. Free, no spam."
+          sub="The free Starter Kit — the three-question test to size up any career, plus each new article and edition. Free, no spam."
         />
         <SiteFooter />
       </div>

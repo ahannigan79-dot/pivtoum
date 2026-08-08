@@ -155,6 +155,19 @@ header { padding: 2rem 0 0; }
 .crumb i { font-style: normal; color: var(--pen); }
 .crumb a { color: inherit; text-decoration: none; }
 .crumb a:hover { color: var(--pen); }
+
+/* ---- Articles index ------------------------------------------------------ */
+.artindex-head { padding-top: 1.2rem; }
+.artindex-head .sub { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.55; max-width: 34rem; margin: .2rem 0 2.2rem; }
+.artindex-list { list-style: none; padding: 0; margin: 0; }
+.artindex-item { border-top: 1px solid var(--rule); }
+.artindex-item:last-child { border-bottom: 1px solid var(--rule); }
+.artindex-item a { display: block; text-decoration: none; color: inherit; padding: 1.6rem 0; }
+.artindex-item .aidate { font-family: var(--sans); font-size: .625rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); }
+.artindex-item .aititle { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.22; letter-spacing: -.01em; color: var(--ink); margin: .35rem 0 .45rem; transition: color .15s; font-variation-settings: "opsz" 40; }
+.artindex-item a:hover .aititle { color: var(--pen); }
+.artindex-item .aidesc { color: var(--ink-soft); font-size: 1rem; line-height: 1.55; margin: 0; max-width: 42rem; }
+.artindex-sep { margin: 2.6rem 0 0; }
 h1 {
   font-weight: 600; font-size: clamp(1.9rem, 5.2vw, 2.6rem); line-height: 1.14;
   letter-spacing: -.018em; margin: .9rem 0 .5rem; font-variation-settings: "opsz" 60;

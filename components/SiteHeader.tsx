@@ -16,7 +16,7 @@ export function SiteHeader() {
           <Link className="site-nav-link nav-hide-sm" href="/methodology">
             Methodology
           </Link>
-          <Link className="site-nav-link nav-hide-sm" href="/articles/helping-your-kid-pick-a-career">
+          <Link className="site-nav-link nav-hide-sm" href="/articles">
             Articles
           </Link>
           <Link className="site-nav-link" href="/#subscribe">
