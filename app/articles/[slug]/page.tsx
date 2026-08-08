@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { essayMdx, essaySlugs, getEssay } from "@/content/essays/registry";
+import { articleMdx, articleSlugs, getArticle } from "@/content/articles/registry";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
@@ -10,7 +10,7 @@ import { PageView } from "@/components/PageView";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return essaySlugs.map((slug) => ({ slug }));
+  return articleSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,58 +19,58 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const essay = getEssay(slug);
-  if (!essay) return {};
+  const article = getArticle(slug);
+  if (!article) return {};
   return {
-    title: essay.title,
-    description: essay.description,
-    alternates: { canonical: `/essays/${essay.slug}` },
+    title: article.title,
+    description: article.description,
+    alternates: { canonical: `/articles/${article.slug}` },
     openGraph: {
-      title: essay.title,
-      description: essay.description,
+      title: article.title,
+      description: article.description,
       type: "article",
-      publishedTime: essay.datePublished,
-      modifiedTime: essay.dateModified,
-      url: `${SITE.url}/essays/${essay.slug}`,
+      publishedTime: article.datePublished,
+      modifiedTime: article.dateModified,
+      url: `${SITE.url}/articles/${article.slug}`,
     },
   };
 }
 
-export default async function EssayPage({
+export default async function ArticlePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const essay = getEssay(slug);
-  const loader = essayMdx[slug];
-  if (!essay || !loader) notFound();
-  const { default: Essay } = await loader();
+  const article = getArticle(slug);
+  const loader = articleMdx[slug];
+  if (!article || !loader) notFound();
+  const { default: Article } = await loader();
 
   const ld = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: essay.title,
-    description: essay.description,
-    datePublished: essay.datePublished,
-    dateModified: essay.dateModified,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
     author: { "@type": "Organization", name: SITE.name },
     publisher: { "@type": "Organization", name: SITE.name },
-    mainEntityOfPage: `${SITE.url}/essays/${essay.slug}`,
+    mainEntityOfPage: `${SITE.url}/articles/${article.slug}`,
   };
 
   return (
     <div className="page">
       <div className="body">
-        <PageView event="essay_view" />
+        <PageView event="article_view" />
         <div className="crumb" style={{ paddingTop: "1.5rem" }}>
           <span>
             <Link href="/">Pivotum</Link>
           </span>
           <i>/</i>
-          <span>Essays</span>
+          <span>Articles</span>
         </div>
-        <Essay />
+        <Article />
         <EmailSignup />
         <SiteFooter />
       </div>

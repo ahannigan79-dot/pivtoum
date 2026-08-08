@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
     "/api/upload-profiles": ["./profiles-src/**"],
     "/api/upload-samplers": ["./samplers-src/**"],
   },
+  // The essays section was renamed to /articles — 301 the old URLs so the
+  // one indexed piece keeps its SEO and any external links don't 404.
+  async redirects() {
+    return [
+      { source: "/essays/:slug*", destination: "/articles/:slug*", permanent: true },
+    ];
+  },
 };
 
 const withMDX = createMDX({
