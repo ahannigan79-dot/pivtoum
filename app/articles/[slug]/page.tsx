@@ -6,6 +6,7 @@ import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
 import { PageView } from "@/components/PageView";
+import { Takeaway } from "@/components/Takeaway";
 
 export const dynamicParams = false;
 
@@ -70,7 +71,7 @@ export default async function ArticlePage({
           <i>/</i>
           <span>Articles</span>
         </div>
-        <Article />
+        <Article components={{ Takeaway }} />
         <EmailSignup />
         <SiteFooter />
       </div>
