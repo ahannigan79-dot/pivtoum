@@ -9,6 +9,8 @@ export interface ArticleMeta {
   description: string;
   datePublished: string;
   dateModified: string;
+  /** Absolute-from-root path to a 1.91:1 social share image, if the article has one. */
+  ogImage?: string;
 }
 
 export const articles: ArticleMeta[] = [
@@ -19,6 +21,7 @@ export const articles: ArticleMeta[] = [
       "A founder's honest letter to parents: AI is arriving on top of an already-stacked deck. Here's why it reshapes careers quietly, and the one part of it we still get a say in.",
     datePublished: "2026-08-07",
     dateModified: "2026-08-07",
+    ogImage: "/brand/og-what-im-telling-my-own-kid.png",
   },
   {
     slug: "helping-your-kid-pick-a-career",

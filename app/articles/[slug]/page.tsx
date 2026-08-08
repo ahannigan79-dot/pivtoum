@@ -22,6 +22,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
+  const ogImages = article.ogImage
+    ? [{ url: article.ogImage, width: 1200, height: 630, alt: article.title }]
+    : undefined;
   return {
     title: article.title,
     description: article.description,
@@ -33,6 +36,13 @@ export async function generateMetadata({
       publishedTime: article.datePublished,
       modifiedTime: article.dateModified,
       url: `${SITE.url}/articles/${article.slug}`,
+      images: ogImages,
+    },
+    twitter: {
+      card: ogImages ? "summary_large_image" : "summary",
+      title: article.title,
+      description: article.description,
+      images: ogImages?.map((i) => i.url),
     },
   };
 }
