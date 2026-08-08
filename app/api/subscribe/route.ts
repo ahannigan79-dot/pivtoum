@@ -64,6 +64,7 @@ export async function POST(req: Request) {
     // A unique single-use code per subscriber; falls back to a shared code if
     // Stripe / the lead coupon isn't configured.
     const code = (await mintLeadPromoCode(expiresDays)) ?? "PARENT20";
+    const resend = new Resend(apiKey);
     try {
       const { html, text } = pdfWelcomeEmail({
         pdfUrl,
@@ -73,7 +74,6 @@ export async function POST(req: Request) {
         expiresDays,
         buyUrl: `${SITE.url}/buy`,
       });
-      const resend = new Resend(apiKey);
       await resend.emails.send({
         from,
         to: email,
@@ -83,6 +83,16 @@ export async function POST(req: Request) {
       });
     } catch {
       /* delivery is best-effort — the address is already on the list */
+    }
+
+    // Enrol the lead in our Resend audience so the nurture automation
+    // (Resend › Automations, triggered by "contact added to audience") drips
+    // the follow-up sequence. Best-effort: an already-existing contact or any
+    // API hiccup must never fail the signup.
+    try {
+      await resend.contacts.create({ email, unsubscribed: false });
+    } catch {
+      /* best-effort — nurture enrolment is a bonus on top of the saved signup */
     }
   }
 
