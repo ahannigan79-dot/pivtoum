@@ -137,7 +137,7 @@ header { padding: 2rem 0 0; }
   .site-nav-link { font-size: .62rem; letter-spacing: .06em; }
   .site-nav-cta { padding: .3rem .5rem; }
   /* Keep the mobile header uncrowded: drop the most secondary link so
-     Subscribe fits alongside Careers, Essays and Get profiles. */
+     Subscribe fits alongside Careers, Articles and Get profiles. */
   .nav-hide-sm { display: none; }
 }
 

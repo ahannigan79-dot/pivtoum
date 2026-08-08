@@ -13,7 +13,7 @@ type EventValue = string | number | boolean | null;
  * pageview analytics already disclosed — so they need no consent gate.
  *
  * Funnel:
- *   Top:  sampler_view / essay_view → lead_signup   (content → subscribe)
+ *   Top:  sampler_view / article_view → lead_signup   (content → subscribe)
  *   Buy:  buy_page_view → buy_ack_checked → checkout_start → purchase
  */
 export function trackEvent(name: string, props?: Record<string, EventValue>): void {

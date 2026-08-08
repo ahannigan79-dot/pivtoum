@@ -3,7 +3,7 @@ import type { MDXComponents } from "mdx/types";
 
 type MDXModule = { default: FC<{ components?: MDXComponents }> };
 
-export interface EssayMeta {
+export interface ArticleMeta {
   slug: string;
   title: string;
   description: string;
@@ -11,7 +11,7 @@ export interface EssayMeta {
   dateModified: string;
 }
 
-export const essays: EssayMeta[] = [
+export const articles: ArticleMeta[] = [
   {
     slug: "helping-your-kid-pick-a-career",
     title: "Helping Your Kid Pick a Career Just Got Harder",
@@ -22,11 +22,11 @@ export const essays: EssayMeta[] = [
   },
 ];
 
-export const essayMdx: Record<string, () => Promise<MDXModule>> = {
+export const articleMdx: Record<string, () => Promise<MDXModule>> = {
   "helping-your-kid-pick-a-career": () => import("./helping-your-kid-pick-a-career.mdx"),
 };
 
-export const essaySlugs = Object.keys(essayMdx);
-export function getEssay(slug: string): EssayMeta | undefined {
-  return essays.find((e) => e.slug === slug);
+export const articleSlugs = Object.keys(articleMdx);
+export function getArticle(slug: string): ArticleMeta | undefined {
+  return articles.find((a) => a.slug === slug);
 }
