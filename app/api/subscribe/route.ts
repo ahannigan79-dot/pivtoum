@@ -87,12 +87,23 @@ export async function POST(req: Request) {
 
     // Enrol the lead in our Resend audience so the nurture automation
     // (Resend › Automations, triggered by "contact added to audience") drips
-    // the follow-up sequence. Best-effort: an already-existing contact or any
-    // API hiccup must never fail the signup.
+    // the follow-up sequence. We attach the subscriber's discount code as a
+    // `promo_code` contact property so the day-6 reminder email can surface it
+    // via a {{promo_code}} merge tag. Best-effort throughout: if that property
+    // isn't defined in Resend yet (or the contact already exists) we retry the
+    // plain add, and any failure still never blocks the saved signup.
     try {
-      await resend.contacts.create({ email, unsubscribed: false });
+      await resend.contacts.create({
+        email,
+        unsubscribed: false,
+        properties: { promo_code: code },
+      });
     } catch {
-      /* best-effort — nurture enrolment is a bonus on top of the saved signup */
+      try {
+        await resend.contacts.create({ email, unsubscribed: false });
+      } catch {
+        /* best-effort — nurture enrolment is a bonus on top of the saved signup */
+      }
     }
   }
 
