@@ -219,7 +219,8 @@ header { padding: 2rem 0 0; }
 .scr-logo { width: 132px; margin-bottom: 2.4rem; }
 .scr-logo svg { width: 100%; height: auto; display: block; }
 .scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: 1rem; }
-.scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.08; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
+.scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.16; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
+.scr-h1 .hl { background: linear-gradient(#F6EE12, #F6EE12) no-repeat; background-size: 100% 0.72em; background-position: 0 92%; mix-blend-mode: multiply; padding: 0 .04em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .scr-sub { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 1.6rem; max-width: 34em; }
 .scr-bar { display: flex; gap: 3px; margin: 0 0 .5rem; }
 .scr-bar span { height: 16px; flex: 1; }
