@@ -25,7 +25,10 @@ export default function ScoresLanding() {
 
         <div className="scr-eyebrow">The AI Career Index · Free</div>
         <h1 className="scr-h1">
-          Is your kid&rsquo;s career <span className="hl">safe from AI?</span>
+          Is your kid&rsquo;s career{" "}
+          <span className="hl" style={{ whiteSpace: "nowrap" }}>
+            safe from AI?
+          </span>
         </h1>
         <p className="scr-sub">
           All 28 careers ranked by AI exposure — the safe-vs-exposed split inside each, and the one
@@ -61,7 +64,7 @@ export default function ScoresLanding() {
           </div>
           <div className="scr-stat">
             <b>6</b>
-            <span>factors — with the reasoning shown</span>
+            <span>factors — the same for every career</span>
           </div>
         </div>
 
