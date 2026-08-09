@@ -96,7 +96,10 @@ async function main() {
     .ixintro b{ color:var(--ink); }
     .ixhead{ display:flex; gap:12px; align-items:baseline; font-family:var(--sans); font-size:8pt; letter-spacing:.06em; text-transform:uppercase; color:var(--pencil); padding:0 0 6px; border-bottom:1.5px solid var(--ink); }
     .ixhead .hn{ flex:0 0 33%; } .ixhead .hb{ flex:1 1 auto; text-align:center; } .ixhead .hr{ flex:0 0 15%; text-align:right; }
-    .ixitem{ break-inside:avoid; padding:9px 0 10px; border-bottom:1px solid var(--rule); }
+    .ixband{ break-inside:avoid; break-after:avoid; margin:.55cm 0 .05cm; }
+    .ixband-t{ font-family:var(--sans); font-weight:700; font-size:9.5pt; letter-spacing:.05em; text-transform:uppercase; }
+    .ixband-n{ font-family:var(--serif); font-size:9pt; color:var(--ink-soft); line-height:1.45; margin:2px 0 0; max-width:16cm; }
+    .ixitem{ break-inside:avoid; padding:11px 0 12px; border-bottom:1px solid var(--rule); }
     .ixtop{ display:flex; gap:12px; align-items:center; }
     .ixname{ flex:0 0 33%; font-family:var(--serif); font-size:11pt; color:var(--ink); }
     .ixbar{ flex:1 1 auto; }
@@ -107,18 +110,47 @@ async function main() {
     .ixnote{ font-family:var(--serif); font-size:9pt; color:var(--ink-soft); line-height:1.42; margin:3px 0 0; padding-right:8%; }
     .ixfoot{ break-inside:avoid; font-size:9.5pt; color:var(--ink-soft); line-height:1.5; margin:.5cm 0 0; }`;
 
+  // Group the 28 into three tiers by how protected even their safest role is —
+  // so the page reads as a story in three chunks, not a wall of 28 rows.
+  const BANDS = [
+    {
+      color: "var(--pen-safe)",
+      title: "A safe path is there for the taking",
+      note: "Even the most protected role in these fields scores low. The exposure only shows up if your kid drifts toward the screen-based corner of the work.",
+      test: (c) => c.safest <= 3.5,
+    },
+    {
+      color: "var(--ink)",
+      title: "Safe or exposed — the path decides, not the field",
+      note: "Each of these holds a protected career and a doomed one under the same job title. Which one your kid ends up in comes down to the track they choose.",
+      test: (c) => c.safest > 3.5 && c.safest < 5.0,
+    },
+    {
+      color: "var(--pen)",
+      title: "Exposed even at its most protected",
+      note: "The whole field skews exposed and the safe corner is narrow. Not off-limits — but go in clear-eyed about where the value has already moved.",
+      test: (c) => c.safest >= 5.0,
+    },
+  ];
+  const all = careers();
+  const bandsHtml = BANDS.map((band) => {
+    const rows = all.filter(band.test).map(rowHtml).join("");
+    if (!rows) return "";
+    return `<div class="ixband"><div class="ixband-t" style="color:${band.color}">${band.title}</div><div class="ixband-n">${band.note}</div></div>${rows}`;
+  }).join("");
+
   const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="kicker">The Degree Risk Index · ${EDITION} Edition</div>
+  <div class="kicker">The AI Career Index · ${EDITION} Edition</div>
   <h1 class="ixtitle">Every career, scored</h1>
   <div class="ixintro">
     <p><b>How we score.</b> Every career is rated 1–10 for AI exposure, where 10 is most at risk — the same six factors and the same weights applied to all 28, so a vet and a paralegal are measured the same way. The score reflects exposure to what AI can already do, not how much any employer has chosen to deploy.</p>
     <p><b>What the bar shows.</b> Each runs from a field's most protected role to its most exposed, because the biggest risk isn't picking the wrong field — it's picking the wrong path inside it. The same job title routinely holds both a safe career and a doomed one. As a rule, the safe end is unpredictable, hands-on and human-accountable; the exposed end is whatever can be reduced to a screen.</p>
   </div>
   <div class="ixhead"><span class="hn">Career</span><span class="hb">Safest 0 &nbsp;·····&nbsp; 10 Most exposed</span><span class="hr">Range</span></div>
-  ${careers().map(rowHtml).join("")}
+  ${bandsHtml}
   <p class="ixfoot">Green marks a genuinely low-exposure entry (≤4.0); red, one that's highly exposed (≥6.5). Re-scored every six months — we publish where we might be wrong, and the full reasoning and sources for every career are free at pivotum.ai.</p>
 </body></html>`;
 
@@ -126,7 +158,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>The Degree Risk Index · Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
+    <span>The AI Career Index · Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });
