@@ -41,6 +41,22 @@ const STEPS = [
   "<b>Skip the disappearing rung on purpose.</b> Don&rsquo;t spend three years on CRUD hoping to be promoted out of it &mdash; the rung is automating under you. Aim at judgment work deliberately, from the first job you take.",
 ];
 
+const NICHES = "The safe lane, concretely: <b>formal verification, security engineering, embedded and robotics, ML infrastructure with real domain judgment, distributed systems at scale</b> &mdash; work where correctness is load-bearing and a human is on the hook for it.";
+
+const TIMELINE = [
+  { w: "This year", b: "One project " + pick("your kid designs", "you design") + " and <b>owns</b>, not another CRUD app. A safe-niche elective &mdash; security, systems, or embedded. An internship or role <b>near production</b>, not just a coding task. And real fluency with the AI tools, on " + pick("their", "your") + " own time." },
+  { w: "First job", b: "Optimise for <b>ownership and consequence</b>, not brand or starting salary. A team where " + pick("they&rsquo;re", "you&rsquo;re") + " responsible for something live beats a prestigious one where " + pick("they&rsquo;re", "you&rsquo;re") + " one of forty juniors writing tickets. Say yes to on-call." },
+  { w: "Years 2&ndash;3", b: "Bank the r&eacute;sum&eacute; line no model can reproduce: a security review " + pick("they led", "you led") + ", a system " + pick("they own", "you own") + ", an incident " + pick("they handled", "you handled") + " end to end. By year three, be <b>accountable for something</b> &mdash; that&rsquo;s the safe lane, arrived at." },
+];
+
+const TRAPS = [
+  "<b>Grinding tickets and CRUD</b> hoping to be promoted out &mdash; the rung is automating under you, not lifting you.",
+  "<b>Chasing the hottest framework</b> instead of the durable fundamentals: systems, security, judgment.",
+  "<b>Treating leetcode as the destination.</b> It&rsquo;s the door, not the room.",
+  "<b>Optimising the first job for brand or salary</b> over ownership and consequence.",
+  "<b>Being the fastest code-typer</b> rather than the one who supervises the machine&rsquo;s output. Speed at boilerplate <em>is</em> the 8.1.",
+];
+
 const EXITS = [
   "<b>Cybersecurity</b> &mdash; the adversary keeps changing, so the work resists automation better than most of software. Your CS base transfers directly.",
   "<b>SRE / production reliability</b> &mdash; paid for accountability under pressure, which is precisely what a model can&rsquo;t be.",
@@ -90,7 +106,15 @@ async function main() {
     .lst{ display:flex; flex-direction:column; gap:.26cm; margin:.1cm 0 0; }
     .lst-i{ display:flex; gap:.35cm; font-size:10.2pt; color:var(--ink-soft); line-height:1.45; align-items:baseline; }
     .lst-i .m{ color:var(--pen-safe); font-weight:700; flex:0 0 auto; }
-    .lst-i b{ color:var(--ink); }
+    .lst-i .x{ color:var(--pen); font-weight:700; flex:0 0 auto; }
+    .lst-i b{ color:var(--ink); } .lst-i em{ font-style:italic; color:var(--ink); }
+    .cap{ font-family:var(--serif); font-size:9.6pt; color:var(--ink-soft); line-height:1.45; margin:.05cm 0 .1cm; }
+    .cap b{ color:var(--ink); }
+    .tl-i{ display:grid; grid-template-columns:3.2cm 1fr; gap:.5cm; padding:.3cm 0; border-bottom:1px solid var(--rule); break-inside:avoid; }
+    .tl-i:last-child{ border-bottom:none; }
+    .tl-w{ font-family:var(--sans); font-size:8.5pt; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--pen); padding-top:.06cm; }
+    .tl-b{ font-size:10.2pt; color:var(--ink-soft); line-height:1.5; }
+    .tl-b b{ color:var(--ink); }
     .ck{ break-inside:avoid; margin:.15cm 0 0; padding:.5cm .6cm .55cm; background:#FBF9F3; border:1px solid var(--rule); border-radius:9px; }
     .ck-sub{ font-family:var(--serif); font-size:9.5pt; color:var(--ink-soft); line-height:1.45; margin:0 0 .3cm; }
     .ck-i{ display:flex; gap:.35cm; align-items:flex-start; padding:.15cm 0; }
@@ -105,6 +129,8 @@ async function main() {
     <td class="sc" style="color:${col(t.s)}">${t.s.toFixed(1)}</td></tr>`).join("");
 
   const stepsHtml = STEPS.map((s, i) => `<div class="mv"><span class="mv-n">${i + 1}</span><div class="mv-b">${s}</div></div>`).join("");
+  const timelineHtml = TIMELINE.map((t) => `<div class="tl-i"><div class="tl-w">${t.w}</div><div class="tl-b">${t.b}</div></div>`).join("");
+  const trapsHtml = TRAPS.map((t) => `<div class="lst-i"><span class="x">&times;</span><span>${t}</span></div>`).join("");
   const exitsHtml = EXITS.map((e) => `<div class="lst-i"><span class="m">&rarr;</span><span>${e}</span></div>`).join("");
   const targetsHtml = TARGETS.map((t) => `<div class="ck-i"><span class="ck-box"></span><div class="ck-x">${t}</div></div>`).join("");
 
@@ -135,7 +161,14 @@ async function main() {
       <div class="r"><span>Embedded / safety-critical</span><span class="s" style="color:var(--pen-safe)">4.7</span></div>
     </div>
   </div>
+  <p class="cap">${NICHES}</p>
   ${stepsHtml}
+
+  <div class="glead">The bridge, sequenced</div>
+  <div class="tl">${timelineHtml}</div>
+
+  <div class="glead">Traps &mdash; what feels like progress but keeps you exposed</div>
+  <div class="lst">${trapsHtml}</div>
 
   <div class="glead">If the safe lane&rsquo;s too narrow &mdash; adjacent exits</div>
   <div class="lst">${exitsHtml}</div>
