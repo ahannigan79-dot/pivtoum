@@ -119,6 +119,7 @@ export default async function CareerPage({
         <ScoreBadge career={career} />
         <QuickAnswer career={career} />
         <Body components={components} />
+        <StarterKitCta source={career.slug} title={career.name} placement="bottom" />
         <SiteFooter />
       </div>
       <script

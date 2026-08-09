@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Wordmark } from "@/components/Wordmark";
 
 const NAV = [
@@ -16,6 +17,10 @@ const NAV = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const pathname = usePathname();
+
+  // The /scores ad landing page is intentionally distraction-free — no nav.
+  if (pathname === "/scores") return null;
 
   return (
     <header className="site-header">

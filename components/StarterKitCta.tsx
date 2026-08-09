@@ -6,17 +6,34 @@ import { EmailSignup } from "@/components/EmailSignup";
  * PDF; on the index it offers all 28 scores. A distinct tinted box so it reads
  * as an offer, not prose.
  */
-export function StarterKitCta({ source = "index", title }: { source?: string; title?: string }) {
+export function StarterKitCta({
+  source = "index",
+  title,
+  placement = "top",
+}: {
+  source?: string;
+  title?: string;
+  placement?: "top" | "bottom";
+}) {
   const isSampler = source !== "index" && Boolean(title);
+  const bottom = placement === "bottom";
   return (
     <aside className="kit-cta">
       <p className="kit-cta-lead">
         <span className="kit-cta-flag">Free PDF</span>
         {isSampler ? (
-          <>
-            <strong>Email me the {title} write-up</strong> — the full sampler as a PDF to keep,
-            print, and talk through with your family.
-          </>
+          bottom ? (
+            <>
+              <strong>Read this far? Take {title} with you.</strong> Email yourself the full sampler
+              as a PDF — plus the other 27 careers scored — to keep, print, and talk through with
+              your family.
+            </>
+          ) : (
+            <>
+              <strong>Email me the {title} write-up</strong> — the full sampler as a PDF to keep,
+              print, and talk through with your family.
+            </>
+          )
         ) : (
           <>
             <strong>Email me the full 28-career index</strong> — a PDF that goes beyond the table: a

@@ -212,6 +212,39 @@ header { padding: 2rem 0 0; }
   margin: 0; max-width: 32rem;
 }
 .takeaway-body strong { font-weight: 600; color: var(--ink); }
+
+/* /scores — focused, distraction-free ad landing page */
+.scr { min-height: 100vh; }
+.scr-wrap { max-width: 620px; margin: 0 auto; padding: 2.2rem 1.6rem 3rem; }
+.scr-logo { width: 132px; margin-bottom: 2.4rem; }
+.scr-logo svg { width: 100%; height: auto; display: block; }
+.scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: 1rem; }
+.scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.16; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
+.scr-h1 .hl { background: linear-gradient(#F6EE12, #F6EE12) no-repeat; background-size: 100% 0.72em; background-position: 0 92%; mix-blend-mode: multiply; padding: 0 .04em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.scr-sub { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 1.6rem; max-width: 34em; }
+.scr-bar { display: flex; gap: 3px; margin: 0 0 .5rem; }
+.scr-bar span { height: 16px; flex: 1; }
+.scr-bar span:first-child { border-radius: 4px 0 0 4px; }
+.scr-bar span:last-child { border-radius: 0 4px 4px 0; }
+.scr-scale { display: flex; justify-content: space-between; font-family: var(--sans); font-weight: 700; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.8rem; }
+.scr-scale .lo { color: var(--pen); }
+.scr-scale .hi { color: var(--pen-safe, #3E9C6E); }
+.scr-hook { font-family: var(--serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink); margin: 0 0 1.6rem; }
+.scr-hook .s { color: var(--pen-safe, #3E9C6E); font-weight: 700; }
+.scr-hook .x { color: var(--pen); font-weight: 700; }
+.scr .signup { margin: 0; border: 0; padding: 0; }
+.scr .signup-label { font-size: 1.12rem; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 700; }
+.scr-stats { margin-top: 2.4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule, #E7E4DC); display: flex; gap: 1.6rem; }
+.scr-stat { flex: 1; }
+.scr-stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.55rem; color: var(--ink); }
+.scr-stat span { font-family: var(--sans); font-size: .8rem; line-height: 1.35; color: var(--ink-soft); }
+.scr-foot { margin-top: 2.4rem; font-family: var(--sans); font-size: .72rem; color: var(--pencil, #8C857A); }
+.scr-foot a { color: var(--pencil, #8C857A); text-decoration: underline; }
+@media (max-width: 460px) {
+  .scr-h1 { font-size: 2.05rem; }
+  .scr-sub { font-size: 1.02rem; }
+  .scr-stats { flex-direction: column; gap: 1rem; }
+}
 h1 {
   font-weight: 600; font-size: clamp(1.9rem, 5.2vw, 2.6rem); line-height: 1.14;
   letter-spacing: -.018em; margin: .9rem 0 .5rem; font-variation-settings: "opsz" 60;
