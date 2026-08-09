@@ -228,7 +228,11 @@ header { padding: 2rem 0 0; }
 .scr-scale { display: flex; justify-content: space-between; font-family: var(--sans); font-weight: 700; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.8rem; }
 .scr-scale .lo { color: var(--pen); }
 .scr-scale .hi { color: var(--pen-safe, #3E9C6E); }
+.scr-hook { font-family: var(--serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink); margin: 0 0 1.6rem; }
+.scr-hook .s { color: var(--pen-safe, #3E9C6E); font-weight: 700; }
+.scr-hook .x { color: var(--pen); font-weight: 700; }
 .scr .signup { margin: 0; border: 0; padding: 0; }
+.scr .signup-label { font-size: 1.12rem; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 700; }
 .scr-stats { margin-top: 2.4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule, #E7E4DC); display: flex; gap: 1.6rem; }
 .scr-stat { flex: 1; }
 .scr-stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.55rem; color: var(--ink); }

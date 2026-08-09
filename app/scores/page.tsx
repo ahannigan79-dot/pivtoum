@@ -35,6 +35,11 @@ export default function ScoresLanding() {
           thing that decides it. Get the full breakdown, free.
         </p>
 
+        <p className="scr-hook">
+          Bedside nursing scores <b className="s">2.8</b>. Entry-level software, <b className="x">8.1</b>.
+          Same year, same method.
+        </p>
+
         <div className="scr-bar" aria-hidden="true">
           {BAND.map((c) => (
             <span key={c} style={{ background: c }} />
