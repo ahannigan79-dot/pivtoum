@@ -18,11 +18,18 @@ const CHROME = process.env.PW_CHROMIUM || "/opt/pw-browsers/chromium-1194/chrome
 const EDITION = /EDITION\s*=\s*"([^"]+)"/.exec(readFileSync(join(REPO, "lib/site.ts"), "utf8"))[1];
 const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
 
+// Voice: same content, forked address. "parent" speaks about "your kid";
+// "student" speaks to the reader directly ("you"). Delivered per the capture
+// flag (who the package is for). Usage: generate-active-guide.mjs <out.pdf> [student|parent]
+const AUD = (process.argv[3] || "parent").toLowerCase();
+const S = AUD === "student";
+const pick = (p, s) => (S ? s : p);
+
 // The six moves — field-independent. Field-specific detail (the exposed lane,
 // the safe lane, the bridge) is delivered by the per-field profile, not here.
 const MOVES = [
   {
-    t: "Protect the value they&rsquo;re already building.",
+    t: pick("Protect the value they&rsquo;re already building.", "Protect the value you&rsquo;re already building."),
     b: "Point every choice toward the work AI can&rsquo;t hold: judgment someone has to trust, a decision someone has to pin on a <em>human</em>, work that happens in the room and in the unpredictable moment. On a r&eacute;sum&eacute;, the line AI can&rsquo;t reproduce is the only line that&rsquo;s appreciating. So when there&rsquo;s a choice between the clean, repeatable project and the messy one that forces real judgment &mdash; take the messy one. The clean one is the one being automated.",
   },
   {
@@ -31,20 +38,20 @@ const MOVES = [
   },
   {
     t: "Get the AI-native edge &mdash; be the operator, not the operated-on.",
-    b: "In every field the split is coming down to who <em>wields</em> the tools versus who competes with them. Your kid doesn&rsquo;t need to become an engineer. They need to be the obvious person in their field who&rsquo;s faster and sharper because they use AI well &mdash; the one supervising the machine&rsquo;s output with expert judgment. That person doesn&rsquo;t get automated; they get leverage. Start now, before anyone requires it.",
+    b: "In every field the split is coming down to who <em>wields</em> the tools versus who competes with them. " + pick("Your kid doesn&rsquo;t need to become an engineer. They need to be the obvious person in their field who&rsquo;s faster and sharper because they use AI well", "You don&rsquo;t need to become an engineer. You need to be the obvious person in your field who&rsquo;s faster and sharper because you use AI well") + " &mdash; the one supervising the machine&rsquo;s output with expert judgment. That person doesn&rsquo;t get automated; they get leverage. Start now, before anyone requires it.",
   },
   {
     t: "Steer toward the protected adjacent track.",
-    b: "This is where the scores earn their keep. Their field has a safe lane &mdash; usually the licensed, in-person, senior-judgment, novel-stakes corner &mdash; and from where they stand there&rsquo;s a bridge to it. Accounting: from bookkeeping toward the CPA signature. Law: from document review toward the courtroom. Computer science: from the entry rung toward senior judgment and systems. The move isn&rsquo;t dramatic. It&rsquo;s a series of small choices all pointed the same way.",
+    b: pick("This is where the scores earn their keep. Their field has a safe lane &mdash; usually the licensed, in-person, senior-judgment, novel-stakes corner &mdash; and from where they stand there&rsquo;s a bridge to it.", "This is where the scores earn their keep. Your field has a safe lane &mdash; usually the licensed, in-person, senior-judgment, novel-stakes corner &mdash; and from where you stand there&rsquo;s a bridge to it.") + " Accounting: from bookkeeping toward the CPA signature. Law: from document review toward the courtroom. Computer science: from the entry rung toward senior judgment and systems. The move isn&rsquo;t dramatic. It&rsquo;s a series of small choices all pointed the same way.",
     note: "The profile for your specific field names the likely exposed lane, the safe lane to aim at, and the exact bridge between them.",
   },
   {
     t: "Know when the safe track is one field over.",
-    b: "Sometimes the honest answer is that the safe lane in their field is narrow &mdash; and the adjacent safe work sits one field to the side, reachable because their credential or skills transfer. That isn&rsquo;t failure or starting over. It&rsquo;s using what they&rsquo;ve already built as a bridge. Look for the neighboring field where their training is an asset <em>and</em> the work is more human-accountable.",
+    b: pick("Sometimes the honest answer is that the safe lane in their field is narrow &mdash; and the adjacent safe work sits one field to the side, reachable because their credential or skills transfer. That isn&rsquo;t failure or starting over. It&rsquo;s using what they&rsquo;ve already built as a bridge. Look for the neighboring field where their training is an asset <em>and</em> the work is more human-accountable.", "Sometimes the honest answer is that the safe lane in your field is narrow &mdash; and the adjacent safe work sits one field to the side, reachable because your credential or skills transfer. That isn&rsquo;t failure or starting over. It&rsquo;s using what you&rsquo;ve already built as a bridge. Look for the neighboring field where your training is an asset <em>and</em> the work is more human-accountable."),
   },
   {
     t: "Bank the relationships &mdash; the one asset AI can&rsquo;t reach.",
-    b: "AI can do the task, but it can&rsquo;t be <em>trusted</em>. It has no reputation, it can&rsquo;t be mentored, nobody refers it. The most protected career capital your kid can build isn&rsquo;t a skill at all &mdash; it&rsquo;s the set of people who know their work and would vouch for it. Mentors who open doors. Practitioners who tell them where the field is really heading. A reputation that walks into the room ahead of them. As the tasks get cheaper, the person people <em>choose</em> to work with gets more valuable, not less. This isn&rsquo;t schmoozing &mdash; it&rsquo;s the moat.",
+    b: "AI can do the task, but it can&rsquo;t be <em>trusted</em>. It has no reputation, it can&rsquo;t be mentored, nobody refers it. " + pick("The most protected career capital your kid can build isn&rsquo;t a skill at all &mdash; it&rsquo;s the set of people who know their work and would vouch for it. Mentors who open doors. Practitioners who tell them where the field is really heading. A reputation that walks into the room ahead of them.", "The most protected career capital you can build isn&rsquo;t a skill at all &mdash; it&rsquo;s the set of people who know your work and would vouch for it. Mentors who open doors. Practitioners who tell you where the field is really heading. A reputation that walks into the room ahead of you.") + " As the tasks get cheaper, the person people <em>choose</em> to work with gets more valuable, not less. This isn&rsquo;t schmoozing &mdash; it&rsquo;s the moat.",
   },
 ];
 
@@ -102,11 +109,11 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="gkick">Career Value Guide &middot; Active Edition &middot; ${EDITION}</div>
+  <div class="gkick">Career Value Guide &middot; Active Edition${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
   <h1 class="gtitle">Already in a degree, or a career? Here&rsquo;s how to protect its value.</h1>
-  <p class="gintro">If your kid is already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.</p>
+  <p class="gintro">${pick("If your kid is already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.", "If you&rsquo;re already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.")}</p>
   <p class="gintro">The planning question was <em>which field.</em> That decision is behind you, and there&rsquo;s no use relitigating a bet you&rsquo;ve already placed. But the bet was never really the field. It was the lane inside it &mdash; and the lane is still wide open.</p>
-  <p class="gintro">Every field we score holds a protected career and an exposed one under the same job title. Nobody assigns your kid to one or the other. They steer there &mdash; through what they specialize in, the experience they stack, the first jobs they take, the tools they learn to wield. Someone already in has fewer choices left than a planner. But the ones they have left are the ones that actually decide it.</p>
+  <p class="gintro">${pick("Every field we score holds a protected career and an exposed one under the same job title. Nobody assigns your kid to one or the other. They steer there &mdash; through what they specialize in, the experience they stack, the first jobs they take, the tools they learn to wield. Someone already in has fewer choices left than a planner. But the ones they have left are the ones that actually decide it.", "Every field we score holds a protected career and an exposed one under the same job title. Nobody assigns you to one or the other. You steer there &mdash; through what you specialize in, the experience you stack, the first jobs you take, the tools you learn to wield. You have fewer choices left than someone still planning. But the ones you have left are the ones that actually decide it.")}</p>
   <div class="glead">Six moves, all pointing the same direction</div>
   ${movesHtml}
   <div class="ck">
