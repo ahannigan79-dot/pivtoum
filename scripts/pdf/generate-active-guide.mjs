@@ -54,7 +54,7 @@ const CHECK = [
   "<b>Ask a professor the specific question:</b> <em>where is the hands-on, human-accountable part of this field, and how do I get reps in it while I&rsquo;m here?</em> Not &ldquo;what should I do&rdquo; &mdash; the pointed version.",
   "<b>Talk to one practitioner five to ten years ahead.</b> Ask where they think the safe work is going, and what they&rsquo;d do at your stage now. Fifteen minutes &mdash; most people say yes.",
   "<b>Learn one AI tool the field actually uses</b> &mdash; well enough to <em>show</em> it, not just name it.",
-  "<b>Bank one un-automatable experience this term</b> &mdash; the project, rotation, client or shift that forces real judgment, over the clean repeatable one.",
+  "<b>Bank one un-automatable experience now</b> &mdash; the project, rotation, client or shift that forces real judgment, over the clean repeatable one.",
 ];
 
 async function main() {
@@ -103,15 +103,15 @@ async function main() {
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
   <div class="gkick">Career Value Guide &middot; Active Edition &middot; ${EDITION}</div>
-  <h1 class="gtitle">Already in it? Here&rsquo;s how to protect the value.</h1>
+  <h1 class="gtitle">Already in a degree, or a career? Here&rsquo;s how to protect its value.</h1>
   <p class="gintro">If your kid is already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.</p>
   <p class="gintro">The planning question was <em>which field.</em> That decision is behind you, and there&rsquo;s no use relitigating a bet you&rsquo;ve already placed. But the bet was never really the field. It was the lane inside it &mdash; and the lane is still wide open.</p>
   <p class="gintro">Every field we score holds a protected career and an exposed one under the same job title. Nobody assigns your kid to one or the other. They steer there &mdash; through what they specialize in, the experience they stack, the first jobs they take, the tools they learn to wield. Someone already in has fewer choices left than a planner. But the ones they have left are the ones that actually decide it.</p>
   <div class="glead">Six moves, all pointing the same direction</div>
   ${movesHtml}
   <div class="ck">
-    <div class="ck-t">What to do this term</div>
-    <div class="ck-sub">Six moves are the strategy. Here&rsquo;s the month-one version anyone can start &mdash; in the degree or already out.</div>
+    <div class="ck-t">What to do right now</div>
+    <div class="ck-sub">Six moves are the strategy. Here&rsquo;s where anyone can start today &mdash; in the degree or already out.</div>
     ${checkHtml}
   </div>
   <p class="gclose">You&rsquo;re not behind. You&rsquo;re in the part of the story where the choices get smaller &mdash; and count for more. Point them all the same way, and the value compounds.</p>
