@@ -14,7 +14,19 @@ import { SITE } from "@/lib/site";
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, source } = await req.json().catch(() => ({ email: "", source: "index" }));
+  const { email, source, stage, audience, careers } = await req
+    .json()
+    .catch(() => ({ email: "", source: "index" }));
+  // The AI Career Map capture sends the two package flags + up to three career
+  // picks. Kept optional so the plain /scores + on-page EmailSignup forms (email
+  // + source only) keep working unchanged. Assembling and delivering the full
+  // package from these is the next increment; for now we capture them so no lead
+  // is lost, and still send the index PDF below.
+  const pkg = {
+    stage: stage === "planning" || stage === "active" ? stage : undefined,
+    audience: audience === "child" || audience === "self" ? audience : undefined,
+    careers: Array.isArray(careers) ? careers.filter((s) => typeof s === "string").slice(0, 3) : [],
+  };
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
   }
@@ -98,7 +110,12 @@ export async function POST(req: Request) {
       let contact = await resend.contacts.create({
         email,
         unsubscribed: false,
-        properties: { promo_code: code },
+        properties: {
+          promo_code: code,
+          ...(pkg.stage ? { stage: pkg.stage } : {}),
+          ...(pkg.audience ? { audience: pkg.audience } : {}),
+          ...(pkg.careers.length ? { careers: pkg.careers.join(",") } : {}),
+        },
       });
       if (contact.error) {
         contact = await resend.contacts.create({ email, unsubscribed: false });

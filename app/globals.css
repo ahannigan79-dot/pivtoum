@@ -772,3 +772,36 @@ footer {
   .lp-draw path { stroke-dashoffset: 0; animation: none; }
   * { transition: none !important; }
 }
+
+/* --- The AI Career Map capture (/map) --- */
+.pkg { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.6rem 0 0; text-align: left; }
+.pkg-field { border: 0; margin: 0; padding: 0; min-width: 0; }
+.pkg-q { font-family: var(--sans); font-weight: 700; font-size: 0.98rem; color: var(--ink); margin: 0 0 0.7rem; padding: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; width: 100%; }
+.pkg-count { font-family: var(--sans); font-weight: 600; font-size: 0.8rem; color: var(--pencil); }
+.pkg-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.pkg-opt { display: flex; flex-direction: column; gap: 0.12rem; text-align: left; padding: 0.85rem 1rem; border: 1.5px solid var(--rule); border-radius: 11px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.pkg-opt b { font-family: var(--sans); font-weight: 700; font-size: 1rem; }
+.pkg-opt span { font-family: var(--serif); color: var(--ink-soft); font-size: 0.84rem; }
+.pkg-opt:hover { border-color: var(--pencil); }
+.pkg-opt.on { border-color: var(--ink); background: rgba(33, 30, 27, 0.045); box-shadow: inset 0 0 0 1px var(--ink); }
+.pkg-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.pkg-chip { font-family: var(--sans); font-size: 0.86rem; padding: 0.42rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 20px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.pkg-chip:hover:not(:disabled) { border-color: var(--pencil); }
+.pkg-chip.on { border-color: var(--ink); background: var(--ink); color: #fff; }
+.pkg-chip:disabled { opacity: 0.4; cursor: not-allowed; }
+.pkg-final { display: flex; gap: 0.5rem; margin-top: 0.2rem; }
+.pkg-final input { flex: 1 1 auto; min-width: 0; font-family: var(--serif); font-size: 1rem; padding: 0.75rem 0.9rem; border: 1.5px solid var(--rule); border-radius: 10px; background: var(--paper); color: var(--ink); }
+.pkg-final input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+.pkg-go { flex: 0 0 auto; font-family: var(--sans); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; background: var(--ink); border: 0; border-radius: 10px; padding: 0.75rem 1.15rem; cursor: pointer; }
+.pkg-go:hover { background: var(--pen); }
+.pkg-go:disabled { opacity: 0.6; cursor: default; }
+.pkg-fine { font-family: var(--sans); font-size: 0.8rem; color: var(--pencil); margin: 0.1rem 0 0; }
+.pkg-hint { font-family: var(--sans); font-size: 0.86rem; color: var(--pen); margin: 0.2rem 0 0; }
+.pkg-done { text-align: left; padding: 1.2rem 0 0; }
+.pkg-done-h { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin: 0 0 0.4rem; }
+.pkg-done-s { font-family: var(--serif); color: var(--ink-soft); font-size: 1rem; line-height: 1.5; margin: 0; }
+@media (max-width: 460px) {
+  .pkg-opts { grid-template-columns: 1fr; }
+  .pkg-final { flex-direction: column; }
+  .pkg-go { width: 100%; }
+}
