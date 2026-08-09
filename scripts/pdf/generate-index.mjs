@@ -108,7 +108,16 @@ async function main() {
     .ixnum{ flex:0 0 15%; text-align:right; font-family:var(--sans); font-size:10.5pt; font-variant-numeric:tabular-nums; white-space:nowrap; }
     .ixnum .dash{ color:var(--pencil); padding:0 3px; }
     .ixnote{ font-family:var(--serif); font-size:9pt; color:var(--ink-soft); line-height:1.42; margin:3px 0 0; padding-right:8%; }
-    .ixfoot{ break-inside:avoid; font-size:9.5pt; color:var(--ink-soft); line-height:1.5; margin:.5cm 0 0; }`;
+    .ixlegend{ font-size:8.5pt; color:var(--pencil); line-height:1.5; margin:.4cm 0 0; }
+    .ixclose{ break-inside:avoid; margin:.7cm 0 0; padding:.55cm .65cm .6cm; background:#FBF9F3; border:1px solid var(--rule); border-radius:9px; }
+    .ixclose-t{ font-family:var(--serif); font-weight:600; font-size:14.5pt; color:var(--ink); margin:0 0 .12cm; }
+    .ixclose-sub{ font-family:var(--serif); font-size:9.5pt; color:var(--ink-soft); line-height:1.45; margin:0 0 .4cm; }
+    .ixsteps{ display:flex; flex-direction:column; gap:.3cm; }
+    .ixstep{ display:flex; gap:11px; align-items:flex-start; }
+    .ixstep-n{ flex:0 0 auto; width:21px; height:21px; border-radius:50%; background:var(--ink); color:#FBF9F3; font-family:var(--sans); font-weight:700; font-size:9.5pt; line-height:21px; text-align:center; }
+    .ixstep-b{ font-family:var(--serif); font-size:10pt; color:var(--ink-soft); line-height:1.48; }
+    .ixstep-b b{ color:var(--ink); }
+    .ixclose-cta{ font-family:var(--sans); font-weight:700; font-size:10.5pt; color:var(--pen); margin:.45cm 0 0; text-align:center; letter-spacing:.01em; }`;
 
   // Group the 28 into three tiers by how protected even their safest role is —
   // so the page reads as a story in three chunks, not a wall of 28 rows.
@@ -151,7 +160,17 @@ async function main() {
   </div>
   <div class="ixhead"><span class="hn">Career</span><span class="hb">Safest 0 &nbsp;·····&nbsp; 10 Most exposed</span><span class="hr">Range</span></div>
   ${bandsHtml}
-  <p class="ixfoot">Green marks a genuinely low-exposure entry (≤4.0); red, one that's highly exposed (≥6.5). Re-scored every six months — we publish where we might be wrong, and the full reasoning and sources for every career are free at pivotum.ai.</p>
+  <p class="ixlegend">Green marks a genuinely low-exposure entry (≤4.0); red, one that's highly exposed (≥6.5). Re-scored every six months — we publish where we might be wrong.</p>
+  <div class="ixclose">
+    <div class="ixclose-t">Where to go from here</div>
+    <div class="ixclose-sub">Twenty-eight fields is a shortlist, not a verdict. Three steps, and each one narrows the map for your family.</div>
+    <div class="ixsteps">
+      <div class="ixstep"><span class="ixstep-n">1</span><div class="ixstep-b"><b>This index is the lay of the land.</b> Every field scored the same way — enough good directions here to start the conversation about which paths are worth walking, and which begin in a hole.</div></div>
+      <div class="ixstep"><span class="ixstep-n">2</span><div class="ixstep-b"><b>A free sampler is the signpost.</b> Pick the career your kid keeps circling back to and read its full breakdown, free — the safe track, the exposed one, and the six factors that decide which is which.</div></div>
+      <div class="ixstep"><span class="ixstep-n">3</span><div class="ixstep-b"><b>The full profile is the map that gets you there.</b> Every track in one career scored and ranked, with the specific degrees and first jobs that land on the safe side — and the ones to steer around. The map you actually travel with.</div></div>
+    </div>
+    <div class="ixclose-cta">Start any career free at pivotum.ai</div>
+  </div>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_index.html`);
