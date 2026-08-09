@@ -71,7 +71,8 @@ async function main() {
 
   const styles = `
     .brandmark{ margin:0 0 .7cm; width:5cm; }
-    .gkick{ font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--pen); margin:0 0 .3cm; }
+    .gkick{ font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--pen); margin:0 0 .12cm; }
+    .gtag{ font-family:var(--serif); font-style:italic; font-size:10pt; color:var(--pencil); margin:0 0 .32cm; }
     .gtitle{ font-family:var(--serif); font-weight:600; font-size:24pt; line-height:1.12; letter-spacing:-.012em; margin:.1cm 0 .35cm; max-width:18cm; }
     .gintro{ font-size:11pt; color:var(--ink-soft); line-height:1.55; max-width:17cm; margin:0 0 .2cm; }
     .glead{ font-family:var(--sans); font-size:9pt; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); margin:.6cm 0 .2cm; padding-top:.45cm; border-top:1.4px solid var(--ink); }
@@ -97,7 +98,8 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="gkick">Your Career Package &middot; ${C.ed} &middot; ${EDITION}</div>
+  <div class="gkick">The AI Career Map &middot; ${C.ed} &middot; ${EDITION}</div>
+  <div class="gtag">Career value in the age of AI.</div>
   <h1 class="gtitle">${C.title}</h1>
   <p class="gintro">${C.intro}</p>
 

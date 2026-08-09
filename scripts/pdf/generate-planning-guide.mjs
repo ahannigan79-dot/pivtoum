@@ -64,7 +64,8 @@ async function main() {
 
   const styles = `
     .brandmark{ margin:0 0 .7cm; width:5cm; }
-    .gkick{ font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--pen); margin:0 0 .3cm; }
+    .gkick{ font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--pen); margin:0 0 .12cm; }
+    .gtag{ font-family:var(--serif); font-style:italic; font-size:10pt; color:var(--pencil); margin:0 0 .32cm; }
     .gtitle{ font-family:var(--serif); font-weight:600; font-size:25pt; line-height:1.1; letter-spacing:-.012em; margin:.1cm 0 .4cm; }
     .gintro{ font-size:11pt; color:var(--ink-soft); line-height:1.55; max-width:17cm; margin:0 0 .35cm; }
     .gintro em{ font-style:italic; color:var(--ink); }
@@ -101,6 +102,7 @@ async function main() {
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
   <div class="gkick">Career Value Guide &middot; Planning Edition${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
+  <div class="gtag">Career value in the age of AI.</div>
   <h1 class="gtitle">Still choosing a degree or career? Here&rsquo;s how to pick one that lasts.</h1>
   <p class="gintro">${pick("If your kid is still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.", "If you&rsquo;re still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.")}</p>
   <p class="gintro">The instinct is to ask <em>which field is safe?</em> It&rsquo;s the wrong question. No field is safe or doomed &mdash; every one we score holds a protected career and an exposed one under the same title. The real choice was never the field. It&rsquo;s the lane inside it, and whether you can reach it.</p>
