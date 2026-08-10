@@ -31,7 +31,7 @@ been examined properly. This document is for examining them.
 **Second, and handled carefully below:** ==?the profession openly discusses mental health and
 wellbeing in a way most don't, because it has genuine occupational stressors that are unusual
 and worth understanding before committing.== We've covered that in section 8 without
-sensationalising it, because it matters and because the profession itself has built real
+sensationalizing it, because it matters and because the profession itself has built real
 support around it.
 
 ---
@@ -297,7 +297,7 @@ Three things make it distinctive:
 - **Client conflict**, sometimes severe, often at moments of grief or financial stress.
 
 **The profession discusses this openly**, which is to its credit and unusual. The AVMA and
-equivalent bodies internationally run substantial wellbeing programmes, peer support networks
+equivalent bodies internationally run substantial wellbeing programs, peer support networks
 and confidential assistance services, and veterinary schools now build this into training rather
 than leaving graduates to discover it.
 
@@ -334,7 +334,7 @@ under pressure from affordability at the client end.
 with implications for autonomy, culture and ownership prospects that vary enormously by group.
 
 **And rural and large-animal practice faces persistent shortages**, with government loan
-repayment programmes available in high-need areas — worth investigating for anyone drawn that
+repayment programs available in high-need areas — worth investigating for anyone drawn that
 way.
 
 ---
@@ -371,7 +371,7 @@ anywhere.
 enormous quantities of unpaid experience are not required for admission. ==+Get meaningful
 exposure rather than maximum hours, and don't fund years of unpaid work you didn't need.==
 
-**Choosing schools:** compare total cost seriously. The debt spread between programmes is
+**Choosing schools:** compare total cost seriously. The debt spread between programs is
 substantial and it lasts decades.
 
 **During:** get exposure across species and settings — small animal, large animal, emergency,
@@ -386,7 +386,7 @@ shelter. The setting shapes the career more than the qualification does.
 | **DVM / veterinary degree** | 4 years post-degree, or 5–6 direct entry | The standard route. Entry is the hardest stage. |
 | **Veterinary nurse / technician** | 2–3 years | ==+Hands-on animal care daily, far shorter and cheaper, scores 3.0. Genuinely under-considered.== |
 | **Veterinary specialist training** | +3–4 years post-qualification | Surgery, internal medicine, emergency, and others. |
-| **Large animal / rural practice** | Same qualification | Persistent shortages, and government loan repayment programmes exist in high-need areas. |
+| **Large animal / rural practice** | Same qualification | Persistent shortages, and government loan repayment programs exist in high-need areas. |
 | **Relief practice** | Post-qualification | Higher day rates, flexible, and a real debt-repayment strategy. |
 
 **For anyone drawn to animals rather than to medicine specifically**, veterinary nursing offers
@@ -397,7 +397,7 @@ autonomy is less — but ==+it is often the job people are actually picturing.==
 
 # Where a veterinary degree can take them later
 
-Broad: clinical practice across species and settings, specialisation, practice ownership,
+Broad: clinical practice across species and settings, specialization, practice ownership,
 research and academia, public health and epidemiology, government and regulatory work, industry
 (pharmaceutical and nutrition), conservation and wildlife, and shelter medicine.
 
@@ -409,7 +409,7 @@ Lab and diagnostic roles score 5.4 against clinical practice at 2.5.==
 # What to look for in a veterinary program
 
 **1. Total cost — and compare it seriously across schools.**
-The debt difference between programmes lasts decades and dwarfs most other considerations.
+The debt difference between programs lasts decades and dwarfs most other considerations.
 
 **2. Clinical exposure: how much, how early, across how many species?**
 
@@ -424,7 +424,7 @@ The debt difference between programmes lasts decades and dwarfs most other consi
 # Questions to ask a veterinary program
 
 **On cost:**
-- What is the total cost of attendance for the full programme, including living costs?
+- What is the total cost of attendance for the full program, including living costs?
 - What is the median debt at graduation for your graduates?
 
 **On clinical experience:**
@@ -489,7 +489,7 @@ with more than a quarter of a recent cohort above a 2.0 debt-to-income ratio. An
 load — routine euthanasia, financial constraint on care, client conflict at moments of grief —
 that the profession has built substantial support around precisely because it is real.
 
-**So the useful advice is:** compare total programme cost seriously rather than reputation,
+**So the useful advice is:** compare total program cost seriously rather than reputation,
 because the difference lasts decades. Investigate relief work and employer loan repayment as
 genuine strategies rather than afterthoughts. Get meaningful animal experience rather than
 maximum hours, since the profession has said the latter isn't required. Choose practice culture
@@ -510,7 +510,7 @@ but alongside it.==
 
 1. What made veterinary medicine appealing, and when? If it's a long-held ambition, has it ever
    been examined properly?
-2. **Do they realise how much of the job is managing owners rather than animals?** This is the
+2. **Do they realize how much of the job is managing owners rather than animals?** This is the
    most common misapprehension about this career.
 3. How do they feel about being physically confident with frightened or aggressive animals?
 4. What does a Tuesday look like in the job they're imagining?
@@ -567,7 +567,7 @@ but alongside it.==
 22. **Have they looked seriously at veterinary nursing?** Hands-on animal care daily, two to
     three years, far less debt, scores 3.0. It is often the job people are actually picturing.
 23. Have they considered large-animal or rural practice? Persistent shortages, and government
-    loan repayment programmes exist in high-need areas.
+    loan repayment programs exist in high-need areas.
 24. If veterinary medicine weren't available, what would they choose? The answer usually reveals
     what they're actually drawn to.
 

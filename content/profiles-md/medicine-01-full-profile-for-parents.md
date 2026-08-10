@@ -131,7 +131,7 @@ Every "AI can't do X" boundary has proven temporary. It couldn't do nuance, then
 | **Judgment under novelty** | Strong | **Eroding** | Diagnostic support and risk stratification are advancing — currently assisting, not deciding. |
 | **Physical / embodied** | Strong for most specialties | **Most fragile long-term** | The protection physical AI directly targets. Surgical robotics is assistive today; the horizon is longer than a career. |
 
-**The honest read for a seventeen-year-old:** they will practise for roughly forty years. Over that span, the two protections that will still be standing are the ones rooted in law and society rather than in what the technology can do. ==?Physical protection is the strongest shield today and the one most likely to weaken within a career.==
+**The honest read for a seventeen-year-old:** they will practice for roughly forty years. Over that span, the two protections that will still be standing are the ones rooted in law and society rather than in what the technology can do. ==?Physical protection is the strongest shield today and the one most likely to weaken within a career.==
 
 Note also which protections are *specialty-dependent*. Licensing and accountability protect every doctor equally. Physical presence and novelty do not — and that is precisely why the specialties are pulling apart.
 
@@ -290,7 +290,7 @@ Radiology has been the poster child for imminent AI displacement for roughly a d
 
 This is the section a seventeen-year-old can act on. Everything else describes a landscape; this is about position within it.
 
-**The situation, factually:** AI is already in clinical settings. As of early 2025 the FDA had authorized 882 AI-enabled medical devices, and the large majority of US hospitals use some form of AI-enabled clinical decision support. Meanwhile most practising physicians are encountering these tools without any formal training in them.
+**The situation, factually:** AI is already in clinical settings. As of early 2025 the FDA had authorized 882 AI-enabled medical devices, and the large majority of US hospitals use some form of AI-enabled clinical decision support. Meanwhile most practicing physicians are encountering these tools without any formal training in them.
 
 ==That gap is the entire opportunity.== The technology is deployed. The people who know how to use it well are not.
 
@@ -327,7 +327,7 @@ Not someone who has memorized tools. Someone who can do five things:
 **During the degree:**
 - Treat clinical informatics as a real subject rather than a box to tick.
 - On placement, notice which systems each department actually uses and where senior clinicians work around them. Workarounds show you where a system fails.
-- Practise the verification habit deliberately: when a tool suggests something, ask what would make it wrong before accepting it.
+- Practice the verification habit deliberately: when a tool suggests something, ask what would make it wrong before accepting it.
 
 **Choosing a specialty:**
 - Weigh the AI dimension, but don't let it dominate. The scores here span 2.1 to 4.9 — a real spread, but every one of them is below the index median.
@@ -335,7 +335,7 @@ Not someone who has memorized tools. Someone who can do five things:
 
 ### Why this is an advantage rather than a burden
 
-Every generation of doctors has absorbed a technology shift. What's different here is timing: this cohort arrives while competency frameworks are still being written and while most practising physicians are learning on the job.
+Every generation of doctors has absorbed a technology shift. What's different here is timing: this cohort arrives while competency frameworks are still being written and while most practicing physicians are learning on the job.
 
 A newly qualified doctor who is genuinely fluent stands out immediately against colleagues with decades more clinical experience — not on clinical skill, which takes years, but on ==+a dimension where seniority confers no advantage==.
 
@@ -349,11 +349,11 @@ A newly qualified doctor who is genuinely fluent stands out immediately against 
 |---|---|---|
 | **Direct-entry medical degree** | 5–6 years | The standard route from school. Entry is the most competitive stage. |
 | **Graduate-entry medicine** | 4 years post-degree | For someone who studies something else first. Relevant if your child is uncertain now. |
-| **International medical degree** | 5–6 years | Widely used where domestic places are scarce. Verify licensing recognition in the country they intend to practise before committing — this is where families most often get caught out. |
+| **International medical degree** | 5–6 years | Widely used where domestic places are scarce. Verify licensing recognition in the country they intend to practice before committing — this is where families most often get caught out. |
 | **Physician associate / assistant** | 2–3 years post-degree | A genuinely different career rather than a lesser one: clinical work, shorter training, less autonomy and lower ceiling. Worth knowing exists. |
 | **Specialty training** | +3–8 years post-degree | Where the specialty choice is actually made, and where the scores in this profile start to matter. |
 
-**Two things worth checking locally:** how competitive entry currently is where you are, and whether the intended route is recognized for licensing where they want to practise. The second one is the expensive mistake.
+**Two things worth checking locally:** how competitive entry currently is where you are, and whether the intended route is recognized for licensing where they want to practice. The second one is the expensive mistake.
 
 ---
 
@@ -378,7 +378,7 @@ One of the strongest arguments for medicine is that it doesn't strand anyone. If
 The degree is protected. Not every program is equally good. Score any against these five.
 
 **1. Early and sustained clinical contact.**
-How soon do students see patients, and how often? Programs that front-load two years of lecture theatre before meaningful clinical exposure are training for an older version of the job.
+How soon do students see patients, and how often? Programs that front-load two years of lecture theater before meaningful clinical exposure are training for an older version of the job.
 
 **2. Is AI treated as part of clinical practice?**
 Students should be learning to work with ambient documentation, decision support and diagnostic tools — including **where they fail**. A school that ignores them is preparing students for a job that no longer exists; one that teaches them uncritically is worse.
@@ -387,7 +387,7 @@ Students should be learning to work with ambient documentation, decision support
 Look for case-based learning, diagnostic reasoning taught explicitly, and assessment that tests judgment rather than memorized fact. Recall is the automatable part.
 
 **4. Outcomes that mean something.**
-Not just pass rates — what proportion match into their preferred specialty, and where do graduates end up practising?
+Not just pass rates — what proportion match into their preferred specialty, and where do graduates end up practicing?
 
 **5. Support and attrition.**
 Medicine has real rates of burnout and withdrawal during training. Ask what support exists and how many students don't finish.
@@ -401,7 +401,7 @@ Ask these directly. The quality of the hesitation tells you as much as the answe
 **On clinical exposure:**
 - In which year do students first have sustained patient contact?
 - How many weeks of clinical placement across the whole degree, and in what range of settings?
-- How much of the clinical teaching is delivered by practising clinicians?
+- How much of the clinical teaching is delivered by practicing clinicians?
 
 **On AI and technology:**
 - How does the curriculum prepare students to work with clinical AI tools?
@@ -410,7 +410,7 @@ Ask these directly. The quality of the hesitation tells you as much as the answe
 
 **On outcomes:**
 - What proportion of graduates match into their first-choice specialty?
-- Where are your graduates practising five years out?
+- Where are your graduates practicing five years out?
 - What's your attrition rate, and what are the most common reasons students leave?
 
 **On support:**

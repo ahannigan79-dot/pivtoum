@@ -185,7 +185,7 @@ the 70–80% range.== That difference will shape your experience more than the j
 ## Two things worth doing
 
 **Work a full season including a hard one** — a Christmas period, a summer peak, a genuinely bad
-Saturday. Hospitality gets romanticised, and the reality is physical and relentless. It also
+Saturday. Hospitality gets romanticized, and the reality is physical and relentless. It also
 suits some people completely, and you'll know quickly which you are.
 
 **Then find two people:** someone who's been in it ten years, and ask what kept them. And someone
@@ -199,7 +199,7 @@ If someone has suggested this isn't a real career:
 
 ==+It employs two million more people than it did in 2020. Chef numbers are up nearly 80%. And
 it's one of very few fields where you can start at eighteen with no qualification and be running
-a venue at twenty-six — with no degree, no licence exam, and no debt.==
+a venue at twenty-six — with no degree, no license exam, and no debt.==
 
 The problems here are real. They're about conditions, not about ceilings.
 
@@ -212,7 +212,7 @@ enough to be the experienced one. That's the whole plan.
 
 - **[BLS Job Openings and Labor Turnover Survey](https://www.bls.gov/jlt/)** — the government's own turnover and quit-rate data. Accommodation and food services is the highest of any industry, every single year.
 
-- **[AHLA State of the Industry](https://www.ahla.com/)** — the 76%-short-staffed figure and the labour shortfall forecast. It's from the hotel operators' association, so read it knowing that.
+- **[AHLA State of the Industry](https://www.ahla.com/)** — the 76%-short-staffed figure and the labor shortfall forecast. It's from the hotel operators' association, so read it knowing that.
 
 - **[National Restaurant Association research](https://restaurant.org/research-and-media/research/)** — employment by segment, including which parts of the sector are actually growing.
 

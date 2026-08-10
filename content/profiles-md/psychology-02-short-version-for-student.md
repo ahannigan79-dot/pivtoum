@@ -34,7 +34,7 @@ Four reasons, and one of them is unusual.
 
 **Every person is different.** Formulation — working out why *this* person is struggling in *this* way — is genuinely novel every time.
 
-**And the law is moving in your favour.** ==+Several US states have moved to ban AI from delivering licensed therapy.== That's rare. In almost every other career we score, regulation is quietly eroding around the profession. Here it's being written to protect it.
+**And the law is moving in your favor.** ==+Several US states have moved to ban AI from delivering licensed therapy.== That's rare. In almost every other career we score, regulation is quietly eroding around the profession. Here it's being written to protect it.
 
 ---
 
@@ -61,9 +61,9 @@ We measure whether a human is required. We can't measure how many are needed. **
 | School psychologist | 4.0 |
 | Research / academic | 6.5 |
 | Organisational / HR-adjacent | 7.0 |
-| Degree only, no licence | 7.1 |
+| Degree only, no license | 7.1 |
 
-Look at where the line falls. ==+The top three need a licence. The bottom three don't. The licence is doing all the protective work.==
+Look at where the line falls. ==+The top three need a license. The bottom three don't. The license is doing all the protective work.==
 
 ---
 
@@ -101,7 +101,7 @@ The trait that matters most, and it's a specific one: ==+can you be with someone
 
 Most people's instinct is to solve. Therapy is largely not solving. It's a real, identifiable disposition and it's hard to teach.
 
-It also suits people who are comfortable with slow progress, who have genuine emotional stability to draw on, and who are interested in *people* rather than in behaviour as an abstract science.
+It also suits people who are comfortable with slow progress, who have genuine emotional stability to draw on, and who are interested in *people* rather than in behavior as an abstract science.
 
 One honest note. A lot of people come to psychology to understand their own experience. That's completely common and nothing to be embarrassed about — but on its own it isn't a durable foundation for a career, and it's worth knowing which one is driving you.
 

@@ -37,13 +37,13 @@ const C = PLAN
         "<b>Three samplers</b> &mdash; a full read on the careers " + pick("your kid is", "you&rsquo;re") + " weighing.",
       ],
       need:
-        "For the career " + pick("your kid", "you") + " actually commits to: <b>which exact track to aim at</b>, how durable that protection really is once AI keeps pushing, whether a given programme actually delivers it, and the honest downsides no admissions page will admit.",
+        "For the career " + pick("your kid", "you") + " actually commits to: <b>which exact track to aim at</b>, how durable that protection really is once AI keeps pushing, whether a given program actually delivers it, and the honest downsides no admissions page will admit.",
       why: pick(
-        "Your kid doesn&rsquo;t enrol in &lsquo;a field.&rsquo; They enrol in one programme and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the full profile is built to.",
-        "You don&rsquo;t enrol in &lsquo;a field.&rsquo; You enrol in one programme and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the full profile is built to."
+        "Your kid doesn&rsquo;t enroll in &lsquo;a field.&rsquo; They enroll in one program and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to.",
+        "You don&rsquo;t enroll in &lsquo;a field.&rsquo; You enroll in one program and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to."
       ),
       fill:
-        "<b>every track scored and the safe/exposed split</b> &middot; how durable each protection is &middot; routes in &middot; a programme checklist and the questions to ask admissions &middot; where the degree leads later.",
+        "<b>every track scored and the safe/exposed split</b> &middot; how durable each protection is &middot; routes in &middot; a program checklist and the questions to ask admissions &middot; where the degree leads later.",
     }
   : {
       ed: "Active",
@@ -60,7 +60,7 @@ const C = PLAN
       need:
         "For " + pick("your kid&rsquo;s", "your") + " field specifically: <b>the exact bridge</b> from the exposed lane " + pick("they&rsquo;re", "you&rsquo;re") + " probably in to the safe one, which adjacent fields " + pick("their", "your") + " credential actually opens, and the senior roles to start aiming at now.",
       why:
-        "&lsquo;Protect your value&rsquo; is a direction, not a route. The strategy is the same for everyone; the bridge is different for every field and every starting point. That specific route &mdash; from where " + pick("your kid actually stands", "you actually stand") + " &mdash; is the difference between knowing " + pick("they", "you") + " should move and knowing " + pick("their", "your") + " next three steps. The free guide points at it. The profile draws it.",
+        "&lsquo;Protect your value&rsquo; is a direction, not a route. The strategy is the same for everyone; the bridge is different for every field and every starting point. That specific route &mdash; from where " + pick("your kid actually stands", "you actually stand") + " &mdash; is the difference between knowing " + pick("they", "you") + " should move and knowing " + pick("their", "your") + " next three steps. The free guide points at it. The Career Value Guide draws it.",
       fill:
         "<b>every track scored and the split</b> &middot; your exposed lane &rarr; the safe lane &rarr; the steps between &middot; adjacent-field exits &middot; pre-built senior-role targets.",
     };
@@ -80,17 +80,26 @@ async function main() {
     .recap-i{ display:flex; gap:.35cm; font-size:10.6pt; color:var(--ink-soft); line-height:1.45; align-items:baseline; }
     .recap-i .dot{ color:var(--pen-safe); font-weight:700; flex:0 0 auto; }
     .recap-i b{ color:var(--ink); }
-    .need{ break-inside:avoid; margin:.1cm 0 .35cm; padding:.5cm .6cm; background:rgba(172,58,52,.06); border:1px solid var(--rule); border-radius:9px; }
-    .need .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--pen); margin:0 0 .16cm; }
-    .need p{ margin:0; font-size:10.6pt; line-height:1.5; color:var(--ink-soft); }
+    .need{ break-inside:avoid; margin:.05cm 0 .3cm; }
+    .need .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--pen); margin:0 0 .12cm; }
+    .need p{ margin:0; font-size:10.8pt; line-height:1.55; color:var(--ink-soft); }
     .need b{ color:var(--ink); }
-    .why{ break-inside:avoid; margin:0 0 .35cm; padding:.55cm .7cm; border-left:3px solid var(--pen); background:#FBF9F3; border-radius:0 9px 9px 0; }
+    .why{ break-inside:avoid; margin:0 0 .3cm; padding:.05cm 0 .05cm .5cm; border-left:2.5px solid var(--pen); }
     .why p{ margin:0; font-family:var(--serif); font-size:11.5pt; line-height:1.5; color:var(--ink); }
     .why em{ font-style:italic; }
     .fill{ font-size:10.4pt; color:var(--ink-soft); line-height:1.5; margin:.1cm 0 0; }
     .fill b{ color:var(--ink); }
-    .ov-cta{ break-inside:avoid; margin:.55cm 0 0; padding:.5cm .65cm; background:var(--ink); color:#EDE7DA; border-radius:9px; font-family:var(--serif); font-size:11pt; line-height:1.5; }
-    .ov-cta b{ color:#fff; }`;
+    .ov-cta{ break-inside:avoid; margin:.4cm 0 0; padding:.5cm .65cm; background:var(--ink); color:#EDE7DA; border-radius:9px; font-family:var(--serif); font-size:11pt; line-height:1.5; }
+    .ov-cta b{ color:#fff; }
+    .ov-example{ break-inside:avoid; margin:.3cm 0 0; padding:.5cm .6cm; background:#FBF9F3; border:1px solid var(--rule); border-radius:9px; }
+    .ov-example .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--ink); margin:0 0 .18cm; }
+    .ov-example p{ margin:0 0 .16cm; font-size:10.2pt; line-height:1.5; color:var(--ink-soft); }
+    .ov-example .split{ font-family:var(--serif); font-size:11.5pt; color:var(--ink); margin:.05cm 0 .2cm; }
+    .ov-example .split b.red{ color:var(--pen); }
+    .ov-example .split b.green{ color:var(--pen-safe); }
+    .ov-example ul{ margin:.1cm 0 0; padding-left:.5cm; }
+    .ov-example li{ font-size:10pt; color:var(--ink-soft); line-height:1.45; margin:0 0 .1cm; }
+    .ov-example .lnk{ color:var(--pen); font-weight:600; }`;
 
   const recapHtml = C.recap.map((r) => `<div class="recap-i"><span class="dot">&#10003;</span><span>${r}</span></div>`).join("");
 
@@ -110,9 +119,22 @@ async function main() {
   <div class="need"><div class="h">The one thing the free package leaves out</div><p>${C.need}</p></div>
   <div class="why"><p>${C.why}</p></div>
 
-  <div class="glead">How the full profile closes it</div>
+  <div class="glead">How the Career Value Guide closes it</div>
   <p class="fill">The ${C.ed} Edition of the Career Value Guide, for the careers that matter most: ${C.fill}</p>
-  <div class="ov-cta">For the one or two ${pick("your kid is", "you&rsquo;re")} serious about, that&rsquo;s <b>$19&ndash;39 and an afternoon</b> &mdash; against a decision worth years and tens of thousands. Start any career at <b>pivotum.ai</b>.</div>
+
+  <div class="ov-example">
+    <div class="h">See exactly what it looks like &mdash; one guide, in full, free</div>
+    <p>We publish the entire <b>computer science</b> Career Value Guide free, so you can judge the depth before buying a thing:</p>
+    <div class="split">Entry-level developer <b class="red">8.1</b> &middot; Senior engineer <b>5.4</b> &middot; Safety-critical <b class="green">4.7</b> &mdash; one field, three very different futures.</div>
+    <ul>
+      <li>Which protections are durable (someone must own the system when it fails) and which are eroding (routine design is going; genuine architectural novelty holds).</li>
+      <li>What an AI-native developer actually looks like &mdash; and the concrete steps to become one.</li>
+      <li>The honest downsides, who the work really suits, and the exact bridge to the safe lane.</li>
+    </ul>
+    <p style="margin-top:.2cm;">Read it in full at <span class="lnk">pivotum.ai/careers/computer-science</span> &mdash; then get the same for the careers that matter to ${pick("your kid", "you")}.</p>
+  </div>
+
+  <div class="ov-cta">For the one or two ${pick("your kid is", "you&rsquo;re")} serious about, that&rsquo;s <b>$49&ndash;99 and an afternoon</b> &mdash; against a decision worth years and tens of thousands. <span style="display:block;font-family:var(--sans);font-size:9pt;font-weight:700;margin-top:.2cm;">1 career $49 &middot; 3 for $69 &middot; unlimited $99 &mdash; start any career at pivotum.ai</span></div>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_overview.html`);

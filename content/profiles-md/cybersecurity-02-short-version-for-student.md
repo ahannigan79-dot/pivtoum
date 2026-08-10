@@ -26,10 +26,10 @@ in — came out at 7.4.==
 
 ## What protects it — and this one's genuinely unique
 
-Every other protected career in our index is protected by something structural: a licence,
+Every other protected career in our index is protected by something structural: a license,
 physical presence, legal liability.
 
-Cybersecurity has almost none of that. No licence. Fully digital. And it still holds at 5.0.
+Cybersecurity has almost none of that. No license. Fully digital. And it still holds at 5.0.
 
 **Here's why.**
 
@@ -118,7 +118,7 @@ This is the most useful sentence in this document.
 ==+**Build hands-on evidence. Home lab, capture-the-flag competitions, bug bounties,
 contributing to open-source security tools.**==
 
-In a field with **no licence**, demonstrable capability *is* the credential. And unlike almost
+In a field with **no license**, demonstrable capability *is* the credential. And unlike almost
 every other career we've looked at, it's completely free and available to you right now.
 
 It also solves the experience paradox — the one thing standing between you and a first job. And
@@ -141,7 +141,7 @@ Very few fields are that open. But they want evidence, not enthusiasm.
 
 **Offensive security / pen testing — 5.7.** Creative adversarial work.
 
-**Or the emerging specialisms** — cloud security, application security, and **AI/ML defence**,
+**Or the emerging specialisms** — cloud security, application security, and **AI/ML defense**,
 which barely existed three years ago and is named consistently among the most in-demand skills.
 
 ==?**Take a SOC role if it's your way in — but treat it as a two-year staging post, not a
@@ -172,13 +172,13 @@ marketed as the safe tech career. ==?That last one is what half this document is
   things?==
 - **Adversarial thinking, or tool training?** A curriculum organised around specific products is
   training you for the automating tier.
-- **Specialisation pathways** — IR, offensive, cloud, appsec. Generic security degrees place
+- **Specialization pathways** — IR, offensive, cloud, appsec. Generic security degrees place
   worst.
 - **Is there an apprenticeship route?** It solves the experience problem directly and almost
   nobody uses them.
 - **What job titles do graduates have at six months** — SOC, or engineering?
 
-**And seriously consider computer science with a security specialisation** instead of a
+**And seriously consider computer science with a security specialization** instead of a
 cybersecurity degree. ==+The engineering foundation is what verification actually rests on.==
 
 ---

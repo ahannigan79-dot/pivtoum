@@ -56,7 +56,7 @@ export default function StarterKitPage() {
           <strong>2. Does a human have to be accountable for it?</strong> Does someone need a person
           they can trust and hold responsible — licensed, on the hook when it goes wrong, signing
           their name to the decision? Or is the output just material that feeds someone else&rsquo;s
-          call? No accountability is <em>exposed</em>. A licence, a signature, or real liability is
+          call? No accountability is <em>exposed</em>. A license, a signature, or real liability is
           protection AI can&rsquo;t hold.
         </p>
         <p>

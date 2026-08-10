@@ -11,7 +11,7 @@ import { chromium } from "playwright-core";
  *
  * Renders _source/samplers/<slug>-sampler-free.md (the full sampler prose) through
  * the same Pivotum design system + brand.css the paid profiles use, so the free
- * PDF looks like a Pivotum document. Score + circle colour come from careers.ts.
+ * PDF looks like a Pivotum document. Score + circle color come from careers.ts.
  *
  * Helpers here mirror generate.mjs deliberately; that script self-invokes main()
  * so it can't be imported. Keep the two in sync if the markdown dialect changes.
@@ -115,7 +115,7 @@ function stripTitleBlock(md) {
 const CIRCLE = `<svg viewBox="0 0 120 62" preserveAspectRatio="none"><path d="M96 12C78 3 40 4 22 16 4 28 9 47 30 55c21 8 60 4 74-9 12-11 6-27-16-35-10-4-25-4-34-1" fill="none" stroke-width="2.4" stroke-linecap="round"/></svg>`;
 const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
 const WORDMARK = `<div class="brandmark">${LOGO_SVG}</div>`;
-const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:0">Highlighting is colour-coded</p>
+const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:0">Highlighting is color-coded</p>
   <div class="row">
     <span class="item"><span class="sw" style="background:var(--hl-find)"></span>The finding</span>
     <span class="item"><span class="sw" style="background:var(--hl-expo)"></span>Exposure</span>

@@ -49,7 +49,7 @@ Regulation is actively reinforcing this. Several US states have moved to prohibi
 
 **The harder question is volume rather than practice.** "Therapy and companionship" is now among the most common uses of general-purpose AI, and a substantial share of young people report using chatbots for mental health support — mostly without telling anyone. None of that competes with a licensed therapist under the same rules. It may, over time, change how many people seek professional help at all.
 
-Our framework measures whether a human must do the work. It does not measure how many humans are needed. That is a real limitation and we state it in the full profile.
+Our framework measures whether a human must do the work. It does not measure how many humans are needed. That is a real limitation and we state it in the Career Value Guide.
 
 ---
 
@@ -136,7 +136,7 @@ Licensed clinical psychology scores 3.5; bedside nursing 2.8. Both are well prot
 
 ---
 
-## Related profiles
+## Related careers
 
 - **[Nursing](#)** — 2.8 bedside, and the clearest protected on-ramp in the index
 - **[Medicine](#)** — 2.1 surgery to 4.9 radiology
@@ -146,11 +146,11 @@ Licensed clinical psychology scores 3.5; bedside nursing 2.8. Both are well prot
 
 ---
 
-## What's in the full psychology profile
+## What's in the psychology Career Value Guide
 
-This sampler tells you where psychology stands. The full profile tells you what to do about it.
+This sampler tells you where psychology stands. The full Career Value Guide tells you what to do about it.
 
-| | Sampler | Full profile |
+| | Sampler | Career Value Guide |
 |---|---|---|
 | Verdict, all destination scores, 3-year trend | ✓ | ✓ |
 | Six-factor ratings | ✓ | ✓ |
@@ -170,20 +170,20 @@ This sampler tells you where psychology stands. The full profile tells you what 
 
 ---
 
-### Get the full profiles
+### Get the Career Value Guide
 
 Most families are weighing two or three careers seriously, and a few more they haven't ruled out. Pick the ones you need.
 
 | | | |
 |---|---|---|
-| **1 profile** | **$19** | [Choose →](#) |
-| **3 profiles** | **$29** | [Choose →](#) |
-| **5 profiles** | **$39** | [Choose →](#) |
+| **1 career** | **$49** | [Choose →](#) |
+| **3 careers** | **$69** | [Choose →](#) |
+| **Unlimited** | **$99** | [Choose →](#) |
 
-Each full profile includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. Spring 2027 updates of whatever you buy are included.
+Each Career Value Guide includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. This edition and the next are included — we re-score every six months, so what you buy stays current for a year.
 
-**[Read a complete profile free →](#)**
-We publish one profile in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
+**[Read a complete Career Value Guide free →](#)**
+We publish one Career Value Guide in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
 
 ---
 

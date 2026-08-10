@@ -39,7 +39,7 @@ opposite of what almost everyone assumes.**
 Field ecology and environmental science scores **4.2** out of 10. Wet lab and bench research
 scores **5.2**. ==-Bioinformatics and computational biology scores **7.1**.==
 
-The people at the bench are better protected than the people analysing what the bench produces.
+The people at the bench are better protected than the people analyzing what the bench produces.
 
 And the bigger question for most students isn't exposure at all — it's that a life sciences
 bachelor's is a gateway qualification rather than a destination, and where it leads varies by a
@@ -114,7 +114,7 @@ Here's how wet lab and bench research answers them.
 
 **The analysis, the literature work and the writing. Not the experiment.**
 
-Sequence and structural analysis. Statistical analysis and visualisation. Literature review and
+Sequence and structural analysis. Statistical analysis and visualization. Literature review and
 synthesis. Protocol drafting. Manuscript preparation. Image quantification.
 
 And genuinely: hypothesis generation from existing data is now meaningfully assisted, which is
@@ -229,7 +229,7 @@ findings point the same way, which is unusual and worth noticing.
 | Was the job | Is becoming the job |
 |---|---|
 | Running the analysis pipeline | Directing it, then interrogating the output |
-| Literature review | Synthesised automatically; the scientist judges relevance |
+| Literature review | Synthesized automatically; the scientist judges relevance |
 | Drafting the manuscript | Edited rather than written |
 | Generating hypotheses from data | Increasingly assisted — a genuine change |
 | Doing the experiment | **Unchanged** |
@@ -321,7 +321,7 @@ It's harder for people who:
 **Regulatory complexity is expanding**, which creates demand for people who understand both the
 science and the compliance framework — and there are not many.
 
-**Lab automation is real but uneven** — high-throughput, standardised work automates readily;
+**Lab automation is real but uneven** — high-throughput, standardized work automates readily;
 bespoke and troubleshooting-heavy work does not.
 
 **And the academic funding environment is the volatile part**, which affects the research career
@@ -346,7 +346,7 @@ computational-only colleagues lack.
 diagnostics all require named accountable humans — and they pay considerably better than
 academic research.==
 
-**4. Verify.** Knowing when a generated analysis or a synthesised literature summary is
+**4. Verify.** Knowing when a generated analysis or a synthesized literature summary is
 confidently wrong requires understanding the underlying biology well enough to smell it.
 
 **5. Understand hypothesis assistance honestly.** These tools genuinely help generate candidate
@@ -371,7 +371,7 @@ capability rather than treating it as the alternative to lab work.
 
 | Route | Assessment |
 |---|---|
-| **Biology / biomedical bachelor's → professional programme** | Medicine, dentistry, veterinary, PA, pharmacy. A very common and successful destination. |
+| **Biology / biomedical bachelor's → professional program** | Medicine, dentistry, veterinary, PA, pharmacy. A very common and successful destination. |
 | **Bachelor's → industry (QC, regulatory, manufacturing)** | ==+Under-applied to, protected by named accountability, and pays far better than the technician tier.== |
 | **Bachelor's → specialist master's** | Regulatory affairs, clinical research, biotechnology, public health. |
 | **PhD → industry research** | 40–50% salary uplift, four to seven years. Genuine return in industry. |
@@ -396,7 +396,7 @@ precisely because they have neither.==
 # What to look for in a life sciences program
 
 **1. Lab and field time — how much, and how early?**
-This is the differentiator, and programmes vary enormously.
+This is the differentiator, and programs vary enormously.
 
 **2. Statistics and experimental design, taught as reasoning.**
 Not as a service module. This is the judgment layer that survives.
@@ -419,11 +419,11 @@ GMP, GLP, clinical trial regulation. Rarely taught and highly employable.
 
 **On the curriculum:**
 - How much statistics and experimental design, and is it compulsory?
-- Does the programme cover regulated environments — GMP, GLP, clinical trials?
+- Does the program cover regulated environments — GMP, GLP, clinical trials?
 - How does it address AI-assisted analysis, and where do students learn to verify it?
 
 **On outcomes:**
-- Where are graduates at one year — technician roles, industry, professional programmes, or
+- Where are graduates at one year — technician roles, industry, professional programs, or
   further study?
 - What proportion enter industry rather than academia?
 
@@ -506,7 +506,7 @@ life sciences degree are almost always the ones who worked out early what it was
 ## Part 1 — About the work itself
 
 1. What made biology appealing? Push past "I like science" to something specific.
-2. **Do they want to do experiments, or analyse data?** They're different careers with a
+2. **Do they want to do experiments, or analyze data?** They're different careers with a
    1.9-point exposure gap inside one degree.
 3. Are they practically dextrous? Bench work is manual skill and it varies more than people
    expect.
@@ -551,7 +551,7 @@ life sciences degree are almost always the ones who worked out early what it was
 
 ## Part 4 — About the program
 
-17. Ask each programme the lab-hours and industry-placement questions from section 14.
+17. Ask each program the lab-hours and industry-placement questions from section 14.
 18. Is statistics compulsory? Does the curriculum cover regulated environments?
 
 ## Part 5 — Widening the frame

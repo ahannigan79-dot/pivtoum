@@ -10,7 +10,7 @@ A licensed CPA doing audit and advisory: **5.2** out of 10.
 
 Bookkeeping and transactional accounting: **7.9**.
 
-==Same profession. The licence is doing nearly all of the work.==
+==Same profession. The license is doing nearly all of the work.==
 
 ---
 
@@ -32,7 +32,7 @@ For forty years, becoming a CPA required **150 credit hours** — basically a fi
 university. It cost an extra year of tuition plus a year of not earning, and it became the
 single biggest reason people picked finance or tech instead.
 
-The profession noticed. Enrolments fell for over a decade. CPA exam numbers hit their lowest
+The profession noticed. Enrollments fell for over a decade. CPA exam numbers hit their lowest
 since 2006. Around 300,000 accountants left in five years.
 
 **So they changed it.** Roughly **43 states** have now altered or scrapped the 150-hour rule.
@@ -60,7 +60,7 @@ work could be automated.
 Compare law. A bar card protects the courtroom and the signature. It says nothing about who
 reads forty thousand documents, so that work went — and junior law now scores 7.9.
 
-==?So when you look at any career with a licence, ask what it actually reserves — and whether
+==?So when you look at any career with a license, ask what it actually reserves — and whether
 it reserves the training too.== That second one matters far more when you're the one trying to
 get in.
 
@@ -129,7 +129,7 @@ job security makes those numbers different.
 **Busy season is real too.** January to April in tax and audit is genuinely punishing, every
 year, and it's the most-cited reason people leave for industry.
 
-What you get in exchange: a licence, a severe shortage, and a door that's currently getting
+What you get in exchange: a license, a severe shortage, and a door that's currently getting
 wider. Whether that trade is worth it is a real question, not a rhetorical one.
 
 ---
@@ -140,7 +140,7 @@ Accounting suits people who:
 
 - Are **comfortable in detail** — not tolerant of it, comfortable in it. Different things.
 - Like **understanding how businesses actually work** from the inside
-- Are **sceptical by nature.** Professional scepticism — not taking things at face value — is
+- Are **skeptical by nature.** Professional skepticism — not taking things at face value — is
   the core skill, and it's closer to temperament than training.
 - Want a **clear qualification and a marked path**, which accounting gives you better than
   almost any other business route
@@ -194,7 +194,7 @@ in year one — and whether that work still exists in the same form.
 ## One route note
 
 ==+Go into public practice first, then industry if you want.== The reverse rarely works, and
-public practice is where the supervised hours and the licence come from.
+public practice is where the supervised hours and the license come from.
 
 That's the single most common mistake people make with this career.
 

@@ -135,7 +135,7 @@ Comparable at the clinical end — small animal practice 2.7 against primary car
 
 ---
 
-## Related profiles
+## Related careers
 
 - **[Medicine](#)** — 2.1 surgery to 4.9 radiology
 - **[Nursing](#)** — 2.8 bedside, 5.4 desk-based
@@ -145,11 +145,11 @@ Comparable at the clinical end — small animal practice 2.7 against primary car
 
 ---
 
-## What's in the full veterinary profile
+## What's in the veterinary Career Value Guide
 
-This sampler tells you where veterinary medicine stands. The full profile tells you what to do about it.
+This sampler tells you where veterinary medicine stands. The full Career Value Guide tells you what to do about it.
 
-| | Sampler | Full profile |
+| | Sampler | Career Value Guide |
 |---|---|---|
 | Verdict, all track scores, 3-year trend | ✓ | ✓ |
 | Six-factor ratings | ✓ | ✓ |
@@ -169,20 +169,20 @@ This sampler tells you where veterinary medicine stands. The full profile tells 
 
 ---
 
-### Get the full profiles
+### Get the Career Value Guide
 
 Most families are weighing two or three careers seriously, and a few more they haven't ruled out. Pick the ones you need.
 
 | | | |
 |---|---|---|
-| **1 profile** | **$19** | [Choose →](#) |
-| **3 profiles** | **$29** | [Choose →](#) |
-| **5 profiles** | **$39** | [Choose →](#) |
+| **1 career** | **$49** | [Choose →](#) |
+| **3 careers** | **$69** | [Choose →](#) |
+| **Unlimited** | **$99** | [Choose →](#) |
 
-Each full profile includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. Spring 2027 updates of whatever you buy are included.
+Each Career Value Guide includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. This edition and the next are included — we re-score every six months, so what you buy stays current for a year.
 
-**[Read a complete profile free →](#)**
-We publish one profile in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
+**[Read a complete Career Value Guide free →](#)**
+We publish one Career Value Guide in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
 
 ---
 

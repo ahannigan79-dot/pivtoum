@@ -127,7 +127,7 @@ developer produces code that someone else reviews, merges and owns.
 
 **No. Nothing anywhere.**
 
-There is no software licence, no professional registration, no reserved activity. Compare
+There is no software license, no professional registration, no reserved activity. Compare
 licensed engineering, where the PE stamp is a legal monopoly, or nursing, where scope of
 practice is written into statute.
 
@@ -204,11 +204,11 @@ They were never there to lose.
 |---|---|---|---|
 | **Judgment under novelty** | Real at senior level | **Eroding** | Genuine architectural novelty resists automation; routine design does not. |
 | **Human trust / accountability** | Real at senior level | **Durable** | Someone must own the system when it fails. Commercially rooted rather than legal. |
-| **Regulatory / licensing** | **None** | n/a | No licence exists. The exception is safety-critical work, which is why it scores best. |
+| **Regulatory / licensing** | **None** | n/a | No license exists. The exception is safety-critical work, which is why it scores best. |
 | **Physical / embodied** | **None** | n/a | Software has never had this and never will. |
 
 **The honest read.** Software has two of the four protections, both seniority-dependent,
-neither inherited from the profession. ==+A doctor is protected on day one by a licence. A
+neither inherited from the profession. ==+A doctor is protected on day one by a license. A
 developer is protected only once they are trusted with something.==
 
 That is the core problem: the protection has to be earned, and the route to earning it is
@@ -268,7 +268,7 @@ with no capital and no permission.
 
 **Getting the first job**, which is the dominant risk and covered above.
 
-**Continuous obsolescence.** The specific tools change every few years. This is energising
+**Continuous obsolescence.** The specific tools change every few years. This is energizing
 for some people and exhausting for others, and it never stops.
 
 **Interview processes are unusually punishing** — multi-round technical interviews with a
@@ -301,7 +301,7 @@ numbers. Combined with the entry contraction, that's a crowded funnel.
 **Experienced engineers are doing fine.** The market is bifurcated, not depressed.
 
 **Demand is genuinely growing at the aggregate level** — 15% projected growth is real, and
-it's spread across healthcare, logistics, finance, defence and traditional enterprises rather
+it's spread across healthcare, logistics, finance, defense and traditional enterprises rather
 than concentrated in the companies everyone applies to. ==+Those employers see far fewer
 applicants per opening.==
 
@@ -356,10 +356,10 @@ than 8.1, and they're where the accountability lives.==
 | Route | Notes |
 |---|---|
 | **CS degree at a strong program** | Still the main route. Fundamentals matter more than framework coverage. |
-| **CS with a domain** — health, energy, finance, defence | ==+The domain is the protection. These employers see far fewer applicants.== |
+| **CS with a domain** — health, energy, finance, defense | ==+The domain is the protection. These employers see far fewer applicants.== |
 | **Software engineering apprenticeship** | Expanding, paid, and solves the experience problem directly. Seriously underused. |
 | **Embedded / electronics-adjacent routes** | Score best in the field, and consistently under-chosen. |
-| **Bootcamps** | Weakest position in the current market — they optimise for the entry-level roles that contracted most. |
+| **Bootcamps** | Weakest position in the current market — they optimize for the entry-level roles that contracted most. |
 
 ---
 
@@ -425,7 +425,7 @@ currently-fashionable frameworks; no internship provision; evasiveness about con
   against art history at 3.0%.
 
 - **[The Computer Science Unemployment Rate, Explained With Real Numbers](https://www.articuler.ai/resources/learn/computer-science-unemployment-rate/)**
-  — the clearest treatment of the contradiction at the centre of this profile: 6.1%
+  — the clearest treatment of the contradiction at the center of this profile: 6.1%
   unemployment sitting alongside 15% projected growth, and why both are true.
 
 **The counterargument — read this one:**
@@ -546,6 +546,6 @@ deployed.*
 
 **This profile is free. The other twenty-six are not.**
 
-If it was useful, the full profiles for nursing, medicine, law, business and psychology are
+If it was useful, the Career Value Guides for nursing, medicine, law, business and psychology are
 the same length and standard — and cover the careers most families are weighing against this
-one. **1 profile $19 · 3 for $29 · 5 for $39.**
+one. **1 career $49 · 3 for $69 · unlimited $99.**

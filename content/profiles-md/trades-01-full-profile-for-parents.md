@@ -130,7 +130,7 @@ enforced by inspectors. Nobody signs off their own unlicensed electrical work.
 
 **Every single job.**
 
-A different building, unlabelled wiring, work someone else did badly in 1974, and a customer
+A different building, unlabeled wiring, work someone else did badly in 1974, and a customer
 describing the problem inaccurately. ==+The environment is different every time, which is
 precisely the condition robotics handles worst.==
 
@@ -232,7 +232,7 @@ is the part nobody enjoys.==
 
 ## What's genuinely good about it
 
-**The financial position is better than most families realise, and the comparison usually
+**The financial position is better than most families realize, and the comparison usually
 never gets made.**
 
 - **No tuition debt.** Apprentices are paid from day one — typically starting at $15–20 an
@@ -247,7 +247,7 @@ never gets made.**
 
 **The comparison worth running:** a graduate finishes at 21 or 22 with debt and enters a
 market where 41.5% of recent graduates are underemployed. An apprentice finishes at 22 or 23
-with no debt, four years of earnings behind them, a licence, and — currently — employers
+with no debt, four years of earnings behind them, a license, and — currently — employers
 competing for them.
 
 **And what tradespeople report as rewarding** is consistent and distinctive: the problem is
@@ -299,20 +299,20 @@ hundreds of thousands of net new workers in 2026 alone, against an ageing existi
 
 **And here is the detail that reframes this entire profile.** Microsoft's president Brad Smith
 has publicly identified ==+the electrician shortage as the single biggest constraint on data
-centre expansion — not chip supply, not land, not permitting.== Industry estimates put the
-requirement at 300,000-plus additional electricians just to meet AI-related data centre
-demand. Electricians working on data centre projects report earnings well into six figures.
+center expansion — not chip supply, not land, not permitting.== Industry estimates put the
+requirement at 300,000-plus additional electricians just to meet AI-related data center
+demand. Electricians working on data center projects report earnings well into six figures.
 
 Capital has noticed: BlackRock launched a $100 million initiative in March 2026 aimed at
 training 50,000 skilled trade workers, and the US Department of Labor announced $145 million
-in apprenticeship grants targeting shipbuilding, defence, semiconductors and energy.
+in apprenticeship grants targeting shipbuilding, defense, semiconductors and energy.
 
 ==?So the AI buildout is simultaneously the thing threatening white-collar entry work and the
 thing driving demand for electricians. That is not irony — it is the most concrete
 illustration in this index of where the protection actually lies.==
 
 **One honest caution.** A meaningful share of current construction demand is project-driven —
-data centres, infrastructure programmes — and those end when the builds do. The demographic
+data centers, infrastructure programs — and those end when the builds do. The demographic
 case, an ageing workforce retiring faster than replacements arrive, holds regardless of the
 cycle. ==?A student should weight the demographics more heavily than the boom.==
 
@@ -334,7 +334,7 @@ fault-finding tools are improving. They inform judgment; they don't replace it.
 **3. Look things up rather than memorise them.** Codes change constantly. Instant lookup is a
 genuine efficiency gain.
 
-**4. Specialise deliberately.** Data centres, EV infrastructure, solar and battery, heat
+**4. Specialize deliberately.** Data centers, EV infrastructure, solar and battery, heat
 pumps. These are where the premium is and where demand is growing fastest.
 
 **5. Get to ownership.** Everything in this profile points at it. The trade gives you a
@@ -352,9 +352,9 @@ directly in front of the AI-driven demand wave.==
 
 | Route | Notes |
 |---|---|
-| **Registered apprenticeship** | The main route. Paid from day one, 4–5 years to journeyman, nationally recognised credential. |
+| **Registered apprenticeship** | The main route. Paid from day one, 4–5 years to journeyman, nationally recognized credential. |
 | **Union apprenticeship** | Structured, well-paid, with substantially higher total compensation. Competitive entry. |
-| **Pre-apprenticeship programme** | For someone with no experience. Short, and a route into the above. |
+| **Pre-apprenticeship program** | For someone with no experience. Short, and a route into the above. |
 | **Trade school then apprenticeship** | Faster classroom start, but costs money the apprenticeship route doesn't. |
 | **Military technical training** | Excellent trade grounding with civilian licensure pathways. |
 
@@ -366,11 +366,11 @@ directly in front of the AI-driven demand wave.==
 
 The ceiling is higher than most parents assume, and it is reached differently.
 
-- **Journeyman → master → contractor** with your own licence
+- **Journeyman → master → contractor** with your own license
 - **Business ownership** — the main route to the top end
 - **Site supervision and construction management** — trade-to-supervision remains a fully
   respected path, and construction management scores 3.3
-- **Specialist and high-demand work** — data centres, industrial, marine, controls
+- **Specialist and high-demand work** — data centers, industrial, marine, controls
 - **Inspection, code enforcement and safety**
 - **Teaching the trade** — instructor roles at colleges and apprenticeship providers
 - **Estimating and project management** — note this moves toward the desk, and the score
@@ -390,7 +390,7 @@ the ceiling.
 
 **3. What happens at the end.** Is there a job, and at what rate?
 
-**4. Licensing pathway.** Does the programme lead cleanly to the licence, or leave gaps?
+**4. Licensing pathway.** Does the program lead cleanly to the license, or leave gaps?
 
 **5. Quality of supervision.** In an apprenticeship, the person teaching you *is* the
 education.
@@ -403,11 +403,11 @@ education.
 - What's the pay progression year by year, and what do journeymen here earn?
 - What range of work will I see — domestic, commercial, industrial?
 - Do you have a job at the end, and what proportion of apprentices stay on?
-- What licence does this lead to, and is anything else required?
+- What license does this lead to, and is anything else required?
 - Who supervises apprentices day to day, and how many do they carry at once?
 
 **Red flags:** vagueness about completion rates; narrow work only; no clear licensing
-pathway; apprentices used as unsupervised labour.
+pathway; apprentices used as unsupervised labor.
 
 ---
 
@@ -419,7 +419,7 @@ pathway; apprentices used as unsupervised labour.
   plumbing and HVAC while you're there.
 
 - **[Electrician career guide 2026](https://tradecolleges.org/blog/trade-programs/electrical-career-opportunities)**
-  — the data centre story in detail, including Microsoft's identification of the electrician
+  — the data center story in detail, including Microsoft's identification of the electrician
   shortage as the primary constraint on expansion, and the industry estimate of 300,000-plus
   additional electricians needed.
 
@@ -516,7 +516,7 @@ occupational position than most degrees currently offer.
 15. **The most valuable single action:** spend a day with someone working. Not a college open day — an actual working day, including the unglamorous parts.
 16. Find someone ten years in and ask what their body feels like, and whether they'd do it again.
 
-## Part 4 — About the programme
+## Part 4 — About the program
 
 17. Ask each provider the completion-rate question from section 13. The evasiveness tells you plenty.
 18. Is there a job at the end, and what proportion stay on?

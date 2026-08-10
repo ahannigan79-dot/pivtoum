@@ -28,10 +28,10 @@ An entry-level software developer: **8.1**.
 
 Four reasons, and none of them depend on how clever AI gets.
 
-**You have to physically be there**, in a different building every time, with unlabelled
+**You have to physically be there**, in a different building every time, with unlabeled
 wiring and work someone did badly in 1974.
 
-==+The law requires a licence== for electrical and gas work. Inspectors sign things off.
+==+The law requires a license== for electrical and gas work. Inspectors sign things off.
 Nobody approves their own unlicensed work.
 
 **Someone's letting you into their home.** That's trust, and it's the foundation of every
@@ -77,14 +77,14 @@ same?** If no, you're protected. If yes, less than you think.
 
 This is the strangest finding in the whole index.
 
-AI data centres are being built at record pace. They need enormous amounts of electrical
+AI data centers are being built at record pace. They need enormous amounts of electrical
 infrastructure.
 
 ==+Microsoft's president has said publicly that the electrician shortage is the number-one
-thing slowing data centre expansion.== Not chips. Not land. Not permits. Electricians.
+thing slowing data center expansion.== Not chips. Not land. Not permits. Electricians.
 
 Industry estimates put the need at 300,000-plus additional electricians just for AI-related
-demand. Electricians working on data centre projects are reporting earnings well into six
+demand. Electricians working on data center projects are reporting earnings well into six
 figures.
 
 **So the same technology squeezing white-collar entry jobs is creating a shortage of
@@ -110,7 +110,7 @@ average.
 
 Now the comparison. ==A graduate finishes at 22 with debt, into a market where 41.5% of recent
 graduates are working jobs that don't need a degree. You finish at 22 or 23 with no debt, four
-years of earnings behind you, a licence, and employers competing for you.==
+years of earnings behind you, a license, and employers competing for you.==
 
 The top end isn't the median, though. Getting to $100,000-plus usually means running your own
 business — which is a different skill from the trade, and worth knowing about now.
@@ -124,7 +124,7 @@ positions. It's safer than it was — the injury rate for specialty trades is 2.
 workers and falling — but ==-it's still harder on a body than any desk job, and thirty years
 of it adds up.==
 
-**The ceiling is lower without ownership.** Solid money, good money with specialisation, great
+**The ceiling is lower without ownership.** Solid money, good money with specialization, great
 money if you run something. That last step is a business decision, not a trade one.
 
 **It's cyclical.** Construction rises and falls with the economy in a way that nursing and
@@ -156,7 +156,7 @@ ladder of titles to climb.
 - **Completion rate.** The number that matters most and the one least advertised. Ask directly.
 - **Breadth of work** — domestic only, or commercial and industrial too? Breadth sets your ceiling.
 - **Is there a job at the end**, and what proportion stay on?
-- **Does it lead cleanly to the licence**, or are there gaps you'll have to fill yourself?
+- **Does it lead cleanly to the license**, or are there gaps you'll have to fill yourself?
 - **Who's actually supervising you.** In an apprenticeship, the person teaching you *is* the education.
 
 ==+And choose the trade deliberately.== Electrical leads on pay, growth and protection, and
@@ -192,7 +192,7 @@ actually is, not on what people assume it is.
 
 - **[Electricians — Occupational Outlook Handbook](https://www.bls.gov/ooh/construction-and-extraction/electricians.htm)** — the government's own data. Growth, pay, entry requirements. Look up plumbing and HVAC while you're there.
 
-- **[Electrician career guide 2026](https://tradecolleges.org/blog/trade-programs/electrical-career-opportunities)** — the data centre story, and why Microsoft says electricians are the bottleneck.
+- **[Electrician career guide 2026](https://tradecolleges.org/blog/trade-programs/electrical-career-opportunities)** — the data center story, and why Microsoft says electricians are the bottleneck.
 
 - **[Skilled trades statistics for 2026](https://www.remarcable.com/blog/skilled-trades-statistics-for-2026-the-numbers-behind-the-workforce-that-builds-everything)** — wages, injury rates and union pay differences in one place.
 

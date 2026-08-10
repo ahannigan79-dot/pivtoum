@@ -43,7 +43,7 @@ const MOVES = [
   {
     t: "Steer toward the protected adjacent track.",
     b: pick("This is where the scores earn their keep. Their field has a safe lane &mdash; usually the licensed, in-person, senior-judgment, novel-stakes corner &mdash; and from where they stand there&rsquo;s a bridge to it.", "This is where the scores earn their keep. Your field has a safe lane &mdash; usually the licensed, in-person, senior-judgment, novel-stakes corner &mdash; and from where you stand there&rsquo;s a bridge to it.") + " Accounting: from bookkeeping toward the CPA signature. Law: from document review toward the courtroom. Computer science: from the entry rung toward senior judgment and systems. The move isn&rsquo;t dramatic. It&rsquo;s a series of small choices all pointed the same way.",
-    note: "The profile for your specific field names the likely exposed lane, the safe lane to aim at, and the exact bridge between them.",
+    note: "The Career Value Guide for your specific field names the likely exposed lane, the safe lane to aim at, and the exact bridge between them.",
   },
   {
     t: "Know when the safe track is one field over.",
@@ -91,7 +91,10 @@ async function main() {
     .ck-x{ font-family:var(--serif); font-size:10pt; color:var(--ink-soft); line-height:1.45; }
     .ck-x b{ color:var(--ink); font-weight:700; }
     .ck-x em{ font-style:italic; color:var(--ink); }
-    .gclose{ break-inside:avoid; font-family:var(--serif); font-size:11.5pt; color:var(--ink); line-height:1.5; margin:.7cm 0 0; max-width:16cm; }`;
+    .gclose{ break-inside:avoid; font-family:var(--serif); font-size:11.5pt; color:var(--ink); line-height:1.5; margin:.7cm 0 0; max-width:16cm; }
+    .gcta{ break-inside:avoid; margin:.5cm 0 0; padding:.5cm .65cm; background:var(--ink); color:#EDE7DA; border-radius:9px; font-family:var(--serif); font-size:11pt; line-height:1.5; }
+    .gcta b{ color:#fff; }
+    .gcta .a{ display:block; font-family:var(--sans); font-size:9pt; font-weight:700; letter-spacing:.02em; margin-top:.22cm; color:#fff; }`;
 
   const movesHtml = MOVES.map((m, i) => `
     <div class="mv">
@@ -124,6 +127,7 @@ async function main() {
     ${checkHtml}
   </div>
   <p class="gclose">You&rsquo;re not behind. You&rsquo;re in the part of the story where the choices get smaller &mdash; and count for more. Point them all the same way, and the value compounds.</p>
+  <div class="gcta">Get the <b>Career Value Guide &mdash; Active Edition</b> for ${pick("your kid&rsquo;s", "your")} field: the exposed lane ${pick("they&rsquo;re", "you&rsquo;re")} probably in, the safe lane to aim at, and the exact bridge between them &mdash; plus the senior-role targets to start on now. <span class="a">1 career $49 &middot; 3 for $69 &middot; unlimited $99 &mdash; start at pivotum.ai</span></div>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_active_guide.html`);

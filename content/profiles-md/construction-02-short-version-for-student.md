@@ -22,10 +22,10 @@ And your school careers office probably hasn't said a word about it.
 ## The 60-second version
 
 - ==+Site-based construction management scores better than engineering, architecture or business.==
-- **No graduate degree. No licence exam in most places.** Progression runs on competence.
+- **No graduate degree. No license exam in most places.** Progression runs on competence.
 - The thing protecting it is unusual: **there are multiple ways in**, and they compete with each other.
 - ==-The office roles score 7.4. The site roles score 3.3.== That's a 4.1-point gap on the same project.
-- And the AI data centre buildout is driving demand — $100 billion of it in 2026 alone.
+- And the AI data center buildout is driving demand — $100 billion of it in 2026 alone.
 
 ---
 
@@ -98,8 +98,8 @@ The industry is genuinely short of people:
 - Around **349,000 net new workers** needed in 2026, and 456,000 in 2027
 
 **And the AI buildout is a direct driver.** Reporting suggests tech companies could put
-==+upwards of $100 billion into US data centre construction in 2026 alone==, on top of CHIPS
-Act megaprojects, healthcare and defence work.
+==+upwards of $100 billion into US data center construction in 2026 alone==, on top of CHIPS
+Act megaprojects, healthcare and defense work.
 
 Same pattern as electricians: ==+a career protected *from* AI that's simultaneously being pulled
 *by* it.==
@@ -151,7 +151,7 @@ Worth knowing early, because these are choices rather than luck:
 - ==+**BIM and platform fluency: +10–15% pay.**== That's the single best skill investment here.
 - **Sector matters a lot:** heavy civil $121,060, commercial $120,010, specialty trade $102,140,
   residential $91,150
-- **Data centres, healthcare and industrial** carry premiums for complexity
+- **Data centers, healthcare and industrial** carry premiums for complexity
 - Certifications (CCM, PMP, OSHA) typically add $5,000–$15,000
 
 ---
@@ -183,7 +183,7 @@ Harder if you need predictable indoor hours, find conflict draining, want creati
 
 ## Two things worth doing
 
-**Get on a site.** Labouring, work experience, a summer with a contractor. ==+Nothing else builds
+**Get on a site.** Laboring, work experience, a summer with a contractor. ==+Nothing else builds
 the ability to read a site — and that's the thing separating a good superintendent from a
 competent administrator.==
 
@@ -198,7 +198,7 @@ If you like building things and someone has told you the options are "a trade" o
 — ==+this is the third one.==
 
 It pays more than both at the median. It scores better than both. You don't need a graduate
-degree or a licence exam. And you can get there from a trade, from a degree, or sideways from
+degree or a license exam. And you can get there from a trade, from a degree, or sideways from
 engineering.
 
 It's the most overlooked good option we found, and the reason is mostly that it doesn't sound
@@ -212,7 +212,7 @@ impressive at a dinner party.
 
 - **[AGC construction data](https://www.agc.org/learn/construction-data)** — the industry's own workforce survey. Where the 92% figure comes from.
 
-- **[Construction management career opportunities](https://tradecolleges.org/blog/trade-programs/construction-management-career-opportunities)** — on where demand is concentrated, including the data centre story.
+- **[Construction management career opportunities](https://tradecolleges.org/blog/trade-programs/construction-management-career-opportunities)** — on where demand is concentrated, including the data center story.
 
 ---
 

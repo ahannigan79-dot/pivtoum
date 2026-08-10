@@ -21,7 +21,7 @@ question is the length of the path, and whether you've looked at what's next to 
 - ==-It takes eight to thirteen years from starting school to being licensed.==
 - The pay doesn't match that length. Construction managers and engineers get there faster for similar money.
 - **Getting licensed adds 18–35% to your salary.** It's the whole point of the path.
-- And the data centre boom is creating architectural demand — the biggest specialisation premium in the field.
+- And the data center boom is creating architectural demand — the biggest specialization premium in the field.
 
 ---
 
@@ -78,7 +78,7 @@ construction management **3.3**, licensed engineering **4.0**, architecture **5.
 ==-Shorter path. Better protection. Comparable money.==
 
 That's not a reason not to do architecture. It's a reason to do it because you want *this
-work*, not because of what it pays. On pay alone, the neighbours win.
+work*, not because of what it pays. On pay alone, the neighbors win.
 
 **Two other honest things:**
 
@@ -102,15 +102,15 @@ It's the single biggest salary decision in the profession.
 And the licensure pipeline has been *shrinking*, which has pushed licensed salaries up faster
 in the last two years than in most of the previous decade. Scarcity at the licensed end is real.
 
-**So: commit to the licence, or don't start.** Everything about this career points at it.
+**So: commit to the license, or don't start.** Everything about this career points at it.
 
 ---
 
 ## Where the money actually is
 
-Specialisation pays sharply here, more than most people realise:
+Specialization pays sharply here, more than most people realize:
 
-- **Data centre and laboratory design: 20–35% premium** — ==+the AI buildout creating
+- **Data center and laboratory design: 20–35% premium** — ==+the AI buildout creating
   architectural demand, the same way it's creating electrical demand==
 - Healthcare architecture: 18–30%
 - Sustainable and net-zero design: 15–25%
@@ -130,7 +130,7 @@ But what you do during those hours has changed. ==?If you spend them directing g
 and checking output, you log the same hours as someone who spent them drafting by hand. Are you
 building the same judgment?==
 
-Nobody knows. The licence certifies you did the time and assumes the time teaches.
+Nobody knows. The license certifies you did the time and assumes the time teaches.
 
 This hits architecture harder than accounting or engineering, because more of the traditional
 AXP was drafting — and drafting is exactly what's automating.
@@ -158,7 +158,7 @@ and regulation — which is most of the first few years.
 
 ## What actually matters when picking a course
 
-- ==+**Accreditation for licensure** where you intend to practise. Non-negotiable — check
+- ==+**Accreditation for licensure** where you intend to practice. Non-negotiable — check
   directly.==
 - **What proportion of graduates are licensed within five years?** The number that matters and
   the one nobody publishes. Ask.
@@ -184,7 +184,7 @@ licensure actually took them. Ask someone who'll be straight rather than encoura
 **Construction management.** Scores 3.3 — better than architecture. Shorter path. Chronically
 short of people. And you can come up through a trade or a degree.
 
-**Civil or structural engineering.** Scores 4.0. Similar money, shorter route, stronger licence.
+**Civil or structural engineering.** Scores 4.0. Similar money, shorter route, stronger license.
 
 ==?Neither of those is a consolation prize.== If what you love is buildings existing rather than
 buildings being designed, one of them may fit better — and it's worth an hour of honest thinking

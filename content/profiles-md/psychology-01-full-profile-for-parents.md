@@ -51,7 +51,7 @@ And the number that should frame everything below: ==-only about 14% of psycholo
 
 *Scores run 1–10, where 10 is most at risk. For context: the median profession sits around 5.5, bedside nursing scores 2.8, classroom teaching 3.6, and entry-level software development 8.1.*
 
-**Read the table this way:** the top three rows all require a licence. The bottom three do not. ==+The licence is doing essentially all of the protective work.==
+**Read the table this way:** the top three rows all require a license. The bottom three do not. ==+The license is doing essentially all of the protective work.==
 
 ---
 
@@ -73,7 +73,7 @@ We rate this 6.8 — higher than people expect. A great deal of what fills a cli
 
 **Once licensed, easy. Getting licensed is the filter.**
 
-Licensed clinical and counselling roles show unemployment as low as 1.3%, against roughly 2.5% for graduates generally. Demand comfortably exceeds supply and has for years.
+Licensed clinical and counseling roles show unemployment as low as 1.3%, against roughly 2.5% for graduates generally. Demand comfortably exceeds supply and has for years.
 
 But this factor measures the route in, and psychology's route is long: graduate study plus supervised practice hours, typically **six to eight years** in total. ==-Much of that period is low-paid or unpaid, which is a financial filter rather than an academic one.==
 
@@ -117,7 +117,7 @@ It protects the *practice* — the requirement that a licensed human performs th
 
 That is the single clearest gap in our methodology, and psychology is where it shows. We'd rather name it than let a reassuring score do work it hasn't earned. ==?A profession can be legally protected and still shrink.==
 
-**What we're watching:** whether referral volumes and waiting lists move in either direction over the next few editions. If demand for professional care falls while the licence holds, our score is measuring the wrong thing and we'll say so.
+**What we're watching:** whether referral volumes and waiting lists move in either direction over the next few editions. If demand for professional care falls while the license holds, our score is measuring the wrong thing and we'll say so.
 
 ---
 
@@ -127,7 +127,7 @@ That is the single clearest gap in our methodology, and psychology is where it s
 
 **Degree only: 6.1 → 6.6 → 7.1.** Up 1.0.
 
-**The gap has widened from 3.3 points to 3.6.** Both ends are drifting, and the unlicensed end faster — for the same reason business is drifting. Without a licence, a psychology graduate enters the general graduate market and carries whatever exposure that market carries.
+**The gap has widened from 3.3 points to 3.6.** Both ends are drifting, and the unlicensed end faster — for the same reason business is drifting. Without a license, a psychology graduate enters the general graduate market and carries whatever exposure that market carries.
 
 ---
 
@@ -140,7 +140,7 @@ That is the single clearest gap in our methodology, and psychology is where it s
 | **Judgment under novelty** | Strong | **Eroding slowly** | Risk assessment and formulation are not automating meaningfully. |
 | **Physical / embodied** | Moderate | **Weakest here** | Remote delivery already works, so there is less physical protection than in nursing or medicine. |
 
-**The honest read.** Psychology's protections are unusually durable — but they're all attached to the licence. ==+A licensed clinician is about as protected as anyone in this index. An unlicensed graduate has none of it.==
+**The honest read.** Psychology's protections are unusually durable — but they're all attached to the license. ==+A licensed clinician is about as protected as anyone in this index. An unlicensed graduate has none of it.==
 
 ---
 
@@ -163,7 +163,7 @@ Two caveats. Verification becomes a clinical responsibility — an inaccurate re
 # Human strengths that will matter most
 
 1. **Presence** — being reliably, attentively with another person. The core of the work and the least automatable thing in this index.
-2. **Risk judgment** — recognising when someone is in danger. High-stakes, low-precedent, and the reason accountability attaches to a human.
+2. **Risk judgment** — recognizing when someone is in danger. High-stakes, low-precedent, and the reason accountability attaches to a human.
 3. **Accountability** — carrying duty of care.
 4. **Formulation** — building an explanation of why *this* person is struggling in *this* way. Genuinely novel every time.
 5. **Discussing AI use with clients** — new, unavoidable, and barely taught yet.
@@ -182,17 +182,17 @@ Two caveats. Verification becomes a clinical responsibility — an inaccurate re
 - **Autonomy** — private practice is a realistic destination
 - **Demand** — mental health need substantially exceeds provision in most systems
 
-**The practical case:** low unemployment once licensed, flexible delivery including remote work, and a career that can be practised well into later life.
+**The practical case:** low unemployment once licensed, flexible delivery including remote work, and a career that can be practiced well into later life.
 
 ## What's genuinely hard about it
 
 **The length and the money.** Six to eight years to licensure, much of it low-paid or unpaid supervised practice. ==-This is the real filter, and it is financial rather than academic.== It excludes people who cannot afford several years of low income in their twenties.
 
-**The emotional load is sustained rather than episodic.** This is work with people in genuine distress, repeatedly, over decades. Vicarious trauma is a recognised occupational risk.
+**The emotional load is sustained rather than episodic.** This is work with people in genuine distress, repeatedly, over decades. Vicarious trauma is a recognized occupational risk.
 
 **Not everyone gets better**, and sitting with that is harder than students expect.
 
-**The undergraduate degree does not qualify you for anything clinical.** Worth stating plainly because many students don't realise it until year three.
+**The undergraduate degree does not qualify you for anything clinical.** Worth stating plainly because many students don't realize it until year three.
 
 ## Who this work suits — and who it doesn't
 
@@ -201,7 +201,7 @@ Psychology tends to suit people who:
 - **Can be present without fixing.** The hardest and most important trait — much of therapy is tolerating someone else's distress without rushing to resolve it.
 - **Are comfortable with slow progress**
 - **Have genuine emotional stability**, since the work draws on it continuously
-- **Are interested in people specifically**, rather than in the science of behaviour in the abstract
+- **Are interested in people specifically**, rather than in the science of behavior in the abstract
 - **Can sustain a long, expensive path**
 
 It's harder for people who:
@@ -216,9 +216,9 @@ It's harder for people who:
 
 **The training bottleneck is funded placements**, not applicants. Supervised-hours capacity limits how many people qualify.
 
-**Regulation is moving in the profession's favour**, which is rare in this index.
+**Regulation is moving in the profession's favor**, which is rare in this index.
 
-**And the honest counterweight:** psychology is the fifth most popular undergraduate major, with no cap on numbers. The undergraduate market is crowded; the licensed market is not. ==-Those are two different labour markets sharing a name.==
+**And the honest counterweight:** psychology is the fifth most popular undergraduate major, with no cap on numbers. The undergraduate market is crowded; the licensed market is not. ==-Those are two different labor markets sharing a name.==
 
 ---
 
@@ -241,7 +241,7 @@ Which reframes the decision honestly:
 
 # The AI-native advantage — what to actually do about it
 
-**The situation:** clinical psychology is one of the few fields where AI arrives as *both* a workflow tool and a competing behaviour. Practitioners need to handle both.
+**The situation:** clinical psychology is one of the few fields where AI arrives as *both* a workflow tool and a competing behavior. Practitioners need to handle both.
 
 ### What an AI-native psychologist looks like
 
@@ -281,7 +281,7 @@ Which reframes the decision honestly:
 
 # Where a psychology degree can take them later
 
-Genuinely broad: clinical and counselling practice, school psychology, research and academia, organisational psychology, user research, health services, policy, HR and people roles, criminal justice, and teaching.
+Genuinely broad: clinical and counseling practice, school psychology, research and academia, organisational psychology, user research, health services, policy, HR and people roles, criminal justice, and teaching.
 
 **The pattern that runs through this index applies exactly:** the further from licensed clinical practice, the higher the exposure. Organisational and HR-adjacent roles score 7.0 — good careers, ordinary exposure.
 
@@ -309,7 +309,7 @@ Where do graduates who don't continue in psychology end up?
 # Questions to ask a psychology department
 
 **On progression:**
-- What proportion of your graduates enter clinical or counselling training within five years?
+- What proportion of your graduates enter clinical or counseling training within five years?
 - What support exists for securing assistant psychologist roles?
 
 **On the curriculum:**
@@ -365,7 +365,7 @@ And one option worth putting in front of anyone drawn to the clinical work rathe
 ## Part 1 — About the work itself
 
 1. What made psychology appealing? Push past "I find people interesting" to something specific.
-2. Do they want to *practise* — sit with people in distress, week after week — or do they find the subject fascinating? Both are valid; only one is a career path.
+2. Do they want to *practice* — sit with people in distress, week after week — or do they find the subject fascinating? Both are valid; only one is a career path.
 3. What does a Tuesday look like in the job they're imagining?
 4. Can they be present with someone's distress without rushing to fix it? Think of a real example.
 
@@ -406,7 +406,7 @@ And one option worth putting in front of anyone drawn to the clinical work rathe
 
 20. If psychology weren't available, what would they choose?
 21. **Have they looked at mental health nursing?** Licensed clinical mental health work, three to four years, scores 2.8. It's the most under-considered alternative in this whole index.
-22. Do they want *psychology*, or what psychology is made of — helping people, understanding behaviour, research, or working with distress? Those lead to genuinely different places.
+22. Do they want *psychology*, or what psychology is made of — helping people, understanding behavior, research, or working with distress? Those lead to genuinely different places.
 
 ## Part 6 — For the parent, alone
 

@@ -89,7 +89,7 @@ proximity to AI offers no protection here.
 
 **Severe at entry, and this is where the evidence genuinely conflicts.**
 
-Industry analysis consistently reports the market favouring candidates with two to four years'
+Industry analysis consistently reports the market favoring candidates with two to four years'
 experience — the same pattern documented in law, finance and consulting.
 
 ==+But entry-level salaries have risen sharply rather than fallen.== Analyst starting pay is
@@ -110,7 +110,7 @@ none.
 
 ### Does the law require a licensed human? *(10%)*
 
-**No, and none is coming.** No licence, no reserved activity, no professional body controlling
+**No, and none is coming.** No license, no reserved activity, no professional body controlling
 entry.
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
@@ -156,7 +156,7 @@ the title has risen sharply — machine learning now appears in 77% of data scie
 and mentions in analyst postings have doubled.
 
 **The specific thing we're watching:** whether entry-level postings requiring two years'
-experience or fewer stabilise or keep shrinking. ==?If the genuine entry tier holds while
+experience or fewer stabilize or keep shrinking. ==?If the genuine entry tier holds while
 demand grows, our 8.2 is too high and we will lower it. That is a falsifiable claim and we'll
 report it either way.==
 
@@ -176,7 +176,7 @@ working *with* AI must be safer than working alongside it.
 
 ==+Exposure is determined by the shape of the work, not by its subject matter.== Our framework
 asks whether a task takes structured inputs, produces text or code as output, requires no
-physical presence, involves no licensed accountability, and repeats recognisable patterns.
+physical presence, involves no licensed accountability, and repeats recognizable patterns.
 
 Data analysis answers yes to every one — which is exactly what makes it a field where AI is
 useful, and exactly what makes it automatable.
@@ -214,14 +214,14 @@ still.==
 
 | Protection | Strength today | Durability | Where the pressure is coming from |
 |---|---|---|---|
-| **Judgment under novelty** | Real at ML engineering level | **Eroding** | Novel system design resists; standard modelling does not. |
+| **Judgment under novelty** | Real at ML engineering level | **Eroding** | Novel system design resists; standard modeling does not. |
 | **Human trust / accountability** | Real at senior level | **Durable** | Someone must answer for a recommendation that costs money. |
-| **Regulatory / licensing** | **None** | n/a | No licence exists. |
+| **Regulatory / licensing** | **None** | n/a | No license exists. |
 | **Physical / embodied** | **None** | n/a | Permanently. |
 
 **The honest read.** ==+Data science has two protections, both seniority-dependent, neither
 inherited from the field.== Demand is doing far more work than structure here — and demand can
-change, while a licence cannot.
+change, while a license cannot.
 
 ---
 
@@ -279,7 +279,7 @@ producing outputs; unusual breadth of exposure to how a business works; fast fee
 work that sits at the intersection of technical and commercial rather than purely one or the
 other.
 
-**And the specialisation premium is steep.** Machine learning appears in 77% of data scientist
+**And the specialization premium is steep.** Machine learning appears in 77% of data scientist
 postings. Cloud and infrastructure skills command a premium. ==+The gap between a generalist
 analyst and a specialist engineer is wider here than in almost any field.==
 
@@ -296,7 +296,7 @@ engineers to analysts, and that migration is continuing.
 engineer" and "ML engineer" describe overlapping work with enormous pay differences, and it is
 hard for a newcomer to judge which is which from a job posting.
 
-**And there is no structural floor.** No licence, no physical requirement. Whatever protection
+**And there is no structural floor.** No license, no physical requirement. Whatever protection
 someone has, they earned personally.
 
 ## Who this work suits — and who it doesn't
@@ -329,7 +329,7 @@ electrical engineering's — the buildout creating demand for the people who ena
 **Geography has shifted.** New York has overtaken California as the leading location for data
 science postings, and 40–50% of roles offer remote options.
 
-**And domain specialisation is where the premium sits** — healthcare, finance and energy all
+**And domain specialization is where the premium sits** — healthcare, finance and energy all
 pay above general technology for the same technical skill.
 
 ---
@@ -341,7 +341,7 @@ means the bar for what counts as valuable has already moved.
 
 ### What an AI-native data professional looks like
 
-**1. Frame the question.** ==+Analysis is now cheap; knowing what to analyse is not.== This is
+**1. Frame the question.** ==+Analysis is now cheap; knowing what to analyze is not.== This is
 the single most protective skill in the field.
 
 **2. Verify.** Knowing when a generated analysis is confidently wrong — which requires knowing
@@ -376,11 +376,11 @@ someone know a result is wrong, and it is what employers in those sectors pay a 
 | Route | Assessment |
 |---|---|
 | **Statistics or mathematics degree + data skills** | ==+Often the strongest. Statistical depth is what survives.== |
-| **Computer science + ML specialisation** | Points at the engineering end, which scores best. |
-| **Data science degree with genuine engineering depth** | Works if the programme is technical rather than tooling-focused. |
-| **Domain degree + data specialisation** — health, finance, energy | The domain is the protection. |
+| **Computer science + ML specialization** | Points at the engineering end, which scores best. |
+| **Data science degree with genuine engineering depth** | Works if the program is technical rather than tooling-focused. |
+| **Domain degree + data specialization** — health, finance, energy | The domain is the protection. |
 | **Data science degree teaching Python, SQL and dashboarding** | ==-Training for the most automated work in the field.== |
-| **Bootcamps** | Weakest position — they optimise for exactly the entry roles under most pressure. |
+| **Bootcamps** | Weakest position — they optimize for exactly the entry roles under most pressure. |
 
 ---
 
@@ -412,7 +412,7 @@ Given that employers prefer two to four years' experience, the internship is how
 gets around the paradox.
 
 **5. Domain pathways.**
-Health, finance, energy. The specialisation is where the premium is.
+Health, finance, energy. The specialization is where the premium is.
 
 ---
 
@@ -421,7 +421,7 @@ Health, finance, energy. The specialisation is where the premium is.
 **On the curriculum:**
 - How much of the degree is statistics and mathematics rather than tooling?
 - Do students build systems, or use existing ones?
-- How does the programme teach working with AI-assisted analysis — and verifying it?
+- How does the program teach working with AI-assisted analysis — and verifying it?
 - What changed in the curriculum in the last two years?
 
 **On experience:**
@@ -469,14 +469,14 @@ rate.
 
 # Bottom line
 
-**Data science is the profile where our framework and the labour market disagree most, and we've
+**Data science is the profile where our framework and the labor market disagree most, and we've
 tried to give you both.**
 
 Our analysis says the entry tier is among the most exposed work we measure — 8.2, with a job
-description that reads like a list of automated tasks, and no licence or physical requirement
+description that reads like a list of automated tasks, and no license or physical requirement
 anywhere in the field to slow it down.
 
-The labour market says this is the fourth-fastest-growing occupation in the economy, with
+The labor market says this is the fourth-fastest-growing occupation in the economy, with
 salaries rising rather than falling.
 
 **What we think reconciles them:** the title is surviving while its contents change completely.
@@ -533,7 +533,7 @@ than the brochures suggest.
 
 ## Part 2d — The AI question, practically
 
-14. Analysis is now cheap; knowing what to analyse isn't. How would they get good at the second
+14. Analysis is now cheap; knowing what to analyze isn't. How would they get good at the second
     thing?
 15. Analysts used to learn a business by assembling its numbers. If that's automated, how do
     they learn it now?
@@ -547,7 +547,7 @@ than the brochures suggest.
 
 ## Part 4 — About the program
 
-18. Ask each programme the curriculum questions from section 13. How much is statistics rather
+18. Ask each program the curriculum questions from section 13. How much is statistics rather
     than tooling is the whole answer.
 19. What job titles do graduates hold at six months?
 

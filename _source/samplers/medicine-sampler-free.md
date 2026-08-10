@@ -116,7 +116,7 @@ But the labor market has done the opposite of what the narrative predicts. Radio
 
 Both things are true, and the gap between them is wider in radiology than anywhere else we score. We publish the number with the disagreement stated rather than adjusting it to match the employment data — because ==?bending a score to fit an outcome would make every trend in this index meaningless==.
 
-The full profile sets out both cases properly, including the strongest published argument against our position.
+The Career Value Guide sets out both cases properly, including the strongest published argument against our position.
 
 ---
 
@@ -128,7 +128,7 @@ Medicine scores exceptionally well on exposure, and its entry route — residenc
 
 The reasons people hesitate about medicine have not changed and have nothing to do with AI: it is a decade or more to independent practice, the training is expensive, early-career hours are punishing, and most systems require relocating repeatedly for training posts. Burnout affects around 42% of physicians — high, though it has fallen three years running, from 48.2% in 2023. A fifteen-year-old should understand that timeline concretely before committing to it.
 
-A low AI score does not mean an easy path. The full profile covers the downsides honestly, alongside what doctors themselves say about the work.
+A low AI score does not mean an easy path. The Career Value Guide covers the downsides honestly, alongside what doctors themselves say about the work.
 
 ---
 
@@ -151,7 +151,7 @@ On exposure alone, yes — medicine holds the strongest protection stack we scor
 
 ---
 
-## Related profiles
+## Related careers
 
 - **[Nursing](#)** — 2.8 bedside, 5.4 desk-based
 - **[Physical therapy and allied health](#)** — 2.5, among the lowest in this edition
@@ -161,11 +161,11 @@ On exposure alone, yes — medicine holds the strongest protection stack we scor
 
 ---
 
-## What's in the full medicine profile
+## What's in the medicine Career Value Guide
 
-This sampler tells you where medicine stands. The full profile tells you what to do about it.
+This sampler tells you where medicine stands. The full Career Value Guide tells you what to do about it.
 
-| | Sampler | Full profile |
+| | Sampler | Career Value Guide |
 |---|---|---|
 | Verdict, all specialty scores, 3-year trend | ✓ | ✓ |
 | Six-factor ratings | ✓ | ✓ |
@@ -187,22 +187,22 @@ This sampler tells you where medicine stands. The full profile tells you what to
 
 ---
 
-### Get the full profiles
+### Get the Career Value Guide
 
 Most families are weighing two or three careers seriously, and a few more they haven't ruled out. Pick the ones you need.
 
 | | | |
 |---|---|---|
-| **1 profile** | **$19** | [Choose →](#) |
-| **3 profiles** | **$29** | [Choose →](#) |
-| **5 profiles** | **$39** | [Choose →](#) |
+| **1 career** | **$49** | [Choose →](#) |
+| **3 careers** | **$69** | [Choose →](#) |
+| **Unlimited** | **$99** | [Choose →](#) |
 
-Each full profile includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. Spring 2027 updates of whatever you buy are included.
+Each Career Value Guide includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. This edition and the next are included — we re-score every six months, so what you buy stays current for a year.
 
 **Still exploring?** The **Atlas** covers whole fields rather than single careers — seventeen jobs that help people, mapped and compared, written for 13–16 year olds who haven't narrowed yet. Same pricing: 1 guide $19, 3 guides $29, all seven $39.
 
-**[Read a complete profile free →](#)**
-We publish one profile in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
+**[Read a complete Career Value Guide free →](#)**
+We publish one Career Value Guide in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
 
 ---
 

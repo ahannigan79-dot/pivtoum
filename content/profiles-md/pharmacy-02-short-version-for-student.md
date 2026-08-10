@@ -19,7 +19,7 @@ understanding.
 
 ## The 60-second version
 
-- ==?**A licence is only as protective as the act it reserves** — and pharmacy's reserves dispensing.==
+- ==?**A license is only as protective as the act it reserves** — and pharmacy's reserves dispensing.==
 - Dispensing is a rules-based, structured task. That's what machines are best at.
 - But the profession is **moving toward the clinical end**, and clinical pharmacy is growing at ~12%.
 - ==+And the job market has completely flipped in the last few years.== Most careers advice hasn't caught up.
@@ -27,21 +27,21 @@ understanding.
 
 ---
 
-## Why the licence doesn't protect as much as you'd think
+## Why the license doesn't protect as much as you'd think
 
 This is the useful idea, and it applies well beyond pharmacy.
 
-**A licence protects a specific *act*.** So the question isn't "does this career have a licence"
-— it's "what does the licence actually reserve, and can a machine do that thing?"
+**A license protects a specific *act*.** So the question isn't "does this career have a license"
+— it's "what does the license actually reserve, and can a machine do that thing?"
 
-**Nursing's licence** reserves clinical practice — physical assessment, hands-on care. ==+Those
-acts are physically irreducible. The licence protects work that couldn't be automated anyway, so
+**Nursing's license** reserves clinical practice — physical assessment, hands-on care. ==+Those
+acts are physically irreducible. The license protects work that couldn't be automated anyway, so
 the protection compounds.==
 
 **Law's bar card** reserves the courtroom and the signature — but *not* document review. So
 document review went, and junior law now scores 7.9.
 
-==-**Pharmacy's licence reserves dispensing and verification** — which is precisely the
+==-**Pharmacy's license reserves dispensing and verification** — which is precisely the
 structured, rules-based, high-volume task a machine handles well.==
 
 So the protection and the exposure land on the same activity. The law requires a human to
@@ -93,7 +93,7 @@ year**, while only about **8,000 PharmD graduates** are expected in 2026 — und
 needed.==
 
 **One caution.** With applications down, some schools have relaxed entry requirements to fill
-seats. ==?Getting in doesn't mean the market needs you — check a programme's graduate outcomes
+seats. ==?Getting in doesn't mean the market needs you — check a program's graduate outcomes
 rather than assuming.==
 
 ---
@@ -103,13 +103,13 @@ rather than assuming.==
 The direction matters more than the current score.
 
 Pharmacy is deliberately moving *away* from dispensing and *toward* clinical work — medication
-therapy management, chronic disease care, immunisation, and prescribing authority where it
+therapy management, chronic disease care, immunization, and prescribing authority where it
 exists.
 
 ==+Clinical pharmacy is projected to grow around 12% — roughly double the rate for pharmacists
 overall.==
 
-**Every step toward the patient improves your position**, because it swaps a task the licence
+**Every step toward the patient improves your position**, because it swaps a task the license
 protects-but-machines-can-do for one that genuinely needs a person.
 
 ---
@@ -137,11 +137,11 @@ around **$168,000** — up from about $134,000 in 2013.== Costs have risen faste
 since 2004.
 
 **Retail is where much of the employment still is**, and workforce research has found higher
-burnout and lower fulfilment among pharmacists at large chains — driven by volume targets,
+burnout and lower fulfillment among pharmacists at large chains — driven by volume targets,
 understaffing and expanding duties.
 
 **Technicians are absorbing dispensing tasks**, which is efficient and also narrows what your
-licence practically covers.
+license practically covers.
 
 ---
 
@@ -179,7 +179,7 @@ and it's competitive.
 **3. Take prescribing authority wherever it exists.** It converts a dispensing role into a
 clinical one.
 
-**4. Specialise** — oncology, critical care, infectious disease. That's the protected end and
+**4. Specialize** — oncology, critical care, infectious disease. That's the protected end and
 it's growing fastest.
 
 ---
@@ -222,9 +222,9 @@ Just aim at the right end of it deliberately, rather than assuming the degree ta
 
 - **[Pharmacists — Occupational Outlook Handbook](https://www.bls.gov/ooh/healthcare/pharmacists.htm)** — government data on openings and pay. Where the 14,000-openings figure comes from.
 
-- **[AACP institutional research](https://www.aacp.org/research/institutional-research)** — the application and enrolment data behind the pipeline reversal. Worth seeing the actual numbers.
+- **[AACP institutional research](https://www.aacp.org/research/institutional-research)** — the application and enrollment data behind the pipeline reversal. Worth seeing the actual numbers.
 
-- **[Why pharmacy applications declined](https://familymedicine.uw.edu/chws/wp-content/uploads/sites/5/2024/08/UWCHWS-FR-Pharm-Applicants-2024.pdf)** — a university research centre's analysis, including the debt figures. Academic rather than promotional.
+- **[Why pharmacy applications declined](https://familymedicine.uw.edu/chws/wp-content/uploads/sites/5/2024/08/UWCHWS-FR-Pharm-Applicants-2024.pdf)** — a university research center's analysis, including the debt figures. Academic rather than promotional.
 
 ---
 

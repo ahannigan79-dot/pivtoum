@@ -32,7 +32,7 @@ Worth seeing side by side, because almost nobody puts it this way.
 
 | | Software | Engineering |
 |---|---|---|
-| Is there a licence? | No | Yes — the PE stamp |
+| Is there a license? | No | Yes — the PE stamp |
 | Does it need you physically somewhere? | No | Yes — sites, commissioning |
 | Who's liable if it fails badly? | The company | ==+You, personally== |
 | Entry-level score | **8.1** | **4.0** licensed |
@@ -85,7 +85,7 @@ Which means the choice that matters isn't really *engineering or not*. It's *whi
 
 This is the strangest finding in the profile and worth knowing about.
 
-AI data centres are being built at record pace. Lawrence Berkeley National Laboratory
+AI data centers are being built at record pace. Lawrence Berkeley National Laboratory
 estimates they could consume **325 to 580 terawatt-hours by 2028 — 6 to 12% of all US
 electricity.**
 
@@ -113,7 +113,7 @@ responsible for outcomes. Less good if you picked engineering because you like d
 
 Here's something the profession hasn't worked out, and we'd rather tell you than pretend.
 
-Getting your PE licence requires about four years of supervised experience. That requirement
+Getting your PE license requires about four years of supervised experience. That requirement
 is genuinely protective — firms *have* to employ and train juniors, which is why engineering's
 on-ramp is in better shape than software's.
 
@@ -121,7 +121,7 @@ But what you do during those years has changed. ==?If you spend them directing g
 tools and checking output, you log the same hours as someone who spent them running
 calculations by hand. Are you building the same judgment?==
 
-Nobody knows yet. The licence certifies that you did the time and assumes the time teaches.
+Nobody knows yet. The license certifies that you did the time and assumes the time teaches.
 
 Worth being deliberate about it: seek out the work that's genuinely hard rather than the work
 that's quick.
@@ -201,7 +201,7 @@ it usually gets.
 
 - **[Engineering jobs, class of 2026](https://www.gordostuff.com/2026/06/engineering-jobs-class-of-2026-and.html)** — salaries and growth by discipline, plus the fact that nearly half of working US engineers are 50 or older.
 
-- **[Is electrical engineering a good career in 2026](https://www.apollotechnical.com/is-electrical-engineering-a-good-career/)** — the data-centre demand story in detail.
+- **[Is electrical engineering a good career in 2026](https://www.apollotechnical.com/is-electrical-engineering-a-good-career/)** — the data-center demand story in detail.
 
 ---
 

@@ -62,7 +62,7 @@ Warehouse and transport management systems are now standard. AI demand planning 
 Autonomous picking has moved from pilots into deployment. And industry analysis says dispatch,
 safety coordination and logistics admin can be offloaded at **30–50% overhead reduction**.
 
-**Route planning is the clearest case.** Optimising a multi-stop route against traffic, delivery
+**Route planning is the clearest case.** Optimizing a multi-stop route against traffic, delivery
 windows, weight limits and driver hours is a maths problem with structured inputs and a
 measurable right answer. ==-That's close to a definition of automatable work — and it used to be
 a career.==

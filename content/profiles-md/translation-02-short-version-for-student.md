@@ -64,7 +64,7 @@ better" survives that gap for routine content.
 answerable for the result.**
 
 A mistranslated medication instruction. A contract clause. Court testimony. An immigration
-document. ==?In those situations nobody is optimising for translation cost, because the downside
+document. ==?In those situations nobody is optimizing for translation cost, because the downside
 is a misdiagnosis or a wrongful conviction.==
 
 **The transferable idea:** when something becomes nearly free to automate, ask what survives.

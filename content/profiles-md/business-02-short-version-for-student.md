@@ -17,7 +17,7 @@ Every other career we scored — nursing, medicine, law, the trades, engineering
 ## The 60-second version
 
 - The destinations are genuinely good. General management, operations, commercial leadership.
-- **But nothing in business scores below 4.9**, and there's no licence, no qualification barrier, nothing structural protecting you.
+- **But nothing in business scores below 4.9**, and there's no license, no qualification barrier, nothing structural protecting you.
 - The entry-level work — reports, decks, research, coordination — is exactly what AI took.
 - ==-The bigger problem isn't AI at all. It's that this is the most-taken degree in the country.==
 - Which program you choose matters more here than in any other career we score.
@@ -83,7 +83,7 @@ Now the comparison worth sitting with. **Nursing has the lowest underemployment 
 
 More than in any other career we scored. Four things separate a good business degree from a weak one:
 
-**A placement year — and whether it's actually guaranteed.** "Placement available" that only 30% of students get isn't a placement program. Ask for the number. ==+Employers now rate internship experience as the single highest-weighted hiring factor — 4.5 out of 5.== In a field with no licence, the placement is the closest thing you'll get to one.
+**A placement year — and whether it's actually guaranteed.** "Placement available" that only 30% of students get isn't a placement program. Ask for the number. ==+Employers now rate internship experience as the single highest-weighted hiring factor — 4.5 out of 5.== In a field with no license, the placement is the closest thing you'll get to one.
 
 **Real quantitative content, compulsory rather than optional.** That's the judgment layer. The reporting layer is what's automating.
 
@@ -119,7 +119,7 @@ We should say this too, because the score doesn't capture it.
 
 **Progression is fast.** Business advances on demonstrated competence rather than time served. Someone capable can be running something at 26 in a way that's structurally impossible in medicine or law.
 
-**Ownership is a normal outcome**, not an exotic one. The same absence of a licence that removes the floor also removes the ceiling — nobody can stop you starting something.
+**Ownership is a normal outcome**, not an exotic one. The same absence of a license that removes the floor also removes the ceiling — nobody can stop you starting something.
 
 **Breadth and optionality.** The skills move across industries and countries more easily than most.
 

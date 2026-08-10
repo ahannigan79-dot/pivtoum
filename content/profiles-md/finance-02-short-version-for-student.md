@@ -43,7 +43,7 @@ most useful thing in this document.
 
 ## What AI actually took
 
-Financial modelling. Scenario building. Company and sector research. Earnings analysis and
+Financial modeling. Scenario building. Company and sector research. Earnings analysis and
 comparables. Deck production. Data cleaning. First-draft memos.
 
 ==-That isn't *adjacent* to what a first-year analyst does. It's a fairly complete description
@@ -102,7 +102,7 @@ So some of the movement we measured is the cycle, not AI, and **we can't cleanly
 them.**
 
 What keeps our score high is what happened to the *content* of the job rather than the number
-of seats. Major firms now interview for whether you can **direct** AI through modelling and
+of seats. Major firms now interview for whether you can **direct** AI through modeling and
 research, rather than build the model yourself. When a profession redesigns what a first-year
 is *for*, the apprenticeship has changed regardless of how many chairs exist.
 
@@ -127,7 +127,7 @@ learn them the slow way any more, which means you have to want to.
 **The hours at the banking end are as bad as you've heard**, and they're worst in your
 twenties.
 
-**It's geographically concentrated.** Hiring clusters in a few financial centres. That's a life
+**It's geographically concentrated.** Hiring clusters in a few financial centers. That's a life
 decision, not just a career one.
 
 **Competition at entry is extreme** — record application volumes against selective hiring.
@@ -181,7 +181,7 @@ one — and whether that work still exists in the same form.
 **Accounting.** Licensed CPA advisory scores 5.2 against entry finance at 8.0.
 
 The pay is worse — a first-year audit associate earns $55–70K against $85–100K in banking.
-But it comes with a licence, a severe shortage, and a qualification pathway that ==+43 states
+But it comes with a license, a severe shortage, and a qualification pathway that ==+43 states
 have just made shorter and cheaper.==
 
 Different trade-off. Worth understanding rather than dismissing.

@@ -52,11 +52,11 @@ Here's the bit that took us longest to see, and it generalises well beyond law.
 
 It protects the courtroom appearance. It protects the signed advice. ==?It does not protect reading forty thousand documents — nothing in any statute says a human has to do that.== So the moment the technology was good enough, that work went.
 
-Compare nursing. A nursing licence does something a law licence doesn't: it *mandates the training hours*. You legally cannot qualify without supervised clinical practice, so the way in is protected by the same rule that protects the job.
+Compare nursing. A nursing license does something a law license doesn't: it *mandates the training hours*. You legally cannot qualify without supervised clinical practice, so the way in is protected by the same rule that protects the job.
 
 Law reserves the courtroom and the signature, and leaves the apprenticeship completely exposed.
 
-**So when you look at any career, don't just ask whether there's a licence. Ask what it actually reserves — and whether it reserves the training too.**
+**So when you look at any career, don't just ask whether there's a license. Ask what it actually reserves — and whether it reserves the training too.**
 
 ---
 
@@ -82,7 +82,7 @@ Knowing when the AI is wrong.
 
 This matters more in law than almost anywhere, and the evidence is blunt: ==-researchers have now documented around 1,600 court cases worldwide where lawyers filed AI-generated citations to cases that don't exist.== Up from about 200 a year earlier.
 
-Confidently written, properly formatted, entirely fictional. The first one in 2023 drew a $5,000 fine. By 2026 courts were fining attorneys $15,000 each, suspending them, and cancelling trials over it.
+Confidently written, properly formatted, entirely fictional. The first one in 2023 drew a $5,000 fine. By 2026 courts were fining attorneys $15,000 each, suspending them, and canceling trials over it.
 
 Every single case has the same root cause: **a lawyer signed a citation they hadn't read.**
 
@@ -108,7 +108,7 @@ Georgetown tracked earnings *after* debt payments four years out: $72,000 median
 
 Also true: billable-hour culture is demanding through your twenties and thirties.
 
-And the wellbeing picture is documented rather than rumoured. The ABA surveyed nearly 13,000 lawyers: 21% screened positive for problematic drinking, 28% for depression, 19% for anxiety. ==-The risk was highest among junior lawyers, not senior ones== — which overturned what the profession had assumed. Worth knowing before you go in rather than after.
+And the wellbeing picture is documented rather than rumored. The ABA surveyed nearly 13,000 lawyers: 21% screened positive for problematic drinking, 28% for depression, 19% for anxiety. ==-The risk was highest among junior lawyers, not senior ones== — which overturned what the profession had assumed. Worth knowing before you go in rather than after.
 
 **And one genuinely open question.** ==?Some people argue the firms are making a mistake — that cutting junior hiring is self-defeating, because no juniors today means no seniors in ten years, and they'll be forced to reverse it.== The logic is sound. The hiring data has gone the other way for three years anyway. We don't know which wins, and we'll say so when it becomes clear.
 
@@ -139,7 +139,7 @@ Same catch as everywhere else: **the further a role sits from being personally a
 
 More than the ranking, and more than anything else here:
 
-- **Where do graduates actually work in year one — and doing what?** Not "employed." Not "in the legal sector." Practising.
+- **Where do graduates actually work in year one — and doing what?** Not "employed." Not "in the legal sector." Practicing.
 - Real advocacy and clinic experience, not just lectures
 - Whether they teach you to use legal AI tools *and* verify them
 - **Total cost against the median first-job salary for that school's graduates** — not the national average

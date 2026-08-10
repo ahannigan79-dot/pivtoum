@@ -128,7 +128,7 @@ example of a strong score.
 **Two of our six factors are effectively zero for everyone in marketing, at every level of
 seniority.**
 
-**Regulatory protection: 1.0.** There is no licence. No professional body controls entry, no
+**Regulatory protection: 1.0.** There is no license. No professional body controls entry, no
 statute reserves any marketing activity to a qualified human, and nothing prevents an
 organisation from replacing marketing work with software the moment the software is adequate.
 Compare accounting, where the audit signature is a legal monopoly, or nursing, where scope of
@@ -167,7 +167,7 @@ full-time marketers, found something more subtle than mass replacement:
 
 **Nobody is being fired and replaced by a machine.** What is happening is that layoffs,
 attrition and slow hiring are shrinking segments of the workforce, and the remaining work is
-redistributed to whoever stays. CMI calls it a *ghost workforce* — an invisible labour pool of
+redistributed to whoever stays. CMI calls it a *ghost workforce* — an invisible labor pool of
 marketers absorbing the roles of two or three people.
 
 **Why this matters for a student.** ==?A profession can look healthy on headcount while the
@@ -200,7 +200,7 @@ is lower than for a legal filing or a clinical note.
 |---|---|---|---|
 | **Human trust / accountability** | Real at leadership level | **Durable** | Boards want a person answerable for brand decisions. Commercially rooted. |
 | **Judgment under novelty** | Real at strategy level | **Eroding** | Repositioning resists; campaign iteration does not. |
-| **Regulatory / licensing** | **None** | n/a | No licence exists and none is coming. |
+| **Regulatory / licensing** | **None** | n/a | No license exists and none is coming. |
 | **Physical / embodied** | **None** | n/a | Permanently. |
 
 **The honest read.** ==+Marketing has two protections, both seniority-dependent, neither
@@ -262,7 +262,7 @@ currently paying.
 creative and analytical work in the same job; genuine breadth across a business; and a
 relatively short path to real responsibility compared with credentialed professions.
 
-**Specialisation pays sharply.** Analytics, marketing science, product marketing and
+**Specialization pays sharply.** Analytics, marketing science, product marketing and
 AI-integrated roles command substantially more than generalist ones — and a marketing manager
 who can run predictive analytics will out-earn a director who can't.
 
@@ -392,7 +392,7 @@ automated one.
 **2. Placement — and whether it's guaranteed or competitive.**
 
 **3. Does the curriculum teach working with AI tools *and* checking them?**
-A programme banning them is training for a job that no longer exists.
+A program banning them is training for a job that no longer exists.
 
 **4. First-destination job titles**, not employment rates. "Marketing coordinator" and
 "marketing analytics manager" are very different outcomes.
@@ -406,7 +406,7 @@ A programme banning them is training for a job that no longer exists.
 **On the curriculum:**
 - What proportion of the degree is quantitative, and is it compulsory?
 - Is there an analytics or marketing science pathway, and how many students take it?
-- How does the programme teach students to work with generative AI — and to verify it?
+- How does the program teach students to work with generative AI — and to verify it?
 - What changed in the curriculum in the last two years?
 
 **On placement:**
@@ -474,7 +474,7 @@ the emerging AI-integrated roles are well paid, intellectually varied, and growi
 of organisations have replaced anyone with AI — but three-quarters of marketers are doing the
 work of more than one job.== Nobody is fired. Roles simply stop being refilled.
 
-**And marketing has no floor.** No licence, no physical requirement, nothing structural. Every
+**And marketing has no floor.** No license, no physical requirement, nothing structural. Every
 bit of protection is personally earned, and a graduate starts with none of it.
 
 **So the useful advice is:** take the quantitative modules seriously because analytics is the
@@ -507,7 +507,7 @@ genuinely fluent pays, and pays now rather than eventually.==
 ## Part 2b — The harder conversation
 
 8. One in three companies is cutting entry-level marketing hiring. What's the plan for getting the first job?
-9. **Have you looked at first-destination job titles** from their shortlisted programmes, not employment rates?
+9. **Have you looked at first-destination job titles** from their shortlisted programs, not employment rates?
 10. Is the quantitative content compulsory or optional on the courses they're considering?
 
 ## Part 2c — The other side
@@ -528,7 +528,7 @@ genuinely fluent pays, and pays now rather than eventually.==
 
 ## Part 4 — About the program
 
-18. Ask each programme the curriculum questions from section 13. Whether quantitative content is compulsory is the whole answer.
+18. Ask each program the curriculum questions from section 13. Whether quantitative content is compulsory is the whole answer.
 19. Is there a real analytics or marketing science pathway?
 
 ## Part 5 — Widening the frame

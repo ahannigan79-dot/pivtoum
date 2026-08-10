@@ -20,7 +20,7 @@ mainly AI.==
 ## The 60-second version
 
 - The industry has shrunk roughly **60% since 2008**, almost entirely for economic reasons.
-- ==-Around 95,000 students are enrolled in journalism programmes. There are 45,000–50,000 working journalists.==
+- ==-Around 95,000 students are enrolled in journalism programs. There are 45,000–50,000 working journalists.==
 - AI is now taking the desk work, which was the last cushion.
 - **The work itself is still worth doing**, and the protected end is real.
 - Which means the advice is narrow rather than "don't."
@@ -48,7 +48,7 @@ the part automating now.
 
 ## The comparison that should decide this
 
-Roughly **95,000 students** are enrolled in journalism and mass communication programmes in the
+Roughly **95,000 students** are enrolled in journalism and mass communication programs in the
 US.
 
 There are roughly **45,000–50,000 working journalists.**

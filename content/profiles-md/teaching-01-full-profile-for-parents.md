@@ -113,7 +113,7 @@ software==, and safeguarding duties attach to a named adult.
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
 
 **Frequently.** Every class is a different mix of children on a different day, and the
-judgment calls — behavioural, pastoral, safeguarding — arrive without warning.
+judgment calls — behavioral, pastoral, safeguarding — arrive without warning.
 
 ---
 
@@ -172,7 +172,7 @@ and it is entirely about delivery mode rather than subject or skill.
 | **Human trust / accountability** | **Among the highest we score** | **Most durable** | Parents handing over children is socially rooted and legally reinforced by safeguarding duty. |
 | **Regulatory / licensing** | Strong | **Durable** | Certification and supervision-of-minors requirements move at the speed of legislation. |
 | **Physical / embodied** | Strong | **Durable in a classroom** | A room of thirty children is a management problem before an instructional one. |
-| **Judgment under novelty** | Good | **Eroding slowly** | Pastoral and behavioural judgment is not automating; instructional planning is. |
+| **Judgment under novelty** | Good | **Eroding slowly** | Pastoral and behavioral judgment is not automating; instructional planning is. |
 
 **The honest read.** ==+Teaching's protections are unusually well matched to the threat.== The
 thing AI does best — generating instructional content — is the thing schools need least help
@@ -188,7 +188,7 @@ where AI is weakest.
 | Planning lessons from scratch | Adapting generated plans to this class |
 | Marking a set of thirty | Reviewing generated feedback and adding what matters |
 | Differentiating by hand for three ability groups | Differentiation arrives automatically |
-| Writing reports over half-term | Drafted, then checked and personalised |
+| Writing reports over half-term | Drafted, then checked and personalized |
 | Managing thirty children in a room | **Unchanged** |
 | Noticing the child who's gone quiet | **Unchanged** |
 
@@ -205,7 +205,7 @@ funding decision rather than a technological one.
 
 # Human strengths that will matter most
 
-1. **Managing a room** — thirty children, social dynamics, attention, behaviour. The core of
+1. **Managing a room** — thirty children, social dynamics, attention, behavior. The core of
    the job and the least automatable thing in it.
 2. **Noticing** — the child who has gone quiet this week, whose home situation has changed.
    Pastoral judgment that no system has visibility of.
@@ -248,7 +248,7 @@ is precisely why the automation in section 7 matters.
 **Pay lags comparable graduate careers**, particularly mid-career, and that gap is the
 most-cited reason for leaving.
 
-**Behaviour management is harder than most students expect**, and it is the thing teacher
+**Behavior management is harder than most students expect**, and it is the thing teacher
 training prepares people for least well.
 
 **And the attrition is real** — though the direction of travel is better than the coverage
@@ -273,7 +273,7 @@ Teaching tends to suit people who:
 It's harder for people who:
 
 - Need **quiet to function**
-- Find **conflict draining** — behaviour management is unavoidable
+- Find **conflict draining** — behavior management is unavoidable
 - Want **high autonomy over their time**; the school day is fixed
 - Are drawn primarily to their **subject** rather than to children. This is the common
   mistake, and it's a genuinely different motivation.
@@ -329,12 +329,12 @@ practitioner input.
 **Before training:** ask providers how AI appears in the curriculum. The answers vary
 enormously and are revealing.
 
-**During:** get classroom exposure early and often — behaviour management is the thing people
-underestimate. Practise the verification habit deliberately.
+**During:** get classroom exposure early and often — behavior management is the thing people
+underestimate. Practice the verification habit deliberately.
 
 **Choosing a subject:** ==+shortage subjects — mathematics, physics, chemistry, special
 education, bilingual — carry better employability, better pay and more geographic
-freedom.== That decision matters more than most trainees realise.
+freedom.== That decision matters more than most trainees realize.
 
 ---
 
@@ -345,7 +345,7 @@ freedom.== That decision matters more than most trainees realise.
 | **Education degree** | 3–4 years | Direct route from school. |
 | **Subject degree + teaching qualification** | 3–4 years + 1 | Common, and strong in shortage subjects. |
 | **Employment-based / school-direct training** | 1–2 years | Earn while training. Expanding, and worth investigating. |
-| **Career-change routes** | 1–2 years | Widely available and often subsidised in shortage subjects. |
+| **Career-change routes** | 1–2 years | Widely available and often subsidized in shortage subjects. |
 | **Teaching assistant → qualified** | Varies | Slower, but arrives with real classroom experience. |
 
 ---
@@ -369,7 +369,7 @@ They look like teaching and they score like content production.
 The single best predictor of whether someone stays. Ask how many weeks, across how many
 different schools.
 
-**2. Behaviour management taught properly.**
+**2. Behavior management taught properly.**
 Not a module — sustained, practical, with real feedback. It's the thing new teachers report
 being least prepared for.
 
@@ -393,14 +393,14 @@ What proportion of their graduates are still teaching at three and five years?
 - Do trainees teach in both high- and low-need schools?
 
 **On preparation:**
-- How is behaviour management taught, and how much practical feedback do trainees get?
-- How does the programme prepare trainees to work with AI tools, and to redesign assessment?
+- How is behavior management taught, and how much practical feedback do trainees get?
+- How does the program prepare trainees to work with AI tools, and to redesign assessment?
 
 **On outcomes:**
 - What proportion of your graduates are still teaching at three years? At five?
 - Which subjects do you place best in?
 
-**Red flags:** minimal or late classroom exposure; behaviour management as a single module;
+**Red flags:** minimal or late classroom exposure; behavior management as a single module;
 no retention data; a curriculum unchanged since 2022; no engagement with AI beyond a policy
 banning it.
 
@@ -427,7 +427,7 @@ banning it.
   The strongest case against our 3.6 isn't that AI will replace classroom teachers. It's that
   ==?we may be measuring the wrong risk entirely.==
 
-  On this reading, teaching's problem was never automation — it was pay, workload, behaviour
+  On this reading, teaching's problem was never automation — it was pay, workload, behavior
   and status. A framework that scores AI exposure will always make teaching look safe while
   saying nothing about the thing that actually drives people out at 5.3% vacancy rates and
   double-digit turnover. A parent reading "3.6, low risk" could reasonably conclude teaching
@@ -457,7 +457,7 @@ automatability and still scores 3.6, which shows what actually protects work: no
 of automatable tasks, but the presence of everything else.== Take the same knowledge online
 and the score nearly doubles.
 
-**The real risks are the ones that were always there.** Workload, pay, behaviour, and the fact
+**The real risks are the ones that were always there.** Workload, pay, behavior, and the fact
 that turnover in a high-poverty school runs at 19.1% against 12.9% in a low-poverty one. AI
 helps meaningfully with the first of those and not at all with the rest.
 
@@ -491,14 +491,14 @@ real. So is that.
 ## Part 2b — The harder conversation
 
 8. **Pay.** Have you looked at actual teacher salaries at year one, year five and year fifteen where you live, against other graduate careers?
-9. Behaviour management is the thing new teachers report being least prepared for. What do they think their instinct would be?
+9. Behavior management is the thing new teachers report being least prepared for. What do they think their instinct would be?
 10. Turnover runs at 19.1% in high-poverty schools against 12.9% in low-poverty ones. Does that change how they'd think about where to work?
 
 ## Part 2c — The other side
 
 11. Of what teachers say is rewarding — watching a child understand, relationships over a year, classroom autonomy, the rhythm of the year — which two matter most?
 12. Looking at "who this work suits": which items sound like them? Answer separately, then compare.
-13. Do thirty people all day energise them or drain them? Honest answer.
+13. Do thirty people all day energize them or drain them? Honest answer.
 
 ## Part 2d — The AI question, practically
 
@@ -513,7 +513,7 @@ real. So is that.
 ## Part 4 — About the program
 
 18. Ask each provider the classroom-hours and retention questions from section 14.
-19. How is behaviour management actually taught?
+19. How is behavior management actually taught?
 
 ## Part 5 — Widening the frame
 

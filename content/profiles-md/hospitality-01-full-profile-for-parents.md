@@ -87,7 +87,7 @@ Junior law rates 9.5 on entry-path erosion. Entry software rates 9.0. Business r
 
 Industry salary analysis for 2026 reports that ==+the biggest hiring challenge is no longer
 entry-level roles — it is experienced leadership: general managers, executive chefs and district
-managers.== Entry-level labour availability has improved. Hourly wage growth has moderated to
+managers.== Entry-level labor availability has improved. Hourly wage growth has moderated to
 1–3%.
 
 ==+Meanwhile general manager salaries rose **12.24% year-on-year**.==
@@ -117,11 +117,11 @@ Here's how front-of-house service answers them.
 **The booking, the scheduling and the pricing. Not the service.**
 
 Reservations and booking management. Revenue management and dynamic pricing. Shift scheduling
-and rota optimisation. Inventory and ordering. Guest communication and confirmations. Review
+and rota optimization. Inventory and ordering. Guest communication and confirmations. Review
 monitoring and response drafting.
 
 ==-Revenue management is the clearest case: pricing rooms against demand, competitor rates and
-seasonality is a constrained optimisation problem with structured inputs, and it used to be a
+seasonality is a constrained optimization problem with structured inputs, and it used to be a
 skilled career.==
 
 What resists: cooking the food, cleaning the room, reading a table, recovering a guest whose
@@ -170,7 +170,7 @@ hospitality is moving nearly two and a half times as fast as the operational hal
 
 | Protection | Strength today | Durability | Where the pressure is coming from |
 |---|---|---|---|
-| **Physical / embodied** | Very strong | **Durable** | The guest is physically present. Kitchen and housekeeping robotics exist but are expensive, inflexible and limited to high-volume standardised settings. |
+| **Physical / embodied** | Very strong | **Durable** | The guest is physically present. Kitchen and housekeeping robotics exist but are expensive, inflexible and limited to high-volume standardized settings. |
 | **Judgment under novelty** | Strong in operations | **Durable** | Service is unscripted problem-solving under time pressure. |
 | **Human trust / accountability** | Rises with seniority | **Durable at management level** | An owner needs a specific, accountable operator. |
 | **Regulatory / licensing** | Partial | **Moderate** | Food safety, alcohol and fire compliance require certified people. |
@@ -179,7 +179,7 @@ hospitality is moving nearly two and a half times as fast as the operational hal
 product is an experience delivered to a physically present person.== That doesn't automate,
 and the parts that do — booking, pricing, scheduling — were never the job.
 
-**The one thing to watch** is the same pattern as elsewhere: standardised, high-volume settings
+**The one thing to watch** is the same pattern as elsewhere: standardized, high-volume settings
 automate first. Quick-service kitchens with limited menus are a more automatable environment than
 a full-service restaurant, in exactly the way a prefabrication factory is more automatable than a
 building site.
@@ -192,7 +192,7 @@ building site.
 |---|---|
 | Taking reservations | Automated |
 | Setting room rates | Revenue systems price it; managers judge exceptions |
-| Building the rota | Optimised automatically |
+| Building the rota | Optimized automatically |
 | Ordering and stock control | Automated |
 | Responding to reviews | Drafted, then edited |
 | Cooking the food | **Unchanged** |
@@ -235,7 +235,7 @@ hospitality workforce grew by over two million people — around 23.7%. Within t
 
 **Progression is fast and merit-based.** ==+Hospitality is one of very few fields where someone
 can start with no qualification at eighteen and be running a venue at twenty-six.== There is no
-licence gate, no degree requirement, and advancement runs on demonstrated competence.
+license gate, no degree requirement, and advancement runs on demonstrated competence.
 
 **And the leadership shortage is the opportunity.** With GM salaries up 12.24% year-on-year and
 experienced operators the hardest roles to fill, ==+the person who stays long enough to become
@@ -297,10 +297,10 @@ It's harder for people who:
 
 ## What else is moving this market
 
-**The labour shortfall is structural** — AHLA forecasts an 18% shortfall through 2026, driven by
+**The labor shortfall is structural** — AHLA forecasts an 18% shortfall through 2026, driven by
 fewer young workers entering the sector and immigration policy compressing an existing pipeline.
 
-**Labour costs are rising faster than revenue.** US hotels will pay **$131 billion** in wages and
+**Labor costs are rising faster than revenue.** US hotels will pay **$131 billion** in wages and
 benefits in 2026, 15.3% above 2019, against operating revenue growth of only 12.8% over the same
 period. That pressure is real and it shapes how operators behave.
 
@@ -321,7 +321,7 @@ turnover, the market for people with ten years of operational experience is seve
 undersupplied, and GM pay is rising 12% a year to prove it.==
 
 **2. Learn the systems that are replacing the back office.** Revenue management platforms,
-scheduling optimisation, inventory systems. ==+Understanding what the system is doing — and when
+scheduling optimization, inventory systems. ==+Understanding what the system is doing — and when
 it's wrong — is what separates a manager from an operator.==
 
 **3. Judge the exceptions.** Dynamic pricing handles normal weeks. It handles a citywide event, a
@@ -332,13 +332,13 @@ whether staff stay, ==+a manager who can retain a team in an industry that loses
 people annually is delivering measurable financial value== — replacement costs run 30–50% of
 salary per departure.
 
-**5. Understand the unit economics.** Labour costs are outgrowing revenue. Operators who can read
+**5. Understand the unit economics.** Labor costs are outgrowing revenue. Operators who can read
 a P&L are the ones who get promoted.
 
 ### Concrete preparation
 
 **Before committing:** ==+work a full season, including a bad one — a Christmas period, a summer
-peak, a difficult service.== Hospitality is romanticised and the reality is physical and
+peak, a difficult service.== Hospitality is romanticized and the reality is physical and
 relentless. It also suits some people completely.
 
 **Choosing an employer:** ask about turnover and scheduling practice specifically. Given that
@@ -413,7 +413,7 @@ internal promotions to point to; training that stops after induction.
   that in the government's own data is more persuasive than any commentary.
 
 - **[AHLA State of the Industry](https://www.ahla.com/)**
-  — *American Hotel and Lodging Association.* The 76%-short-staffed figure, the labour shortfall
+  — *American Hotel and Lodging Association.* The 76%-short-staffed figure, the labor shortfall
   forecast and the wage-cost data. Read it knowing AHLA represents hotel operators.
 
 - **[National Restaurant Association research](https://restaurant.org/research-and-media/research/)**
@@ -432,7 +432,7 @@ internal promotions to point to; training that stops after induction.
   the risk here was never automation, and the sector loses most of its people within a year
   regardless.
 
-  There's a second, more specific challenge too: quick-service and high-volume standardised
+  There's a second, more specific challenge too: quick-service and high-volume standardized
   kitchens are a genuinely more automatable environment than we may be crediting, and that is
   where a large share of entry-level hospitality employment sits.
 
@@ -524,7 +524,7 @@ not about ceilings.==
 ## Part 3 — Testing it against reality
 
 16. **The most valuable single action:** work a full season including a hard one. Hospitality is
-    romanticised, and a bad Saturday night answers the question quickly.
+    romanticized, and a bad Saturday night answers the question quickly.
 17. Find someone who's been in hospitality ten years and ask what kept them — and someone who left
     after one, and ask what didn't.
 
@@ -554,7 +554,7 @@ not about ceilings.==
 
 *This is analysis and informed judgment about a fast-moving situation. For hospitality
 specifically, we've flagged that the sector's defining risk is retention rather than automation,
-that our framework cannot see working conditions, and that standardised high-volume settings are
+that our framework cannot see working conditions, and that standardized high-volume settings are
 more automatable than the full-service environments this profile is largely describing.*
 
 *Scores for 2023 and 2025 are retrospective reconstructions using the current methodology.

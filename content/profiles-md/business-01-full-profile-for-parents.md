@@ -78,7 +78,7 @@ The first is automation. Analyst programs, coordinator roles and junior project 
 
 The second has nothing to do with AI, and our framework doesn't measure it: **plain oversupply.** Business is the most-conferred bachelor's degree in the United States. There is no licensing body capping entry, no clinical placement bottleneck, no accreditation constraint on numbers.
 
-Section 8 covers what the labour market data actually shows, because it's the most important evidence in this profile.
+Section 8 covers what the labor market data actually shows, because it's the most important evidence in this profile.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -128,10 +128,10 @@ The gap widened from 2.0 points to 2.7. The ladder's top is holding better than 
 |---|---|---|---|
 | **Human trust / accountability** | Real at senior level | **Durable** | Someone must answer for the number. Socially and commercially rooted. |
 | **Judgment under novelty** | Real at senior level | **Eroding** | Decision support is improving; genuine strategic novelty is not automating. |
-| **Regulatory / licensing** | **None** | n/a | No licence exists and none is coming. |
+| **Regulatory / licensing** | **None** | n/a | No license exists and none is coming. |
 | **Physical / embodied** | **None** | n/a | Except in operations and supply chain, which is why those score marginally better. |
 
-**The honest read.** Business has two of the four protections, both of them seniority-dependent, and neither inherited from the profession. ==+A doctor is protected on day one by a licence. A manager is protected only once they have something to be accountable for.==
+**The honest read.** Business has two of the four protections, both of them seniority-dependent, and neither inherited from the profession. ==+A doctor is protected on day one by a license. A manager is protected only once they have something to be accountable for.==
 
 That is the central problem this profile is about, and it's why the entry-path question matters more here than the automation question.
 
@@ -167,7 +167,7 @@ Notably absent: producing decks, building models and assembling reports. These w
 
 This is the section we'd point a family to first, because it's the strongest data in this profile and it comes from an independent source.
 
-The **Federal Reserve Bank of New York** tracks labour market outcomes for recent graduates. As of Q1 2026:
+The **Federal Reserve Bank of New York** tracks labor market outcomes for recent graduates. As of Q1 2026:
 
 - Recent graduate unemployment stood at **5.7%**, against a national rate of 4.2%
 - **Underemployment — working in a job that doesn't require a degree — sat at 41.5%**
@@ -179,7 +179,7 @@ A separate Burning Glass Institute and Strada study found **52% of bachelor's de
 
 ==+That gap is not about intelligence, effort or prestige. It is about whether a degree points at a specific job that legally requires it.== Nursing does. General business does not.
 
-**This is why we say business's problem is not primarily AI.** Automation is compressing the entry rung, and it's real. But it's arriving on top of a graduate market where four in ten degree-holders are already working in jobs that don't need a degree — and business, as the most-conferred degree in the country with no cap on numbers, sits at the centre of that.
+**This is why we say business's problem is not primarily AI.** Automation is compressing the entry rung, and it's real. But it's arriving on top of a graduate market where four in ten degree-holders are already working in jobs that don't need a degree — and business, as the most-conferred degree in the country with no cap on numbers, sits at the center of that.
 
 Our framework measures automation exposure. It cannot see oversupply. ==?For business specifically, the thing we can't measure may matter more than the thing we can, and we'd rather say so than pretend the score is the whole picture.==
 
@@ -230,9 +230,9 @@ It's harder for people who:
 
 **Oversupply is the dominant force**, and it's structural rather than cyclical. Nothing caps the number of business graduates.
 
-**Skills-based hiring is being announced more than practised.** A Burning Glass and Harvard Business School analysis found that removing degree requirements from postings hasn't meaningfully changed who gets hired.
+**Skills-based hiring is being announced more than practiced.** A Burning Glass and Harvard Business School analysis found that removing degree requirements from postings hasn't meaningfully changed who gets hired.
 
-**Internships have become the actual filter.** NACE's employer survey rates internship experience **4.5 out of 5** as a hiring factor — the highest-rated item. ==+In a field with no licence, the placement is the closest thing to one.==
+**Internships have become the actual filter.** NACE's employer survey rates internship experience **4.5 out of 5** as a hiring factor — the highest-rated item. ==+In a field with no license, the placement is the closest thing to one.==
 
 ---
 
@@ -244,7 +244,7 @@ It's harder for people who:
 
 **1. Verify.** Knowing when a generated analysis is confidently wrong. This requires understanding the business well enough to smell an implausible number — which is exactly the understanding the old report-building years used to produce.
 
-**2. Frame.** Deciding what question is worth asking. ==+The analysis is now cheap; knowing what to analyse is not.==
+**2. Frame.** Deciding what question is worth asking. ==+The analysis is now cheap; knowing what to analyze is not.==
 
 **3. Automate visibly.** Being the person who rebuilds a manual process and can show what it saved. In a field with no credential, demonstrable results are the credential.
 
@@ -278,9 +278,9 @@ It's harder for people who:
 
 # Where a business degree can take them later
 
-The good news is genuine breadth: general management, operations, commercial and sales leadership, HR, project and programme delivery, consulting, entrepreneurship, and finance-adjacent roles.
+The good news is genuine breadth: general management, operations, commercial and sales leadership, HR, project and program delivery, consulting, entrepreneurship, and finance-adjacent roles.
 
-**The caveat that runs through this index applies with unusual force here.** In most professions, moving away from the core raises exposure. In business ==?there is no core to move away from — so the question isn't distance from the centre, it's proximity to accountability.== Roles where someone owns a number score better. Roles that support other people's numbers score worse. That's the whole map.
+**The caveat that runs through this index applies with unusual force here.** In most professions, moving away from the core raises exposure. In business ==?there is no core to move away from — so the question isn't distance from the center, it's proximity to accountability.== Roles where someone owns a number score better. Roles that support other people's numbers score worse. That's the whole map.
 
 ---
 
@@ -335,7 +335,7 @@ An operations or supply chain pathway with genuine depth beats a general degree 
 
 - **[Too many college graduates flood the white-collar job market](https://qz.com/elite-overproduction-college-graduates-white-collar-jobs-062926)** — *Quartz.*
 
-  The argument against our score is that we're attributing to AI what is really a supply problem. On this reading, business graduate outcomes were deteriorating well before generative AI existed, driven by the sheer number of degrees conferred and by employers raising requirements — and our 7.6 is measuring a labour market condition rather than a technological one.
+  The argument against our score is that we're attributing to AI what is really a supply problem. On this reading, business graduate outcomes were deteriorating well before generative AI existed, driven by the sheer number of degrees conferred and by employers raising requirements — and our 7.6 is measuring a labor market condition rather than a technological one.
 
   **Where we land:** we think this is substantially correct, and we've said so in section 8 rather than hiding it. Business is the profile where our framework is least sufficient on its own. What we'd add is that the two forces compound rather than compete — oversupply meant graduates already needed a differentiator, and automation removed the rung where they used to acquire one. ==?A reader should treat our score as one input alongside the New York Fed's underemployment data, not as a complete account.==
 

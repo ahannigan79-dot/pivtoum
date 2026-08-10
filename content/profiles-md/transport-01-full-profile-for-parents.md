@@ -125,8 +125,8 @@ out of pilots into deployment. And industry analysis notes that ==-back-office r
 dispatchers, safety coordinators and logistics administrators can be partially offloaded,
 reducing overhead on those functions by 30–50%.==
 
-**Route planning is the clearest case.** Optimising a multi-stop route against traffic, windows,
-weight limits and driver hours is a constrained optimisation problem with structured inputs and
+**Route planning is the clearest case.** Optimizing a multi-stop route against traffic, windows,
+weight limits and driver hours is a constrained optimization problem with structured inputs and
 a measurable correct answer. ==-That is close to a definition of automatable work, and it used
 to be a career.==
 
@@ -147,7 +147,7 @@ Here's how local delivery and multi-stop driving answers them.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
-**Route optimisation and the paperwork. Not the driving, and not the delivery.**
+**Route optimization and the paperwork. Not the driving, and not the delivery.**
 
 Route planning and sequencing. Load matching and capacity planning. Hours-of-service compliance
 tracking. Proof-of-delivery processing. Fuel and maintenance scheduling.
@@ -237,7 +237,7 @@ vehicle work is on considerably firmer ground.
 
 | Was the job | Is becoming the job |
 |---|---|
-| Planning your own route | The route arrives optimised |
+| Planning your own route | The route arrives optimized |
 | Paperwork and logs | Automated compliance tracking |
 | Finding backhaul loads | Matched automatically |
 | Dispatching by phone | ==-Largely automated — and this was the career== |
@@ -355,7 +355,7 @@ rather than replacing them — and the roles coordinating that technology are th
 **1. Choose the protected segment deliberately.** ==+Local, specialist, emergency and
 multi-stop work is where autonomy reaches last and where pay growth has been strongest.==
 
-**2. Specialise.** Hazmat, oversize, tanker, livestock, abnormal loads. Higher pay, and the
+**2. Specialize.** Hazmat, oversize, tanker, livestock, abnormal loads. Higher pay, and the
 categories autonomy addresses least.
 
 **3. Move toward the vehicle, not the desk.** Dispatch, planning and brokerage look like
@@ -408,7 +408,7 @@ deliberate choice rather than an assumed promotion.==
 
 ---
 
-# What to look for in an employer or programme
+# What to look for in an employer or program
 
 **1. Turnover rate.** The single most informative number and the one least advertised. Ask
 directly.
@@ -468,7 +468,7 @@ sign-on bonus over pay structure; long tie-in periods on funded training.
 
   **And a third reading that questions the framing entirely.** Economist Steve Viscelli argues
   the driver "shortage" is really a retention crisis — ==-90–95% annual turnover at large
-  carriers is not what a labour shortage looks like; it is what a bad job looks like.== On that
+  carriers is not what a labor shortage looks like; it is what a bad job looks like.== On that
   reading, the sector could staff itself tomorrow by improving conditions, and the shortage
   narrative serves carriers who prefer recruitment to retention.
 
@@ -501,7 +501,7 @@ with 35% of new drivers gone within 90 days, describes a job-quality problem rat
 technology one.==
 
 **So the useful advice is:** choose the segment deliberately rather than taking whichever job
-appears; specialise into hazmat, tanker or oversize where the pay is better and autonomy reaches
+appears; specialize into hazmat, tanker or oversize where the pay is better and autonomy reaches
 last; compare carriers on turnover and home time rather than sign-on bonus; consider the
 heavy-vehicle and EV technician route, which is short of people and physically protected; and
 understand that moving to dispatch or planning is a step toward the exposed end, not away from
