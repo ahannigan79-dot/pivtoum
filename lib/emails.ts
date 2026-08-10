@@ -45,7 +45,7 @@ export function purchaseEmail(
             ${rows}
           </table>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 12px;">Each includes a short version written directly to the student and the technical scoring appendix. Your <strong>Spring 2027</strong> updates are included &mdash; we&rsquo;ll email them when they publish.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 12px;">Each includes a short version written directly to the student and the technical scoring appendix. <strong>Every future edition is included</strong> &mdash; we re-score every six months and email you each new one, free.</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0;">You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}" style="color:${pen};">your claim link</a>.</p>
         </td></tr>
         <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
@@ -65,7 +65,7 @@ export function purchaseEmail(
       )
       .join("\n\n") +
     `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
-    `Your Spring 2027 updates are included — we'll email them when they publish.\n\n` +
+    `Every future edition is included — we re-score every six months and email you each new one, free.\n\n` +
     `Re-open your selection page any time: ${SITE.url}/claim/${token}\n\n` +
     `Pivotum — 28 careers, scored the same way.`;
 

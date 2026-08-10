@@ -46,7 +46,7 @@ export async function POST(req: Request) {
           unit_amount: pack.priceCents,
           product_data: {
             name: `Pivotum — ${pack.label} pack`,
-            description: "Career Value Guides, chosen after checkout. Includes Spring 2027 updates.",
+            description: "Career Value Guides, chosen after checkout. Every future edition included.",
           },
         },
       },

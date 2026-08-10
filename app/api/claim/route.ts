@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getOrder, markClaimed } from "@/lib/db";
 import { isClaimable } from "@/lib/profiles";
+import { isUnlimitedSize } from "@/lib/packs";
 import { getCareer } from "@/data/careers";
 import { signDownload, SEVEN_DAYS_MS } from "@/lib/download";
 import { purchaseEmail } from "@/lib/emails";
@@ -23,9 +24,19 @@ export async function POST(req: Request) {
     selected = order.selected; // re-issue
   } else {
     selected = Array.isArray(slugs) ? [...new Set(slugs)] : [];
-    if (selected.length !== order.pack_size) {
+    // Unlimited grants the whole catalog, so any 1..all is valid; a fixed pack
+    // must be claimed exactly.
+    const unlimited = isUnlimitedSize(order.pack_size);
+    const ok = unlimited
+      ? selected.length >= 1 && selected.length <= order.pack_size
+      : selected.length === order.pack_size;
+    if (!ok) {
       return NextResponse.json(
-        { error: `Choose exactly ${order.pack_size} profile(s).` },
+        {
+          error: unlimited
+            ? "Choose at least one career."
+            : `Choose exactly ${order.pack_size} career(s).`,
+        },
         { status: 400 },
       );
     }
@@ -44,7 +55,7 @@ export async function POST(req: Request) {
   }));
   // Flat list for the plain-text part and the email-not-configured fallback.
   const links = items.flatMap((it) => [
-    { name: `${it.name} — Full profile`, url: it.parentUrl },
+    { name: `${it.name} — Full guide`, url: it.parentUrl },
     { name: `${it.name} — Student version`, url: it.studentUrl },
   ]);
 
@@ -58,7 +69,7 @@ export async function POST(req: Request) {
     const { error } = await resend.emails.send({
       from,
       to: order.email,
-      subject: "Your Pivotum profiles",
+      subject: "Your Pivotum Career Value Guides",
       html,
       text,
     });

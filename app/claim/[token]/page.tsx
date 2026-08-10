@@ -4,7 +4,7 @@ import { getStripe } from "@/lib/stripe";
 import { EDITION } from "@/lib/site";
 import { claimableCareers } from "@/lib/profiles";
 import { careerRange } from "@/data/careers";
-import { getPack } from "@/lib/packs";
+import { getPack, isUnlimitedSize } from "@/lib/packs";
 import { ClaimPicker } from "@/components/ClaimPicker";
 import { ResendButton } from "@/components/ResendButton";
 import { PurchasePixel } from "@/components/PurchasePixel";
@@ -81,12 +81,31 @@ export default async function ClaimPage({ params }: { params: Promise<{ token: s
           </>
         ) : (
           <>
-            <h1>Choose your {order.pack_size} career{order.pack_size > 1 ? "s" : ""}</h1>
+            <h1>
+              {isUnlimitedSize(order.pack_size)
+                ? "Choose your careers"
+                : `Choose your ${order.pack_size} career${order.pack_size > 1 ? "s" : ""}`}
+            </h1>
             <p className="kicker">
-              Payment received. Pick exactly {order.pack_size} — we&rsquo;ll email the PDFs to{" "}
-              <strong>{order.email}</strong>. You can come back to this page until you claim.
+              {isUnlimitedSize(order.pack_size) ? (
+                <>
+                  Payment received — every career is included. Pick any you want (or{" "}
+                  <em>Select all</em>), and we&rsquo;ll email the PDFs to <strong>{order.email}</strong>.
+                  You can come back to this page until you claim.
+                </>
+              ) : (
+                <>
+                  Payment received. Pick exactly {order.pack_size} — we&rsquo;ll email the PDFs to{" "}
+                  <strong>{order.email}</strong>. You can come back to this page until you claim.
+                </>
+              )}
             </p>
-            <ClaimPicker token={token} packSize={order.pack_size} choices={choices} />
+            <ClaimPicker
+              token={token}
+              packSize={order.pack_size}
+              choices={choices}
+              unlimited={isUnlimitedSize(order.pack_size)}
+            />
           </>
         )}
 

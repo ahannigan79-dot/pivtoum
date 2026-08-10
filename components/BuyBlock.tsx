@@ -1,20 +1,6 @@
 import Link from "next/link";
 import { StarterKitCta } from "@/components/StarterKitCta";
-
-export interface Pack {
-  size: number;
-  label: string;
-  price: string;
-  tag?: string;
-}
-
-/** The three packs, by number of careers. "5 careers" is tagged Most families.
- *  Pay first, choose after. */
-export const PACKS: Pack[] = [
-  { size: 1, label: "1 career", price: "$19" },
-  { size: 3, label: "3 careers", price: "$29" },
-  { size: 5, label: "5 careers", price: "$39", tag: "Most families" },
-];
+import { PACKS } from "@/lib/packs";
 
 export function BuyBlock({ source = "index", title }: { source?: string; title?: string }) {
   return (
@@ -46,7 +32,7 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
         </div>
         <p className="fine">
           Each Career Value Guide includes a version written directly to the student and the
-          technical scoring appendix. Spring 2027 updates of whatever you buy are included.
+          technical scoring appendix. Every future edition of what you buy is included, free.
         </p>
         <p className="fine">
           <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
