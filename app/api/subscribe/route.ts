@@ -76,9 +76,10 @@ export async function POST(req: Request) {
     // A unique single-use code per subscriber; falls back to a shared code if
     // Stripe / the lead coupon isn't configured.
     // New leads get the 10% Founding Subscriber Discount (a unique code minted
-    // off STRIPE_LEAD_COUPON_ID, which you point at the 10% coupon); FOUNDING10
-    // is the shared fallback. The old PARENT20 stays valid in Stripe for anyone
-    // who already has it.
+    // off STRIPE_FOUNDING_COUPON_ID, which points at the 10% coupon); FOUNDING10
+    // is the shared fallback. The old 20% coupon (PARENT20 and any codes minted
+    // off STRIPE_LEAD_COUPON_ID) stays valid in Stripe for anyone who already
+    // has it — this only changes what new codes are minted against.
     const code = (await mintLeadPromoCode(expiresDays)) ?? "FOUNDING10";
     const resend = new Resend(apiKey);
     try {
