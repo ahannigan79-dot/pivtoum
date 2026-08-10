@@ -75,7 +75,11 @@ export async function POST(req: Request) {
     const expiresDays = 7;
     // A unique single-use code per subscriber; falls back to a shared code if
     // Stripe / the lead coupon isn't configured.
-    const code = (await mintLeadPromoCode(expiresDays)) ?? "PARENT20";
+    // New leads get the 10% Founding Subscriber Discount (a unique code minted
+    // off STRIPE_LEAD_COUPON_ID, which you point at the 10% coupon); FOUNDING10
+    // is the shared fallback. The old PARENT20 stays valid in Stripe for anyone
+    // who already has it.
+    const code = (await mintLeadPromoCode(expiresDays)) ?? "FOUNDING10";
     const resend = new Resend(apiKey);
     try {
       if (pkg.stage) {
@@ -123,7 +127,7 @@ export async function POST(req: Request) {
         const { html, text } = packageEmail({
           items,
           code,
-          discountLabel: "20% off",
+          discountLabel: "10% off",
           expiresDays,
           buyUrl: `${SITE.url}/buy`,
           audience: pkg.audience,
@@ -141,7 +145,7 @@ export async function POST(req: Request) {
           pdfUrl,
           pdfLabel,
           code,
-          discountLabel: "20% off",
+          discountLabel: "10% off",
           expiresDays,
           buyUrl: `${SITE.url}/buy`,
         });
@@ -165,7 +169,16 @@ export async function POST(req: Request) {
     // plain add if that property isn't defined yet or the contact already
     // exists. Logged so we can see exactly what Resend returns. Best-effort:
     // nothing here ever blocks the already-saved signup.
-    const nurtureEvent = slug === "index" ? "index_requested" : "sampler_requested";
+    // Fork the nurture by where the lead is: the /map capture sends its stage,
+    // so planning vs already-in each start their own Resend automation. Plain
+    // index/sampler signups keep their existing events.
+    const nurtureEvent = pkg.stage
+      ? pkg.stage === "planning"
+        ? "map_planning_requested"
+        : "map_active_requested"
+      : slug === "index"
+        ? "index_requested"
+        : "sampler_requested";
     try {
       let contact = await resend.contacts.create({
         email,
