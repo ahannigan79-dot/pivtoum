@@ -128,6 +128,7 @@ export async function POST(req: Request) {
           discountLabel: "20% off",
           expiresDays,
           buyUrl: `${SITE.url}/buy`,
+          audience: pkg.audience,
         });
         await resend.emails.send({
           from,

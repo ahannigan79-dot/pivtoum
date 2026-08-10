@@ -84,8 +84,16 @@ export function packageEmail(opts: {
   discountLabel: string;
   expiresDays: number;
   buyUrl: string;
+  audience?: "child" | "self"; // parent-of-child vs the reader themselves
 }) {
   const { items, code, discountLabel, expiresDays, buyUrl } = opts;
+  const forChild = opts.audience === "child";
+  const introLine = forChild
+    ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and the breakdowns on the careers you chose. Go through it together; the guide ties it together."
+    : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose. Work through them in order; the guide ties it together.";
+  const introText = forChild
+    ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and the breakdowns on the careers you chose."
+    : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose.";
   const ink = "#211E1B";
   const inkSoft = "#57534D";
   const pencil = "#8C857A";
@@ -120,7 +128,7 @@ export function packageEmail(opts: {
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">The AI Career Map &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your AI Career Map is here</div>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose. Work through them in order; the guide ties it together.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the full profiles</strong> in below.</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};margin:0 0 22px;">
@@ -146,7 +154,7 @@ export function packageEmail(opts: {
 
   const text =
     `Your AI Career Map is here.\n\n` +
-    `Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose.\n\n` +
+    `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
     `\n\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
