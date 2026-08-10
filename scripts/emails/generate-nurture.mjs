@@ -85,6 +85,29 @@ const CONTENT = {
         p("Quick one &mdash; your <strong>Founding Subscriber Discount</strong> is about to expire. If the careers on your family's shortlist still feel unresolved, this is the moment to get the Career Value Guide at the founding price and settle it.") +
         offerBox + signoff,
     },
+    month1: {
+      subject: "A month on — has the picture moved?",
+      preview: "The exposure split shifts faster than most families expect.",
+      kicker: "The Career Map · A note from Adam",
+      heading: "A month on — has the picture moved?",
+      body:
+        p("Hi &mdash; it's Adam again. It's been about a month since you built your Career Map, so I wanted to check in.") +
+        p("Here's the thing worth knowing: the safe-versus-exposed line inside a career doesn't hold still. In the time since you looked, the tools have moved, and the specialty that looked protected for your kid's shortlist may sit a notch differently now. That's exactly why we re-score every six months rather than writing something once and calling it done.") +
+        p("If the decision on your family's two or three careers still feels open, the <strong>Career Value Guide</strong> is the current read &mdash; every sub-track scored, the honest downsides, and the routes in, with this edition and the next both included. Your founding code is still on your account whenever you're ready.") +
+        cta("See the Career Value Guide") +
+        p("And if now isn't the moment, no rush &mdash; reply and tell me where your thinking's landed. I read every one.") + signoff,
+    },
+    final: {
+      subject: "Last note from me — then just the quarterly read",
+      preview: "No more nudges. Steering Through Change keeps you current.",
+      kicker: "The Career Map",
+      heading: "Last note from me",
+      body:
+        p("This is the last you'll hear from me on the Career Value Guide &mdash; I'd rather leave you to it than keep knocking.") +
+        p("You'll still get <strong>Steering Through Change</strong>, our quarterly read on where AI is shifting the ground under careers, so you stay current whether or not you ever buy a thing. And the Guide will be right here the day the decision on your kid's path gets real &mdash; your founding code doesn't disappear.") +
+        cta("See the Career Value Guide") +
+        p("Thanks for reading this far. It genuinely means a lot in these early days.") + signoff,
+    },
   },
   active: {
     letter: {
@@ -118,6 +141,29 @@ const CONTENT = {
       body:
         p("Quick one &mdash; your <strong>Founding Subscriber Discount</strong> is about to expire. If your kid's next move still feels unclear, this is the moment to get the Career Value Guide at the founding price and draw the route.") +
         offerBox + signoff,
+    },
+    month1: {
+      subject: "A month on — has the ground shifted?",
+      preview: "The safe lane in your field doesn't stay put for long.",
+      kicker: "The Career Map · A note from Adam",
+      heading: "A month on — has the ground shifted?",
+      body:
+        p("Hi &mdash; it's Adam again. It's been about a month since you built your Career Map for someone already in their field, so I wanted to check in.") +
+        p("The reason I'm writing: the lane that's safe inside a field keeps moving. In a month the tools have shifted, and the bridge from the exposed side to the protected one for your kid's field may look different now than it did when you first looked. That's why we re-score every six months rather than freezing a snapshot.") +
+        p("If the next move still feels unclear, the <strong>Career Value Guide</strong> is the current route &mdash; every sub-track scored, the honest downsides, and the senior-role targets to aim at now, with this edition and the next both included. Your founding code is still on your account whenever you're ready.") +
+        cta("See the Career Value Guide") +
+        p("And if now isn't the moment, reply and tell me where things stand &mdash; I read every one.") + signoff,
+    },
+    final: {
+      subject: "Last note from me — then just the quarterly read",
+      preview: "No more nudges. Steering Through Change keeps you current.",
+      kicker: "The Career Map",
+      heading: "Last note from me",
+      body:
+        p("This is the last you'll hear from me on the Career Value Guide &mdash; I'd rather leave you to it than keep knocking.") +
+        p("You'll still get <strong>Steering Through Change</strong>, our quarterly read on where AI is shifting the ground under careers, so you stay current whether or not you ever buy a thing. And the Guide will be right here the day your kid's next move has to be made &mdash; your founding code doesn't disappear.") +
+        cta("See the Career Value Guide") +
+        p("Thanks for reading this far. It genuinely means a lot in these early days.") + signoff,
     },
   },
 };

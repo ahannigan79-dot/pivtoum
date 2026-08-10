@@ -30,8 +30,9 @@ export default function MapLanding() {
         </div>
 
         <div className="scr-eyebrow">The Career Map · Free</div>
+        <div className="scr-tag">Careers, mapped for the age of AI</div>
         <h1 className="scr-h1">
-          Is your kid&rsquo;s career{" "}
+          Is this career{" "}
           <span className="hl" style={{ whiteSpace: "nowrap" }}>
             safe from AI?
           </span>
