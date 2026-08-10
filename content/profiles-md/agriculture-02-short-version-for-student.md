@@ -48,7 +48,7 @@ outside farming noticed.
 
 **Three things it teaches:**
 
-==?**Automation removed the labour, not the work.** Somebody still farms. There are just far
+==?**Automation removed the labor, not the work.** Somebody still farms. There are just far
 fewer of them, at much bigger scale, with much more capital.==
 
 **The survivors got bigger, not safer.** ==-6% of US farms — the ones selling over $1 million —
@@ -75,7 +75,7 @@ accountability.== That's the exposed profile in every field we scored.
 breaks at 6am in a field. Soil isn't what the map said.
 
 ==+And the recommendations precision ag produces — seeding rate, nitrogen timing, spray decisions
-— are exactly the kind of optimisation problem that automates well. The person reading the data
+— are exactly the kind of optimization problem that automates well. The person reading the data
 is more replaceable than the person deciding, at 5am in the rain, whether the field will
 travel.==
 
@@ -205,7 +205,7 @@ negotiate), or are drawn to the *idea* of farming without having done it in Febr
 
 ## Two things worth doing
 
-==+**Work a full season — including winter.**== Agriculture is romanticised more than almost any
+==+**Work a full season — including winter.**== Agriculture is romanticized more than almost any
 career we've looked at, and a February morning answers the question faster than anything else.
 
 **Then talk to two people:** someone farming at scale, and someone working *in* agriculture — a
@@ -238,4 +238,4 @@ rather than late.
 ---
 
 *There's a longer version behind this — full scores by track, how they were worked out, the
-economics in detail, what to ask a programme, and where we might be wrong. Your parents have it.*
+economics in detail, what to ask a program, and where we might be wrong. Your parents have it.*

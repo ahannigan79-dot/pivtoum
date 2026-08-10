@@ -57,7 +57,7 @@ technology.== What AI changed is *what a junior job contains*, not just how many
 
 Every career we scored has six protection factors. Here's software's problem:
 
-==-**No licence.** There's no professional body, no statute reserving any software activity to
+==-**No license.** There's no professional body, no statute reserving any software activity to
 a qualified human. Nothing stops a company replacing the work the moment the tools are good
 enough.==
 
@@ -137,7 +137,7 @@ our whole index.
 
 | | Software | Engineering |
 |---|---|---|
-| Licence? | No | ==+Yes — the PE stamp== |
+| License? | No | ==+Yes — the PE stamp== |
 | Need to be physically somewhere? | No | Yes — sites, commissioning |
 | Who's liable if it fails badly? | The company | You, personally |
 | Entry-level score | **8.1** | **4.0** licensed |
@@ -160,7 +160,7 @@ it usually gets.
 median search running seven to nine months, and by some estimates 200–400 applications per
 offer.
 
-**The tools keep changing.** Energising for some people, exhausting for others, and it never
+**The tools keep changing.** Energizing for some people, exhausting for others, and it never
 stops.
 
 **And there's a training problem nobody has solved.** ==?Engineers used to build judgment by
@@ -186,7 +186,7 @@ unpredictable, which is a completely different problem from complexity.==
 **ML and AI engineering — 6.0.** Building the systems rather than using them, with genuinely
 novel failure modes.
 
-**Or software plus a domain** — health, energy, finance, defence. ==+The domain is the
+**Or software plus a domain** — health, energy, finance, defense. ==+The domain is the
 protection, and those employers see far fewer applicants than the companies everyone applies
 to.==
 
@@ -214,7 +214,7 @@ salary. That last group is over-represented among people who leave.
 
 Not a tutorial project. Something that exists, that someone else uses, that broke and you fixed.
 
-==+In a field with no licence and no credential, working software is the credential== — and
+==+In a field with no license and no credential, working software is the credential== — and
 almost nobody your age has any.
 
 It also answers a question no amount of thinking will: whether you'll actually do this when
@@ -230,7 +230,7 @@ nobody's making you.
   from nearly 58%. Ask for the number.
 - **Do they teach you to review and verify AI-generated code?** A course banning these tools is
   training you for a job that doesn't exist. One teaching them uncritically is worse.
-- **Is there a specialisation pathway** in security, embedded or ML?
+- **Is there a specialization pathway** in security, embedded or ML?
 - **First-destination job titles**, not employment rates.
 
 ---

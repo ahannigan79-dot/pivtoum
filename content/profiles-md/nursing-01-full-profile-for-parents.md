@@ -82,7 +82,7 @@ Nursing is nearly alone in being immune to this, because ==+clinical hours are m
 
 **Overwhelmingly yes — the strongest physical protection we score.**
 
-Turning a patient. Starting a line. Reading a body in a room. ==+Robotics is nowhere near this, and the gap is measured in decades rather than product cycles.== Bedside nursing happens in unstructured, unpredictable environments with a human body at the centre — the single hardest problem in robotics, not the easiest.
+Turning a patient. Starting a line. Reading a body in a room. ==+Robotics is nowhere near this, and the gap is measured in decades rather than product cycles.== Bedside nursing happens in unstructured, unpredictable environments with a human body at the center — the single hardest problem in robotics, not the easiest.
 
 ### Does someone need a human they can trust and hold responsible? *(15%)*
 
@@ -201,7 +201,7 @@ Notice what's on that list: **meaning, relationship, mastery and belonging.** Th
 
 Satisfaction varies more *within* nursing than between nursing and other careers. The 2026 State of Nursing Survey found nurse educators reporting around 68% satisfaction, with NICU and hospice also rating highly — driven by greater autonomy and far lower exposure to workplace violence. At the other end, progressive care sat near 23%, with geriatric at 31%, telemetry at 34% and emergency at 35%, driven by unsafe staffing ratios and higher exposure to abuse. Over half of emergency nurses reported being assaulted at work.
 
-**And here is the finding that should shape the decision.** Medscape's survey of 7,723 practising nurses found that 73% would choose nursing again — but ==only 45% would choose the same specialty.== Nurses are far more likely to regret where they landed than to regret the profession itself.
+**And here is the finding that should shape the decision.** Medscape's survey of 7,723 practicing nurses found that 73% would choose nursing again — but ==only 45% would choose the same specialty.== Nurses are far more likely to regret where they landed than to regret the profession itself.
 
 ==That's a 45-point spread inside the same profession.== It means "should I be a nurse?" is a much less useful question than "what kind of nurse, where?" — and it's a strong argument for a program with broad clinical placements, so they find out which environments suit them before committing.
 
@@ -226,7 +226,7 @@ For a seventeen-year-old choosing nursing, ==-automation is not the biggest risk
 
 The early-career concentration is stark: ==-22.7% of newly hired RNs left within their first year, and 56.8% of all departing staff had less than two years of service.== Replacing one bedside RN costs a hospital around $60,090.
 
-**One nuance worth knowing, because it cuts against the simple version.** Retention among the youngest nurses is actually *strong* during the first two years, where residency programmes and structured onboarding hold people in place. ==?Turnover rises after roughly the thirty-month mark — when the support scaffolding comes off.== That has a practical implication: the quality of a first employer's residency programme matters enormously, and so does what happens when it ends.
+**One nuance worth knowing, because it cuts against the simple version.** Retention among the youngest nurses is actually *strong* during the first two years, where residency programs and structured onboarding hold people in place. ==?Turnover rises after roughly the thirty-month mark — when the support scaffolding comes off.== That has a practical implication: the quality of a first employer's residency program matters enormously, and so does what happens when it ends.
 
 **Intention to leave is widespread, and it worsened this year.** The 2026 State of Nursing Survey, covering 2,090 nurses, found job satisfaction fell to **47%, down from 55%** the previous year — though still far above the 2022 low of 28%.
 
@@ -251,7 +251,7 @@ The reasons are consistent across the research:
 ### What actually helps
 
 - Going in with eyes open beats discovering it in year two.
-- Specialty and setting matter enormously — community, outpatient, theatre, aged care and school nursing have very different rhythms from acute-ward shift work.
+- Specialty and setting matter enormously — community, outpatient, theater, aged care and school nursing have very different rhythms from acute-ward shift work.
 - Programs with broad clinical placements let them find out *which* settings suit them before they're committed.
 - **First employer matters more than most families realize.** Nurse residency and structured transition-to-practice programs exist specifically to address first-year turnover, and the belonging factor above is largely a function of the unit they land on. Worth asking about at the job stage, not just the program stage.
 - The routes and exits in the next two sections exist precisely because people's lives and bodies change.
@@ -265,7 +265,7 @@ Worth being honest about, because fit predicts staying far better than aptitude 
 
 - **Need to see the point of their work the same day.** Some people can work on abstractions for months; others need to know tonight that today mattered. Nursing is relentlessly concrete.
 - **Would rather be moving than sitting.** If a desk feels like a cage, that's real information.
-- **Are energised by people rather than drained by them.** The social density of this job is extreme.
+- **Are energized by people rather than drained by them.** The social density of this job is extreme.
 - **Get calmer when things go wrong.** This is a genuine and identifiable trait — some people's thinking sharpens in a crisis. It's one of the most valuable things a nurse can have, and it's hard to teach.
 - **Like variety more than predictability.** No two shifts are the same. For some that's exhausting; for others it's the entire appeal.
 - **Enjoy practical mastery** — hands and knowledge together, not one or the other.
@@ -437,7 +437,7 @@ This profile has largely assumed a four-year BSN. There are several ways in, wit
 One of the strongest arguments for nursing, and one families rarely consider: it's a qualification with unusually good exits. If they change their mind at 19, or their body changes the calculation at 45, the degree doesn't strand them.
 
 - **Advanced practice** — nurse practitioner, midwife, nurse anaesthetist, clinical nurse specialist. More autonomy, higher pay, strong protection.
-- **Specialization** — ICU, emergency, theatre, oncology, pediatrics, mental health. Different work, different pace, same license.
+- **Specialization** — ICU, emergency, theater, oncology, pediatrics, mental health. Different work, different pace, same license.
 - **Nursing informatics** — the bridge between clinical practice and health IT. Growing fast, and *the people who understand both the ward and the software are exactly who's needed to implement and supervise the AI tools discussed above.* One of the most interesting adjacent paths available right now.
 - **Education** — clinical instructor, nurse educator, academic. Persistent shortages here too.
 - **Management and leadership** — charge nurse, unit manager, director of nursing. The accountability tier.
@@ -633,7 +633,7 @@ And it's worth restating what the risk analysis can't measure. Most nurses would
 
 18. If nursing weren't available at all, what's the closest thing they'd choose? The answer usually reveals what they're *actually* drawn to.
 19. Do they want *nursing*, or do they want what nursing is made of? Someone drawn to it may be drawn to helping people, to science and the body, to high-pressure problem-solving, or to a job with certainty and structure — and those four point to quite different places. Physical therapy, medicine, paramedicine, midwifery and radiography all overlap with nursing but differ in training length, physicality and daily rhythm.
-20. Which specialties interest them — ICU, ED, pediatrics, mental health, community, theatre? They don't need to decide now, but the answer shapes which programs suit them.
+20. Which specialties interest them — ICU, ED, pediatrics, mental health, community, theater? They don't need to decide now, but the answer shapes which programs suit them.
 21. Is there anything they'd want to pair nursing with — informatics, public health, education, management? Combinations tend to hold value unusually well.
 
 ## Part 6 — For the parent, alone

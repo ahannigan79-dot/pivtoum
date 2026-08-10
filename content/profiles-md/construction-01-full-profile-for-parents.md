@@ -77,7 +77,7 @@ Here's how a site superintendent answers them.
 
 **A large share of the office functions surrounding the site, and very little on it.**
 
-Scheduling and critical-path optimisation. Quantity takeoff and estimating. Document control
+Scheduling and critical-path optimization. Quantity takeoff and estimating. Document control
 and RFI management. Progress reporting and dashboards. Compliance and permit tracking. Clash
 detection and coordination.
 
@@ -138,7 +138,7 @@ funnel.
 superintendent walks the site, checks work, chases subcontractors and learns by being present.
 ==+That can't be automated the way a junior analyst's spreadsheet work can, so the
 apprenticeship survives intact== — the same mechanism that protects nursing and the trades,
-arriving here without needing a licence to enforce it.
+arriving here without needing a license to enforce it.
 
 **Third, the demand side is genuinely short.** The Associated General Contractors' workforce
 survey found **92% of contractors reporting difficulty filling open positions**, with **80%
@@ -253,15 +253,15 @@ the traditional markers of a strong graduate and are the fastest-depreciating.
   $120,010, ==+heavy civil $121,060==
 - Wage growth forecast at 4–6% through 2026, and 6–8% in premium markets
 
-**And the specialisation premiums are worth knowing early:** BIM fluency adds 10–15%; data
-centres, healthcare, industrial manufacturing and heavy civil all carry higher ranges;
+**And the specialization premiums are worth knowing early:** BIM fluency adds 10–15%; data
+centers, healthcare, industrial manufacturing and heavy civil all carry higher ranges;
 certifications like CCM, PMP and OSHA typically add $5,000–$15,000.
 
 **What people in the field report as rewarding:** seeing a project through and standing in
 front of the finished thing; genuine leadership responsibility early; problem-solving under
 real constraints; and a clear route to running your own operation.
 
-**No graduate degree required**, no licence exam in most jurisdictions, and progression runs on
+**No graduate degree required**, no license exam in most jurisdictions, and progression runs on
 demonstrated competence rather than credentials.
 
 ## What's genuinely hard about it
@@ -299,9 +299,9 @@ It's harder for people who:
 
 ## What else is moving this market
 
-**The data centre buildout is a significant and specific driver.** Reporting suggests technology
-companies could invest upwards of **$100 billion in US data centre construction in 2026 alone**,
-alongside CHIPS Act megaprojects, healthcare facilities and defence construction.
+**The data center buildout is a significant and specific driver.** Reporting suggests technology
+companies could invest upwards of **$100 billion in US data center construction in 2026 alone**,
+alongside CHIPS Act megaprojects, healthcare facilities and defense construction.
 
 ==+That is the AI buildout creating construction management demand in the same way it created
 electrical demand — a career protected from AI that is simultaneously being pulled by it.==
@@ -335,12 +335,12 @@ Being able to run those systems rather than perform them moves someone up the sc
 
 **4. Own safety and outcomes.** Everything in this profile points at accountability.
 
-**5. Specialise deliberately.** Data centres, healthcare, heavy civil and industrial carry
+**5. Specialize deliberately.** Data centers, healthcare, heavy civil and industrial carry
 premiums and are where the complex work is.
 
 ### Concrete preparation
 
-**Before the degree:** get site experience however possible — labouring, a trade, a summer with
+**Before the degree:** get site experience however possible — laboring, a trade, a summer with
 a contractor. ==+Nothing else builds the ability to read a site, and it's the thing that
 separates a good superintendent from a competent administrator.==
 
@@ -370,7 +370,7 @@ which is precisely why its on-ramp has held while others narrowed.==
 
 # Where this can lead later
 
-Site management, project management, programme and portfolio leadership, preconstruction and
+Site management, project management, program and portfolio leadership, preconstruction and
 estimating leadership, development, owner's representative roles, specialist sector management,
 and running your own contracting business.
 
@@ -406,7 +406,7 @@ Site-based roles or office coordination? The difference is 4.1 points on our sca
 
 **On the curriculum:**
 - How much BIM and construction technology, and taught to what depth?
-- How does the programme prepare students to verify automated schedules and estimates?
+- How does the program prepare students to verify automated schedules and estimates?
 - What changed in the curriculum in the last two years?
 
 **On outcomes:**
@@ -431,7 +431,7 @@ a curriculum organised around software packages.
   project delays from shortages.
 
 - **[Construction management career opportunities](https://tradecolleges.org/blog/trade-programs/construction-management-career-opportunities)**
-  — a useful summary of where demand is concentrated, including the data centre buildout and
+  — a useful summary of where demand is concentrated, including the data center buildout and
   the CHIPS Act megaprojects. Published by a trade-college directory, so read the framing
   critically; the underlying data is cited to BLS and AGC.
 
@@ -480,7 +480,7 @@ at its lowest recorded level even as the skills shortage persists.
 **So the useful advice is:** aim at the site rather than the office, because the difference is
 4.1 points and the office roles are the ones that look like promotions. Get real site
 experience before the degree. Learn BIM properly, since it's both the bridge skill and a 10–15%
-premium. Specialise into data centres, healthcare or heavy civil. And weight the demographics
+premium. Specialize into data centers, healthcare or heavy civil. And weight the demographics
 more heavily than the current boom.
 
 And for a student who likes building things and has been told the choice is trades or
@@ -532,14 +532,14 @@ nobody will mention it to them.==
 
 ## Part 3 — Testing it against reality
 
-16. **The most valuable single action:** spend time on an actual site — labouring, work
+16. **The most valuable single action:** spend time on an actual site — laboring, work
     experience, a summer with a contractor. Nothing else builds the ability to read a site.
 17. Find a superintendent and a preconstruction manager and ask both what their day looks like.
     The contrast is the whole profile.
 
 ## Part 4 — About the program
 
-18. Ask each programme the placement questions from section 13 — specifically how much is
+18. Ask each program the placement questions from section 13 — specifically how much is
     site-based.
 19. What job titles do graduates hold at six months?
 
@@ -547,7 +547,7 @@ nobody will mention it to them.==
 
 20. Have they considered coming through a **trade** first? It's a normal route here and arrives
     with knowledge no degree teaches.
-21. What about **civil engineering**? Similar territory, stronger licence, slightly higher score.
+21. What about **civil engineering**? Similar territory, stronger license, slightly higher score.
 22. If construction management weren't available, what would they choose?
 
 ## Part 6 — For the parent, alone

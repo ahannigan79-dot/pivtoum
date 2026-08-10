@@ -39,9 +39,9 @@ deliberately, which matters more here than in almost any career we score.
 anywhere.**
 
 Statutory child protection scores **3.3** out of 10. Adult safeguarding scores **3.8**. Policy
-and programme administration scores **6.1**.
+and program administration scores **6.1**.
 
-==+The protection isn't a licence. It's delegated state authority — the legal power to remove a
+==+The protection isn't a license. It's delegated state authority — the legal power to remove a
 child, restrict a liberty, or compel an intervention. That power is vested in a named human by
 statute, and there is no mechanism by which a system could hold it.==
 
@@ -58,7 +58,7 @@ The real considerations are pay, caseloads and emotional load — and those are 
 | **Clinical social work (LCSW)** | 3.6 | 4.0 | **4.3** | +0.7 | Low |
 | **Medical / hospital social work** | 4.0 | 4.4 | **4.7** | +0.7 | Moderate |
 | **Community / case management** | 4.6 | 5.0 | **5.4** | +0.8 | Moderate |
-| **Policy & programme administration** | 5.2 | 5.7 | **6.1** | +0.9 | Moderate–High |
+| **Policy & program administration** | 5.2 | 5.7 | **6.1** | +0.9 | Moderate–High |
 
 *Scores run 1–10, where 10 is most at risk. For context: the median profession in this
 edition sits around 5.5, bedside nursing scores 2.8, classroom teaching 3.6, licensed clinical
@@ -70,19 +70,19 @@ permits to do it.
 
 ---
 
-# Statutory authority is not the same as a licence
+# Statutory authority is not the same as a license
 
 This is the most important idea in this profile, and it completes an argument that runs through
 several others in this index.
 
-**We've made the case repeatedly that a licence is only as protective as the act it reserves.**
-Pharmacy's licence reserves dispensing, which automates readily. Law's bar card reserves the
-courtroom but not document review. Nursing's licence reserves hands-on clinical practice, which
+**We've made the case repeatedly that a license is only as protective as the act it reserves.**
+Pharmacy's license reserves dispensing, which automates readily. Law's bar card reserves the
+courtroom but not document review. Nursing's license reserves hands-on clinical practice, which
 couldn't be automated anyway.
 
 **Statutory social work is a different category again, and a stronger one.**
 
-An ordinary professional licence says: *this act may only be performed by a qualified person.*
+An ordinary professional license says: *this act may only be performed by a qualified person.*
 It is a restriction on who may do the work.
 
 ==+Statutory social work authority says something else entirely: the state has delegated a
@@ -92,7 +92,7 @@ make findings that carry legal force.
 
 **Three things follow, and they're worth understanding precisely.**
 
-**It cannot be delegated to a system, even in principle.** A licence could conceivably be
+**It cannot be delegated to a system, even in principle.** A license could conceivably be
 rewritten to permit machine performance of a licensed act — legislatures have done that before
 in other fields. ==+But delegated coercive authority requires a person who can be held
 accountable, questioned in court, and subjected to professional sanction. There is no
@@ -349,7 +349,7 @@ mostly without frontline input.
 
 **Before the degree:** get real exposure to people in difficulty — support work, care work,
 helpline volunteering. ==+It answers the fit question faster than anything else, and it is what
-the good programmes want to see.==
+the good programs want to see.==
 
 **During:** treat placements as the decision, not the assessment. The setting shapes this career
 more than the qualification does, and placement is where you find out which one suits you.
@@ -379,7 +379,7 @@ hospital social work, school social work, substance misuse and mental health ser
 and commissioning, service management, safeguarding leadership, and academia.
 
 **The pattern in this index holds:** ==?the further from statutory decision-making and direct
-practice, the higher the exposure. Policy and programme administration scores 6.1 against
+practice, the higher the exposure. Policy and program administration scores 6.1 against
 statutory child protection at 3.3.==
 
 ---
@@ -391,14 +391,14 @@ How many placements, in which settings, and are statutory placements available? 
 career more than anything else.
 
 **2. Practical skills, taught properly.**
-Assessment, risk analysis, court skills, motivational interviewing. Programmes vary enormously.
+Assessment, risk analysis, court skills, motivational interviewing. Programs vary enormously.
 
 **3. Does it prepare students for the emotional reality?**
 Reflective supervision, trauma-informed practice, and honest teaching about secondary trauma.
 
 **4. Licensure pathway.**
-Does the programme map cleanly onto LCSW requirements in the state where they intend to
-practise?
+Does the program map cleanly onto LCSW requirements in the state where they intend to
+practice?
 
 **5. Employment outcomes by setting**, not overall employment rate.
 
@@ -412,7 +412,7 @@ practise?
 
 **On preparation:**
 - How is risk assessment taught, and with how much practical feedback?
-- How does the programme prepare students for secondary trauma?
+- How does the program prepare students for secondary trauma?
 - How does it address predictive analytics and AI-assisted recording in practice?
 
 **On outcomes:**
@@ -465,7 +465,7 @@ treated as an add-on; no engagement with the technology now being deployed in ch
 **Statutory social work carries the most durable protection in this index, and it is a
 protection almost nobody recognises.**
 
-It isn't a licence. ==It's delegated state authority — the legal power to remove a child or
+It isn't a license. ==It's delegated state authority — the legal power to remove a child or
 restrict an adult's liberty, vested in a named human who can be questioned in court. There is no
 mechanism by which a system could hold that power, because there is no accountable subject for a
 system to be.==
@@ -545,7 +545,7 @@ conditions above are a good reason to be deliberate about where.==
 
 ## Part 4 — About the program
 
-18. Ask each programme the placement questions from section 14. Statutory placement availability
+18. Ask each program the placement questions from section 14. Statutory placement availability
     is the key one.
 19. Where are graduates working at one year, by setting?
 

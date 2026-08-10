@@ -66,7 +66,7 @@ AI goes after the routine, repeatable layer of any job first. That is true every
 | Does the law require a licensed human? | 9.0 | ↓ strong protection |
 | How often does the job hit genuinely new, high-stakes situations? | 8.0 | ↓ good protection |
 
-Five of the six run in nursing's favor. The full profile explains the reasoning behind every rating and shows the arithmetic that produces 2.8.
+Five of the six run in nursing's favor. The Career Value Guide explains the reasoning behind every rating and shows the arithmetic that produces 2.8.
 
 ### One factor, worked through in full
 
@@ -107,7 +107,7 @@ Nursing scores well on exposure. It also has genuine difficulties that have noth
 
 At the same time, most nurses say they would choose the profession again, and the projected shortfall exceeds 250,000 registered nurses by 2028. But ==only 45% would choose the same specialty== — which tells you where the real decision sits.
 
-A low AI score does not mean an easy job. The full profile covers the downsides, the satisfaction data, and who this work actually suits, because those questions matter more to a real decision than the score does.
+A low AI score does not mean an easy job. The Career Value Guide covers the downsides, the satisfaction data, and who this work actually suits, because those questions matter more to a real decision than the score does.
 
 ---
 
@@ -130,7 +130,7 @@ On our scoring, considerably. Bedside nursing scores 2.8; entry-level software d
 
 ---
 
-## Related profiles
+## Related careers
 
 - **[Medicine](#)** — 2.9 patient-facing, 4.9 diagnostic specialties
 - **[Physical therapy and allied health](#)** — 2.5, the lowest score in this edition
@@ -140,11 +140,11 @@ On our scoring, considerably. Bedside nursing scores 2.8; entry-level software d
 
 ---
 
-## What's in the full nursing profile
+## What's in the nursing Career Value Guide
 
-This sampler tells you where nursing stands. The full profile tells you what to do about it.
+This sampler tells you where nursing stands. The full Career Value Guide tells you what to do about it.
 
-| | Sampler | Full profile |
+| | Sampler | Career Value Guide |
 |---|---|---|
 | Verdict, all sub-track scores, 3-year trend | ✓ | ✓ |
 | Six-factor ratings | ✓ | ✓ |
@@ -165,22 +165,22 @@ This sampler tells you where nursing stands. The full profile tells you what to 
 
 ---
 
-### Get the full profiles
+### Get the Career Value Guide
 
 Most families are weighing two or three careers seriously, and a few more they haven't ruled out. Pick the ones you need.
 
 | | | |
 |---|---|---|
-| **1 profile** | **$19** | [Choose →](#) |
-| **3 profiles** | **$29** | [Choose →](#) |
-| **5 profiles** | **$39** | [Choose →](#) |
+| **1 career** | **$49** | [Choose →](#) |
+| **3 careers** | **$69** | [Choose →](#) |
+| **Unlimited** | **$99** | [Choose →](#) |
 
-Each full profile includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. Spring 2027 updates of whatever you buy are included.
+Each Career Value Guide includes everything in the table above, plus a short version written directly to the student and the technical scoring appendix. This edition and the next are included — we re-score every six months, so what you buy stays current for a year.
 
 **Still exploring?** The **Atlas** covers whole fields rather than single careers — seventeen jobs that help people, mapped and compared, written for 13–16 year olds who haven't narrowed yet. Same pricing: 1 guide $19, 3 guides $29, all seven $39.
 
-**[Read a complete profile free →](#)**
-We publish one profile in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
+**[Read a complete Career Value Guide free →](#)**
+We publish one Career Value Guide in full, openly, so you can judge the depth before buying anything. Computer science is the one to read — it's the most surprising result in the index.
 
 ---
 

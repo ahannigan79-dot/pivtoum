@@ -76,7 +76,7 @@ Here's how an entry-level analyst answers them.
 **Nearly all of it, and this is the cleanest example in the index of a role built entirely
 from automatable tasks.**
 
-Financial modelling and scenario building. Company and sector research. Earnings analysis and
+Financial modeling and scenario building. Company and sector research. Earnings analysis and
 comparables. Pitch book and deck production. Data assembly and cleaning. First-draft memos and
 commentary.
 
@@ -97,7 +97,7 @@ pattern documented in law and consulting.
 
 And there's a supply problem alongside it. Finance attracts enormous application volumes at
 the glamorous end while risk, compliance and operations roles struggle to fill. Two entirely
-different labour markets sharing a degree.
+different labor markets sharing a degree.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -160,13 +160,13 @@ are the ones being compressed.==
 Finance is the most cyclical profession we score, and that makes its three-year movement harder
 to read than any other.
 
-**Deal activity slumped sharply in 2023–24 and recovered as rates stabilised.** Hiring moved
+**Deal activity slumped sharply in 2023–24 and recovered as rates stabilized.** Hiring moved
 with it. So ==?some portion of the +1.6 on the analyst track is almost certainly the deal cycle
 rather than automation, and we cannot cleanly separate the two.==
 
 **What persuades us to hold a high score is the content of the surviving roles rather than
 their count.** Major firms have begun testing whether candidates can *direct* AI through
-modelling and research rather than perform it, including in final-round interviews. When a
+modeling and research rather than perform it, including in final-round interviews. When a
 profession redesigns what a first-year is *for*, the apprenticeship has changed even if
 headcount recovers.
 
@@ -213,13 +213,13 @@ and the profession is running the experiment on a cohort without a control group
 1. **Client trust in a crisis** — being the person someone calls when markets fall or their
    circumstances change. The most durable thing in this profile.
 2. **Accountability for advice** — carrying fiduciary responsibility.
-3. **Judgment on non-pattern risk** — the event with no historical analogue, which is by
+3. **Judgment on non-pattern risk** — the event with no historical analog, which is by
    definition what models miss.
 4. **Deciding what question to ask** — the judgment upstream of any analysis.
 5. **Verification** — knowing when a generated model or a research summary is confidently
    wrong.
 
-Notably absent: modelling speed, Excel fluency and volume of research produced. These were the
+Notably absent: modeling speed, Excel fluency and volume of research produced. These were the
 traditional markers of a strong analyst and are the fastest-depreciating.
 
 ---
@@ -256,7 +256,7 @@ hire more readily.
 exactly the years many people are forming other parts of their lives.
 
 **Geographic concentration is real.** Hiring concentrates heavily in a small number of
-financial centres. That is a life decision as much as a career one.
+financial centers. That is a life decision as much as a career one.
 
 **Competition at entry is extreme**, with record application volumes against selective hiring.
 
@@ -281,7 +281,7 @@ It's harder for people who:
 - Need **geographic flexibility**
 - Are drawn primarily by **prestige or salary**, who are heavily over-represented among those
   who leave in years two and three
-- Find **sustained high-stakes pressure** corrosive rather than energising
+- Find **sustained high-stakes pressure** corrosive rather than energizing
 
 ## What else is moving this market
 
@@ -292,7 +292,7 @@ points consistently to restructuring and debt advisory, private capital and seco
 risk and compliance driven by regulatory expansion. ==+Meanwhile applications concentrate on
 the roles that are hardest to get and most exposed at entry.==
 
-**And an unusual tailwind worth knowing:** technology, data-centre and digital-infrastructure
+**And an unusual tailwind worth knowing:** technology, data-center and digital-infrastructure
 financing is one of the fastest-growing coverage areas — the AI buildout creating finance work
 in the same way it created electrical work.
 
@@ -307,7 +307,7 @@ test whether candidates can direct these tools rather than merely use them.
 
 **1. Verify.** Knowing when a generated model or research summary is confidently wrong.
 ==+This requires understanding the business well enough to smell an implausible number, which
-is exactly what the old modelling years used to build.==
+is exactly what the old modeling years used to build.==
 
 **2. Direct.** Framing an analysis precisely enough to get usable output. Firms are testing
 this explicitly, which tells you how much they value it.
@@ -340,7 +340,7 @@ score better, they hire more readily, and almost nobody your age is applying to 
 
 | Route | Notes |
 |---|---|
-| **Finance or economics degree → analyst programme** | The standard route. Internship-driven, and the timeline starts early. |
+| **Finance or economics degree → analyst program** | The standard route. Internship-driven, and the timeline starts early. |
 | **Any degree + strong quantitative evidence** | More common than students assume, particularly in risk and quantitative roles. |
 | **Wealth management / advisory training** | ==+Less competitive entry, better score, chronically under-applied to.== |
 | **Risk and compliance** | Growing with regulatory expansion, and struggling to fill. |
@@ -367,14 +367,14 @@ Given that full-time offers flow primarily from internships, this is the number 
 most.
 
 **2. Recruiting support that starts in first year.**
-Programmes that begin careers support in year two are already late for banking.
+Programs that begin careers support in year two are already late for banking.
 
 **3. Genuine quantitative depth.**
-Statistics, econometrics, financial modelling taught as reasoning rather than as software
+Statistics, econometrics, financial modeling taught as reasoning rather than as software
 training.
 
 **4. Breadth beyond banking.**
-Does the programme place into wealth management, risk and compliance, or only into the
+Does the program place into wealth management, risk and compliance, or only into the
 oversubscribed end?
 
 **5. First-destination job titles**, not employment rates.
@@ -395,7 +395,7 @@ oversubscribed end?
 
 **On the curriculum:**
 - How much is genuinely quantitative, and is it compulsory?
-- How does the programme teach students to work with AI analysis tools — and to check them?
+- How does the program teach students to work with AI analysis tools — and to check them?
 
 **Red flags:** outcomes quoted as employment rate; careers support starting in year two or
 later; placement into a narrow set of employers only; a curriculum unchanged since 2022.
@@ -432,7 +432,7 @@ later; placement into a narrow set of employers only; a curriculum unchanged sin
   **Where we land:** we take this seriously enough to have written it into section 5 rather
   than leaving it here, and it is the single largest source of uncertainty in this profile.
   What holds our score is that the *content* of the first-year role has changed even where the
-  headcount recovers — when firms interview for the ability to direct AI through modelling
+  headcount recovers — when firms interview for the ability to direct AI through modeling
   rather than to build models, the apprenticeship has been redesigned regardless of how many
   seats exist.
 
@@ -490,7 +490,7 @@ almost nobody applies to it. That combination is rare.
 
 8. **The timeline.** Summer analyst applications open up to eighteen months ahead. Do they understand that the decision effectively happens in first year?
 9. The hours at the banking end, through their twenties. Have they pictured that concretely?
-10. Hiring concentrates in a few financial centres. Is relocating appealing or a problem?
+10. Hiring concentrates in a few financial centers. Is relocating appealing or a problem?
 
 ## Part 2c — The other side
 
@@ -500,8 +500,8 @@ almost nobody applies to it. That combination is rare.
 
 ## Part 2d — The AI question, practically
 
-14. Firms now interview for the ability to *direct* AI through modelling rather than build models. What does that tell them about what to practise?
-15. Analysts used to learn a sector by modelling everything in it. If that's automated, how do they think they'd learn instead?
+14. Firms now interview for the ability to *direct* AI through modeling rather than build models. What does that tell them about what to practice?
+15. Analysts used to learn a sector by modeling everything in it. If that's automated, how do they think they'd learn instead?
 
 ## Part 3 — Testing it against reality
 
@@ -510,13 +510,13 @@ almost nobody applies to it. That combination is rare.
 
 ## Part 4 — About the program
 
-18. Ask each programme the internship and conversion questions from section 13.
+18. Ask each program the internship and conversion questions from section 13.
 19. **When does careers support begin?** If it's year two, that's already late for banking.
 20. What proportion of graduates go into advisory, risk or corporate finance rather than banking?
 
 ## Part 5 — Widening the frame
 
-21. Have they compared this properly against accounting? Licensed CPA advisory scores 5.2 against entry finance at 8.0 — worse pay, better protection, and a licence.
+21. Have they compared this properly against accounting? Licensed CPA advisory scores 5.2 against entry finance at 8.0 — worse pay, better protection, and a license.
 22. If finance weren't available, what would they choose?
 23. Do they want *finance*, or what finance is made of — consequence, money, problem-solving, status? Those point in genuinely different directions.
 

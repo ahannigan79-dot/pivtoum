@@ -122,9 +122,9 @@ The bar card protects the appearance in court, the signed advice, the fiduciary 
 
 This is why a junior associate rates only 7.0 on licensing rather than 9.5. They hold the same qualification as the partner. The license simply doesn't reach the work they're doing.
 
-**Compare nursing, where the licence does something law's does not: it mandates the training hours themselves.** A nursing student cannot qualify without supervised clinical practice, so the on-ramp is written into law. Law reserves the courtroom and the signature and leaves the apprenticeship entirely exposed.
+**Compare nursing, where the license does something law's does not: it mandates the training hours themselves.** A nursing student cannot qualify without supervised clinical practice, so the on-ramp is written into law. Law reserves the courtroom and the signature and leaves the apprenticeship entirely exposed.
 
-==?The general lesson: ask what a licence actually reserves, and whether it reserves the training as well as the practice.== Those are different protections, and the second matters far more to someone entering the field.
+==?The general lesson: ask what a license actually reserves, and whether it reserves the training as well as the practice.== Those are different protections, and the second matters far more to someone entering the field.
 
 ---
 
@@ -231,7 +231,7 @@ Median debt runs around $155,000 at the most selective schools, $125,000 at top-
 
 **The hours.** Billable-hour culture at large firms remains demanding, and it is demanding during exactly the years many people are forming families.
 
-**Attrition and wellbeing.** This is well documented rather than anecdotal. The ABA and Hazelden Betty Ford Foundation surveyed nearly 13,000 practising attorneys for a study published in the *Journal of Addiction Medicine*, and found ==-21% screening positive for problematic drinking, 28% for depression and 19% for anxiety== — substantially above general-population rates.
+**Attrition and wellbeing.** This is well documented rather than anecdotal. The ABA and Hazelden Betty Ford Foundation surveyed nearly 13,000 practicing attorneys for a study published in the *Journal of Addiction Medicine*, and found ==-21% screening positive for problematic drinking, 28% for depression and 19% for anxiety== — substantially above general-population rates.
 
 The same study found the risk was highest among **junior lawyers and those in the first decade of practice**, which overturned the previous assumption that the problem accumulated with seniority. The profession now treats this as an occupational risk rather than a character failing, and anyone entering should know it.
 
@@ -302,7 +302,7 @@ But that framing treats AI as ==?a temptation to be resisted rather than a techn
 
 **1. Verify.** Knowing when a generated research result or draft is confidently wrong. In law this is the most consequential version of the skill anywhere in this index, and the evidence is unambiguous.
 
-A public database maintained by researcher Damien Charlotin has documented ==-around 1,600 court proceedings worldwide in which AI-fabricated citations or content were submitted to a court== — up from roughly 200 a year earlier. Penalties have escalated sharply: the first widely reported case in 2023 drew a $5,000 fine, while in March 2026 a Sixth Circuit panel ordered two attorneys to pay $15,000 each plus the opposing party's appellate fees, and by mid-2026 courts had begun suspending lawyers and cancelling trials over it.
+A public database maintained by researcher Damien Charlotin has documented ==-around 1,600 court proceedings worldwide in which AI-fabricated citations or content were submitted to a court== — up from roughly 200 a year earlier. Penalties have escalated sharply: the first widely reported case in 2023 drew a $5,000 fine, while in March 2026 a Sixth Circuit panel ordered two attorneys to pay $15,000 each plus the opposing party's appellate fees, and by mid-2026 courts had begun suspending lawyers and canceling trials over it.
 
 The pattern in every case is identical: a lawyer signed a citation they had not read. ==+The verification skill only works on top of legal knowledge you actually built yourself.==
 
@@ -318,7 +318,7 @@ The pattern in every case is identical: a lawyer signed a citation they had not 
 
 **Before law school:** use the general tools enough to develop instinct for where they fabricate — law is the field where confident invention is most dangerous and most easily demonstrated. Ask law schools how AI appears in the curriculum; the answers will differ enormously.
 
-**During the degree:** treat legal technology and e-discovery as real subjects. On placement, notice what the firm actually uses and where senior lawyers override it. Practise the verification habit deliberately.
+**During the degree:** treat legal technology and e-discovery as real subjects. On placement, notice what the firm actually uses and where senior lawyers override it. Practice the verification habit deliberately.
 
 **Entering the profession:** ask about AI tooling and training at interview. Volunteer for the process-redesign work — firms need practitioner voices and rarely have enough.
 
@@ -363,7 +363,7 @@ Law is unusually portable as a way of thinking, even where the qualification doe
 # What to look for in a law school
 
 **1. Where do graduates actually work in year one — and doing what?**
-Not "employed." Not "in the legal sector." Practising, and in what role. This is the single most important number and the one most schools are vaguest about.
+Not "employed." Not "in the legal sector." Practicing, and in what role. This is the single most important number and the one most schools are vaguest about.
 
 **2. Practical advocacy and clinical experience.**
 Moot courts, legal clinics, real client work under supervision. If the market supplies fewer training years, the degree has to supply more.
@@ -382,7 +382,7 @@ Total cost against realistic first-job earnings for *that school's* graduates, n
 # Questions to ask a law school
 
 **On outcomes — the ones that matter most:**
-- Of last year's graduates, what percentage were working as practising lawyers within nine months?
+- Of last year's graduates, what percentage were working as practicing lawyers within nine months?
 - How has that number changed over the last three years?
 - What are graduates who didn't enter practice doing instead?
 
@@ -399,7 +399,7 @@ Total cost against realistic first-job earnings for *that school's* graduates, n
 - What is the total cost including living expenses, and what is the median debt at graduation?
 - What is the median first-job salary for *your* graduates?
 
-**Red flags:** outcomes quoted only as "employed"; no clinical or advocacy programme; a curriculum unchanged since 2022; reluctance to discuss debt-to-salary ratios.
+**Red flags:** outcomes quoted only as "employed"; no clinical or advocacy program; a curriculum unchanged since 2022; reluctance to discuss debt-to-salary ratios.
 
 ---
 

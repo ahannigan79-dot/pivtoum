@@ -104,7 +104,7 @@ why we've shown you both sides rather than just the number.
 
 ## What actually holds up
 
-**Deciding what question is worth asking.** ==+Analysis is cheap now. Knowing what to analyse
+**Deciding what question is worth asking.** ==+Analysis is cheap now. Knowing what to analyze
 isn't.== This is the single most protective skill in the field.
 
 **Knowing the data is wrong before the model does.** That's domain knowledge applied to
@@ -130,7 +130,7 @@ as an analyst now== — and that migration is still happening.
 engineer" describe overlapping work with enormous pay gaps, and you often can't tell which is
 which from the posting.
 
-**And there's no floor.** No licence, no physical requirement. Every bit of protection you get,
+**And there's no floor.** No license, no physical requirement. Every bit of protection you get,
 you earn.
 
 ---

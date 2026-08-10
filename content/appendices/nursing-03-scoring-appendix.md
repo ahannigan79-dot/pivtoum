@@ -82,7 +82,7 @@ human?*
 
 | Rating | Anchor |
 |---|---|
-| 0–2 | No licence exists and none is proposed. |
+| 0–2 | No license exists and none is proposed. |
 | 3–4 | Certification is customary but not reserved. |
 | 5–6 | Partial reservation, varying by jurisdiction or task. |
 | 7–8 | Licensed practice, with some unreserved adjacent work. |
@@ -220,7 +220,7 @@ How far the score moves if a single factor is rated one point differently:
 
 **We measure capability, not deployment.** Scores reflect exposure to what AI can already do at the leading edge — not how much any particular employer has adopted. Adoption lags capability by years and lags unevenly: large, well-funded organisations first; small, rural, public-sector and thin-margin employers much later. ==+The lag is a buffer, not a shelter. It buys time without changing direction.==
 
-**We do not measure demand.** A task can be highly automatable and highly in demand simultaneously. Where the labour market and our framework disagree, we say so in the profile rather than adjusting the score to fit.
+**We do not measure demand.** A task can be highly automatable and highly in demand simultaneously. Where the labor market and our framework disagree, we say so in the profile rather than adjusting the score to fit.
 
 **We do not measure oversupply.** The number of people entering a field is outside our six factors, and for some careers it matters more than automation.
 

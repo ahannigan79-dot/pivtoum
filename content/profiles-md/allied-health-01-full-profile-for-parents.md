@@ -122,7 +122,7 @@ felt rather than measured, adjustment in real time to how a person actually move
 lags software badly, and lags furthest in exactly this setting — an unpredictable human body,
 in a room, over months.
 
-**Why we flag it anyway.** A seventeen-year-old entering a doctoral programme will practise for
+**Why we flag it anyway.** A seventeen-year-old entering a doctoral program will practice for
 forty years. Over that span, licensure and human trust move at the speed of law and society and
 are unlikely to shift much. ==-Physical protection moves at the speed of robotics, which is
 the one thing actively targeting it.==
@@ -172,16 +172,16 @@ Analysis across **206 DPT programs at 151 institutions** found debt-to-income ra
 from **0.82:1 at the best program to 4.42:1 at the worst.** The median sits at 1.8:1.
 
 ==-That is a difference of more than $305,000 in total cost for the same degree, the same
-licence and the same career.==
+license and the same career.==
 
 **Worse, the federal loan cap makes the gap unavoidable at expensive schools.** The mean annual
-funding gap across all 206 programmes is around **$33,647** above the federal borrowing limit —
+funding gap across all 206 programs is around **$33,647** above the federal borrowing limit —
 which over three years means roughly $95,000–$101,000 in *private* borrowing at an average-cost
 school. Private loans carry higher rates and, critically, ==-do not qualify for income-driven
 repayment or Public Service Loan Forgiveness.==
 
 **The practical instruction is unusually simple.** ==+Attend the least expensive CAPTE-accredited
-programme you get into. The difference in programme quality is minor relative to the difference
+program you get into. The difference in program quality is minor relative to the difference
 in tuition, and the financial consequence lasts decades.==
 
 ---
@@ -200,7 +200,7 @@ therapist starts with $140,000–$170,000 of debt.
 
 **Over a full career the DPT wins**, and comfortably: the income difference compounds across
 thirty years and the ceiling is considerably higher. But the gap is smaller than families
-assume, it takes many years to close, and it depends heavily on which programme was attended.
+assume, it takes many years to close, and it depends heavily on which program was attended.
 
 **And on our scoring, the AI exposure is similar** — PTA work is hands-on, physical and
 protected by the same things that protect the therapist.
@@ -232,7 +232,7 @@ this index: ==move the same qualification behind a screen and exposure roughly d
 | **Human trust / accountability** | Strong | **Durable** | Rehabilitation is a relationship sustained over months. |
 | **Judgment under novelty** | Strong | **Durable** | Every body responds differently; the judgment is made in the moment. |
 
-**The honest read for a seventeen-year-old:** they will practise for forty years. Licensure and
+**The honest read for a seventeen-year-old:** they will practice for forty years. Licensure and
 trust should hold comfortably. ==?Physical protection is the strongest shield today and the one
 with the most credible long-term threat — and it is worth watching structured, protocol-driven
 rehabilitation specifically rather than the profession as a whole.==
@@ -244,7 +244,7 @@ rehabilitation specifically rather than the profession as a whole.==
 | Was the job | Is becoming the job |
 |---|---|
 | Writing progress notes after every session | Reviewing a generated draft |
-| Building the exercise programme by hand | Adapting a generated programme to this patient |
+| Building the exercise program by hand | Adapting a generated program to this patient |
 | Scoring outcome measures | Reading outcome data that arrives scored |
 | Chasing insurance authorisation | Largely automated |
 | Hands on a body | **Unchanged** |
@@ -265,7 +265,7 @@ own research names among the primary contributors to burnout.==
 3. **Real-time judgment** — knowing when to push and when to stop, made in the moment with a
    body in front of you.
 4. **Accountability** — carrying duty of care for someone's recovery.
-5. **Verification** — knowing when a generated programme or note doesn't fit this patient.
+5. **Verification** — knowing when a generated program or note doesn't fit this patient.
 
 Notably absent: protocol recall and documentation speed. These were traditional markers of a
 strong new graduate and are the fastest-depreciating.
@@ -289,7 +289,7 @@ average — driven by an ageing population and improving survival after serious 
 - **Genuine variety** across settings — hospital, outpatient, sports, paediatric, home health,
   neurological
 
-**And the career is sustainable into later life** with specialisation, and portable across
+**And the career is sustainable into later life** with specialization, and portable across
 settings and geographies.
 
 ## What's genuinely hard about it
@@ -354,7 +354,7 @@ the index.
 somewhere. ==+Therapists who are intentional about this get more patient contact; those who
 aren't watch productivity targets absorb it.==
 
-**2. Verify.** Knowing when a generated note or programme doesn't fit this patient — a clinical
+**2. Verify.** Knowing when a generated note or program doesn't fit this patient — a clinical
 skill rather than a technical one.
 
 **3. Work with robotic and sensor-assisted rehabilitation.** These systems are arriving.
@@ -369,7 +369,7 @@ without practitioner input.
 
 ### Concrete preparation
 
-**Before the programme:** ==+compare programmes on total cost, not reputation. This is the
+**Before the program:** ==+compare programs on total cost, not reputation. This is the
 single highest-value action available and it is worth more than anything else in this
 section.==
 
@@ -386,7 +386,7 @@ specifically. Both shape the first five years more than the job title does.
 
 | Route | Typical length | Notes |
 |---|---|---|
-| **DPT (Doctor of Physical Therapy)** | 3 years post-bachelor's | The standard route. ==-Cost varies by over $300,000 between programmes.== |
+| **DPT (Doctor of Physical Therapy)** | 3 years post-bachelor's | The standard route. ==-Cost varies by over $300,000 between programs.== |
 | **Physical therapist assistant** | 2-year associate | Hands-on work, far lower debt, lower ceiling. Genuinely under-considered. |
 | **Occupational therapy** | Master's or doctorate | Similar protection, focused on daily function rather than movement. |
 | **Speech-language pathology** | Master's | Consistently under-recruited, scores 3.1. |
@@ -397,12 +397,12 @@ specifically. Both shape the first five years more than the job title does.
 
 # Where these qualifications can lead later
 
-Specialisation (orthopaedic, neurological, paediatric, sports, geriatric), private practice
+Specialization (orthopaedic, neurological, paediatric, sports, geriatric), private practice
 ownership, clinical education and academia, research, healthcare management, ergonomics and
 occupational health, and industry roles in devices and rehabilitation technology.
 
 **The pattern in this index holds:** ==?the further from hands-on patient contact, the higher
-the exposure. Records-centred and utilisation roles score 6.1 against clinical work at 2.5.==
+the exposure. Records-centered and utilization roles score 6.1 against clinical work at 2.5.==
 
 ---
 
@@ -427,7 +427,7 @@ does.
 # Questions to ask a program
 
 **On cost — ask these first:**
-- What is the total cost of attendance, including living expenses, for the full programme?
+- What is the total cost of attendance, including living expenses, for the full program?
 - What is the median debt at graduation for your graduates?
 - What proportion of students need private loans beyond the federal cap?
 
@@ -458,10 +458,10 @@ debt; a curriculum unchanged since 2022.
 - **[Impact of Student Debt on the Physical Therapy Profession](https://www.apta.org/contentassets/ee2d1bb7f9d841c983d0f21bb076bb79/impact-of-student-debt-report.pdf)**
   — *American Physical Therapy Association.* The profession's own research into what the debt is
   doing to its members, including the finding that 28% hold additional employment. Read it
-  before committing to an expensive programme.
+  before committing to an expensive program.
 
 - **[Is physical therapy worth the debt? 2026 ROI analysis](https://dptschoolloans.com/articles/is-dpt-worth-the-debt-roi-2026)**
-  — the programme-by-programme debt-to-income analysis across 206 DPT programmes. If you read
+  — the program-by-program debt-to-income analysis across 206 DPT programs. If you read
   one thing before choosing where to apply, read this.
 
 **The counterargument — read this one:**
@@ -471,7 +471,7 @@ debt; a curriculum unchanged since 2022.
 
   On this reading, our framework tells a student that physical therapy is among the safest
   careers available — which is true — while saying nothing about a debt-to-income ratio that can
-  reach 4.42:1 at the wrong programme, private borrowing that doesn't qualify for forgiveness,
+  reach 4.42:1 at the wrong program, private borrowing that doesn't qualify for forgiveness,
   and 84% of indebted PTs reporting their salary is insufficient to manage the payments.
 
   A career can be automation-proof and still be a poor financial decision.
@@ -479,7 +479,7 @@ debt; a curriculum unchanged since 2022.
   **Where we land:** this is entirely fair, and it's why section 5 sits before the "other
   considerations" section rather than inside it. Our score measures automation exposure only.
   ==+For physical therapy specifically, the AI answer is genuinely reassuring and the financial
-  answer depends almost entirely on which programme someone attends — and conflating the two
+  answer depends almost entirely on which program someone attends — and conflating the two
   would be the most damaging thing this document could do.==
 
 ---
@@ -493,18 +493,18 @@ that is arriving removes documentation, which the profession's own research name
 leading causes of burnout.
 
 **The real decision is financial, and it is program-specific to an extraordinary degree.**
-==Debt-to-income ratios across 206 DPT programmes run from 0.82:1 to 4.42:1 — a spread of over
+==Debt-to-income ratios across 206 DPT programs run from 0.82:1 to 4.42:1 — a spread of over
 $305,000 in total cost for the same degree and the same career.==
 
-**So the useful advice is unusually concrete:** attend the least expensive accredited programme
-you get into, because the quality difference between programmes is small relative to the cost
-difference. Minimise undergraduate debt first. Ask employers about loan repayment assistance.
+**So the useful advice is unusually concrete:** attend the least expensive accredited program
+you get into, because the quality difference between programs is small relative to the cost
+difference. Minimize undergraduate debt first. Ask employers about loan repayment assistance.
 And if the pull is hands-on rehabilitation rather than autonomy and diagnosis, look seriously at
 the assistant route before committing to the doctorate.
 
 And one thing worth saying that no score captures. Watching someone walk again, or lift their
 arm again, or return to something they thought they'd lost — very few jobs offer that at all.
-==+The financial caution above is real and it is about *which programme*, not about *whether*.==
+==+The financial caution above is real and it is about *which program*, not about *whether*.==
 
 ---
 ---
@@ -530,10 +530,10 @@ arm again, or return to something they thought they'd lost — very few jobs off
 
 ## Part 2b — The money conversation, and this is the important one
 
-8. **Have you calculated the debt-to-income ratio for each programme they're considering?**
+8. **Have you calculated the debt-to-income ratio for each program they're considering?**
    Total cost of attendance divided by realistic starting salary. Do it before applications, not
    after offers.
-9. Do they understand that the same degree costs over $300,000 more at some programmes than
+9. Do they understand that the same degree costs over $300,000 more at some programs than
    others?
 10. Do they know that borrowing above the federal cap means private loans, which don't qualify
     for income-driven repayment or forgiveness?
@@ -560,11 +560,11 @@ arm again, or return to something they thought they'd lost — very few jobs off
     outpatient orthopaedic and something else entirely, like neurological or paediatric. The
     settings are very different jobs.
 17. Find someone five years post-qualification and ask directly about their loan payments and
-    whether they'd choose the same programme.
+    whether they'd choose the same program.
 
 ## Part 4 — About the program
 
-18. Ask each programme the cost questions from section 14 — first, and before anything else.
+18. Ask each program the cost questions from section 14 — first, and before anything else.
 19. How many clinical placement settings, and are placements guaranteed?
 20. What's the licensure exam first-time pass rate?
 
@@ -590,7 +590,7 @@ arm again, or return to something they thought they'd lost — very few jobs off
 
 *This is analysis and informed judgment about a fast-moving situation. For physical therapy
 specifically, we've flagged that the profession's most serious risk is financial rather than
-technological, and that it varies enormously by programme — something our six factors cannot
+technological, and that it varies enormously by program — something our six factors cannot
 see.*
 
 *Scores for 2023 and 2025 are retrospectively calculated using the current methodology.

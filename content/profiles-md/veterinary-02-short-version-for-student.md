@@ -30,7 +30,7 @@ document is mostly about those.
 
 ## Why it's so protected — and the reason is interesting
 
-Most protected careers are protected by something obvious: a licence, physical presence, legal
+Most protected careers are protected by something obvious: a license, physical presence, legal
 liability. Veterinary has all of those.
 
 But it also has something almost nothing else does.
@@ -139,7 +139,7 @@ name it among the hardest parts of the job.
 **And client conflict**, sometimes at moments of grief or financial stress.
 
 **Here's the important bit:** the profession has built genuine support around this — the AVMA
-and equivalent bodies run wellbeing programmes, peer networks and confidential assistance, and
+and equivalent bodies run wellbeing programs, peer networks and confidential assistance, and
 vet schools now build it into training rather than leaving you to discover it.
 
 ==?None of that is a reason not to do this.== It's a reason to go in knowing, to take the

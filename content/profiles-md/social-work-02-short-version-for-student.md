@@ -9,7 +9,7 @@ We scored twenty-eight careers on how exposed they are to AI.
 Statutory child protection: **3.3 out of 10.** Adult safeguarding: **3.8.**
 
 ==+And the thing protecting social work is the strongest protection we found anywhere in the
-index — stronger than a medical licence.==
+index — stronger than a medical license.==
 
 The reasons to think hard about this one have nothing to do with technology.
 
@@ -17,7 +17,7 @@ The reasons to think hard about this one have nothing to do with technology.
 
 ## The 60-second version
 
-- ==+Statutory social work has the most durable protection in the whole index.== And it's not a licence.
+- ==+Statutory social work has the most durable protection in the whole index.== And it's not a license.
 - **AI is taking the paperwork** — which currently eats 4.3 hours of an 8-hour day.
 - ==-The honest problem is the conditions: turnover runs about six times the average for other jobs.==
 - **Median tenure in child welfare is 1.8 years.** Most people leave before they're fully trained.
@@ -27,13 +27,13 @@ The reasons to think hard about this one have nothing to do with technology.
 
 ## Why it's so protected — and this is genuinely interesting
 
-Most protected careers have a licence. We've argued throughout this index that ==?a licence is
+Most protected careers have a license. We've argued throughout this index that ==?a license is
 only as protective as the act it reserves== — pharmacy's covers dispensing, which automates
 easily; nursing's covers hands-on care, which doesn't.
 
 **Statutory social work is a different category entirely.**
 
-A normal licence says: *only a qualified person may do this.* It restricts who does the work.
+A normal license says: *only a qualified person may do this.* It restricts who does the work.
 
 ==+Statutory authority says something else: the state has handed a coercive power to a named
 individual.== A social worker in a statutory role can start the process of removing a child from
@@ -66,7 +66,7 @@ another person's liberty is the strongest thing in this entire index.==
 | Clinical social work (LCSW) | 4.3 |
 | Medical / hospital social work | 4.7 |
 | Community / case management | 5.4 |
-| Policy & programme administration | 6.1 |
+| Policy & program administration | 6.1 |
 
 Same pattern as everywhere: ==the further from the family and the statutory decision, the higher
 the exposure.==
@@ -170,7 +170,7 @@ are there because the state sent you, and the family often knows it.==
 - **How is risk assessment actually taught?** With real practice and feedback, or theoretically?
 - **Does it prepare you for the emotional side** — secondary trauma, reflective supervision —
   properly rather than as an add-on?
-- **Does it map to LCSW requirements** where you want to practise?
+- **Does it map to LCSW requirements** where you want to practice?
 - **Where do graduates work at one year — by setting?**
 
 ---

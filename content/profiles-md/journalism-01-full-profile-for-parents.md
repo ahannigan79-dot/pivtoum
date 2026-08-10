@@ -113,8 +113,8 @@ that than claim more for our own factor than it deserves.
 
 One comparison matters more than any other in this profile.
 
-**Roughly 95,000 students are enrolled in journalism and mass communication programmes** in the
-United States, according to the University of Georgia's annual enrolment survey — a figure
+**Roughly 95,000 students are enrolled in journalism and mass communication programs** in the
+United States, according to the University of Georgia's annual enrollment survey — a figure
 that has ticked slightly upward.
 
 **The total working population of reporters, correspondents and broadcast news analysts is
@@ -140,7 +140,7 @@ Here's how desk and aggregation work answers them.
 **Nearly all of it.**
 
 Rewriting wire copy. Aggregating other outlets' coverage. Summarising reports and filings.
-Routine sports and earnings write-ups. Headline and SEO optimisation. Transcription and
+Routine sports and earnings write-ups. Headline and SEO optimization. Transcription and
 first-pass editing.
 
 What resists: being in the room, cultivating a source who trusts you, obtaining a document
@@ -168,7 +168,7 @@ answerable for what is published.
 
 ### Does the law require a licensed human? *(10%)*
 
-**No.** Journalism has no licence and — for good reasons of press freedom — should not.
+**No.** Journalism has no license and — for good reasons of press freedom — should not.
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
 
@@ -275,7 +275,7 @@ degree rather than after.
 4. **Legal and ethical judgment** — knowing what can be published, and standing behind it.
 5. **Knowing when someone is lying to you** — the thing no system does.
 
-Notably absent: writing speed, volume of output, and headline optimisation. These were the
+Notably absent: writing speed, volume of output, and headline optimization. These were the
 traditional markers of a strong junior and are entirely automated.
 
 ---
@@ -297,7 +297,7 @@ scarce — in policy, research, communications, investigation, law and consultan
 best-known journalists in the country now run their own publications with six-figure subscriber
 bases. It is difficult and it is real.
 
-**And specialisation is rewarded.** Freelance income has become harder for general-interest
+**And specialization is rewarded.** Freelance income has become harder for general-interest
 writing and *easier* for vertical specialists — one of the clearest signals in this profile
 about where to point.
 
@@ -320,7 +320,7 @@ replace a staff salary, which is a real financial requirement most graduates don
 Journalism tends to suit people who:
 
 - **Get people to talk to them.** The core skill, largely untrainable, and instantly
-  recognisable in people who have it.
+  recognizable in people who have it.
 - **Are genuinely curious about other people's lives** rather than about writing
 - **Are comfortable being unwelcome** — much of real reporting is asking people things they'd
   rather not answer
@@ -412,16 +412,16 @@ marketing execution at 8.2, not like journalism.== They look adjacent and they a
 # What to look for in a journalism program
 
 **1. Original reporting or content production?**
-The single most important distinction. A programme built around producing content is training
+The single most important distinction. A program built around producing content is training
 for the automated tier.
 
 **2. Do students get real bylines, in real outlets, from year one?**
 
 **3. Are verification, public records and media law taught properly?**
-These are the durable skills. Programmes vary enormously.
+These are the durable skills. Programs vary enormously.
 
 **4. Specialist beats.**
-Does the programme support developing genuine expertise in a field, or produce generalists?
+Does the program support developing genuine expertise in a field, or produce generalists?
 
 **5. Where are graduates actually working — by name?**
 Not "in media." Which outlets, and doing what?
@@ -491,7 +491,7 @@ reluctance to discuss the industry's contraction directly.
 # Bottom line
 
 **As preparation for a newsroom desk job, a journalism degree is a poor bet — and honest
-programmes will say so.**
+programs will say so.**
 
 The industry has contracted by roughly 60% since 2008 for reasons that have nothing to do with
 AI. Around 2,900 newspapers have closed. Two students are enrolled for every working
@@ -553,7 +553,7 @@ should be chosen with the numbers in front of you, not despite them.
 ## Part 2c — The other side
 
 12. Of what's genuinely good — the work mattering, portable skills, independent publishing,
-    specialisation — which matters most?
+    specialization — which matters most?
 13. Looking at "who this work suits": which items sound like them? Answer separately, then
     compare.
 14. Are they stubborn? Most stories are refusals until they aren't.
@@ -574,7 +574,7 @@ should be chosen with the numbers in front of you, not despite them.
 
 ## Part 4 — About the program
 
-19. Ask each programme the outcome questions from section 13. Push past "working in media."
+19. Ask each program the outcome questions from section 13. Push past "working in media."
 20. Do students publish in real outlets, and from which year?
 21. Is verification, public records and media law taught properly?
 

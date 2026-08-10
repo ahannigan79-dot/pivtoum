@@ -38,11 +38,11 @@ Four reasons, and none of them depend on how clever AI gets.
 
 ## The bit nobody tells you
 
-Same degree. Same licence. Very different exposure depending on where you end up.
+Same degree. Same license. Very different exposure depending on where you end up.
 
 | Where you work | Score |
 |---|---|
-| Specialist clinical (ICU, ED, theatre) | 2.4 |
+| Specialist clinical (ICU, ED, theater) | 2.4 |
 | Community / home health | 2.7 |
 | Bedside RN | 2.8 |
 | Nurse practitioner | 3.2 |
@@ -77,7 +77,7 @@ When an auto-generated note doesn't match the patient. When an alert is confiden
 
 Which means the boring foundational years matter *more*, not less.
 
-**And here's your opening.** AI is already in most hospitals. It's arriving faster than the training to use it, and most working nurses are figuring it out alone. Only around 40% of nursing programmes have updated their curriculum for it.
+**And here's your opening.** AI is already in most hospitals. It's arriving faster than the training to use it, and most working nurses are figuring it out alone. Only around 40% of nursing programs have updated their curriculum for it.
 
 So you'd arrive as ==part of the first group who never had to unlearn anything==. In a profession where getting ahead normally takes years of experience, this is one dimension where being new is an advantage.
 
@@ -93,7 +93,7 @@ The biggest risk to a nursing career isn't AI. It's leaving.
 
 The national survey covering 527 hospitals found ==-22.7% of new nurses leave within their first year, and 56.8% of everyone who quits had been there under two years.==
 
-Though there's a twist worth knowing. Retention in those first two years is actually *good* — residency programmes hold people in place. ==?Turnover spikes at around thirty months, when the support comes off.== Which makes the quality of your first employer's graduate programme, and what happens when it ends, a much bigger deal than it sounds.
+Though there's a twist worth knowing. Retention in those first two years is actually *good* — residency programs hold people in place. ==?Turnover spikes at around thirty months, when the support comes off.== Which makes the quality of your first employer's graduate program, and what happens when it ends, a much bigger deal than it sounds.
 
 The reasons people leave are consistent: staffing pressure, shift work over decades, the physical toll, and not being able to give the care you know someone needs.
 
@@ -128,13 +128,13 @@ Being squeamish, for the record, is almost never the problem people expect.
 
 ## If you change your mind
 
-You're not stuck. Nursing opens onto advanced practice, specialisation, informatics, education, management, public health and industry. Few degrees have this many exits.
+You're not stuck. Nursing opens onto advanced practice, specialization, informatics, education, management, public health and industry. Few degrees have this many exits.
 
 One catch, and it's the same pattern as everything else here: **the further a job sits from the bedside, the higher its exposure climbs.** Those are all good careers. Just move deliberately rather than by drift.
 
 ---
 
-## What actually matters when picking a programme
+## What actually matters when picking a program
 
 More than the ranking:
 

@@ -32,7 +32,7 @@ the route into accounting, check it.
 # The short answer
 
 **Accounting remains one of the more defensible business-family degrees — but only if the
-destination is the licence.**
+destination is the license.**
 
 Audit and CPA advisory work scores **5.2** out of 10. Bookkeeping and transactional accounting
 scores **7.9**.
@@ -81,10 +81,10 @@ known rules. Audit sampling and testing.
 
 We rate this **7.3**. What holds the overall score at 5.2 despite that is almost entirely
 regulatory protection and accountability — which makes accounting the clearest case in the
-index of a licence carrying a profession.
+index of a license carrying a profession.
 
 What resists: signing the audit opinion, judgment on an ambiguous accounting treatment,
-advising a business owner on what to actually do, and professional scepticism — knowing when
+advising a business owner on what to actually do, and professional skepticism — knowing when
 the numbers are wrong.
 
 ### How hard will it be to land that first job? *(15%)*
@@ -113,7 +113,7 @@ capability transfers it.==
 
 ### Does the law require a licensed human? *(10%)*
 
-**For the audit signature, comprehensively — and section 4 explains why this licence works
+**For the audit signature, comprehensively — and section 4 explains why this license works
 differently from law's.**
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
@@ -124,9 +124,9 @@ contrast, is the opposite.
 
 ---
 
-# The licence that also protects the training
+# The license that also protects the training
 
-This is the section worth carrying to other careers, because accounting's licence does
+This is the section worth carrying to other careers, because accounting's license does
 something most don't.
 
 **Compare three professions.**
@@ -139,7 +139,7 @@ junior law now scores 7.9 with an entry-path rating of 9.5.
 qualify. The on-ramp is protected by the same statute that protects the job, which is why
 nursing rates 2.0 on entry-path erosion.
 
-**Accounting sits between them, and closer to nursing than most people realise.** The audit
+**Accounting sits between them, and closer to nursing than most people realize.** The audit
 signature is a legal monopoly — a public company's financial statements must be signed by a
 licensed CPA, with liability attached. ==+But the CPA pathway also requires supervised
 professional experience, which gives firms a structural reason to employ juniors regardless of
@@ -148,7 +148,7 @@ what the technology can do.==
 That's why accounting rates **4.0** on entry-path erosion rather than business's 7.5 or junior
 law's 9.5. The on-ramp has narrowed. Licensure props it open.
 
-==?The general lesson: ask what a licence reserves, and whether it reserves the training as
+==?The general lesson: ask what a license reserves, and whether it reserves the training as
 well as the practice. Those are different protections, and for someone entering a field the
 second one matters more.==
 
@@ -164,7 +164,7 @@ university beyond a standard bachelor's degree. Introduced in 1983 to raise the 
 standing, it became its biggest barrier to entry: an extra year of tuition, plus a year of
 foregone salary, at a moment when students were already weighing debt carefully.
 
-The consequences were severe and are well documented. Accounting enrolments declined for over
+The consequences were severe and are well documented. Accounting enrollments declined for over
 a decade. CPA exam participation fell to its lowest level since 2006. Roughly **300,000
 accountants left the profession in five years**, and the AICPA/NASBA Trends Report shows a
 workforce increasingly concentrated in later-career age groups.
@@ -212,7 +212,7 @@ collapse, but a tier that quietly stopped being a career.==
 | **Physical / embodied** | **None** | n/a | Accounting has never had this. |
 
 **The honest read.** ==+Accounting's protection is real, narrow, and entirely attached to the
-licence.== The tier above it inherits some by proximity. The tier below it has none — which is
+license.== The tier above it inherits some by proximity. The tier below it has none — which is
 why 5.2 and 7.9 sit in the same profession.
 
 ---
@@ -244,7 +244,7 @@ professional body formally acknowledging that its own entry-level competence has
 
 # Human strengths that will matter most
 
-1. **Professional scepticism** — knowing when the numbers are wrong, or when a plausible
+1. **Professional skepticism** — knowing when the numbers are wrong, or when a plausible
    explanation isn't the true one. The most valuable and least automatable thing here.
 2. **Accountability** — being the licensed human who signs.
 3. **Judgment on ambiguity** — where the standard permits more than one treatment and someone
@@ -261,7 +261,7 @@ were the traditional markers of a strong junior and are entirely automated.
 
 ## What's genuinely good about it
 
-**The shortage is severe, well documented, and works entirely in a new entrant's favour.**
+**The shortage is severe, well documented, and works entirely in a new entrant's favor.**
 
 - **More than 120,000 annual openings** projected by BLS, against roughly 55,000 graduates
 - Somewhere around **190,000–200,000 open accounting positions** at any given time
@@ -269,7 +269,7 @@ were the traditional markers of a strong junior and are entirely automated.
   skews late-career== — meaning a retirement wave on top of an already-thin pipeline
 - Starting salaries rising in response, with Robert Half projecting a further 3.7% increase
   into 2026
-- The first real signal of recovery: a **12% increase in undergraduate accounting enrolment**
+- The first real signal of recovery: a **12% increase in undergraduate accounting enrollment**
   in spring 2025
 
 **What accountants report as rewarding:** genuine breadth of exposure to how businesses
@@ -305,7 +305,7 @@ Accounting tends to suit people who:
 
 - **Are genuinely comfortable with detail** — not tolerant of it, comfortable in it
 - **Like understanding how businesses work** from the inside
-- **Are sceptical by temperament** — the professional core is not taking things at face value
+- **Are skeptical by temperament** — the professional core is not taking things at face value
 - **Want a clear qualification and a marked path**, which accounting provides better than most
   business routes
 - **Are willing to trade early salary for later optionality**
@@ -343,7 +343,7 @@ automated reconciliation and AI-assisted tax preparation are established rather 
 ### What an AI-native accountant looks like
 
 **1. Verify.** Knowing when generated workpapers or a prepared return are wrong. ==+In audit
-this is professional scepticism applied to a machine rather than a client, and it is the same
+this is professional skepticism applied to a machine rather than a client, and it is the same
 underlying skill.==
 
 **2. Work with full-population testing.** When you can test everything rather than sample,
@@ -357,7 +357,7 @@ about this" layer is not. Every step toward advisory improves the score.
 their numbers. Now it has to be pursued deliberately== — and it's what separates someone who
 can sign from someone who can only prepare.
 
-**5. Get to the licence.** Everything in this profile points there. The pathway has just become
+**5. Get to the license.** Everything in this profile points there. The pathway has just become
 shorter in many states; use that.
 
 ### Concrete preparation
@@ -370,7 +370,7 @@ rates are high given the shortage. Take audit and assurance seriously rather tha
 them as the dull option; that's where the protection is.
 
 **Entering:** ==+public practice first, then industry if wanted. The reverse rarely works, and
-public practice is where the supervised hours and the licence come from.==
+public practice is where the supervised hours and the license come from.==
 
 ---
 
@@ -382,7 +382,7 @@ public practice is where the supervised hours and the licence come from.==
 | **Bachelor's + two years' experience** | The new pathway in many states, replacing the fifth year. ==+Materially cheaper and faster.== |
 | **Any degree + conversion** | Common. Accounting accepts non-accounting graduates more readily than most professions. |
 | **Apprenticeship / school-leaver routes** | Widely available outside the US and expanding. Paid, no tuition debt. |
-| **Management accounting qualifications** | A different licence, industry-focused rather than public practice. |
+| **Management accounting qualifications** | A different license, industry-focused rather than public practice. |
 
 ---
 
@@ -402,7 +402,7 @@ the business relies on it in the way they rely on an audit opinion.==
 # What to look for in an accounting program
 
 **1. CPA pathway alignment — under the *current* rules.**
-Does the programme map cleanly onto the licensure requirements in the state where they intend
+Does the program map cleanly onto the licensure requirements in the state where they intend
 to qualify, as those rules now stand?
 
 **2. Internship placement rate and conversion.**
@@ -410,7 +410,7 @@ The profession recruits through internships. Ask what proportion secure one and 
 proportion convert.
 
 **3. Audit and assurance depth.**
-This is where the regulatory protection lives. A programme light on audit is training for the
+This is where the regulatory protection lives. A program light on audit is training for the
 exposed tier.
 
 **4. Does the curriculum teach data analytics and audit technology?**
@@ -423,7 +423,7 @@ Full-population testing is the future of the work.
 # Questions to ask an accounting program
 
 **On licensure:**
-- How does your programme map to current CPA requirements in this state?
+- How does your program map to current CPA requirements in this state?
 - Have your requirements changed in the last two years in response to the 150-hour reforms?
 - What's your CPA exam pass rate?
 
@@ -433,7 +433,7 @@ Full-population testing is the future of the work.
 
 **On the curriculum:**
 - How much audit and assurance content is compulsory?
-- How does the programme teach data analytics and audit technology?
+- How does the program teach data analytics and audit technology?
 - Where do students learn to review AI-prepared workpapers?
 
 **Red flags:** vagueness about current licensure requirements; no internship pipeline; audit
@@ -478,7 +478,7 @@ treated as optional; a curriculum unchanged since 2022.
 
 # Bottom line
 
-**Accounting is one of the better business-family choices, and the licence is the whole
+**Accounting is one of the better business-family choices, and the license is the whole
 argument.**
 
 The CPA signature is a legal monopoly, and unlike law's bar card, the pathway to it mandates
@@ -492,14 +492,14 @@ have altered or removed the 150-hour requirement, which is a profession delibera
 its own door at exactly the moment most are narrowing.== Anyone advising a student on
 accounting using pre-2025 assumptions is giving out-of-date information.
 
-**So the useful advice is:** treat the licence as the product rather than the degree, check the
+**So the useful advice is:** treat the license as the product rather than the degree, check the
 current requirements where they intend to qualify, choose audit and assurance depth over
 general business content, and go into public practice first because that is where the hours and
 the signature come from.
 
 And one honest thing to say to a student weighing this against finance or tech: the entry
 salary gap is real, it is substantial, and it is the profession's genuine weakness. What
-accounting offers in exchange is a licence, a shortage, and a door that is currently getting
+accounting offers in exchange is a license, a shortage, and a door that is currently getting
 wider rather than narrower — which is a rarer combination than it sounds.
 
 ---
@@ -518,7 +518,7 @@ wider rather than narrower — which is a rarer combination than it sounds.
 
 5. Audit and CPA advisory scores 5.2; bookkeeping 7.9. Does that change where they'd aim?
 6. Bookkeeping was already at 6.8 in 2023 — before generative AI. Was that surprising?
-7. The profile argues accounting's licence protects the *training* as well as the practice. Does that land?
+7. The profile argues accounting's license protects the *training* as well as the practice. Does that land?
 
 ## Part 2b — The harder conversation
 
@@ -530,7 +530,7 @@ wider rather than narrower — which is a rarer combination than it sounds.
 
 11. Of what accountants find rewarding — breadth, portability, a clear path, realistic ownership — which two matter most?
 12. Looking at "who this work suits": which items sound like them? Answer separately, then compare.
-13. Are they sceptical by nature? Professional scepticism is the core skill and it's more temperament than training.
+13. Are they skeptical by nature? Professional skepticism is the core skill and it's more temperament than training.
 
 ## Part 2d — The AI question, practically
 
@@ -544,7 +544,7 @@ wider rather than narrower — which is a rarer combination than it sounds.
 
 ## Part 4 — About the program
 
-18. Ask each programme the licensure-alignment questions from section 14. Vagueness here is disqualifying.
+18. Ask each program the licensure-alignment questions from section 14. Vagueness here is disqualifying.
 19. What's the internship placement and conversion rate?
 20. How much compulsory audit and assurance content is there?
 

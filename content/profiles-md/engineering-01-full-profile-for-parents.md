@@ -47,7 +47,7 @@ Licensed, site-based engineering scores **4.0** out of 10. Desk-based design and
 scores **6.3**. Entry-level software development, for the same kind of mind and much the
 same maths, scores **8.1**.
 
-And the labour markets point the same way. ==+There are roughly three open engineering
+And the labor markets point the same way. ==+There are roughly three open engineering
 positions for every qualified candidate, and nearly half of working US engineers are aged 50
 or over.== Recent computer science graduates face 6.1% unemployment.
 
@@ -63,7 +63,7 @@ Same aptitude. Opposite entry markets.
 | **Civil / structural (PE, site-based)** | 3.4 | 3.7 | **4.0** | +0.6 | Low–Moderate |
 | **Mechanical (industrial)** | 3.9 | 4.1 | **4.4** | +0.5 | Moderate |
 | **Manufacturing / process** | 4.4 | 4.7 | **4.9** | +0.5 | Moderate |
-| **Design & analysis (desk, CAD-centred)** | 5.2 | 5.8 | **6.3** | +1.1 | Moderate–High |
+| **Design & analysis (desk, CAD-centered)** | 5.2 | 5.8 | **6.3** | +1.1 | Moderate–High |
 
 *Scores run 1–10, where 10 is most at risk. For context: the median profession in this
 edition sits around 5.5, a service electrician scores 2.5, bedside nursing 2.8, senior
@@ -82,7 +82,7 @@ likes building things.
 
 | | Software | Engineering |
 |---|---|---|
-| **Regulatory protection** | None — no licence exists | Strong — the PE stamp is a legal monopoly |
+| **Regulatory protection** | None — no license exists | Strong — the PE stamp is a legal monopoly |
 | **Physical requirement** | None | Real — sites, commissioning, inspection |
 | **Accountability for catastrophic failure** | Commercial | Legal and personal |
 | **Entry route** | Market-driven, contracted 67% in one year | Licensure requires supervised experience years |
@@ -122,7 +122,7 @@ about whether an analysis actually applies *here*.
 
 **Among the better on-ramps we measure, and for two independent reasons.**
 
-The first is structural: ==+the PE licence requires supervised experience years, so firms have
+The first is structural: ==+the PE license requires supervised experience years, so firms have
 an institutional reason to employ and train juniors== — the same mechanism that protects
 nursing and accounting.
 
@@ -143,7 +143,7 @@ engineer and a desk-based analyst do very different jobs with the same degree.
 **Yes, and with a severity few professions match.**
 
 When a structure fails, people die and someone is legally answerable. ==+That accountability
-attaches to a named person with a licence, and no advance in capability transfers it.==
+attaches to a named person with a license, and no advance in capability transfers it.==
 
 ### Does the law require a licensed human? *(10%)*
 
@@ -170,7 +170,7 @@ precedent even where every individual element does.
 This deserves its own section, because it is the one place we think engineering's protection
 may be quietly weakening.
 
-The PE licence mandates logged experience years under a licensed practitioner. That props the
+The PE license mandates logged experience years under a licensed practitioner. That props the
 on-ramp open — it is the same mechanism that protects nursing, and it is genuinely valuable.
 
 **But what happens *inside* those years has changed.**
@@ -181,7 +181,7 @@ building the same judgment?==
 
 Licensure certifies that someone has done the time. It assumes the time teaches. If the
 content of those years shifts from producing work to supervising work, the assumption may
-stop holding — and the licence would continue certifying something it no longer measures.
+stop holding — and the license would continue certifying something it no longer measures.
 
 **This sorts the professions in a way worth carrying to other careers.** In nursing, medicine
 and the trades, mandated experience hours are hands-on by necessity — you cannot supervise
@@ -215,8 +215,8 @@ remains below the index median.==
 | **Judgment under novelty** | Strong | **Eroding slowly** | Standard-case analysis is automating; site-specific judgment is not. |
 | **Physical / embodied** | Real for site disciplines | **Most fragile long-term** | The protection physical AI directly targets — though construction sites are among the hardest environments for robotics. |
 
-**The honest read for a seventeen-year-old:** they will practise for roughly forty years. The
-two protections most likely to still be standing are the licence and the liability, because
+**The honest read for a seventeen-year-old:** they will practice for roughly forty years. The
+two protections most likely to still be standing are the license and the liability, because
 both are rooted in law rather than in what technology can do.
 
 ---
@@ -268,7 +268,7 @@ outlast any technology cycle.**
 - **BLS median wages**: civil $98,540, mechanical $99,510, electrical $111,150
 - **Job growth through 2034**: industrial 11%, mechanical 9.1%, electrical 7.2%, civil 7%
 
-**And the PE licence is unusually good value.** Industry salary surveys consistently show
+**And the PE license is unusually good value.** Industry salary surveys consistently show
 licensed engineers earning ==+10–25% more than unlicensed peers at the same experience level
 — a lifetime premium estimated between $300,000 and $700,000.== Very few professional
 qualifications have a return that clear.
@@ -311,8 +311,8 @@ It's harder for people who:
 ## What else is moving this market
 
 **Electrical engineering has an extraordinary tailwind, and it comes from AI itself.** Data
-centre construction is running at record pace. Lawrence Berkeley National Laboratory estimates
-AI data centres could consume between 325 and 580 terawatt-hours by 2028 — **6 to 12% of
+center construction is running at record pace. Lawrence Berkeley National Laboratory estimates
+AI data centers could consume between 325 and 580 terawatt-hours by 2028 — **6 to 12% of
 total US electricity consumption.**
 
 ==+That makes electrical engineering possibly the single most demand-secure choice in this
@@ -321,7 +321,7 @@ entire index: a career protected from AI that is simultaneously being pulled by 
 **Infrastructure investment is elevated** across transport, water and grid in most developed
 economies, and civil demand follows it.
 
-**One honest caution:** some of the current construction and data-centre demand is
+**One honest caution:** some of the current construction and data-center demand is
 project-driven and will end when the builds do. The demographic case — an ageing workforce
 retiring faster than replacements arrive — holds regardless of the cycle. ==?A student should
 weight the demographics more heavily than the current boom.==
@@ -358,7 +358,7 @@ Electrical and civil are in the strongest demand positions; the desk-versus-site
 matters more than any ranking.
 
 **During:** take the co-op or placement year — it is the single best predictor of outcomes,
-and engineering programmes are unusually good at providing it. Get site exposure specifically,
+and engineering programs are unusually good at providing it. Get site exposure specifically,
 not just office placement. Treat the maths-heavy foundations as the thing verification will
 later depend on.
 
@@ -400,7 +400,7 @@ site placement is better and rarer.
 
 **3. Does the curriculum teach generative design tools *and* their failure modes?**
 
-**4. PE preparation.** Does the programme actively support the licensure pathway, or leave it
+**4. PE preparation.** Does the program actively support the licensure pathway, or leave it
 to graduates to work out?
 
 **5. Discipline strength.** A department strong in electrical or civil is worth more than a
@@ -411,7 +411,7 @@ generally-ranked institution.
 # Questions to ask an engineering program
 
 **On accreditation and licensure:**
-- Is the programme accredited for professional licensure in the states where graduates practise?
+- Is the program accredited for professional licensure in the states where graduates practice?
 - What proportion of graduates are on the PE track five years out?
 
 **On placement:**
@@ -419,7 +419,7 @@ generally-ranked institution.
 - How many include genuine site experience rather than office-based work?
 
 **On the curriculum:**
-- How does the programme teach students to work with generative design and simulation tools?
+- How does the program teach students to work with generative design and simulation tools?
 - Where do students learn to identify when generated output is wrong?
 - What changed in the last two years?
 
@@ -443,8 +443,8 @@ support; a curriculum unchanged since 2022; evasiveness about first- and second-
   the demographic picture: nearly half of working US engineers are 50 or over.
 
 - **[Is Electrical Engineering a Good Career in 2026](https://www.apollotechnical.com/is-electrical-engineering-a-good-career/)**
-  — on the data-centre demand story, including the Lawrence Berkeley National Laboratory
-  projection that AI data centres could consume 6–12% of US electricity by 2028.
+  — on the data-center demand story, including the Lawrence Berkeley National Laboratory
+  projection that AI data centers could consume 6–12% of US electricity by 2028.
 
 - **[PE License Salary: How Much More Do PEs Make?](https://pecivilclick.com/blog-pe-license-salary)**
   — the licensure premium in numbers, drawing on BLS wage data and NSPE salary surveys.
@@ -452,7 +452,7 @@ support; a curriculum unchanged since 2022; evasiveness about first- and second-
 **The counterargument — read this one:**
 
   The strongest case against our score isn't that engineering is more exposed than we say.
-  It's that ==?we may be crediting the licence with protection that is really being provided
+  It's that ==?we may be crediting the license with protection that is really being provided
   by demographics.==
 
   Three open positions per candidate and an ageing workforce would produce a strong graduate
@@ -460,10 +460,10 @@ support; a curriculum unchanged since 2022; evasiveness about first- and second-
   refills, a reader might reasonably ask whether the structural protection was ever doing the
   work we attribute to it.
 
-  **Where we land:** we think both are real and separable. The licence protects the *act* —
+  **Where we land:** we think both are real and separable. The license protects the *act* —
   no amount of workforce supply changes who may legally stamp a drawing. The demographics
   protect the *market* and will fade. So we'd expect engineering's score to hold even as
-  hiring conditions normalise, and we'd treat a rising score alongside an easing labour
+  hiring conditions normalize, and we'd treat a rising score alongside an easing labor
   market as evidence we were wrong about which factor mattered.
 
 ---
@@ -479,7 +479,7 @@ protection and a materially better graduate market== — 4.0 against 8.1 at entr
 three open positions per candidate against 6.1% unemployment.
 
 **The protection is real and structural.** A legal monopoly on the stamp, personal liability,
-site work that cannot be done remotely, and a licence that mandates the supervised years that
+site work that cannot be done remotely, and a license that mandates the supervised years that
 protect the on-ramp.
 
 **Two honest cautions.** The desk-based end of the profession is drifting at nearly double the
@@ -535,7 +535,7 @@ mention.
 
 ## Part 4 — About the program
 
-17. Is the programme accredited for professional licensure where they intend to practise? Check directly.
+17. Is the program accredited for professional licensure where they intend to practice? Check directly.
 18. What proportion complete a placement, and does it include site work?
 19. What's the first- and second-year attrition rate?
 

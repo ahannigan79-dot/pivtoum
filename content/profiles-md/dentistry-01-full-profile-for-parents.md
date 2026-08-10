@@ -123,7 +123,7 @@ bench to a screen and a machine, and the number of people needed to do it fell s
 
 **Notice what happened next, because it is exactly what our framework predicts.**
 
-**The profession was fine.** Dentists still practise. Patients still get crowns. Demand didn't
+**The profession was fine.** Dentists still practice. Patients still get crowns. Demand didn't
 fall.
 
 **But a whole tier of skilled, well-regarded craft work contracted permanently**, and the people
@@ -177,8 +177,8 @@ careful reading.
 - ==-Average dental school debt is **$293,900**, per the ADA's Survey of Dental School
   Seniors.==
 - The spread is enormous: public schools typically **$200,000–$260,000**, private around
-  **$321,000**, and the most expensive programmes reach **$625,000–$700,000**.
-- One institution's programme cost alone is reported at **$492,820**.
+  **$321,000**, and the most expensive programs reach **$625,000–$700,000**.
+- One institution's program cost alone is reported at **$492,820**.
 
 **The income, and the gap inside it:**
 
@@ -200,7 +200,7 @@ by family. ==?Dentistry draws disproportionately from families able to fund it, 
 "average debt" figure understates the burden for students who borrow the whole amount.==
 
 **The practical instruction is the same as for physical therapy:** the spread between the
-cheapest and most expensive accredited programme is larger than most people's mortgages.
+cheapest and most expensive accredited program is larger than most people's mortgages.
 ==+Attend the least expensive accredited school you get into.==
 
 ---
@@ -212,9 +212,9 @@ cheapest and most expensive accredited programme is larger than most people's mo
 - ==+Median pay of **$98,100** (BLS OEWS, May 2025) — slightly *above* the registered nurse
   median of $97,550==
 - **7% projected growth** through 2034, with about **15,300 openings a year**
-- Around **222,740** practising hygienists, 94% of them in dentists' offices
+- Around **222,740** practicing hygienists, 94% of them in dentists' offices
 - **No night or weekend shifts**, unlike nursing
-- ==+Programme debt typically **$30,000–$80,000** — an order of magnitude below dental school==
+- ==+Program debt typically **$30,000–$80,000** — an order of magnitude below dental school==
 - And it scores **3.0** on our index, against 2.7 for dentistry
 
 **Two honest caveats**, because this isn't a free lunch:
@@ -303,7 +303,7 @@ difference from medicine and nursing.
 **The debt, covered in section 6, and it is the dominant issue.**
 
 **The physical toll is real and under-discussed.** Dentistry is performed in sustained awkward
-postures, and musculoskeletal problems — neck, back, shoulders, wrists — are a recognised
+postures, and musculoskeletal problems — neck, back, shoulders, wrists — are a recognized
 occupational hazard that can shorten careers.
 
 **Patient anxiety is a constant.** A meaningful share of patients arrive frightened, and
@@ -375,8 +375,8 @@ practice management is the least-taught and most consequential skill in the prof
 
 ### Concrete preparation
 
-**Before applying:** ==+compare total programme cost seriously. The spread between the cheapest
-and most expensive accredited school exceeds $400,000, for the same licence.==
+**Before applying:** ==+compare total program cost seriously. The spread between the cheapest
+and most expensive accredited school exceeds $400,000, for the same license.==
 
 **During:** take practice management and business content seriously rather than treating it as
 peripheral. Get exposure to digital workflows, and to a range of practice settings including
@@ -430,7 +430,7 @@ Both are where the profession is going and both are commonly underweighted.
 # Questions to ask a dental program
 
 **On cost — ask these first:**
-- What is the total cost of attendance for the full programme, including living expenses?
+- What is the total cost of attendance for the full program, including living expenses?
 - What is the median debt at graduation for your graduates?
 
 **On clinical training:**
@@ -439,7 +439,7 @@ Both are where the profession is going and both are commonly underweighted.
 
 **On the curriculum:**
 - How much practice management and business content is compulsory?
-- How does the programme teach digital workflow — scanning, CAD/CAM, treatment planning?
+- How does the program teach digital workflow — scanning, CAD/CAM, treatment planning?
 - Where do students learn to verify AI-assisted imaging analysis?
 
 **Red flags:** evasiveness about total cost or graduate debt; low clinical procedure volume;
@@ -459,7 +459,7 @@ practice management treated as optional; no digital workflow training.
   available on this decision.
 
 - **[Average dental school debt](https://educationdata.org/average-dental-school-debt)**
-  — programme-by-programme cost data, including the finding that around 35% of dental school
+  — program-by-program cost data, including the finding that around 35% of dental school
   costs are financed without loans. Worth reading before choosing where to apply.
 
 **The counterargument — read this one:**
@@ -497,7 +497,7 @@ work contracted permanently. Automation removes a tier, not a profession — and
 in matters more than which profession you choose.==
 
 **The real decision is financial.** Average debt of **$293,900**, with a spread between schools
-exceeding $400,000 for the identical licence — against a mean wage of $166,810 that rises to
+exceeding $400,000 for the identical license — against a mean wage of $166,810 that rises to
 around $239,000 for practice owners. ==The income model assumes ownership, and that assumption
 is worth understanding at seventeen rather than at thirty-two.==
 
@@ -522,7 +522,7 @@ deserves an hour rather than a dismissal.==
 1. What made dentistry appealing? Push past "I want to work in healthcare" to something specific.
 2. **Do they actually enjoy precise manual work?** This is the core of the job and it's testable.
 3. Are they comfortable with people who are frightened, repeatedly?
-4. Do they realise most general practice is the same room, the same chair, and largely repetitive
+4. Do they realize most general practice is the same room, the same chair, and largely repetitive
    by design?
 
 ## Part 2 — Reacting to the findings
@@ -536,7 +536,7 @@ deserves an hour rather than a dismissal.==
 ## Part 2b — The money conversation, and this is the important one
 
 8. **Have you compared total cost across the schools they're considering?** Average debt is
-   $293,900 and the spread between programmes exceeds $400,000.
+   $293,900 and the spread between programs exceeds $400,000.
 9. Do they understand that the income model assumes eventual practice ownership — $166,810
    employed against roughly $239,000 for owners?
 10. Are they interested in running a business? Because that's where the money is, and dental

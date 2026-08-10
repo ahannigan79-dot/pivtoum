@@ -11,7 +11,7 @@ surprises almost everyone.
 
 ==-**Bioinformatics and computational biology: 7.1.**==
 
-**The people at the bench are better protected than the people analysing what the bench
+**The people at the bench are better protected than the people analyzing what the bench
 produces.** That's backwards from what most people assume, and it's the most useful thing here.
 
 But there's a second finding that matters more for most students, and it's about money.

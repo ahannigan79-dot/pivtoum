@@ -106,7 +106,7 @@ a regulator afterwards. That accountability attaches to a person.
 
 ### Does the law require a licensed human? *(10%)*
 
-**Weakly.** There is no cybersecurity licence, though regulatory regimes increasingly require
+**Weakly.** There is no cybersecurity license, though regulatory regimes increasingly require
 named accountable individuals for security posture — which is a partial and growing protection.
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
@@ -143,7 +143,7 @@ has no funded headcount behind it does not employ anyone.
 **Third, and most directly relevant to our score:** the entry route being marketed is the one
 being automated. ==-Gartner's projection that more than half of SOC Tier 1 responsibilities
 will be AI-handled by 2028 lands squarely on the job that bootcamps, certifications and
-university programmes point graduates toward.==
+university programs point graduates toward.==
 
 **Fourth, the pipeline problem this creates.** One industry analysis puts it well: a workforce
 with no entry-level pipeline produces no tier-two analysts and no senior generalists in five
@@ -172,11 +172,11 @@ or to exploit the gap between what a detection system was trained on and what is
 happening.==
 
 This creates a property no other profession in this index has: **the novelty is adaptive.**
-Whatever pattern a defensive system learns to recognise, an adversary has an incentive to stop
+Whatever pattern a defensive system learns to recognize, an adversary has an incentive to stop
 matching it. ==+There is no equilibrium where the patterns settle down and the work becomes
 routine, because the other side is paid to prevent exactly that.==
 
-That is why threat hunting holds 5.0 despite no physical component, no licence, and a fully
+That is why threat hunting holds 5.0 despite no physical component, no license, and a fully
 digital workflow. Almost nothing else in this index survives that combination of missing
 protections.
 
@@ -200,7 +200,7 @@ strategy — carries a protection that complexity alone does not provide.
 
 **The gap widened from 1.9 points to 2.4.** The distinctive feature here is that ==-both ends
 moved, and the protected end moved faster than protected ends usually do== — because
-cybersecurity has no licence or physical requirement holding it still, only judgment and
+cybersecurity has no license or physical requirement holding it still, only judgment and
 adversarial dynamics.
 
 ---
@@ -245,7 +245,7 @@ defender at once, which is part of why demand holds even as tier-one work automa
 
 # Human strengths that will matter most
 
-1. **Adversarial thinking** — modelling what someone actively hostile would do. The core skill,
+1. **Adversarial thinking** — modeling what someone actively hostile would do. The core skill,
    and the hardest to teach.
 2. **Deciding under pressure with incomplete information** — most incidents are ambiguous at
    the moment the decision has to be made.
@@ -276,7 +276,7 @@ organisations will consider candidates with only IT experience, and 89% accept e
 certifications in place of a degree.== Very few professional fields are that open.
 
 **What practitioners report as rewarding:** the work genuinely matters when it matters; there
-is a real opponent, which some people find energising in a way ordinary problem-solving isn't;
+is a real opponent, which some people find energizing in a way ordinary problem-solving isn't;
 continuous learning is intrinsic rather than optional; and progression to well-paid senior and
 leadership roles is fast for people who stay.
 
@@ -317,7 +317,7 @@ It's harder for people who:
 
 - Need **predictable hours** — on-call is structural
 - Want **defined, completable tasks** — security is never finished
-- Find **sustained pressure** corrosive rather than energising
+- Find **sustained pressure** corrosive rather than energizing
 - Chose it because it was marketed as the **safe tech career**. ==?That framing is what section
   4 is about.==
 
@@ -365,10 +365,10 @@ leader, and it is chronically undersupplied.
 ### Concrete preparation
 
 **Before the degree:** ==+build hands-on evidence — home labs, capture-the-flag competitions,
-bug bounty work, contributing to open-source security tooling.== In a field with no licence,
+bug bounty work, contributing to open-source security tooling.== In a field with no license,
 demonstrable capability is the credential, and it is available to a sixteen-year-old for free.
 
-**During:** get Security+ or an equivalent early, then specialise. Aim placements at incident
+**During:** get Security+ or an equivalent early, then specialize. Aim placements at incident
 response, security engineering or offensive work rather than pure SOC monitoring.
 
 **Entering:** ==?take the SOC role if it's the way in, but treat it as a two-year staging post
@@ -381,7 +381,7 @@ rather than a career, and be deliberate about moving to tier two and beyond.==
 | Route | Assessment |
 |---|---|
 | **Cybersecurity degree with real lab depth** | Works if technical rather than compliance-focused. |
-| **Computer science + security specialisation** | ==+Often stronger. The engineering foundation is what verification depends on.== |
+| **Computer science + security specialization** | ==+Often stronger. The engineering foundation is what verification depends on.== |
 | **IT or networking role → security** | Genuinely common and respected. Around 90% of organisations consider candidates with only IT experience. |
 | **Apprenticeship / degree apprenticeship** | Expanding, paid, and solves the experience paradox directly. Under-used. |
 | **Certification-only route** | Possible — 89% of organisations accept entry certifications in place of a degree — but competitive without hands-on evidence. |
@@ -397,7 +397,7 @@ compliance, security leadership and CISO roles, and consultancy.
 
 **The pattern in this index holds, with a security-specific twist:** ==?roles facing the
 adversary directly score better than roles processing what the adversary triggered.== Cloud
-security, AI/ML defence and application security are named consistently as the most
+security, AI/ML defense and application security are named consistently as the most
 in-demand skills, and all three sit on the protected side of that line.
 
 ---
@@ -411,12 +411,12 @@ single best differentiator.
 **2. Does it teach adversarial thinking, or tool operation?**
 A curriculum organised around products is training for the automating tier.
 
-**3. Specialisation pathways.**
+**3. Specialization pathways.**
 Incident response, offensive security, cloud, application security. Generic security degrees
 place worst.
 
 **4. Employer relationships and apprenticeship routes.**
-The experience paradox is real; programmes that solve it are worth more than ranked ones.
+The experience paradox is real; programs that solve it are worth more than ranked ones.
 
 **5. First-destination job titles** — SOC analyst versus security engineer is a meaningful
 difference.
@@ -432,14 +432,14 @@ difference.
 
 **On the curriculum:**
 - Is the curriculum organised around adversarial thinking or around specific tools?
-- Which specialisations are available, and how many students take each?
-- How does the programme address AI — both as a defensive tool and as an attack surface?
+- Which specializations are available, and how many students take each?
+- How does the program address AI — both as a defensive tool and as an attack surface?
 
 **On outcomes:**
 - What job titles do graduates hold at six months?
 - What proportion are in SOC roles versus engineering, IR or offensive positions?
 
-**Red flags:** a curriculum built around vendor tools; minimal lab time; no specialisation
+**Red flags:** a curriculum built around vendor tools; minimal lab time; no specialization
 pathways; outcomes quoted as "employed in cybersecurity"; heavy emphasis on the 4.8 million
 figure in the marketing.
 
@@ -475,7 +475,7 @@ figure in the marketing.
 
   **Where we land:** we think the demand is real and the pipeline argument is sound — and that
   the same argument was made loudly in law for two years while graduate hiring moved the other
-  way. Intent and behaviour are different things. We score the market as it is.
+  way. Intent and behavior are different things. We score the market as it is.
 
   **The specific thing we're watching:** whether tier-one SOC postings hold or fall as the
   Gartner 2028 horizon approaches. ==?If organisations genuinely redesign entry roles around
@@ -490,16 +490,16 @@ gap between those two statements is where most of the confusion lives.**
 
 Its protection is genuinely unusual: ==an adaptive adversary means the patterns never settle,
 which is a shield nothing else in this index has.== That's why threat hunting holds 5.0 despite
-having no licence, no physical requirement and a fully digital workflow.
+having no license, no physical requirement and a fully digital workflow.
 
 **But the marketing and the hiring reality have come apart.** The 4.8 million figure is real
 and it describes a shortage of *experience*, not of people. Budget constraints have overtaken
 talent as the primary barrier. And Gartner projects more than half of tier-one SOC work handled
-by AI by 2028 — which is precisely the role that bootcamps, certifications and degree programmes
+by AI by 2028 — which is precisely the role that bootcamps, certifications and degree programs
 point graduates toward.
 
 **So the useful advice is specific:** build hands-on evidence before applying, because in a
-field with no licence that *is* the credential and it's free to acquire. Aim at incident
+field with no license that *is* the credential and it's free to acquire. Aim at incident
 response, security engineering or offensive work rather than SOC monitoring. Take a SOC role if
 it's the way in, but treat it as a two-year staging post rather than a destination. And weigh
 the burnout data honestly — 47% reporting burnout and attrition above other technology roles is
@@ -538,7 +538,7 @@ it's a better reason to enter than any workforce statistic.
    permanent feature. Have you discussed that honestly?
 9. Every "entry level" posting wants two years of experience. What's the plan for getting round
    that?
-10. Have you looked at whether the programmes they're considering point at SOC roles or at
+10. Have you looked at whether the programs they're considering point at SOC roles or at
     engineering and IR?
 
 ## Part 2c — The other side
@@ -567,13 +567,13 @@ it's a better reason to enter than any workforce statistic.
 
 ## Part 4 — About the program
 
-18. Ask each programme the lab-hours and specialisation questions from section 13.
+18. Ask each program the lab-hours and specialization questions from section 13.
 19. What job titles do graduates hold at six months — SOC, or engineering?
 20. Is there an apprenticeship or placement route?
 
 ## Part 5 — Widening the frame
 
-21. Have they considered **computer science with a security specialisation** rather than a
+21. Have they considered **computer science with a security specialization** rather than a
     cybersecurity degree? The engineering foundation is what verification rests on.
 22. What about an **apprenticeship route**? It solves the experience paradox directly and is
     badly under-used.

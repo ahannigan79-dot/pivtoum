@@ -60,7 +60,7 @@ The pattern is simple once you see it: **the protection concentrates where you'r
 
 Our score says radiology is the most exposed specialty in medicine. Image reading is the single thing AI does best, and about three-quarters of all approved AI medical devices are in radiology.
 
-The job market says the opposite. Around half of radiologist posts sit unfilled. Residency programmes match at close to 100%. Imaging demand keeps rising and the training pipeline is capped by funding.
+The job market says the opposite. Around half of radiologist posts sit unfilled. Residency programs match at close to 100%. Imaging demand keeps rising and the training pipeline is capped by funding.
 
 Both are true. ==?Being exposed to automation isn't the same as being unemployed, and radiology is where that gap is widest.==
 

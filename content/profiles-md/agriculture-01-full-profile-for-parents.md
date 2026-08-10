@@ -80,7 +80,7 @@ study of automation in any career we score — and the results are already in.
   2000** — a 73% reduction.==
 - Hired farmworkers fell from **2.33 million to 1.13 million** over the same period — 51%.
 - And across the same era, ==+**total farm output nearly tripled between 1948 and 2021** while
-  total labour hours declined.==
+  total labor hours declined.==
 
 **Three-quarters of the workforce disappeared while output tripled.** That is a more complete
 displacement than anything currently happening in law, design or software — and it happened
@@ -89,7 +89,7 @@ through anything anyone called AI.
 
 **What that history tells us, and it's worth carrying to every other profession:**
 
-**Automation removed the labour, not the work.** Somebody still farms. There are simply far
+**Automation removed the labor, not the work.** Somebody still farms. There are simply far
 fewer of them, each operating at much larger scale with much more capital.
 
 **The survivors got bigger, not safer.** ==-USDA's Census of Agriculture found that **105,384
@@ -129,7 +129,7 @@ the plan. Equipment breaks in a field at 6am. Soil conditions differ from what t
 
 **And there's a second-order point specific to agtech.** The recommendations precision
 agriculture produces — optimal seeding rate, nitrogen timing, spray decisions — are exactly the
-kind of constrained optimisation problem that automates well. ==?The person interpreting the data
+kind of constrained optimization problem that automates well. ==?The person interpreting the data
 is more replaceable than the person deciding, at 5am in the rain, whether the field is fit to
 travel.==
 
@@ -147,7 +147,7 @@ Here's how field farming and crop production answers them.
 
 **The planning, the monitoring and the record-keeping. Not the doing.**
 
-Yield forecasting and field mapping. Input optimisation. Compliance and traceability records.
+Yield forecasting and field mapping. Input optimization. Compliance and traceability records.
 Market timing analysis. Equipment telematics and maintenance scheduling. Livestock monitoring
 and alerting.
 
@@ -156,7 +156,7 @@ broke; judging conditions; and everything that happens when the plan meets weath
 
 ### How hard will it be to land that first job? *(15%)*
 
-**Straightforward in production work.** Farm labour is in persistent shortage, entry is
+**Straightforward in production work.** Farm labor is in persistent shortage, entry is
 accessible, and the route in doesn't require a degree. Section 6 covers the harder question,
 which is what the job pays.
 
@@ -209,7 +209,7 @@ positive net cash farm income** in 2022.==
 **Three things follow, and they should shape the decision more than any score.**
 
 **Farm ownership at small scale is not a job — it's a business that frequently doesn't pay.**
-That is not a criticism of it; plenty of people choose it knowingly, subsidised by other income.
+That is not a criticism of it; plenty of people choose it knowingly, subsidized by other income.
 But a seventeen-year-old should know it before choosing.
 
 **Scale is the determining variable.** ==+The 6% of farms with sales over $1 million produce
@@ -298,7 +298,7 @@ parts of a farm manager's week and are the fastest-depreciating.
 **Agricultural employment is stable and slightly growing** in the wage-and-salary sector — from
 1.13 million in 2013 to 1.17 million in 2023, up 4% — even as farm ownership consolidates.
 
-**Labour is in persistent shortage**, and paid farm labour now accounts for 41% of all farm
+**Labor is in persistent shortage**, and paid farm labor now accounts for 41% of all farm
 workers.
 
 **And the demographic picture has genuinely improved.** ==+Producers under 45 rose to 22% of the
@@ -389,7 +389,7 @@ farm ownership.==
 
 ### Concrete preparation
 
-**Before committing:** ==+work a full season, including winter. Agriculture is romanticised more
+**Before committing:** ==+work a full season, including winter. Agriculture is romanticized more
 than almost any career in this index, and a February morning answers the question faster than
 anything else.==
 
@@ -426,10 +426,10 @@ the exposure. Supply planning and data roles score 7.0 against livestock husband
 
 ---
 
-# What to look for in a programme or employer
+# What to look for in a program or employer
 
 **1. Practical time — how much, and in what conditions?**
-Agriculture is learned by doing, and programmes vary enormously in how much real work they
+Agriculture is learned by doing, and programs vary enormously in how much real work they
 involve.
 
 **2. Technical depth in equipment and machinery.**
@@ -455,7 +455,7 @@ the sector.
 **On content:**
 - How much equipment and machinery technology is taught?
 - Is farm financial management compulsory?
-- Which certifications does the programme lead to?
+- Which certifications does the program lead to?
 
 **On outcomes:**
 - Where are graduates at one year, by role type?
@@ -589,7 +589,7 @@ as saying don't.==
 18. Find someone farming at scale and someone working *in* agriculture — a technician, an
     agronomist, a food safety manager — and compare what they earn and what their week looks like.
 
-## Part 4 — About the programme
+## Part 4 — About the program
 
 19. Ask about practical time, in which seasons, and on commercial rather than teaching operations.
 20. Is farm financial management compulsory? Given the income data, it should be.

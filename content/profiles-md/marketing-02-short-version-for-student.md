@@ -32,7 +32,7 @@ opposite reason.
 
 **Two of our six factors are zero for everyone in marketing, forever:**
 
-==-**No licence.** There's no professional body, no statute reserving any marketing activity to
+==-**No license.** There's no professional body, no statute reserving any marketing activity to
 a qualified human. Nothing stops a company replacing marketing work with software the moment
 the software is good enough.==
 
@@ -152,7 +152,7 @@ protection, not the marketing.
 **Or point it at commercial leadership**, where being accountable for revenue is what protects
 you.
 
-==-The version that doesn't work: a general marketing degree, no specialisation, no placement,
+==-The version that doesn't work: a general marketing degree, no specialization, no placement,
 aimed at a content job. That's the weakest combination in this profile and the most commonly
 taken.==
 

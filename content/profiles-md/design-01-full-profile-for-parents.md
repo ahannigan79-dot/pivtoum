@@ -108,7 +108,7 @@ accountable for a resized banner.
 
 ### Does the law require a licensed human? *(10%)*
 
-**No, and none is coming.** There is no design licence, no reserved activity, no professional
+**No, and none is coming.** There is no design license, no reserved activity, no professional
 body controlling entry.
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
@@ -157,7 +157,7 @@ fine and the job you pictured may not be."
 
 # The evidence that the split is already official
 
-We'd normally put labour-market data in a later section. Here it belongs up front, because it
+We'd normally put labor-market data in a later section. Here it belongs up front, because it
 independently confirms the central finding of this profile — and it comes from the US
 government rather than from us.
 
@@ -204,7 +204,7 @@ commercial usability before text generation reached the professions.
 |---|---|---|---|
 | **Human trust / accountability** | Real at direction level | **Durable** | Clients want a person answerable for a brand decision. Commercially rooted. |
 | **Judgment under novelty** | Real at direction level | **Eroding slowly** | Taste and intent resist; execution does not. |
-| **Regulatory / licensing** | **None** | n/a | No licence exists and none is coming. |
+| **Regulatory / licensing** | **None** | n/a | No license exists and none is coming. |
 | **Physical / embodied** | **None** | n/a | Except where the object is the point — print, signage, craft. |
 
 **The honest read.** ==+Design has two protections, both seniority-dependent, neither inherited
@@ -264,7 +264,7 @@ requires per dollar.
   genuinely well paid
 - **UX and product designers out-earn graphic designers substantially** — the roughly 60% BLS
   premium, and industry surveys put the gap higher still
-- **Specialisation pays**: freelance specialists report earning materially more than
+- **Specialization pays**: freelance specialists report earning materially more than
   generalists
 - **About 20,000 openings a year** are still projected for graphic designers, mostly from
   turnover rather than growth
@@ -364,7 +364,7 @@ production job leads there. ==-That progression is the specific thing that has b
 
 **During:** build a portfolio of *decisions*, not assets. For every piece, be able to say what
 the problem was, what you rejected, and what happened. Learn to present and defend work — most
-programmes underweight this and it's the protected skill.
+programs underweight this and it's the protected skill.
 
 **And take the adjacent seriously:** research methods, basic analytics, a domain. Design paired
 with healthcare, accessibility or industrial contexts is far more defensible than design alone.
@@ -375,7 +375,7 @@ with healthcare, accessibility or industrial contexts is far more defensible tha
 
 | Route | Assessment |
 |---|---|
-| **Design degree aimed at direction and concept** | Works. Look for programmes built around brief, rationale and critique rather than software. |
+| **Design degree aimed at direction and concept** | Works. Look for programs built around brief, rationale and critique rather than software. |
 | **UX / product design pathway** | ==+The strongest position in the field. BLS projects the category growing 7%.== |
 | **Design + a domain** — health, accessibility, industrial | The domain is the protection. |
 | **Craft where the object is the point** — print, signage, furniture, ceramics | Physical protection reappears here. Different career, genuinely different score. |
@@ -402,7 +402,7 @@ A curriculum organised by tool is training for the automated tier. One organised
 rationale and critique is training for the protected one.
 
 **2. How much critique, and how rigorous?**
-Defending decisions is the protected skill. Programmes vary enormously in how seriously they
+Defending decisions is the protected skill. Programs vary enormously in how seriously they
 teach it.
 
 **3. Is there a UX or product pathway?**
@@ -419,14 +419,14 @@ Not "employed in a creative field." What are they *doing*?
 # Questions to ask a design program
 
 **On the curriculum:**
-- Is the programme organised around software or around design thinking and rationale?
+- Is the program organised around software or around design thinking and rationale?
 - How much formal critique do students get, and from whom?
 - Is there a UX or product design pathway, and how many students take it?
 
 **On AI:**
-- How does the programme teach students to work with generative tools?
+- How does the program teach students to work with generative tools?
 - How has the curriculum changed in the last two years? What specifically?
-- What does the programme now consider a strong portfolio?
+- What does the program now consider a strong portfolio?
 
 **On outcomes:**
 - What job titles did last year's graduates hold at six months?
@@ -549,7 +549,7 @@ built by people who care about craft.== The path is narrower than it was. It has
 
 ## Part 4 — About the program
 
-18. Ask each programme the curriculum questions from section 14. Whether it's organised around software or around thinking is the whole answer.
+18. Ask each program the curriculum questions from section 14. Whether it's organised around software or around thinking is the whole answer.
 19. Is there a UX or product pathway, and how many students take it?
 20. What job titles do graduates hold at six months?
 

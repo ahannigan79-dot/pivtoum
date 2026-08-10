@@ -27,7 +27,7 @@ requiring a doctorate — and it scores worse than nursing, medicine, dentistry,
 medicine and physical therapy.
 
 The reason is specific and worth understanding rather than alarming: it's about *what the
-licence reserves*, and section 4 explains it. There is also a genuine reversal happening in the
+license reserves*, and section 4 explains it. There is also a genuine reversal happening in the
 job market that most careers advice hasn't caught up with.
 
 ---
@@ -39,12 +39,12 @@ job market that most careers advice hasn't caught up with.
 Clinical and hospital pharmacy scores **4.0** out of 10. Community and retail pharmacy scores
 **4.9**. Central fill and mail-order scores **6.9**.
 
-==Pharmacy is the clearest demonstration in this index that a licence is only as protective as
-the act it reserves== — and pharmacy's licence reserves dispensing, which is exactly the part a
+==Pharmacy is the clearest demonstration in this index that a license is only as protective as
+the act it reserves== — and pharmacy's license reserves dispensing, which is exactly the part a
 machine does well.
 
 The good news is that the profession is moving toward the protected end faster than most people
-realise, and the job market is reversing in a way that hasn't reached most careers advice.
+realize, and the job market is reversing in a way that hasn't reached most careers advice.
 
 ---
 
@@ -78,14 +78,14 @@ Here's how community pharmacy answers them.
 
 Prescription verification against interaction and dosing rules. Inventory management and
 ordering. Insurance adjudication and claims. Refill authorisation. Dispensing itself, through
-automated counting and packaging. Patient information leaflets and standard counselling
+automated counting and packaging. Patient information leaflets and standard counseling
 material.
 
 ==-Dispensing is a rules-based, structured, high-volume task with a clear correct answer. That
 is close to a definition of automatable work.==
 
 What resists: clinical judgment on a complex regimen, catching the error nobody's system
-flagged, counselling a frightened patient about a diagnosis they've just received, and the
+flagged, counseling a frightened patient about a diagnosis they've just received, and the
 professional accountability that attaches to a signature.
 
 ### How hard will it be to land that first job? *(15%)*
@@ -121,7 +121,7 @@ automatable.
 
 ---
 
-# A licence is only as protective as the act it reserves
+# A license is only as protective as the act it reserves
 
 This is the most important idea in this profile, and it completes an argument that runs through
 several others in this index.
@@ -133,35 +133,35 @@ pharmacist, full stop.
 
 **So why does pharmacy score worse than nursing?**
 
-Because a licence protects a specific *act* — and the acts differ enormously in how automatable
+Because a license protects a specific *act* — and the acts differ enormously in how automatable
 they are.
 
-- **Nursing's licence** reserves clinical practice: physical assessment, hands-on care,
-  observation. ==+Those acts are physically irreducible, so the licence protects work that
+- **Nursing's license** reserves clinical practice: physical assessment, hands-on care,
+  observation. ==+Those acts are physically irreducible, so the license protects work that
   couldn't be automated anyway. The protection compounds.==
 - **Law's bar card** reserves the courtroom appearance and the signed advice — but not document
   review, which is why junior law scores 7.9.
-- ==-**Pharmacy's licence reserves dispensing and verification — which is precisely the
+- ==-**Pharmacy's license reserves dispensing and verification — which is precisely the
   structured, rules-based task a machine performs well.** The protection and the exposure land
   on the same activity.==
 
-**That is the crux.** Pharmacy's licence is genuinely strong, and it is wrapped around work that
+**That is the crux.** Pharmacy's license is genuinely strong, and it is wrapped around work that
 technology is genuinely good at. The result is a legal requirement for a human to supervise a
 process that increasingly does not need supervising.
 
 **Two consequences follow.**
 
 **First, the protection is real but static.** A pharmacist must sign off. But if the signing off
-becomes a formality performed on machine-prepared output, the role thins even as the licence
+becomes a formality performed on machine-prepared output, the role thins even as the license
 holds. ==?A profession can be legally protected and still hollow out from the inside.==
 
 **Second, it explains the internal spread precisely.** Clinical pharmacy at 4.0 involves
-judgment on complex regimens and direct patient contact — work the licence protects *and* which
+judgment on complex regimens and direct patient contact — work the license protects *and* which
 resists automation. Central fill at 6.9 is dispensing at scale with minimal patient contact —
-work the licence protects and which automates readily.
+work the license protects and which automates readily.
 
 ==?The general lesson, and it's the sharpest version of an argument that appears in four
-profiles in this index: don't ask whether a career has a licence. Ask what the licence reserves,
+profiles in this index: don't ask whether a career has a license. Ask what the license reserves,
 and whether that act is one a machine can perform.==
 
 ---
@@ -180,7 +180,7 @@ about three years old will have the wrong picture.
 - The National Center for Health Workforce Analysis projected an oversupply of **19,000 to
   51,000 pharmacists by 2030**
 - Retail chains dominated hiring, and the 2019 National Pharmacist Workforce Study found higher
-  burnout and lower fulfilment among pharmacists at large national chains
+  burnout and lower fulfillment among pharmacists at large national chains
 - ==-Average pharmacy student debt rose by more than $40,000 in five years while salaries
   stagnated==
 
@@ -192,7 +192,7 @@ market, retail burnout.
 - ==-PharmD applications fell by **more than 60% between 2011 and 2021** — from over 106,000 to
   under 41,000, per the American Association of Colleges of Pharmacy==
 - In 2018, **enrolled students exceeded applicants for the first time**
-- Enrolment fell from 61,275 in 2012 to 53,516 by 2021
+- Enrollment fell from 61,275 in 2012 to 53,516 by 2021
 - ==-Graduates declined **24% between 2018 and 2024**==
 - Mean completions per institution fell from around 109 to around 91
 
@@ -206,7 +206,7 @@ margins. ==+Clinical and ambulatory pharmacy is projected to grow around 12% —
 for pharmacists overall — and is where the shortage bites.==
 
 **One caution worth stating.** With applications down, ==?some schools have relaxed entry
-requirements to fill seats. A student should look at a programme's outcomes rather than assuming
+requirements to fill seats. A student should look at a program's outcomes rather than assuming
 that admission implies the market needs them.==
 
 ---
@@ -233,7 +233,7 @@ pharmacists once performed.
 | **Judgment under novelty** | Real in clinical practice | **Eroding at the dispensing end** | Complex regimens resist; routine verification doesn't. |
 | **Physical / embodied** | **Weak** | n/a | Verification doesn't require presence — which is why remote dispensing exists. |
 
-**The honest read.** ==?Pharmacy has the licence but not the physical anchor, and that
+**The honest read.** ==?Pharmacy has the license but not the physical anchor, and that
 combination is unusual in healthcare.== It's why a doctorate-level clinical profession scores
 in the same band as accounting rather than alongside nursing and dentistry.
 
@@ -252,11 +252,11 @@ in the same band as accounting rather than alongside nursing and dentistry.
 | Catching the error nobody's system flagged | **Unchanged** |
 
 **The direction is clear and it's the profession's own strategy:** ==+move pharmacists toward
-clinical services — medication therapy management, chronic disease work, immunisation,
+clinical services — medication therapy management, chronic disease work, immunization,
 prescribing authority where it exists — and away from dispensing.==
 
 That transition is the single most important thing happening in pharmacy, and a student should
-choose a programme on how seriously it prepares them for it.
+choose a program on how seriously it prepares them for it.
 
 ---
 
@@ -280,7 +280,7 @@ traditional markers of a strong pharmacist and are the fastest-depreciating.
 
 ## What's genuinely good about it
 
-**The shortage arithmetic is now working in a new graduate's favour** — 14,000 projected annual
+**The shortage arithmetic is now working in a new graduate's favor** — 14,000 projected annual
 openings against roughly 8,000 graduates is a materially better position than the profession had
 a decade ago.
 
@@ -307,11 +307,11 @@ fund their degree, averaging around $168,000 — up from roughly $134,000 in 201
 rising faster than inflation since 2004.
 
 **Retail conditions are the profession's structural complaint.** Chain pharmacy has been
-associated with higher burnout and lower fulfilment in workforce research, driven by volume
+associated with higher burnout and lower fulfillment in workforce research, driven by volume
 targets, understaffing and expanding non-dispensing duties.
 
 **Technicians are absorbing pharmacist tasks**, which is efficient and also narrows what the
-licence practically covers.
+license practically covers.
 
 **And the reputational damage from the oversupply years persists** — the profession is still
 recovering from a decade in which graduates struggled, which is part of why applications fell so
@@ -339,7 +339,7 @@ It's harder for people who:
 ## What else is moving this market
 
 **Scope of practice is expanding**, and this is the most consequential trend. Pharmacists in
-many jurisdictions now immunise, prescribe within protocols, and manage chronic conditions.
+many jurisdictions now immunize, prescribe within protocols, and manage chronic conditions.
 ==+Every expansion moves the profession toward the protected end, because it substitutes
 judgment and patient contact for dispensing.==
 
@@ -368,7 +368,7 @@ collaboration. Every step toward the patient improves the position.
 **3. Take prescribing authority where it exists.** ==+This is the profession's most important
 structural development, and it converts a dispensing role into a clinical one.==
 
-**4. Specialise.** Oncology, critical care, infectious disease, paediatrics. Specialist clinical
+**4. Specialize.** Oncology, critical care, infectious disease, paediatrics. Specialist clinical
 pharmacy is the protected end and it's growing fastest.
 
 **5. Handle patient AI use.** Patients arrive having looked up their medications and side
@@ -377,13 +377,13 @@ effects, often frightened by what they read. Working with that well is a real an
 ### Concrete preparation
 
 **Before the degree:** ==+understand that community dispensing and clinical pharmacy are
-different careers with different exposure, and choose a programme on its clinical and residency
+different careers with different exposure, and choose a program on its clinical and residency
 placement record.==
 
 **During:** pursue clinical rotations aggressively. Residency is increasingly what separates
 clinical roles from dispensing ones, and it's competitive.
 
-**And compare programme cost seriously** — the debt is substantial and the spread between
+**And compare program cost seriously** — the debt is substantial and the spread between
 schools is wide.
 
 ---
@@ -394,7 +394,7 @@ schools is wide.
 |---|---|---|
 | **PharmD** | 4 years post-degree (or 6 direct entry) | The standard route. Compare cost carefully. |
 | **PharmD + residency** | +1–2 years | ==+Increasingly what separates clinical roles from dispensing. Competitive and worth planning for early.== |
-| **Clinical specialisation** | +1–2 years beyond residency | Oncology, critical care, ID. The most protected work. |
+| **Clinical specialization** | +1–2 years beyond residency | Oncology, critical care, ID. The most protected work. |
 | **Pharmacy technician** | Under 1–2 years | Growing around 7%, absorbing dispensing tasks. Short route, lower ceiling. |
 | **Pharmaceutical industry / regulatory** | Post-qualification | Uses the knowledge without patient contact — and scores accordingly. |
 
@@ -425,7 +425,7 @@ Average borrowing around $168,000 against a profession with historically stagnan
 deserves careful arithmetic.
 
 **4. Does the curriculum reflect expanded scope?**
-Prescribing, immunisation, chronic disease management — the direction the profession is moving.
+Prescribing, immunization, chronic disease management — the direction the profession is moving.
 
 **5. Outcomes by setting.**
 What proportion of graduates are in clinical roles versus retail dispensing at three years?
@@ -463,9 +463,9 @@ expanded scope; evasiveness about graduate destinations or admissions standards.
   and the source of the 14,000 annual openings figure. Read the **Pharmacy Technicians** page
   alongside it.
 
-- **[AACP — pharmacy school application and enrolment data](https://www.aacp.org/research/institutional-research)**
+- **[AACP — pharmacy school application and enrollment data](https://www.aacp.org/research/institutional-research)**
   — *American Association of Colleges of Pharmacy.* The primary source for the 60% application
-  decline and enrolment figures. The clearest picture of the pipeline reversal described in
+  decline and enrollment figures. The clearest picture of the pipeline reversal described in
   section 5.
 
 - **[Insights into decreasing applicants to schools and colleges of pharmacy](https://familymedicine.uw.edu/chws/wp-content/uploads/sites/5/2024/08/UWCHWS-FR-Pharm-Applicants-2024.pdf)**
@@ -482,7 +482,7 @@ expanded scope; evasiveness about graduate destinations or admissions standards.
   than a 4.9 suggests, and we are scoring the automatability of a task the profession is
   actively moving away from.
 
-  **Our score is too low:** the licence reserves dispensing, dispensing is automating, and
+  **Our score is too low:** the license reserves dispensing, dispensing is automating, and
   technicians are absorbing what remains. ==?A profession can hold its legal protection while
   the work inside it thins — and the scope expansion is a strategy, not yet an outcome.==
 
@@ -499,8 +499,8 @@ expanded scope; evasiveness about graduate destinations or admissions standards.
 **Pharmacy is a good career being measured at an awkward moment in its own transition.**
 
 Its score is the weakest in licensed healthcare for a specific and instructive reason:
-==pharmacy's licence reserves dispensing, and dispensing is exactly what machines do well. A
-licence is only as protective as the act it reserves.== Nursing's protects work that couldn't be
+==pharmacy's license reserves dispensing, and dispensing is exactly what machines do well. A
+license is only as protective as the act it reserves.== Nursing's protects work that couldn't be
 automated anyway; pharmacy's protects work that could.
 
 **But the profession is moving, and the job market has already turned.** Applications fell more
@@ -511,7 +511,7 @@ be needed. Clinical pharmacy is growing at roughly twice the rate of the profess
 **So the useful advice is unusually clear:** ==aim at clinical and ambulatory practice
 deliberately rather than assuming a PharmD leads there.== Plan for residency early, because it
 increasingly separates clinical roles from dispensing ones. Pursue prescribing authority and
-expanded scope wherever it exists. Compare programme cost carefully against borrowing that now
+expanded scope wherever it exists. Compare program cost carefully against borrowing that now
 averages around $168,000. And ask any school directly what proportion of its graduates are in
 clinical roles at three years.
 
@@ -539,7 +539,7 @@ start.==
 
 5. Pharmacy scores worse than nursing, dentistry and physical therapy despite being licensed and
    doctorate-level. Does the reason in section 4 make sense to them?
-6. **A licence is only as protective as the act it reserves.** Can they apply that idea to
+6. **A license is only as protective as the act it reserves.** Can they apply that idea to
    another career they're considering?
 7. Clinical pharmacy scores 4.0 and central fill 6.9. Does that change where they'd aim?
 
@@ -564,7 +564,7 @@ start.==
 
 14. Automated systems catch rule-based errors; the ones that harm people are usually contextual.
     What does that suggest about where the value sits?
-15. Scope of practice is expanding — prescribing, immunisation, chronic disease management. Is
+15. Scope of practice is expanding — prescribing, immunization, chronic disease management. Is
     that the version of the job they want?
 
 ## Part 3 — Testing it against reality
@@ -576,7 +576,7 @@ start.==
 
 ## Part 4 — About the program
 
-18. Ask each programme the residency match and graduate-destination questions from section 14.
+18. Ask each program the residency match and graduate-destination questions from section 14.
 19. **Have their entry requirements changed in the last five years?** With applications down
     sharply, that's a fair and informative question.
 

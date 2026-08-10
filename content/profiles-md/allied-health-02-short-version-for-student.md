@@ -49,7 +49,7 @@ made in the moment, with a person in front of you.
 Of our four protections, ==?physical is the one we rank *least* durable over a long horizon —
 and this is the career where that matters most.==
 
-You'd practise for about forty years. Licensure and trust move at the speed of law and society;
+You'd practice for about forty years. Licensure and trust move at the speed of law and society;
 they'll hold. Physical protection moves at the speed of robotics, which is the one thing
 actively aimed at it.
 
@@ -101,13 +101,13 @@ and *"crushing."* Around 28% work a second job on top of their PT role.
 
 ## The number that should choose your school
 
-Someone analysed all **206 DPT programs across 151 institutions**.
+Someone analyzed all **206 DPT programs across 151 institutions**.
 
 - Best debt-to-income ratio: **0.82:1**
 - Worst: **4.42:1**
 - Median: 1.8:1
 
-==-That's a difference of more than $305,000 in total cost. Same degree. Same licence. Same
+==-That's a difference of more than $305,000 in total cost. Same degree. Same license. Same
 career.==
 
 And it gets worse: federal loans cap out at $20,500 a year, while the average program has a
@@ -190,7 +190,7 @@ this list comes close.
 
 **Shadow a therapist in two completely different settings** — outpatient orthopaedic and
 something else, like neuro or paediatrics. They're genuinely different jobs and people rarely
-realise that until they're in one.
+realize that until they're in one.
 
 **Then find someone five years qualified** and ask straight out about their loan payments, and
 whether they'd choose the same program again. It's an awkward question and the answer is worth
@@ -206,7 +206,7 @@ The career itself is one of the safest we measured, the demand is demographic an
 ==+watching someone walk again, or lift their arm again, or get back to something they thought
 they'd lost — very few jobs offer that at all.==
 
-Just don't pay $375,000 for it when someone else is paying $70,000 for exactly the same licence.
+Just don't pay $375,000 for it when someone else is paying $70,000 for exactly the same license.
 
 ---
 

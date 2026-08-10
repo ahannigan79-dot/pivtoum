@@ -103,7 +103,7 @@ describes.
 Human translation persists where the cost of being wrong exceeds the cost of the human by a
 wide margin: a mistranslated clinical instruction, a contract clause, a court testimony, an
 immigration document. ==?In those settings the price differential becomes irrelevant, because
-nobody is optimising for translation cost when the downside is a misdiagnosis or a wrongful
+nobody is optimizing for translation cost when the downside is a misdiagnosis or a wrongful
 conviction.==
 
 **The general lesson, and it transfers well beyond languages:** when a task becomes nearly free
@@ -130,7 +130,7 @@ properties of the medium rather than of the difficulty.
 - **It carries personal accountability.** A certified court interpreter is answerable for
   accuracy in a way no system can be, and the certification attaches to a named individual.
 - **It handles what text doesn't contain** — tone, hesitation, register, the witness who is
-  frightened, the patient who is minimising symptoms.
+  frightened, the patient who is minimizing symptoms.
 
 ==+That's why court interpreting scores 4.3 and document translation 8.8 with identical
 language skills. The languages are the same. Everything structural about the work is
@@ -274,7 +274,7 @@ It's harder for people who:
 **Language-access regulation is expanding**, and it is the most reliable source of demand for
 accountable human language work.
 
-**Domain specialisation is the whole game.** The rate data is unambiguous: generalists face
+**Domain specialization is the whole game.** The rate data is unambiguous: generalists face
 downward pressure, specialists in legal, medical and creative fields have held or increased
 rates.
 
@@ -356,10 +356,10 @@ skill.
 Court and medical interpreting certification is what converts the degree into protected work.
 
 **3. Can students pair the language with a real second subject?**
-This is now the differentiator and many language programmes still don't facilitate it.
+This is now the differentiator and many language programs still don't facilitate it.
 
 **4. Does the curriculum engage honestly with machine translation and post-editing?**
-A programme that ignores it is preparing students for a market that no longer exists.
+A program that ignores it is preparing students for a market that no longer exists.
 
 **5. Graduate destinations by type** — interpreting, specialist translation, post-editing, or
 outside the field entirely.
@@ -368,8 +368,8 @@ outside the field entirely.
 
 # Questions to ask a program
 
-- How much of the programme is interpreting practice rather than translation?
-- Does the programme prepare students for court or medical interpreting certification?
+- How much of the program is interpreting practice rather than translation?
+- Does the program prepare students for court or medical interpreting certification?
 - Can students combine the language with law, medicine, engineering or another substantive
   subject?
 - How does the curriculum address machine translation and post-editing?
@@ -390,8 +390,8 @@ no certification pathway; no engagement with machine translation; outcomes descr
 
 - **[American Translators Association](https://www.atanet.org/)**
   — the professional body, and the route to the credential examination that is most widely
-  recognised in the US market. Worth understanding the certification landscape before choosing a
-  programme.
+  recognized in the US market. Worth understanding the certification landscape before choosing a
+  program.
 
 - **[Translation rates and pricing, 2026](https://www.biztoolkit.co/post/translation-localization-rates-in-2026-per-word-per-hour-per-project)**
   — the rate data behind section 4, including the divergence between generalist and specialist
@@ -499,7 +499,7 @@ absolutely must understand each other, is work that is not going anywhere.==
 
 ## Part 4 — About the program
 
-18. Ask each programme the interpreting and certification questions from section 13.
+18. Ask each program the interpreting and certification questions from section 13.
 19. Can they pair the language with a substantive second subject?
 
 ## Part 5 — Widening the frame

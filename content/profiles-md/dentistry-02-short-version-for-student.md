@@ -11,7 +11,7 @@ General dentistry: **2.7 out of 10.** Oral surgery: **2.3.**
 ==+Among the safest work we measured anywhere.== Entry-level software development is 8.1.
 
 So the AI question is settled. **The question worth thinking about is the money**, and it's a
-bigger one than most people realise.
+bigger one than most people realize.
 
 ---
 
@@ -40,7 +40,7 @@ needed.==
 
 **Now look at what happened next:**
 
-**The profession was completely fine.** Dentists still practise. Patients still get crowns.
+**The profession was completely fine.** Dentists still practice. Patients still get crowns.
 Demand didn't drop.
 
 **But a whole tier of skilled work contracted permanently**, and the people in it mostly didn't
@@ -100,7 +100,7 @@ genuinely afraid.== Trust is what gets people through the door and back again in
 - ==-Average dental school debt: **$293,900** (ADA's own survey of dental school seniors)==
 - Public schools: **$200,000–$260,000**
 - Private: around **$321,000**
-- The most expensive programmes: **$625,000–$700,000**
+- The most expensive programs: **$625,000–$700,000**
 
 **And here's the part that matters most:**
 
@@ -118,7 +118,7 @@ disproportionately from families who can fund it — which means the "average de
 understates things for anyone borrowing the whole amount.==
 
 **The practical instruction:** ==+go to the cheapest accredited school you get into. The spread
-between programmes exceeds $400,000 for exactly the same licence.==
+between programs exceeds $400,000 for exactly the same license.==
 
 ---
 
@@ -151,7 +151,7 @@ that's a comparison worth making properly.
 ## What we won't soften
 
 **Your body takes a beating.** Dentistry is done in sustained awkward postures, and neck, back,
-shoulder and wrist problems are a recognised occupational hazard that ends careers early.
+shoulder and wrist problems are a recognized occupational hazard that ends careers early.
 
 **Patient fear is constant.** A lot of your patients are frightened, and managing that over and
 over is more emotionally demanding than people outside the job expect.
@@ -196,7 +196,7 @@ unavoidable — or have no interest in the commercial side, since that's where t
 ## What actually matters when picking a school
 
 - ==+**Total cost. Calculate the debt-to-income ratio yourself.**== The spread exceeds $400,000
-  for the same licence.
+  for the same license.
 - **Accreditation** — non-negotiable
 - ==+**How many procedures do students actually perform** before graduating?== This varies
   enormously and determines how competent you are on day one.

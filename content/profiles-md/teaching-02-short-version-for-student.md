@@ -20,7 +20,7 @@ people give when they explain why they left.
 - Classroom teaching is well protected. Online teaching scores nearly double.
 - ==+AI takes the evening and weekend work, not the actual teaching.==
 - **The interesting bit:** teaching is *more* automatable than nursing or medicine — and still scores low.
-- The real risks are pay, workload and behaviour. None of them are new, and none are about AI.
+- The real risks are pay, workload and behavior. None of them are new, and none are about AI.
 - Where you teach matters more than whether you teach.
 
 ---
@@ -110,7 +110,7 @@ something most experienced colleagues are working out alone.
 reason people leave and it's worth looking at actual numbers where you live — year one, year
 five, year fifteen.
 
-**Behaviour.** Harder than most people expect, and the thing training prepares you for least
+**Behavior.** Harder than most people expect, and the thing training prepares you for least
 well.
 
 **Workload** — though this is the bit AI genuinely helps with.
@@ -148,7 +148,7 @@ time — the school day is fixed and it starts early.
 ## What actually matters when picking a course
 
 - **How many weeks in actual classrooms, starting when?** The best predictor of whether people stay.
-- **How is behaviour management taught?** If it's one module, that's an answer.
+- **How is behavior management taught?** If it's one module, that's an answer.
 - **Do they teach you to use AI tools *and* rethink assessment?**
 - **What proportion of their graduates are still teaching at three years? At five?**
 
@@ -162,7 +162,7 @@ more choice about where you live.
 
 **Get into a classroom before you commit.** Volunteering, assisting, helping at a summer
 scheme — anything. Nothing else answers the "is this me" question as fast, and the thing that
-surprises people is almost never the teaching. It's the noise, the pace and the behaviour.
+surprises people is almost never the teaching. It's the noise, the pace and the behavior.
 
 **Then find a teacher three to five years in** — not someone about to retire — and ask what a
 normal week actually looks like. Hour by hour.

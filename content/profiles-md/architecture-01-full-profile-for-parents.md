@@ -76,7 +76,7 @@ Here's how licensed architecture answers them.
 **A substantial and growing share of the desk work.**
 
 Drafting and documentation sets. Massing studies and floor-plan options. Rendering and
-visualisation. Code checking and compliance. Specification drafting. Proposals and admin.
+visualization. Code checking and compliance. Specification drafting. Proposals and admin.
 
 Adoption is already substantial — a majority of architecture firms report using AI-driven
 software, and around 30% of design and drafting *tasks* are estimated to be automatable. Note
@@ -119,7 +119,7 @@ must be signed by one. Section 4 explains why this protection is more fragile th
 
 ### How often does the job hit genuinely new, high-stakes situations? *(10%)*
 
-**Frequently.** Every site, every programme, every client is different, and the consequences
+**Frequently.** Every site, every program, every client is different, and the consequences
 of getting it wrong are physical and expensive.
 
 ---
@@ -141,7 +141,7 @@ same hours as one who spent them drawing by hand. ==?Are they building the same 
 
 Licensure certifies that someone has done the time. It assumes the time teaches. If the content
 of those years shifts from producing work to supervising work, the assumption may quietly stop
-holding — and the licence would continue certifying something it no longer measures.
+holding — and the license would continue certifying something it no longer measures.
 
 **This sorts the professions in a way worth carrying elsewhere.** In nursing, medicine and the
 trades, mandated experience hours are hands-on by necessity — you cannot supervise your way
@@ -182,7 +182,7 @@ positions across 817 firms — finds licensure is the single largest salary mult
 profession: ==+unlicensed professionals in their first five years earn roughly $52,000–$78,000,
 and licensure lifts that to $78,000–$105,000, an 18–35% increase.==
 
-The licence is the product. Everything in this profile points at completing it.
+The license is the product. Everything in this profile points at completing it.
 
 ---
 
@@ -212,7 +212,7 @@ model.==
 | **Physical / embodied** | Real for site work | **Durable for construction administration** | Construction sites are among the hardest environments for automation. |
 
 **The honest read.** ==+Architecture's protections are genuine, and they concentrate at the
-licensed, site-attending end.== A student who completes the licence and stays close to
+licensed, site-attending end.== A student who completes the license and stays close to
 buildings is well positioned. One who stops at production work is in the most exposed part of
 the profession.
 
@@ -241,7 +241,7 @@ love drawing.
 1. **Site judgment** — reading actual conditions against what the drawings claim. The least
    automatable thing in the profession.
 2. **Accountability** — carrying the stamp and the liability.
-3. **Design judgment on genuine novelty** — an unusual programme, a difficult site, a
+3. **Design judgment on genuine novelty** — an unusual program, a difficult site, a
    constraint nobody has solved this way before.
 4. **Client and stakeholder handling** — architecture is a coordination profession as much as a
    design one.
@@ -265,8 +265,8 @@ careers offer that at all.
 - ==+Licensure lifts pay 18–35%, the largest single multiplier in the profession==
 - **The licensure pipeline has shrunk**, pushing licensed salaries up faster than in most of the
   previous decade
-- **Specialisation pays sharply**: healthcare architecture commands an 18–30% premium, and
-  ==+data centre and laboratory design a 20–35% premium — the AI buildout creating architectural
+- **Specialization pays sharply**: healthcare architecture commands an 18–30% premium, and
+  ==+data center and laboratory design a 20–35% premium — the AI buildout creating architectural
   demand in the same way it created electrical demand==
 
 **Small firms pay slightly below market and offer faster advancement, more varied work and more
@@ -282,13 +282,13 @@ principals spend the majority of their time on creative work.==
 
 **Hours during deadlines are long** — 50 to 70 hours a week is common in crunch periods.
 
-**Pay compression between levels is a recognised cause of senior attrition**, according to
+**Pay compression between levels is a recognized cause of senior attrition**, according to
 industry compensation analysis: the gap between a mid-level and a senior architect is often
 smaller than the difference in responsibility.
 
 **And geography matters enormously.** West Coast pay runs around 25% above national average and
 the South around 6% below, so the same qualification produces very different outcomes depending
-on where someone practises.
+on where someone practices.
 
 ## Who this work suits — and who it doesn't
 
@@ -317,7 +317,7 @@ much more so than healthcare or education.
 **Sustainability and retrofit are growing**, driven by regulation rather than technology, and
 sustainable design specialists earn a 15–25% premium.
 
-**And the data centre and laboratory boom is a genuine tailwind** — the highest specialisation
+**And the data center and laboratory boom is a genuine tailwind** — the highest specialization
 premium in the profession, and directly downstream of the same AI buildout that threatens other
 careers.
 
@@ -325,7 +325,7 @@ careers.
 
 # The AI-native advantage — what to actually do about it
 
-**The situation:** generative design, automated compliance checking and instant visualisation
+**The situation:** generative design, automated compliance checking and instant visualization
 are established in large practices. The people who can direct and verify them are not.
 
 ### What an AI-native architect looks like
@@ -380,7 +380,7 @@ project and construction management, urban design and planning, sustainability a
 performance, computational design, real estate development, and heritage and conservation.
 
 **The pattern in this index holds:** ==?the further from the site and the signature, the higher
-the exposure. Visualisation and drafting-adjacent roles score worst; construction
+the exposure. Visualization and drafting-adjacent roles score worst; construction
 administration and development score best.==
 
 ---
@@ -388,7 +388,7 @@ administration and development score best.==
 # What to look for in an architecture program
 
 **1. Accreditation for licensure.**
-Non-negotiable. Check it directly against the jurisdiction where they intend to practise.
+Non-negotiable. Check it directly against the jurisdiction where they intend to practice.
 
 **2. Integrated practice experience — and whether it includes site time.**
 Office placement is good; site exposure is better and rarer.
@@ -408,7 +408,7 @@ matters and it is rarely published.
 # Questions to ask an architecture program
 
 **On licensure:**
-- Is the programme accredited for licensure where I intend to practise?
+- Is the program accredited for licensure where I intend to practice?
 - What proportion of your graduates are licensed within five years? Within ten?
 - What support exists for AXP hours and ARE preparation?
 
@@ -417,7 +417,7 @@ matters and it is rarely published.
 - How much of the curriculum is building science, construction technology and computational design?
 
 **On AI:**
-- How does the programme teach students to work with generative design and automated compliance
+- How does the program teach students to work with generative design and automated compliance
   tools — and to check them?
 - What changed in the curriculum in the last two years?
 
@@ -456,7 +456,7 @@ qualify.
   Architecture is unusual in that its most exposed tier — drafting and documentation — is also
   the tier most easily offshored. Firms have been sending BIM and drafting work overseas for
   years, and generative tools accelerate rather than initiate that. On this reading, the erosion
-  of the entry tier is a labour-cost story with an AI accelerant, and our framework
+  of the entry tier is a labor-cost story with an AI accelerant, and our framework
   over-attributes it to the technology.
 
   There's a version that cuts the other way too: if the licensure pipeline keeps shrinking while
@@ -490,9 +490,9 @@ architecture's 5.0.==
 experience, which protects the on-ramp — but a larger share of those hours was traditionally
 drafting than in accounting or engineering, and drafting is exactly what is automating.
 
-**So the useful advice is:** commit to licensure or don't start, because the licence is worth
+**So the useful advice is:** commit to licensure or don't start, because the license is worth
 18–35% and everything in the profession points at it. Get site exposure rather than only studio
-and office. Specialise deliberately — healthcare, laboratory and data centre work carry the
+and office. Specialize deliberately — healthcare, laboratory and data center work carry the
 largest premiums, and sustainability is growing. And look seriously at construction management
 and engineering first, not as consolation prizes but because they reach comparable outcomes
 faster.
@@ -557,7 +557,7 @@ on return alone the adjacent professions win.
 
 ## Part 4 — About the program
 
-18. Is the programme accredited for licensure where they intend to practise? Check directly.
+18. Is the program accredited for licensure where they intend to practice? Check directly.
 19. Ask the licensure-rate question from section 13 — what proportion qualify within five years?
 20. How much site exposure is built in?
 
@@ -565,7 +565,7 @@ on return alone the adjacent professions win.
 
 21. **Have they seriously considered construction management?** Better score, shorter path,
     chronically short of people, and trade-to-supervision is a normal route.
-22. What about civil or structural engineering? Similar money, shorter path, stronger licence.
+22. What about civil or structural engineering? Similar money, shorter path, stronger license.
 23. If architecture weren't available, what would they choose? The answer usually reveals what
     they're actually drawn to.
 
