@@ -23,7 +23,7 @@ export function purchaseEmail(
       (it) => `
       <tr><td style="padding:14px 0;border-bottom:1px solid ${rule};">
         <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;color:${ink};margin-bottom:6px;">${it.name}</div>
-        <div>${link(it.parentUrl, "Full profile")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
+        <div>${link(it.parentUrl, "Full guide")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
       </td></tr>`,
     )
     .join("");
@@ -36,8 +36,8 @@ export function purchaseEmail(
           <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your profiles &middot; Fall 2026</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 16px;">Your profiles are ready</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your Career Value Guides &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 16px;">Your Career Value Guides are ready</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 18px;">Thanks for your purchase. Your download links are valid for <strong>7 days</strong>.</p>
 
@@ -57,11 +57,11 @@ export function purchaseEmail(
   </body></html>`;
 
   const text =
-    `Your Pivotum profiles are ready — download links valid for 7 days:\n\n` +
+    `Your Pivotum Career Value Guides are ready — download links valid for 7 days:\n\n` +
     items
       .map(
         (it) =>
-          `• ${it.name}\n    Full profile:    ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
+          `• ${it.name}\n    Full guide:      ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
       )
       .join("\n\n") +
     `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
@@ -129,7 +129,7 @@ export function packageEmail(opts: {
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your AI Career Map is here</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the full profiles</strong> in below.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the Career Value Guide</strong> in below.</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};margin:0 0 22px;">
             ${rows}
@@ -138,7 +138,7 @@ export function packageEmail(opts: {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "See the full profiles", pen)}</p>
+            <p style="margin:0;">${button(buyUrl, "See the Career Value Guide", pen)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">I hope the map helps. Reply any time &mdash; I read every one.</p>
@@ -198,18 +198,18 @@ export function pdfWelcomeEmail(opts: {
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Hi &mdash; I&rsquo;m ${SITE.founder}, I built Pivotum</div>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the full profiles</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the Career Value Guide</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
 
           <p style="margin:0 0 24px;">${button(pdfUrl, "Download your PDF", ink)}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>full profile</strong> is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; the profile is how you make it on evidence, not a hunch.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>Career Value Guide</strong> is how you act on it &mdash; whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to the student. It&rsquo;s how you make one of your family&rsquo;s biggest bets on evidence, not a hunch.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "Get the profiles", pen)}</p>
+            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">Either way, I hope the PDF helps. Reply any time &mdash; I read every one.</p>
@@ -226,7 +226,7 @@ export function pdfWelcomeEmail(opts: {
   const text =
     `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
     `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
-    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; the profile is how you make it on evidence, not a hunch.\n\n` +
+    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The Career Value Guide is how you act on it — whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to the student. It's how you make one of your family's biggest bets on evidence, not a hunch.\n\n` +
     `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
