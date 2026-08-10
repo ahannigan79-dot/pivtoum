@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       `<!doctype html><meta charset="utf-8"><title>Checkout opening soon</title>` +
         `<body style="font-family:system-ui;max-width:34rem;margin:15vh auto;padding:0 1.5rem;color:#211E1B;line-height:1.6">` +
         `<h1 style="font-weight:600">Checkout is opening soon</h1>` +
-        `<p>Paid profiles aren’t quite live yet. In the meantime the free samplers and the full computer science profile are open.</p>` +
+        `<p>The paid Career Value Guide isn’t quite live yet. In the meantime the free samplers and the full computer science guide are open.</p>` +
         `<p><a href="/" style="color:#AC3A34">← Back to Pivotum</a></p></body>`,
       { status: 503, headers: { "content-type": "text/html; charset=utf-8" } },
     );
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
           unit_amount: pack.priceCents,
           product_data: {
             name: `Pivotum — ${pack.label} pack`,
-            description: "Full career profiles, chosen after checkout. Includes Spring 2027 updates.",
+            description: "Career Value Guides, chosen after checkout. Includes Spring 2027 updates.",
           },
         },
       },

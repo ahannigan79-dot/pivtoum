@@ -8,9 +8,9 @@ export interface Pack {
 }
 
 export const PACKS: Pack[] = [
-  { size: 1, label: "1 profile", price: "$19", priceCents: 1900 },
-  { size: 3, label: "3 profiles", price: "$29", priceCents: 2900 },
-  { size: 5, label: "5 profiles", price: "$39", priceCents: 3900, tag: "Most families" },
+  { size: 1, label: "1 career", price: "$19", priceCents: 1900 },
+  { size: 3, label: "3 careers", price: "$29", priceCents: 2900 },
+  { size: 5, label: "5 careers", price: "$39", priceCents: 3900, tag: "Most families" },
 ];
 
 export function getPack(size: number): Pack | undefined {
