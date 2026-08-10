@@ -90,7 +90,8 @@ async function main() {
 
   const styles = `
     .brandmark{ margin:0 0 .7cm; width:5cm; }
-    .ixtitle{ font-family:var(--serif); font-weight:600; font-size:26pt; line-height:1.1; letter-spacing:-.01em; margin:.15cm 0 .35cm; }
+    .ixtag{ font-family:var(--serif); font-style:italic; font-size:10.5pt; color:var(--pencil); margin:.1cm 0 0; }
+    .ixtitle{ font-family:var(--serif); font-weight:600; font-size:26pt; line-height:1.1; letter-spacing:-.01em; margin:.1cm 0 .35cm; }
     .ixintro{ font-size:10.5pt; color:var(--ink-soft); line-height:1.5; max-width:17cm; margin:0 0 .55cm; }
     .ixintro p{ margin:0 0 .35cm; }
     .ixintro b{ color:var(--ink); }
@@ -152,7 +153,8 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="kicker">The AI Career Index · ${EDITION} Edition</div>
+  <div class="kicker">The Career Index · ${EDITION} Edition</div>
+  <div class="ixtag">AI exposure, scored for every career.</div>
   <h1 class="ixtitle">Every career, scored</h1>
   <div class="ixintro">
     <p><b>How we score.</b> Every career is rated 1–10 for AI exposure, where 10 is most at risk — the same six factors and the same weights applied to all 28, so a vet and a paralegal are measured the same way. The score reflects exposure to what AI can already do, not how much any employer has chosen to deploy.</p>
@@ -177,7 +179,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>The AI Career Index · Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
+    <span>The Career Index · Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });

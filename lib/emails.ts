@@ -73,7 +73,7 @@ export function purchaseEmail(
 }
 
 /**
- * The AI Career Map package email — delivered from the /map capture. Lists the
+ * The Career Map package email — delivered from the /map capture. Lists the
  * assembled package (index + the stage/voice guide + overview + the chosen
  * career breakdowns) as a download list, then surfaces the same subscriber
  * discount. Same branded, table-based, inline-styled construction as the others.
@@ -131,10 +131,11 @@ export function packageEmail(opts: {
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
         <tr><td style="padding:34px 36px 26px;">
           <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
-          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your AI Career Map, plus ${discountLabel} for subscribers.</span>
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your Career Map, plus ${discountLabel} for subscribers.</span>
 
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">The AI Career Map &middot; Fall 2026</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your AI Career Map is here</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:${pencil};margin:0 0 12px;">Careers, mapped for the age of AI</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Career Map is here</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the Career Value Guide</strong> in below.</p>
@@ -166,7 +167,7 @@ export function packageEmail(opts: {
   </body></html>`;
 
   const text =
-    `Your AI Career Map is here.\n\n` +
+    `Your Career Map is here.\n\n` +
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
     `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +

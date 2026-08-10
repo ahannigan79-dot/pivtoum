@@ -110,8 +110,8 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="gkick">Career Value Guide &middot; Active Edition${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
-  <div class="gtag">Career value in the age of AI.</div>
+  <div class="gkick">The Career Map &middot; Your Playbook${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
+  <div class="gtag">Careers, mapped for the age of AI.</div>
   <h1 class="gtitle">Already in a degree, or a career? Here&rsquo;s how to protect its value.</h1>
   <p class="gintro">${pick("If your kid is already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.", "If you&rsquo;re already in the degree &mdash; or already out and looking &mdash; you didn&rsquo;t miss the window. You&rsquo;re standing at a different one.")}</p>
   <p class="gintro">The planning question was <em>which field.</em> That decision is behind you, and there&rsquo;s no use relitigating a bet you&rsquo;ve already placed. But the bet was never really the field. It was the lane inside it &mdash; and the lane is still wide open.</p>
@@ -130,7 +130,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>Career Value Guide &middot; Active Edition &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
+    <span>The Career Map &middot; Your Playbook &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });

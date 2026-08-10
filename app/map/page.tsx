@@ -5,15 +5,15 @@ import { PageView } from "@/components/PageView";
 import { careers } from "@/data/careers";
 
 export const metadata: Metadata = {
-  title: "Your free AI Career Map",
+  title: "Your free Career Map",
   description:
-    "Build your free AI Career Map — the 28-career AI-exposure index, a guide written for exactly where you are, and full breakdowns on the three careers you care about.",
+    "Build your free Career Map — the 28-career AI-exposure index, a guide written for exactly where you are, and full breakdowns on the three careers you care about.",
   alternates: { canonical: "/map" },
 };
 
 const BAND = ["#C0472F", "#D98D7B", "#DFD5A2", "#A7CBA0", "#4E9E5E"];
 
-/** The AI Career Map — distraction-free capture for paid ad traffic. Collects
+/** The Career Map — distraction-free capture for paid ad traffic. Collects
  *  the stage + audience flags and up to three careers, then delivers the matching
  *  package. Challenger to /scores; nav hidden via SiteHeader. */
 export default function MapLanding() {
@@ -29,7 +29,7 @@ export default function MapLanding() {
           <Wordmark />
         </div>
 
-        <div className="scr-eyebrow">The AI Career Map · Free</div>
+        <div className="scr-eyebrow">The Career Map · Free</div>
         <h1 className="scr-h1">
           Is your kid&rsquo;s career{" "}
           <span className="hl" style={{ whiteSpace: "nowrap" }}>
@@ -37,7 +37,7 @@ export default function MapLanding() {
           </span>
         </h1>
         <p className="scr-sub">
-          Build your free AI Career Map — all 28 careers scored, a short guide written for exactly
+          Build your free Career Map — all 28 careers scored, a short guide written for exactly
           where you stand, and the full breakdown on the three careers that matter to you.
         </p>
 
@@ -54,7 +54,7 @@ export default function MapLanding() {
         <PackageSignup careers={opts} />
 
         <p className="scr-foot">
-          Pivotum · The AI Career Map · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+          Pivotum · The Career Map · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
         </p>
       </div>
     </main>

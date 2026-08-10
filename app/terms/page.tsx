@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Terms of sale and use for Pivotum and the AI Career Index.",
+  description: "Terms of sale and use for Pivotum and the Career Index.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: false },
 };

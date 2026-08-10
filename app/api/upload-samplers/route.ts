@@ -26,7 +26,7 @@ export async function GET(req: Request) {
   if (!token) return NextResponse.json({ error: "blob not configured" }, { status: 503 });
 
   const dir = path.join(process.cwd(), "samplers-src");
-  // The AI Career Map package docs: the stage/voice guides and overviews the
+  // The Career Map package docs: the stage/voice guides and overviews the
   // /map capture delivers. Kept in sync with the allowlist in /api/pack-pdf.
   const packDocs = ["guide", "overview"].flatMap((k) =>
     ["planning", "active"].flatMap((s) => ["parent", "student"].map((v) => `${k}-${s}-${v}`)),

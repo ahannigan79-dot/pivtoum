@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   const { email, source, stage, audience, careers } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
-  // The AI Career Map capture sends the two package flags + up to three career
+  // The Career Map capture sends the two package flags + up to three career
   // picks. Kept optional so the plain /scores + on-page EmailSignup forms (email
   // + source only) keep working unchanged. Assembling and delivering the full
   // package from these is the next increment; for now we capture them so no lead
@@ -79,14 +79,14 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
     try {
       if (pkg.stage) {
-        // The AI Career Map capture: assemble and deliver the full package —
+        // The Career Map capture: assemble and deliver the full package —
         // index + the stage/voice guide + overview + the chosen career
         // breakdowns (sampler PDF where one exists, else the on-site page).
         const stage = pkg.stage;
         const voice = pkg.audience === "self" ? "student" : "parent";
         const items = [
           {
-            name: "The 28-career AI Career Index",
+            name: "The Career Index — all 28 careers",
             url: `${SITE.url}/api/sampler-pdf?s=index`,
             sub: "Every career scored, safest to most exposed.",
             cta: "Download PDF",
@@ -132,7 +132,7 @@ export async function POST(req: Request) {
         await resend.emails.send({
           from,
           to: email,
-          subject: "Your AI Career Map (index + guide + breakdowns)",
+          subject: "Your Career Map (index + guide + reads)",
           html,
           text,
         });

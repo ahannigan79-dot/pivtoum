@@ -15,7 +15,7 @@ interface CareerOpt {
 const MAX_PICKS = 3;
 
 /**
- * The AI Career Map capture. One screen that collects the two flags that fork
+ * The Career Map capture. One screen that collects the two flags that fork
  * the whole package — stage (planning vs already-in) and who it's for (child vs
  * self) — plus up to three careers of interest, then the email. Posts the lot
  * to /api/subscribe, which assembles and delivers the matching package.
@@ -61,7 +61,7 @@ export function PackageSignup({ careers }: { careers: CareerOpt[] }) {
   if (status === "done") {
     return (
       <div className="pkg pkg-done">
-        <p className="pkg-done-h">Your AI Career Map is on its way.</p>
+        <p className="pkg-done-h">Your Career Map is on its way.</p>
         <p className="pkg-done-s">
           Check your inbox — the 28-career index, your guide, and the breakdowns you picked are
           landing now. Didn’t arrive? Check spam, it’ll be there.

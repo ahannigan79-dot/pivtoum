@@ -98,8 +98,8 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="gkick">The AI Career Map &middot; ${C.ed} &middot; ${EDITION}</div>
-  <div class="gtag">Career value in the age of AI.</div>
+  <div class="gkick">The Career Map &middot; ${C.ed} &middot; ${EDITION}</div>
+  <div class="gtag">Careers, mapped for the age of AI.</div>
   <h1 class="gtitle">${C.title}</h1>
   <p class="gintro">${C.intro}</p>
 
@@ -119,7 +119,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>Your Career Package &middot; ${C.ed} &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
+    <span>The Career Map &middot; ${C.ed} &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });

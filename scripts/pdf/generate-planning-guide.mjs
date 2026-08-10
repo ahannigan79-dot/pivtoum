@@ -101,8 +101,8 @@ async function main() {
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"><style>${styles}</style></head>
 <body>
   <div class="brandmark">${LOGO_SVG}</div>
-  <div class="gkick">Career Value Guide &middot; Planning Edition${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
-  <div class="gtag">Career value in the age of AI.</div>
+  <div class="gkick">The Career Map &middot; Your Playbook${pick("", " &middot; For the student")} &middot; ${EDITION}</div>
+  <div class="gtag">Careers, mapped for the age of AI.</div>
   <h1 class="gtitle">Still choosing a degree or career? Here&rsquo;s how to pick one that lasts.</h1>
   <p class="gintro">${pick("If your kid is still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.", "If you&rsquo;re still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.")}</p>
   <p class="gintro">The instinct is to ask <em>which field is safe?</em> It&rsquo;s the wrong question. No field is safe or doomed &mdash; every one we score holds a protected career and an exposed one under the same title. The real choice was never the field. It&rsquo;s the lane inside it, and whether you can reach it.</p>
@@ -121,7 +121,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>Career Value Guide &middot; Planning Edition &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
+    <span>The Career Map &middot; Your Playbook &middot; Pivotum ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });

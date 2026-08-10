@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Articles",
   description:
-    "Our thinking on how AI is reshaping careers — the arguments behind The AI Career Index, written for the parents making the call.",
+    "Our thinking on how AI is reshaping careers — the arguments behind The Career Index, written for the parents making the call.",
   alternates: { canonical: "/articles" },
 };
 
