@@ -16,7 +16,13 @@ const BAND = ["#C0472F", "#D98D7B", "#DFD5A2", "#A7CBA0", "#4E9E5E"];
 /** The Career Map — distraction-free capture for paid ad traffic. Collects
  *  the stage + audience flags and up to three careers, then delivers the matching
  *  package. Challenger to /scores; nav hidden via SiteHeader. */
-export default function MapLanding() {
+export default async function MapLanding({
+  searchParams,
+}: {
+  searchParams: Promise<{ career?: string }>;
+}) {
+  const { career } = await searchParams;
+  const preselect = typeof career === "string" ? career : undefined;
   const opts = careers
     .map((c) => ({ slug: c.slug, name: c.name }))
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -52,7 +58,7 @@ export default function MapLanding() {
           <span className="hi">Well protected</span>
         </div>
 
-        <PackageSignup careers={opts} />
+        <PackageSignup careers={opts} preselect={preselect} />
 
         <p className="scr-foot">
           Pivotum · The Career Map · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>

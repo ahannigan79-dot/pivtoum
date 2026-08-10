@@ -20,10 +20,13 @@ const MAX_PICKS = 3;
  * self) — plus up to three careers of interest, then the email. Posts the lot
  * to /api/subscribe, which assembles and delivers the matching package.
  */
-export function PackageSignup({ careers }: { careers: CareerOpt[] }) {
+export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; preselect?: string }) {
+  // A sampler can send its own career in via ?career=<slug>; pre-check it if it's
+  // a real option, so arriving from a sampler starts one pick ahead.
+  const seeded = preselect && careers.some((c) => c.slug === preselect) ? [preselect] : [];
   const [stage, setStage] = useState<Stage | "">("");
   const [audience, setAudience] = useState<Audience | "">("");
-  const [picks, setPicks] = useState<string[]>([]);
+  const [picks, setPicks] = useState<string[]>(seeded);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [hint, setHint] = useState("");

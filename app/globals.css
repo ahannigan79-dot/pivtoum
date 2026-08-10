@@ -648,6 +648,19 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   background: rgba(var(--hl), .95); padding: .12rem .42rem; border-radius: 2px;
   margin-right: .55rem; vertical-align: middle;
 }
+.kit-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; margin-top: 1rem; }
+.kit-cta-btn {
+  font-family: var(--sans); font-weight: 600; font-size: .78rem; letter-spacing: .04em;
+  text-transform: uppercase; text-decoration: none; padding: .7rem 1.2rem; border-radius: 999px;
+  background: var(--ink); color: #fff; border: 1px solid var(--ink);
+  transition: background .15s, border-color .15s;
+}
+.kit-cta-btn:hover { background: var(--pen); border-color: var(--pen); }
+.kit-cta-buy {
+  font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em;
+  color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule);
+}
+.kit-cta-buy:hover { color: var(--pen); border-color: var(--pen); }
 
 /* ============================================================================
    Landing page — scoped under .lp so it never touches the document pages.
