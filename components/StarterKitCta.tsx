@@ -1,10 +1,13 @@
-import { EmailSignup } from "@/components/EmailSignup";
+import Link from "next/link";
 
 /**
- * Inline "email me the PDF" capture, placed above the score tables (homepage
- * index and every sampler). On a sampler it offers that career's write-up as a
- * PDF; on the index it offers all 28 scores. A distinct tinted box so it reads
- * as an offer, not prose.
+ * Homepage-route entry point into the Career Map. Placed above the score tables
+ * (homepage index and every sampler) and again lower down. Rather than capture
+ * an email inline for a single PDF, it routes everyone to /map so every lead is
+ * captured the same way — stage + who + the careers that matter — and lands in
+ * the matching package + nurture flow. A sampler seeds its own career into the
+ * map via ?career=<slug>. A quieter secondary link keeps the direct-buy path
+ * open for anyone ready to decide now.
  */
 export function StarterKitCta({
   source = "index",
@@ -17,32 +20,40 @@ export function StarterKitCta({
 }) {
   const isSampler = source !== "index" && Boolean(title);
   const bottom = placement === "bottom";
+  const mapHref = isSampler ? `/map?career=${encodeURIComponent(source)}` : "/map";
   return (
     <aside className="kit-cta">
       <p className="kit-cta-lead">
-        <span className="kit-cta-flag">Free PDF</span>
+        <span className="kit-cta-flag">Free</span>
         {isSampler ? (
           bottom ? (
             <>
-              <strong>Read this far? Take {title} with you.</strong> Email yourself the full sampler
-              as a PDF — plus the other 27 careers scored — to keep, print, and talk through with
-              your family.
+              <strong>Read this far? Take {title} with you.</strong> Build your free Career Map —
+              this read, all 28 careers scored, and a short guide for exactly where you stand. Yours
+              to keep, print, and talk through with your family.
             </>
           ) : (
             <>
-              <strong>Email me the {title} write-up</strong> — the full sampler as a PDF to keep,
-              print, and talk through with your family.
+              <strong>Want {title} to keep — and the rest?</strong> Build your free Career Map: this
+              read, all 28 careers scored, and a short guide written for exactly where you stand.
             </>
           )
         ) : (
           <>
-            <strong>Email me the full 28-career index</strong> — a PDF that goes beyond the table: a
-            plain-English read on every score (where each career is safe, where it&rsquo;s exposed)
-            and the thinking behind the numbers. Yours to keep, print and share.
+            <strong>Build your free Career Map</strong> — all 28 careers scored, a short guide
+            written for exactly where you stand, and the full read on the three careers that matter
+            to you. Yours to keep, print, and share.
           </>
         )}
       </p>
-      <EmailSignup flush source={source} sub="" label="Where should we send it?" cta="Email me the PDF" />
+      <div className="kit-cta-actions">
+        <Link className="kit-cta-btn" href={mapHref}>
+          Build my free Career Map &rarr;
+        </Link>
+        <Link className="kit-cta-buy" href="/buy">
+          or get the Career Value Guide now &rarr;
+        </Link>
+      </div>
     </aside>
   );
 }

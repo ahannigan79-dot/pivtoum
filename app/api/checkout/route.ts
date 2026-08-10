@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
-import { getPack } from "@/lib/packs";
+import { getPack, EXPERT_ADDON } from "@/lib/packs";
 import { SITE, EDITION } from "@/lib/site";
 
 /** /buy posts here. Creates a hosted Stripe Checkout session and redirects to it. */
@@ -19,6 +19,7 @@ export async function POST(req: Request) {
     );
   }
   const acknowledgedAt = new Date().toISOString();
+  const expert = form.get("expert") === "1";
 
   // Graceful state until Stripe keys are configured, so a live "buy" click
   // never crashes.
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
       `<!doctype html><meta charset="utf-8"><title>Checkout opening soon</title>` +
         `<body style="font-family:system-ui;max-width:34rem;margin:15vh auto;padding:0 1.5rem;color:#211E1B;line-height:1.6">` +
         `<h1 style="font-weight:600">Checkout is opening soon</h1>` +
-        `<p>Paid profiles aren’t quite live yet. In the meantime the free samplers and the full computer science profile are open.</p>` +
+        `<p>The paid Career Value Guide isn’t quite live yet. In the meantime the free samplers and the full computer science guide are open.</p>` +
         `<p><a href="/" style="color:#AC3A34">← Back to Pivotum</a></p></body>`,
       { status: 503, headers: { "content-type": "text/html; charset=utf-8" } },
     );
@@ -46,10 +47,25 @@ export async function POST(req: Request) {
           unit_amount: pack.priceCents,
           product_data: {
             name: `Pivotum — ${pack.label} pack`,
-            description: "Full career profiles, chosen after checkout. Includes Spring 2027 updates.",
+            description: "Career Value Guides, chosen after checkout. This edition and the next included.",
           },
         },
       },
+      ...(expert
+        ? [
+            {
+              quantity: 1,
+              price_data: {
+                currency: "usd" as const,
+                unit_amount: EXPERT_ADDON.priceCents,
+                product_data: {
+                  name: "Expert Meeting — two 1-hour sessions with the founder",
+                  description: "Booked after checkout via a private scheduling link.",
+                },
+              },
+            },
+          ]
+        : []),
     ],
     metadata: {
       pack_size: String(pack.size),
@@ -57,6 +73,7 @@ export async function POST(req: Request) {
       acknowledged: "true",
       acknowledged_at: acknowledgedAt,
       ack_terms: "analysis-not-advice-v1",
+      expert: expert ? "true" : "false",
     },
     // Stripe substitutes {CHECKOUT_SESSION_ID}; that id is also the claim token.
     success_url: `${SITE.url}/claim/{CHECKOUT_SESSION_ID}`,

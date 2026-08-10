@@ -4,7 +4,7 @@ import { getStripe } from "@/lib/stripe";
 import { EDITION } from "@/lib/site";
 import { claimableCareers } from "@/lib/profiles";
 import { careerRange } from "@/data/careers";
-import { getPack } from "@/lib/packs";
+import { getPack, isUnlimitedSize } from "@/lib/packs";
 import { ClaimPicker } from "@/components/ClaimPicker";
 import { ResendButton } from "@/components/ResendButton";
 import { PurchasePixel } from "@/components/PurchasePixel";
@@ -55,7 +55,7 @@ export default async function ClaimPage({ params }: { params: Promise<{ token: s
             <Link href="/">Pivotum</Link>
           </span>
           <i>/</i>
-          <span>Your profiles</span>
+          <span>Your Career Value Guides</span>
         </div>
 
         {order ? (
@@ -72,21 +72,40 @@ export default async function ClaimPage({ params }: { params: Promise<{ token: s
           </>
         ) : order.claimed ? (
           <>
-            <h1>Your profiles are on their way</h1>
+            <h1>Your Career Value Guides are on their way</h1>
             <p className="kicker">
-              We emailed {order.selected.length} profile(s) to <strong>{order.email}</strong>. Links
+              We emailed {order.selected.length} guide(s) to <strong>{order.email}</strong>. Links
               are valid for 7 days. Need them again?
             </p>
             <ResendButton token={token} />
           </>
         ) : (
           <>
-            <h1>Choose your {order.pack_size} profile{order.pack_size > 1 ? "s" : ""}</h1>
+            <h1>
+              {isUnlimitedSize(order.pack_size)
+                ? "Choose your careers"
+                : `Choose your ${order.pack_size} career${order.pack_size > 1 ? "s" : ""}`}
+            </h1>
             <p className="kicker">
-              Payment received. Pick exactly {order.pack_size} — we&rsquo;ll email the PDFs to{" "}
-              <strong>{order.email}</strong>. You can come back to this page until you claim.
+              {isUnlimitedSize(order.pack_size) ? (
+                <>
+                  Payment received — every career is included. Pick any you want (or{" "}
+                  <em>Select all</em>), and we&rsquo;ll email the PDFs to <strong>{order.email}</strong>.
+                  You can come back to this page until you claim.
+                </>
+              ) : (
+                <>
+                  Payment received. Pick exactly {order.pack_size} — we&rsquo;ll email the PDFs to{" "}
+                  <strong>{order.email}</strong>. You can come back to this page until you claim.
+                </>
+              )}
             </p>
-            <ClaimPicker token={token} packSize={order.pack_size} choices={choices} />
+            <ClaimPicker
+              token={token}
+              packSize={order.pack_size}
+              choices={choices}
+              unlimited={isUnlimitedSize(order.pack_size)}
+            />
           </>
         )}
 

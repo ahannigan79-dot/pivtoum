@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getOrder, markClaimed } from "@/lib/db";
 import { isClaimable } from "@/lib/profiles";
+import { isUnlimitedSize } from "@/lib/packs";
 import { getCareer } from "@/data/careers";
 import { signDownload, SEVEN_DAYS_MS } from "@/lib/download";
 import { purchaseEmail } from "@/lib/emails";
+import { getStripe } from "@/lib/stripe";
 import { SITE } from "@/lib/site";
 
 /**
@@ -23,9 +25,19 @@ export async function POST(req: Request) {
     selected = order.selected; // re-issue
   } else {
     selected = Array.isArray(slugs) ? [...new Set(slugs)] : [];
-    if (selected.length !== order.pack_size) {
+    // Unlimited grants the whole catalog, so any 1..all is valid; a fixed pack
+    // must be claimed exactly.
+    const unlimited = isUnlimitedSize(order.pack_size);
+    const ok = unlimited
+      ? selected.length >= 1 && selected.length <= order.pack_size
+      : selected.length === order.pack_size;
+    if (!ok) {
       return NextResponse.json(
-        { error: `Choose exactly ${order.pack_size} profile(s).` },
+        {
+          error: unlimited
+            ? "Choose at least one career."
+            : `Choose exactly ${order.pack_size} career(s).`,
+        },
         { status: 400 },
       );
     }
@@ -44,7 +56,7 @@ export async function POST(req: Request) {
   }));
   // Flat list for the plain-text part and the email-not-configured fallback.
   const links = items.flatMap((it) => [
-    { name: `${it.name} — Full profile`, url: it.parentUrl },
+    { name: `${it.name} — Full guide`, url: it.parentUrl },
     { name: `${it.name} — Student version`, url: it.studentUrl },
   ]);
 
@@ -52,13 +64,27 @@ export async function POST(req: Request) {
   const from = process.env.EMAIL_FROM;
   const emailConfigured = Boolean(apiKey && from);
 
+  // The Expert Meeting add-on is recorded on the Stripe session metadata, so we
+  // read it here (best-effort) rather than adding an orders column. When present,
+  // the delivery email carries the private booking link (or a "we'll email you"
+  // note if EXPERT_BOOKING_URL isn't configured yet).
+  let expert: { bookingUrl?: string } | undefined;
+  try {
+    const session = await getStripe().checkout.sessions.retrieve(token);
+    if (session?.metadata?.expert === "true") {
+      expert = { bookingUrl: process.env.EXPERT_BOOKING_URL || undefined };
+    }
+  } catch {
+    /* ignore — deliver the guides without the expert block */
+  }
+
   if (apiKey && from) {
     const resend = new Resend(apiKey);
-    const { html, text } = purchaseEmail(items, token);
+    const { html, text } = purchaseEmail(items, token, expert);
     const { error } = await resend.emails.send({
       from,
       to: order.email,
-      subject: "Your Pivotum profiles",
+      subject: "Your Pivotum Career Value Guides",
       html,
       text,
     });

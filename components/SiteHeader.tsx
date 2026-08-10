@@ -19,8 +19,8 @@ export function SiteHeader() {
   const close = () => setOpen(false);
   const pathname = usePathname();
 
-  // The /scores ad landing page is intentionally distraction-free — no nav.
-  if (pathname === "/scores") return null;
+  // The /scores and /map ad landing pages are intentionally distraction-free — no nav.
+  if (pathname === "/scores" || pathname === "/map") return null;
 
   return (
     <header className="site-header">
@@ -36,7 +36,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link className="site-nav-link site-nav-cta" href="/buy">
-            Get profiles
+            Career guides
           </Link>
         </nav>
 
@@ -63,7 +63,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link href="/buy" className="nav-panel-link nav-panel-cta" onClick={close}>
-            Get profiles
+            Career guides
           </Link>
         </div>
       ) : null}

@@ -8,12 +8,22 @@ import { SITE } from "@/lib/site";
 export function purchaseEmail(
   items: { name: string; parentUrl: string; studentUrl: string }[],
   token: string,
+  expert?: { bookingUrl?: string },
 ) {
   const ink = "#211E1B";
   const inkSoft = "#57534D";
   const pencil = "#8C857A";
   const rule = "#E7E4DC";
   const pen = "#AC3A34";
+  const hl = "#FFE26E";
+
+  const expertBlock = expert
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:0 0 20px;"><tr><td style="padding:18px 20px;">
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your Expert Meeting</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55;color:${ink};margin:0 0 ${expert.bookingUrl ? "14px" : "0"};">You added two 1-hour sessions with me to talk through your family&rsquo;s shortlist, live.${expert.bookingUrl ? "" : " I&rsquo;ll email you within a day to find times that work."}</p>
+        ${expert.bookingUrl ? `<p style="margin:0;"><a href="${expert.bookingUrl}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${ink};text-decoration:none;padding:13px 26px;border-radius:3px;">Book your sessions &rarr;</a></p>` : ""}
+      </td></tr></table>`
+    : "";
 
   const link = (url: string, label: string) =>
     `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
@@ -23,7 +33,7 @@ export function purchaseEmail(
       (it) => `
       <tr><td style="padding:14px 0;border-bottom:1px solid ${rule};">
         <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;color:${ink};margin-bottom:6px;">${it.name}</div>
-        <div>${link(it.parentUrl, "Full profile")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
+        <div>${link(it.parentUrl, "Full guide")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
       </td></tr>`,
     )
     .join("");
@@ -36,8 +46,8 @@ export function purchaseEmail(
           <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your profiles &middot; Fall 2026</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 16px;">Your profiles are ready</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your Career Value Guides &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:25px;color:${ink};margin:0 0 16px;">Your Career Value Guides are ready</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 18px;">Thanks for your purchase. Your download links are valid for <strong>7 days</strong>.</p>
 
@@ -45,7 +55,8 @@ export function purchaseEmail(
             ${rows}
           </table>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 12px;">Each includes a short version written directly to the student and the technical scoring appendix. Your <strong>Spring 2027</strong> updates are included &mdash; we&rsquo;ll email them when they publish.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 16px;">Each includes a short version written directly to the student and the technical scoring appendix. <strong>This edition and the next are included</strong> &mdash; we re-score every six months, so your guide stays current for a full year.</p>
+          ${expertBlock}
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0;">You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}" style="color:${pen};">your claim link</a>.</p>
         </td></tr>
         <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
@@ -57,17 +68,126 @@ export function purchaseEmail(
   </body></html>`;
 
   const text =
-    `Your Pivotum profiles are ready — download links valid for 7 days:\n\n` +
+    `Your Pivotum Career Value Guides are ready — download links valid for 7 days:\n\n` +
     items
       .map(
         (it) =>
-          `• ${it.name}\n    Full profile:    ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
+          `• ${it.name}\n    Full guide:      ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
       )
       .join("\n\n") +
     `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
-    `Your Spring 2027 updates are included — we'll email them when they publish.\n\n` +
+    `This edition and the next are included — we re-score every six months, so your guide stays current for a full year.\n\n` +
+    (expert
+      ? `YOUR EXPERT MEETING: You added two 1-hour sessions with the founder. ${expert.bookingUrl ? `Book them here: ${expert.bookingUrl}` : "We'll email you within a day to find times."}\n\n`
+      : "") +
     `Re-open your selection page any time: ${SITE.url}/claim/${token}\n\n` +
     `Pivotum — 28 careers, scored the same way.`;
+
+  return { html, text };
+}
+
+/**
+ * The Career Map package email — delivered from the /map capture. Lists the
+ * assembled package (index + the stage/voice guide + overview + the chosen
+ * career breakdowns) as a download list, then surfaces the same subscriber
+ * discount. Same branded, table-based, inline-styled construction as the others.
+ */
+export function packageEmail(opts: {
+  items: { name: string; url: string; sub?: string; cta?: string }[];
+  code: string;
+  discountLabel: string;
+  expiresDays: number;
+  buyUrl: string;
+  audience?: "child" | "self"; // parent-of-child vs the reader themselves
+  careerNames?: string[]; // the picked careers, to personalize the sell
+}) {
+  const { items, code, discountLabel, expiresDays, buyUrl } = opts;
+  const forChild = opts.audience === "child";
+  const names = (opts.careerNames ?? []).filter(Boolean);
+  const sellCareers =
+    names.length === 0
+      ? "the careers you picked"
+      : names.length === 1
+        ? names[0]
+        : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  const introLine = forChild
+    ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose. Go through it together; the guide ties it together."
+    : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose. Work through them in order; the guide ties it together.";
+  const introText = forChild
+    ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose."
+    : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose.";
+  const ink = "#211E1B";
+  const inkSoft = "#57534D";
+  const pencil = "#8C857A";
+  const rule = "#E7E4DC";
+  const pen = "#AC3A34";
+  const hl = "#FFE26E";
+
+  const link = (url: string, label: string) =>
+    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
+  const button = (url: string, label: string, bg: string) =>
+    `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
+
+  const rows = items
+    .map(
+      (it) => `
+      <tr><td style="padding:13px 0;border-bottom:1px solid ${rule};">
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;color:${ink};margin-bottom:${it.sub ? "3px" : "7px"};">${it.name}</div>
+        ${it.sub ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:${pencil};margin-bottom:8px;">${it.sub}</div>` : ""}
+        <div>${link(it.url, it.cta ?? "Download PDF")}</div>
+      </td></tr>`,
+    )
+    .join("");
+
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+    <tr><td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+        <tr><td style="padding:34px 36px 26px;">
+          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your Career Map, plus ${discountLabel} for subscribers.</span>
+
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:${pencil};margin:0 0 12px;">Careers, mapped for the age of AI</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Career Map is here</div>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the Career Value Guide</strong> in below.</p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};margin:0 0 22px;">
+            ${rows}
+          </table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding:22px 0 4px;">
+            <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 10px;">When you&rsquo;re ready to decide, not just look</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">The free reads show you <em>where</em> a career splits &mdash; the safe side and the exposed side. What they stop short of is the part that actually decides it: which side your kid ends up on, how durable that safe side really is as AI keeps moving, and what it takes to reach it. That is the <strong>Career Value Guide</strong>, and it&rsquo;s the key to the whole map. For <strong>${sellCareers}</strong> it gives you every sub-track scored, the honest downsides no admissions page will list, the routes in, and the specific plan &mdash; the difference between seeing the split and knowing what to do about it.</p>
+          </td></tr></table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Founding Subscriber Discount</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
+            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
+          </td></tr></table>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">I hope the map helps. Reply any time &mdash; I read every one.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${inkSoft};margin:0;">&mdash; ${SITE.founder}, founder, Pivotum</p>
+        </td></tr>
+        <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.7;color:${pencil};margin:0;">28 careers, scored the same way. Scores measure exposure to what AI can already do &mdash; not how much any employer has deployed. Re-scored every six months. We publish where we might be wrong.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+
+  const text =
+    `Your Career Map is here.\n\n` +
+    `${introText}\n\n` +
+    items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
+    `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +
+    `The free reads show you where a career splits — the safe side and the exposed side. What they stop short of is the part that decides it: which side your kid ends up on, how durable that safe side really is, and what it takes to reach it. That's the Career Value Guide, and it's the key to the whole map. For ${sellCareers} it gives you every sub-track scored, the honest downsides, the routes in, and the specific plan.\n` +
+    `\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
+    `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };
 }
@@ -108,18 +228,18 @@ export function pdfWelcomeEmail(opts: {
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Hi &mdash; I&rsquo;m ${SITE.founder}, I built Pivotum</div>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the full profiles</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the Career Value Guide</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
 
           <p style="margin:0 0 24px;">${button(pdfUrl, "Download your PDF", ink)}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>full profile</strong> is how you actually <em>choose</em> &mdash; all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make &mdash; the profile is how you make it on evidence, not a hunch.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>Career Value Guide</strong> is how you act on it &mdash; whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to the student. It&rsquo;s how you make one of your family&rsquo;s biggest bets on evidence, not a hunch.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Founding Subscriber Discount</div>
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "Get the profiles", pen)}</p>
+            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">Either way, I hope the PDF helps. Reply any time &mdash; I read every one.</p>
@@ -136,7 +256,7 @@ export function pdfWelcomeEmail(opts: {
   const text =
     `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
     `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
-    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The full profile is how you actually choose — all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to your kid. A degree is one of the biggest bets your family will make; the profile is how you make it on evidence, not a hunch.\n\n` +
+    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The Career Value Guide is how you act on it — whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to the student. It's how you make one of your family's biggest bets on evidence, not a hunch.\n\n` +
     `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 

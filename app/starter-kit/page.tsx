@@ -118,15 +118,16 @@ export default function StarterKitPage() {
         <div className="buy" style={{ marginTop: "2.5rem" }}>
           <h2>When you&rsquo;re ready to choose, not just check</h2>
           <p>
-            The test tells you the shape. The full profile is how you actually <em>choose</em> — the
-            whole picture for the careers your kid is weighing: all six factors scored and explained,
-            the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one
-            that isn&rsquo;t), the three-year trend so you know which way it&rsquo;s moving, every
-            source behind the numbers, and a version written directly to your kid. A degree is one of
-            the biggest bets your family will make — this is how you make it on evidence, not a hunch.
+            The test tells you the shape. The Career Value Guide is how you act on it — whether your
+            kid is still choosing a path or already on one: the whole picture for the careers they&rsquo;re
+            weighing, with all six factors scored and explained, the sub-tracks that split a field in
+            two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend
+            so you know which way it&rsquo;s moving, every source behind the numbers, and a version
+            written directly to the student. It&rsquo;s how you make one of your family&rsquo;s biggest
+            bets on evidence, not a hunch.
           </p>
           <p className="fine">
-            <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link>{" "}
+            <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
             then <Link href="/buy">pick a pack for your kid&rsquo;s shortlist &rarr;</Link>
           </p>
           <p className="fine">

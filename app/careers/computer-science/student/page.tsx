@@ -11,7 +11,7 @@ const career = getCareer("computer-science")!;
 export const metadata: Metadata = {
   title: "The Student Version — Computer Science",
   description:
-    "The Pivotum student profile for computer science — the short version, written directly to the student. Free to read in full.",
+    "The Pivotum student version for computer science — the Career Value Guide written directly to the student. Free to read in full.",
   alternates: { canonical: "/careers/computer-science/student" },
   openGraph: {
     title: "Computer science — the student version",
@@ -39,9 +39,9 @@ export default function ComputerScienceStudentPage() {
           <span>Student version</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          The student version — published free, in full. This is the short profile written
-          directly to the student; every paid career includes one.{" "}
-          <Link href="/careers/computer-science">Read the full parent profile →</Link>
+          The student version — published free, in full. This is the short version written
+          directly to the student; every Career Value Guide includes one.{" "}
+          <Link href="/careers/computer-science">Read the full parent guide →</Link>
         </p>
         <CSStudent />
         <EmailSignup

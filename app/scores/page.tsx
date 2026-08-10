@@ -23,7 +23,7 @@ export default function ScoresLanding() {
           <Wordmark />
         </div>
 
-        <div className="scr-eyebrow">The AI Career Index · Free</div>
+        <div className="scr-eyebrow">The Career Index · Free</div>
         <h1 className="scr-h1">
           Is your kid&rsquo;s career{" "}
           <span className="hl" style={{ whiteSpace: "nowrap" }}>
@@ -74,7 +74,7 @@ export default function ScoresLanding() {
         </div>
 
         <p className="scr-foot">
-          Pivotum · The AI Career Index · <a href="/privacy">Privacy</a> ·{" "}
+          Pivotum · The Career Index · <a href="/privacy">Privacy</a> ·{" "}
           <a href="/terms">Terms</a>
         </p>
       </div>

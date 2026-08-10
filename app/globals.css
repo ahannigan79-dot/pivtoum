@@ -218,7 +218,8 @@ header { padding: 2rem 0 0; }
 .scr-wrap { max-width: 620px; margin: 0 auto; padding: 2.2rem 1.6rem 3rem; }
 .scr-logo { width: 132px; margin-bottom: 2.4rem; }
 .scr-logo svg { width: 100%; height: auto; display: block; }
-.scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: 1rem; }
+.scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: .5rem; }
+.scr-tag { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--pencil); margin: 0 0 1.1rem; }
 .scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.16; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
 .scr-h1 .hl { background-image: linear-gradient(102deg, rgba(var(--hl), 0) .4%, rgba(var(--hl), .62) 2.2%, rgba(var(--hl), .52) 50%, rgba(var(--hl), .66) 96%, rgba(var(--hl), 0) 99.6%); background-repeat: no-repeat; background-size: 100% 0.62em; background-position: 0 84%; animation: none; padding: 0 .12em; margin: 0 -.12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .scr-sub { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 1.6rem; max-width: 34em; }
@@ -647,6 +648,19 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   background: rgba(var(--hl), .95); padding: .12rem .42rem; border-radius: 2px;
   margin-right: .55rem; vertical-align: middle;
 }
+.kit-cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; margin-top: 1rem; }
+.kit-cta-btn {
+  font-family: var(--sans); font-weight: 600; font-size: .78rem; letter-spacing: .04em;
+  text-transform: uppercase; text-decoration: none; padding: .7rem 1.2rem; border-radius: 999px;
+  background: var(--ink); color: #fff; border: 1px solid var(--ink);
+  transition: background .15s, border-color .15s;
+}
+.kit-cta-btn:hover { background: var(--pen); border-color: var(--pen); }
+.kit-cta-buy {
+  font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em;
+  color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule);
+}
+.kit-cta-buy:hover { color: var(--pen); border-color: var(--pen); }
 
 /* ============================================================================
    Landing page — scoped under .lp so it never touches the document pages.
@@ -771,4 +785,37 @@ footer {
   .score-badge-circle path,
   .lp-draw path { stroke-dashoffset: 0; animation: none; }
   * { transition: none !important; }
+}
+
+/* --- The AI Career Map capture (/map) --- */
+.pkg { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.6rem 0 0; text-align: left; }
+.pkg-field { border: 0; margin: 0; padding: 0; min-width: 0; }
+.pkg-q { font-family: var(--sans); font-weight: 700; font-size: 0.98rem; color: var(--ink); margin: 0 0 0.7rem; padding: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; width: 100%; }
+.pkg-count { font-family: var(--sans); font-weight: 600; font-size: 0.8rem; color: var(--pencil); }
+.pkg-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.pkg-opt { display: flex; flex-direction: column; gap: 0.12rem; text-align: left; padding: 0.85rem 1rem; border: 1.5px solid var(--rule); border-radius: 11px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.pkg-opt b { font-family: var(--sans); font-weight: 700; font-size: 1rem; }
+.pkg-opt span { font-family: var(--serif); color: var(--ink-soft); font-size: 0.84rem; }
+.pkg-opt:hover { border-color: var(--pencil); }
+.pkg-opt.on { border-color: var(--ink); background: rgba(33, 30, 27, 0.045); box-shadow: inset 0 0 0 1px var(--ink); }
+.pkg-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.pkg-chip { font-family: var(--sans); font-size: 0.86rem; padding: 0.42rem 0.75rem; border: 1.5px solid var(--rule); border-radius: 20px; background: var(--paper); color: var(--ink); cursor: pointer; }
+.pkg-chip:hover:not(:disabled) { border-color: var(--pencil); }
+.pkg-chip.on { border-color: var(--ink); background: var(--ink); color: #fff; }
+.pkg-chip:disabled { opacity: 0.4; cursor: not-allowed; }
+.pkg-final { display: flex; gap: 0.5rem; margin-top: 0.2rem; }
+.pkg-final input { flex: 1 1 auto; min-width: 0; font-family: var(--serif); font-size: 1rem; padding: 0.75rem 0.9rem; border: 1.5px solid var(--rule); border-radius: 10px; background: var(--paper); color: var(--ink); }
+.pkg-final input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
+.pkg-go { flex: 0 0 auto; font-family: var(--sans); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; background: var(--ink); border: 0; border-radius: 10px; padding: 0.75rem 1.15rem; cursor: pointer; }
+.pkg-go:hover { background: var(--pen); }
+.pkg-go:disabled { opacity: 0.6; cursor: default; }
+.pkg-fine { font-family: var(--sans); font-weight: 600; font-size: 0.98rem; color: var(--ink-soft); margin: 0.35rem 0 0; }
+.pkg-hint { font-family: var(--sans); font-size: 0.86rem; color: var(--pen); margin: 0.2rem 0 0; }
+.pkg-done { text-align: left; padding: 1.2rem 0 0; }
+.pkg-done-h { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin: 0 0 0.4rem; }
+.pkg-done-s { font-family: var(--serif); color: var(--ink-soft); font-size: 1rem; line-height: 1.5; margin: 0; }
+@media (max-width: 460px) {
+  .pkg-opts { grid-template-columns: 1fr; }
+  .pkg-final { flex-direction: column; }
+  .pkg-go { width: 100%; }
 }
