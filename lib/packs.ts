@@ -25,6 +25,13 @@ export const PACKS: Pack[] = [
   },
 ];
 
+/** Premium add-on: two 1-hour sessions with the founder, on top of any pack. */
+export const EXPERT_ADDON = {
+  priceCents: 29900,
+  price: "$299",
+  label: "Two 1-hour sessions with the founder",
+};
+
 export function getPack(size: number): Pack | undefined {
   return PACKS.find((p) => p.size === size);
 }

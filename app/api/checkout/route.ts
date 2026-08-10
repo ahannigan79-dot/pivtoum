@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
-import { getPack } from "@/lib/packs";
+import { getPack, EXPERT_ADDON } from "@/lib/packs";
 import { SITE, EDITION } from "@/lib/site";
 
 /** /buy posts here. Creates a hosted Stripe Checkout session and redirects to it. */
@@ -19,6 +19,7 @@ export async function POST(req: Request) {
     );
   }
   const acknowledgedAt = new Date().toISOString();
+  const expert = form.get("expert") === "1";
 
   // Graceful state until Stripe keys are configured, so a live "buy" click
   // never crashes.
@@ -50,6 +51,21 @@ export async function POST(req: Request) {
           },
         },
       },
+      ...(expert
+        ? [
+            {
+              quantity: 1,
+              price_data: {
+                currency: "usd" as const,
+                unit_amount: EXPERT_ADDON.priceCents,
+                product_data: {
+                  name: "Expert Meeting — two 1-hour sessions with the founder",
+                  description: "Booked after checkout via a private scheduling link.",
+                },
+              },
+            },
+          ]
+        : []),
     ],
     metadata: {
       pack_size: String(pack.size),
@@ -57,6 +73,7 @@ export async function POST(req: Request) {
       acknowledged: "true",
       acknowledged_at: acknowledgedAt,
       ack_terms: "analysis-not-advice-v1",
+      expert: expert ? "true" : "false",
     },
     // Stripe substitutes {CHECKOUT_SESSION_ID}; that id is also the claim token.
     success_url: `${SITE.url}/claim/{CHECKOUT_SESSION_ID}`,

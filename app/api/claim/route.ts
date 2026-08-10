@@ -6,6 +6,7 @@ import { isUnlimitedSize } from "@/lib/packs";
 import { getCareer } from "@/data/careers";
 import { signDownload, SEVEN_DAYS_MS } from "@/lib/download";
 import { purchaseEmail } from "@/lib/emails";
+import { getStripe } from "@/lib/stripe";
 import { SITE } from "@/lib/site";
 
 /**
@@ -63,9 +64,23 @@ export async function POST(req: Request) {
   const from = process.env.EMAIL_FROM;
   const emailConfigured = Boolean(apiKey && from);
 
+  // The Expert Meeting add-on is recorded on the Stripe session metadata, so we
+  // read it here (best-effort) rather than adding an orders column. When present,
+  // the delivery email carries the private booking link (or a "we'll email you"
+  // note if EXPERT_BOOKING_URL isn't configured yet).
+  let expert: { bookingUrl?: string } | undefined;
+  try {
+    const session = await getStripe().checkout.sessions.retrieve(token);
+    if (session?.metadata?.expert === "true") {
+      expert = { bookingUrl: process.env.EXPERT_BOOKING_URL || undefined };
+    }
+  } catch {
+    /* ignore — deliver the guides without the expert block */
+  }
+
   if (apiKey && from) {
     const resend = new Resend(apiKey);
-    const { html, text } = purchaseEmail(items, token);
+    const { html, text } = purchaseEmail(items, token, expert);
     const { error } = await resend.emails.send({
       from,
       to: order.email,
