@@ -113,11 +113,9 @@ export async function POST(req: Request) {
             const c = getCareer(s);
             const has = hasSamplerPage(s);
             return {
-              name: `${c?.name ?? s} — full breakdown`,
+              name: `${c?.name ?? s} — the free read`,
               url: has ? `${SITE.url}/api/sampler-pdf?s=${s}` : `${SITE.url}/careers/${s}`,
-              sub: has
-                ? "The safe track, the exposed one, and what splits them."
-                : "The full breakdown, on the site.",
+              sub: "See where the safe and exposed tracks sit — a first look at the split.",
               cta: has ? "Download PDF" : "Read online",
             };
           }),

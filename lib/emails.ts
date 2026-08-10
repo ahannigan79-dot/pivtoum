@@ -97,11 +97,11 @@ export function packageEmail(opts: {
         ? names[0]
         : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
   const introLine = forChild
-    ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and the breakdowns on the careers you chose. Go through it together; the guide ties it together."
-    : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose. Work through them in order; the guide ties it together.";
+    ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose. Go through it together; the guide ties it together."
+    : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose. Work through them in order; the guide ties it together.";
   const introText = forChild
-    ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and the breakdowns on the careers you chose."
-    : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose.";
+    ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose."
+    : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose.";
   const ink = "#211E1B";
   const inkSoft = "#57534D";
   const pencil = "#8C857A";
@@ -145,7 +145,7 @@ export function packageEmail(opts: {
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding:22px 0 4px;">
             <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 10px;">When you&rsquo;re ready to decide, not just look</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">You&rsquo;ve got the free read on <strong>${sellCareers}</strong>. The <strong>Career Value Guide</strong> takes those same careers all the way to a decision — every sub-track scored (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), how durable that protection really is as AI keeps moving, the honest downsides no admissions page will list, the routes in, and exactly what to do about it. For the one or two that matter most, it&rsquo;s the difference between hoping you&rsquo;re right and knowing why.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">The free reads show you <em>where</em> a career splits &mdash; the safe side and the exposed side. What they stop short of is the part that actually decides it: which side your kid ends up on, how durable that safe side really is as AI keeps moving, and what it takes to reach it. That is the <strong>Career Value Guide</strong>, and it&rsquo;s the key to the whole map. For <strong>${sellCareers}</strong> it gives you every sub-track scored, the honest downsides no admissions page will list, the routes in, and the specific plan &mdash; the difference between seeing the split and knowing what to do about it.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
@@ -170,7 +170,7 @@ export function packageEmail(opts: {
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
     `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +
-    `You've got the free read on ${sellCareers}. The Career Value Guide takes those same careers all the way to a decision — every sub-track scored, how durable the protection is, the honest downsides, the routes in, and exactly what to do about it. For the one or two that matter most, it's the difference between hoping you're right and knowing why.\n` +
+    `The free reads show you where a career splits — the safe side and the exposed side. What they stop short of is the part that decides it: which side your kid ends up on, how durable that safe side really is, and what it takes to reach it. That's the Career Value Guide, and it's the key to the whole map. For ${sellCareers} it gives you every sub-track scored, the honest downsides, the routes in, and the specific plan.\n` +
     `\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
