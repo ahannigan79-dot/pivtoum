@@ -129,6 +129,7 @@ export async function POST(req: Request) {
           expiresDays,
           buyUrl: `${SITE.url}/buy`,
           audience: pkg.audience,
+          careerNames: pkg.careers.map((s) => getCareer(s)?.name ?? s),
         });
         await resend.emails.send({
           from,

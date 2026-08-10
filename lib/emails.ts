@@ -85,9 +85,17 @@ export function packageEmail(opts: {
   expiresDays: number;
   buyUrl: string;
   audience?: "child" | "self"; // parent-of-child vs the reader themselves
+  careerNames?: string[]; // the picked careers, to personalize the sell
 }) {
   const { items, code, discountLabel, expiresDays, buyUrl } = opts;
   const forChild = opts.audience === "child";
+  const names = (opts.careerNames ?? []).filter(Boolean);
+  const sellCareers =
+    names.length === 0
+      ? "the careers you picked"
+      : names.length === 1
+        ? names[0]
+        : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
   const introLine = forChild
     ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and the breakdowns on the careers you chose. Go through it together; the guide ties it together."
     : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose. Work through them in order; the guide ties it together.";
@@ -135,10 +143,15 @@ export function packageEmail(opts: {
             ${rows}
           </table>
 
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding:22px 0 4px;">
+            <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 10px;">When you&rsquo;re ready to decide, not just look</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">You&rsquo;ve got the free read on <strong>${sellCareers}</strong>. The <strong>Career Value Guide</strong> takes those same careers all the way to a decision — every sub-track scored (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), how durable that protection really is as AI keeps moving, the honest downsides no admissions page will list, the routes in, and exactly what to do about it. For the one or two that matter most, it&rsquo;s the difference between hoping you&rsquo;re right and knowing why.</p>
+          </td></tr></table>
+
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "See the Career Value Guide", pen)}</p>
+            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">I hope the map helps. Reply any time &mdash; I read every one.</p>
@@ -156,7 +169,9 @@ export function packageEmail(opts: {
     `Your AI Career Map is here.\n\n` +
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
-    `\n\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
+    `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +
+    `You've got the free read on ${sellCareers}. The Career Value Guide takes those same careers all the way to a decision — every sub-track scored, how durable the protection is, the honest downsides, the routes in, and exactly what to do about it. For the one or two that matter most, it's the difference between hoping you're right and knowing why.\n` +
+    `\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
     `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };
