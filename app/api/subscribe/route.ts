@@ -163,16 +163,16 @@ export async function POST(req: Request) {
     }
 
     // Enrol the lead + fire the custom event that starts the matching nurture
-    // automation (index leads → free samplers, sampler leads → full profile).
+    // automation. Fork by where the lead is: the /map capture sends its stage,
+    // so planning vs already-in each start their own Resend automation
+    // (map_planning_requested / map_active_requested). Plain index/sampler
+    // signups (no stage) keep their existing events.
     // NOTE: the Resend SDK returns { data, error } and does NOT throw on API
     // errors, so we branch on `error` — a bare try/catch only catches network
     // throws. We attach the discount code as a `promo_code` property, retrying a
     // plain add if that property isn't defined yet or the contact already
     // exists. Logged so we can see exactly what Resend returns. Best-effort:
     // nothing here ever blocks the already-saved signup.
-    // Fork the nurture by where the lead is: the /map capture sends its stage,
-    // so planning vs already-in each start their own Resend automation. Plain
-    // index/sampler signups keep their existing events.
     const nurtureEvent = pkg.stage
       ? pkg.stage === "planning"
         ? "map_planning_requested"
