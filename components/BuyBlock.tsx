@@ -32,7 +32,8 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
         </div>
         <p className="fine">
           Each Career Value Guide includes a version written directly to the student and the
-          technical scoring appendix. Every future edition of what you buy is included, free.
+          technical scoring appendix. This edition and the next are included, free — a full year
+          current.
         </p>
         <p className="fine">
           <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}

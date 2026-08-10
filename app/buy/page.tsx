@@ -7,7 +7,7 @@ import { EmailSignup } from "@/components/EmailSignup";
 export const metadata: Metadata = {
   title: "Get the Career Value Guide",
   description:
-    "Buy the full Pivotum Career Value Guide by the career — 1, 3, or unlimited. Pay first, then choose which careers you want. Every future edition included.",
+    "Buy the full Pivotum Career Value Guide by the career — 1, 3, or unlimited. Pay first, then choose which careers you want. This edition and the next are included.",
   alternates: { canonical: "/buy" },
 };
 
@@ -41,8 +41,8 @@ export default function BuyPage() {
 
         <p className="fine">
           Each includes a short version written directly to the student and the technical scoring
-          appendix. Every future edition of what you buy is included, free — we re-score every six
-          months.
+          appendix. This edition and the next are included, free — we re-score every six months, so
+          what you buy stays current for a year.
         </p>
         <p className="fine">
           <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
@@ -51,7 +51,7 @@ export default function BuyPage() {
 
         <EmailSignup
           label="Not ready to buy? Start free."
-          sub="Grab the Parent’s AI-Proofing Starter Kit — the three-question test — plus each new article and edition. Free, no spam."
+          sub="Grab the Parent’s AI-Proofing Starter Kit — the three-question test — plus Steering Through Change, our quarterly read. Free, no spam."
         />
 
         <SiteFooter />

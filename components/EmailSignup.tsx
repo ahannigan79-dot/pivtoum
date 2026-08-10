@@ -22,7 +22,7 @@ interface EmailSignupProps {
 
 export function EmailSignup({
   label = "Email me the full 28-career index (PDF)",
-  sub = "Every career scored, each with a plain-English read on where it’s safe and where it’s exposed — plus each new article. Free, no spam, unsubscribe anytime.",
+  sub = "Every career scored, each with a plain-English read on where it’s safe and where it’s exposed — plus Steering Through Change, our quarterly read on where the landscape’s shifting. Free, no spam, unsubscribe anytime.",
   cta = "Email me the PDF",
   done = "Check your inbox — your PDF (and a subscriber discount) is on its way.",
   source = "index",

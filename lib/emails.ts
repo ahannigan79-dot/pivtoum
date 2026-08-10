@@ -55,7 +55,7 @@ export function purchaseEmail(
             ${rows}
           </table>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 16px;">Each includes a short version written directly to the student and the technical scoring appendix. <strong>Every future edition is included</strong> &mdash; we re-score every six months and email you each new one, free.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 16px;">Each includes a short version written directly to the student and the technical scoring appendix. <strong>This edition and the next are included</strong> &mdash; we re-score every six months, so your guide stays current for a full year.</p>
           ${expertBlock}
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0;">You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}" style="color:${pen};">your claim link</a>.</p>
         </td></tr>
@@ -76,7 +76,7 @@ export function purchaseEmail(
       )
       .join("\n\n") +
     `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
-    `Every future edition is included — we re-score every six months and email you each new one, free.\n\n` +
+    `This edition and the next are included — we re-score every six months, so your guide stays current for a full year.\n\n` +
     (expert
       ? `YOUR EXPERT MEETING: You added two 1-hour sessions with the founder. ${expert.bookingUrl ? `Book them here: ${expert.bookingUrl}` : "We'll email you within a day to find times."}\n\n`
       : "") +
