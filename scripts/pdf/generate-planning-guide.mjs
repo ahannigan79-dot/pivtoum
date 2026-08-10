@@ -83,7 +83,19 @@ async function main() {
     .ck-x{ font-family:var(--serif); font-size:10pt; color:var(--ink-soft); line-height:1.45; }
     .ck-x b{ color:var(--ink); font-weight:700; }
     .ck-x em{ font-style:italic; color:var(--ink); }
-    .gclose{ break-inside:avoid; font-family:var(--serif); font-size:11.5pt; color:var(--ink); line-height:1.5; margin:.7cm 0 0; max-width:16cm; }`;
+    .gclose{ break-inside:avoid; font-family:var(--serif); font-size:11.5pt; color:var(--ink); line-height:1.5; margin:.7cm 0 0; max-width:16cm; }
+    .gfactors{ break-inside:avoid; margin:.15cm 0 0; padding:.5cm .6cm; background:#FBF9F3; border:1px solid var(--rule); border-radius:9px; }
+    .gfactors .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--ink); margin:0 0 .25cm; }
+    .gfactors .cols{ display:flex; gap:.7cm; }
+    .gfactors .col{ flex:1; }
+    .gfactors .cap{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin:0 0 .14cm; }
+    .gfactors .cap.ex{ color:var(--pen); }
+    .gfactors .cap.pr{ color:var(--pen-safe); }
+    .gfactors ol{ margin:0; padding-left:.55cm; }
+    .gfactors li{ font-family:var(--serif); font-size:9.8pt; color:var(--ink-soft); line-height:1.4; margin:0 0 .12cm; }
+    .gcta{ break-inside:avoid; margin:.5cm 0 0; padding:.5cm .65cm; background:var(--ink); color:#EDE7DA; border-radius:9px; font-family:var(--serif); font-size:11pt; line-height:1.5; }
+    .gcta b{ color:#fff; }
+    .gcta .a{ display:block; font-family:var(--sans); font-size:9pt; font-weight:700; letter-spacing:.02em; margin-top:.22cm; color:#fff; }`;
 
   const movesHtml = MOVES.map((m, i) => `
     <div class="mv">
@@ -107,6 +119,27 @@ async function main() {
   <p class="gintro">${pick("If your kid is still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.", "If you&rsquo;re still choosing, you&rsquo;re holding the most valuable thing in this whole process: the decision itself, still unmade.")}</p>
   <p class="gintro">The instinct is to ask <em>which field is safe?</em> It&rsquo;s the wrong question. No field is safe or doomed &mdash; every one we score holds a protected career and an exposed one under the same title. The real choice was never the field. It&rsquo;s the lane inside it, and whether you can reach it.</p>
   <p class="gintro">${pick("So don&rsquo;t pick a major. Pick a <em>destination</em> &mdash; the safe lane of a field, chosen on purpose &mdash; and a path your kid can actually walk to it. Here&rsquo;s how to tell the sturdy ones from the rest.", "So don&rsquo;t just pick a major. Pick a <em>destination</em> &mdash; the safe lane of a field, chosen on purpose &mdash; and a path you can actually walk to it. Here&rsquo;s how to tell the sturdy ones from the rest.")}</p>
+  <div class="gfactors">
+    <div class="h">What we score &mdash; the six factors</div>
+    <div class="cols">
+      <div class="col">
+        <div class="cap ex">Three that raise the risk</div>
+        <ol>
+          <li>How much of the day-to-day work can AI already do?</li>
+          <li>Is the way <em>in</em> &mdash; the junior rung &mdash; automating away?</li>
+          <li>How exposed is the high-value work as AI keeps improving?</li>
+        </ol>
+      </div>
+      <div class="col">
+        <div class="cap pr">Three that lower it</div>
+        <ol start="4">
+          <li>Must it be done in person, with your hands?</li>
+          <li>Does someone need a human to trust and hold responsible?</li>
+          <li>Does the law require a licensed human &mdash; and does the work hit genuinely new, high-stakes calls?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
   <div class="glead">Six moves for choosing well</div>
   ${movesHtml}
   <div class="ck">
@@ -114,7 +147,8 @@ async function main() {
     <div class="ck-sub">${pick("Six moves are the mindset. Here&rsquo;s the shortlist to run before your kid signs up for anything.", "Six moves are the mindset. Here&rsquo;s the shortlist to run before you sign up for anything.")}</div>
     ${checkHtml}
   </div>
-  <p class="gclose">The scores get you to the right shortlist. They can&rsquo;t make the final call &mdash; that turns on <em>which</em> exact track, how durable its protection really is, and whether the specific programme actually delivers it. That&rsquo;s what the full profile is for. But choose at the level of the lane, not the label, and you&rsquo;ve already dodged the most expensive mistake there is.</p>
+  <p class="gclose">The scores get you to the right shortlist. They can&rsquo;t make the final call &mdash; that turns on <em>which</em> exact track, how durable its protection really is, and whether the specific programme actually delivers it. That&rsquo;s what the <b>Career Value Guide</b> is for. But choose at the level of the lane, not the label, and you&rsquo;ve already dodged the most expensive mistake there is.</p>
+  <div class="gcta">Get the <b>Career Value Guide &mdash; Planning Edition</b> for the one or two careers that matter most: every track scored, the safe-versus-exposed split, the routes in, a programme checklist, and the questions to ask admissions. <span class="a">1 career $49 &middot; 3 for $69 &middot; unlimited $99 &mdash; start at pivotum.ai</span></div>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_planning_guide.html`);

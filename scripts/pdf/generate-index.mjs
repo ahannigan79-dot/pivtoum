@@ -168,8 +168,8 @@ async function main() {
     <div class="ixclose-sub">Twenty-eight fields is a shortlist, not a verdict. Three steps, and each one narrows the map for your family.</div>
     <div class="ixsteps">
       <div class="ixstep"><span class="ixstep-n">1</span><div class="ixstep-b"><b>This index is the lay of the land.</b> Every field scored the same way — enough good directions here to start the conversation about which paths are worth walking, and which begin in a hole.</div></div>
-      <div class="ixstep"><span class="ixstep-n">2</span><div class="ixstep-b"><b>A free sampler is the signpost.</b> Pick the career your kid keeps circling back to and read its full breakdown, free — the safe track, the exposed one, and the six factors that decide which is which.</div></div>
-      <div class="ixstep"><span class="ixstep-n">3</span><div class="ixstep-b"><b>The full profile is the map that gets you there.</b> Every track in one career scored and ranked, with the specific degrees and first jobs that land on the safe side — and the ones to steer around. The map you actually travel with.</div></div>
+      <div class="ixstep"><span class="ixstep-n">2</span><div class="ixstep-b"><b>The free read is the signpost.</b> Pick the career your kid keeps circling back to and read its free breakdown — a first look at where the safe and exposed tracks sit, and the six factors that decide which is which.</div></div>
+      <div class="ixstep"><span class="ixstep-n">3</span><div class="ixstep-b"><b>The Career Value Guide is the map that gets you there.</b> Every track in one career scored and ranked, with the specific degrees and first jobs that land on the safe side — and the ones to steer around. The map you actually travel with.</div></div>
     </div>
     <div class="ixclose-cta">Start any career free at pivotum.ai</div>
   </div>
