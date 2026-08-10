@@ -10,7 +10,7 @@ import { chromium } from "playwright-core";
  *   node scripts/pdf/generate.mjs <slug> <parent|student> <markdown-path> <out.pdf>
  *
  * Renders a profile markdown file through the Pivotum design system (Literata +
- * Archivo embedded, the four highlight colours, the hand-drawn score circle) to
+ * Archivo embedded, the four highlight colors, the hand-drawn score circle) to
  * a print-ready PDF. The cover score and its green/red circle are read straight
  * from data/careers.ts, so a PDF can never disagree with the site.
  *
@@ -40,7 +40,7 @@ function careerMeta(slug) {
   };
 }
 
-// A compact visual of the six factor ratings (0–10), coloured by direction.
+// A compact visual of the six factor ratings (0–10), colored by direction.
 // Injected into the parent profile right after the "six factors" heading.
 function factorBars(meta) {
   if (!meta.factors.length) return "";
@@ -188,7 +188,7 @@ function coverStudent(title) {
     <p class="lede">Everything that matters, none of the bits written for your parents.</p>
   </section>`;
 }
-const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:0">Highlighting is colour-coded</p>
+const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:0">Highlighting is color-coded</p>
   <div class="row">
     <span class="item"><span class="sw" style="background:var(--hl-find)"></span>The finding</span>
     <span class="item"><span class="sw" style="background:var(--hl-expo)"></span>Exposure</span>

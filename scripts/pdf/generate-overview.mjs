@@ -37,13 +37,13 @@ const C = PLAN
         "<b>Three samplers</b> &mdash; a full read on the careers " + pick("your kid is", "you&rsquo;re") + " weighing.",
       ],
       need:
-        "For the career " + pick("your kid", "you") + " actually commits to: <b>which exact track to aim at</b>, how durable that protection really is once AI keeps pushing, whether a given programme actually delivers it, and the honest downsides no admissions page will admit.",
+        "For the career " + pick("your kid", "you") + " actually commits to: <b>which exact track to aim at</b>, how durable that protection really is once AI keeps pushing, whether a given program actually delivers it, and the honest downsides no admissions page will admit.",
       why: pick(
-        "Your kid doesn&rsquo;t enrol in &lsquo;a field.&rsquo; They enrol in one programme and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to.",
-        "You don&rsquo;t enrol in &lsquo;a field.&rsquo; You enrol in one programme and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to."
+        "Your kid doesn&rsquo;t enroll in &lsquo;a field.&rsquo; They enroll in one program and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to.",
+        "You don&rsquo;t enroll in &lsquo;a field.&rsquo; You enroll in one program and take one first job &mdash; and the entire safe-versus-exposed difference lives at <em>that</em> level, exactly where the free scores stop. Getting the field right but the track wrong is the most expensive mistake in this whole process. It&rsquo;s the one thing the free package can&rsquo;t protect you from &mdash; and the one thing the Career Value Guide is built to."
       ),
       fill:
-        "<b>every track scored and the safe/exposed split</b> &middot; how durable each protection is &middot; routes in &middot; a programme checklist and the questions to ask admissions &middot; where the degree leads later.",
+        "<b>every track scored and the safe/exposed split</b> &middot; how durable each protection is &middot; routes in &middot; a program checklist and the questions to ask admissions &middot; where the degree leads later.",
     }
   : {
       ed: "Active",
@@ -80,11 +80,11 @@ async function main() {
     .recap-i{ display:flex; gap:.35cm; font-size:10.6pt; color:var(--ink-soft); line-height:1.45; align-items:baseline; }
     .recap-i .dot{ color:var(--pen-safe); font-weight:700; flex:0 0 auto; }
     .recap-i b{ color:var(--ink); }
-    .need{ break-inside:avoid; margin:.1cm 0 .35cm; padding:.5cm .6cm; background:rgba(172,58,52,.06); border:1px solid var(--rule); border-radius:9px; }
-    .need .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--pen); margin:0 0 .16cm; }
-    .need p{ margin:0; font-size:10.6pt; line-height:1.5; color:var(--ink-soft); }
+    .need{ break-inside:avoid; margin:.05cm 0 .3cm; }
+    .need .h{ font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--pen); margin:0 0 .12cm; }
+    .need p{ margin:0; font-size:10.8pt; line-height:1.55; color:var(--ink-soft); }
     .need b{ color:var(--ink); }
-    .why{ break-inside:avoid; margin:0 0 .35cm; padding:.55cm .7cm; border-left:3px solid var(--pen); background:#FBF9F3; border-radius:0 9px 9px 0; }
+    .why{ break-inside:avoid; margin:0 0 .3cm; padding:.05cm 0 .05cm .5cm; border-left:2.5px solid var(--pen); }
     .why p{ margin:0; font-family:var(--serif); font-size:11.5pt; line-height:1.5; color:var(--ink); }
     .why em{ font-style:italic; }
     .fill{ font-size:10.4pt; color:var(--ink-soft); line-height:1.5; margin:.1cm 0 0; }

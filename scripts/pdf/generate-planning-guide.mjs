@@ -33,8 +33,8 @@ const MOVES = [
     b: "What actually protects work is boringly consistent: it has to be done in person or with your hands; the law requires a licensed human; someone needs a person they can trust and hold responsible; the job keeps hitting genuinely new, high-stakes situations. Choose <em>toward</em> those and away from anything that reduces cleanly to a screen. A gut feeling that a field &lsquo;seems future-proof&rsquo; is worth nothing next to which of those six boxes it actually ticks.",
   },
   {
-    t: "Aim at a licence where one exists.",
-    b: "The single most durable moat we score is a legal one: the CPA signature, the PE stamp, the medical licence, the bar. Software can do the work, but it cannot <em>hold the licence</em> &mdash; so the licensed lane of a field is almost always its safe one. If a field has that lane, aim the whole plan at it from the first course, not as an afterthought late on.",
+    t: "Aim at a license where one exists.",
+    b: "The single most durable moat we score is a legal one: the CPA signature, the PE stamp, the medical license, the bar. Software can do the work, but it cannot <em>hold the license</em> &mdash; so the licensed lane of a field is almost always its safe one. If a field has that lane, aim the whole plan at it from the first course, not as an afterthought late on.",
   },
   {
     t: "Buy optionality, not one perfect bet.",
@@ -52,7 +52,7 @@ const MOVES = [
 
 const CHECK = [
   "<b>Shortlist two or three fields</b> &mdash; and for each, write down its safe lane and its exposed lane. If you can&rsquo;t name both, you don&rsquo;t know the field well enough yet.",
-  "<b>Score each safe lane on the six factors.</b> Licence? Hands or in-person? Human trust and accountability? Genuinely novel, high-stakes calls? The more yeses, the sturdier the lane.",
+  "<b>Score each safe lane on the six factors.</b> License? Hands or in-person? Human trust and accountability? Genuinely novel, high-stakes calls? The more yeses, the sturdier the lane.",
   "<b>Trace the on-ramp.</b> How does someone actually reach that safe lane &mdash; and is the entry rung along the way automating? A destination you can&rsquo;t get to doesn&rsquo;t count.",
   "<b>Talk to someone <em>in</em> the safe lane</b> &mdash; not a recruiter, not an admissions office. Ask what the work really is, and where they think it&rsquo;s going.",
   "<b>Pick the lane that fits " + pick("the kid", "you") + ", not just the market.</b> The durable choice is the one " + pick("they&rsquo;ll", "you&rsquo;ll") + " be good at and stay in.",
@@ -147,8 +147,8 @@ async function main() {
     <div class="ck-sub">${pick("Six moves are the mindset. Here&rsquo;s the shortlist to run before your kid signs up for anything.", "Six moves are the mindset. Here&rsquo;s the shortlist to run before you sign up for anything.")}</div>
     ${checkHtml}
   </div>
-  <p class="gclose">The scores get you to the right shortlist. They can&rsquo;t make the final call &mdash; that turns on <em>which</em> exact track, how durable its protection really is, and whether the specific programme actually delivers it. That&rsquo;s what the <b>Career Value Guide</b> is for. But choose at the level of the lane, not the label, and you&rsquo;ve already dodged the most expensive mistake there is.</p>
-  <div class="gcta">Get the <b>Career Value Guide &mdash; Planning Edition</b> for the one or two careers that matter most: every track scored, the safe-versus-exposed split, the routes in, a programme checklist, and the questions to ask admissions. <span class="a">1 career $49 &middot; 3 for $69 &middot; unlimited $99 &mdash; start at pivotum.ai</span></div>
+  <p class="gclose">The scores get you to the right shortlist. They can&rsquo;t make the final call &mdash; that turns on <em>which</em> exact track, how durable its protection really is, and whether the specific program actually delivers it. That&rsquo;s what the <b>Career Value Guide</b> is for. But choose at the level of the lane, not the label, and you&rsquo;ve already dodged the most expensive mistake there is.</p>
+  <div class="gcta">Get the <b>Career Value Guide &mdash; Planning Edition</b> for the one or two careers that matter most: every track scored, the safe-versus-exposed split, the routes in, a program checklist, and the questions to ask admissions. <span class="a">1 career $49 &middot; 3 for $69 &middot; unlimited $99 &mdash; start at pivotum.ai</span></div>
 </body></html>`;
 
   const htmlPath = join(tmpdir(), `pivotum_planning_guide.html`);
