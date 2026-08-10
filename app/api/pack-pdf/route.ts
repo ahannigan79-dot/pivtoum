@@ -16,7 +16,7 @@ const STAGES = ["planning", "active"] as const;
 const VOICES = ["parent", "student"] as const;
 const KINDS = ["guide", "overview"] as const;
 
-export const PACK_DOCS: string[] = KINDS.flatMap((k) =>
+const PACK_DOCS: string[] = KINDS.flatMap((k) =>
   STAGES.flatMap((s) => VOICES.map((v) => `${k}-${s}-${v}`)),
 );
 const ALLOWED = new Set(PACK_DOCS);
