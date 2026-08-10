@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { EmailSignup } from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
-  title: "Get the full profiles",
+  title: "Get the Career Value Guide",
   description:
-    "Buy full Pivotum career profiles in packs of 1, 3 or 5. Pay first, then choose which profiles you want. Spring 2027 updates included.",
+    "Buy the full Pivotum Career Value Guide in packs of 1, 3 or 5 careers. Pay first, then choose which careers you want. Spring 2027 updates included.",
   alternates: { canonical: "/buy" },
 };
 
@@ -20,21 +20,21 @@ export default function BuyPage() {
             <Link href="/">Pivotum</Link>
           </span>
           <i>/</i>
-          <span>Get the full profiles</span>
+          <span>Get the Career Value Guide</span>
         </div>
 
-        <h1>Get the full profiles</h1>
+        <h1>Get the Career Value Guide</h1>
         <p className="kicker">
-          The score tells you where a career stands. The full profile is how you actually choose —
-          so you&rsquo;re backing the best possible path for your kid on evidence, not a hunch.
+          The score tells you where a career stands. The Career Value Guide is how you act on it —
+          whether your kid is still choosing a path or already on one, backed by evidence, not a
+          hunch.
         </p>
         <p>
-          Each profile gives you all six factors scored and explained, the sub-tracks that split a
-          field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the
+          Each Career Value Guide gives you all six factors scored and explained, the sub-tracks that
+          split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the
           three-year trend so you know which way it&rsquo;s moving, every source behind the numbers,
-          and a version written directly to your kid. A degree is one of the biggest bets your family
-          will make — most families weigh two or three careers seriously. Pick a pack; choose which
-          profiles after checkout.
+          and a version written directly to the student. Most families weigh two or three careers
+          seriously. Pick a pack; choose which careers after checkout.
         </p>
 
         <BuyPacks />
@@ -44,8 +44,8 @@ export default function BuyPage() {
           appendix. Spring 2027 updates of whatever you buy are included.
         </p>
         <p className="fine">
-          <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link> We
-          publish computer science in full so you can judge the depth before buying anything.
+          <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
+          We publish computer science in full so you can judge the depth before buying anything.
         </p>
 
         <EmailSignup

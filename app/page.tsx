@@ -109,15 +109,15 @@ export default function Home() {
         <section className="lp-closing">
           <h2>Weighing two or three seriously?</h2>
           <p>
-            The full profiles cover the honest downsides, the routes in, and what to actually do —
-            for the careers your family is really considering.
+            The Career Value Guide covers the honest downsides, the routes in, and what to actually
+            do — for the careers your family is really considering.
           </p>
           <div className="lp-cta-row">
             <Link className="lp-btn" href="/buy">
-              Get the full profiles
+              Get the Career Value Guide
             </Link>
             <Link className="lp-btn ghost" href="/careers/computer-science">
-              Read the full profile free
+              Read one free
             </Link>
             <Link className="lp-btn ghost" href="/careers/computer-science/student">
               Read the student version free

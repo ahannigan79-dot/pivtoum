@@ -9,7 +9,7 @@ import { EmailSignup } from "@/components/EmailSignup";
 const career = getCareer("computer-science")!;
 
 export const metadata: Metadata = {
-  title: `${career.title} The ${career.edition} Profile`,
+  title: `${career.title} The ${career.edition} Career Value Guide`,
   description: career.description,
   alternates: { canonical: "/careers/computer-science" },
   openGraph: {
@@ -45,7 +45,7 @@ export default function ComputerSciencePage() {
       <div className="body">
         <div className="crumb" style={{ paddingTop: "1.5rem" }}>
           <span>
-            <Link href="/">Pivotum Profile</Link>
+            <Link href="/">Pivotum</Link>
           </span>
           <i>/</i>
           <span>Computer science</span>
@@ -53,13 +53,13 @@ export default function ComputerSciencePage() {
           <span>{career.edition}</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          The complete profile — published free, in full, so you can judge the depth before
-          buying anything. There&rsquo;s also a{" "}
+          The complete Career Value Guide — published free, in full, so you can judge the depth
+          before buying anything. There&rsquo;s also a{" "}
           <Link href="/careers/computer-science/student">free student version →</Link>
         </p>
         <CS />
         <EmailSignup
-          label="Want the test behind this profile?"
+          label="Want the test behind this guide?"
           sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new article and edition. Free, no spam."
         />
         <SiteFooter />

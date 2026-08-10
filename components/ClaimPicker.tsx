@@ -42,9 +42,9 @@ export function ClaimPicker({
       setStatus("done");
       if (data.links?.length) {
         setLinks(data.links);
-        setMessage(`Your ${data.delivered} profile(s) are ready — links valid for 7 days:`);
+        setMessage(`Your ${data.delivered} guide(s) are ready — links valid for 7 days:`);
       } else {
-        setMessage(`Sent ${data.delivered} profile(s) to ${data.email}. The links are valid for 7 days.`);
+        setMessage(`Sent ${data.delivered} guide(s) to ${data.email}. The links are valid for 7 days.`);
       }
     } else {
       setStatus("error");
@@ -63,7 +63,7 @@ export function ClaimPicker({
             {links.map((l) => (
               <li key={l.url}>
                 <a href={l.url} target="_blank" rel="noreferrer">
-                  {l.name} — full profile (PDF)
+                  {l.name} — Career Value Guide (PDF)
                 </a>
               </li>
             ))}
@@ -97,7 +97,7 @@ export function ClaimPicker({
           disabled={selected.length !== packSize || status === "sending"}
           onClick={submit}
         >
-          {status === "sending" ? "Sending…" : "Email me these profiles"}
+          {status === "sending" ? "Sending…" : "Email me these guides"}
         </button>
         {status === "error" ? <span className="claim-note">{message}</span> : null}
       </div>
