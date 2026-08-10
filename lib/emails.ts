@@ -73,6 +73,88 @@ export function purchaseEmail(
 }
 
 /**
+ * The AI Career Map package email — delivered from the /map capture. Lists the
+ * assembled package (index + the stage/voice guide + overview + the chosen
+ * career breakdowns) as a download list, then surfaces the same subscriber
+ * discount. Same branded, table-based, inline-styled construction as the others.
+ */
+export function packageEmail(opts: {
+  items: { name: string; url: string; sub?: string; cta?: string }[];
+  code: string;
+  discountLabel: string;
+  expiresDays: number;
+  buyUrl: string;
+}) {
+  const { items, code, discountLabel, expiresDays, buyUrl } = opts;
+  const ink = "#211E1B";
+  const inkSoft = "#57534D";
+  const pencil = "#8C857A";
+  const rule = "#E7E4DC";
+  const pen = "#AC3A34";
+  const hl = "#FFE26E";
+
+  const link = (url: string, label: string) =>
+    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
+  const button = (url: string, label: string, bg: string) =>
+    `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
+
+  const rows = items
+    .map(
+      (it) => `
+      <tr><td style="padding:13px 0;border-bottom:1px solid ${rule};">
+        <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;color:${ink};margin-bottom:${it.sub ? "3px" : "7px"};">${it.name}</div>
+        ${it.sub ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:${pencil};margin-bottom:8px;">${it.sub}</div>` : ""}
+        <div>${link(it.url, it.cta ?? "Download PDF")}</div>
+      </td></tr>`,
+    )
+    .join("");
+
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+    <tr><td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+        <tr><td style="padding:34px 36px 26px;">
+          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your AI Career Map, plus ${discountLabel} for subscribers.</span>
+
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">The AI Career Map &middot; Fall 2026</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your AI Career Map is here</div>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose. Work through them in order; the guide ties it together.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the full profiles</strong> in below.</p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};margin:0 0 22px;">
+            ${rows}
+          </table>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Your subscriber offer</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
+            <p style="margin:0;">${button(buyUrl, "See the full profiles", pen)}</p>
+          </td></tr></table>
+
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">I hope the map helps. Reply any time &mdash; I read every one.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${inkSoft};margin:0;">&mdash; ${SITE.founder}, founder, Pivotum</p>
+        </td></tr>
+        <tr><td style="padding:18px 36px 26px;border-top:1px solid ${rule};">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.7;color:${pencil};margin:0;">28 careers, scored the same way. Scores measure exposure to what AI can already do &mdash; not how much any employer has deployed. Re-scored every six months. We publish where we might be wrong.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+  </body></html>`;
+
+  const text =
+    `Your AI Career Map is here.\n\n` +
+    `Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and the breakdowns on the careers you chose.\n\n` +
+    items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
+    `\n\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
+    `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
+
+  return { html, text };
+}
+
+/**
  * The "here's your free PDF" email — the trojan horse. Delivers the requested
  * sampler/index PDF up top (with the subscriber offer surfaced in the opening
  * line), then makes the case for the paid profiles and hands over the discount

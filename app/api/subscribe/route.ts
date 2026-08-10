@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import { addSubscriber } from "@/lib/db";
 import { getCareer } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
-import { pdfWelcomeEmail } from "@/lib/emails";
+import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
 import { mintLeadPromoCode } from "@/lib/stripe";
 import { SITE } from "@/lib/site";
 
@@ -78,21 +78,81 @@ export async function POST(req: Request) {
     const code = (await mintLeadPromoCode(expiresDays)) ?? "PARENT20";
     const resend = new Resend(apiKey);
     try {
-      const { html, text } = pdfWelcomeEmail({
-        pdfUrl,
-        pdfLabel,
-        code,
-        discountLabel: "20% off",
-        expiresDays,
-        buyUrl: `${SITE.url}/buy`,
-      });
-      await resend.emails.send({
-        from,
-        to: email,
-        subject: career ? `Your ${career.name} sampler (PDF)` : "Your 28 AI-exposure scores (PDF)",
-        html,
-        text,
-      });
+      if (pkg.stage) {
+        // The AI Career Map capture: assemble and deliver the full package —
+        // index + the stage/voice guide + overview + the chosen career
+        // breakdowns (sampler PDF where one exists, else the on-site page).
+        const stage = pkg.stage;
+        const voice = pkg.audience === "self" ? "student" : "parent";
+        const items = [
+          {
+            name: "The 28-career AI Career Index",
+            url: `${SITE.url}/api/sampler-pdf?s=index`,
+            sub: "Every career scored, safest to most exposed.",
+            cta: "Download PDF",
+          },
+          {
+            name:
+              stage === "planning"
+                ? "Your guide — choosing a path that lasts"
+                : "Your guide — protecting your value",
+            url: `${SITE.url}/api/pack-pdf?doc=guide-${stage}-${voice}`,
+            sub:
+              stage === "planning"
+                ? "The six moves for choosing well, plus a pre-decision checklist."
+                : "The six moves for protecting value, plus a right-now checklist.",
+            cta: "Download PDF",
+          },
+          {
+            name: "What’s next — your map",
+            url: `${SITE.url}/api/pack-pdf?doc=overview-${stage}-${voice}`,
+            sub: "How the pieces fit, and the one thing to do next.",
+            cta: "Download PDF",
+          },
+          ...pkg.careers.map((s) => {
+            const c = getCareer(s);
+            const has = hasSamplerPage(s);
+            return {
+              name: `${c?.name ?? s} — full breakdown`,
+              url: has ? `${SITE.url}/api/sampler-pdf?s=${s}` : `${SITE.url}/careers/${s}`,
+              sub: has
+                ? "The safe track, the exposed one, and what splits them."
+                : "The full breakdown, on the site.",
+              cta: has ? "Download PDF" : "Read online",
+            };
+          }),
+        ];
+        const { html, text } = packageEmail({
+          items,
+          code,
+          discountLabel: "20% off",
+          expiresDays,
+          buyUrl: `${SITE.url}/buy`,
+        });
+        await resend.emails.send({
+          from,
+          to: email,
+          subject: "Your AI Career Map (index + guide + breakdowns)",
+          html,
+          text,
+        });
+      } else {
+        const { html, text } = pdfWelcomeEmail({
+          pdfUrl,
+          pdfLabel,
+          code,
+          discountLabel: "20% off",
+          expiresDays,
+          buyUrl: `${SITE.url}/buy`,
+        });
+        await resend.emails.send({
+          from,
+          to: email,
+          subject: career ? `Your ${career.name} sampler (PDF)` : "Your 28 AI-exposure scores (PDF)",
+          html,
+          text,
+        });
+      }
     } catch {
       /* delivery is best-effort — the address is already on the list */
     }
