@@ -8,11 +8,12 @@ export interface Pack {
   tag?: string;
 }
 
-/** The three packs. "5 profiles" is tagged Most families. Pay first, choose after. */
+/** The three packs, by number of careers. "5 careers" is tagged Most families.
+ *  Pay first, choose after. */
 export const PACKS: Pack[] = [
-  { size: 1, label: "1 profile", price: "$19" },
-  { size: 3, label: "3 profiles", price: "$29" },
-  { size: 5, label: "5 profiles", price: "$39", tag: "Most families" },
+  { size: 1, label: "1 career", price: "$19" },
+  { size: 3, label: "3 careers", price: "$29" },
+  { size: 5, label: "5 careers", price: "$39", tag: "Most families" },
 ];
 
 export function BuyBlock({ source = "index", title }: { source?: string; title?: string }) {
@@ -21,15 +22,14 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
       <StarterKitCta source={source} title={title} />
 
       <div className="buy-secondary">
-        <h3>Choose the degree with your eyes open</h3>
+        <h3>Go deeper with the Career Value Guide</h3>
         <p>
-          A degree is one of the biggest bets your family will make — years of your kid&rsquo;s life
-          and tens of thousands in cost. The full profile is how you make it on evidence, not a
-          hunch: all six factors scored and explained, the sub-tracks that split a field in two (the
-          specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every
-          source, and a version written to your kid. For the two or three careers they&rsquo;re
-          seriously weighing, it&rsquo;s the difference between hoping you&rsquo;re right and knowing
-          why.
+          The free read tells you where a career stands. The <strong>Career Value Guide</strong> is
+          how you act on it — whether your kid is still choosing a path or already on one. All six
+          factors scored and explained, the sub-tracks that split a field in two (the specialty
+          that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and
+          a version written directly to the student. For the two or three careers that matter most to
+          your family, it&rsquo;s the difference between hoping you&rsquo;re right and knowing why.
         </p>
         <div className="tiers">
           {PACKS.map((p) => (
@@ -45,12 +45,12 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
           ))}
         </div>
         <p className="fine">
-          Each includes a short version written directly to the student and the technical
-          scoring appendix. Spring 2027 updates of whatever you buy are included.
+          Each Career Value Guide includes a version written directly to the student and the
+          technical scoring appendix. Spring 2027 updates of whatever you buy are included.
         </p>
         <p className="fine">
-          <Link href="/careers/computer-science">Read one complete profile free &rarr;</Link> We
-          publish computer science in full so you can judge the depth before buying anything.
+          <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
+          We publish computer science in full so you can judge the depth before buying anything.
         </p>
       </div>
     </div>

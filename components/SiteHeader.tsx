@@ -36,7 +36,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link className="site-nav-link site-nav-cta" href="/buy">
-            Get profiles
+            Career guides
           </Link>
         </nav>
 
@@ -63,7 +63,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link href="/buy" className="nav-panel-link nav-panel-cta" onClick={close}>
-            Get profiles
+            Career guides
           </Link>
         </div>
       ) : null}

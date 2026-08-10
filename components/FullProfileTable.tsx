@@ -42,7 +42,7 @@ export function FullProfileTable({ career }: { career: Career }) {
       <div className="h">
         <span />
         <span>Free</span>
-        <span>Full</span>
+        <span>Guide</span>
       </div>
       {ROWS.map((r, i) => (
         <div key={i}>
