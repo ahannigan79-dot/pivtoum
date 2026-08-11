@@ -82,6 +82,8 @@ The second has nothing to do with AI, and our framework doesn't measure it: **pl
 
 Section 8 covers what the labor market data actually shows, because it's the most important evidence in this profile.
 
+**The way through the Catch-22 isn't to wait for the entry rung to come back — it may not.** It's to enter *beside* it: through a placement that substitutes for the vanishing analyst years, through a protected lane rather than the generic one, and with a result you can point to instead of a CV that reads like everyone else's. That's a set of concrete moves, not a hope, and the career-hunting checklist later in this document lays them out.
+
 ### Does it have to be done in person, with your hands? *(15%)*
 
 **Effectively none of it.**
@@ -162,6 +164,8 @@ That is the central problem this profile is about, and it's why the entry-path q
 5. **Verification** — knowing when a generated analysis is confidently wrong, which requires understanding the business well enough to smell it.
 
 Notably absent: producing decks, building models and assembling reports. These were the traditional markers of a strong graduate hire and are the fastest-depreciating things on the list.
+
+And underneath all five, two traits the score can't grade: ==+curiosity and adaptability.== The specific tools will turn over many times across a career — the graduates who compound are the ones who stay genuinely curious and re-tool fastest, rather than defending the one way of working they learned. In a field with no license and no fixed toolkit, that flexibility is itself a form of protection, and it's the thing employers are increasingly hiring *for*: the trajectory, not the current skill set.
 
 ---
 
@@ -312,6 +316,30 @@ Here the title on the offer matters more than it looks, because the most common 
 ## The AI-native move, from where they stand
 
 They can't undo the last two years, but they can be the graduate who *directs* these tools rather than competes with them. The five capabilities above — verify, frame, automate visibly, communicate under scrutiny, own something measurable — are all available right now, inside a current internship or a first job. The most powerful for someone already in it is the third: ==+be the person who rebuilds a manual process and can show what it saved.== In a field with no credential, a demonstrable result is the credential — and it's one they can start building this term, not after some future qualification.
+
+---
+
+# The career-hunting checklist
+
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your child's hands. Most of the protection in business is built here, in these habits, rather than chosen once at enrollment. The first list is for anyone still in the degree; the second is for the job hunt itself.
+
+## During the degree — build what can't be automated
+
+- **Lock in a specialization with structural protection.** Operations, supply chain, or genuine quantitative depth over general management studies. The generic core is the exposed lane.
+- **Treat the placement as non-negotiable.** In a field with no license, the internship is the closest thing to one, and the single strongest signal a graduate can carry. One isn't enough — do two if the program allows it.
+- **Own one real, measurable thing before graduating.** A budget, a small venture, a society's P&L, a project whose outcome is theirs. Evidence is the credential.
+- **Get fluent with AI as a worker, not a shortcut.** Be able to direct it, catch it when it's confidently wrong, and point to a process they rebuilt and what it saved. That's the story that lands in an interview.
+- **Feed curiosity and adaptability on purpose.** The tools will turn over repeatedly; the person who re-tools fastest compounds. Staying genuinely interested in how organizations work is what keeps that engine running.
+- **Keep the frame wide.** Properly vet adjacent paths — operations, supply chain, a domain pairing, even the trades — before ruling them out. The most crowded lane is almost always the default one.
+
+## During the job hunt — aim, don't just apply
+
+- **Target the protected lanes on purpose.** Ownership tracks, operations, supply chain, a domain-paired role — not "business analyst, open to anything," which points straight at the 7.6.
+- **Read the title, not just the offer.** "Analyst" and "coordinator" are the automating layer. If they take one, take it as a deliberate stepping-stone with an exit in mind, not as the plan.
+- **Don't grab a job just because it's on offer in an exposed lane.** ==-A role being available doesn't make it safe.== An employer still running a large analyst intake may simply be behind the curve — and that's exactly the rung that gets cut first once they catch up. Availability today can be a lagging indicator, not a green light.
+- **Prefer the number, and the smaller room.** A role with a P&L line, a target, or a team — often at a smaller organization — puts them close to accountability years sooner than supporting someone else's work at a big name.
+- **Ask the employer where AI is heading in the role.** How they answer reveals whether they're building the job around these tools or waiting to be forced to. You want the former; it's the difference between a role that grows and one that's quietly being hollowed out.
+- **Weigh the trajectory over the starting salary.** A slightly lower-paid role that builds ownership and AI-fluency beats a higher-paid seat in a lane that's being automated underneath them.
 
 ---
 
