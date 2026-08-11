@@ -41,7 +41,7 @@ export function StarterKitCta({
         ) : (
           <>
             <strong>Build your free Career Map</strong> — all 28 careers scored, a short guide
-            written for exactly where you stand, and the full read on the three careers that matter
+            written for exactly where you stand, and the full read on the careers that matter most
             to you. Yours to keep, print, and share.
           </>
         )}

@@ -12,12 +12,12 @@ interface CareerOpt {
   name: string;
 }
 
-const MAX_PICKS = 3;
+const MAX_PICKS = 5;
 
 /**
  * The Career Map capture. One screen that collects the two flags that fork
  * the whole package — stage (planning vs already-in) and who it's for (child vs
- * self) — plus up to three careers of interest, then the email. Posts the lot
+ * self) — plus up to five careers of interest, then the email. Posts the lot
  * to /api/subscribe, which assembles and delivers the matching package.
  */
 export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; preselect?: string }) {
