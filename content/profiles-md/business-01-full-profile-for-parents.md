@@ -4,7 +4,7 @@
 
 *Pivotum Degree Risk Index — Fall 2026 Edition*
 
-*A decision toolkit for families choosing a degree*
+*A decision toolkit for the degree decision — whether it's still ahead of you or already underway*
 
 ---
 
@@ -27,6 +27,8 @@ The better approach: read this yourself first, then share it with them as *infor
 **A practical note:** there's a separate short version written directly to them. Send them that one.
 
 **And one thing specific to business.** This is the most-taken degree in the country, which means it is also the default choice — the thing people pick when they don't know what to pick. ==?That is the single most important fact in this profile, and it isn't about AI at all.== If your child is choosing business because they're genuinely interested in how organizations work, this document will help. If they're choosing it because nothing else stood out, the honest advice is to stop and look wider first.
+
+**Two readers, one document.** If your child is still choosing, read this as a decision tool and work straight through. If they're already in a business degree — or graduated and job-hunting — the scores and the six factors don't change, but what you *do* about them does. Read the analysis, then go to ==+**If you're already in it**==, further down. The program-selection sections near the end won't apply to you; that one is written for exactly where you are.
 
 ---
 
@@ -284,6 +286,35 @@ The good news is genuine breadth: general management, operations, commercial and
 
 ---
 
+# If you're already in it — repositioning from here
+
+If the degree is chosen and underway, the program-selection questions below are behind you. The useful ones are different — and the good news is real: ==+almost none of your child's exposure is fixed yet.== Business isn't one destination, it's a 2.7-point spread from 4.9 to 7.6, and where they land inside it is decided mostly *after* enrollment, by things still in front of them.
+
+## Still in the degree
+
+Three levers, in order of leverage.
+
+**1. The specialization is the whole game.** A general business degree is the exposed one — it's the row that scores worst in this entire profile. The protected destinations — general management with P&L accountability (4.9), operations and supply chain (5.0), HR (5.3) — are reached by concentration, not by the generic core. If they haven't committed to a track, this is the single highest-leverage decision left in the degree. If they have, hold it up against the scores above and ask honestly whether it points at *accountability* or at *reporting*.
+
+**2. Quantitative depth, while it's still free.** The analyst and coordinator roles that score 7.6 are the report-builders — pattern-work on structured data, first in line for automation. The same aptitude aimed one level up — owning the model rather than running it, deciding what to measure rather than compiling it — is the judgment layer that ages well. Every quantitative elective they can still take (statistics, econometrics, experimentation) is a step from the exposed end toward the protected one, and it is far cheaper to acquire now than to bolt on later.
+
+**3. Accountability, earlier than feels comfortable.** The through-line of this whole index is that roles where someone *owns* an outcome score better than roles that feed one — and that doesn't have to wait for graduation. A co-op with real P&L exposure, running an actual budget in a student venture or society, an internship where they carry a number rather than support one: ==+that is the experience that separates the protected ceiling from the exposed floor==, and in a field with no license, it's the closest thing to one.
+
+## Already graduated and job-hunting
+
+Here the title on the offer matters more than it looks, because the most common early-career business titles are also the most exposed.
+
+- **"Business analyst" and "coordinator" *are* the 7.6.** They're the default graduate destinations and the automating layer at once. Taking one isn't fatal — but it should be a deliberate stepping-stone with an exit in mind, not the plan.
+- **Aim at operations and supply chain (5.0).** More protected, closer to real-world constraints, and chronically under-applied-to — which means less competition, not more.
+- **Attach to a domain, not "business in general."** Business paired with healthcare, energy, logistics or a regulated industry inherits that field's protection. ==-"Open to anything" aims straight at the exposed middle.==
+- **Chase the number.** Anything with a P&L line, a target, a team or a budget attached moves them up the scale — even small, even at a smaller company, where accountability tends to arrive years sooner.
+
+## The AI-native move, from where they stand
+
+They can't undo the last two years, but they can be the graduate who *directs* these tools rather than competes with them. The five capabilities above — verify, frame, automate visibly, communicate under scrutiny, own something measurable — are all available right now, inside a current internship or a first job. The most powerful for someone already in it is the third: ==+be the person who rebuilds a manual process and can show what it saved.== In a field with no credential, a demonstrable result is the credential — and it's one they can start building this term, not after some future qualification.
+
+---
+
 # What to look for in a business program
 
 **1. Placement — and whether it's guaranteed or competitive.**
@@ -399,6 +430,14 @@ And one honest thing worth saying to a seventeen-year-old considering this becau
 19. Ask each school the placement and outcome questions from section 13. Compare the evasiveness as much as the answers.
 20. Is there a genuine operations or supply chain pathway? Has anyone mentioned it?
 21. How much of the degree is quantitative, and is it compulsory?
+
+## Part 4b — If they're already in it
+
+*Use these instead of Part 4 if the degree is already underway or finished.*
+
+- Which specialization or track are they on — and does it point at *accountability* (owning a number) or at *reporting* (producing one)?
+- What's the single most protected role they could realistically aim for from where they are now, and what would make them a credible candidate for it?
+- Is there anything they own end-to-end this year — a budget, a project's outcome, a real result — or only things they contribute to? If it's the latter, what's the nearest way to change that?
 
 ## Part 5 — Widening the frame
 
