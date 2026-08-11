@@ -7,14 +7,14 @@ import { careers } from "@/data/careers";
 export const metadata: Metadata = {
   title: "Your free Career Map",
   description:
-    "Build your free Career Map — the 28-career AI-exposure index, a guide written for exactly where you are, and full breakdowns on the three careers you care about.",
+    "Build your free Career Map — the 28-career AI-exposure index, a guide written for exactly where you are, and full breakdowns on the careers you care about.",
   alternates: { canonical: "/map" },
 };
 
 const BAND = ["#C0472F", "#D98D7B", "#DFD5A2", "#A7CBA0", "#4E9E5E"];
 
 /** The Career Map — distraction-free capture for paid ad traffic. Collects
- *  the stage + audience flags and up to three careers, then delivers the matching
+ *  the stage + audience flags and up to five careers, then delivers the matching
  *  package. Challenger to /scores; nav hidden via SiteHeader. */
 export default async function MapLanding({
   searchParams,
@@ -45,7 +45,7 @@ export default async function MapLanding({
         </h1>
         <p className="scr-sub">
           Build your free Career Map — all 28 careers scored, a short guide written for exactly
-          where you stand, and the full breakdown on the three careers that matter to you.
+          where you stand, and the full breakdown on up to five careers that matter to you.
         </p>
 
         <div className="scr-bar" aria-hidden="true">

@@ -25,7 +25,7 @@ export async function POST(req: Request) {
   const pkg = {
     stage: stage === "planning" || stage === "active" ? stage : undefined,
     audience: audience === "child" || audience === "self" ? audience : undefined,
-    careers: Array.isArray(careers) ? careers.filter((s) => typeof s === "string").slice(0, 3) : [],
+    careers: Array.isArray(careers) ? careers.filter((s) => typeof s === "string").slice(0, 5) : [],
   };
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
