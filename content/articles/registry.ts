@@ -15,6 +15,14 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
   {
+    slug: "your-kid-already-chose",
+    title: "Your kid already chose. That makes this more urgent, not less.",
+    description:
+      "For parents of a student already in a degree or a first job: the entry-level Catch-22, becoming genuinely AI-native, and how to use AI while still studying — plus what holds up regardless of the major.",
+    datePublished: "2026-08-11",
+    dateModified: "2026-08-11",
+  },
+  {
     slug: "what-im-telling-my-own-kid",
     title: "I build AI for a living. Here's what I'm telling my own kid.",
     description:
@@ -34,6 +42,7 @@ export const articles: ArticleMeta[] = [
 ];
 
 export const articleMdx: Record<string, () => Promise<MDXModule>> = {
+  "your-kid-already-chose": () => import("./your-kid-already-chose.mdx"),
   "what-im-telling-my-own-kid": () => import("./what-im-telling-my-own-kid.mdx"),
   "helping-your-kid-pick-a-career": () => import("./helping-your-kid-pick-a-career.mdx"),
 };
