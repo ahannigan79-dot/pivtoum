@@ -1,8 +1,8 @@
 # You're Already in Business — Here's How to Make It Count
 
-## The Already-In-It Guide · Business & Management
+## Career Value Guide · Business & Management
 
-*Pivotum Degree Risk Index — Fall 2026 Edition*
+*Pivotum · Fall 2026*
 
 *For anyone already in a business degree — or graduated and job-hunting with one*
 
@@ -321,7 +321,7 @@ The analysis tells you where the exposure is. This is what to do about it — th
 
   The argument against our score is that we're attributing to AI what is really a supply problem. On this reading, business graduate outcomes were deteriorating well before generative AI existed, driven by the sheer number of degrees conferred and by employers raising requirements — and our 7.6 is measuring a labor market condition rather than a technological one.
 
-  **Where we land:** we think this is substantially correct, and we've said so above rather than hiding it. Business is the profile where our framework is least sufficient on its own. What we'd add is that the two forces compound rather than compete — oversupply meant graduates already needed a differentiator, and automation removed the rung where they used to acquire one. ==?Treat our score as one input alongside the New York Fed's underemployment data, not as a complete account.==
+  **Where we land:** we think this is substantially correct, and we've said so above rather than hiding it. Business is the field where our framework is least sufficient on its own. What we'd add is that the two forces compound rather than compete — oversupply meant graduates already needed a differentiator, and automation removed the rung where they used to acquire one. ==?Treat our score as one input alongside the New York Fed's underemployment data, not as a complete account.==
 
 ---
 
