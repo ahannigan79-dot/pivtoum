@@ -8,6 +8,22 @@
 
 ---
 
+## Start here — find your path
+
+**This guide serves two readers.** The analysis is identical for both — the scores, the six factors, how the work is changing. What differs is what you *do* with it. Pick your path before you start:
+
+**Path 1 · Still choosing** a degree or path → read straight through. Every section applies, in order.
+
+**Path 2 · Already in it** — in the degree now, or graduated and job-hunting → the analysis is the same, so read **The short answer**, **The scores**, and **Why business scores the way it does**, then go straight to the three sections written for exactly where you are:
+
+- ==+**If you're already in it — repositioning from here**==
+- ==+**The career-hunting checklist**==
+- ==+**Bottom line**==
+
+The program-selection sections — *What to look for in a business program* and *Questions to ask a business school* — are for the choosing stage. If you're already in, you can skip them.
+
+---
+
 ## Before you read this — a note for parents
 
 You're likely reading this before your child is. That's normal, and it's worth pausing on how you use it.
@@ -27,8 +43,6 @@ The better approach: read this yourself first, then share it with them as *infor
 **A practical note:** there's a separate short version written directly to them. Send them that one.
 
 **And one thing specific to business.** This is the most-taken degree in the country, which means it is also the default choice — the thing people pick when they don't know what to pick. ==?That is the single most important fact in this profile, and it isn't about AI at all.== If your child is choosing business because they're genuinely interested in how organizations work, this document will help. If they're choosing it because nothing else stood out, the honest advice is to stop and look wider first.
-
-**Two readers, one document.** If your child is still choosing, read this as a decision tool and work straight through. If they're already in a business degree — or graduated and job-hunting — the scores and the six factors don't change, but what you *do* about them does. Read the analysis, then go to ==+**If you're already in it**==, further down. The program-selection sections near the end won't apply to you; that one is written for exactly where you are.
 
 ---
 
