@@ -25,8 +25,8 @@ export default async function ProfilesPage() {
       name,
       score: c.headlineScore,
       safe: headlineFlag(c.headlineScore) === "safe",
-      parent: urls.get(`profiles/${c.slug}-parent.pdf`) ?? null,
-      student: urls.get(`profiles/${c.slug}-student.pdf`) ?? null,
+      planning: urls.get(`profiles/${c.slug}-planning.pdf`) ?? null,
+      active: urls.get(`profiles/${c.slug}-active.pdf`) ?? null,
     };
   });
 
@@ -60,8 +60,8 @@ export default async function ProfilesPage() {
             <tr>
               <th style={th}>Career</th>
               <th style={{ ...th, textAlign: "right" }}>Score</th>
-              <th style={{ ...th, textAlign: "right" }}>Parent</th>
-              <th style={{ ...th, textAlign: "right" }}>Student</th>
+              <th style={{ ...th, textAlign: "right" }}>Planning</th>
+              <th style={{ ...th, textAlign: "right" }}>Already-in-it</th>
             </tr>
           </thead>
           <tbody>
@@ -72,10 +72,10 @@ export default async function ProfilesPage() {
                   {r.score.toFixed(1)}
                 </td>
                 <td style={{ ...td, textAlign: "right" }}>
-                  {r.parent ? <a href={r.parent} target="_blank" rel="noreferrer" style={linkStyle}>View →</a> : <span style={{ color: "var(--pencil)", fontSize: ".8rem" }}>missing</span>}
+                  {r.planning ? <a href={r.planning} target="_blank" rel="noreferrer" style={linkStyle}>View →</a> : <span style={{ color: "var(--pencil)", fontSize: ".8rem" }}>missing</span>}
                 </td>
                 <td style={{ ...td, textAlign: "right" }}>
-                  {r.student ? <a href={r.student} target="_blank" rel="noreferrer" style={linkStyle}>View →</a> : <span style={{ color: "var(--pencil)", fontSize: ".8rem" }}>missing</span>}
+                  {r.active ? <a href={r.active} target="_blank" rel="noreferrer" style={linkStyle}>View →</a> : <span style={{ color: "var(--pencil)", fontSize: ".8rem" }}>missing</span>}
                 </td>
               </tr>
             ))}

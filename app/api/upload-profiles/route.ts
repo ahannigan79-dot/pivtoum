@@ -8,11 +8,12 @@ import { claimableCareers } from "@/lib/profiles";
 export const dynamic = "force-dynamic";
 
 /**
- * Upload the real profile PDFs into Blob. Reads profiles-src/<slug>-parent.pdf
- * and profiles-src/<slug>-student.pdf (committed to the repo, bundled into this
- * function via next.config outputFileTracingIncludes) and stores them as
- * profiles/<slug>-parent.pdf / profiles/<slug>-student.pdf. Gated by the
- * signing secret, same as the old seed route.
+ * Upload the real Career Value Guide PDFs into Blob. Reads
+ * profiles-src/<slug>-planning.pdf and profiles-src/<slug>-active.pdf (committed
+ * to the repo, bundled into this function via next.config
+ * outputFileTracingIncludes) and stores them as profiles/<slug>-planning.pdf /
+ * profiles/<slug>-active.pdf. Gated by the signing secret, same as the old seed
+ * route.
  *
  *   GET /api/upload-profiles?key=<DOWNLOAD_SIGNING_SECRET>
  */
@@ -31,7 +32,7 @@ export async function GET(req: Request) {
   const missing: string[] = [];
 
   for (const career of claimableCareers()) {
-    for (const kind of ["parent", "student"] as const) {
+    for (const kind of ["planning", "active"] as const) {
       const file = `${career.slug}-${kind}.pdf`;
       let bytes: Buffer;
       try {

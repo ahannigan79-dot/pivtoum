@@ -4,7 +4,23 @@
 
 *Pivotum Degree Risk Index — Fall 2026 Edition*
 
-*A decision toolkit for families choosing a degree*
+*A decision toolkit for the degree decision — whether it's still ahead of you or already underway*
+
+---
+
+## Start here — find your path
+
+**This guide serves two readers.** The analysis is identical for both — the scores, the six factors, how the work is changing. What differs is what you *do* with it. Pick your path before you start:
+
+**Path 1 · Still choosing** a degree or path → read straight through. Every section applies, in order.
+
+**Path 2 · Already in it** — in the degree now, or graduated and job-hunting → the analysis is the same, so read **The short answer**, **The scores**, and **Why business scores the way it does**, then go straight to the three sections written for exactly where you are:
+
+- ==+**If you're already in it — repositioning from here**==
+- ==+**The career-hunting checklist**==
+- ==+**Bottom line**==
+
+The program-selection sections — *What to look for in a business program* and *Questions to ask a business school* — are for the choosing stage. If you're already in, you can skip them.
 
 ---
 
@@ -79,6 +95,8 @@ The first is automation. Analyst programs, coordinator roles and junior project 
 The second has nothing to do with AI, and our framework doesn't measure it: **plain oversupply.** Business is the most-conferred bachelor's degree in the United States. There is no licensing body capping entry, no clinical placement bottleneck, no accreditation constraint on numbers.
 
 Section 8 covers what the labor market data actually shows, because it's the most important evidence in this profile.
+
+**The way through the Catch-22 isn't to wait for the entry rung to come back — it may not.** It's to enter *beside* it: through a placement that substitutes for the vanishing analyst years, through a protected lane rather than the generic one, and with a result you can point to instead of a CV that reads like everyone else's. That's a set of concrete moves, not a hope, and the career-hunting checklist later in this document lays them out.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -160,6 +178,8 @@ That is the central problem this profile is about, and it's why the entry-path q
 5. **Verification** — knowing when a generated analysis is confidently wrong, which requires understanding the business well enough to smell it.
 
 Notably absent: producing decks, building models and assembling reports. These were the traditional markers of a strong graduate hire and are the fastest-depreciating things on the list.
+
+And underneath all five, two traits the score can't grade: ==+curiosity and adaptability.== The specific tools will turn over many times across a career — the graduates who compound are the ones who stay genuinely curious and re-tool fastest, rather than defending the one way of working they learned. In a field with no license and no fixed toolkit, that flexibility is itself a form of protection, and it's the thing employers are increasingly hiring *for*: the trajectory, not the current skill set.
 
 ---
 
@@ -284,6 +304,59 @@ The good news is genuine breadth: general management, operations, commercial and
 
 ---
 
+# If you're already in it — repositioning from here
+
+If the degree is chosen and underway, the program-selection questions below are behind you. The useful ones are different — and the good news is real: ==+almost none of your child's exposure is fixed yet.== Business isn't one destination, it's a 2.7-point spread from 4.9 to 7.6, and where they land inside it is decided mostly *after* enrollment, by things still in front of them.
+
+## Still in the degree
+
+Three levers, in order of leverage.
+
+**1. The specialization is the whole game.** A general business degree is the exposed one — it's the row that scores worst in this entire profile. The protected destinations — general management with P&L accountability (4.9), operations and supply chain (5.0), HR (5.3) — are reached by concentration, not by the generic core. If they haven't committed to a track, this is the single highest-leverage decision left in the degree. If they have, hold it up against the scores above and ask honestly whether it points at *accountability* or at *reporting*.
+
+**2. Quantitative depth, while it's still free.** The analyst and coordinator roles that score 7.6 are the report-builders — pattern-work on structured data, first in line for automation. The same aptitude aimed one level up — owning the model rather than running it, deciding what to measure rather than compiling it — is the judgment layer that ages well. Every quantitative elective they can still take (statistics, econometrics, experimentation) is a step from the exposed end toward the protected one, and it is far cheaper to acquire now than to bolt on later.
+
+**3. Accountability, earlier than feels comfortable.** The through-line of this whole index is that roles where someone *owns* an outcome score better than roles that feed one — and that doesn't have to wait for graduation. A co-op with real P&L exposure, running an actual budget in a student venture or society, an internship where they carry a number rather than support one: ==+that is the experience that separates the protected ceiling from the exposed floor==, and in a field with no license, it's the closest thing to one.
+
+## Already graduated and job-hunting
+
+Here the title on the offer matters more than it looks, because the most common early-career business titles are also the most exposed.
+
+- **"Business analyst" and "coordinator" *are* the 7.6.** They're the default graduate destinations and the automating layer at once. Taking one isn't fatal — but it should be a deliberate stepping-stone with an exit in mind, not the plan.
+- **Aim at operations and supply chain (5.0).** More protected, closer to real-world constraints, and chronically under-applied-to — which means less competition, not more.
+- **Attach to a domain, not "business in general."** Business paired with healthcare, energy, logistics or a regulated industry inherits that field's protection. ==-"Open to anything" aims straight at the exposed middle.==
+- **Chase the number.** Anything with a P&L line, a target, a team or a budget attached moves them up the scale — even small, even at a smaller company, where accountability tends to arrive years sooner.
+
+## The AI-native move, from where they stand
+
+They can't undo the last two years, but they can be the graduate who *directs* these tools rather than competes with them. The five capabilities above — verify, frame, automate visibly, communicate under scrutiny, own something measurable — are all available right now, inside a current internship or a first job. The most powerful for someone already in it is the third: ==+be the person who rebuilds a manual process and can show what it saved.== In a field with no credential, a demonstrable result is the credential — and it's one they can start building this term, not after some future qualification.
+
+---
+
+# The career-hunting checklist
+
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your child's hands. Most of the protection in business is built here, in these habits, rather than chosen once at enrollment. The first list is for anyone still in the degree; the second is for the job hunt itself.
+
+## During the degree — build what can't be automated
+
+- **Lock in a specialization with structural protection.** Operations, supply chain, or genuine quantitative depth over general management studies. The generic core is the exposed lane.
+- **Treat the placement as non-negotiable.** In a field with no license, the internship is the closest thing to one, and the single strongest signal a graduate can carry. One isn't enough — do two if the program allows it.
+- **Own one real, measurable thing before graduating.** A budget, a small venture, a society's P&L, a project whose outcome is theirs. Evidence is the credential.
+- **Get fluent with AI as a worker, not a shortcut.** Be able to direct it, catch it when it's confidently wrong, and point to a process they rebuilt and what it saved. That's the story that lands in an interview.
+- **Feed curiosity and adaptability on purpose.** The tools will turn over repeatedly; the person who re-tools fastest compounds. Staying genuinely interested in how organizations work is what keeps that engine running.
+- **Keep the frame wide.** Properly vet adjacent paths — operations, supply chain, a domain pairing, even the trades — before ruling them out. The most crowded lane is almost always the default one.
+
+## During the job hunt — aim, don't just apply
+
+- **Target the protected lanes on purpose.** Ownership tracks, operations, supply chain, a domain-paired role — not "business analyst, open to anything," which points straight at the 7.6.
+- **Read the title, not just the offer.** "Analyst" and "coordinator" are the automating layer. If they take one, take it as a deliberate stepping-stone with an exit in mind, not as the plan.
+- **Don't grab a job just because it's on offer in an exposed lane.** ==-A role being available doesn't make it safe.== An employer still running a large analyst intake may simply be behind the curve — and that's exactly the rung that gets cut first once they catch up. Availability today can be a lagging indicator, not a green light.
+- **Prefer the number, and the smaller room.** A role with a P&L line, a target, or a team — often at a smaller organization — puts them close to accountability years sooner than supporting someone else's work at a big name.
+- **Ask the employer where AI is heading in the role.** How they answer reveals whether they're building the job around these tools or waiting to be forced to. You want the former; it's the difference between a role that grows and one that's quietly being hollowed out.
+- **Weigh the trajectory over the starting salary.** A slightly lower-paid role that builds ownership and AI-fluency beats a higher-paid seat in a lane that's being automated underneath them.
+
+---
+
 # What to look for in a business program
 
 **1. Placement — and whether it's guaranteed or competitive.**
@@ -399,6 +472,14 @@ And one honest thing worth saying to a seventeen-year-old considering this becau
 19. Ask each school the placement and outcome questions from section 13. Compare the evasiveness as much as the answers.
 20. Is there a genuine operations or supply chain pathway? Has anyone mentioned it?
 21. How much of the degree is quantitative, and is it compulsory?
+
+## Part 4b — If they're already in it
+
+*Use these instead of Part 4 if the degree is already underway or finished.*
+
+- Which specialization or track are they on — and does it point at *accountability* (owning a number) or at *reporting* (producing one)?
+- What's the single most protected role they could realistically aim for from where they are now, and what would make them a credible candidate for it?
+- Is there anything they own end-to-end this year — a budget, a project's outcome, a real result — or only things they contribute to? If it's the latter, what's the nearest way to change that?
 
 ## Part 5 — Widening the frame
 

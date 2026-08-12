@@ -16,9 +16,9 @@ export interface ArticleMeta {
 export const articles: ArticleMeta[] = [
   {
     slug: "your-kid-already-chose",
-    title: "Your kid already chose. That makes this more urgent, not less.",
+    title: "Already chosen? That makes this more urgent, not less.",
     description:
-      "For parents of a student already in a degree or a first job: the entry-level Catch-22, becoming genuinely AI-native, and how to use AI while still studying — plus what holds up regardless of the major.",
+      "For anyone already in a degree or a first job — whether that's you or your kid: the entry-level Catch-22, becoming genuinely AI-native, and how to use AI while still studying, plus what holds up regardless of the major.",
     datePublished: "2026-08-11",
     dateModified: "2026-08-11",
   },

@@ -7,7 +7,7 @@ import { chromium } from "playwright-core";
 /**
  * Pivotum profile PDF generator.
  *
- *   node scripts/pdf/generate.mjs <slug> <parent|student> <markdown-path> <out.pdf>
+ *   node scripts/pdf/generate.mjs <slug> <planning|active> <markdown-path> <out.pdf>
  *
  * Renders a profile markdown file through the Pivotum design system (Literata +
  * Archivo embedded, the four highlight colors, the hand-drawn score circle) to
@@ -162,13 +162,21 @@ const CIRCLE = `<svg viewBox="0 0 120 62" preserveAspectRatio="none"><path d="M9
 const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
 const WORDMARK = `<div class="brandmark">${LOGO_SVG}</div>`;
 
-function coverParent(meta) {
+function coverBlock(meta, stage) {
   const col = meta.score < 6.5 ? "var(--pen-safe)" : "var(--pen)";
+  const sub =
+    stage === "active"
+      ? "The already-in-it guide — the full scores by track, the six factors behind them, and what to do from where you already are."
+      : "The planning guide — the full scores by track, the six factors behind them, the honest trade-offs, and what to ask before you commit.";
+  const lede =
+    stage === "active"
+      ? "For anyone already in it — in the degree, or job-hunting."
+      : "For anyone still choosing — read it straight through.";
   return `<section class="cover">
     ${WORDMARK}
-    <div class="kicker">The Degree Risk Index · ${EDITION} Edition</div>
+    <div class="kicker">Pivotum Career Value Guide · ${EDITION}</div>
     <h1>${meta.title}</h1>
-    <p class="sub">The complete profile — the full scores by track, the six factors behind them, the honest downsides, and what to ask before you commit.</p>
+    <p class="sub">${sub}</p>
     <div class="score">
       <div class="circle" style="color:${col}">
         <span class="num" style="color:var(--ink)">${meta.score.toFixed(1)}</span>
@@ -176,16 +184,7 @@ function coverParent(meta) {
       </div>
       <div class="lab"><span class="k">AI exposure · ${esc(meta.track)}</span><span class="d">where 10 is most at risk</span></div>
     </div>
-    <p class="lede">Read this one first; send the student version to them.</p>
-  </section>`;
-}
-function coverStudent(title) {
-  return `<section class="cover">
-    ${WORDMARK}
-    <div class="kicker">The Degree Risk Index · ${EDITION} Edition</div>
-    <h1>${inline(title)}</h1>
-    <p class="sub">The short version — written for you, not about you.</p>
-    <p class="lede">Everything that matters, none of the bits written for your parents.</p>
+    <p class="lede">${lede}</p>
   </section>`;
 }
 const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin:0">Highlighting is color-coded</p>
@@ -199,21 +198,23 @@ const LEGEND = `<div class="legend"><p style="font-family:var(--sans);font-size:
 async function main() {
   const [slug, kind, mdPath, outPdf] = process.argv.slice(2);
   if (!slug || !kind || !mdPath || !outPdf) {
-    console.error("usage: generate.mjs <slug> <parent|student> <markdown> <out.pdf>");
+    console.error("usage: generate.mjs <slug> <planning|active> <markdown> <out.pdf>");
     process.exit(1);
   }
   const meta = careerMeta(slug);
   const raw = readFileSync(mdPath, "utf8");
   const firstH1 = /^#\s+(.*)$/m.exec(raw)?.[1] ?? meta.name;
   let body = mdToHtml(stripTitleBlock(raw));
-  // Parent only: drop the factor-rating visual in right after the six-factors heading.
-  if (kind !== "student") {
+  // Both stage guides are full documents: drop the factor-rating visual in right
+  // after the six-factors heading, and keep the legend + appendix.
+  const stage = kind === "active" ? "active" : "planning";
+  {
     const bars = factorBars(meta);
     if (bars) body = body.replace(/(<h[12]>[^<]*six factors[^<]*<\/h[12]>)/i, `$1${bars}`);
   }
-  const cover = kind === "student" ? coverStudent(firstH1) : coverParent(meta);
-  const legend = kind === "student" ? "" : `<section>${LEGEND}<hr></section>`;
-  const appx = kind === "student" ? "" : appendix(slug);
+  const cover = coverBlock(meta, stage);
+  const legend = `<section>${LEGEND}<hr></section>`;
+  const appx = appendix(slug);
 
   const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="file://${join(DIR, "brand.css")}"></head>
@@ -222,7 +223,7 @@ async function main() {
   writeFileSync(htmlPath, html);
 
   const footer = `<div style="font-family:'Archivo',Arial,sans-serif;font-size:8px;color:#8a8178;width:100%;padding:0 1.4cm;display:flex;justify-content:space-between;">
-    <span>${esc(meta.name)} · Pivotum ${EDITION} Edition</span><span class="pageNumber"></span></div>`;
+    <span>${esc(meta.name)} · Career Value Guide · ${EDITION}</span><span class="pageNumber"></span></div>`;
 
   mkdirSync(dirname(outPdf), { recursive: true });
   const b = await chromium.launch({ executablePath: CHROME });

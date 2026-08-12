@@ -19,6 +19,7 @@ export function ClaimPicker({
   choices: Choice[];
   unlimited?: boolean;
 }) {
+  const [stage, setStage] = useState<"planning" | "active" | "">("");
   const [selected, setSelected] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -28,7 +29,8 @@ export function ClaimPicker({
   // them; a fixed pack must be claimed exactly.
   const target = unlimited ? choices.length : packSize;
   const full = selected.length >= target;
-  const canSubmit = unlimited ? selected.length >= 1 : selected.length === packSize;
+  const enough = unlimited ? selected.length >= 1 : selected.length === packSize;
+  const canSubmit = Boolean(stage) && enough;
 
   function toggle(slug: string) {
     setSelected((cur) =>
@@ -44,7 +46,7 @@ export function ClaimPicker({
     const res = await fetch("/api/claim", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, slugs: selected }),
+      body: JSON.stringify({ token, slugs: selected, stage }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
@@ -84,6 +86,33 @@ export function ClaimPicker({
 
   return (
     <div>
+      <div className="claim-stage">
+        <p className="claim-stage-q">First — where are you with these careers?</p>
+        <div className="pkg-opts">
+          <button
+            type="button"
+            className={`pkg-opt${stage === "planning" ? " on" : ""}`}
+            onClick={() => setStage("planning")}
+            aria-pressed={stage === "planning"}
+          >
+            <b>Still choosing</b>
+            <span>weighing a degree or path</span>
+          </button>
+          <button
+            type="button"
+            className={`pkg-opt${stage === "active" ? " on" : ""}`}
+            onClick={() => setStage("active")}
+            aria-pressed={stage === "active"}
+          >
+            <b>Already in it</b>
+            <span>in the degree, or working</span>
+          </button>
+        </div>
+        <p className="claim-stage-note">
+          Your guides are written for exactly this — we&rsquo;ll send the {stage === "active" ? "already-in-it" : stage === "planning" ? "planning" : "matching"} edition of each.
+        </p>
+      </div>
+
       <div className="claim-grid">
         {choices.map((c) => {
           const checked = selected.includes(c.slug);

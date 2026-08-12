@@ -14,7 +14,7 @@ import { SITE } from "@/lib/site";
  * exactly pack_size; a claimed order re-issues its existing selection.
  */
 export async function POST(req: Request) {
-  const { token, slugs } = await req.json().catch(() => ({}));
+  const { token, slugs, stage: stageIn } = await req.json().catch(() => ({}));
   if (!token) return NextResponse.json({ error: "Missing token." }, { status: 400 });
 
   const order = await getOrder(token);
@@ -46,19 +46,29 @@ export async function POST(req: Request) {
     }
   }
 
+  // Which stage guide to deliver. A first claim carries the buyer's choice from
+  // the picker; a re-send uses the stage stored on the order. Old orders that
+  // predate stage tracking fall back to the planning guide.
+  let stage: "planning" | "active";
+  if (order.claimed) {
+    stage = order.stage === "active" ? "active" : "planning";
+  } else if (stageIn === "planning" || stageIn === "active") {
+    stage = stageIn;
+  } else {
+    return NextResponse.json(
+      { error: "Tell us where you are — still choosing, or already in it." },
+      { status: 400 },
+    );
+  }
+
   const exp = Date.now() + SEVEN_DAYS_MS;
-  const dl = (slug: string, kind: "parent" | "student") =>
-    `${SITE.url}/api/download?d=${signDownload(slug, kind, token, exp)}`;
+  const dl = (slug: string) => `${SITE.url}/api/download?d=${signDownload(slug, stage, token, exp)}`;
   const items = selected.map((slug) => ({
     name: getCareer(slug)?.name ?? slug,
-    parentUrl: dl(slug, "parent"),
-    studentUrl: dl(slug, "student"),
+    url: dl(slug),
   }));
   // Flat list for the plain-text part and the email-not-configured fallback.
-  const links = items.flatMap((it) => [
-    { name: `${it.name} — Full guide`, url: it.parentUrl },
-    { name: `${it.name} — Student version`, url: it.studentUrl },
-  ]);
+  const links = items.map((it) => ({ name: it.name, url: it.url }));
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
@@ -91,7 +101,7 @@ export async function POST(req: Request) {
     if (error) return NextResponse.json({ error: "Could not send email." }, { status: 502 });
   }
 
-  if (!order.claimed) await markClaimed(token, selected);
+  if (!order.claimed) await markClaimed(token, selected, stage);
 
   // When email isn't wired up yet, hand the signed links straight back so the
   // flow is still testable. Once Resend is configured, delivery is by email only.

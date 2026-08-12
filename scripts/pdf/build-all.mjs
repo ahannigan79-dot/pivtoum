@@ -8,10 +8,10 @@ import { execFileSync } from "node:child_process";
  *
  *   node scripts/pdf/build-all.mjs <markdown-dir>
  *
- * Expects files named <slug>-01-full-profile-for-parents.md and
- * <slug>-02-short-version-for-student.md. computer-science is skipped (it's the
- * free web profile, not sold). After running, hit /api/upload-profiles to push
- * the results to Blob.
+ * Expects files named <slug>-planning.md and <slug>-active.md — the two
+ * audience-neutral, stage-forked Career Value Guides per career. Any career
+ * without a planning file is skipped (e.g. computer-science, the free web
+ * sample). After running, hit /api/upload-profiles to push the results to Blob.
  */
 const DIR = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(DIR, "../..");
@@ -28,22 +28,21 @@ const files = readdirSync(mdDir);
 const slugs = [
   ...new Set(
     files
-      .map((f) => /^(.*)-01-full-profile-for-parents\.md$/.exec(f)?.[1])
+      .map((f) => /^(.*)-planning\.md$/.exec(f)?.[1])
       .filter(Boolean),
   ),
 ];
 
 let ok = 0;
 for (const slug of slugs) {
-  if (slug === "computer-science") { console.log(`skip ${slug} (free web profile)`); continue; }
-  const parent = join(mdDir, `${slug}-01-full-profile-for-parents.md`);
-  const student = join(mdDir, `${slug}-02-short-version-for-student.md`);
+  const planning = join(mdDir, `${slug}-planning.md`);
+  const active = join(mdDir, `${slug}-active.md`);
   try {
-    execFileSync("node", [GEN, slug, "parent", parent, join(OUT, `${slug}-parent.pdf`)], { stdio: "inherit" });
-    execFileSync("node", [GEN, slug, "student", student, join(OUT, `${slug}-student.pdf`)], { stdio: "inherit" });
+    execFileSync("node", [GEN, slug, "planning", planning, join(OUT, `${slug}-planning.pdf`)], { stdio: "inherit" });
+    execFileSync("node", [GEN, slug, "active", active, join(OUT, `${slug}-active.pdf`)], { stdio: "inherit" });
     ok++;
   } catch {
     console.error(`FAILED ${slug}`);
   }
 }
-console.log(`\nBuilt ${ok}/${slugs.filter((s) => s !== "computer-science").length} careers into profiles-src/`);
+console.log(`\nBuilt ${ok}/${slugs.length} careers into profiles-src/`);
