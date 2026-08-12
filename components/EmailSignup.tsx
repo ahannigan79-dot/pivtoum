@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { trackPixel } from "@/lib/pixel";
 import { gtagConversion, GADS_LEAD_LABEL } from "@/lib/google";
 import { trackEvent } from "@/lib/analytics";
+import { captureClickIds, readClickIds } from "@/lib/attribution";
 
 interface EmailSignupProps {
   /** Bold prompt above the field. */
@@ -32,16 +33,22 @@ export function EmailSignup({
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const cls = flush ? "signup signup-flush" : "signup";
 
+  // Stash any ad click ids on arrival so a signup can be attributed server-side.
+  useEffect(() => {
+    captureClickIds();
+  }, []);
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+    const eventId = crypto.randomUUID();
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, source }),
+      body: JSON.stringify({ email, source, eventId, ...readClickIds() }),
     });
     if (res.ok) {
-      trackPixel("Lead");
+      trackPixel("Lead", {}, eventId);
       gtagConversion(GADS_LEAD_LABEL);
       trackEvent("lead_signup");
     }

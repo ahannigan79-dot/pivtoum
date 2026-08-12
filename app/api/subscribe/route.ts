@@ -5,6 +5,7 @@ import { getCareer } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
 import { mintLeadPromoCode } from "@/lib/stripe";
+import { sendMetaLead } from "@/lib/capi";
 import { SITE } from "@/lib/site";
 
 /**
@@ -14,7 +15,7 @@ import { SITE } from "@/lib/site";
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, source, stage, audience, careers } = await req
+  const { email, source, stage, audience, careers, eventId, fbclid } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
   // The Career Map capture sends the two package flags + up to three career
@@ -35,6 +36,27 @@ export async function POST(req: Request) {
     await addSubscriber(email);
   } catch {
     return NextResponse.json({ error: "Could not save your email." }, { status: 500 });
+  }
+
+  // Fire the Lead conversion server-side (Meta Conversions API). The browser
+  // pixel is blocked for most of our mobile / in-app-browser traffic, so this
+  // server-to-server event is what actually reaches Meta. It shares eventId with
+  // the browser pixel so Meta de-duplicates the ones that fire in both places,
+  // and uses the fbclid + _fbp/_fbc cookies for attribution. Best-effort, and a
+  // no-op until META_CAPI_TOKEN is set.
+  {
+    const cookieHeader = req.headers.get("cookie") ?? "";
+    const cookie = (n: string) => cookieHeader.match(new RegExp(`(?:^|;\\s*)${n}=([^;]+)`))?.[1];
+    await sendMetaLead({
+      email,
+      eventId: typeof eventId === "string" ? eventId : undefined,
+      eventSourceUrl: req.headers.get("referer") ?? `${SITE.url}/map`,
+      fbclid: typeof fbclid === "string" ? fbclid : undefined,
+      fbp: cookie("_fbp"),
+      fbc: cookie("_fbc"),
+      clientIp: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined,
+      userAgent: req.headers.get("user-agent") ?? undefined,
+    });
   }
 
   // Optional mirror to Substack, best-effort. Substack has no official API; this
