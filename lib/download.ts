@@ -12,8 +12,8 @@ function secret(): string {
   return s;
 }
 
-/** Which of a career's two PDFs a link points at. */
-export type ProfileKind = "parent" | "student";
+/** Which of a career's two stage guides a link points at. */
+export type ProfileKind = "planning" | "active";
 
 export function signDownload(
   slug: string,
@@ -33,7 +33,7 @@ export function verifyDownload(
     const decoded = Buffer.from(d, "base64url").toString("utf8");
     const [slug, kind, token, expStr, sig] = decoded.split("|");
     if (!slug || !kind || !token || !expStr || !sig) return null;
-    if (kind !== "parent" && kind !== "student") return null;
+    if (kind !== "planning" && kind !== "active") return null;
     const expected = crypto
       .createHmac("sha256", secret())
       .update(`${slug}|${kind}|${token}|${expStr}`)

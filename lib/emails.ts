@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
  * an HTML and a plain-text part.
  */
 export function purchaseEmail(
-  items: { name: string; parentUrl: string; studentUrl: string }[],
+  items: { name: string; url: string }[],
   token: string,
   expert?: { bookingUrl?: string },
 ) {
@@ -33,7 +33,7 @@ export function purchaseEmail(
       (it) => `
       <tr><td style="padding:14px 0;border-bottom:1px solid ${rule};">
         <div style="font-family:Georgia,'Times New Roman',serif;font-size:17px;color:${ink};margin-bottom:6px;">${it.name}</div>
-        <div>${link(it.parentUrl, "Full guide")}<span style="color:${rule};padding:0 10px;">|</span>${link(it.studentUrl, "Student version")}</div>
+        <div>${link(it.url, "Download your guide")}</div>
       </td></tr>`,
     )
     .join("");
@@ -55,7 +55,7 @@ export function purchaseEmail(
             ${rows}
           </table>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 16px;">Each includes a short version written directly to the student and the technical scoring appendix. <strong>This edition and the next are included</strong> &mdash; we re-score every six months, so your guide stays current for a full year.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0 0 16px;">Each guide is written for exactly where you are, reads whether you&rsquo;re the parent or the student, and includes the technical scoring appendix. <strong>This edition and the next are included</strong> &mdash; we re-score every six months, so your guide stays current for a full year.</p>
           ${expertBlock}
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${inkSoft};margin:0;">You can re-open your selection page any time at <a href="${SITE.url}/claim/${token}" style="color:${pen};">your claim link</a>.</p>
         </td></tr>
@@ -70,12 +70,9 @@ export function purchaseEmail(
   const text =
     `Your Pivotum Career Value Guides are ready — download links valid for 7 days:\n\n` +
     items
-      .map(
-        (it) =>
-          `• ${it.name}\n    Full guide:      ${it.parentUrl}\n    Student version: ${it.studentUrl}`,
-      )
+      .map((it) => `• ${it.name}\n    ${it.url}`)
       .join("\n\n") +
-    `\n\nEach includes a short version written directly to the student and the technical scoring appendix. ` +
+    `\n\nEach guide is written for exactly where you are, reads whether you're the parent or the student, and includes the technical scoring appendix. ` +
     `This edition and the next are included — we re-score every six months, so your guide stays current for a full year.\n\n` +
     (expert
       ? `YOUR EXPERT MEETING: You added two 1-hour sessions with the founder. ${expert.bookingUrl ? `Book them here: ${expert.bookingUrl}` : "We'll email you within a day to find times."}\n\n`

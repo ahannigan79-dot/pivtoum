@@ -16,6 +16,8 @@ export interface Order {
   selected: string[];
   created_at: string;
   acknowledged_at: string | null;
+  /** Which stage guide the buyer claimed: "planning" or "active" (null on old orders). */
+  stage: string | null;
 }
 
 // Lazy pool so a missing connection string never breaks the build. Accepts
@@ -51,6 +53,8 @@ export async function ensureSchema(): Promise<void> {
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS edition TEXT NOT NULL DEFAULT ${editionDefault};`);
   // Records the pre-purchase acknowledgement (analysis-not-advice + immediate delivery).
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS acknowledged_at TIMESTAMPTZ;`);
+  // Which stage guide the buyer claimed (planning/active), so re-sends match.
+  await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS stage TEXT;`);
   // Newsletter / next-edition sign-ups from the landing page.
   await db().query(`
     CREATE TABLE IF NOT EXISTS subscribers (
@@ -82,11 +86,15 @@ export async function getOrder(token: string): Promise<Order | null> {
   return rows[0] ?? null;
 }
 
-export async function markClaimed(token: string, selected: string[]): Promise<void> {
+export async function markClaimed(
+  token: string,
+  selected: string[],
+  stage?: string | null,
+): Promise<void> {
   await ensureSchema();
   await db().sql`
     UPDATE orders
-    SET claimed = TRUE, selected = ${JSON.stringify(selected)}::jsonb
+    SET claimed = TRUE, selected = ${JSON.stringify(selected)}::jsonb, stage = ${stage ?? null}
     WHERE token = ${token};
   `;
 }

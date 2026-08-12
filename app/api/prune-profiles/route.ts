@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * Delete orphaned files under profiles/ in Blob — anything that isn't a current
- * <slug>-parent.pdf / <slug>-student.pdf for a sellable career. Cleans up old
+ * <slug>-planning.pdf / <slug>-active.pdf for a sellable career. Cleans up old
  * placeholders and stale files after an edition. Gated by the signing secret.
  *
  *   GET /api/prune-profiles?key=<DOWNLOAD_SIGNING_SECRET>          (dry run)
@@ -26,8 +26,8 @@ export async function GET(req: Request) {
 
   const valid = new Set<string>();
   for (const c of claimableCareers()) {
-    valid.add(`profiles/${c.slug}-parent.pdf`);
-    valid.add(`profiles/${c.slug}-student.pdf`);
+    valid.add(`profiles/${c.slug}-planning.pdf`);
+    valid.add(`profiles/${c.slug}-active.pdf`);
   }
 
   const { blobs } = await list({ prefix: "profiles/", token });
