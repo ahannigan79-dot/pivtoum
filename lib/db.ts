@@ -62,7 +62,36 @@ export async function ensureSchema(): Promise<void> {
       created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
+  // Ad conversions to feed back to Google Ads via offline conversion import.
+  // One row per signup that arrived with a gclid; exported as a CSV that Google
+  // Ads pulls on a schedule (server-side, so mobile/in-app pixel blocking can't
+  // lose it). No PII — just the click id + a conversion name + time.
+  await db().query(`
+    CREATE TABLE IF NOT EXISTS ad_conversions (
+      id          BIGSERIAL PRIMARY KEY,
+      gclid       TEXT NOT NULL,
+      name        TEXT NOT NULL,
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
   ready = true;
+}
+
+export async function recordAdConversion(gclid: string, name: string): Promise<void> {
+  await ensureSchema();
+  await db().sql`INSERT INTO ad_conversions (gclid, name) VALUES (${gclid}, ${name});`;
+}
+
+export async function getAdConversions(
+  sinceDays: number,
+): Promise<{ gclid: string; name: string; created_at: string }[]> {
+  await ensureSchema();
+  const { rows } = await db().sql<{ gclid: string; name: string; created_at: string }>`
+    SELECT gclid, name, created_at FROM ad_conversions
+    WHERE created_at > NOW() - make_interval(days => ${sinceDays})
+    ORDER BY created_at DESC;
+  `;
+  return rows;
 }
 
 export async function upsertOrder(

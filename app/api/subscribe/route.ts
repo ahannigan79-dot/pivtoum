@@ -1,12 +1,16 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { addSubscriber } from "@/lib/db";
+import { addSubscriber, recordAdConversion } from "@/lib/db";
 import { getCareer } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
 import { mintLeadPromoCode } from "@/lib/stripe";
 import { sendMetaLead } from "@/lib/capi";
 import { SITE } from "@/lib/site";
+
+// The conversion action name Google Ads expects in the offline-import CSV; it
+// must match an "import" conversion action created in the Ads account.
+const GADS_IMPORT_NAME = process.env.GADS_IMPORT_CONVERSION_NAME ?? "Website signup (import)";
 
 /**
  * Email capture. Stored in Postgres (we own the list) and mirrored to Substack
@@ -15,7 +19,7 @@ import { SITE } from "@/lib/site";
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, source, stage, audience, careers, eventId, fbclid } = await req
+  const { email, source, stage, audience, careers, eventId, fbclid, gclid } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
   // The Career Map capture sends the two package flags + up to three career
@@ -57,6 +61,18 @@ export async function POST(req: Request) {
       clientIp: req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined,
       userAgent: req.headers.get("user-agent") ?? undefined,
     });
+  }
+
+  // Record a Google Ads offline conversion when the signup came from a Google ad
+  // (auto-tagged gclid). Exported later as a CSV that Google Ads pulls on a
+  // schedule — server-side, so it survives the same mobile/in-app pixel blocking.
+  // Best-effort.
+  if (typeof gclid === "string" && gclid) {
+    try {
+      await recordAdConversion(gclid, GADS_IMPORT_NAME);
+    } catch (err) {
+      console.error("[gads] recordAdConversion failed", String(err));
+    }
   }
 
   // Optional mirror to Substack, best-effort. Substack has no official API; this
