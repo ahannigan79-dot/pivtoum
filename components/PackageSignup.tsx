@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { trackPixel } from "@/lib/pixel";
 import { gtagConversion, GADS_LEAD_LABEL } from "@/lib/google";
 import { trackEvent } from "@/lib/analytics";
+import { captureClickIds, readClickIds } from "@/lib/attribution";
 
 type Stage = "planning" | "active";
 type Audience = "child" | "self";
@@ -33,6 +34,11 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
 
   const full = picks.length >= MAX_PICKS;
 
+  // Stash any ad click ids on arrival so a signup can be attributed server-side.
+  useEffect(() => {
+    captureClickIds();
+  }, []);
+
   function togglePick(slug: string) {
     setPicks((prev) => {
       if (prev.includes(slug)) return prev.filter((s) => s !== slug);
@@ -48,13 +54,17 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
     if (picks.length === 0) return setHint("Choose at least one career.");
     setHint("");
     setStatus("sending");
+    // Shared id so the browser Lead event and the server-side Conversions API
+    // event de-duplicate; click ids let the server attribute the majority of
+    // (mobile / in-app) traffic whose browser pixel is blocked.
+    const eventId = crypto.randomUUID();
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, source: "index", stage, audience, careers: picks }),
+      body: JSON.stringify({ email, source: "index", stage, audience, careers: picks, eventId, ...readClickIds() }),
     });
     if (res.ok) {
-      trackPixel("Lead");
+      trackPixel("Lead", {}, eventId);
       gtagConversion(GADS_LEAD_LABEL);
       trackEvent("map_signup");
     }
