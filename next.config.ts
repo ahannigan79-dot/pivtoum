@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/essays/:slug*", destination: "/articles/:slug*", permanent: true },
+      // /scores was a second ad-landing page; all paid traffic now goes to /map.
+      // 301 so no spend or SEO leaks to the retired page.
+      { source: "/scores", destination: "/map", permanent: true },
     ];
   },
 };

@@ -4,6 +4,7 @@ import CS from "@/content/full/computer-science.mdx";
 import { getCareer } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
+import { GatedBlur } from "@/components/GatedBlur";
 import { EmailSignup } from "@/components/EmailSignup";
 
 const career = getCareer("computer-science")!;
@@ -53,11 +54,16 @@ export default function ComputerSciencePage() {
           <span>{career.edition}</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          The complete Career Value Guide — published free, in full, so you can judge the depth
-          before buying anything. There&rsquo;s also a{" "}
-          <Link href="/careers/computer-science/student">free student version →</Link>
+          A preview of the complete Career Value Guide. The full read — durability, the honest
+          downsides, the routes in, the program checklist and the admissions questions — opens with
+          your free Career Map.
         </p>
-        <CS />
+        <GatedBlur
+          label="The complete guide — read it free"
+          cta="This is the full Computer Science Career Value Guide. Get the free Career Map to read all of it — and everything for the other 27 careers."
+        >
+          <CS />
+        </GatedBlur>
         <EmailSignup
           label="Want the test behind this guide?"
           sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new article and edition. Free, no spam."

@@ -55,13 +55,21 @@ export async function ensureSchema(): Promise<void> {
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS acknowledged_at TIMESTAMPTZ;`);
   // Which stage guide the buyer claimed (planning/active), so re-sends match.
   await db().query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS stage TEXT;`);
-  // Newsletter / next-edition sign-ups from the landing page.
+  // Newsletter / Career-Map sign-ups from the landing page. We capture the
+  // routing fields here (first name + the cluster derived from their picks +
+  // stage/audience) so we own the data that positions them in the community —
+  // not just Resend contact properties.
   await db().query(`
     CREATE TABLE IF NOT EXISTS subscribers (
       email       TEXT PRIMARY KEY,
       created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
   `);
+  await db().query(`ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS first_name TEXT;`);
+  await db().query(`ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS cluster TEXT;`);
+  await db().query(`ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS stage TEXT;`);
+  await db().query(`ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS audience TEXT;`);
+  await db().query(`ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS careers JSONB NOT NULL DEFAULT '[]'::jsonb;`);
   // Ad conversions to feed back to Google Ads via offline conversion import.
   // One row per signup that arrived with a gclid; exported as a CSV that Google
   // Ads pulls on a schedule (server-side, so mobile/in-app pixel blocking can't
@@ -134,11 +142,44 @@ export async function getAllOrders(): Promise<Order[]> {
   return rows;
 }
 
-export async function addSubscriber(email: string): Promise<void> {
+export interface SubscriberDetails {
+  firstName?: string | null;
+  cluster?: string | null;
+  stage?: string | null;
+  audience?: string | null;
+  careers?: string[];
+}
+
+/**
+ * Add or enrich a subscriber. Email is the key; the optional routing details
+ * (first name, derived cluster, stage, audience, career picks) are stored so we
+ * can position them in the community. On a repeat signup we fill in any field
+ * that's newly provided without clobbering existing data with nulls (COALESCE);
+ * career picks are replaced when a non-empty set is provided.
+ */
+export async function addSubscriber(email: string, details?: SubscriberDetails): Promise<void> {
   await ensureSchema();
+  const d = details ?? {};
+  const careers = Array.isArray(d.careers) && d.careers.length ? d.careers : null;
   await db().sql`
-    INSERT INTO subscribers (email) VALUES (${email.toLowerCase()})
-    ON CONFLICT (email) DO NOTHING;
+    INSERT INTO subscribers (email, first_name, cluster, stage, audience, careers)
+    VALUES (
+      ${email.toLowerCase()},
+      ${d.firstName ?? null},
+      ${d.cluster ?? null},
+      ${d.stage ?? null},
+      ${d.audience ?? null},
+      ${careers ? JSON.stringify(careers) : "[]"}::jsonb
+    )
+    ON CONFLICT (email) DO UPDATE SET
+      first_name = COALESCE(EXCLUDED.first_name, subscribers.first_name),
+      cluster    = COALESCE(EXCLUDED.cluster, subscribers.cluster),
+      stage      = COALESCE(EXCLUDED.stage, subscribers.stage),
+      audience   = COALESCE(EXCLUDED.audience, subscribers.audience),
+      careers    = CASE
+                     WHEN jsonb_array_length(EXCLUDED.careers) > 0 THEN EXCLUDED.careers
+                     ELSE subscribers.careers
+                   END;
   `;
 }
 
@@ -148,10 +189,21 @@ export async function subscriberCount(): Promise<number> {
   return rows[0]?.n ?? 0;
 }
 
-export async function getAllSubscribers(): Promise<{ email: string; created_at: string }[]> {
+export interface SubscriberRow {
+  email: string;
+  created_at: string;
+  first_name: string | null;
+  cluster: string | null;
+  stage: string | null;
+  audience: string | null;
+  careers: string[];
+}
+
+export async function getAllSubscribers(): Promise<SubscriberRow[]> {
   await ensureSchema();
-  const { rows } = await db().sql<{ email: string; created_at: string }>`
-    SELECT email, created_at FROM subscribers ORDER BY created_at DESC;
+  const { rows } = await db().sql<SubscriberRow>`
+    SELECT email, created_at, first_name, cluster, stage, audience, careers
+    FROM subscribers ORDER BY created_at DESC;
   `;
   return rows;
 }

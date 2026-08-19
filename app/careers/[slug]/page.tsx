@@ -15,6 +15,7 @@ import { VersusGrid } from "@/components/VersusGrid";
 import { FaqList } from "@/components/FaqList";
 import { RelatedCareers } from "@/components/RelatedCareers";
 import { FullProfileTable } from "@/components/FullProfileTable";
+import { GatedBlur } from "@/components/GatedBlur";
 import { BuyBlock } from "@/components/BuyBlock";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageView } from "@/components/PageView";
@@ -63,16 +64,27 @@ export default async function CareerPage({
 
   const { default: Body } = await loader();
 
+  // Premium blocks are gated: the HTML stays server-rendered (SEO + JSON-LD
+  // intact) but is blurred behind the free Career Map. Free/visible: the
+  // headline score, QuickAnswer, and VersusGrid — the "high-level review."
   const components: MDXComponents = {
     ScoreTable: () => (
       <>
         <StarterKitCta source={career.slug} title={career.name} />
-        <ScoreTable career={career} />
+        <GatedBlur>
+          <ScoreTable career={career} />
+        </GatedBlur>
       </>
     ),
-    FactorList: () => <FactorList career={career} />,
+    FactorList: () => (
+      <GatedBlur compact label="The six factors, scored — members">
+        <FactorList career={career} />
+      </GatedBlur>
+    ),
     WorkedExample: ({ children }: { children?: React.ReactNode }) => (
-      <WorkedExample career={career}>{children}</WorkedExample>
+      <GatedBlur compact label="The full reasoning — members">
+        <WorkedExample career={career}>{children}</WorkedExample>
+      </GatedBlur>
     ),
     MarginNote: MarginNote as MDXComponents[string],
     VersusGrid: VersusGrid as MDXComponents[string],
@@ -80,7 +92,12 @@ export default async function CareerPage({
     RelatedCareers: () => <RelatedCareers career={career} />,
     FullProfileTable: () => <FullProfileTable career={career} />,
     BuyBlock: () => <BuyBlock source={career.slug} title={career.name} />,
-    ol: (props: React.HTMLAttributes<HTMLOListElement>) => <ol className="ranked" {...props} />,
+    // Every sampler's single ordered list is the safe-vs-exposed ranking — gate it.
+    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+      <GatedBlur compact label="The safe-vs-exposed ranking — members">
+        <ol className="ranked" {...props} />
+      </GatedBlur>
+    ),
   };
 
   const articleLd = {

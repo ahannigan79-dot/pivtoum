@@ -6,6 +6,7 @@ import { hasSamplerPage } from "@/content/careers/registry";
 import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
 import { mintLeadPromoCode } from "@/lib/stripe";
 import { sendMetaLead } from "@/lib/capi";
+import { derivePrimaryCluster } from "@/lib/clusters";
 import { SITE } from "@/lib/site";
 
 // The conversion action name Google Ads expects in the offline-import CSV; it
@@ -19,7 +20,7 @@ const GADS_IMPORT_NAME = process.env.GADS_IMPORT_CONVERSION_NAME ?? "Website sig
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, source, stage, audience, careers, eventId, fbclid, gclid } = await req
+  const { email, firstName, source, stage, audience, careers, eventId, fbclid, gclid } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
   // The Career Map capture sends the two package flags + up to three career
@@ -36,8 +37,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
   }
 
+  // Their career picks define the cluster we route them to in the community —
+  // most-picked wins (see lib/clusters). We store the routing fields on the
+  // subscriber row so we own the data, not just Resend.
+  const cluster = derivePrimaryCluster(pkg.careers).primary;
+  const cleanName =
+    typeof firstName === "string" && firstName.trim() ? firstName.trim().slice(0, 80) : null;
   try {
-    await addSubscriber(email);
+    await addSubscriber(email, {
+      firstName: cleanName,
+      cluster,
+      stage: pkg.stage ?? null,
+      audience: pkg.audience ?? null,
+      careers: pkg.careers,
+    });
   } catch {
     return NextResponse.json({ error: "Could not save your email." }, { status: 500 });
   }
@@ -122,11 +135,14 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
     try {
       if (pkg.stage) {
-        // The Career Map capture: assemble and deliver the full package —
-        // index + the stage/voice guide + overview + the chosen career
-        // breakdowns (sampler PDF where one exists, else the on-site page).
-        const stage = pkg.stage;
-        const voice = pkg.audience === "self" ? "student" : "parent";
+        // The Career Map capture. The free deliverable is now lean: the 28-score
+        // index + a high-level review of each picked career (their career page,
+        // where the review shows free and the deeper breakdown is gated). The
+        // stage/voice guides and overviews have moved into the membership
+        // library — they're no longer given away here.
+        // NOTE: packageEmail's sell copy still frames the old à-la-carte Career
+        // Value Guide + /buy. That copy is being rewritten to sell the community
+        // (the Day 0 email pass) — pending the Mighty link.
         const items = [
           {
             name: "The Career Index — all 28 careers",
@@ -134,32 +150,13 @@ export async function POST(req: Request) {
             sub: "Every career scored, safest to most exposed.",
             cta: "Download PDF",
           },
-          {
-            name:
-              stage === "planning"
-                ? "Your guide — choosing a path that lasts"
-                : "Your guide — protecting your value",
-            url: `${SITE.url}/api/pack-pdf?doc=guide-${stage}-${voice}`,
-            sub:
-              stage === "planning"
-                ? "The six moves for choosing well, plus a pre-decision checklist."
-                : "The six moves for protecting value, plus a right-now checklist.",
-            cta: "Download PDF",
-          },
-          {
-            name: "What’s next — your map",
-            url: `${SITE.url}/api/pack-pdf?doc=overview-${stage}-${voice}`,
-            sub: "How the pieces fit, and the one thing to do next.",
-            cta: "Download PDF",
-          },
           ...pkg.careers.map((s) => {
             const c = getCareer(s);
-            const has = hasSamplerPage(s);
             return {
-              name: `${c?.name ?? s} — the free read`,
-              url: has ? `${SITE.url}/api/sampler-pdf?s=${s}` : `${SITE.url}/careers/${s}`,
-              sub: "See where the safe and exposed tracks sit — a first look at the split.",
-              cta: has ? "Download PDF" : "Read online",
+              name: `${c?.name ?? s} — your high-level review`,
+              url: `${SITE.url}/careers/${s}`,
+              sub: "Where it sits, safest to most exposed, and the honest read on the split.",
+              cta: "Read online",
             };
           }),
         ];
@@ -175,7 +172,7 @@ export async function POST(req: Request) {
         await resend.emails.send({
           from,
           to: email,
-          subject: "Your Career Map (index + guide + reads)",
+          subject: "Your Career Map — the 28 scores + your reviews",
           html,
           text,
         });

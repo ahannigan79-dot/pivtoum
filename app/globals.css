@@ -213,7 +213,7 @@ header { padding: 2rem 0 0; }
 }
 .takeaway-body strong { font-weight: 600; color: var(--ink); }
 
-/* /scores — focused, distraction-free ad landing page */
+/* .scr — focused, distraction-free ad landing page (used by /map) */
 .scr { min-height: 100vh; }
 .scr-wrap { max-width: 620px; margin: 0 auto; padding: 2.2rem 1.6rem 3rem; }
 .scr-logo { width: 132px; margin-bottom: 2.4rem; }
@@ -239,8 +239,24 @@ header { padding: 2rem 0 0; }
 .scr-stat { flex: 1; }
 .scr-stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.55rem; color: var(--ink); }
 .scr-stat span { font-family: var(--sans); font-size: .8rem; line-height: 1.35; color: var(--ink-soft); }
+.scr-community { margin-top: 2rem; padding: 1.1rem 1.3rem; border: 1px solid var(--rule, #E7E4DC); border-left: 3px solid var(--pen); border-radius: 8px; background: var(--rule-soft, #F1EEE7); }
+.scr-community-k { display: block; font-family: var(--sans); font-weight: 800; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin-bottom: .35rem; }
+.scr-community p { margin: 0; font-family: var(--serif); font-size: 1rem; line-height: 1.5; color: var(--ink-soft); }
+.scr-community b { color: var(--ink); }
 .scr-foot { margin-top: 2.4rem; font-family: var(--sans); font-size: .72rem; color: var(--pencil, #8C857A); }
 .scr-foot a { color: var(--pencil, #8C857A); text-decoration: underline; }
+
+/* Gated premium content — blurred for humans, full HTML kept for SEO. */
+.gated { position: relative; overflow: hidden; border-radius: 12px; margin: 1.4rem 0; min-height: 200px; max-height: 420px; }
+.gated.gated-compact { min-height: 150px; max-height: 300px; }
+.gated-content { filter: blur(6px); opacity: .5; pointer-events: none; user-select: none; }
+.gated::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 72%; background: linear-gradient(to bottom, transparent, var(--paper) 84%); pointer-events: none; }
+.gated-veil { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 1.1rem; }
+.gated-card { max-width: 30rem; text-align: center; background: var(--card, #fff); border: 1.5px solid var(--rule); border-radius: 12px; padding: 1.15rem 1.3rem; box-shadow: 0 8px 26px rgba(33, 30, 27, 0.10); }
+.gated-k { font-family: var(--sans); font-weight: 800; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--pen); margin: 0 0 .4rem; }
+.gated-t { font-family: var(--serif); font-size: 1rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 .9rem; }
+.gated-go { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .8rem; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--ink); border-radius: 9px; padding: .6rem 1.1rem; text-decoration: none; }
+.gated-go:hover { background: var(--pen); }
 @media (max-width: 460px) {
   .scr-h1 { font-size: 2.05rem; }
   .scr-sub { font-size: 1.02rem; }
@@ -806,7 +822,8 @@ footer {
 .pkg-chip:hover:not(:disabled) { border-color: var(--pencil); }
 .pkg-chip.on { border-color: var(--ink); background: var(--ink); color: #fff; }
 .pkg-chip:disabled { opacity: 0.4; cursor: not-allowed; }
-.pkg-final { display: flex; gap: 0.5rem; margin-top: 0.2rem; }
+.pkg-final { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.2rem; }
+.pkg-final #pkg-name { flex-basis: 100%; }
 .pkg-final input { flex: 1 1 auto; min-width: 0; font-family: var(--serif); font-size: 1rem; padding: 0.75rem 0.9rem; border: 1.5px solid var(--rule); border-radius: 10px; background: var(--paper); color: var(--ink); }
 .pkg-final input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
 .pkg-go { flex: 0 0 auto; font-family: var(--sans); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.02em; text-transform: uppercase; color: #fff; background: var(--ink); border: 0; border-radius: 10px; padding: 0.75rem 1.15rem; cursor: pointer; }

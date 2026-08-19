@@ -7,7 +7,7 @@ import { careers } from "@/data/careers";
 export const metadata: Metadata = {
   title: "Your free Career Map",
   description:
-    "Build your free Career Map — the 28-career AI-exposure index, a guide written for exactly where you are, and full breakdowns on the careers you care about.",
+    "Build your free Career Map — all 28 careers scored for AI exposure, plus a high-level review of the careers you care about. Your first step into Winning in the Age of AI.",
   alternates: { canonical: "/map" },
 };
 
@@ -44,8 +44,8 @@ export default async function MapLanding({
           </span>
         </h1>
         <p className="scr-sub">
-          Build your free Career Map — all 28 careers scored, a short guide written for exactly
-          where you stand, and the full breakdown on up to five careers that matter to you.
+          Build your free Career Map — all 28 careers scored, plus a high-level review of the
+          careers that matter to you. See exactly where you stand.
         </p>
 
         <div className="scr-bar" aria-hidden="true">
@@ -59,6 +59,14 @@ export default async function MapLanding({
         </div>
 
         <PackageSignup careers={opts} preselect={preselect} />
+
+        <div className="scr-community">
+          <span className="scr-community-k">Winning in the Age of AI</span>
+          <p>
+            Your Career Map is the first step into <b>Winning in the Age of AI</b> — the community
+            for people getting ahead of the change instead of worrying about it.
+          </p>
+        </div>
 
         <p className="scr-foot">
           Pivotum · The Career Map · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>

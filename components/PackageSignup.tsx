@@ -28,6 +28,7 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
   const [stage, setStage] = useState<Stage | "">("");
   const [audience, setAudience] = useState<Audience | "">("");
   const [picks, setPicks] = useState<string[]>(seeded);
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [hint, setHint] = useState("");
@@ -52,6 +53,7 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
     if (!stage) return setHint("Pick where you are right now.");
     if (!audience) return setHint("Tell us who this is for.");
     if (picks.length === 0) return setHint("Choose at least one career.");
+    if (!firstName.trim()) return setHint("Add your first name.");
     setHint("");
     setStatus("sending");
     // Shared id so the browser Lead event and the server-side Conversions API
@@ -61,7 +63,16 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, source: "index", stage, audience, careers: picks, eventId, ...readClickIds() }),
+      body: JSON.stringify({
+        email,
+        firstName: firstName.trim(),
+        source: "index",
+        stage,
+        audience,
+        careers: picks,
+        eventId,
+        ...readClickIds(),
+      }),
     });
     if (res.ok) {
       trackPixel("Lead", {}, eventId);
@@ -76,8 +87,8 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
       <div className="pkg pkg-done">
         <p className="pkg-done-h">Your Career Map is on its way.</p>
         <p className="pkg-done-s">
-          Check your inbox — the 28-career index, your guide, and the breakdowns you picked are
-          landing now. Didn’t arrive? Check spam, it’ll be there.
+          Check your inbox — the 28-career index and a high-level review of the careers you picked
+          are landing now. Didn’t arrive? Check spam, it’ll be there.
         </p>
       </div>
     );
@@ -158,9 +169,20 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
 
       <div className="pkg-final">
         <input
+          id="pkg-name"
+          type="text"
+          required
+          autoComplete="given-name"
+          placeholder="First name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          aria-label="Your first name"
+        />
+        <input
           id="pkg-email"
           type="email"
           required
+          autoComplete="email"
           placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

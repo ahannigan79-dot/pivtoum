@@ -4,6 +4,7 @@ import CSStudent from "@/content/full/computer-science-student.mdx";
 import { getCareer } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
+import { GatedBlur } from "@/components/GatedBlur";
 import { EmailSignup } from "@/components/EmailSignup";
 
 const career = getCareer("computer-science")!;
@@ -39,11 +40,16 @@ export default function ComputerScienceStudentPage() {
           <span>Student version</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          The student version — published free, in full. This is the short version written
-          directly to the student; every Career Value Guide includes one.{" "}
-          <Link href="/careers/computer-science">Read the full parent guide →</Link>
+          The student version — the short read written directly to the student; every Career Value
+          Guide includes one.{" "}
+          <Link href="/careers/computer-science">See the full guide →</Link>
         </p>
-        <CSStudent />
+        <GatedBlur
+          label="The student version — read it free"
+          cta="The short version written straight to the student. Get the free Career Map to read it in full."
+        >
+          <CSStudent />
+        </GatedBlur>
         <EmailSignup
           label="Parents: get the test behind our scores"
           sub="The free Starter Kit — the three-question test to size up any career, plus each new article and edition. Free, no spam."

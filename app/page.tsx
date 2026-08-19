@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <div className="lp-value">
             <h3>We publish where we might be wrong</h3>
-            <p>A fixed, public methodology, re-scored every six months. Free — nothing gated.</p>
+            <p>A fixed, public methodology, re-scored twice a year. The scores are free.</p>
           </div>
         </section>
 
@@ -81,8 +81,8 @@ export default function Home() {
               a genuinely low-exposure entry; red, one that&rsquo;s highly exposed.
             </p>
             <p className="idx-free">
-              <strong>Every career below is a free sampler.</strong> Tap any row to read the full
-              reasoning and sources &mdash; no signup, no payment.
+              <strong>Every career below is scored free.</strong> Tap any row for the read &mdash;
+              the deeper breakdown opens with your free Career Map.
             </p>
           </div>
 

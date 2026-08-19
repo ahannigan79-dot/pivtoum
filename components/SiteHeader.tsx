@@ -19,8 +19,8 @@ export function SiteHeader() {
   const close = () => setOpen(false);
   const pathname = usePathname();
 
-  // The /scores and /map ad landing pages are intentionally distraction-free — no nav.
-  if (pathname === "/scores" || pathname === "/map") return null;
+  // The /map ad landing page is intentionally distraction-free — no nav.
+  if (pathname === "/map") return null;
 
   return (
     <header className="site-header">
