@@ -9,6 +9,10 @@ export const SITE = {
   /** The same trust line, framed for the worried-adult (your-career) audience. */
   creedWorker: "We build AI for a living, and we’re worried about our own careers too — right alongside you.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pivotum.ai",
+  /** The Winning in the Age of AI community, hosted on Mighty Networks. */
+  community: process.env.NEXT_PUBLIC_COMMUNITY_URL ?? "https://community.pivotum.ai",
+  /** The community's name — the paid membership people join. */
+  communityName: "Winning in the Age of AI",
 } as const;
 
 /** The current edition. Bump this when a new edition publishes. */
