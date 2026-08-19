@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <div className="lp">
       <div className="lp-wrap">
-        {/* Hero */}
-        <section className="lp-hero">
+        {/* Hero — dark bookend */}
+        <section className="lp-hero dark">
           <div className="lp-hero-grid">
             <div>
               <div className="lp-eyebrow">
@@ -37,11 +37,16 @@ export default function Home() {
                 score {careerCount} careers on their exposure to AI, free, with the reasoning shown —
                 then show you where the room to move is.
               </p>
-              <StarterKitCta />
+              <div className="lp-cta-row lp-hero-cta">
+                <Link className="lp-btn" href="/map">
+                  Get your free Career Map &rarr;
+                </Link>
+                <a className="lp-btn ghost" href="#index">
+                  See all {careerCount} scores
+                </a>
+              </div>
               <p className="lp-hero-browse">
-                Prefer to look first? <a href="#index">See all {careerCount} careers free &rarr;</a>
-                <span className="dot"> · </span>
-                <Link href="/methodology">How we score</Link>
+                <Link href="/methodology">How we score &rarr;</Link>
               </p>
               <p className="lp-creed">{SITE.creed}</p>
             </div>

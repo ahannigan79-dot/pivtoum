@@ -841,3 +841,66 @@ footer {
   .pkg-final { flex-direction: column; }
   .pkg-go { width: 100%; }
 }
+
+/* ============================================================
+   DARK BOOKENDS — the "winning" brand moments (hero + /map).
+   Dark = the promise; light = the proof. Kept warm, never slate.
+   ============================================================ */
+
+/* Homepage hero as a dark band */
+.lp-hero.dark { background: var(--ink); border-radius: 22px; padding: 3rem 2.6rem 2.8rem; margin-top: 1.4rem; }
+.lp-hero.dark .lp-eyebrow { color: #cdc6b8; }
+.lp-hero.dark .lp-eyebrow b { color: #f3efe6; }
+.lp-hero.dark .lp-h1 { color: #f5f1e8; }
+.lp-hero.dark .lp-h1 .hl { color: #7FC08A; }
+.lp-hero.dark .lp-lede { color: #d5cec0; }
+.lp-hero.dark .lp-hero-cta { margin-top: 1.6rem; }
+.lp-hero.dark .lp-btn { background: var(--win); border-color: var(--win); color: #fff; }
+.lp-hero.dark .lp-btn:hover { background: #2c6b41; border-color: #2c6b41; }
+.lp-hero.dark .lp-btn.ghost { background: transparent; color: #f3efe6; border-color: rgba(255, 255, 255, .28); }
+.lp-hero.dark .lp-btn.ghost:hover { border-color: #f3efe6; color: #f3efe6; }
+.lp-hero.dark .lp-hero-browse { color: #8f8676; }
+.lp-hero.dark .lp-hero-browse a { color: #7FC08A; }
+.lp-hero.dark .lp-creed { color: #a49c8d; border-top-color: rgba(255, 255, 255, .14); }
+/* the 2.8-vs-8.1 contrast visual on dark */
+.lp-hero.dark .lp-contrast { color: #f5f1e8; }
+.lp-hero.dark .lp-cap { color: #cfc8ba; }
+.lp-hero.dark .lp-cap b { color: #8f8676; }
+.lp-hero.dark .lp-draw path { stroke: #E0776C; }
+.lp-hero.dark .lp-draw.safe path { stroke: #7FC08A; }
+
+/* /map as a fully dark bookend (only page using .scr) */
+.scr { background: #1b1812; }
+.scr .wordmark-logo { filter: brightness(0) invert(1); opacity: .95; }
+.scr .scr-eyebrow { color: #7FC08A; }
+.scr .scr-tag { color: #8f8676; }
+.scr .scr-h1 { color: #f5f1e8; }
+.scr .scr-h1 .hl { color: #7FC08A; }
+.scr .scr-sub { color: #d0c9bb; }
+.scr .scr-scale .lo { color: #E0776C; }
+.scr .scr-scale .hi { color: #7FC08A; }
+.scr .scr-foot { color: #7d7568; }
+.scr .scr-foot a { color: #9a9182; }
+.scr .pkg-q { color: #f0ece3; }
+.scr .pkg-count { color: #8f8676; }
+.scr .pkg-opt { background: #262219; border-color: #39342b; color: #f0ece3; }
+.scr .pkg-opt span { color: #b8b1a3; }
+.scr .pkg-opt:hover { border-color: #6f685c; }
+.scr .pkg-opt.on { border-color: #7FC08A; background: rgba(127, 192, 138, .10); box-shadow: inset 0 0 0 1px #7FC08A; }
+.scr .pkg-chip { background: #262219; border-color: #39342b; color: #e7e1d5; }
+.scr .pkg-chip:hover:not(:disabled) { border-color: #6f685c; }
+.scr .pkg-chip.on { border-color: #7FC08A; background: #35804E; color: #fff; }
+.scr .pkg-final input { background: #262219; border-color: #39342b; color: #f0ece3; }
+.scr .pkg-final input::placeholder { color: #8f8676; }
+.scr .pkg-final input:focus { outline-color: #7FC08A; border-color: #7FC08A; }
+.scr .pkg-go { background: #35804E; }
+.scr .pkg-go:hover { background: #2c6b41; }
+.scr .pkg-fine { color: #b8b1a3; }
+.scr .pkg-hint { color: #E0776C; }
+.scr .pkg-done-h { color: #f5f1e8; }
+.scr .pkg-done-s { color: #cfc8ba; }
+.scr .scr-community { background: #262219; border-color: #39342b; border-left-color: #7FC08A; }
+.scr .scr-community-k { color: #7FC08A; }
+.scr .scr-community p { color: #cfc8ba; }
+.scr .scr-community b { color: #f5f1e8; }
+.scr .scr-community-go { color: #7FC08A; }
