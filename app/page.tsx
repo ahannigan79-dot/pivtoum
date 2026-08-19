@@ -132,6 +132,13 @@ export default function Home() {
             grew together. So take the step and join us: a community to understand what’s happening,
             see where you stand, get ahead of the change — and ultimately win.
           </p>
+          <ul className="lp-community-list">
+            <li><b>Know exactly where you stand</b> — 28 careers scored, your field’s safe and exposed sides.</li>
+            <li><b>Go deep on your field</b> — a live deep-dive on rotation, plus a library from day one.</li>
+            <li><b>Become AI-native</b> — no-code playbooks for how your role actually evolves.</li>
+            <li><b>Learn from people inside the change</b> — live sessions, guest insiders, and each other.</li>
+            <li><b>Celebrate the wins</b> — a community that moves forward together.</li>
+          </ul>
           <div className="lp-cta-row">
             <Link className="lp-btn" href="/map">
               Take the first step — get your free Career Map
