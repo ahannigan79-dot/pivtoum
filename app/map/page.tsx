@@ -3,6 +3,7 @@ import { Wordmark } from "@/components/Wordmark";
 import { PackageSignup } from "@/components/PackageSignup";
 import { PageView } from "@/components/PageView";
 import { careers } from "@/data/careers";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Your free Career Map",
@@ -64,9 +65,10 @@ export default async function MapLanding({
         <div className="scr-community">
           <span className="scr-community-k">Winning in the Age of AI</span>
           <p>
-            Your Career Map is the first step into <b>Winning in the Age of AI</b> — the community
-            for people getting ahead of the change instead of worrying about it.
+            Your Career Map is the first step. Take it and join us — a community where we learn and
+            grow together to get through this insane change and ultimately <b>win.</b>
           </p>
+          <a className="scr-community-go" href={SITE.community}>See inside the community →</a>
         </div>
 
         <p className="scr-foot">

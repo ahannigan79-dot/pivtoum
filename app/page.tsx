@@ -50,6 +50,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Community teaser — the point, up top */}
+        <a className="lp-community-strip" href="#community">
+          <span className="lp-community-strip-k">More than a score</span>
+          <span>
+            It’s <b>Winning in the Age of AI</b> — a community learning to get ahead of the change,
+            together. <span className="go">Join us →</span>
+          </span>
+        </a>
+
         {/* Confidence / value */}
         <section className="lp-values">
           <div className="lp-value">
@@ -108,23 +117,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Closing */}
-        <section className="lp-closing">
-          <h2>Weighing two or three seriously?</h2>
+        {/* The community — the destination */}
+        <section className="lp-community" id="community">
+          <div className="lp-community-eyebrow">Winning in the Age of AI</div>
+          <h2>You don’t have to figure this out alone.</h2>
           <p>
-            The Career Value Guide covers the honest downsides, the routes in, and what to actually
-            do — for the careers your family is really considering.
+            This is the strangest, biggest change work has ever seen — and the people who come
+            through it ahead won’t be the ones who did it alone. They’ll be the ones who learned and
+            grew together. So take the step and join us: a community to understand what’s happening,
+            see where you stand, get ahead of the change — and ultimately win.
           </p>
           <div className="lp-cta-row">
-            <Link className="lp-btn" href="/buy">
-              Get the Career Value Guide
+            <Link className="lp-btn" href="/map">
+              Take the first step — get your free Career Map
             </Link>
-            <Link className="lp-btn ghost" href="/careers/computer-science">
-              Read one free
-            </Link>
-            <Link className="lp-btn ghost" href="/careers/computer-science/student">
-              Read the student version free
-            </Link>
+            <a className="lp-btn ghost" href={SITE.community}>
+              See inside the community →
+            </a>
           </div>
         </section>
 
