@@ -22,6 +22,7 @@
   --serif: var(--font-literata), Georgia, serif;
   --sans: var(--font-archivo), system-ui, sans-serif;
   --pen-safe: #3E9C6E; /* confident green — the "protected" circle on the landing */
+  --win: #35804E; /* the "opening" green — emphasis colour for winning-in-the-age-of-AI copy */
 }
 
 * { box-sizing: border-box; }
@@ -52,32 +53,14 @@ body {
 }
 
 /* ---- Highlighter strokes ------------------------------------------------- */
-.hl {
-  background-image: linear-gradient(102deg,
-      rgba(var(--hl), 0) .4%, rgba(var(--hl), .62) 2.2%, rgba(var(--hl), .52) 50%,
-      rgba(var(--hl), .66) 96%, rgba(var(--hl), 0) 99.6%);
-  background-repeat: no-repeat; background-size: 0% 100%;
-  padding: .08em .22em; margin: 0 -.22em;
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
-  animation: sweep .55s cubic-bezier(.3, .8, .4, 1) forwards;
-}
-.hl.d2 { animation-delay: .35s; }
-.hl.g {
-  background-image: linear-gradient(102deg,
-      rgba(var(--hl2), 0) .4%, rgba(var(--hl2), .6) 2.2%, rgba(var(--hl2), .5) 50%,
-      rgba(var(--hl2), .62) 96%, rgba(var(--hl2), 0) 99.6%);
-}
-.hl.r {
-  background-image: linear-gradient(102deg,
-      rgba(var(--hl3), 0) .4%, rgba(var(--hl3), .55) 2.2%, rgba(var(--hl3), .45) 50%,
-      rgba(var(--hl3), .58) 96%, rgba(var(--hl3), 0) 99.6%);
-}
-.hl.b {
-  background-image: linear-gradient(102deg,
-      rgba(var(--hl4), 0) .4%, rgba(var(--hl4), .55) 2.2%, rgba(var(--hl4), .45) 50%,
-      rgba(var(--hl4), .58) 96%, rgba(var(--hl4), 0) 99.6%);
-}
-@keyframes sweep { to { background-size: 100% 100%; } }
+/* Emphasis: coloured text (the "winning" green), replacing the yellow
+   highlighter. One consistent device site-wide. Semantic variants keep their
+   meaning as colour: green = the opening, red = the exposed side. */
+.hl { color: var(--win); font-weight: 600; }
+.hl.d2 { }
+.hl.g { color: var(--win); }
+.hl.r { color: var(--pen); }
+.hl.b { color: var(--ink); }
 
 .pen-u {
   background-image: linear-gradient(transparent 84%, rgba(172, 58, 52, .42) 84%,
@@ -221,7 +204,7 @@ header { padding: 2rem 0 0; }
 .scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: .5rem; }
 .scr-tag { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--pencil); margin: 0 0 1.1rem; }
 .scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.16; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
-.scr-h1 .hl { background-image: linear-gradient(102deg, rgba(var(--hl), 0) .4%, rgba(var(--hl), .62) 2.2%, rgba(var(--hl), .52) 50%, rgba(var(--hl), .66) 96%, rgba(var(--hl), 0) 99.6%); background-repeat: no-repeat; background-size: 100% 0.62em; background-position: 0 84%; animation: none; padding: 0 .12em; margin: 0 -.12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.scr-h1 .hl { color: var(--win); font-weight: 600; background: none; padding: 0; margin: 0; }
 .scr-sub { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 1.6rem; max-width: 34em; }
 .scr-bar { display: flex; gap: 3px; margin: 0 0 .5rem; }
 .scr-bar span { height: 16px; flex: 1; }

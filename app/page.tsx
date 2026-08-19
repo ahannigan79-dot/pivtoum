@@ -26,13 +26,16 @@ export default function Home() {
           <div className="lp-hero-grid">
             <div>
               <div className="lp-eyebrow">
-                <b>Pivotum</b> · The AI career index · Fall 2026
+                <b>Pivotum</b> · Winning in the Age of AI · Fall 2026
               </div>
-              <h1 className="lp-h1">Help your kid choose a career that lasts.</h1>
+              <h1 className="lp-h1">
+                <span className="hl">Win</span> in the age of AI.
+              </h1>
               <p className="lp-lede">
-                We score {careerCount} careers on how exposed they are to AI — the same six
-                factors, re-scored every six months, with the reasoning shown. The biggest decision
-                on the table, made with evidence instead of fear.
+                The biggest shift work has seen in a century is also the biggest opening — for the
+                people who can see it first. It starts with knowing exactly where you stand: we
+                score {careerCount} careers on their exposure to AI, free, with the reasoning shown —
+                then show you where the room to move is.
               </p>
               <StarterKitCta />
               <p className="lp-hero-browse">

@@ -35,13 +35,14 @@ export default async function MapLanding({
           <Wordmark />
         </div>
 
-        <div className="scr-eyebrow">The Career Map · Free</div>
+        <div className="scr-eyebrow">Winning in the Age of AI · Free Career Map</div>
         <div className="scr-tag">Careers, mapped for the age of AI</div>
         <h1 className="scr-h1">
-          Is this career{" "}
+          Find your{" "}
           <span className="hl" style={{ whiteSpace: "nowrap" }}>
-            safe from AI?
-          </span>
+            opening
+          </span>{" "}
+          in the age of AI.
         </h1>
         <p className="scr-sub">
           Build your free Career Map — all 28 careers scored, plus a high-level review of the
