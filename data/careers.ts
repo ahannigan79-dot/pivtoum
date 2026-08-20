@@ -93,7 +93,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4,
         "direction": "exposure"
       },
@@ -224,7 +224,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },
@@ -355,7 +355,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2,
         "direction": "protection"
       },
@@ -477,7 +477,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4.5,
         "direction": "exposure"
       },
@@ -599,7 +599,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 7.5,
         "direction": "exposure"
       },
@@ -624,7 +624,7 @@ export const careers: Career[] = [
         "direction": "protection"
       }
     ],
-    "workedFactor": "How hard will it be to land that first job?",
+    "workedFactor": "Is the path in and up being eroded?",
     "faqs": [
       {
         "q": "Will AI replace business analysts?",
@@ -721,7 +721,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },
@@ -746,7 +746,7 @@ export const careers: Career[] = [
         "direction": "protection"
       }
     ],
-    "workedFactor": "How hard will it be to land that first job?",
+    "workedFactor": "Is the path in and up being eroded?",
     "faqs": [
       {
         "q": "Will AI replace construction managers?",
@@ -843,7 +843,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4.5,
         "direction": "exposure"
       },
@@ -965,7 +965,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 8.5,
         "direction": "exposure"
       },
@@ -1087,7 +1087,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },
@@ -1209,7 +1209,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 8,
         "direction": "exposure"
       },
@@ -1331,7 +1331,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 3,
         "direction": "protection"
       },
@@ -1453,7 +1453,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4,
         "direction": "exposure"
       },
@@ -1584,7 +1584,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },
@@ -1706,7 +1706,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 8.5,
         "direction": "exposure"
       },
@@ -1731,7 +1731,7 @@ export const careers: Career[] = [
         "direction": "protection"
       }
     ],
-    "workedFactor": "How hard will it be to land that first job?",
+    "workedFactor": "Is the path in and up being eroded?",
     "faqs": [
       {
         "q": "Will AI replace journalists?",
@@ -1828,7 +1828,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 9.5,
         "direction": "exposure"
       },
@@ -1959,7 +1959,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 6,
         "direction": "exposure"
       },
@@ -2081,7 +2081,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 8,
         "direction": "exposure"
       },
@@ -2221,7 +2221,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 1.5,
         "direction": "protection"
       },
@@ -2352,7 +2352,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2,
         "direction": "protection"
       },
@@ -2377,7 +2377,7 @@ export const careers: Career[] = [
         "direction": "protection"
       }
     ],
-    "workedFactor": "How hard will it be to land that first job?",
+    "workedFactor": "Is the path in and up being eroded?",
     "faqs": [
       {
         "q": "Is a nursing degree worth it with AI?",
@@ -2474,7 +2474,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4.5,
         "direction": "exposure"
       },
@@ -2605,7 +2605,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },
@@ -2727,7 +2727,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 3.5,
         "direction": "protection"
       },
@@ -2849,7 +2849,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 1.5,
         "direction": "protection"
       },
@@ -2971,7 +2971,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2,
         "direction": "protection"
       },
@@ -3102,7 +3102,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 9,
         "direction": "exposure"
       },
@@ -3233,7 +3233,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 4,
         "direction": "exposure"
       },
@@ -3364,7 +3364,7 @@ export const careers: Career[] = [
         "direction": "exposure"
       },
       {
-        "question": "How hard will it be to land that first job?",
+        "question": "Is the path in and up being eroded?",
         "rating": 2.5,
         "direction": "protection"
       },

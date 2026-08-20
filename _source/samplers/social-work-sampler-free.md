@@ -56,7 +56,7 @@ How adult safeguarding and community social work rates against each. Ratings are
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 6.1 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 3.5 | ↓ good protection |
+| Is the path in and up being eroded? | 3.5 | ↓ good protection |
 | Does it have to be done in person, with your hands? | 6.0 | ↓ moderate protection |
 | Does someone need a human they can trust and hold responsible? | 9.0 | ↓ strong protection |
 | Does the law require a licensed human? | 7.5 | ↓ good protection |

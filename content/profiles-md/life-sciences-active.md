@@ -89,7 +89,7 @@ And genuinely: hypothesis generation from existing data is now meaningfully assi
 
 What resists: doing the experiment. Noticing that a culture looks wrong before any measurement says so. Troubleshooting an instrument. Handling animals. And the tacit craft that makes one person's results reproducible and another's not. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Moderate, and this is where the honest problems sit** — not with exposure but with pay and progression. The financial picture below covers it.
 

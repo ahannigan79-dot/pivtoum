@@ -64,7 +64,7 @@ We rate this **7.3**. What holds the overall score at 5.2 despite that is almost
 
 What resists: signing the audit opinion, judgment on an ambiguous accounting treatment, advising a business owner on what to actually do, and professional skepticism — knowing when the numbers are wrong.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Good, and getting better — which is almost unique in this index.**
 

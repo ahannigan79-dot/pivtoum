@@ -60,7 +60,7 @@ AI goes after the routine, repeatable layer of any job first. That is true every
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 5.5 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 2.0 | ↓ strong protection |
+| Is the path in and up being eroded? | 2.0 | ↓ strong protection |
 | Does it have to be done in person, with your hands? | 9.0 | ↓ strong protection |
 | Does someone need a human they can trust and hold responsible? | 9.0 | ↓ strong protection |
 | Does the law require a licensed human? | 9.0 | ↓ strong protection |
@@ -72,7 +72,7 @@ Five of the six run in nursing's favor. The Career Value Guide explains the reas
 
 *So you can see what the analysis actually looks like.*
 
-**How hard will it be to land that first job? — rated 2.0**
+**Is the path in and up being eroded? — rated 2.0**
 
 This is the factor most careers advice ignores, and the one where nursing quietly outperforms almost everything else we score.
 

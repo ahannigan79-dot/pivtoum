@@ -62,7 +62,7 @@ Writing SQL and queries. Building dashboards and reports. Exploratory analysis a
 
 Inputs arrive as structured data. Outputs are code, charts and text. The section on proximity to AI explains why nearness to these systems offers no protection here.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe at entry, and this is where the evidence genuinely conflicts.**
 

@@ -63,7 +63,7 @@ What is *not* automating is the core: ==+physical assessment, hands-on care, and
 
 One useful technical detail: nursing documentation is structurally different from physician documentation. A doctor writes one or two narrative notes a day; a nurse records hundreds of structured observations across a shift. Tools built for physician workflows don't simply transfer, which is part of why nursing's automation has lagged medicine's.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Easier than almost any field we score — and for a structural reason worth understanding properly.**
 

@@ -55,7 +55,7 @@ How a service electrician rates against each. Ratings are 0–10 on each factor'
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 5.0 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 2.0 | ↓ strong protection |
+| Is the path in and up being eroded? | 2.0 | ↓ strong protection |
 | Does it have to be done in person, with your hands? | 9.5 | ↓ strongest protection |
 | Does someone need a human they can trust and hold responsible? | 8.5 | ↓ strong protection |
 | Does the law require a licensed human? | 9.0 | ↓ strong protection |

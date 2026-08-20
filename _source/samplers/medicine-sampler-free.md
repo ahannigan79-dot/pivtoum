@@ -64,7 +64,7 @@ How primary care rates against each. Ratings are 0–10 on each factor's own ter
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 6.0 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 1.5 | ↓ strongest protection in the index |
+| Is the path in and up being eroded? | 1.5 | ↓ strongest protection in the index |
 | Does it have to be done in person, with your hands? | 8.0 | ↓ strong protection |
 | Does someone need a human they can trust and hold responsible? | 9.5 | ↓ strong protection |
 | Does the law require a licensed human? | 9.5 | ↓ strong protection |

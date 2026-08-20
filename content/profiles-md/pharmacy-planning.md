@@ -66,7 +66,7 @@ Prescription verification against interaction and dosing rules. Inventory manage
 
 What resists: clinical judgment on a complex regimen, catching the error nobody's system flagged, counseling a frightened patient about a diagnosis they've just received, and the professional accountability that attaches to a signature. A degree worth choosing is one that builds toward those.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Genuinely contested, and the section on the reversal covers a shift most careers advice hasn't registered.**
 

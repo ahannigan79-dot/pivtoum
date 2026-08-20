@@ -65,7 +65,7 @@ What does not automate: the therapeutic relationship, sitting with someone in ge
 
 We rate this 6.8 — higher than people expect. A great deal of what fills a clinician's week is automatable. ==+It simply isn't the part that matters.==
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Once licensed, easy. Getting licensed is the filter.**
 

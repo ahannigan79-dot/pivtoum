@@ -64,7 +64,7 @@ What resists: deciding what to do when the ground isn't what the survey said, ge
 
 ==+Construction is unusual in that its *information* layer automates readily while its *physical delivery* layer barely moves — and the two sit a few hundred feet apart.==
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the best on-ramps we measure anywhere — and Count the doors, below, explains why the mechanism is unusual.**
 

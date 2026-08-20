@@ -56,7 +56,7 @@ How a site superintendent rates against each. Ratings are 0–10 on each factor'
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 5.5 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 2.5 | ↓ strong protection |
+| Is the path in and up being eroded? | 2.5 | ↓ strong protection |
 | Does it have to be done in person, with your hands? | 9.0 | ↓ strong protection |
 | Does someone need a human they can trust and hold responsible? | 8.0 | ↓ strong protection |
 | Does the law require a licensed human? | 6.0 | ↓ moderate protection |
@@ -66,7 +66,7 @@ How a site superintendent rates against each. Ratings are 0–10 on each factor'
 
 *So you can see what the analysis actually looks like.*
 
-**How hard will it be to land that first job? — rated 2.5, and this is one of the few fields where the routes in are widening**
+**Is the path in and up being eroded? — rated 2.5, and this is one of the few fields where the routes in are widening**
 
 Across most of this index, this factor is bad news. AI absorbs junior tasks, firms hire experience instead of building it, and the on-ramp narrows. Software rates 9.0 here. Junior law rates 9.5. Business rates 7.5.
 

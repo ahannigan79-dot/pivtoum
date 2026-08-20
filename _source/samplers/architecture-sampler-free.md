@@ -54,7 +54,7 @@ How licensed architecture rates against each. Ratings are 0–10 on each factor'
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 8.0 | ↑ high exposure |
-| How hard will it be to land that first job? | 4.5 | ↑ moderate exposure |
+| Is the path in and up being eroded? | 4.5 | ↑ moderate exposure |
 | Does it have to be done in person, with your hands? | 5.0 | ↓ moderate protection |
 | Does someone need a human they can trust and hold responsible? | 7.5 | ↓ good protection |
 | Does the law require a licensed human? | 8.5 | ↓ strong protection |

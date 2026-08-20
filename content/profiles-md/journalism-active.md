@@ -100,7 +100,7 @@ Rewriting wire copy. Aggregating other outlets' coverage. Summarising reports an
 
 What resists: being in the room, cultivating a source who trusts you, obtaining a document nobody published, standing behind a claim legally, and knowing when someone is lying to you. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The worst of any career in this index, and it was broken before AI arrived.**
 

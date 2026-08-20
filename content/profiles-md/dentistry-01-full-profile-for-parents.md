@@ -82,7 +82,7 @@ What resists: working inside a mouth with hand instruments, managing a frightene
 judgment about what a specific tooth needs, and the relationship that brings someone back for
 twenty years.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Strong protection.** Licensure requires supervised clinical training and school places are
 capped, so entry is competitive but employment afterwards is secure.

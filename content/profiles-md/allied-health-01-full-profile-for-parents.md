@@ -83,7 +83,7 @@ What resists: hands on a body, watching a gait in person, feeling resistance and
 compensation, motivating someone through months of painful work, and adjusting in real time to
 what a body actually does.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Strong protection.** Licensure requires supervised clinical hours, which cannot be automated
 or offshored, and demand is growing well above average as populations age and survival after

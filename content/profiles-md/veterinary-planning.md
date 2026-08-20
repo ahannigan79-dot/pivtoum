@@ -69,7 +69,7 @@ Veterinary practices are buried in administration, and ==+the automation landing
 
 What resists: physical examination of an animal that resists it, surgery, handling a frightened or aggressive patient, telling an owner their dog is dying, and judgment when the patient cannot describe anything.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Strong protection.** Licensure requires supervised clinical training that cannot be automated or offshored, and veterinary school places are capped — which makes entry fiercely competitive but employment afterwards secure.
 

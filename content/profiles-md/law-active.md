@@ -62,7 +62,7 @@ That list is not a forecast. It is a description of what large firms have alread
 
 What resists: standing up in a courtroom, being the person a client trusts with an existential problem, judgment on a genuinely novel question, and holding the bar card and the liability that comes with it. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **This is law's crisis, and it is worse than the automation itself.**
 

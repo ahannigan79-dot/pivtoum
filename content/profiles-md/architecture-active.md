@@ -64,7 +64,7 @@ Adoption is already substantial — a majority of architecture firms report usin
 
 What resists: the stamp and the liability behind it, site conditions nobody drew, a client who trusts you with their money, and judgment about what is actually buildable here. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Moderate, and propped open by licensure — with a caveat covered under the question the profession hasn't answered.**
 

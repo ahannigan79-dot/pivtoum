@@ -64,7 +64,7 @@ The section on when the automatable layer is the craft explains why a 9.1 here m
 
 What resists: deciding what a brand should mean, art direction with intent, taste as a decision-making function, and defending a creative decision to a board. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe.**
 

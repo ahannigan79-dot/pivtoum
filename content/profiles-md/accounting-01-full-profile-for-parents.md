@@ -87,7 +87,7 @@ What resists: signing the audit opinion, judgment on an ambiguous accounting tre
 advising a business owner on what to actually do, and professional skepticism — knowing when
 the numbers are wrong.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Good, and getting better — which is almost unique in this index.**
 

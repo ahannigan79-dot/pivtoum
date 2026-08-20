@@ -62,7 +62,7 @@ Radiograph analysis and caries detection. Treatment plan drafting. Clinical note
 
 What resists: working inside a mouth with hand instruments, managing a frightened patient, judgment about what a specific tooth needs, and the relationship that brings someone back for twenty years. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Strong protection.** Licensure requires supervised clinical training and school places are capped, so entry is competitive but employment afterwards is secure.
 

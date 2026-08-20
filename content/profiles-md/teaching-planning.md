@@ -62,7 +62,7 @@ Lesson planning and resource creation. Marking and feedback generation. Differen
 
 We rate this **7.7**. The section on why a 7.7 rating still produces a 3.6 explains how a rating that high still lands in the low band, because it's the clearest demonstration of how this whole framework works.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The strongest protection we give on this factor anywhere.**
 

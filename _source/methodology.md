@@ -31,7 +31,7 @@ On the report, each factor appears as a plain question about your child's actual
 **1. How much of this job can AI already do?** — *weight: 35%*
 The largest single factor. What share of the day-to-day work is cognitive or routine — writing, analyzing, summarizing, drafting, standard production — that AI can already do or nearly do? The more of the job that's automatable, the higher the exposure.
 
-**2. How hard will it be to land that first job?** — *weight: 15%*
+**2. Is the path in and up being eroded?** — *weight: 15%*
 The factor most people miss. AI tends to automate the *junior* tasks first — the grunt work that entry-level roles were built from, and that people historically used to build experience. When those tasks vanish, the profession can stay healthy while the path *into* it narrows. For someone choosing a degree, this matters enormously: a safe career you can't break into is not a safe bet.
 
 **3. How exposed is the profession's high-value work over time?** — *folded into the factors above and the durability analysis*
@@ -55,7 +55,7 @@ Two durable protections. Licensing and regulation (medicine, law, nursing, engin
 | Factor (reader-facing question) | Weight | Effect |
 |---|---|---|
 | How much of this job can AI already do? | 35% | raises risk |
-| How hard will it be to land that first job? | 15% | raises risk |
+| Is the path in and up being eroded? | 15% | raises risk |
 | Does it have to be done in person, with your hands? | 15% | lowers risk |
 | Does someone need a human they can trust and hold responsible? | 15% | lowers risk |
 | Does the law require a licensed human? | 10% | lowers risk |

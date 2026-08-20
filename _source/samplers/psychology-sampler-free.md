@@ -60,7 +60,7 @@ How a licensed clinical psychologist rates against each. Ratings are 0–10 on e
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 6.8 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 2.5 | ↓ strong protection |
+| Is the path in and up being eroded? | 2.5 | ↓ strong protection |
 | Does it have to be done in person, with your hands? | 6.5 | ↓ moderate protection |
 | Does someone need a human they can trust and hold responsible? | 9.5 | ↓ strongest in the index |
 | Does the law require a licensed human? | 9.5 | ↓ strong protection |

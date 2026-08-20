@@ -132,7 +132,7 @@ building enough trust with someone who does not want you there; deciding to act 
 information when both action and inaction carry serious risk; and carrying the legal
 accountability for that decision.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the easiest entries we measure**, and that is partly a symptom rather than only a
 benefit. Vacancies are widespread, turnover is high, and employers are actively recruiting —

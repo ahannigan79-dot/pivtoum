@@ -92,7 +92,7 @@ What resists: diagnosing a fault in a sixty-year-old building, running new servi
 wall with no drawings, working in an attic or a crawlspace or a trench, and judging whether
 conditions are safe to continue.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the best on-ramps we measure anywhere, and it is getting better rather than worse.**
 

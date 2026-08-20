@@ -56,7 +56,7 @@ How wealth and financial advisory rates against each. Ratings are 0–10 on each
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 6.3 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 4.0 | ↑ moderate exposure |
+| Is the path in and up being eroded? | 4.0 | ↑ moderate exposure |
 | Does it have to be done in person, with your hands? | 2.0 | ↓ almost none |
 | Does someone need a human they can trust and hold responsible? | 9.0 | ↓ strong protection |
 | Does the law require a licensed human? | 8.0 | ↓ strong protection |

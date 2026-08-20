@@ -60,7 +60,7 @@ Copywriting and content production. Social posts and campaign variants. Email se
 
 The distinction that matters is between *producing* marketing and *deciding* marketing. ==-Generating content is no longer a job. It is a prompt.== Deciding what should exist, and being accountable for whether it worked, still is. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe, and the data is unusually specific.**
 

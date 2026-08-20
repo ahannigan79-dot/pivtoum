@@ -82,7 +82,7 @@ The distinction that matters is between *producing* marketing and *deciding* mar
 ==-Generating content is no longer a job. It is a prompt.== Deciding what should exist, and
 being accountable for whether it worked, still is.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe, and the data is unusually specific.**
 

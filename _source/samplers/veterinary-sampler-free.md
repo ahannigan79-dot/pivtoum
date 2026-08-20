@@ -57,7 +57,7 @@ How small animal general practice rates against each. Ratings are 0–10 on each
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 5.2 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 2.5 | ↓ strong protection |
+| Is the path in and up being eroded? | 2.5 | ↓ strong protection |
 | Does it have to be done in person, with your hands? | 9.0 | ↓ strong protection |
 | Does someone need a human they can trust and hold responsible? | 9.0 | ↓ strong protection |
 | Does the law require a licensed human? | 9.0 | ↓ strong protection |

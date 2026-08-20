@@ -80,7 +80,7 @@ materials by level. Parent communication drafts. Administrative reporting. Curri
 We rate this **7.7**. Section 5 explains why a rating that high still produces a score of 3.6,
 because it's the clearest demonstration of how this whole framework works.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The strongest protection we give on this factor anywhere.**
 

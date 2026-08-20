@@ -83,7 +83,7 @@ Section 4 explains why a 9.1 here means something different from a 9.1 anywhere 
 What resists: deciding what a brand should mean, art direction with intent, taste as a
 decision-making function, and defending a creative decision to a board.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe.**
 

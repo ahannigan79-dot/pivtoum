@@ -89,7 +89,7 @@ Case notes and recording. Report drafting for court and panels. Referral triage.
 
 What resists: sitting in a family's home and forming a judgment about whether a child is safe; building enough trust with someone who does not want you there; deciding to act on incomplete information when both action and inaction carry serious risk; and carrying the legal accountability for that decision. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the easiest entries we measure**, and that is partly a symptom rather than only a benefit. Vacancies are widespread, turnover is high, and employers are actively recruiting — the section on what's genuinely hard explains why.
 

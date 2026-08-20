@@ -105,7 +105,7 @@ Route planning and sequencing. Load matching and capacity planning. Hours-of-ser
 
 What resists: reversing a trailer onto a difficult dock; deciding whether a road is safe in poor conditions; securing an unusual load; dealing with a customer whose site access isn't what the system says; and everything that happens when the plan meets reality.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the best on-ramps we measure.** ==+BLS projects roughly **237,600 annual openings** for heavy and tractor-trailer drivers through 2034.== Training is short, licensed, and often employer-funded.
 

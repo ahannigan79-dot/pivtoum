@@ -62,7 +62,7 @@ Financial modeling and scenario building. Company and sector research. Earnings 
 
 What resists: sitting across from someone making the biggest financial decision of their life, judgment on risks that don't match historical patterns, being called when markets fall, and regulatory accountability for advice given.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Severe, and compounded by something our framework doesn't measure.**
 

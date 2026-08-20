@@ -88,7 +88,7 @@ What resists: clinical judgment on a complex regimen, catching the error nobody'
 flagged, counseling a frightened patient about a diagnosis they've just received, and the
 professional accountability that attaches to a signature.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Genuinely contested, and section 5 covers a reversal most careers advice hasn't registered.**
 

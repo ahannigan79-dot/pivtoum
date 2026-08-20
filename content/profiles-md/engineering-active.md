@@ -84,7 +84,7 @@ Each of those was, until recently, a junior engineer's assignment. ==-Generative
 
 What resists: the stamp and the liability behind it, site work, commissioning, and judgment about whether an analysis actually applies *here*. Those are the things to be building toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the better on-ramps we measure, and for two independent reasons.**
 

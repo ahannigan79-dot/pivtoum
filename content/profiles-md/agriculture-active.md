@@ -108,7 +108,7 @@ Yield forecasting and field mapping. Input optimization. Compliance and traceabi
 
 What resists: physically operating in a field; handling livestock; fixing equipment where it broke; judging conditions; and everything that happens when the plan meets weather. Those are the things to be moving toward.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Straightforward in production work.** Farm labor is in persistent shortage, entry is accessible, and the route in doesn't require a degree. The economics section below covers the harder question, which is what the job pays.
 

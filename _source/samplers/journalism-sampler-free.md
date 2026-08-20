@@ -70,7 +70,7 @@ How desk and aggregation work rates against each. Ratings are 0–10 on each fac
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 8.6 | ↑ severe exposure |
-| How hard will it be to land that first job? | 8.5 | ↑ severe exposure |
+| Is the path in and up being eroded? | 8.5 | ↑ severe exposure |
 | Does it have to be done in person, with your hands? | 1.0 | ↓ none |
 | Does someone need a human they can trust and hold responsible? | 3.0 | ↓ almost none |
 | Does the law require a licensed human? | 1.0 | ↓ none |
@@ -80,7 +80,7 @@ How desk and aggregation work rates against each. Ratings are 0–10 on each fac
 
 *So you can see what the analysis actually looks like.*
 
-**How hard will it be to land that first job? — rated 8.5, and it was already broken before AI**
+**Is the path in and up being eroded? — rated 8.5, and it was already broken before AI**
 
 Across this index, entry-path erosion is usually a recent story: AI absorbs the junior tasks, and the on-ramp narrows over three or four years. Journalism is the exception, and it is instructive.
 

@@ -85,7 +85,7 @@ What resists: deciding whether this is an incident or noise, working out what an
 actually trying to do, judgment when the attack has no precedent, making the call to shut down
 production, and explaining a breach to a board or a regulator.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Harder than the marketing suggests, and section 4 covers why in detail.**
 

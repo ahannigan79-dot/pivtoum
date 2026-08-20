@@ -86,7 +86,7 @@ The pattern here is unusually clean, and it's worth stating plainly: ==-almost e
 
 What resists: owning a number and answering for it, managing people, negotiating with someone whose interests differ from yours, and deciding what should be measured in the first place.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Bad, and worse than the automation alone would suggest — because two forces are compressing the same rung.**
 

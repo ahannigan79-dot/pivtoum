@@ -90,7 +90,7 @@ Reservations and booking management. Revenue management and dynamic pricing. Shi
 
 What resists: cooking the food, cleaning the room, reading a table, recovering a guest whose evening has gone wrong, and running a service when three things fail at once.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The easiest entry we measure anywhere.** ==+The American Hotel and Lodging Association reports **76% of hotels operating short-staffed**, with the most acute gaps in housekeeping, front desk, culinary and maintenance.== No degree required, training is on the job, and over 60% of hospitality businesses report difficulty finding candidates.
 

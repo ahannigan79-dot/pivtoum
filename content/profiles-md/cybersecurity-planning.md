@@ -64,7 +64,7 @@ Alert triage and false-positive filtering. Log correlation and enrichment. Vulne
 
 What resists: deciding whether this is an incident or noise, working out what an adversary is actually trying to do, judgment when the attack has no precedent, making the call to shut down production, and explaining a breach to a board or a regulator.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Harder than the marketing suggests, and the section on the 4.8 million figure covers why in detail.**
 

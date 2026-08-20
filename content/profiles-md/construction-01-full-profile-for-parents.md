@@ -89,7 +89,7 @@ reported.
 ==+Construction is unusual in that its *information* layer automates readily while its
 *physical delivery* layer barely moves — and the two sit a few hundred feet apart.==
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **Among the best on-ramps we measure anywhere, and section 4 explains why the mechanism is
 unusual.**

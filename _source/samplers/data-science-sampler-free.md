@@ -56,7 +56,7 @@ How entry-level data analysis rates against each. Ratings are 0–10 on each fac
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 9.0 | ↑ severe exposure |
-| How hard will it be to land that first job? | 8.5 | ↑ severe exposure |
+| Is the path in and up being eroded? | 8.5 | ↑ severe exposure |
 | Does it have to be done in person, with your hands? | 1.0 | ↓ none |
 | Does someone need a human they can trust and hold responsible? | 4.0 | ↓ weak |
 | Does the law require a licensed human? | 1.0 | ↓ none |

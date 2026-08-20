@@ -56,7 +56,7 @@ How a business analyst rates against each. Ratings are 0–10 on each factor's o
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 8.5 | ↑ severe exposure |
-| How hard will it be to land that first job? | 7.5 | ↑ severe exposure |
+| Is the path in and up being eroded? | 7.5 | ↑ severe exposure |
 | Does it have to be done in person, with your hands? | 1.5 | ↓ almost none |
 | Does someone need a human they can trust and hold responsible? | 4.5 | ↓ weak |
 | Does the law require a licensed human? | 1.5 | ↓ none |
@@ -68,7 +68,7 @@ Business has no licensing protection, no physical requirement, and accountabilit
 
 *So you can see what the analysis actually looks like.*
 
-**How hard will it be to land that first job? — rated 7.5, and the mirror image of nursing**
+**Is the path in and up being eroded? — rated 7.5, and the mirror image of nursing**
 
 This factor is the clearest illustration in the whole index of why we score entry separately from the job itself.
 

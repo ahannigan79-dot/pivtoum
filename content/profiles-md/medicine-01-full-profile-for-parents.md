@@ -70,7 +70,7 @@ What is not automating is the physical examination, the decision made under genu
 
 This is the one factor where specialties genuinely diverge, and section 3 covers that in detail.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The most protected on-ramp we measure anywhere in this index.**
 

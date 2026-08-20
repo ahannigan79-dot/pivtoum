@@ -57,7 +57,7 @@ How airline piloting rates against each. Ratings are 0–10 on each factor's own
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 7.5 | ↑ high exposure |
-| How hard will it be to land that first job? | 4.0 | ↑ moderate exposure |
+| Is the path in and up being eroded? | 4.0 | ↑ moderate exposure |
 | Does it have to be done in person, with your hands? | 6.0 | ↓ moderate protection |
 | Does someone need a human they can trust and hold responsible? | 9.0 | ↓ strong protection |
 | Does the law require a licensed human? | 9.5 | ↓ strongest available |

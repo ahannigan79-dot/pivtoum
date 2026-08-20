@@ -57,7 +57,7 @@ How wet lab research rates against each. Ratings are 0–10 on each factor's own
 | Factor | Rating | Effect on risk |
 |---|---|---|
 | How much of this job can AI already do? | 6.5 | ↑ moderate exposure |
-| How hard will it be to land that first job? | 6.0 | ↑ moderate exposure |
+| Is the path in and up being eroded? | 6.0 | ↑ moderate exposure |
 | Does it have to be done in person, with your hands? | 7.5 | ↓ good protection |
 | Does someone need a human they can trust and hold responsible? | 5.0 | ↓ weak |
 | Does the law require a licensed human? | 3.0 | ↓ almost none |

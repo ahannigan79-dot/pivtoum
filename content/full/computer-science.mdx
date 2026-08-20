@@ -97,7 +97,7 @@ That is a substantially complete description of a junior developer's week in 201
 What resists: architectural judgment, debugging something nobody has seen before, deciding
 what to build, and owning a system when it fails at 3am.
 
-### How hard will it be to land that first job? *(15%)*
+### Is the path in and up being eroded? *(15%)*
 
 **The worst entry-path erosion we measure anywhere in this index.**
 
