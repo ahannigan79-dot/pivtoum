@@ -4,7 +4,8 @@ import { getOrCreateProfile } from "@/lib/member";
 import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
-import { getEarnedBadges, BADGES } from "@/lib/badges";
+import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
+import { getMemberActivity, computeEffort, effortBreakdown } from "@/lib/effort";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
@@ -25,11 +26,19 @@ export default async function Dashboard() {
   const t = plan?.traj ?? null;
   const c = t?.computed ?? null;
 
+  const activity = userId ? await getMemberActivity(userId) : null;
+  if (userId && activity) await evaluateBadges(userId, activity); // catch up on milestone credentials
+  const effort = activity ? computeEffort(activity) : 0;
+  const breakdown = activity ? effortBreakdown(activity) : [];
+
   const [moves, earned] = await Promise.all([
     t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
     getEarnedBadges(userId),
   ]);
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
+  // Recently-earned credentials → an "earned moment" (last 48h).
+  const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
+  const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));
 
   const band = exposureBand(t?.overall ?? null);
   const laneBandWord = bandWord(c?.band);
@@ -48,6 +57,7 @@ export default async function Dashboard() {
   if (t?.hasMap) {
     if (!stepDone("welcome")) reminders.push({ icon: "📅", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
     if (t.personalRescoreDue) reminders.push({ icon: "🔄", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
+    else if (shippedSinceRescore) reminders.push({ icon: "🔄", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
     if (moves.active.length === 0) reminders.push({ icon: "◆", text: "Turn your winning move into a commitment", href: "#moves" });
     else reminders.push({ icon: "🚀", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
     if (!stepDone("build")) reminders.push({ icon: "🥊", text: "Train your judgment — log a Build rep", href: "/hub/build" });
@@ -67,6 +77,13 @@ export default async function Dashboard() {
             <span>New here? Your <b>Welcome</b> walks you through your opening, step by step.</span>
             <span className="nh-go">Open Welcome →</span>
           </Link>
+        )}
+
+        {recent.length > 0 && (
+          <div className="earned">
+            <span className="earned-spark">✨</span>
+            <span>You earned {recent.length === 1 ? "a new credential" : `${recent.length} new credentials`}: <b>{recent.map((b) => b.name).join(", ")}</b> — the work is showing.</span>
+          </div>
         )}
 
         {t?.hasMap ? (
@@ -103,6 +120,22 @@ export default async function Dashboard() {
               <div className="kpi"><span className="kpi-n">{t.badgeCount}</span><span className="kpi-l">Credentials</span></div>
               <div className="kpi"><span className="kpi-n">{t.editions}</span><span className="kpi-l">Re-scores</span></div>
             </div>
+
+            {/* Effort — the work put in. Only goes up; a key factor in winning. */}
+            <section className="effort">
+              <div className="effort-main">
+                <span className="effort-n">{effort}</span>
+                <div className="effort-copy">
+                  <p className="ck">Your effort · putting in the work</p>
+                  <p className="effort-lead">Winning isn&apos;t just your exposure — it&apos;s the work you put in to change it. Every move, rep, re-score and contribution adds up, and it only goes up.</p>
+                </div>
+              </div>
+              {breakdown.length > 0 && (
+                <div className="effort-break">
+                  {breakdown.map((b, i) => <span key={i} className="eb"><b>{b.n}</b> {b.label}</span>)}
+                </div>
+              )}
+            </section>
 
             <div className="hub-sectlabel">Where you stand</div>
             <div className="cockpit">

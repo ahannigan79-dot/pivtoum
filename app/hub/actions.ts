@@ -67,10 +67,11 @@ export async function acceptSuggestion(title: string, lever: string) {
   revalidatePath("/hub");
 }
 
-export async function shipMove(id: string) {
+export async function shipMove(id: string, proof: string = "") {
   const { userId } = await auth();
   if (!userId) return;
-  await db.update(commitments).set({ status: "done", completedAt: new Date() })
+  await db.update(commitments)
+    .set({ status: "done", completedAt: new Date(), proof: proof.trim().slice(0, 500) || null })
     .where(and(eq(commitments.id, id), eq(commitments.memberId, userId)));
   await awardBadge(userId, "shipped");
   revalidatePath("/hub");

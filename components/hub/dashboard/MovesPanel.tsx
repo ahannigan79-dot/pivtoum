@@ -12,7 +12,11 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
   const [pending, start] = useTransition();
   const [adding, setAdding] = useState(false);
   const [showShipped, setShowShipped] = useState(false);
+  const [shipId, setShipId] = useState<string | null>(null);
+  const [proof, setProof] = useState("");
   const ref = useRef<HTMLFormElement>(null);
+
+  const doShip = (id: string) => start(async () => { await shipMove(id, proof); setShipId(null); setProof(""); });
 
   // Keep the Map's prescribed moves visible until they've been committed.
   const taken = new Set([...active, ...shipped].map((m) => m.title.trim().toLowerCase()));
@@ -62,14 +66,23 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
       {active.length > 0 && (
         <ul className="moves-list">
           {active.map((m) => (
-            <li key={m.id} className="move">
+            <li key={m.id} className={"move" + (shipId === m.id ? " shipping" : "")}>
               <span className="move-lever">{m.leverLabel}</span>
               <span className="move-title">{m.title}</span>
-              {m.dueAt && <span className="move-due">{fmtDue(m.dueAt)}</span>}
-              <span className="move-actions">
-                <button className="move-ship" disabled={pending} onClick={() => start(() => shipMove(m.id))}>Ship ✓</button>
-                <button className="move-drop" disabled={pending} title="Drop" onClick={() => start(() => dropMove(m.id))}>×</button>
-              </span>
+              {shipId !== m.id && m.dueAt && <span className="move-due">{fmtDue(m.dueAt)}</span>}
+              {shipId === m.id ? (
+                <span className="move-ship-confirm">
+                  <input autoFocus value={proof} onChange={(e) => setProof(e.target.value)} maxLength={500}
+                    placeholder="What did you actually do?" onKeyDown={(e) => { if (e.key === "Enter") doShip(m.id); }} />
+                  <button className="move-ship" disabled={pending} onClick={() => doShip(m.id)}>{pending ? "…" : "Confirm ✓"}</button>
+                  <button className="move-drop" onClick={() => { setShipId(null); setProof(""); }}>×</button>
+                </span>
+              ) : (
+                <span className="move-actions">
+                  <button className="move-ship" disabled={pending} onClick={() => { setShipId(m.id); setProof(""); }}>Ship ✓</button>
+                  <button className="move-drop" disabled={pending} title="Drop" onClick={() => start(() => dropMove(m.id))}>×</button>
+                </span>
+              )}
             </li>
           ))}
         </ul>
@@ -85,7 +98,7 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
               {shipped.map((m) => (
                 <li key={m.id} className="move done">
                   <span className="move-lever">{m.leverLabel}</span>
-                  <span className="move-title">{m.title}</span>
+                  <span className="move-title">{m.title}{m.proof && <em className="move-proof">— {m.proof}</em>}</span>
                   <span className="move-check">✓</span>
                 </li>
               ))}

@@ -59,7 +59,7 @@ export function winningAim(edge2: string | null | undefined, band: string): stri
 
 export type Move = {
   id: string; title: string; lever: string; leverLabel: string;
-  status: string; dueAt: Date | null; completedAt: Date | null; createdAt: Date;
+  status: string; proof: string | null; dueAt: Date | null; completedAt: Date | null; createdAt: Date;
 };
 
 export type Suggestion = { title: string; lever: string };
@@ -67,7 +67,7 @@ export type Suggestion = { title: string; lever: string };
 function toMove(r: typeof commitments.$inferSelect): Move {
   return {
     id: r.id, title: r.title, lever: r.lever, leverLabel: leverLabel(r.lever),
-    status: r.status, dueAt: r.dueAt, completedAt: r.completedAt, createdAt: r.createdAt,
+    status: r.status, proof: r.proof, dueAt: r.dueAt, completedAt: r.completedAt, createdAt: r.createdAt,
   };
 }
 

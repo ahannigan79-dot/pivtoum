@@ -49,6 +49,23 @@ export const PATCH_STATEMENTS: string[] = [
    )`,
   `CREATE INDEX IF NOT EXISTS "post_attachments_post_idx" ON "post_attachments" ("post_id")`,
   `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "goal" text`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "last_seen_at" timestamp with time zone`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "streak_days" integer DEFAULT 0 NOT NULL`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "visit_days" integer DEFAULT 0 NOT NULL`,
+  `ALTER TABLE "commitments" ADD COLUMN IF NOT EXISTS "proof" text`,
+  // Expanded milestone credentials.
+  `INSERT INTO "badges" ("key","name","icon","description") VALUES
+     ('evolving','Evolving','🔄','Re-scored your Map for the first time'),
+     ('steadfast','Steadfast','🧭','Re-scored 3 times — keeping pace with the field'),
+     ('sharpened','Sharpened','🥊','Logged Build reps across 3 tools'),
+     ('sharp-operator','Sharp Operator','🎯','Trained across every Build tool'),
+     ('momentum','Momentum','🚀','Shipped 5 moves'),
+     ('relentless','Relentless','🔥','Shipped 10 moves'),
+     ('grounded','Grounded','📚','Studied your six levers in Learn'),
+     ('in-the-room','In the Room','💬','Posted in the community'),
+     ('engaged','Engaged','🙌','Reacted and replied — being part of it'),
+     ('regular','Regular','⭐','Showed up 7 days')
+   ON CONFLICT ("key") DO NOTHING`,
   // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
   `INSERT INTO "pods" ("name","slug","description") VALUES
      ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),

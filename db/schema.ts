@@ -30,6 +30,9 @@ export const profiles = pgTable("profiles", {
   currentLane: text("current_lane"),
   careerStage: text("career_stage"), // Student | Early-career | Mid-career | Senior | Leader
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
+  lastSeenAt: timestamp("last_seen_at", { withTimezone: true }),
+  streakDays: integer("streak_days").notNull().default(0),
+  visitDays: integer("visit_days").notNull().default(0),
   createdAt: now(),
 });
 
@@ -190,6 +193,7 @@ export const commitments = pgTable("commitments", {
   lever: text("lever").notNull(),          // e.g. automatability | judgment | trust | ai-native | relocate
   title: text("title").notNull(),
   status: text("status").notNull().default("active"), // active | done | dropped
+  proof: text("proof"), // what the member actually did, captured on ship
   dueAt: timestamp("due_at", { withTimezone: true }),
   completedAt: timestamp("completed_at", { withTimezone: true }),
   createdAt: now(),

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { getOrCreateProfile } from "@/lib/member";
+import { getOrCreateProfile, touchVisit } from "@/lib/member";
 import { HubNav } from "@/components/hub/HubNav";
 import "./hub.css";
 
@@ -8,6 +8,7 @@ export const metadata = { title: "The Hub — Pivotum", robots: { index: false, 
 
 export default async function HubLayout({ children }: { children: React.ReactNode }) {
   const profile = await getOrCreateProfile();
+  if (profile) await touchVisit(profile.clerkUserId);
   return (
     <div className="hub">
       <aside className="hub-side">
