@@ -11,6 +11,7 @@ export type MapComputed = {
   band?: string;
   driver?: { name?: string; rating?: number };
   driverDetail?: { why?: string; up?: string; down?: string; action?: string };
+  personal?: { laneBaseline?: number; delta?: number; helps?: string[]; hurts?: string[] };
   lever?: string;
   urgency?: { level?: string; why?: string };
   move?: { stance?: string; edge2?: string; weight?: number; e2short?: string };

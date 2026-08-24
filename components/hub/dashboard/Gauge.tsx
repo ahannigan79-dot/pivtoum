@@ -1,9 +1,11 @@
 /* Exposure gauge — where the member sits on the 0–100 scale, with protected →
  * exposed colour zones and a marker. Reads at a glance even with no history. */
-export function Gauge({ value }: { value: number }) {
+export function Gauge({ value, avg }: { value: number; avg?: number | null }) {
   const W = 300, H = 58, pad = 10, trackY = 34, trackH = 9;
   const v = Math.max(0, Math.min(100, value));
   const x = pad + (v / 100) * (W - pad * 2);
+  const hasAvg = typeof avg === "number";
+  const ax = hasAvg ? pad + (Math.max(0, Math.min(100, avg!)) / 100) * (W - pad * 2) : 0;
 
   return (
     <svg className="gauge" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={`Exposure ${v} of 100`}>
@@ -16,6 +18,13 @@ export function Gauge({ value }: { value: number }) {
       </defs>
       {/* track */}
       <rect x={pad} y={trackY} width={W - pad * 2} height={trackH} rx={trackH / 2} fill="url(#gaugegrad)" opacity="0.9" />
+      {/* lane-average marker */}
+      {hasAvg && (
+        <>
+          <line x1={ax} y1={trackY - 4} x2={ax} y2={trackY + trackH + 4} stroke="var(--pencil)" strokeWidth="1.5" strokeDasharray="2 2" />
+          <text x={ax} y={H - 2} textAnchor="middle" className="gauge-avg">lane avg {Math.round(avg!)}</text>
+        </>
+      )}
       {/* marker */}
       <line x1={x} y1={trackY - 7} x2={x} y2={trackY + trackH + 5} stroke="var(--ink)" strokeWidth="2.5" strokeLinecap="round" />
       <circle cx={x} cy={trackY + trackH / 2} r="6.5" fill="var(--ink)" stroke="var(--bg)" strokeWidth="2.5" />

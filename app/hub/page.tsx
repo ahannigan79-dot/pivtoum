@@ -153,7 +153,7 @@ export default async function Dashboard() {
             <div className="cockpit">
               <section className="ck-card ck-stand">
                 <p className="ck">Where you stand{c?.career ? ` · ${c.career}` : ""}</p>
-                <Gauge value={exposureNow ?? 0} />
+                <Gauge value={exposureNow ?? 0} avg={c?.personal?.laneBaseline ?? null} />
                 <div className="stand-mini">
                   {t.history.length >= 2 && <span className="stand-spark"><Trend points={t.history} /></span>}
                   <span className="trend-note">
@@ -181,6 +181,25 @@ export default async function Dashboard() {
                 )}
                 {dd?.down && <p className="drv-line"><span className="drv-k">Deepen</span> {strip(dd.down)}</p>}
                 {dd?.action && <p className="drv-action">{strip(dd.action)}</p>}
+                {c?.personal && c.personal.laneBaseline != null && (
+                  <div className="drv-personal">
+                    <p className="drv-line">
+                      <span className="drv-k">You vs your lane</span>
+                      Your lane averages <b>{c.personal.laneBaseline}</b>. You&apos;re at <b>{baseExp}</b> —{" "}
+                      {(c.personal.delta ?? 0) < 0
+                        ? <span className="pos">{Math.abs(c.personal.delta ?? 0)} better than average</span>
+                        : (c.personal.delta ?? 0) > 0
+                          ? <span className="neg">{c.personal.delta} worse than average</span>
+                          : <span>right at the average</span>}.
+                    </p>
+                    {c.personal.helps && c.personal.helps.length > 0 && (
+                      <p className="drv-line"><span className="drv-k pos-k">Working for you</span> {c.personal.helps.join(", ")}</p>
+                    )}
+                    {c.personal.hurts && c.personal.hurts.length > 0 && (
+                      <p className="drv-line"><span className="drv-k neg-k">Holding you back</span> {c.personal.hurts.join(", ")}</p>
+                    )}
+                  </div>
+                )}
               </section>
             </div>
 

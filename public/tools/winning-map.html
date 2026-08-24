@@ -1126,7 +1126,14 @@
   function emitMap(M){ try{ if(window.parent!==window && M && M.career){
     var dKey = M.driver.name==='Automatability'?'auto':'ladder';
     var dDetail = sigContent(dKey, M);
-    window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, driverDetail:dDetail, lever:M.lever, urgency:M.urgency, move:M.move } }, "*");
+    // Personal standing vs the lane's typical (Pivotum baseline).
+    var laneBaseline = Math.round(M.laneScore*10);
+    var protNames = {phys:'hands-on work', trust:'trust & relationships', lic:'licensing', judg:'judgment'};
+    var helps=[], hurts=[];
+    ['phys','trust','lic','judg'].forEach(function(k){ var diff=M.you[k]-M.base[k];
+      if(diff<=-5) helps.push(protNames[k]); else if(diff>=5) hurts.push(protNames[k]); });
+    var personal = { laneBaseline:laneBaseline, delta: Math.round(M.overall - laneBaseline), helps:helps, hurts:hurts };
+    window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, driverDetail:dDetail, personal:personal, lever:M.lever, urgency:M.urgency, move:M.move } }, "*");
   } }catch(e){} }
   function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); emitMap(M); }
   function refresh(){ renderDisplay(computeMap(A)); }
@@ -1184,14 +1191,17 @@
   /* Returning member — a saved map exists. Greet them and offer to revise it
      instead of running the cold intake. */
   var restored=false;
-  function returning(savedA){
+  function returning(savedA, rescoreDue){
     chatGen++; clearCtrl(); chat.innerHTML=''; setProg(1);
     for(var k in savedA){ if(Object.prototype.hasOwnProperty.call(savedA,k)) A[k]=savedA[k]; }
     var who = (A.careerSlug||'').split(/[-_]/).map(function(w){return w?w[0].toUpperCase()+w.slice(1):w;}).join(' ');
-    advisor("Welcome back. How can I help with your map today?"+(who?" You're mapped as <tspan>"+who+"</tspan>.".replace(/tspan/g,'b'):""), null, function(){
+    var greet = rescoreDue
+      ? "Welcome back — it's been a couple of months, so it's a good time to <b>re-score your protections</b>. Have your trust, judgment or hands-on work shifted?"
+      : "Welcome back. How can I help with your map today?"+(who?" You're mapped as <b>"+who+"</b>.":"");
+    advisor(greet, null, function(){
       control(chips([
+        {v:'tune',label:rescoreDue?'Re-score my protections':'Adjust my answers'},
         {v:'view',label:'See my full map'},
-        {v:'tune',label:'Adjust my answers'},
         {v:'strategy',label:'Try a different win strategy'},
         {v:'fresh',label:'Start a fresh map'}
       ], function(v){
@@ -1207,7 +1217,7 @@
     });
   }
   window.addEventListener('message', function(e){
-    var d=e.data; if(d && d.type==='pivotum:restore' && d.answers && !restored){ restored=true; returning(d.answers); }
+    var d=e.data; if(d && d.type==='pivotum:restore' && d.answers && !restored){ restored=true; returning(d.answers, d.rescoreDue); }
   });
 
   setProg(0.4);

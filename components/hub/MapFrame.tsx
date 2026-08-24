@@ -7,7 +7,7 @@ type Status = "idle" | "saving" | "saved" | "error";
 
 /** Embeds the Winning Map. Restores a saved map for returning members, and when
  *  the map produces a result, a bar invites them to approve & save it. */
-export function MapFrame({ savedAnswers = null }: { savedAnswers?: unknown }) {
+export function MapFrame({ savedAnswers = null, rescoreDue = false }: { savedAnswers?: unknown; rescoreDue?: boolean }) {
   const router = useRouter();
   const frameRef = useRef<HTMLIFrameElement>(null);
   const [payload, setPayload] = useState<Payload | null>(null);
@@ -19,7 +19,7 @@ export function MapFrame({ savedAnswers = null }: { savedAnswers?: unknown }) {
   // returning member and can restore their full map.
   function onFrameLoad() {
     if (savedAnswers && frameRef.current?.contentWindow) {
-      frameRef.current.contentWindow.postMessage({ type: "pivotum:restore", answers: savedAnswers }, "*");
+      frameRef.current.contentWindow.postMessage({ type: "pivotum:restore", answers: savedAnswers, rescoreDue }, "*");
     }
   }
 
