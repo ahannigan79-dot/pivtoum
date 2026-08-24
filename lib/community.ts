@@ -26,6 +26,11 @@ export function getPodFeed(podId: string, meId: string | null): Promise<FeedPost
   return buildFeed(eq(posts.podId, podId), meId);
 }
 
+/** A single thread's feed (posts scoped to that thread). */
+export function getThreadFeed(threadId: string, meId: string | null): Promise<FeedPost[]> {
+  return buildFeed(eq(posts.threadId, threadId), meId);
+}
+
 /** Shared feed builder: given a WHERE over posts, hydrate authors, comments, reactions. */
 async function buildFeed(where: SQL | undefined, meId: string | null): Promise<FeedPost[]> {
   const rows = await db

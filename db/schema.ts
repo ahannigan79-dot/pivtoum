@@ -80,11 +80,24 @@ export const podMembers = pgTable("pod_members", {
   joinedAt: timestamp("joined_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => ({ pk: primaryKey({ columns: [t.podId, t.memberId] }) }));
 
+// Threads = navigable channels inside a pod. Core threads are prepopulated.
+export const podThreads = pgTable("pod_threads", {
+  id: uid(),
+  podId: uuid("pod_id").notNull().references(() => pods.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  emoji: text("emoji"),
+  slug: text("slug").notNull(),
+  sortOrder: integer("sort_order").notNull().default(100),
+  isCore: boolean("is_core").notNull().default(false),
+  createdAt: now(),
+}, (t) => ({ podSlug: index("pod_threads_pod_slug_idx").on(t.podId, t.slug) }));
+
 /* ---------- Community feed ---------- */
 export const posts = pgTable("posts", {
   id: uid(),
   authorId: memberFk("author_id"),
   podId: uuid("pod_id").references(() => pods.id, { onDelete: "cascade" }), // null = whole community
+  threadId: uuid("thread_id").references(() => podThreads.id, { onDelete: "cascade" }), // null = pod root / community
   title: text("title"),
   topic: text("topic"), // curated topic slug (see lib/feed-topics.ts); null = general
   body: text("body").notNull(),

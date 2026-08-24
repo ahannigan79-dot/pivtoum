@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import { getPodFeed } from "@/lib/community";
+import { getThreadFeed } from "@/lib/community";
 import { getPodBySlug, getPodMembers, isPodMember } from "@/lib/pods";
+import { getPodThreads } from "@/lib/threads";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { PostCard } from "@/components/hub/community/PostCard";
 import { Avatar } from "@/components/hub/community/Avatar";
 import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 import { PodComposer } from "@/components/hub/pods/PodComposer";
+import { ThreadNav } from "@/components/hub/pods/ThreadNav";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -16,19 +18,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: pod ? `${pod.name} — Pods` : "Pod — Pivotum" };
 }
 
-export default async function PodPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PodPage({
+  params, searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ t?: string }>;
+}) {
   const { slug } = await params;
+  const { t: threadSlug } = await searchParams;
   const { userId } = await auth();
   const pod = await getPodBySlug(slug);
   if (!pod) notFound();
 
-  const [members, iAmIn, feed, profile] = await Promise.all([
+  const [members, iAmIn, profile, threads] = await Promise.all([
     getPodMembers(pod.id),
     isPodMember(pod.id, userId),
-    getPodFeed(pod.id, userId),
     getOrCreateProfile(),
+    getPodThreads(pod.id),
   ]);
   const canModerate = isFounder(profile);
+  const active = threads.find((t) => t.slug === threadSlug) ?? threads[0];
+  const feed = active ? await getThreadFeed(active.id, userId) : [];
 
   return (
     <>
@@ -45,11 +55,14 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
           <JoinButton slug={pod.slug} joined={iAmIn} />
         </header>
 
+        <ThreadNav threads={threads} activeSlug={active?.slug ?? ""} podSlug={pod.slug} />
+
         <div className="pod-layout">
           <div className="pod-main hub-feed">
             <ValuesBanner variant="pod" />
             {iAmIn ? (
-              <PodComposer slug={pod.slug} />
+              <PodComposer slug={pod.slug} threadId={active?.id ?? null}
+                placeholder={active ? `Post in ${active.emoji ?? ""} ${active.name}… 🎉` : undefined} />
             ) : (
               <div className="pod-locked">
                 <p>Join this pod to post and take part in the accountability threads.</p>
@@ -58,7 +71,10 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
             )}
 
             {feed.length === 0 ? (
-              <p className="feed-empty">No posts in this pod yet.{iAmIn ? " Kick it off — share what you're committing to." : ""}</p>
+              <p className="feed-empty">
+                {active ? `Nothing in ${active.name} yet.` : "No threads yet."}
+                {iAmIn && active ? " Start the conversation." : ""}
+              </p>
             ) : (
               feed.map((p) => <PostCard key={p.id} post={p} meId={userId} canModerate={canModerate} />)
             )}

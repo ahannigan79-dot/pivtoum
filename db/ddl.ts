@@ -26,6 +26,18 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "post_reports_post_idx" ON "post_reports" ("post_id")`,
+  `CREATE TABLE IF NOT EXISTS "pod_threads" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "pod_id" uuid NOT NULL REFERENCES "pods"("id") ON DELETE cascade,
+     "name" text NOT NULL,
+     "emoji" text,
+     "slug" text NOT NULL,
+     "sort_order" integer DEFAULT 100 NOT NULL,
+     "is_core" boolean DEFAULT false NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "pod_threads_pod_slug_idx" ON "pod_threads" ("pod_id","slug")`,
+  `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "thread_id" uuid REFERENCES "pod_threads"("id") ON DELETE cascade`,
   // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
   `INSERT INTO "pods" ("name","slug","description") VALUES
      ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),

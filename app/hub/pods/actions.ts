@@ -1,11 +1,13 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
-import { podMembers, pods, posts } from "@/db/schema";
+import { podMembers, pods, posts, podThreads } from "@/db/schema";
 import { getOrCreateProfile } from "@/lib/member";
 import { getFounderIds, getPodBySlug } from "@/lib/pods";
+import { createThreadIn } from "@/lib/threads";
 import { awardBadge } from "@/lib/badges";
 
 function slugify(s: string): string {
@@ -83,8 +85,8 @@ export async function leavePod(slug: string) {
   revalidatePath(`/hub/pods/${slug}`);
 }
 
-/** Post into a pod. Only members can post. */
-export async function createPodPost(slug: string, formData: FormData) {
+/** Post into a pod thread. Only members can post. */
+export async function createPodPost(slug: string, threadId: string | null, formData: FormData) {
   const { userId } = await auth();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
@@ -96,8 +98,33 @@ export async function createPodPost(slug: string, formData: FormData) {
     .limit(1);
   if (!member.length) return;
 
+  // Validate the thread belongs to this pod.
+  let validThread: string | null = null;
+  if (threadId) {
+    const th = await db.select({ id: podThreads.id }).from(podThreads)
+      .where(and(eq(podThreads.id, threadId), eq(podThreads.podId, pod.id))).limit(1);
+    if (th.length) validThread = threadId;
+  }
+
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return;
-  await db.insert(posts).values({ authorId: userId, podId: pod.id, body: body.slice(0, 5000) });
+  await db.insert(posts).values({ authorId: userId, podId: pod.id, threadId: validThread, body: body.slice(0, 5000) });
   revalidatePath(`/hub/pods/${slug}`);
+}
+
+/** Create a new thread in a pod. Members only. */
+export async function createThread(slug: string, formData: FormData) {
+  const { userId } = await auth();
+  if (!userId) return;
+  const pod = await getPodBySlug(slug);
+  if (!pod) return;
+  const member = await db.select({ podId: podMembers.podId }).from(podMembers)
+    .where(and(eq(podMembers.podId, pod.id), eq(podMembers.memberId, userId))).limit(1);
+  if (!member.length) return;
+  const name = String(formData.get("name") ?? "").trim();
+  if (!name) return;
+  const emoji = String(formData.get("emoji") ?? "").trim() || null;
+  const thread = await createThreadIn(pod.id, name, emoji);
+  revalidatePath(`/hub/pods/${slug}`);
+  if (thread) redirect(`/hub/pods/${slug}?t=${thread.slug}`);
 }

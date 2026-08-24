@@ -547,3 +547,22 @@ a.pod-member:hover span { color:var(--ink); }
 .rn-dot { width:8px; height:8px; border-radius:50%; background:var(--amber); flex:none; box-shadow:0 0 0 4px rgba(214,168,91,0.15); }
 .rn-go { margin-left:auto; color:var(--amber); font-weight:700; white-space:nowrap; }
 .rescore-cadence { margin:14px 0 0; font-size:0.76rem; color:var(--pencil); }
+
+/* ---- pod threads nav ---- */
+.thread-nav { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 18px; padding-bottom:4px; }
+.thread-tab { font-size:0.86rem; color:var(--soft); background:var(--panel); border:1px solid var(--rule2);
+  border-radius:20px; padding:7px 14px; white-space:nowrap; transition:.12s; }
+.thread-tab:hover { border-color:var(--pencil); color:var(--ink); }
+.thread-tab.on { color:#12100a; background:var(--green); border-color:var(--green); font-weight:700; }
+.thread-emoji-lbl { margin-right:2px; }
+.thread-new { font-family:var(--sans); font-size:0.84rem; color:var(--soft); background:transparent;
+  border:1px dashed var(--rule2); border-radius:20px; padding:7px 13px; cursor:pointer; }
+.thread-new:hover { border-color:var(--pencil); color:var(--ink); }
+.thread-form { display:flex; align-items:center; gap:6px; }
+.thread-form input { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; color:var(--ink);
+  font-family:var(--sans); font-size:0.88rem; padding:7px 10px; outline:none; }
+.thread-form .thread-emoji { width:52px; text-align:center; }
+.thread-form .thread-name { width:150px; }
+.thread-form button { font-family:var(--sans); font-weight:700; font-size:0.82rem; color:#12100a; background:var(--green);
+  border:0; border-radius:9px; padding:7px 12px; cursor:pointer; }
+.thread-form button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
