@@ -5,14 +5,23 @@ import { useRouter } from "next/navigation";
 type Payload = { answers: unknown; computed: unknown; overall: number | null };
 type Status = "idle" | "saving" | "saved" | "error";
 
-/** Embeds the Winning Map. When the map produces a result, a bar invites the
- *  member to approve & save it — then loads their dashboard. */
-export function MapFrame() {
+/** Embeds the Winning Map. Restores a saved map for returning members, and when
+ *  the map produces a result, a bar invites them to approve & save it. */
+export function MapFrame({ savedAnswers = null }: { savedAnswers?: unknown }) {
   const router = useRouter();
+  const frameRef = useRef<HTMLIFrameElement>(null);
   const [payload, setPayload] = useState<Payload | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const statusRef = useRef<Status>("idle");
   statusRef.current = status;
+
+  // Hand the saved map to the tool once the iframe loads, so it greets the
+  // returning member and can restore their full map.
+  function onFrameLoad() {
+    if (savedAnswers && frameRef.current?.contentWindow) {
+      frameRef.current.contentWindow.postMessage({ type: "pivotum:restore", answers: savedAnswers }, "*");
+    }
+  }
 
   useEffect(() => {
     function onMessage(e: MessageEvent) {
@@ -45,7 +54,7 @@ export function MapFrame() {
 
   return (
     <div className="mapframe-wrap">
-      <iframe src="/tools/winning-map.html" title="Your Winning Map" className="mapframe" />
+      <iframe ref={frameRef} src="/tools/winning-map.html" title="Your Winning Map" className="mapframe" onLoad={onFrameLoad} />
 
       {payload && (
         <div className={"mapsave " + status}>

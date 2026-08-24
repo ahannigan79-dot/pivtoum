@@ -1144,6 +1144,33 @@
 
   function restart(){ clearCtrl(); chat.innerHTML=''; A.path=null; A.careerSlug=null; A.lane=null; A.laneScore=null; A.changing=false; A.changeFrom=null; A.trust={name:35,relationships:35,accountable:35,judgment:35}; A.direction=[]; A.strengths={people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}; flags={}; planDone={}; STEP=0; setProg(0); start(); }
 
-  setProg(0.4); start();
+  /* Returning member — a saved map exists. Greet them and offer to revise it
+     instead of running the cold intake. */
+  var restored=false;
+  function returning(savedA){
+    clearCtrl(); chat.innerHTML=''; setProg(1);
+    for(var k in savedA){ if(Object.prototype.hasOwnProperty.call(savedA,k)) A[k]=savedA[k]; }
+    var who = (A.careerSlug||'').split(/[-_]/).map(function(w){return w?w[0].toUpperCase()+w.slice(1):w;}).join(' ');
+    advisor("Welcome back. How can I help with your map today?"+(who?" You're mapped as <tspan>"+who+"</tspan>.".replace(/tspan/g,'b'):""), null, function(){
+      control(chips([
+        {v:'view',label:'See my full map'},
+        {v:'tune',label:'Make some changes'},
+        {v:'strategy',label:'Try a different win strategy'},
+        {v:'fresh',label:'Start a fresh map'}
+      ], function(v){
+        clearCtrl();
+        if(v==='fresh'){ me('Start a fresh map'); restart(); return; }
+        var lbl = v==='view' ? 'See my full map' : v==='strategy' ? 'Try a different win strategy' : 'Make some changes';
+        me(lbl); buildMap();
+      }), true);
+    });
+  }
+  window.addEventListener('message', function(e){
+    var d=e.data; if(d && d.type==='pivotum:restore' && d.answers && !restored){ restored=true; returning(d.answers); }
+  });
+
+  setProg(0.4);
+  // Give the parent a beat to restore a saved map before starting the cold intake.
+  setTimeout(function(){ if(!restored) start(); }, 400);
 })();
 </script>

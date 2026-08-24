@@ -53,6 +53,26 @@ export default async function Dashboard() {
 
         {t?.hasMap ? (
           <>
+            {/* Winning strategy — front and centre: what they're working toward */}
+            {move?.stance && (
+              <section className="strategy">
+                <div className="strat-top">
+                  <p className="ck">Your winning strategy · what you&apos;re working toward</p>
+                  <Link href="/hub/map" className="cardlink">See your full map →</Link>
+                </div>
+                <h2 className="strat-stance">{move.stance}</h2>
+                <div className="mixbar" aria-hidden="true">
+                  <span className="mix-reno" style={{ width: `${renovateW}%` }} />
+                  <span className="mix-e2" style={{ width: `${edge2W}%` }} />
+                </div>
+                <div className="mix-legend">
+                  <span>◆ Master the machine · {renovateW}%</span>
+                  {e2 && <span>✦ {e2.label} · {edge2W}%</span>}
+                </div>
+                {move.e2short && <p className="strat-line">{strip(move.e2short)}</p>}
+              </section>
+            )}
+
             {/* Command KPIs */}
             <div className="kpis">
               <div className={`kpi kpi-exp ${band.cls}`}>
@@ -91,20 +111,6 @@ export default async function Dashboard() {
                   {urgency && <span className={`tag urg u-${urgency.toLowerCase()}`}>Urgency: {urgency}</span>}
                   <Link href="/hub/map" className="cardlink">Open your Map →</Link>
                 </div>
-              </section>
-
-              <section className="ck-card ck-move">
-                <p className="ck">Your winning move</p>
-                <h3 className="move-stance">{move?.stance ?? "Open your Map to set your move"}</h3>
-                <div className="mixbar" aria-hidden="true">
-                  <span className="mix-reno" style={{ width: `${renovateW}%` }} />
-                  <span className="mix-e2" style={{ width: `${edge2W}%` }} />
-                </div>
-                <div className="mix-legend">
-                  <span>◆ Master the machine · {renovateW}%</span>
-                  {e2 && <span>✦ {e2.label} · {edge2W}%</span>}
-                </div>
-                {move?.e2short && <p className="move-blurb">{strip(move.e2short)}</p>}
               </section>
 
               {c?.driver && (
