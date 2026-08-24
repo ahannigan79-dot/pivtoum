@@ -4,18 +4,38 @@ import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, posts } from "@/db/schema";
-import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { getPodBySlug } from "@/lib/pods";
+import { getOrCreateProfile } from "@/lib/member";
+import { getFounderIds, getPodBySlug } from "@/lib/pods";
 import { awardBadge } from "@/lib/badges";
 
 function slugify(s: string): string {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "pod";
 }
 
-/** Founder-only: spin up a new accountability cohort. */
+/** Keep a founder in a pod as a helper while it has fewer than 2 real members;
+ *  drop the auto-added founder(s) once the pod can stand on its own. */
+async function syncPodHelper(podId: string) {
+  const founders = await getFounderIds();
+  const members = await db.select({ memberId: podMembers.memberId }).from(podMembers).where(eq(podMembers.podId, podId));
+  const founderSet = new Set(founders);
+  const realCount = members.filter((m) => !founderSet.has(m.memberId)).length;
+
+  if (realCount >= 2) {
+    await db.delete(podMembers).where(and(eq(podMembers.podId, podId), eq(podMembers.auto, true)));
+  } else if (realCount === 1) {
+    for (const fid of founders) {
+      await db.insert(podMembers).values({ podId, memberId: fid, auto: true }).onConflictDoNothing();
+    }
+  } else {
+    // no real members — don't leave the founder sitting in an empty pod
+    await db.delete(podMembers).where(and(eq(podMembers.podId, podId), eq(podMembers.auto, true)));
+  }
+}
+
+/** Any member can start a Together Pod when they don't see a good fit. */
 export async function createPod(formData: FormData) {
-  const profile = await getOrCreateProfile();
-  if (!isFounder(profile)) return;
+  const { userId } = await auth();
+  if (!userId) return;
   const name = String(formData.get("name") ?? "").trim();
   if (!name) return;
   const description = String(formData.get("description") ?? "").trim() || null;
@@ -25,8 +45,18 @@ export async function createPod(formData: FormData) {
   let slug = base;
   for (let i = 2; (await getPodBySlug(slug)) != null; i++) slug = `${base}-${i}`;
 
-  await db.insert(pods).values({ name: name.slice(0, 120), slug, description: description?.slice(0, 500) ?? null });
+  const inserted = await db.insert(pods)
+    .values({ name: name.slice(0, 120), slug, description: description?.slice(0, 500) ?? null })
+    .returning({ id: pods.id });
+  const podId = inserted[0]?.id;
+  if (podId) {
+    await db.insert(podMembers).values({ podId, memberId: userId }).onConflictDoNothing();
+    await awardBadge(userId, "cohort");
+    await syncPodHelper(podId);
+  }
+  revalidatePath("/hub");
   revalidatePath("/hub/pods");
+  revalidatePath(`/hub/pods/${slug}`);
 }
 
 export async function joinPod(slug: string) {
@@ -36,6 +66,7 @@ export async function joinPod(slug: string) {
   if (!pod) return;
   await db.insert(podMembers).values({ podId: pod.id, memberId: userId }).onConflictDoNothing();
   await awardBadge(userId, "cohort");
+  await syncPodHelper(pod.id);
   revalidatePath("/hub");
   revalidatePath("/hub/pods");
   revalidatePath(`/hub/pods/${slug}`);
@@ -47,6 +78,7 @@ export async function leavePod(slug: string) {
   const pod = await getPodBySlug(slug);
   if (!pod) return;
   await db.delete(podMembers).where(and(eq(podMembers.podId, pod.id), eq(podMembers.memberId, userId)));
+  await syncPodHelper(pod.id);
   revalidatePath("/hub/pods");
   revalidatePath(`/hub/pods/${slug}`);
 }

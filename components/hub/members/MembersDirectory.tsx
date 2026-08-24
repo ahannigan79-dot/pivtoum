@@ -10,17 +10,21 @@ const ROLE_LABEL: Record<string, string> = { founder: "Founder", moderator: "Mod
 export function MembersDirectory({ members }: { members: DirectoryMember[] }) {
   const [q, setQ] = useState("");
 
+  const searchText = (m: DirectoryMember) =>
+    [m.name, m.handle, humanizeCareer(m.career), m.lane, m.stage, m.strategy, ...m.pods]
+      .filter(Boolean).join(" ").toLowerCase();
+
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return members;
-    return members.filter((m) =>
-      [m.name, m.handle, humanizeCareer(m.career), m.lane].filter(Boolean).join(" ").toLowerCase().includes(s));
+    return members.filter((m) => searchText(m).includes(s));
   }, [q, members]);
 
   return (
     <>
       <div className="mem-search">
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by name, career, or lane…" />
+        <input value={q} onChange={(e) => setQ(e.target.value)}
+          placeholder="Search by name, career, stage, strategy, or pod…" />
         <span className="mem-count">{filtered.length} {filtered.length === 1 ? "member" : "members"}</span>
       </div>
 
@@ -31,6 +35,7 @@ export function MembersDirectory({ members }: { members: DirectoryMember[] }) {
           {filtered.map((m) => {
             const band = exposureBand(m.overall);
             const career = humanizeCareer(m.career);
+            const sub = [career, m.stage, m.lane].filter(Boolean).join(" · ");
             return (
               <Link key={m.id} href={`/hub/members/${m.id}`} className="mem-card">
                 <Avatar name={m.name} url={m.avatarUrl} size={44} />
@@ -39,7 +44,14 @@ export function MembersDirectory({ members }: { members: DirectoryMember[] }) {
                     {m.name}
                     {ROLE_LABEL[m.role] && <span className="mem-role">{ROLE_LABEL[m.role]}</span>}
                   </div>
-                  <div className="mem-sub">{career ? career + (m.lane ? ` · ${m.lane}` : "") : "Mapping in progress"}</div>
+                  <div className="mem-sub">{sub || "Mapping in progress"}</div>
+                  {m.strategy && <div className="mem-strat">✦ {m.strategy}</div>}
+                  {m.pods.length > 0 && (
+                    <div className="mem-pods">
+                      {m.pods.slice(0, 3).map((p) => <span key={p} className="mem-pod">👥 {p}</span>)}
+                      {m.pods.length > 3 && <span className="mem-pod more">+{m.pods.length - 3}</span>}
+                    </div>
+                  )}
                 </div>
                 <div className="mem-meta">
                   {m.overall != null && <span className={`mem-exp ${band.cls}`}>{m.overall}</span>}

@@ -41,9 +41,9 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
           <div className="prof-id">
             <h1>{m.name}{ROLE_LABEL[m.role] && <span className="prof-role">{ROLE_LABEL[m.role]}</span>}</h1>
             {m.handle && <span className="prof-handle">@{m.handle}</span>}
-            <p className="prof-where">{career ? career + (m.lane ? ` · ${m.lane}` : "") : "Mapping in progress"}</p>
+            <p className="prof-where">{[career, m.stage, m.lane].filter(Boolean).join(" · ") || "Mapping in progress"}</p>
           </div>
-          {m.isMe && <div className="prof-head-actions"><ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio }} /></div>}
+          {m.isMe && <div className="prof-head-actions"><ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage }} /></div>}
         </header>
 
         {m.bio && <p className="prof-bio">{m.bio}</p>}

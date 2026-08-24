@@ -28,6 +28,7 @@ export const profiles = pgTable("profiles", {
   role: roleEnum("role").notNull().default("member"),
   careerSlug: text("career_slug"),
   currentLane: text("current_lane"),
+  careerStage: text("career_stage"), // Student | Early-career | Mid-career | Senior | Leader
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
   createdAt: now(),
 });
@@ -75,6 +76,7 @@ export const pods = pgTable("pods", {
 export const podMembers = pgTable("pod_members", {
   podId: uuid("pod_id").notNull().references(() => pods.id, { onDelete: "cascade" }),
   memberId: memberFk(),
+  auto: boolean("auto").notNull().default(false), // founder auto-added as helper to a small pod
   joinedAt: timestamp("joined_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => ({ pk: primaryKey({ columns: [t.podId, t.memberId] }) }));
 

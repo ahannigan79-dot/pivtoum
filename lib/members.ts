@@ -5,7 +5,8 @@ import type { MapComputed } from "@/lib/trajectory";
 
 export type DirectoryMember = {
   id: string; name: string; handle: string | null; avatarUrl: string | null; role: string;
-  bio: string | null; career: string | null; lane: string | null;
+  bio: string | null; career: string | null; lane: string | null; stage: string | null;
+  strategy: string | null; pods: string[];
   overall: number | null; badgeCount: number;
 };
 
@@ -24,37 +25,63 @@ function displayName(p: typeof profiles.$inferSelect): string {
   return p.displayName ?? p.email.split("@")[0];
 }
 
-/** Latest overall exposure per member (for the directory). */
-async function latestOverallByMember(): Promise<Map<string, number>> {
+type LatestMap = { overall: number | null; strategy: string | null };
+
+/** Latest map summary per member (exposure + winning strategy). */
+async function latestMapByMember(): Promise<Map<string, LatestMap>> {
   const rows = await db
-    .select({ memberId: mapStates.memberId, overall: mapStates.overall, at: mapStates.createdAt })
+    .select({ memberId: mapStates.memberId, overall: mapStates.overall, computed: mapStates.computed })
     .from(mapStates).orderBy(desc(mapStates.createdAt));
-  const out = new Map<string, number>();
+  const out = new Map<string, LatestMap>();
   for (const r of rows) {
-    if (!out.has(r.memberId) && typeof r.overall === "number") out.set(r.memberId, Math.round(r.overall));
+    if (out.has(r.memberId)) continue;
+    const c = (r.computed ?? null) as MapComputed | null;
+    out.set(r.memberId, {
+      overall: typeof r.overall === "number" ? Math.round(r.overall) : null,
+      strategy: c?.move?.stance ?? null,
+    });
+  }
+  return out;
+}
+
+/** Pod names per member. */
+async function podsByMember(): Promise<Map<string, string[]>> {
+  const rows = await db
+    .select({ memberId: podMembers.memberId, name: pods.name })
+    .from(podMembers).innerJoin(pods, eq(podMembers.podId, pods.id));
+  const out = new Map<string, string[]>();
+  for (const r of rows) {
+    const list = out.get(r.memberId) ?? [];
+    list.push(r.name);
+    out.set(r.memberId, list);
   }
   return out;
 }
 
 export async function getDirectory(): Promise<DirectoryMember[]> {
-  const [people, overalls, badgeRows] = await Promise.all([
+  const [people, maps, badgeRows, memberPods] = await Promise.all([
     db.select().from(profiles).orderBy(desc(profiles.createdAt)),
-    latestOverallByMember(),
+    latestMapByMember(),
     db.select({ memberId: memberBadges.memberId, n: sql<number>`count(*)::int` })
       .from(memberBadges).groupBy(memberBadges.memberId),
+    podsByMember(),
   ]);
   const badges = new Map(badgeRows.map((r) => [r.memberId, r.n]));
 
-  return people.map((p) => ({
-    id: memberSlug(p), name: displayName(p), handle: p.handle, avatarUrl: p.avatarUrl, role: p.role,
-    bio: p.bio, career: p.careerSlug, lane: p.currentLane,
-    overall: overalls.get(p.clerkUserId) ?? null, badgeCount: badges.get(p.clerkUserId) ?? 0,
-  }));
+  return people.map((p) => {
+    const m = maps.get(p.clerkUserId);
+    return {
+      id: memberSlug(p), name: displayName(p), handle: p.handle, avatarUrl: p.avatarUrl, role: p.role,
+      bio: p.bio, career: p.careerSlug, lane: p.currentLane, stage: p.careerStage,
+      strategy: m?.strategy ?? null, pods: memberPods.get(p.clerkUserId) ?? [],
+      overall: m?.overall ?? null, badgeCount: badges.get(p.clerkUserId) ?? 0,
+    };
+  });
 }
 
 export type MemberProfile = {
   clerkUserId: string; name: string; handle: string | null; avatarUrl: string | null; role: string;
-  bio: string | null; career: string | null; lane: string | null;
+  bio: string | null; career: string | null; lane: string | null; stage: string | null;
   overall: number | null; computed: MapComputed | null;
   pods: { name: string; slug: string }[];
   recentPosts: { id: string; body: string; createdAt: Date }[];
@@ -80,7 +107,7 @@ export async function getMemberProfile(idOrHandle: string, meId: string | null):
 
   return {
     clerkUserId: p.clerkUserId, name: displayName(p), handle: p.handle, avatarUrl: p.avatarUrl, role: p.role,
-    bio: p.bio, career: p.careerSlug, lane: p.currentLane,
+    bio: p.bio, career: p.careerSlug, lane: p.currentLane, stage: p.careerStage,
     overall: typeof latest?.overall === "number" ? Math.round(latest.overall) : null,
     computed: (latest?.computed ?? null) as MapComputed | null,
     pods: podRows, recentPosts: postRows, isMe: meId === p.clerkUserId,

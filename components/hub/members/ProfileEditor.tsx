@@ -2,8 +2,10 @@
 import { useActionState, useState } from "react";
 import { updateProfile, type UpdateResult } from "@/app/hub/members/actions";
 
+const STAGES = ["Student", "Early-career", "Mid-career", "Senior", "Leader"];
+
 export function ProfileEditor({ initial }: {
-  initial: { displayName: string; handle: string | null; bio: string | null };
+  initial: { displayName: string; handle: string | null; bio: string | null; stage: string | null };
 }) {
   const [open, setOpen] = useState(false);
   const [state, action, pending] = useActionState<UpdateResult | null, FormData>(
@@ -19,6 +21,12 @@ export function ProfileEditor({ initial }: {
     <form action={action} className="prof-form">
       <label>Display name<input name="displayName" defaultValue={initial.displayName} maxLength={80} /></label>
       <label>Handle<input name="handle" defaultValue={initial.handle ?? ""} placeholder="yourname" maxLength={30} /></label>
+      <label>Career stage
+        <select name="careerStage" defaultValue={initial.stage ?? ""}>
+          <option value="">—</option>
+          {STAGES.map((s) => <option key={s} value={s}>{s}</option>)}
+        </select>
+      </label>
       <label>Bio<textarea name="bio" rows={3} defaultValue={initial.bio ?? ""} maxLength={600}
         placeholder="Where you are, where you're headed, what you're working on…" /></label>
       {state?.error && <p className="prof-err">{state.error}</p>}

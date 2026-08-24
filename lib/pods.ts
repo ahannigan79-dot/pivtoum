@@ -1,6 +1,15 @@
-import { asc, eq, sql } from "drizzle-orm";
+import { asc, eq, inArray, or, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, profiles } from "@/db/schema";
+
+/** Clerk ids of founders/moderators (role in DB or FOUNDER_EMAILS allowlist). */
+export async function getFounderIds(): Promise<string[]> {
+  const emails = (process.env.FOUNDER_EMAILS ?? "").toLowerCase().split(",").map((s) => s.trim()).filter(Boolean);
+  const conds = [eq(profiles.role, "founder"), eq(profiles.role, "moderator")];
+  if (emails.length) conds.push(inArray(sql`lower(${profiles.email})`, emails));
+  const rows = await db.select({ id: profiles.clerkUserId }).from(profiles).where(or(...conds));
+  return rows.map((r) => r.id);
+}
 
 export type Pod = typeof pods.$inferSelect;
 export type PodMember = { id: string; name: string; avatarUrl: string | null; handle: string | null };

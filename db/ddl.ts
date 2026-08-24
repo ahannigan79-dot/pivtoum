@@ -16,6 +16,23 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "topic" text`,
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`,
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned_at" timestamp with time zone`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "career_stage" text`,
+  `ALTER TABLE "pod_members" ADD COLUMN IF NOT EXISTS "auto" boolean DEFAULT false NOT NULL`,
+  // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
+  `INSERT INTO "pods" ("name","slug","description") VALUES
+     ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),
+     ('Software & Engineering','software-engineering','Engineers and builders navigating AI-native development.'),
+     ('Healthcare & Nursing','healthcare-nursing','Clinical and care roles — where judgment and presence still win.'),
+     ('Finance & Accounting','finance-accounting','Finance, accounting and audit pros steering through automation.'),
+     ('Legal & Compliance','legal-compliance','Lawyers, paralegals and compliance staff facing AI head-on.'),
+     ('Design & Creative','design-creative','Designers, writers and creatives deepening what AI can''t take.'),
+     ('Data & Analytics','data-analytics','Analysts and data people turning AI into leverage.'),
+     ('Sales & Customer','sales-customer','Sales, success and support — owning the relationships that matter.'),
+     ('People & HR','people-hr','HR, recruiting and people teams reshaping how work gets done.'),
+     ('Operations & Admin','operations-admin','Ops, project and admin roles rebuilding the back office.'),
+     ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.'),
+     ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.')
+   ON CONFLICT ("slug") DO NOTHING`,
   // Badge catalog — credentials for real milestones. Idempotent.
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),

@@ -427,7 +427,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
   padding:11px 14px; color:var(--ink); font-family:var(--sans); font-size:0.95rem; outline:none; }
 .mem-search input:focus { border-color:var(--rule2); }
 .mem-count { font-family:var(--mono); font-size:0.8rem; color:var(--pencil); white-space:nowrap; }
-.mem-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
+.mem-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; align-items:start; }
 .mem-card { display:flex; align-items:center; gap:13px; border:1px solid var(--rule); border-radius:14px;
   background:var(--panel); padding:14px 16px; transition:.14s; }
 .mem-card:hover { border-color:var(--rule2); background:var(--panel2); }
@@ -457,7 +457,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .prof-form { display:flex; flex-direction:column; gap:10px; border:1px solid var(--rule2); border-radius:14px;
   background:var(--panel); padding:16px; margin:0 0 12px; width:min(420px,100%); }
 .prof-form label { display:flex; flex-direction:column; gap:5px; font-size:0.78rem; color:var(--pencil); }
-.prof-form input, .prof-form textarea { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px;
+.prof-form input, .prof-form textarea, .prof-form select { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px;
   padding:9px 11px; color:var(--ink); font-family:var(--sans); font-size:0.92rem; outline:none; }
 .prof-err { color:var(--pen); font-size:0.85rem; margin:0; }
 .prof-form-foot { display:flex; justify-content:flex-end; gap:9px; }
@@ -492,3 +492,12 @@ a.nm:hover { color:var(--ink); }
 .strategy .mix-legend { font-size:0.86rem; margin-top:12px; }
 .strat-line { margin:14px 0 0; color:var(--soft); font-size:1.02rem; line-height:1.5; max-width:70ch; }
 @media (max-width:640px){ .strat-stance { font-size:1.6rem; } }
+
+/* directory: strategy + pods on member cards */
+.mem-card { align-items:flex-start; }
+.mem-strat { font-size:0.82rem; color:var(--green); margin-top:5px; }
+.mem-pods { display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; }
+.mem-pod { font-size:0.72rem; color:var(--soft); background:var(--panel2); border:1px solid var(--rule2);
+  border-radius:20px; padding:3px 9px; }
+.mem-pod.more { color:var(--pencil); }
+.mem-card .mem-meta { align-self:flex-start; margin-top:2px; }
