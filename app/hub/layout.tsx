@@ -4,7 +4,7 @@ import { getOrCreateProfile, touchVisit } from "@/lib/member";
 import { HubNav } from "@/components/hub/HubNav";
 import "./hub.css";
 
-export const metadata = { title: "The Hub — Pivotum", robots: { index: false, follow: false } };
+export const metadata = { title: "Winning in the Age of AI — Your Community", robots: { index: false, follow: false } };
 
 export default async function HubLayout({ children }: { children: React.ReactNode }) {
   const profile = await getOrCreateProfile();
@@ -14,7 +14,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
       <aside className="hub-side">
         <Link href="/hub" className="hub-brand">
           <span className="hub-mk" />
-          <span><small>Pivotum</small><b>The Hub</b></span>
+          <span><small>Pivotum · Your community</small><b>Winning in the Age of AI</b></span>
         </Link>
         <HubNav />
         <div className="hub-side-foot">

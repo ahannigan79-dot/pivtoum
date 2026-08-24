@@ -17,6 +17,7 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
     { href: "/hub/pods", icon: "👥", label: "Your Pod" },
     { href: "/hub/events", icon: "📅", label: "Events" },
     { href: "/hub/members", icon: "🗂", label: "Members" },
+    { href: "/hub/library", icon: "📁", label: "Library" },
     { href: "/hub/messages", icon: "✉️", label: "Messages" },
   ]},
 ];

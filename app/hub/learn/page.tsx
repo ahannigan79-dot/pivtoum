@@ -20,6 +20,13 @@ const PROTECTING = [
     body: "Where the law or a body says only a credentialed human may do it. The hardest moat to cross — and the slowest to erode." },
 ];
 
+const FOUNDATIONS = [
+  { icon: "◆", name: "Embrace", short: "Face the change — go AI-native",
+    body: "Winning starts with a decision: stop resisting the shift and move toward it. Bring AI into your actual work, do the reps, and share what you learn. The people who thrive aren't the ones who avoid AI — they're the ones who make it their instrument. Everything in Build is how you Embrace." },
+  { icon: "✦", name: "Together", short: "You win faster as part of a group",
+    body: "No one navigates a shift this big alone. Being seen, held to your commitments, and learning from people on the same path is what turns intention into motion. Your pod, the feed, the events — that's Together. Be generous, be kind, and use the room." },
+];
+
 function LeverCard({ l }: { l: { icon: string; name: string; short: string; body: string } }) {
   return (
     <div className="card lever-card">
@@ -37,10 +44,13 @@ export default function LearnPage() {
       <div className="hub-top"><h1>Learn</h1><span className="sp" /></div>
       <div className="hub-body">
         <p className="hub-lead">
-          Your score isn&apos;t luck — it&apos;s six levers. Two <b>expose</b> you as AI gets better;
-          four <b>protect</b> you where AI can&apos;t reach. Learn them, and your Map stops being a verdict and
-          starts being a set of dials you can turn.
+          Winning in the age of AI rests on two foundations — <b>Embrace</b> and <b>Together</b> — and turns on
+          six levers: two that <b>expose</b> you as AI improves, four that <b>protect</b> you where it can&apos;t reach.
+          Learn these, and your Map stops being a verdict and becomes a set of dials you can turn.
         </p>
+
+        <div className="hub-sectlabel">The two foundations</div>
+        <div className="hub-grid">{FOUNDATIONS.map((l) => <LeverCard key={l.name} l={l} />)}</div>
 
         <div className="hub-sectlabel">What exposes you</div>
         <div className="hub-grid">{EXPOSING.map((l) => <LeverCard key={l.name} l={l} />)}</div>
