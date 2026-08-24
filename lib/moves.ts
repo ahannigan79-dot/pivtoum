@@ -25,6 +25,24 @@ export function leverLabel(slug: string): string {
   return LEVER_BY_SLUG[slug]?.label ?? slug;
 }
 
+/** Plain-language goal the member is ultimately aiming for — grounded in their AI
+ *  impact — behind the strategy mechanics (renovate/guard/shift/relocate).
+ *  `band` is the exposure class: "ok" (low) | "mid" | "warn" (high). */
+export function winningAim(edge2: string | null | undefined, band: string): string {
+  switch (edge2) {
+    case "guard":
+      return band === "ok"
+        ? "Stay ahead and grow in your current role"
+        : "Protect and future-proof your current role";
+    case "shift":
+      return "Reposition into a more AI-resilient lane in your field";
+    case "relocate":
+      return "Move to more protected ground while you have runway";
+    default:
+      return "Master AI in your role and stay ahead";
+  }
+}
+
 export type Move = {
   id: string; title: string; lever: string; leverLabel: string;
   status: string; dueAt: Date | null; completedAt: Date | null; createdAt: Date;

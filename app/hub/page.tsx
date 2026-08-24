@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
 import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
-import { getMoves, suggestMoves } from "@/lib/moves";
+import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges } from "@/lib/badges";
 import { BADGES } from "@/lib/badges";
 import { Trend } from "@/components/hub/dashboard/Trend";
@@ -57,10 +57,11 @@ export default async function Dashboard() {
             {move?.stance && (
               <section className="strategy">
                 <div className="strat-top">
-                  <p className="ck">Your winning strategy · what you&apos;re working toward</p>
+                  <p className="ck">What you&apos;re aiming for · grounded in your AI impact</p>
                   <Link href="/hub/map" className="cardlink">See your full map →</Link>
                 </div>
-                <h2 className="strat-stance">{move.stance}</h2>
+                <h2 className="strat-stance">{winningAim(move.edge2, band.cls)}</h2>
+                <p className="strat-via">Your strategy: <b>{move.stance}</b></p>
                 <div className="mixbar" aria-hidden="true">
                   <span className="mix-reno" style={{ width: `${renovateW}%` }} />
                   <span className="mix-e2" style={{ width: `${edge2W}%` }} />

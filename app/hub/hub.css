@@ -487,7 +487,9 @@ a.nm:hover { color:var(--ink); }
 .strat-top { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 .strat-top .ck { color:var(--green); }
 .strat-top .cardlink { margin-left:0; }
-.strat-stance { font-family:var(--serif); font-weight:700; font-size:1.95rem; line-height:1.14; margin:6px 0 14px; color:var(--ink); }
+.strat-stance { font-family:var(--serif); font-weight:700; font-size:1.95rem; line-height:1.14; margin:6px 0 6px; color:var(--ink); }
+.strat-via { margin:0 0 14px; font-size:0.9rem; color:var(--soft); }
+.strat-via b { color:var(--ink); font-weight:700; }
 .strategy .mixbar { height:12px; }
 .strategy .mix-legend { font-size:0.86rem; margin-top:12px; }
 .strat-line { margin:14px 0 0; color:var(--soft); font-size:1.02rem; line-height:1.5; max-width:70ch; }
