@@ -3,7 +3,7 @@ import type Stripe from "stripe";
 import { Resend } from "resend";
 import { getStripe } from "@/lib/stripe";
 import { upsertOrder } from "@/lib/db";
-import { syncSubscription } from "@/lib/billing";
+import { syncSubscription, linkCustomer } from "@/lib/billing";
 import { EDITION } from "@/lib/site";
 
 /** Stripe → order. Verifies the signature against the raw body, then records the order. */
@@ -35,7 +35,10 @@ export async function POST(req: Request) {
     // A subscription checkout → link the member immediately (don't treat as a guide order).
     if (session.mode === "subscription" && session.subscription) {
       const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
-      try { await syncSubscription(await getStripe().subscriptions.retrieve(subId)); } catch { /* ignore */ }
+      const memberId = session.client_reference_id ?? undefined; // the Clerk user id we set at checkout
+      const customerId = typeof session.customer === "string" ? session.customer : session.customer?.id;
+      if (memberId && customerId) await linkCustomer(memberId, customerId);
+      try { await syncSubscription(await getStripe().subscriptions.retrieve(subId), memberId); } catch { /* ignore */ }
       return NextResponse.json({ received: true });
     }
     const email = session.customer_details?.email ?? session.customer_email ?? "";
