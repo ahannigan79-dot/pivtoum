@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Literata, Archivo } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { MetaPixel } from "@/components/MetaPixel";
 import { GoogleAds } from "@/components/GoogleAds";
 import { Clarity } from "@/components/Clarity";
 import { ConsentBanner } from "@/components/ConsentBanner";
+import { HideOnHub } from "@/components/HideOnHub";
 import "./globals.css";
 
 const literata = Literata({
@@ -38,17 +40,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${literata.variable} ${archivo.variable}`}>
-      <body>
-        <MetaPixel />
-        <GoogleAds />
-        <Clarity />
-        <SiteHeader />
-        {children}
-        <ConsentBanner />
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+    <ClerkProvider afterSignOutUrl="/">
+      <html lang="en" className={`${literata.variable} ${archivo.variable}`}>
+        <body>
+          <HideOnHub>
+            <MetaPixel />
+            <GoogleAds />
+            <Clarity />
+            <SiteHeader />
+          </HideOnHub>
+          {children}
+          <HideOnHub>
+            <ConsentBanner />
+          </HideOnHub>
+          <Analytics />
+          <SpeedInsights />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

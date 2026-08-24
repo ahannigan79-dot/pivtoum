@@ -1,0 +1,40 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const SECTIONS: { label?: string; items: { href: string; icon: string; label: string }[] }[] = [
+  { items: [{ href: "/hub", icon: "◆", label: "Dashboard" }] },
+  { label: "The Winning Loop", items: [
+    { href: "/hub/map", icon: "🧭", label: "Your Map" },
+    { href: "/hub/learn", icon: "📚", label: "Learn" },
+    { href: "/hub/build", icon: "🛠", label: "Build" },
+    { href: "/hub/evolve", icon: "📈", label: "Evolve" },
+  ]},
+  { label: "Community", items: [
+    { href: "/hub/community", icon: "💬", label: "Feed" },
+    { href: "/hub/pods", icon: "👥", label: "Your Pod" },
+    { href: "/hub/events", icon: "📅", label: "Events" },
+    { href: "/hub/members", icon: "🗂", label: "Members" },
+    { href: "/hub/messages", icon: "✉️", label: "Messages" },
+  ]},
+];
+
+export function HubNav() {
+  const pathname = usePathname();
+  const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
+  return (
+    <nav className="hub-nav">
+      {SECTIONS.map((s, i) => (
+        <div key={i}>
+          {s.label && <div className="hub-navsep">{s.label}</div>}
+          {s.items.map((it) => (
+            <Link key={it.href} href={it.href} className={isActive(it.href) ? "on" : ""}>
+              <span className="ic">{it.icon}</span>
+              {it.label}
+            </Link>
+          ))}
+        </div>
+      ))}
+    </nav>
+  );
+}

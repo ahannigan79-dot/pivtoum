@@ -1,0 +1,60 @@
+/* Member platform shell — dark theme, consistent with the Winning Loop tools. */
+.hub {
+  --bg:#141209; --bg2:#17150F; --panel:#201D16; --panel2:#262219; --panel3:#2c2820;
+  --ink:#F3EFE6; --soft:#C7C0B2; --pencil:#948B7C; --rule:#34302A; --rule2:#3f3a31;
+  --green:#7FC08A; --green-bright:#8FD09A; --green-deep:#35804E;
+  --pen:#E0776C; --amber:#D6A85B;
+  --serif:"Literata",Georgia,serif; --sans:var(--font-archivo),system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  min-height:100dvh; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); display:grid; grid-template-columns:240px 1fr;
+}
+.hub a { color:inherit; text-decoration:none; }
+
+/* sidebar */
+.hub-side { position:sticky; top:0; height:100dvh; background:var(--bg2); border-right:1px solid var(--rule);
+  display:flex; flex-direction:column; padding:18px 14px; gap:4px; }
+.hub-brand { display:flex; align-items:center; gap:10px; padding:4px 8px 16px; }
+.hub-mk { width:26px; height:26px; border:2px solid var(--green); border-radius:7px; position:relative; flex:none; }
+.hub-mk::after { content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+.hub-brand b { font-weight:700; font-size:0.98rem; }
+.hub-brand small { display:block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); }
+.hub-nav a { display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; font-size:0.92rem; color:var(--soft); transition:.12s; }
+.hub-nav a:hover { background:var(--panel); color:var(--ink); }
+.hub-nav a.on { background:var(--panel2); color:var(--ink); }
+.hub-nav .ic { width:18px; text-align:center; opacity:.85; }
+.hub-navsep { font-size:0.56rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--pencil); padding:14px 11px 6px; }
+.hub-side-foot { margin-top:auto; display:flex; align-items:center; gap:10px; padding:10px 8px 4px; border-top:1px solid var(--rule); }
+.hub-side-foot .nm { font-size:0.82rem; color:var(--soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* main */
+.hub-main { min-width:0; }
+.hub-top { position:sticky; top:0; z-index:5; background:linear-gradient(180deg,var(--bg) 80%,transparent);
+  padding:16px 26px 12px; display:flex; align-items:center; gap:14px; }
+.hub-top h1 { font-family:var(--serif); font-weight:700; font-size:1.4rem; margin:0; }
+.hub-top .sp { margin-left:auto; }
+.hub-body { padding:6px 26px 60px; max-width:1080px; }
+
+/* cards */
+.hub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:18px 19px; display:block; transition:.14s; }
+a.card:hover { border-color:var(--rule2); background:var(--panel2); }
+.card .ck { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin:0 0 8px; }
+.card h3 { font-family:var(--serif); font-weight:700; font-size:1.24rem; margin:0 0 6px; }
+.card p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.5; }
+.card .big { font-family:var(--mono); font-weight:600; font-size:2.1rem; line-height:1; margin:6px 0 2px; }
+.card .big.warn { color:var(--pen); } .card .big.ok { color:var(--green-bright); }
+.hub-sectlabel { font-size:0.64rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); margin:26px 0 12px; }
+.hub-lead { font-family:var(--serif); font-size:1.16rem; line-height:1.5; color:var(--soft); max-width:60ch; margin:0 0 8px; }
+.hub-lead b { color:var(--ink); }
+.pill { display:inline-block; font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:20px; color:var(--amber); border:1px solid #7a5e2c; }
+
+@media (max-width:820px){
+  .hub { grid-template-columns:1fr; }
+  .hub-side { position:fixed; bottom:0; top:auto; left:0; right:0; height:auto; flex-direction:row; width:100%;
+    border-right:none; border-top:1px solid var(--rule); padding:8px; gap:2px; overflow-x:auto; z-index:20; }
+  .hub-brand, .hub-navsep, .hub-side-foot { display:none; }
+  .hub-nav { display:flex; gap:2px; }
+  .hub-nav a { flex-direction:column; gap:3px; font-size:0.6rem; padding:6px 10px; }
+  .hub-body { padding-bottom:90px; }
+}
