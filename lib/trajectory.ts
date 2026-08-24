@@ -27,11 +27,19 @@ export type Trajectory = {
   movesDone: number;
   badgeCount: number;
   lastMapAt: Date | null;
+  daysSinceMap: number | null;
+  personalRescoreDue: boolean; // personal re-score cadence: every 2 months
 };
+
+/** Cadence: members re-score their personal factors every 2 months; Pivotum
+ *  re-scores the market baseline every 6. */
+export const PERSONAL_RESCORE_DAYS = 60;
+export const PIVOTUM_RESCORE_DAYS = 180;
 
 const EMPTY: Trajectory = {
   hasMap: false, computed: null, overall: null, history: [],
   editions: 0, movesActive: 0, movesDone: 0, badgeCount: 0, lastMapAt: null,
+  daysSinceMap: null, personalRescoreDue: false,
 };
 
 export async function getTrajectory(userId: string | null): Promise<Trajectory> {
@@ -57,6 +65,7 @@ export async function getTrajectory(userId: string | null): Promise<Trajectory> 
     .filter((m) => typeof m.overall === "number")
     .map((m) => ({ at: m.at, overall: Math.round(m.overall as number) }));
   const last = maps[maps.length - 1];
+  const daysSinceMap = Math.floor((Date.now() - last.at.getTime()) / (1000 * 60 * 60 * 24));
 
   return {
     hasMap: true,
@@ -68,6 +77,8 @@ export async function getTrajectory(userId: string | null): Promise<Trajectory> 
     movesDone: moveRows.find((r) => r.status === "done")?.n ?? 0,
     badgeCount: badgeRows[0]?.n ?? 0,
     lastMapAt: last.at,
+    daysSinceMap,
+    personalRescoreDue: daysSinceMap >= PERSONAL_RESCORE_DAYS,
   };
 }
 

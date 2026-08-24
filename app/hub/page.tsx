@@ -53,6 +53,17 @@ export default async function Dashboard() {
 
         {t?.hasMap ? (
           <>
+            {t.personalRescoreDue && (
+              <Link href="/hub/map" className="rescore-nudge">
+                <span className="rn-dot" />
+                <span>
+                  It&apos;s been {Math.max(2, Math.round((t.daysSinceMap ?? 60) / 30))} months since your last read.
+                  Have your protections changed — new trust, a credential, sharper judgment? <b>Re-score</b> and update your trajectory.
+                </span>
+                <span className="rn-go">Re-score →</span>
+              </Link>
+            )}
+
             {/* Winning strategy — front and centre: what they're working toward */}
             {move?.stance && (
               <section className="strategy">
@@ -112,6 +123,7 @@ export default async function Dashboard() {
                   {urgency && <span className={`tag urg u-${urgency.toLowerCase()}`}>Urgency: {urgency}</span>}
                   <Link href="/hub/map" className="cardlink">Open your Map →</Link>
                 </div>
+                <p className="rescore-cadence">Personal re-score every 2 months · Pivotum re-scores the market every 6.</p>
               </section>
 
               {c?.driver && (
