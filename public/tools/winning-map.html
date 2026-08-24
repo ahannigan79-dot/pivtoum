@@ -877,6 +877,9 @@
     var F = (A.lane && tk && tk.phys!=null) ? [tk.auto,tk.ladder,tk.phys,tk.trust,tk.lic,tk.judg] : career.f;
     var base={ auto:F[0]*10, ladder:F[1]*10, phys:100-F[2]*10, trust:100-F[3]*10, lic:100-F[4]*10, judg:100-F[5]*10 };
     var you={};
+    // protPts = the member's personal protection strength vs neutral (each slider
+    // 50 = neutral). Higher = more protected → lower exposure. Drives the score below.
+    var protPts=0;
     if(incumbent){
       var T=A.tasks, TR=A.trust; var trustAvg=(TR.name+TR.relationships+TR.accountable+TR.judgment)/4;
       var phAdj={Establishing:12,Advancing:0,Leading:-12}[A.phase]||0;
@@ -886,6 +889,11 @@
       you.trust=clampP(base.trust-(trustAvg-50)*0.7);
       you.lic=clampP({no:base.lic,some:base.lic-25,yes:25}[A.licence!=null?A.licence:'no']);
       you.judg=clampP(base.judg-(T.complex-50)*0.5);
+      var licAns0=(A.licence!=null?A.licence:'no');
+      protPts = 0.30*(T.physical-50)                                                   // hands-on
+              + 0.30*(((TR.name-50)+(TR.relationships-50)+(TR.accountable-50))/3)      // trust & relationships
+              + 0.22*(((T.complex-50)+(TR.judgment-50))/2)                             // judgment
+              + ({no:0,some:12,yes:30}[licAns0]||0);                                   // licensing
     } else {
       var S=A.strengths;
       you.auto=clampP(base.auto+4);
@@ -894,6 +902,9 @@
       you.trust=clampP(base.trust-(((S.people+S.care+S.persuasion)/3)-50)*0.6);
       you.lic=clampP(base.lic);
       you.judg=clampP(base.judg-(((S.analytical+S.creative)/2)-50)*0.4);
+      protPts = 0.30*(S.handson-50)
+              + 0.30*(((S.people-50)+(S.care-50)+(S.persuasion-50))/3)
+              + 0.22*(((S.analytical-50)+(S.creative-50))/2);
     }
     var bands={}; SIGMETA.forEach(function(s){ bands[s.k]=[clampP(base[s.k]-20), clampP(base[s.k]+6)]; });
     // Exposure = the lane's Pivotum baseline (which carries the MARKET forces —
@@ -902,10 +913,10 @@
     // licensing, judgment), using the scoring-model weights. The personal adjustment is
     // capped so it can shift the picture but never overwhelm the Pivotum baseline.
     var laneBaseline = laneScore*10;
-    var protDelta = 0.15*(you.phys-base.phys) + 0.15*(you.trust-base.trust)
-                  + 0.10*(you.lic-base.lic) + 0.10*(you.judg-base.judg);
     var PERSONAL_CAP = 15; // personal factors may move exposure at most ±15 pts
-    protDelta = Math.max(-PERSONAL_CAP, Math.min(PERSONAL_CAP, protDelta));
+    // -protPts*0.5: more protection lowers exposure. Single strong slider (e.g. hands-on
+    // 50→100) ≈ -7.5; maxing all protections caps at -15. Weakening (below 50) raises it.
+    var protDelta = Math.max(-PERSONAL_CAP, Math.min(PERSONAL_CAP, -protPts*0.5));
     var overall = Math.max(3, Math.min(97, Math.round(laneBaseline + protDelta)));
     var driver = you.auto>=you.ladder ? {name:'Automatability',rating:F[0]} : {name:'The Ladder',rating:F[1]};
     var prots=[{k:'trust',label:'Your relationships',v:you.trust},{k:'judg',label:'Your judgment',v:you.judg},{k:'phys',label:'Being on the ground',v:you.phys}];
