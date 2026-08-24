@@ -3,9 +3,11 @@ import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
 import { getPlan, type PlanStep } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
+import { getMoves, suggestMoves } from "@/lib/moves";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { NextAction } from "@/components/hub/dashboard/NextAction";
 import { Checklist } from "@/components/hub/dashboard/Checklist";
+import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 
 export const metadata = { title: "Evolve — Pivotum" };
 
@@ -34,6 +36,8 @@ export default async function Dashboard() {
   const plan = await getPlan(userId);
   const t = plan?.traj ?? null;
   const c = t?.computed ?? null;
+  const moves = t?.hasMap ? await getMoves(userId) : { active: [], shipped: [] };
+  const suggestions = t?.hasMap ? suggestMoves(c) : [];
 
   const band = exposureBand(t?.overall ?? null);
   const laneBandWord = bandWord(c?.band);
@@ -128,6 +132,8 @@ export default async function Dashboard() {
                 <Link href="/hub/build" className="cardlink">Train your edges →</Link>
               </section>
             </div>
+
+            <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} />
           </>
         )}
 
