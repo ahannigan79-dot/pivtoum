@@ -92,6 +92,17 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_instant" boolean DEFAULT true NOT NULL`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_digest" boolean DEFAULT true NOT NULL`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "digest_sent_at" timestamp with time zone`,
+  // Trust & safety: DM/map privacy, member blocks, and report resolution.
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "dm_privacy" text DEFAULT 'all' NOT NULL`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "show_map" boolean DEFAULT true NOT NULL`,
+  `CREATE TABLE IF NOT EXISTS "member_blocks" (
+     "blocker_id" text NOT NULL,
+     "blocked_id" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+     CONSTRAINT "member_blocks_pk" PRIMARY KEY("blocker_id","blocked_id")
+   )`,
+  `ALTER TABLE "post_reports" ADD COLUMN IF NOT EXISTS "resolved_at" timestamp with time zone`,
+  `ALTER TABLE "post_reports" ADD COLUMN IF NOT EXISTS "resolved_by" text`,
   // Badge catalog — credentials for real milestones. Idempotent.
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),

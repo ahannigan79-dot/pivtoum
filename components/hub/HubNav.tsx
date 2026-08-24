@@ -22,11 +22,16 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   ]},
 ];
 
-export function HubNav({ messagesUnread = 0, isFounder = false }: { messagesUnread?: number; isFounder?: boolean }) {
+export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 }: {
+  messagesUnread?: number; isFounder?: boolean; openReports?: number;
+}) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
   const sections = isFounder
-    ? [...SECTIONS, { label: "Founder", items: [{ href: "/hub/health", icon: "❤", label: "Member health" }] }]
+    ? [...SECTIONS, { label: "Founder", items: [
+        { href: "/hub/health", icon: "❤", label: "Member health" },
+        { href: "/hub/moderation", icon: "🛡", label: "Moderation" },
+      ] }]
     : SECTIONS;
   return (
     <nav className="hub-nav">
@@ -38,6 +43,7 @@ export function HubNav({ messagesUnread = 0, isFounder = false }: { messagesUnre
               <span className="ic">{it.icon}</span>
               {it.label}
               {it.href === "/hub/messages" && messagesUnread > 0 && <span className="nav-badge">{messagesUnread}</span>}
+              {it.href === "/hub/moderation" && openReports > 0 && <span className="nav-badge warn">{openReports}</span>}
             </Link>
           ))}
         </div>

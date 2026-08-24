@@ -85,7 +85,7 @@ export type MemberProfile = {
   overall: number | null; computed: MapComputed | null;
   pods: { name: string; slug: string }[];
   recentPosts: { id: string; body: string; createdAt: Date }[];
-  isMe: boolean;
+  isMe: boolean; mapVisible: boolean;
 };
 
 /** Resolve a member by handle or user id, with their public profile data. */
@@ -104,13 +104,16 @@ export async function getMemberProfile(idOrHandle: string, meId: string | null):
       .where(eq(posts.authorId, p.clerkUserId)).orderBy(desc(posts.createdAt)).limit(5),
   ]);
   const latest = maps[0];
+  const isMe = meId === p.clerkUserId;
+  // The owner controls whether their exposure/map shows on their public profile.
+  const mapVisible = isMe || p.showMap;
 
   return {
     clerkUserId: p.clerkUserId, name: displayName(p), handle: p.handle, avatarUrl: p.avatarUrl, role: p.role,
     bio: p.bio, career: p.careerSlug, lane: p.currentLane, stage: p.careerStage,
-    overall: typeof latest?.overall === "number" ? Math.round(latest.overall) : null,
-    computed: (latest?.computed ?? null) as MapComputed | null,
-    pods: podRows, recentPosts: postRows, isMe: meId === p.clerkUserId,
+    overall: mapVisible && typeof latest?.overall === "number" ? Math.round(latest.overall) : null,
+    computed: mapVisible ? ((latest?.computed ?? null) as MapComputed | null) : null,
+    pods: podRows, recentPosts: postRows, isMe, mapVisible,
   };
 }
 

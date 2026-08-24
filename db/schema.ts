@@ -36,8 +36,17 @@ export const profiles = pgTable("profiles", {
   emailInstant: boolean("email_instant").notNull().default(true), // reply/DM/report emails
   emailDigest: boolean("email_digest").notNull().default(true),    // weekly digest
   digestSentAt: timestamp("digest_sent_at", { withTimezone: true }),
+  dmPrivacy: text("dm_privacy").notNull().default("all"), // all | pods | none — who can DM me
+  showMap: boolean("show_map").notNull().default(true),   // show my exposure/map on my profile
   createdAt: now(),
 });
+
+/* ---------- Safety: member blocks ---------- */
+export const memberBlocks = pgTable("member_blocks", {
+  blockerId: memberFk("blocker_id"),
+  blockedId: memberFk("blocked_id"),
+  createdAt: now(),
+}, (t) => ({ pk: primaryKey({ columns: [t.blockerId, t.blockedId] }) }));
 
 /* ---------- The Loop: saved Maps over time (Evolve trajectory) ---------- */
 export const mapStates = pgTable("map_states", {
@@ -132,6 +141,8 @@ export const postReports = pgTable("post_reports", {
   postId: uuid("post_id").notNull().references(() => posts.id, { onDelete: "cascade" }),
   reporterId: memberFk("reporter_id"),
   reason: text("reason"),
+  resolvedAt: timestamp("resolved_at", { withTimezone: true }),
+  resolvedBy: text("resolved_by"),
   createdAt: now(),
 }, (t) => ({ postIdx: index("post_reports_post_idx").on(t.postId) }));
 

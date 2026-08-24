@@ -2,6 +2,7 @@ import { and, asc, eq, inArray, ne } from "drizzle-orm";
 import { db } from "@/db";
 import { dmMessages, dmThreadMembers, dmThreads, profiles } from "@/db/schema";
 import { notifyDM } from "@/lib/notifications";
+import { getHiddenIds } from "@/lib/safety";
 
 export type DMPerson = { id: string; name: string; avatarUrl: string | null; handle: string | null };
 export type DMConversation = {
@@ -96,7 +97,9 @@ export async function sendDM(threadId: string, meId: string, body: string): Prom
   const members = await db.select({ id: dmThreadMembers.memberId }).from(dmThreadMembers)
     .where(eq(dmThreadMembers.threadId, threadId));
   if (!members.some((m) => m.id === meId)) return;
-  await db.insert(dmMessages).values({ threadId, senderId: meId, body: b.slice(0, 4000) });
   const recipient = members.find((m) => m.id !== meId);
+  // A block placed after the thread existed still stops delivery.
+  if (recipient && (await getHiddenIds(meId)).includes(recipient.id)) return;
+  await db.insert(dmMessages).values({ threadId, senderId: meId, body: b.slice(0, 4000) });
   if (recipient) await notifyDM(threadId, meId, recipient.id, b);
 }

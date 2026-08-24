@@ -18,6 +18,8 @@ export default async function SettingsPage() {
           initial={{
             emailInstant: profile?.emailInstant ?? true,
             emailDigest: profile?.emailDigest ?? true,
+            dmPrivacy: (profile?.dmPrivacy as "all" | "pods" | "none") ?? "all",
+            showMap: profile?.showMap ?? true,
           }}
           email={profile?.email ?? ""}
         />

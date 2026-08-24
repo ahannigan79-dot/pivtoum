@@ -5,6 +5,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles } from "@/db/schema";
 import { handleTaken } from "@/lib/members";
+import { blockMember, unblockMember, iBlocked } from "@/lib/safety";
 
 export type UpdateResult = { ok: boolean; error?: string };
 
@@ -32,4 +33,14 @@ export async function updateProfile(_prev: UpdateResult | null, formData: FormDa
   revalidatePath("/hub/members");
   revalidatePath(`/hub/members/${handle ?? userId}`);
   return { ok: true };
+}
+
+/** Toggle a block on another member. */
+export async function toggleBlock(otherId: string) {
+  const { userId } = await auth();
+  if (!userId || !otherId || otherId === userId) return;
+  if (await iBlocked(userId, otherId)) await unblockMember(userId, otherId);
+  else await blockMember(userId, otherId);
+  revalidatePath(`/hub/members/${otherId}`);
+  revalidatePath("/hub/members");
 }

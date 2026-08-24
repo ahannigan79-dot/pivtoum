@@ -1,6 +1,7 @@
-import { and, asc, desc, eq, inArray, isNull, sql, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, notInArray, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { comments, postAttachments, postReports, posts, profiles, reactions } from "@/db/schema";
+import { getHiddenIds } from "@/lib/safety";
 
 export type FeedAttachment = { url: string; name: string | null; kind: string; contentType: string | null };
 
@@ -36,21 +37,27 @@ export function getThreadFeed(threadId: string, meId: string | null): Promise<Fe
 
 /** Shared feed builder: given a WHERE over posts, hydrate authors, comments, reactions. */
 async function buildFeed(where: SQL | undefined, meId: string | null): Promise<FeedPost[]> {
+  // Hide posts from members the viewer has blocked (or who blocked them).
+  const hidden = await getHiddenIds(meId);
+  const scoped = hidden.length ? and(where, notInArray(posts.authorId, hidden)) : where;
   const rows = await db
     .select({ p: posts, a: profiles })
     .from(posts)
     .innerJoin(profiles, eq(posts.authorId, profiles.clerkUserId))
-    .where(where)
+    .where(scoped)
     .orderBy(desc(posts.pinned), desc(posts.createdAt))
     .limit(50);
   if (!rows.length) return [];
 
   const ids = rows.map((r) => r.p.id);
+  const cWhere = hidden.length
+    ? and(inArray(comments.postId, ids), notInArray(comments.authorId, hidden))
+    : inArray(comments.postId, ids);
   const cRows = await db
     .select({ c: comments, a: profiles })
     .from(comments)
     .innerJoin(profiles, eq(comments.authorId, profiles.clerkUserId))
-    .where(inArray(comments.postId, ids))
+    .where(cWhere)
     .orderBy(asc(comments.createdAt));
   const rRows = await db.select().from(reactions).where(inArray(reactions.postId, ids));
   const repRows = await db.select({ postId: postReports.postId, n: sql<number>`count(*)::int` })

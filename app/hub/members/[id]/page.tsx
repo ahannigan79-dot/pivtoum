@@ -8,6 +8,8 @@ import { timeAgo } from "@/lib/community";
 import { Avatar } from "@/components/hub/community/Avatar";
 import { ProfileEditor } from "@/components/hub/members/ProfileEditor";
 import { startDM } from "@/app/hub/messages/actions";
+import { toggleBlock } from "@/app/hub/members/actions";
+import { iBlocked } from "@/lib/safety";
 
 const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim();
 const ROLE_LABEL: Record<string, string> = { founder: "Founder", moderator: "Moderator" };
@@ -25,7 +27,10 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
   const m = await getMemberProfile(id, userId);
   if (!m) notFound();
 
-  const [badges] = await Promise.all([getEarnedBadges(m.clerkUserId)]);
+  const [badges, blocked] = await Promise.all([
+    getEarnedBadges(m.clerkUserId),
+    !m.isMe && userId ? iBlocked(userId, m.clerkUserId) : Promise.resolve(false),
+  ]);
   const band = exposureBand(m.overall);
   const career = humanizeCareer(m.career);
   const move = m.computed?.move;
@@ -48,9 +53,16 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
             {m.isMe ? (
               <ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage }} />
             ) : (
-              <form action={startDM.bind(null, m.clerkUserId)}>
-                <button type="submit" className="prof-msg-btn">✉ Message</button>
-              </form>
+              <>
+                {!blocked && (
+                  <form action={startDM.bind(null, m.clerkUserId)}>
+                    <button type="submit" className="prof-msg-btn">✉ Message</button>
+                  </form>
+                )}
+                <form action={toggleBlock.bind(null, m.clerkUserId)}>
+                  <button type="submit" className="prof-block-btn">{blocked ? "Unblock" : "Block"}</button>
+                </form>
+              </>
             )}
           </div>
         </header>
@@ -78,7 +90,11 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
                 </div>
               </div>
             ) : (
-              <p className="feed-empty">{m.isMe ? "You haven't built your Map yet." : "No Map shared yet."}</p>
+              <p className="feed-empty">
+                {m.isMe ? "You haven't built your Map yet."
+                  : !m.mapVisible ? "This member keeps their Map private."
+                  : "No Map shared yet."}
+              </p>
             )}
 
             {/* Recent activity */}

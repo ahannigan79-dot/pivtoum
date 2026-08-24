@@ -3,11 +3,16 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getOrCreateDMThread, sendDM } from "@/lib/dms";
+import { canDM } from "@/lib/safety";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
 
 /** Open (or start) a DM with another member. */
 export async function startDM(otherId: string) {
   const { userId } = await auth();
   if (!userId || !otherId || otherId === userId) return;
+  const profile = await getOrCreateProfile();
+  // Founders can always reach a member; everyone else honors blocks + DM privacy.
+  if (!isFounder(profile) && !(await canDM(userId, otherId))) return;
   const threadId = await getOrCreateDMThread(userId, otherId);
   redirect(`/hub/messages/${threadId}`);
 }
