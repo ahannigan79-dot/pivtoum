@@ -21,6 +21,7 @@ export async function addComment(postId: string, body: string) {
   if (!b) return;
   await db.insert(comments).values({ postId, authorId: userId, body: b.slice(0, 3000) });
   revalidatePath("/hub/community");
+  revalidatePath("/hub/pods", "layout");
 }
 
 export async function toggleReaction(postId: string) {
@@ -31,4 +32,5 @@ export async function toggleReaction(postId: string) {
   if (existing[0]) await db.delete(reactions).where(where);
   else await db.insert(reactions).values({ postId, memberId: userId, emoji: "👍" });
   revalidatePath("/hub/community");
+  revalidatePath("/hub/pods", "layout");
 }

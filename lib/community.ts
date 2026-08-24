@@ -1,4 +1,4 @@
-import { asc, desc, eq, inArray, isNull } from "drizzle-orm";
+import { asc, desc, eq, inArray, isNull, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { comments, posts, profiles, reactions } from "@/db/schema";
 
@@ -14,12 +14,22 @@ function author(a: typeof profiles.$inferSelect): FeedAuthor {
 }
 
 /** The whole-community feed (podId null), newest first, with comments + reactions. */
-export async function getCommunityFeed(meId: string | null): Promise<FeedPost[]> {
+export function getCommunityFeed(meId: string | null): Promise<FeedPost[]> {
+  return buildFeed(isNull(posts.podId), meId);
+}
+
+/** A single pod's feed (posts scoped to that pod). */
+export function getPodFeed(podId: string, meId: string | null): Promise<FeedPost[]> {
+  return buildFeed(eq(posts.podId, podId), meId);
+}
+
+/** Shared feed builder: given a WHERE over posts, hydrate authors, comments, reactions. */
+async function buildFeed(where: SQL | undefined, meId: string | null): Promise<FeedPost[]> {
   const rows = await db
     .select({ p: posts, a: profiles })
     .from(posts)
     .innerJoin(profiles, eq(posts.authorId, profiles.clerkUserId))
-    .where(isNull(posts.podId))
+    .where(where)
     .orderBy(desc(posts.createdAt))
     .limit(50);
   if (!rows.length) return [];
