@@ -40,7 +40,14 @@ export default async function Dashboard() {
   const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
   const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));
 
-  const band = exposureBand(t?.overall ?? null);
+  // Effort dividend — the work you put in buys down exposure. Every 30 points = −1,
+  // capped at −12 so it rewards effort without overwhelming the market baseline.
+  const EFFORT_PER_POINT = 30, EFFORT_CAP = 12;
+  const effortDividend = Math.min(EFFORT_CAP, Math.floor(effort / EFFORT_PER_POINT));
+  const baseExp = t?.overall ?? null;
+  const exposureNow = baseExp != null ? Math.max(3, Math.min(97, baseExp - effortDividend)) : null;
+
+  const band = exposureBand(exposureNow);
   const laneBandWord = bandWord(c?.band);
   const urgency = c?.urgency?.level ?? null;
   const move = c?.move ?? null;
@@ -111,8 +118,8 @@ export default async function Dashboard() {
             {/* Command KPIs */}
             <div className="kpis">
               <div className={`kpi kpi-exp ${band.cls}`}>
-                <span className="kpi-n">{t.overall}</span>
-                <span className="kpi-l">Exposure{band.word ? ` · ${band.word}` : ""}</span>
+                <span className="kpi-n">{exposureNow}</span>
+                <span className="kpi-l">Exposure{band.word ? ` · ${band.word}` : ""}{effortDividend > 0 ? ` · −${effortDividend} effort` : ""}</span>
                 {delta != null && <span className={`kpi-delta ${delta <= 0 ? "good" : "bad"}`}>{delta <= 0 ? "↓" : "↑"} {Math.abs(delta)}</span>}
               </div>
               <div className="kpi"><span className="kpi-n">{t.movesDone}</span><span className="kpi-l">Moves shipped</span></div>
@@ -128,6 +135,11 @@ export default async function Dashboard() {
                 <div className="effort-copy">
                   <p className="ck">Your effort · putting in the work</p>
                   <p className="effort-lead">Winning isn&apos;t just your exposure — it&apos;s the work you put in to change it. Every move, rep, re-score and contribution adds up, and it only goes up.</p>
+                  {effortDividend > 0 ? (
+                    <p className="effort-div">Your effort has pulled your exposure down <b>−{effortDividend}</b>{baseExp != null ? ` (${baseExp} → ${exposureNow})` : ""}. Every {EFFORT_PER_POINT} points earns −1, up to −{EFFORT_CAP}.</p>
+                  ) : effort > 0 ? (
+                    <p className="effort-div"><b>{EFFORT_PER_POINT - (effort % EFFORT_PER_POINT)}</b> more points earns your first −1 on exposure.</p>
+                  ) : null}
                 </div>
               </div>
               {breakdown.length > 0 && (
@@ -141,7 +153,7 @@ export default async function Dashboard() {
             <div className="cockpit">
               <section className="ck-card ck-stand">
                 <p className="ck">Where you stand{c?.career ? ` · ${c.career}` : ""}</p>
-                <Gauge value={t.overall ?? 0} />
+                <Gauge value={exposureNow ?? 0} />
                 <div className="stand-mini">
                   {t.history.length >= 2 && <span className="stand-spark"><Trend points={t.history} /></span>}
                   <span className="trend-note">
