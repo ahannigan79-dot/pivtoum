@@ -1,0 +1,238 @@
+<title>The Operator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" />
+<style>
+  :root{
+    --bg:#141209; --bg2:#17150F; --panel:#201D16; --panel2:#262219; --panel3:#2c2820;
+    --ink:#F3EFE6; --soft:#C7C0B2; --pencil:#948B7C; --rule:#34302A; --rule2:#3f3a31;
+    --green:#7FC08A; --green-bright:#8FD09A; --green-deep:#35804E;
+    --pen:#E0776C; --pen-dim:#a85a52;
+    --serif:"Literata",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  b{ color:#fff; } em,i{ color:var(--soft); font-style:italic; }
+  .wrap{ max-width:760px; margin:0 auto; padding:0 18px 80px; }
+
+  .top{ position:sticky; top:0; z-index:5; background:linear-gradient(180deg,var(--bg) 70%,transparent); padding:14px 18px 12px; display:flex; align-items:center; gap:11px; max-width:760px; margin:0 auto; }
+  .mk{ width:28px; height:28px; border:2px solid var(--green); border-radius:8px; position:relative; flex:none; }
+  .mk::after{ content:""; position:absolute; inset:4px; border-radius:4px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+  .top small{ font-weight:800; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--pencil); display:block; line-height:1; }
+  .top .tt{ font-weight:700; font-size:0.98rem; line-height:1.2; }
+  .top .badge{ margin-left:auto; font-size:0.62rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); border:1px solid var(--green-deep); border-radius:20px; padding:5px 11px; }
+
+  .hero{ padding:26px 0 8px; border-bottom:1px solid var(--rule); }
+  .eyebrow{ font-size:0.64rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin:0 0 12px; }
+  .eyebrow span{ color:var(--pencil); }
+  h1{ font-family:var(--serif); font-weight:700; font-size:2.35rem; line-height:1.06; margin:0 0 6px; text-wrap:balance; letter-spacing:-0.01em; }
+  .field{ font-family:var(--mono); font-size:0.78rem; color:var(--pencil); text-transform:uppercase; letter-spacing:0.1em; }
+  .thesis{ font-family:var(--serif); font-size:1.16rem; line-height:1.5; color:var(--soft); margin:16px 0 4px; max-width:60ch; }
+  .thesis b{ color:var(--ink); }
+
+  section{ padding:30px 0; border-bottom:1px solid var(--rule); }
+  .kk{ font-size:0.64rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); display:block; margin:0 0 4px; }
+  h2{ font-family:var(--serif); font-weight:700; font-size:1.55rem; line-height:1.14; margin:0 0 10px; letter-spacing:-0.01em; }
+  .lead{ color:var(--soft); margin:0 0 20px; max-width:58ch; font-size:1.02rem; }
+  .lead b{ color:var(--ink); }
+
+  /* definition callout */
+  .define{ border-left:3px solid var(--green-deep); background:var(--panel2); border-radius:0 11px 11px 0; padding:15px 17px; margin:0 0 22px; }
+  .define .dl{ font-size:0.56rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin:0 0 7px; }
+  .define p{ margin:0; font-family:var(--serif); font-size:1.14rem; line-height:1.5; color:var(--ink); }
+  .define p b{ color:var(--green-bright); }
+
+  /* the stack */
+  .stack{ display:flex; flex-direction:column; gap:11px; }
+  .sl{ display:grid; grid-template-columns:auto 1fr; gap:15px; align-items:start; border:1px solid var(--rule); border-radius:13px; padding:15px 17px; background:var(--panel); }
+  .sl .slx{ font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--green); line-height:1; padding-top:2px; }
+  .sl h3{ font-family:var(--serif); font-weight:700; font-size:1.18rem; margin:0 0 5px; }
+  .sl .sd{ margin:0 0 9px; font-size:0.96rem; line-height:1.45; color:var(--soft); }
+  .sl .sj{ margin:0; font-size:0.9rem; line-height:1.4; color:var(--soft); background:var(--panel2); border-radius:8px; padding:9px 11px; }
+  .sl .sj b{ font-size:0.54rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:var(--pencil); display:block; margin-bottom:3px; }
+
+  /* contrast */
+  .contrast{ border:1px solid var(--rule); border-radius:13px; overflow:hidden; }
+  .crow{ display:grid; grid-template-columns:1fr 1fr; }
+  .crow.head div{ font-size:0.58rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; padding:11px 15px; }
+  .crow.head .l{ color:var(--pencil); background:var(--bg2); } .crow.head .r{ color:var(--green); background:rgba(127,192,138,0.06); }
+  .crow .l,.crow .r{ padding:13px 15px; font-size:0.95rem; line-height:1.4; border-top:1px solid var(--rule); }
+  .crow .l{ color:var(--pencil); background:var(--bg2); }
+  .crow .r{ color:var(--ink); background:rgba(127,192,138,0.05); }
+  .crow .r b{ color:var(--green-bright); }
+  .punch{ font-family:var(--serif); font-size:1.2rem; line-height:1.45; color:var(--ink); margin:20px 0 0; padding-left:15px; border-left:3px solid var(--green-deep); }
+  .punch b{ color:var(--green-bright); }
+
+  /* curriculum (reused move pattern) */
+  .movesintro{ color:var(--soft); margin:0 0 18px; max-width:58ch; font-size:1.02rem; } .movesintro b{ color:var(--ink); }
+  .moves{ display:flex; flex-direction:column; gap:12px; }
+  .move{ border:1px solid var(--rule); border-radius:14px; padding:17px 18px; background:var(--panel); }
+  .move .mh{ display:flex; align-items:baseline; gap:12px; margin-bottom:10px; }
+  .move .mi{ font-family:var(--mono); font-size:0.9rem; font-weight:600; color:var(--pencil); flex:none; }
+  .move h3{ font-family:var(--serif); font-weight:700; font-size:1.16rem; margin:0; line-height:1.2; }
+  .move .do{ margin:0 0 13px; font-size:0.98rem; line-height:1.5; color:var(--soft); }
+  .move .do b{ color:var(--ink); }
+  .move .sit{ font-family:var(--serif); font-style:italic; font-size:1.04rem; line-height:1.4; color:var(--soft); border-left:2px solid var(--rule2); padding-left:14px; margin:0 0 13px; }
+  .move .sit b{ font-style:normal; font-family:var(--sans); display:block; font-size:0.54rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); margin-bottom:4px; }
+  .move .week{ font-family:var(--mono); font-size:0.68rem; color:var(--pencil); text-transform:uppercase; letter-spacing:0.05em; display:flex; align-items:center; gap:7px; margin:0; }
+  .move .week::before{ content:"↻"; color:var(--green); font-size:0.9rem; }
+
+  .foot{ padding:28px 0 0; }
+  .foot p{ font-family:var(--serif); font-size:1.16rem; line-height:1.5; color:var(--soft); margin:0 0 6px; } .foot p b{ color:var(--ink); }
+  .foot .meta{ font-family:var(--mono); font-size:0.68rem; color:var(--pencil); text-transform:uppercase; letter-spacing:0.1em; margin-top:16px; }
+
+  /* traps — the new kind of judgment */
+  .traps{ display:flex; flex-direction:column; gap:11px; margin:0 0 20px; }
+  .trap{ border:1px solid var(--rule); border-left:3px solid var(--pen); border-radius:0 12px 12px 0; padding:14px 16px; background:var(--panel); }
+  .trap .tn{ font-size:0.56rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pen); margin:0 0 6px; }
+  .trap h3{ font-family:var(--serif); font-weight:700; font-size:1.14rem; margin:0 0 6px; line-height:1.2; }
+  .trap p{ margin:0; font-size:0.95rem; line-height:1.5; color:var(--soft); } .trap p b{ color:var(--ink); }
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:11px; margin:0 0 6px; }
+  .sp{ border-radius:12px; padding:14px 15px; }
+  .sp .sph{ font-size:0.58rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; margin:0 0 7px; }
+  .sp p{ margin:0; font-size:0.92rem; line-height:1.45; color:var(--soft); }
+  .sp.op{ background:rgba(127,192,138,0.08); border:1px solid var(--green-deep); } .sp.op .sph{ color:var(--green); }
+  .sp.rk{ background:rgba(224,119,108,0.07); border:1px solid var(--pen-dim); } .sp.rk .sph{ color:var(--pen); }
+
+  @media(max-width:560px){
+    h1{ font-size:1.95rem; }
+    .crow{ grid-template-columns:1fr; }
+    .split{ grid-template-columns:1fr; }
+    .crow .l{ border-top:1px solid var(--rule); } .crow .r{ border-top:none; }
+    .crow.head{ display:none; }
+    .crow .l::before{ content:"Executor — "; color:var(--pen-dim); font-weight:700; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; }
+    .crow .r::before{ content:"Operator — "; color:var(--green); font-weight:700; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; }
+  }
+</style>
+
+<div class="top">
+  <div class="mk"></div>
+  <div><small>Pivotum</small><div class="tt">The Operator</div></div>
+  <div class="badge">Build · Deep dive</div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">The Winning Loop · Build <span>— the human end-state</span></p>
+    <h1>Becoming the Operator</h1>
+    <div class="field">Judgment in the age of AI</div>
+    <p class="thesis">In AI-native work, the machine does the doing. Your role changes shape entirely: you stop executing and start <b>operating</b> — directing the machine, and owning the judgment it can't make. This is the person every Workflow Rebuild is pointing you toward.</p>
+  </div>
+
+  <section>
+    <span class="kk">What it is</span>
+    <h2>The operator directs — and carries the call</h2>
+    <p class="lead">An operator doesn't produce the work; they <b>direct</b> it, and they <b>own the outcome.</b> The whole role rests on one capability AI can't hand you.</p>
+    <div class="define">
+      <p class="dl">Judgment, defined</p>
+      <p>Deciding well when the situation is <b>ambiguous</b>, the stakes are <b>real</b>, the problem is <b>novel</b>, and the consequences are <b>yours</b>. No rule to follow, no answer to look up — precisely the ground AI can't safely stand on.</p>
+    </div>
+    <p class="lead" style="margin-bottom:16px">The operator's day is a stack of four judgments:</p>
+    <div class="stack">
+      <div class="sl"><span class="slx">01</span><div><h3>Ask</h3><p class="sd">Frame the problem and set the brief — decide what "good" looks like before the machine starts.</p><p class="sj"><b>The judgment</b>Knowing the target when no one has handed you one.</p></div></div>
+      <div class="sl"><span class="slx">02</span><div><h3>Curate</h3><p class="sd">Accept or reject what the AI returns — catch what's wrong, off-brand, or merely plausible.</p><p class="sj"><b>The judgment</b>The taste to reject the confident-but-wrong.</p></div></div>
+      <div class="sl"><span class="slx">03</span><div><h3>Decide</h3><p class="sd">Make the call the AI can't — the strategy, the trade-off, the ethical line, the priority.</p><p class="sj"><b>The judgment</b>Choosing under ambiguity, with real stakes.</p></div></div>
+      <div class="sl"><span class="slx">04</span><div><h3>Own</h3><p class="sd">Stand behind the result. Sign it. Answer for it.</p><p class="sj"><b>The judgment</b>Carrying the consequence — with no one else to blame.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kk">A new kind of judgment</span>
+    <h2>Not the judgment you trained before</h2>
+    <p class="lead">Here's what most people miss: judging AI's work is <b>not the same skill</b> as the judgment you've built over a career. It's a different animal — with traps the old judgment never had. That's why it has to be trained on its own.</p>
+    <div class="traps">
+      <div class="trap"><div class="tn">Trap 01 · No one to ask</div><h3>The call is made cold, alone</h3><p>In the old world, before you signed off you could turn to the person who did the work — <i>why this way? are you sure?</i> With AI there's no accountable human upstream. The questioning stops with you.</p></div>
+      <div class="trap"><div class="tn">Trap 02 · The speed</div><h3>It's frighteningly fast</h3><p>The work arrives faster than you can think. Old judgment had the pace of human production built in — room to reflect. AI runs at machine speed. You have to be good <b>at speed</b>, not just good eventually.</p></div>
+      <div class="trap"><div class="tn">Trap 03 · The lull</div><h3>Near-perfect makes you lazy</h3><p>It gets 1,000 calls right and 1 wrong — and that's the trap. The stream of good answers trains you to stop looking, to rubber-stamp "yep, fine." The wrong one slips through precisely because you'd relaxed.</p></div>
+      <div class="trap"><div class="tn">Trap 04 · The polish</div><h3>Fluency disarms your scrutiny</h3><p>So confident, so well-formatted, that you extend it trust it hasn't earned. A beautiful wrong answer gets inspected less hard than an ugly one — and AI is often <b>subtly</b> wrong under a perfect surface.</p></div>
+      <div class="trap"><div class="tn">Trap 05 · No hiding place</div><h3>You can't just slow it down</h3><p>Throttling the AI, checking everything by hand, running at low autonomy — it isn't a strategy. Slow plus low-autonomy equals low value. You can't offset weak judgment by hobbling the machine; you'll simply be out-valued by someone who judges fast <i>and</i> right.</p></div>
+    </div>
+    <div class="split">
+      <div class="sp op"><div class="sph">✦ If you can learn it</div><p>Full-speed, high-autonomy, high-value work — a genuine superpower, and a lead that widens.</p></div>
+      <div class="sp rk"><div class="sph">▾ If you can't</div><p>Stuck babysitting the machine at low output — a quiet, compounding disadvantage everyone can see.</p></div>
+    </div>
+    <p class="punch">And it shows — <b>beyond the mistakes.</b> People quickly see who judges well; the tell is the value you return. That's the new signal of who's winning — and exactly why we train it.</p>
+  </section>
+
+  <section>
+    <span class="kk">Why it's different</span>
+    <h2>It's not your old job with better tools</h2>
+    <p class="lead">It's a different job. Nearly everything that made you good at the old one changes meaning.</p>
+    <div class="contrast">
+      <div class="crow head"><div class="l">The executor — before</div><div class="r">The operator — now</div></div>
+      <div class="crow"><div class="l">You <i>did</i> the work.</div><div class="r">You <b>direct</b> the work.</div></div>
+      <div class="crow"><div class="l">Valued for your output.</div><div class="r">Valued for your <b>decisions</b>.</div></div>
+      <div class="crow"><div class="l">Mistakes were visible, caught in review.</div><div class="r">Calls are <b>invisible until outcomes test them</b>.</div></div>
+      <div class="crow"><div class="l">A junior absorbed the blame.</div><div class="r">The accountability is <b>yours alone</b>.</div></div>
+      <div class="crow"><div class="l">AI amplified nothing.</div><div class="r">AI amplifies your judgment — <b>good and bad — at scale</b>.</div></div>
+    </div>
+    <p class="punch">The old world treated judgment as something you either had, or waited twenty years for. You don't. It's a <b>trainable skill</b> — and AI, by letting you make and test more calls faster, trains it quicker than any apprenticeship ever did.</p>
+  </section>
+
+  <section>
+    <span class="kk">How you train — the Operator Track</span>
+    <h2>Seven ways to build judgment on purpose</h2>
+    <p class="movesintro">Judgment isn't a mystery and it isn't a waiting game. These are the deliberate practices that grow it — the last one is the muscle AI makes essential. Each is a <b>deep-dive week</b> in the community.</p>
+    <div class="moves">
+
+      <div class="move">
+        <div class="mh"><span class="mi">01</span><h3>Make real calls under stakes</h3></div>
+        <p class="do">Judgment grows from decisions with skin in the game, not from watching others decide. Take real calls, own real outcomes — that loop is the whole engine.</p>
+        <p class="sit"><b>Sit with</b>What decision am I currently avoiding making?</p>
+        <p class="week">Deep-dive week · Decisions under stakes</p>
+      </div>
+
+      <div class="move">
+        <div class="mh"><span class="mi">02</span><h3>Calibrate — decide, then reveal</h3></div>
+        <p class="do">Predict, commit in writing, then compare to what actually happened. A decision journal turns gut feel into a track record — and shows you your own biases.</p>
+        <p class="sit"><b>Sit with</b>How often am I actually right — and about what?</p>
+        <p class="week">Deep-dive week · The decision journal</p>
+      </div>
+
+      <div class="move">
+        <div class="mh"><span class="mi">03</span><h3>Separate the call from the outcome</h3></div>
+        <p class="do">A good decision can have a bad result, and a lucky one can look brilliant. Judge the <b>process</b>, not just the score — or you'll learn exactly the wrong lessons.</p>
+        <p class="sit"><b>Sit with</b>Was my last bad outcome a bad call, or bad luck?</p>
+        <p class="week">Deep-dive week · Process vs. outcome</p>
+      </div>
+
+      <div class="move">
+        <div class="mh"><span class="mi">04</span><h3>Master the brief</h3></div>
+        <p class="do">Your ask reveals your judgment. The craft of specifying and directing AI — and rigorously critiquing what it hands back — is where taste meets the machine.</p>
+        <p class="sit"><b>Sit with</b>Could someone else run my brief and get my result?</p>
+        <p class="week">Deep-dive week · The craft of the brief</p>
+      </div>
+
+      <div class="move">
+        <div class="mh"><span class="mi">05</span><h3>Build your taste</h3></div>
+        <p class="do">Immerse in excellent work in your field until you can <i>feel</i> what's right faster than you can justify it. Taste is judgment sped up — and it's earned by exposure.</p>
+        <p class="sit"><b>Sit with</b>Whose work in my field do I trust — and can I say why?</p>
+        <p class="week">Deep-dive week · Developing taste</p>
+      </div>
+
+      <div class="move">
+        <div class="mh"><span class="mi">06</span><h3>Raise the stakes deliberately</h3></div>
+        <p class="do">Don't wait to be handed the big calls. Reach for progressively higher-consequence decisions — the operator seat is taken, not given.</p>
+        <p class="sit"><b>Sit with</b>What's the biggest call I could credibly own next quarter?</p>
+        <p class="week">Deep-dive week · Onto the calls that matter</p>
+      </div>
+
+      <div class="move" style="border-left:3px solid var(--pen)">
+        <div class="mh"><span class="mi" style="color:var(--pen)">07</span><h3>Distrust the polish — check at speed</h3></div>
+        <p class="do">The AI-specific muscle. Deliberately red-team what the machine hands you, and hold your scrutiny steady even when the output is fast and flawless-looking. Learn to catch the <b>subtly wrong</b> under a perfect surface — without slowing to a crawl.</p>
+        <p class="sit"><b>Sit with</b>When did I last say "fine" without really checking?</p>
+        <p class="week">Deep-dive week · Adversarial checking</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="foot">
+    <p>Every Workflow Rebuild ends by pointing here. The tools change by career; <b>the operator doesn't.</b> This is who the age of AI needs you to become — and the one role it can't automate, because it's the one that <b>decides.</b></p>
+    <p class="meta">The Winning Loop · Learn → Map → <span style="color:var(--green)">Build</span> → Evolve</p>
+  </div>
+
+</div>

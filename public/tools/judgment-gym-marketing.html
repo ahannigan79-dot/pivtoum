@@ -1,0 +1,382 @@
+<title>The Judgment Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" />
+<style>
+  :root{
+    --bg:#141209; --bg2:#17150F; --panel:#201D16; --panel2:#262219; --panel3:#2c2820;
+    --ink:#F3EFE6; --soft:#C7C0B2; --pencil:#948B7C; --rule:#34302A; --rule2:#3f3a31;
+    --green:#7FC08A; --green-bright:#8FD09A; --green-deep:#35804E;
+    --pen:#E0776C; --pen-dim:#a85a52;
+    --amber:#D6A85B; --amber-deep:#7a5e2c;
+    --serif:"Literata",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  b{ color:#fff; } em,i{ color:var(--soft); font-style:italic; }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 18px 90px; }
+
+  .top{ position:sticky; top:0; z-index:20; background:linear-gradient(180deg,var(--bg) 72%,transparent); padding:14px 18px 12px; display:flex; align-items:center; gap:11px; max-width:720px; margin:0 auto; }
+  .mk{ width:28px; height:28px; border:2px solid var(--green); border-radius:8px; position:relative; flex:none; }
+  .mk::after{ content:""; position:absolute; inset:4px; border-radius:4px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+  .top small{ font-weight:800; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--pencil); display:block; line-height:1; }
+  .top .tt{ font-weight:700; font-size:0.98rem; line-height:1.2; }
+  .top .badge{ margin-left:auto; font-size:0.62rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); border:1px solid var(--green-deep); border-radius:20px; padding:5px 11px; }
+
+  .hero{ padding:24px 0 6px; }
+  .eyebrow{ font-size:0.64rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin:0 0 12px; }
+  .eyebrow span{ color:var(--pencil); }
+  h1{ font-family:var(--serif); font-weight:700; font-size:2.2rem; line-height:1.07; margin:0 0 12px; text-wrap:balance; letter-spacing:-0.01em; }
+  .thesis{ font-family:var(--serif); font-size:1.12rem; line-height:1.5; color:var(--soft); margin:0 0 4px; max-width:60ch; }
+  .thesis b{ color:var(--ink); }
+
+  .how{ display:flex; gap:9px; margin:20px 0 0; flex-wrap:wrap; }
+  .how .h{ flex:1; min-width:150px; border:1px solid var(--rule); border-radius:11px; padding:12px 13px; background:var(--panel); }
+  .how .h b{ display:block; font-size:0.56rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:var(--green); margin-bottom:5px; }
+  .how .h p{ margin:0; font-size:0.86rem; color:var(--soft); line-height:1.4; }
+
+  .kk{ font-size:0.64rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); display:block; margin:0 0 10px; }
+  .brief{ border:1px solid var(--rule2); border-radius:14px; background:linear-gradient(180deg,var(--panel2),var(--panel)); padding:17px 18px; margin:24px 0 0; }
+  .brief .bt{ font-family:var(--serif); font-weight:700; font-size:1.15rem; margin:0 0 12px; }
+  .bgrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; }
+  .bf{ font-size:0.9rem; } .bf .l{ font-size:0.56rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--pencil); display:block; margin-bottom:2px; } .bf .v{ color:var(--ink); }
+  .bf .v b{ color:var(--green-bright); }
+
+  .cta{ display:inline-flex; align-items:center; gap:9px; margin-top:22px; font-family:var(--sans); font-weight:700; font-size:1rem; color:#12100a; background:var(--green); border:none; border-radius:11px; padding:14px 22px; cursor:pointer; transition:.15s; }
+  .cta:hover{ background:var(--green-bright); }
+  .cta.ghost{ color:var(--green); background:transparent; border:1px solid var(--green-deep); }
+  .cta.ghost:hover{ background:rgba(127,192,138,0.08); }
+
+  /* clock */
+  .clockbar{ position:sticky; top:56px; z-index:15; display:none; align-items:center; gap:12px; background:var(--panel2); border:1px solid var(--rule2); border-radius:12px; padding:11px 15px; margin:8px 0 18px; }
+  .clockbar.on{ display:flex; }
+  .clock{ font-family:var(--mono); font-weight:600; font-size:1.2rem; color:var(--ink); }
+  .clockbar .lab{ font-size:0.72rem; color:var(--pencil); }
+  .clockbar .prog{ margin-left:auto; font-family:var(--mono); font-size:0.8rem; color:var(--green); }
+
+  .exercise{ display:none; } .exercise.on{ display:block; }
+  .aihead{ display:flex; align-items:center; gap:9px; margin:6px 0 14px; }
+  .aihead .sp{ width:22px; height:22px; border:1.5px solid var(--green-deep); border-radius:6px; position:relative; flex:none; }
+  .aihead .sp::after{ content:""; position:absolute; inset:3px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.6; }
+  .aihead .t{ font-size:0.9rem; color:var(--soft); } .aihead .t b{ color:var(--ink); }
+
+  .item{ border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:16px 17px; margin:0 0 12px; transition:.15s; }
+  .item .area{ font-family:var(--mono); font-size:0.68rem; color:var(--pencil); text-transform:uppercase; letter-spacing:0.07em; font-weight:600; margin:0 0 9px; display:flex; align-items:center; gap:8px; }
+  .item .area::before{ content:attr(data-n); color:var(--green); }
+  .out{ background:var(--bg2); border:1px solid var(--rule); border-radius:10px; padding:12px 14px; font-size:0.96rem; line-height:1.5; color:var(--ink); }
+  .out .mono{ font-family:var(--mono); font-size:0.9rem; color:var(--soft); }
+  .choice{ display:flex; gap:9px; margin-top:12px; }
+  .cb{ flex:1; font-family:var(--sans); font-weight:700; font-size:0.9rem; padding:11px 10px; border-radius:9px; cursor:pointer; border:1px solid var(--rule2); background:var(--panel2); color:var(--soft); transition:.12s; display:flex; align-items:center; justify-content:center; gap:7px; }
+  .cb:hover{ border-color:var(--pencil); }
+  .cb.ship.sel{ background:rgba(127,192,138,0.14); border-color:var(--green); color:var(--green-bright); }
+  .cb.flag.sel{ background:rgba(224,119,108,0.14); border-color:var(--pen); color:var(--pen); }
+
+  /* revealed */
+  .item.done .choice{ pointer-events:none; opacity:0.85; }
+  .item.correct{ border-color:var(--green-deep); }
+  .item.wrong{ border-color:var(--pen-dim); }
+  .rev{ display:none; margin-top:12px; border-radius:10px; padding:12px 14px; font-size:0.92rem; line-height:1.5; }
+  .item.done .rev{ display:block; }
+  .rev .vb{ font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin:0 0 6px; display:flex; align-items:center; gap:7px; }
+  .rev.flaw{ background:rgba(224,119,108,0.08); border:1px solid var(--pen-dim); } .rev.flaw .vb{ color:var(--pen); }
+  .rev.clean{ background:rgba(127,192,138,0.07); border:1px solid var(--green-deep); } .rev.clean .vb{ color:var(--green); }
+  .rev p{ margin:0; color:var(--soft); } .rev p b{ color:var(--ink); }
+  .tagres{ font-size:0.58rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; padding:3px 8px; border-radius:20px; margin-left:auto; }
+  .tagres.good{ color:var(--green); border:1px solid var(--green-deep); }
+  .tagres.miss{ color:#fff; background:var(--pen-dim); }
+  .tagres.over{ color:var(--amber); border:1px solid var(--amber-deep); }
+
+  .submit{ margin-top:6px; }
+  .hintline{ font-size:0.8rem; color:var(--pencil); margin:10px 0 0; }
+
+  /* results */
+  .results{ display:none; } .results.on{ display:block; }
+  .scorecard{ border:1px solid var(--rule2); border-radius:16px; background:linear-gradient(180deg,var(--panel2),var(--panel)); padding:22px 20px; margin:6px 0 20px; }
+  .scorecard h2{ font-family:var(--serif); font-weight:700; font-size:1.5rem; margin:0 0 4px; }
+  .scorecard .sub{ color:var(--pencil); font-size:0.9rem; margin:0 0 18px; }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+  .st{ border:1px solid var(--rule); border-radius:12px; padding:13px 12px; background:var(--panel); text-align:center; }
+  .st .n{ font-family:var(--mono); font-weight:600; font-size:1.7rem; line-height:1; }
+  .st.caught .n{ color:var(--green-bright); } .st.missed .n{ color:var(--pen); } .st.over .n{ color:var(--amber); }
+  .st .l{ font-size:0.66rem; color:var(--pencil); margin-top:6px; line-height:1.3; text-transform:uppercase; letter-spacing:0.04em; }
+  .debrief{ font-size:0.98rem; line-height:1.55; color:var(--soft); border-left:3px solid var(--green-deep); padding-left:15px; }
+  .debrief b{ color:var(--ink); } .debrief .em{ color:var(--pen); font-weight:600; }
+  .timeline{ font-family:var(--mono); font-size:0.78rem; color:var(--pencil); margin:14px 0 0; }
+
+  /* review breakdown */
+  .review{ margin:2px 0 8px; }
+  .rgroup{ margin:0 0 22px; }
+  .rgh{ font-size:0.64rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; margin:0 0 12px; }
+  .rgh.ship{ color:var(--pen); } .rgh.over{ color:var(--amber); } .rgh.caught{ color:var(--green); }
+  .rc{ border:1px solid var(--rule); border-radius:13px; padding:15px 16px; margin:0 0 10px; background:var(--panel); }
+  .rc.miss{ border-left:3px solid var(--pen); } .rc.over{ border-left:3px solid var(--amber); } .rc.caught{ border-left:3px solid var(--green); }
+  .rch{ display:flex; align-items:center; gap:9px; margin:0 0 9px; flex-wrap:wrap; }
+  .rarea{ font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--soft); font-weight:600; }
+  .sev{ font-size:0.54rem; font-weight:800; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; border-radius:20px; margin-left:auto; }
+  .sev.critical{ color:#fff; background:var(--pen-dim); } .sev.major{ color:var(--pen); border:1px solid var(--pen-dim); } .sev.minor{ color:var(--amber); border:1px solid var(--amber-deep); }
+  .snip{ font-family:var(--mono); font-size:0.82rem; color:var(--pencil); background:var(--bg2); border:1px solid var(--rule); border-radius:7px; padding:7px 10px; margin:0 0 10px; }
+  .rwhy{ margin:0 0 10px; font-size:0.94rem; line-height:1.5; color:var(--soft); } .rwhy b{ color:var(--ink); }
+  .impact{ border-radius:9px; padding:10px 12px; margin:0 0 10px; font-size:0.9rem; line-height:1.45; color:var(--soft); }
+  .impact .il{ font-size:0.54rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:4px; }
+  .rc.miss .impact{ background:rgba(224,119,108,0.10); } .rc.miss .impact .il{ color:var(--pen); }
+  .rc.caught .impact{ background:rgba(127,192,138,0.08); } .rc.caught .impact .il{ color:var(--green); }
+  .rc.over .impact{ background:rgba(214,168,91,0.08); } .rc.over .impact .il{ color:var(--amber); }
+  .impact b{ color:var(--ink); }
+  .trains{ font-size:0.86rem; color:var(--soft); line-height:1.4; }
+  .trains .tl{ font-size:0.54rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); margin-right:8px; }
+  .alsoship{ font-size:0.86rem; color:var(--pencil); margin:2px 0 0; } .alsoship b{ color:var(--soft); }
+  .lesson{ font-family:var(--serif); font-size:1.14rem; line-height:1.5; color:var(--ink); border-left:3px solid var(--green-deep); padding-left:15px; margin:4px 0 0; }
+  .lesson b{ color:var(--green-bright); }
+
+  .foot{ padding:26px 0 0; border-top:1px solid var(--rule); margin-top:26px; }
+  .foot p{ font-family:var(--serif); font-size:1.06rem; line-height:1.5; color:var(--soft); margin:0 0 6px; } .foot p b{ color:var(--ink); }
+  .foot .meta{ font-family:var(--mono); font-size:0.68rem; color:var(--pencil); text-transform:uppercase; letter-spacing:0.1em; margin-top:14px; }
+
+  @media(max-width:560px){
+    h1{ font-size:1.85rem; }
+    .bgrid{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr; } .st{ display:flex; align-items:center; gap:12px; text-align:left; } .st .l{ margin-top:0; }
+    .clockbar{ top:52px; }
+  }
+</style>
+
+<div class="top">
+  <div class="mk"></div>
+  <div><small>Pivotum</small><div class="tt">The Judgment Gym</div></div>
+  <div class="badge">Build · Train</div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero" id="hero">
+    <p class="eyebrow">The Operator Track <span>· AI judgment, trained</span></p>
+    <h1>The AI did the work. Now you judge it.</h1>
+    <p class="thesis">One rep. The AI has built a paid campaign to your brief — polished, confident, complete. Some of it is <b>subtly wrong.</b> Your job as the operator: catch what doesn't hold, at speed, and ship only what's right. Then we score your judgment.</p>
+
+    <div class="how">
+      <div class="h"><b>1 · Read the brief</b><p>The facts you're judging against. Know them cold — the clock starts when you begin.</p></div>
+      <div class="h"><b>2 · Judge each piece</b><p>Ship it, or flag it. Trust nothing just because it looks finished.</p></div>
+      <div class="h"><b>3 · Get the verdict</b><p>See what you caught, what you missed, and where the polish fooled you.</p></div>
+    </div>
+
+    <div class="brief">
+      <p class="bt">The brief · <span style="color:var(--green)">FreshBowl</span> paid campaign</p>
+      <div class="bgrid">
+        <div class="bf"><span class="l">Client</span><span class="v">FreshBowl — healthy meal delivery</span></div>
+        <div class="bf"><span class="l">Launch</span><span class="v">New high-protein range · <b>30g</b> protein/bowl · from <b>£7.99</b></span></div>
+        <div class="bf"><span class="l">Audience</span><span class="v"><b>Budget-conscious</b> young professionals, ~25–35</span></div>
+        <div class="bf"><span class="l">Budget</span><span class="v"><b>£8,000</b> over 30 days</span></div>
+        <div class="bf"><span class="l">Goal</span><span class="v">Free-trial signups</span></div>
+        <div class="bf"><span class="l">Brand tone</span><span class="v">Upbeat, encouraging — no guilt</span></div>
+      </div>
+    </div>
+
+    <button class="cta" id="startBtn">Start the rep — the clock starts ▸</button>
+  </div>
+
+  <div class="clockbar" id="clockbar">
+    <span class="clock" id="clock">0:00</span>
+    <span class="lab">judging at speed</span>
+    <span class="prog" id="prog">0 / 6 judged</span>
+  </div>
+
+  <div class="exercise" id="exercise">
+    <span class="kk">The AI's campaign — judge every piece</span>
+    <div class="aihead"><div class="sp"></div><div class="t"><b>FreshBowl_Launch_Campaign.draft</b> — generated, ready for your sign-off.</div></div>
+    <div id="items"></div>
+    <button class="cta submit" id="revealBtn">Reveal the verdicts ▸</button>
+    <p class="hintline" id="hint"></p>
+  </div>
+
+  <div class="results" id="results">
+    <div class="scorecard">
+      <span class="kk">Your judgment, scored</span>
+      <h2 id="scoreHead"></h2>
+      <p class="sub" id="scoreSub"></p>
+      <div class="stats">
+        <div class="st caught"><div class="n" id="nCaught"></div><div class="l">Buried issues caught</div></div>
+        <div class="st missed"><div class="n" id="nMissed"></div><div class="l">Flaws you shipped</div></div>
+        <div class="st over"><div class="n" id="nOver"></div><div class="l">Good work over-flagged</div></div>
+      </div>
+      <p class="timeline" id="timeRes"></p>
+    </div>
+
+    <div class="review" id="review"></div>
+    <p class="lesson" id="lesson"></p>
+
+    <button class="cta ghost" id="againBtn" style="margin-top:24px">Run the rep again ▸</button>
+    <div class="foot">
+      <p>That's one rep in one field. The full Gym rotates <b>fresh scenarios in your career</b> — sometimes one critical flaw hiding in perfect work, sometimes a dozen small ones — ratchets up the subtlety, and tracks your calibration over time until judging fast and right is a reflex.</p>
+      <p class="meta">The Winning Loop · Build · The Operator Track</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var ITEMS = [
+    { area:'Audience targeting', verdict:'flag', sev:'major',
+      out:'<span class="mono">Targeting · Adults 18–65 · Interests: fitness, wellness, meal kits · Income: top 15% (£70k+) · Placements: IG + TikTok feeds</span>',
+      snip:'Adults 18–65 · Income top 15% (£70k+)',
+      why:'<b>It contradicts the brief.</b> You wanted <b>budget-conscious</b> professionals aged ~25–35 — this targets <b>high earners (£70k+)</b> across an 18–65 span. A finished-looking spec pointed at the wrong people.',
+      cost:'<b>£8,000</b> spent reaching the wrong audience — high earners who don\'t want budget meals. The campaign under-delivers, and the client starts asking what they\'re paying you for.',
+      saved:'You stopped £8,000 landing on the wrong audience — the whole campaign\'s effectiveness.',
+      trains:'Cross-checking AI output against the brief — reading it for correctness, not polish.' },
+    { area:'Headline copy', verdict:'ship',
+      out:'“30g of protein. Zero faff. New high-protein bowls, <b>from £7.99</b>.”',
+      snip:'“…new high-protein bowls, from £7.99.”',
+      why:'<b>This one is right.</b> 30g matches, £7.99 matches, tone is on-brief. The specific price <i>looks</i> like somewhere AI would hallucinate — but it checks out.',
+      cost:'Flagging it sends good work back for no reason — a delay, and a hit to trust when you cry wolf on something that was fine.',
+      trains:'Proportionate scrutiny — not flagging good work just because it could have been wrong.' },
+    { area:'Budget allocation', verdict:'flag', sev:'minor',
+      out:'<span class="mono">£8,000 / 30 days — Instagram 70% (£5,400) · TikTok 30% (£2,400)</span>',
+      snip:'70% IG (£5,400) · 30% TikTok (£2,400)',
+      why:'<b>The maths doesn\'t add up.</b> 70% of £8,000 is <b>£5,600</b>, not £5,400 — and £5,400 + £2,400 = £7,800, leaving <b>£200 unspent</b>. Official-looking numbers you have to actually re-add.',
+      cost:'£200 of the client\'s budget quietly goes unspent and your reported split is wrong. Small — but it\'s the sloppiness that erodes trust one detail at a time.',
+      saved:'You caught £200 slipping through the cracks — and kept the numbers you report honest.',
+      trains:'Re-doing the numbers the machine hands you — beating the lull of official-looking figures.' },
+    { area:'Creative concept', verdict:'ship',
+      out:'Hero: 15-sec vertical video — a commuter swaps a sad desk sandwich for a FreshBowl. End card: <b>“Real food, real fast.”</b>',
+      snip:'“Real food, real fast.”',
+      why:'<b>Solid.</b> On-brief for time-poor young professionals, upbeat, no guilt. Nothing to flag.',
+      cost:'Over-flagging good creative stalls the work and trains the team to route around you.',
+      trains:'Recognising genuinely good work — and having the confidence to let it through.' },
+    { area:'Primary ad text', verdict:'flag', sev:'critical',
+      out:'Opens with: <b>“The healthiest meal you\'ll eat all week — guaranteed.”</b>',
+      snip:'“The healthiest meal you\'ll eat all week — guaranteed.”',
+      why:'<b>A regulatory landmine.</b> An unsubstantiated absolute health claim plus “guaranteed” — exactly the line an ad-standards body pulls.',
+      cost:'An <b>ASA complaint.</b> The ad is pulled, the client\'s brand takes a public hit, and it traces straight back to <b>your sign-off</b> — no one else\'s.',
+      saved:'You stopped an ad-standards complaint and a public brand hit — the call that would have been yours to answer for.',
+      trains:'Domain scrutiny — spotting the claim that quietly becomes your legal accountability.' },
+    { area:'Call to action', verdict:'ship',
+      out:'<span class="mono">CTA button: “Start my free trial” → freshbowl.com/protein-trial</span>',
+      snip:'“Start my free trial” → /protein-trial',
+      why:'<b>On the money.</b> Matches the goal (trial signups) and points to a sensible landing page.',
+      cost:'Sending a correct CTA back for review just burns time you don\'t have.',
+      trains:'Confirming the fundamentals are right — fast, and moving on.' }
+  ];
+  var NFLAG = ITEMS.filter(function(it){return it.verdict==='flag';}).length;
+  var SEVRANK={critical:3,major:2,minor:1};
+
+  var choices = {}, timer=null, elapsed=0, startStamp=0;
+  var itemsEl=document.getElementById('items');
+
+  ITEMS.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='item'; d.id='it'+i;
+    d.innerHTML='<div class="area" data-n="0'+(i+1)+' ·">'+it.area+'</div>'
+      +'<div class="out">'+it.out+'</div>'
+      +'<div class="choice"><button class="cb ship" data-i="'+i+'" data-c="ship">✓ Ship it</button>'
+      +'<button class="cb flag" data-i="'+i+'" data-c="flag">⚑ Flag it</button></div>';
+    itemsEl.appendChild(d);
+  });
+
+  [].forEach.call(document.querySelectorAll('.cb'),function(b){
+    b.addEventListener('click',function(){
+      var i=+b.getAttribute('data-i'), c=b.getAttribute('data-c');
+      if(document.getElementById('results').classList.contains('on')) return;
+      choices[i]=c;
+      var wrap=document.getElementById('it'+i);
+      [].forEach.call(wrap.querySelectorAll('.cb'),function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel');
+      updateProg();
+    });
+  });
+
+  function updateProg(){
+    var n=Object.keys(choices).length;
+    document.getElementById('prog').textContent=n+' / 6 judged';
+  }
+
+  function tick(){
+    elapsed=Math.floor((nowish())/1000);
+    var m=Math.floor(elapsed/60), s=elapsed%60;
+    document.getElementById('clock').textContent=m+':'+(s<10?'0':'')+s;
+  }
+  function nowish(){ return (perfNow()-startStamp); }
+  function perfNow(){ return (window.performance&&performance.now)?performance.now():0; }
+
+  document.getElementById('startBtn').addEventListener('click',function(){
+    document.getElementById('hero').style.display='none';
+    document.getElementById('clockbar').classList.add('on');
+    document.getElementById('exercise').classList.add('on');
+    startStamp=perfNow(); elapsed=0; timer=setInterval(tick,1000); tick();
+    window.scrollTo(0,0);
+  });
+
+  document.getElementById('revealBtn').addEventListener('click',function(){
+    var n=Object.keys(choices).length;
+    if(n<6){ document.getElementById('hint').textContent='Judge all six before you sign off — an operator doesn\'t skip pieces. ('+n+'/6 done)'; return; }
+    clearInterval(timer);
+    var caught=[], missed=[], over=[], okship=[];
+    ITEMS.forEach(function(it,i){
+      var ch=choices[i];
+      if(it.verdict==='flag' && ch==='flag') caught.push(i);
+      else if(it.verdict==='flag' && ch==='ship') missed.push(i);
+      else if(it.verdict==='ship' && ch==='flag') over.push(i);
+      else okship.push(i);
+    });
+    render(caught,missed,over,okship);
+  });
+
+  function sevBadge(it){ return it.sev ? '<span class="sev '+it.sev+'">'+it.sev+'</span>' : ''; }
+  function card(i,kind){
+    var it=ITEMS[i], h='<div class="rc '+kind+'">';
+    h+='<div class="rch"><span class="rarea">'+it.area+'</span>'+((kind==='miss'||kind==='caught')?sevBadge(it):'')+'</div>';
+    h+='<div class="snip">'+it.snip+'</div>';
+    h+='<p class="rwhy">'+it.why+'</p>';
+    if(kind==='miss'){ h+='<div class="impact"><span class="il">⚠ If this had shipped</span>'+it.cost+'</div>'; }
+    else if(kind==='caught'){ h+='<div class="impact"><span class="il">✓ What you prevented</span>'+it.saved+'</div>'; }
+    else if(kind==='over'){ h+='<div class="impact"><span class="il">Cost of the false alarm</span>'+it.cost+'</div>'; }
+    h+='<div class="trains"><span class="tl">Trains</span>'+it.trains+'</div></div>';
+    return h;
+  }
+
+  function render(caught,missed,over,okship){
+    document.getElementById('exercise').classList.remove('on');
+    document.getElementById('clockbar').classList.remove('on');
+    document.getElementById('results').classList.add('on');
+    document.getElementById('nCaught').textContent=caught.length+' / '+NFLAG;
+    document.getElementById('nMissed').textContent=missed.length;
+    document.getElementById('nOver').textContent=over.length;
+
+    var worst=0; missed.forEach(function(i){ worst=Math.max(worst, SEVRANK[ITEMS[i].sev]||0); });
+    var head, sub;
+    if(missed.length===0 && over.length===0){ head='Clean sheet. That\'s an operator.'; sub='Every flaw caught, nothing good thrown away.'; }
+    else if(missed.length===0){ head='Nothing shipped wrong.'; sub='You caught every real flaw — now tighten the false alarms.'; }
+    else if(worst===3){ head='A critical flaw went live.'; sub='One miss — but the kind that pulls an ad and lands on your name.'; }
+    else if(worst===2){ head='A major flaw slipped through.'; sub='It looked finished — that\'s exactly how it got past you.'; }
+    else { head='Only small stuff got past.'; sub='Minor — but small misses compound, and people notice the pattern.'; }
+    document.getElementById('scoreHead').textContent=head;
+    document.getElementById('scoreSub').textContent=sub;
+
+    var html='';
+    if(missed.length){ html+='<div class="rgroup"><p class="rgh ship">⚠ What you let through — and what it costs</p>'+missed.map(function(i){return card(i,'miss');}).join('')+'</div>'; }
+    if(over.length){ html+='<div class="rgroup"><p class="rgh over">⚑ What you over-flagged</p>'+over.map(function(i){return card(i,'over');}).join('')+'</div>'; }
+    if(caught.length){ html+='<div class="rgroup"><p class="rgh caught">✓ What you caught — and what you saved</p>'+caught.map(function(i){return card(i,'caught');}).join('')+'</div>'; }
+    if(okship.length){ html+='<p class="alsoship"><b>Also correctly shipped:</b> '+okship.map(function(i){return ITEMS[i].area.toLowerCase();}).join(', ')+'.</p>'; }
+    document.getElementById('review').innerHTML=html;
+    document.getElementById('lesson').innerHTML='The whole game: <b>judge fast and right.</b> Catch the buried flaw — without treating every polished answer as guilty.';
+
+    var m=Math.floor(elapsed/60), s=elapsed%60;
+    document.getElementById('timeRes').textContent='Judged in '+m+':'+(s<10?'0':'')+s+' · the full Gym tightens the clock as you improve.';
+    window.scrollTo(0,0);
+  }
+
+  document.getElementById('againBtn').addEventListener('click',function(){
+    choices={};
+    document.getElementById('results').classList.remove('on');
+    document.getElementById('review').innerHTML='';
+    ITEMS.forEach(function(it,i){
+      [].forEach.call(document.getElementById('it'+i).querySelectorAll('.cb'),function(x){ x.classList.remove('sel'); });
+    });
+    document.getElementById('hint').textContent='';
+    document.getElementById('exercise').classList.add('on');
+    document.getElementById('clockbar').classList.add('on');
+    updateProg();
+    startStamp=perfNow(); elapsed=0; timer=setInterval(tick,1000); tick();
+    window.scrollTo(0,0);
+  });
+})();
+</script>
