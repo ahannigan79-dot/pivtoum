@@ -18,7 +18,13 @@ export default async function HubLayout({ children }: { children: React.ReactNod
         <HubNav />
         <div className="hub-side-foot">
           <UserButton />
-          <span className="nm">{profile?.displayName ?? "Member"}</span>
+          {profile ? (
+            <Link href={`/hub/members/${profile.handle ?? profile.clerkUserId}`} className="nm">
+              {profile.displayName ?? "Member"}
+            </Link>
+          ) : (
+            <span className="nm">Member</span>
+          )}
         </div>
       </aside>
       <main className="hub-main">{children}</main>
