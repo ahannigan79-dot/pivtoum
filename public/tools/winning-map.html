@@ -231,7 +231,10 @@
   .delta .m{ font-family:var(--mono); font-weight:700; } .delta.up .m{ color:var(--pen); } .delta.win .m{ color:var(--green); } .delta.note .m{ color:var(--pencil); } .delta b{ color:var(--ink); }
 
   /* tune panel */
-  .tune{ border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:15px; background:linear-gradient(180deg,#1c2620,var(--panel)); margin-top:16px; overflow:hidden; }
+  .tune{ border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:15px; background:linear-gradient(180deg,#1c2620,var(--panel)); margin-top:16px; overflow:hidden; scroll-margin-top:16px; }
+  .tune.flash{ animation:tuneflash 1.8s ease; }
+  @keyframes tuneflash{ 0%{ box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent); border-color:var(--green); } 100%{ box-shadow:0 0 0 10px transparent; } }
+  @media (prefers-reduced-motion:reduce){ .tune.flash{ animation:none; border-color:var(--green); } }
   .tune .phead{ background:#1c2620; border-bottom-color:color-mix(in srgb,var(--green) 20%,transparent); }
   .tune .tnote{ font-size:0.84rem; color:var(--soft); margin:0 0 14px; } .tune .tnote b{ color:var(--green); }
   .tune label.tl{ display:block; font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); margin:0 0 6px; }
@@ -370,7 +373,7 @@
       <div class="deltas" id="mDeltas"></div>
     </div></div>
 
-    <div class="tune"><div class="phead"><span class="pt">Tune your answers</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">live</span></div><div class="pbody">
+    <div class="tune" id="tunePanel"><div class="phead"><span class="pt">Tune your answers</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">live</span></div><div class="pbody">
       <p class="tnote"><b>This is the point.</b> Change anything here and the whole Map above recomputes instantly — the same math the live advisor runs.</p>
       <div id="tuneBody"></div>
     </div></div>
@@ -388,28 +391,32 @@
   var A={ path:null, role:'', careerSlug:null, lane:null, laneScore:null, laneBand:null, phase:null, tasks:{routine:60,complex:40,people:50,physical:15,manage:30}, trust:{name:35,relationships:35,accountable:35,judgment:35}, licence:null, pace:null, aim:null,
           situation:null, study:'', direction:[], strengths:{people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}, experience:null, changing:false, changeFrom:null };
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var chatGen = 0; // bump to cancel any in-flight advisor chain (e.g. restore arrives mid-intake)
 
   function scrollDown(){ scroll.scrollTop=scroll.scrollHeight; }
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function advisor(html, cls, cb){
+    var g=chatGen;
     var typing=document.createElement('div'); typing.className='msg';
     typing.innerHTML='<span class="av"></span><span class="typing"><i></i><i></i><i></i></span>';
     var len = html.replace(/<[^>]+>/g,'').length; // visible characters, tags stripped
     // 1) a beat, then the typing dots appear
     var pre = reduce?0:300;
     setTimeout(function(){
+      if(g!==chatGen) return;
       chat.appendChild(typing); scrollDown();
       // 2) the advisor "types" for a moment (scales gently with length)
       var typingTime = reduce?60 : Math.min(1200, 380 + len*5);
       setTimeout(function(){
+        if(g!==chatGen){ typing.remove(); return; }
         typing.remove();
         var m=document.createElement('div'); m.className='msg advisor';
         m.innerHTML='<span class="av"></span><div class="bubble'+(cls?' '+cls:'')+'">'+html+'</div>';
         chat.appendChild(m); scrollDown();
         // 3) hold — give a human time to actually READ this before the next thing happens
         var readPause = reduce?0 : Math.min(4200, 1100 + len*30);
-        setTimeout(function(){ if(cb) cb(); }, readPause);
+        setTimeout(function(){ if(g!==chatGen) return; if(cb) cb(); }, readPause);
       }, typingTime);
     }, pre);
   }
@@ -1137,31 +1144,40 @@
       var note=document.createElement('p'); note.className='tnote'; note.style.marginTop='12px'; note.innerHTML='Switch field and watch the whole entry-level read change — nursing and marketing are worlds apart.'; body.appendChild(note);
     }
   }
-  function buildMap(){ renderDisplay(computeMap(A)); buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on'); window.scrollTo(0,0); }
+  function buildMap(focus){ renderDisplay(computeMap(A)); buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on');
+    if(focus==='tune'){
+      var tp=document.getElementById('tunePanel');
+      if(tp){ tp.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); tp.classList.remove('flash'); void tp.offsetWidth; tp.classList.add('flash'); }
+    } else { window.scrollTo(0,0); }
+  }
 
   document.getElementById('sigSort').addEventListener('click',function(){ if(sigSortMode==='field'){sigSortMode='exp'; this.textContent='Sort: most exposed';} else {sigSortMode='field'; this.textContent='Sort: field order';} if(lastM) renderSignals(lastM); });
   document.getElementById('backChat').addEventListener('click',function(){ document.getElementById('mapView').classList.remove('on'); document.getElementById('chatView').style.display='flex'; window.scrollTo(0,0); });
 
-  function restart(){ clearCtrl(); chat.innerHTML=''; A.path=null; A.careerSlug=null; A.lane=null; A.laneScore=null; A.changing=false; A.changeFrom=null; A.trust={name:35,relationships:35,accountable:35,judgment:35}; A.direction=[]; A.strengths={people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}; flags={}; planDone={}; STEP=0; setProg(0); start(); }
+  function restart(){ chatGen++; clearCtrl(); chat.innerHTML=''; A.path=null; A.careerSlug=null; A.lane=null; A.laneScore=null; A.changing=false; A.changeFrom=null; A.trust={name:35,relationships:35,accountable:35,judgment:35}; A.direction=[]; A.strengths={people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}; flags={}; planDone={}; STEP=0; setProg(0); start(); }
 
   /* Returning member — a saved map exists. Greet them and offer to revise it
      instead of running the cold intake. */
   var restored=false;
   function returning(savedA){
-    clearCtrl(); chat.innerHTML=''; setProg(1);
+    chatGen++; clearCtrl(); chat.innerHTML=''; setProg(1);
     for(var k in savedA){ if(Object.prototype.hasOwnProperty.call(savedA,k)) A[k]=savedA[k]; }
     var who = (A.careerSlug||'').split(/[-_]/).map(function(w){return w?w[0].toUpperCase()+w.slice(1):w;}).join(' ');
     advisor("Welcome back. How can I help with your map today?"+(who?" You're mapped as <tspan>"+who+"</tspan>.".replace(/tspan/g,'b'):""), null, function(){
       control(chips([
         {v:'view',label:'See my full map'},
-        {v:'tune',label:'Make some changes'},
+        {v:'tune',label:'Adjust my answers'},
         {v:'strategy',label:'Try a different win strategy'},
         {v:'fresh',label:'Start a fresh map'}
       ], function(v){
         clearCtrl();
         if(v==='fresh'){ me('Start a fresh map'); restart(); return; }
-        var lbl = v==='view' ? 'See my full map' : v==='strategy' ? 'Try a different win strategy' : 'Make some changes';
-        me(lbl); buildMap();
+        if(v==='view'){ me('See my full map'); buildMap(); return; }
+        me(v==='strategy'?'Try a different win strategy':'Adjust my answers');
+        advisor(v==='strategy'
+          ? "Let's explore a different play. Change your lane or how you spend your week below — the winning move recomputes as you go."
+          : "Here's your map. Adjust your answers below and every number — and your winning move — updates live.",
+          null, function(){ buildMap('tune'); });
       }), true);
     });
   }
