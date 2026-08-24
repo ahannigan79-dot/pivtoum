@@ -571,3 +571,15 @@ a.pod-member:hover span { color:var(--ink); }
 .emoji-row .share-map-btn { font-family:var(--sans); font-weight:600; font-size:0.8rem; color:var(--green);
   background:transparent; border:1px solid var(--green-deep); border-radius:20px; padding:4px 11px; cursor:pointer; margin-left:8px; }
 .emoji-row .share-map-btn:hover { background:rgba(127,192,138,0.08); }
+
+/* ---- Evolve: 'to evolve to win' reminders ---- */
+.stand-trend.wide { width:100%; }
+.reminders { display:flex; flex-direction:column; gap:8px; margin:0 0 8px; }
+.reminder { display:flex; align-items:center; gap:13px; border:1px solid var(--rule2); border-radius:12px;
+  background:var(--panel); padding:13px 16px; transition:.12s; }
+.reminder:hover { border-color:var(--pencil); background:var(--panel2); }
+.reminder.warn { border-color:#7a5e2c; background:linear-gradient(180deg,rgba(214,168,91,0.09),var(--panel)); }
+.rem-ic { font-size:1.05rem; flex:none; width:22px; text-align:center; }
+.rem-text { flex:1; min-width:0; font-size:0.95rem; color:var(--ink); line-height:1.4; }
+.rem-go { color:var(--green); font-weight:700; flex:none; }
+.reminder.warn .rem-go { color:var(--amber); }

@@ -91,7 +91,7 @@ export function suggestMoves(c: MapComputed | null): Suggestion[] {
   const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim();
 
   // Edge 1 — always renovate: the driver's own action line.
-  const action = strip(c.driver?.action);
+  const action = strip(c.driverDetail?.action);
   if (action) out.push({ title: action, lever: "renovate" });
 
   // Edge 2 — from the prescribed second move.
@@ -102,7 +102,7 @@ export function suggestMoves(c: MapComputed | null): Suggestion[] {
   }
 
   // Deepen what AI can't take — from the driver's "down".
-  const down = strip(c.driver?.down);
+  const down = strip(c.driverDetail?.down);
   if (down) out.push({ title: `Move hours toward: ${down}`, lever: "judgment" });
 
   return out.slice(0, 3);

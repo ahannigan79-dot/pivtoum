@@ -1123,7 +1123,11 @@
     document.getElementById('wmE2S').textContent=mv.e2short;
     document.getElementById('wmLine').innerHTML=mv.line;
   }
-  function emitMap(M){ try{ if(window.parent!==window && M && M.career){ window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, lever:M.lever, urgency:M.urgency, move:M.move } }, "*"); } }catch(e){} }
+  function emitMap(M){ try{ if(window.parent!==window && M && M.career){
+    var dKey = M.driver.name==='Automatability'?'auto':'ladder';
+    var dDetail = sigContent(dKey, M);
+    window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, driverDetail:dDetail, lever:M.lever, urgency:M.urgency, move:M.move } }, "*");
+  } }catch(e){} }
   function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); emitMap(M); }
   function refresh(){ renderDisplay(computeMap(A)); }
 

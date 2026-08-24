@@ -4,8 +4,7 @@ import { getOrCreateProfile } from "@/lib/member";
 import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
-import { getEarnedBadges } from "@/lib/badges";
-import { BADGES } from "@/lib/badges";
+import { getEarnedBadges, BADGES } from "@/lib/badges";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 
@@ -16,9 +15,10 @@ const EDGE2: Record<string, { label: string }> = {
   guard: { label: "Guard your moat" }, shift: { label: "Shift lanes" }, relocate: { label: "Plan your relocate" },
 };
 
+type Reminder = { icon: string; text: string; href: string; tone?: string };
+
 export default async function Dashboard() {
   const profile = await getOrCreateProfile();
-  const first = (profile?.displayName ?? "there").split(" ")[0];
   const { userId } = await auth();
   const plan = await getPlan(userId);
   const t = plan?.traj ?? null;
@@ -38,6 +38,23 @@ export default async function Dashboard() {
   const renovateW = move?.weight != null ? 100 - move.weight : 60;
   const edge2W = move?.weight ?? 40;
   const delta = t && t.history.length >= 2 ? t.history[t.history.length - 1].overall - t.history[0].overall : null;
+  const dd = c?.driverDetail ?? null;
+
+  // "To evolve to win" — reminders auto-generated from the Map, Build, and activity.
+  const stepDone = (k: string) => plan?.steps.find((s) => s.key === k)?.done ?? false;
+  const months = Math.max(2, Math.round((t?.daysSinceMap ?? 60) / 30));
+  const reminders: Reminder[] = [];
+  if (t?.hasMap) {
+    if (!stepDone("welcome")) reminders.push({ icon: "📅", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
+    if (t.personalRescoreDue) reminders.push({ icon: "🔄", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
+    if (moves.active.length === 0) reminders.push({ icon: "◆", text: "Turn your winning move into a commitment", href: "#moves" });
+    else reminders.push({ icon: "🚀", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
+    if (!stepDone("build")) reminders.push({ icon: "🥊", text: "Train your judgment — log a Build rep", href: "/hub/build" });
+    if (!stepDone("learn")) reminders.push({ icon: "📚", text: "Learn your six levers", href: "/hub/learn" });
+    if (stepDone("pod")) reminders.push({ icon: "👥", text: "Check in with your pod this week", href: "/hub/pods" });
+    else reminders.push({ icon: "👥", text: "Join your Together Pod", href: "/hub/pods/browse" });
+  }
+  const shownReminders = reminders.slice(0, 5);
 
   return (
     <>
@@ -53,17 +70,6 @@ export default async function Dashboard() {
 
         {t?.hasMap ? (
           <>
-            {t.personalRescoreDue && (
-              <Link href="/hub/map" className="rescore-nudge">
-                <span className="rn-dot" />
-                <span>
-                  It&apos;s been {Math.max(2, Math.round((t.daysSinceMap ?? 60) / 30))} months since your last read.
-                  Have your protections changed — new trust, a credential, sharper judgment? <b>Re-score</b> and update your trajectory.
-                </span>
-                <span className="rn-go">Re-score →</span>
-              </Link>
-            )}
-
             {/* Winning strategy — front and centre: what they're working toward */}
             {move?.stance && (
               <section className="strategy">
@@ -81,7 +87,6 @@ export default async function Dashboard() {
                   <span>◆ Master the machine · {renovateW}%</span>
                   {e2 && <span>✦ {e2.label} · {edge2W}%</span>}
                 </div>
-                {move.e2short && <p className="strat-line">{strip(move.e2short)}</p>}
               </section>
             )}
 
@@ -101,22 +106,16 @@ export default async function Dashboard() {
             <div className="hub-sectlabel">Where you stand</div>
             <div className="cockpit">
               <section className="ck-card ck-stand">
-                <p className="ck">Trajectory{c?.career ? ` · ${c.career}` : ""}</p>
-                <div className="stand-row">
-                  <div className="stand-num">
-                    <div className={`big ${band.cls}`}>{t.overall}</div>
-                    <span className="stand-unit">exposure{band.word ? ` · ${band.word}` : ""}</span>
-                  </div>
-                  <div className="stand-trend">
-                    <Trend points={t.history} />
-                    <span className="trend-note">
-                      {t.history.length < 2
-                        ? "Your first reading — the line builds at each re-score."
-                        : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction.`
-                        : delta != null && delta > 0 ? `↑ ${delta} — the world moved. Time to pull levers.`
-                        : "Holding steady across re-scores."}
-                    </span>
-                  </div>
+                <p className="ck">Your trajectory{c?.career ? ` · ${c.career}` : ""}</p>
+                <div className="stand-trend wide">
+                  <Trend points={t.history} />
+                  <span className="trend-note">
+                    {t.history.length < 2
+                      ? "Your first reading — the line builds at each re-score."
+                      : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction.`
+                      : delta != null && delta > 0 ? `↑ ${delta} — the world moved. Time to pull levers.`
+                      : "Holding steady across re-scores."}
+                  </span>
                 </div>
                 <div className="stand-foot">
                   {c?.lane && <span className="tag">{c.lane}{laneBandWord ? ` · ${laneBandWord} risk` : ""}</span>}
@@ -126,18 +125,36 @@ export default async function Dashboard() {
                 <p className="rescore-cadence">Personal re-score every 2 months · Pivotum re-scores the market every 6.</p>
               </section>
 
-              {c?.driver && (
-                <section className="ck-card ck-driver">
-                  <p className="ck">What&apos;s driving this</p>
-                  {c.driver.why && <p className="drv-why">{strip(c.driver.why)}</p>}
-                  {c.driver.down && <p className="drv-line"><span className="drv-k">Deepen</span> {strip(c.driver.down)}</p>}
-                  {c.driver.action && <p className="drv-action">{strip(c.driver.action)}</p>}
-                </section>
-              )}
+              <section className="ck-card ck-driver">
+                <p className="ck">What&apos;s driving this{c?.driver?.name ? ` · ${c.driver.name}` : ""}</p>
+                {dd?.why ? (
+                  <p className="drv-why">{strip(dd.why)}</p>
+                ) : (
+                  <p className="drv-why">Your exposure is driven mainly by {c?.driver?.name ?? "market automatability"}. Re-open your Map for the full read, then re-score to refresh this.</p>
+                )}
+                {dd?.down && <p className="drv-line"><span className="drv-k">Deepen</span> {strip(dd.down)}</p>}
+                {dd?.action && <p className="drv-action">{strip(dd.action)}</p>}
+              </section>
             </div>
 
-            {/* Targets — the moves they control */}
-            <div className="hub-sectlabel">Your targets</div>
+            {/* To evolve to win — automated reminders from map, build, activity */}
+            {shownReminders.length > 0 && (
+              <>
+                <div className="hub-sectlabel">To evolve to win</div>
+                <div className="reminders">
+                  {shownReminders.map((r, i) => (
+                    <Link key={i} href={r.href} className={"reminder" + (r.tone ? ` ${r.tone}` : "")}>
+                      <span className="rem-ic">{r.icon}</span>
+                      <span className="rem-text">{r.text}</span>
+                      <span className="rem-go">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Your moves — commitments you control */}
+            <div className="hub-sectlabel" id="moves">Your moves</div>
             <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} />
 
             {/* Achievements */}

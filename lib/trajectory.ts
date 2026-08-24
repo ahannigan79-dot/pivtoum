@@ -9,7 +9,8 @@ export type MapComputed = {
   lane?: string;
   laneScore?: number;
   band?: string;
-  driver?: { why?: string; up?: string; down?: string; action?: string };
+  driver?: { name?: string; rating?: number };
+  driverDetail?: { why?: string; up?: string; down?: string; action?: string };
   lever?: string;
   urgency?: { level?: string; why?: string };
   move?: { stance?: string; edge2?: string; weight?: number; e2short?: string };
