@@ -3,9 +3,22 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
-import { comments, postReports, posts, reactions } from "@/db/schema";
+import { comments, postAttachments, postReports, posts, reactions } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPIC_BY_SLUG } from "@/lib/feed-topics";
+import { uploadPostFiles } from "@/lib/blob";
+
+/** Upload any files in the form and attach them to a post. */
+export async function attachFiles(postId: string, formData: FormData) {
+  const files = formData.getAll("files").filter((f): f is File => f instanceof File);
+  if (!files.length) return;
+  const uploaded = await uploadPostFiles(files);
+  if (uploaded.length) {
+    await db.insert(postAttachments).values(
+      uploaded.map((a) => ({ postId, url: a.url, name: a.name, contentType: a.contentType, kind: a.kind })),
+    );
+  }
+}
 
 function revalidateFeeds() {
   revalidatePath("/hub/community");
@@ -48,7 +61,9 @@ export async function createPost(formData: FormData) {
     if (!isFounder(profile)) topic = null;
   }
 
-  await db.insert(posts).values({ authorId: userId, title, topic, body: body.slice(0, 5000) });
+  const inserted = await db.insert(posts).values({ authorId: userId, title, topic, body: body.slice(0, 5000) })
+    .returning({ id: posts.id });
+  if (inserted[0]) await attachFiles(inserted[0].id, formData);
   revalidatePath("/hub/community");
 }
 

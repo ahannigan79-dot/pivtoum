@@ -6,6 +6,8 @@ import remarkHighlight from "./lib/remark-highlight";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  // Allow post attachments (images/files) to flow through server actions.
+  experimental: { serverActions: { bodySizeLimit: "12mb" } },
   // Bundle the committed profile PDFs into the upload route so it can read them
   // at runtime and push them to Blob.
   outputFileTracingIncludes: {

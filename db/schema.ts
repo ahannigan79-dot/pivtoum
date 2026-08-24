@@ -128,6 +128,16 @@ export const postReports = pgTable("post_reports", {
   createdAt: now(),
 }, (t) => ({ postIdx: index("post_reports_post_idx").on(t.postId) }));
 
+export const postAttachments = pgTable("post_attachments", {
+  id: uid(),
+  postId: uuid("post_id").notNull().references(() => posts.id, { onDelete: "cascade" }),
+  url: text("url").notNull(),
+  name: text("name"),
+  contentType: text("content_type"),
+  kind: text("kind").notNull().default("file"), // image | file
+  createdAt: now(),
+}, (t) => ({ postIdx: index("post_attachments_post_idx").on(t.postId) }));
+
 /* ---------- Events (deep-dives, 1:1 welcome, re-score, clinics) ---------- */
 export const eventTypeEnum = pgEnum("event_type", ["welcome_1to1", "deep_dive", "rescore", "clinic", "social"]);
 export const events = pgTable("events", {

@@ -8,6 +8,8 @@ const EMOJI = ["🎉", "🔥", "💪", "🙌", "👏", "✅", "🤔", "❤️"];
 export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: string | null }) {
   const ref = useRef<HTMLFormElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [files, setFiles] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
 
@@ -29,7 +31,7 @@ export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: s
     <form
       ref={ref}
       className={"composer" + (open ? " open" : "")}
-      action={(fd) => start(async () => { await createPost(fd); ref.current?.reset(); setOpen(false); })}
+      action={(fd) => start(async () => { await createPost(fd); ref.current?.reset(); setFiles([]); setOpen(false); })}
     >
       {open && (
         <div className="composer-row">
@@ -43,10 +45,14 @@ export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: s
       <textarea ref={taRef} name="body" rows={open ? 4 : 2} required maxLength={5000}
         onFocus={() => setOpen(true)}
         placeholder="Share a win, a question, or what you're working on this week… 🎉" />
+      <input ref={fileRef} type="file" name="files" multiple hidden accept="image/*,.pdf,.doc,.docx,.txt,.csv,.xlsx,.pptx"
+        onChange={(e) => { setOpen(true); setFiles(Array.from(e.target.files ?? []).slice(0, 4).map((f) => f.name)); }} />
+      {open && files.length > 0 && <div className="attach-chips">{files.map((n, i) => <span key={i} className="attach-chip">📎 {n}</span>)}</div>}
       {open && (
         <div className="composer-foot">
           <div className="emoji-row">
             {EMOJI.map((e) => <button key={e} type="button" className="emoji-btn" onClick={() => addEmoji(e)}>{e}</button>)}
+            <button type="button" className="attach-btn" onClick={() => fileRef.current?.click()}>📎</button>
             {shareText && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
           </div>
           <button type="button" className="ghost" onClick={() => { ref.current?.reset(); setOpen(false); }}>Cancel</button>

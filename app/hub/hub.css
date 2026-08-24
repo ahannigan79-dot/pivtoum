@@ -583,3 +583,17 @@ a.pod-member:hover span { color:var(--ink); }
 .rem-text { flex:1; min-width:0; font-size:0.95rem; color:var(--ink); line-height:1.4; }
 .rem-go { color:var(--green); font-weight:700; flex:none; }
 .reminder.warn .rem-go { color:var(--amber); }
+
+/* ---- post attachments ---- */
+.emoji-row .attach-btn { background:transparent; border:0; color:var(--soft); font-size:1.05rem; cursor:pointer;
+  padding:3px 6px; border-radius:6px; margin-left:6px; }
+.emoji-row .attach-btn:hover { background:var(--panel2); color:var(--ink); }
+.attach-chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 0; }
+.attach-chip { font-size:0.76rem; color:var(--soft); background:var(--panel2); border:1px solid var(--rule2);
+  border-radius:8px; padding:4px 9px; max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.post-attach { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; }
+.att-img { display:block; border:1px solid var(--rule); border-radius:10px; overflow:hidden; max-width:100%; }
+.att-img img { display:block; max-width:340px; max-height:300px; width:auto; height:auto; object-fit:cover; }
+.att-file { display:inline-flex; align-items:center; gap:6px; font-size:0.86rem; color:var(--green);
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:8px 12px; }
+.att-file:hover { border-color:var(--green-deep); }

@@ -44,6 +44,19 @@ export function PostCard({ post, canPin = false, meId = null, canModerate = fals
       {post.title && <h3 className="post-title">{post.title}</h3>}
       <p className="post-body">{linkify(post.body)}</p>
 
+      {post.attachments.length > 0 && (
+        <div className="post-attach">
+          {post.attachments.map((a, i) => a.kind === "image" ? (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className="att-img">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={a.url} alt={a.name ?? ""} loading="lazy" />
+            </a>
+          ) : (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className="att-file">📎 {a.name ?? "Attachment"}</a>
+          ))}
+        </div>
+      )}
+
       <div className="post-actions">
         <ReactButton postId={post.id} count={post.reactionCount} mine={post.iReacted} />
         <span className="react-static">💬 {post.comments.length}</span>

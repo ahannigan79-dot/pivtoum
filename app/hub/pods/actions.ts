@@ -8,6 +8,7 @@ import { podMembers, pods, posts, podThreads } from "@/db/schema";
 import { getOrCreateProfile } from "@/lib/member";
 import { getFounderIds, getPodBySlug } from "@/lib/pods";
 import { createThreadIn } from "@/lib/threads";
+import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
 
 function slugify(s: string): string {
@@ -108,7 +109,10 @@ export async function createPodPost(slug: string, threadId: string | null, formD
 
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return;
-  await db.insert(posts).values({ authorId: userId, podId: pod.id, threadId: validThread, body: body.slice(0, 5000) });
+  const inserted = await db.insert(posts)
+    .values({ authorId: userId, podId: pod.id, threadId: validThread, body: body.slice(0, 5000) })
+    .returning({ id: posts.id });
+  if (inserted[0]) await attachFiles(inserted[0].id, formData);
   revalidatePath(`/hub/pods/${slug}`);
 }
 

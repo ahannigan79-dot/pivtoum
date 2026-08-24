@@ -1,6 +1,8 @@
 import { and, asc, desc, eq, inArray, isNull, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
-import { comments, postReports, posts, profiles, reactions } from "@/db/schema";
+import { comments, postAttachments, postReports, posts, profiles, reactions } from "@/db/schema";
+
+export type FeedAttachment = { url: string; name: string | null; kind: string; contentType: string | null };
 
 export type FeedAuthor = { id: string; name: string; avatarUrl: string | null; handle: string | null; role: string };
 export type FeedComment = { id: string; body: string; createdAt: Date; author: FeedAuthor };
@@ -8,6 +10,7 @@ export type FeedPost = {
   id: string; title: string | null; topic: string | null; body: string; createdAt: Date;
   pinned: boolean; author: FeedAuthor;
   reactionCount: number; iReacted: boolean; comments: FeedComment[]; reportCount: number;
+  attachments: FeedAttachment[];
 };
 
 function author(a: typeof profiles.$inferSelect): FeedAuthor {
@@ -53,6 +56,14 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
   const repRows = await db.select({ postId: postReports.postId, n: sql<number>`count(*)::int` })
     .from(postReports).where(inArray(postReports.postId, ids)).groupBy(postReports.postId);
   const reportCount = new Map(repRows.map((r) => [r.postId, r.n]));
+  const attRows = await db.select().from(postAttachments)
+    .where(inArray(postAttachments.postId, ids)).orderBy(asc(postAttachments.createdAt));
+  const attByPost = new Map<string, FeedAttachment[]>();
+  for (const a of attRows) {
+    const list = attByPost.get(a.postId) ?? [];
+    list.push({ url: a.url, name: a.name, kind: a.kind, contentType: a.contentType });
+    attByPost.set(a.postId, list);
+  }
 
   const commentsByPost = new Map<string, FeedComment[]>();
   for (const { c, a } of cRows) {
@@ -72,6 +83,7 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
     pinned: p.pinned, author: author(a),
     reactionCount: reactCount.get(p.id) ?? 0, iReacted: mine.has(p.id),
     comments: commentsByPost.get(p.id) ?? [], reportCount: reportCount.get(p.id) ?? 0,
+    attachments: attByPost.get(p.id) ?? [],
   }));
 }
 
