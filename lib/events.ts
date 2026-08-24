@@ -1,4 +1,4 @@
-import { asc, desc, gte, inArray, lt } from "drizzle-orm";
+import { and, asc, desc, gte, inArray, lt } from "drizzle-orm";
 import { db } from "@/db";
 import { events, eventRsvps } from "@/db/schema";
 
@@ -45,3 +45,41 @@ export function formatWhen(d: Date | string): string {
   const t = typeof d === "string" ? new Date(d) : d;
   return t.toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 }
+
+export function formatTime(d: Date | string): string {
+  const t = typeof d === "string" ? new Date(d) : d;
+  return t.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
+/** Events that start within a given month (local time). */
+export async function getEventsInMonth(meId: string | null, year: number, month0: number): Promise<EventRow[]> {
+  const start = new Date(year, month0, 1);
+  const end = new Date(year, month0 + 1, 1);
+  const rows = await db.select().from(events)
+    .where(and(gte(events.startsAt, start), lt(events.startsAt, end)))
+    .orderBy(asc(events.startsAt)).limit(200);
+  return withRsvps(rows, meId);
+}
+
+export type CalDay = { date: Date; day: number; inMonth: boolean; isToday: boolean };
+
+/** A 6×7 matrix of days covering the month, weeks starting Sunday. */
+export function monthMatrix(year: number, month0: number): CalDay[] {
+  const first = new Date(year, month0, 1);
+  const start = new Date(year, month0, 1 - first.getDay()); // back up to the Sunday
+  const today = new Date();
+  const todayKey = today.toDateString();
+  const cells: CalDay[] = [];
+  for (let i = 0; i < 42; i++) {
+    const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    cells.push({ date: d, day: d.getDate(), inMonth: d.getMonth() === month0, isToday: d.toDateString() === todayKey });
+  }
+  return cells;
+}
+
+export function dayKey(d: Date): string {
+  return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+}
+
+export const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];

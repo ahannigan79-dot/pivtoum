@@ -1,16 +1,42 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
-import { getUpcomingEvents, getPastEvents } from "@/lib/events";
+import { getUpcomingEvents, getPastEvents, getEventsInMonth } from "@/lib/events";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { EventCard } from "@/components/hub/events/EventCard";
+import { EventCalendar } from "@/components/hub/events/EventCalendar";
 import { NewEventForm } from "@/components/hub/events/NewEventForm";
 
 export const metadata = { title: "Events — Pivotum" };
 
-export default async function EventsPage() {
+function parseMonth(m: string | undefined): { year: number; month0: number } {
+  const now = new Date();
+  const match = m && /^(\d{4})-(\d{1,2})$/.exec(m);
+  if (match) {
+    const year = Number(match[1]);
+    const month0 = Math.min(11, Math.max(0, Number(match[2]) - 1));
+    return { year, month0 };
+  }
+  return { year: now.getFullYear(), month0: now.getMonth() };
+}
+
+const mKey = (y: number, m0: number) => `${y}-${m0 + 1}`;
+
+export default async function EventsPage({ searchParams }: { searchParams: Promise<{ m?: string }> }) {
   const { userId } = await auth();
   const profile = await getOrCreateProfile();
-  const [upcoming, past] = await Promise.all([getUpcomingEvents(userId), getPastEvents(userId)]);
+  const founder = isFounder(profile);
+  const { m } = await searchParams;
+  const { year, month0 } = parseMonth(m);
+
+  const [monthEvents, upcoming, past] = await Promise.all([
+    getEventsInMonth(userId, year, month0),
+    getUpcomingEvents(userId),
+    getPastEvents(userId),
+  ]);
+
+  const prev = month0 === 0 ? { y: year - 1, m: 11 } : { y: year, m: month0 - 1 };
+  const next = month0 === 11 ? { y: year + 1, m: 0 } : { y: year, m: month0 + 1 };
+  const now = new Date();
 
   return (
     <>
@@ -25,17 +51,24 @@ export default async function EventsPage() {
           <span className="welcome-arrow">→</span>
         </Link>
 
-        {isFounder(profile) && <NewEventForm />}
+        {founder && <NewEventForm />}
+
+        <EventCalendar
+          year={year} month0={month0} events={monthEvents}
+          prevHref={`/hub/events?m=${mKey(prev.y, prev.m)}`}
+          nextHref={`/hub/events?m=${mKey(next.y, next.m)}`}
+          todayHref={`/hub/events?m=${mKey(now.getFullYear(), now.getMonth())}`}
+        />
 
         <div className="hub-sectlabel">Upcoming</div>
         {upcoming.length === 0
           ? <p className="feed-empty">No events scheduled yet.</p>
-          : upcoming.map((e) => <EventCard key={e.id} e={e} />)}
+          : upcoming.map((e) => <EventCard key={e.id} e={e} admin={founder} />)}
 
         {past.length > 0 && (
           <>
             <div className="hub-sectlabel">Past · recordings</div>
-            {past.map((e) => <EventCard key={e.id} e={e} past />)}
+            {past.map((e) => <EventCard key={e.id} e={e} past admin={founder} />)}
           </>
         )}
       </div>

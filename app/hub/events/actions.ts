@@ -40,6 +40,42 @@ export async function createEvent(formData: FormData) {
     startsAt,
     durationMins,
     joinUrl: String(formData.get("joinUrl") ?? "").trim().slice(0, 500) || null,
+    recordingUrl: String(formData.get("recordingUrl") ?? "").trim().slice(0, 500) || null,
   });
+  revalidatePath("/hub/events");
+}
+
+/** Founder: edit an existing event. */
+export async function updateEvent(eventId: string, formData: FormData) {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return;
+
+  const title = String(formData.get("title") ?? "").trim();
+  const startsRaw = String(formData.get("startsAt") ?? "").trim();
+  if (!eventId || !title || !startsRaw) return;
+  const startsAt = new Date(startsRaw);
+  if (isNaN(startsAt.getTime())) return;
+
+  const typeRaw = String(formData.get("type") ?? "deep_dive");
+  const type = (TYPES as string[]).includes(typeRaw) ? (typeRaw as EventType) : "deep_dive";
+  const durationMins = Number(formData.get("durationMins")) || 60;
+
+  await db.update(events).set({
+    title: title.slice(0, 200),
+    type,
+    description: String(formData.get("description") ?? "").trim().slice(0, 2000) || null,
+    startsAt,
+    durationMins,
+    joinUrl: String(formData.get("joinUrl") ?? "").trim().slice(0, 500) || null,
+    recordingUrl: String(formData.get("recordingUrl") ?? "").trim().slice(0, 500) || null,
+  }).where(eq(events.id, eventId));
+  revalidatePath("/hub/events");
+}
+
+/** Founder: delete an event (RSVPs cascade). */
+export async function deleteEvent(eventId: string) {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile) || !eventId) return;
+  await db.delete(events).where(eq(events.id, eventId));
   revalidatePath("/hub/events");
 }
