@@ -1095,7 +1095,8 @@
     document.getElementById('wmE2S').textContent=mv.e2short;
     document.getElementById('wmLine').innerHTML=mv.line;
   }
-  function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); }
+  function emitMap(M){ try{ if(window.parent!==window && M && M.career){ window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, lever:M.lever, urgency:M.urgency, move:M.move } }, "*"); } }catch(e){} }
+  function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); emitMap(M); }
   function refresh(){ renderDisplay(computeMap(A)); }
 
   function thd(t){ var d=document.createElement('div'); d.className='thd'; d.textContent=t; return d; }
@@ -1136,7 +1137,7 @@
       var note=document.createElement('p'); note.className='tnote'; note.style.marginTop='12px'; note.innerHTML='Switch field and watch the whole entry-level read change — nursing and marketing are worlds apart.'; body.appendChild(note);
     }
   }
-  function buildMap(){ renderDisplay(computeMap(A)); try{ if(window.parent!==window){ var M=lastM; window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, lever:M.lever, urgency:M.urgency, move:M.move } }, "*"); } }catch(e){} buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on'); window.scrollTo(0,0); }
+  function buildMap(){ renderDisplay(computeMap(A)); buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on'); window.scrollTo(0,0); }
 
   document.getElementById('sigSort').addEventListener('click',function(){ if(sigSortMode==='field'){sigSortMode='exp'; this.textContent='Sort: most exposed';} else {sigSortMode='field'; this.textContent='Sort: field order';} if(lastM) renderSignals(lastM); });
   document.getElementById('backChat').addEventListener('click',function(){ document.getElementById('mapView').classList.remove('on'); document.getElementById('chatView').style.display='flex'; window.scrollTo(0,0); });
