@@ -212,7 +212,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 
 /* ---- dashboard trajectory cockpit ---- */
 .big.mid { color:var(--amber); }
-.cockpit { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 0 10px; }
+.cockpit { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 0 10px; align-items:start; }
 .ck-card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:18px 20px; }
 .ck-ledger { grid-column:1 / -1; }
 
@@ -627,3 +627,11 @@ a.pod-member:hover span { color:var(--ink); }
 .pod-goal-set { font-family:var(--sans); font-size:0.86rem; color:var(--soft); background:transparent;
   border:1px dashed var(--green-deep); border-radius:12px; padding:10px 15px; cursor:pointer; margin:0 0 16px; width:100%; text-align:left; }
 .pod-goal-set:hover { color:var(--ink); background:rgba(127,192,138,0.06); }
+
+/* ---- exposure gauge ---- */
+.gauge { display:block; width:100%; height:auto; margin:8px 0 6px; }
+.gauge-val { fill:var(--ink); font-family:var(--mono); font-weight:600; font-size:14px; }
+.gauge-end { fill:var(--pencil); font-family:var(--sans); font-size:8.5px; letter-spacing:0.08em; text-transform:uppercase; }
+.stand-mini { display:flex; align-items:center; gap:14px; margin:4px 0 2px; }
+.stand-spark { width:110px; flex:none; }
+.stand-mini .trend-note { flex:1; }

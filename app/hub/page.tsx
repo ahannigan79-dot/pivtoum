@@ -6,6 +6,7 @@ import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, BADGES } from "@/lib/badges";
 import { Trend } from "@/components/hub/dashboard/Trend";
+import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 
 export const metadata = { title: "Evolve to Win — Pivotum" };
@@ -106,14 +107,15 @@ export default async function Dashboard() {
             <div className="hub-sectlabel">Where you stand</div>
             <div className="cockpit">
               <section className="ck-card ck-stand">
-                <p className="ck">Your trajectory{c?.career ? ` · ${c.career}` : ""}</p>
-                <div className="stand-trend wide">
-                  <Trend points={t.history} />
+                <p className="ck">Where you stand{c?.career ? ` · ${c.career}` : ""}</p>
+                <Gauge value={t.overall ?? 0} />
+                <div className="stand-mini">
+                  {t.history.length >= 2 && <span className="stand-spark"><Trend points={t.history} /></span>}
                   <span className="trend-note">
                     {t.history.length < 2
-                      ? "Your first reading — the line builds at each re-score."
-                      : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction.`
-                      : delta != null && delta > 0 ? `↑ ${delta} — the world moved. Time to pull levers.`
+                      ? "Your first reading — your line starts building at your next re-score."
+                      : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction — keep pulling levers.`
+                      : delta != null && delta > 0 ? `↑ ${delta} — the market moved. Time to pull levers.`
                       : "Holding steady across re-scores."}
                   </span>
                 </div>
