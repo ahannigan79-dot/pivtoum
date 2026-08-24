@@ -4,13 +4,37 @@ import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { comments, posts, reactions } from "@/db/schema";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { TOPIC_BY_SLUG } from "@/lib/feed-topics";
 
 export async function createPost(formData: FormData) {
   const { userId } = await auth();
   if (!userId) return;
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return;
-  await db.insert(posts).values({ authorId: userId, body: body.slice(0, 5000) });
+
+  const title = String(formData.get("title") ?? "").trim().slice(0, 160) || null;
+  const rawTopic = String(formData.get("topic") ?? "").trim();
+  const topicDef = rawTopic ? TOPIC_BY_SLUG[rawTopic] : undefined;
+  // Guard founder-only topics server-side.
+  let topic: string | null = topicDef ? topicDef.slug : null;
+  if (topicDef?.founderOnly) {
+    const profile = await getOrCreateProfile();
+    if (!isFounder(profile)) topic = null;
+  }
+
+  await db.insert(posts).values({ authorId: userId, title, topic, body: body.slice(0, 5000) });
+  revalidatePath("/hub/community");
+}
+
+/** Founder/moderator: pin or unpin a post to the top of the feed. */
+export async function togglePin(postId: string) {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return;
+  const row = await db.select({ pinned: posts.pinned }).from(posts).where(eq(posts.id, postId)).limit(1);
+  if (!row[0]) return;
+  const next = !row[0].pinned;
+  await db.update(posts).set({ pinned: next, pinnedAt: next ? new Date() : null }).where(eq(posts.id, postId));
   revalidatePath("/hub/community");
 }
 

@@ -1,21 +1,37 @@
 "use client";
-import { useRef, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { createPost } from "@/app/hub/community/actions";
+import type { Topic } from "@/lib/feed-topics";
 
-export function Composer() {
+export function Composer({ topics }: { topics: Topic[] }) {
   const ref = useRef<HTMLFormElement>(null);
+  const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
+
   return (
     <form
       ref={ref}
-      className="composer"
-      action={(fd) => start(async () => { await createPost(fd); ref.current?.reset(); })}
+      className={"composer" + (open ? " open" : "")}
+      action={(fd) => start(async () => { await createPost(fd); ref.current?.reset(); setOpen(false); })}
     >
-      <textarea name="body" rows={3} required maxLength={5000}
+      {open && (
+        <div className="composer-row">
+          <input name="title" placeholder="Add a title (optional)" maxLength={160} className="composer-title" />
+          <select name="topic" defaultValue="" className="composer-topic">
+            <option value="">General</option>
+            {topics.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
+          </select>
+        </div>
+      )}
+      <textarea name="body" rows={open ? 4 : 2} required maxLength={5000}
+        onFocus={() => setOpen(true)}
         placeholder="Share a win, a question, or what you're working on this week…" />
-      <div className="composer-foot">
-        <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post"}</button>
-      </div>
+      {open && (
+        <div className="composer-foot">
+          <button type="button" className="ghost" onClick={() => { ref.current?.reset(); setOpen(false); }}>Cancel</button>
+          <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post"}</button>
+        </div>
+      )}
     </form>
   );
 }

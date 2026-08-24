@@ -8,6 +8,16 @@ export const RESET_STATEMENTS: string[] = [
   `GRANT ALL ON SCHEMA public TO public`,
 ];
 
+/* Additive, idempotent schema patches — run via /api/admin/migrate?patch=1.
+ * NEVER drops or rewrites data. Safe to run repeatedly. Append new ALTERs here
+ * as the schema evolves so we never need a destructive reset again. */
+export const PATCH_STATEMENTS: string[] = [
+  `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "title" text`,
+  `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "topic" text`,
+  `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`,
+  `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned_at" timestamp with time zone`,
+];
+
 export const DDL_STATEMENTS: string[] = [
   "CREATE TYPE \"public\".\"event_type\" AS ENUM('welcome_1to1', 'deep_dive', 'rescore', 'clinic', 'social')",
   "CREATE TYPE \"public\".\"member_role\" AS ENUM('member', 'moderator', 'founder')",

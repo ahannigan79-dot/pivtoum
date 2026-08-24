@@ -174,3 +174,38 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
   display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
 .pod-locked p { margin:0; color:var(--soft); font-size:0.95rem; line-height:1.5; }
 @media (max-width:860px){ .pod-layout { grid-template-columns:1fr; } .pod-side .card { position:static; } }
+
+/* premium feed: composer, tabs, badges, chips, titles, pins */
+.composer.open { border-color:var(--pencil); }
+.composer-row { display:flex; gap:9px; margin-bottom:10px; }
+.composer-title { flex:1; min-width:0; background:var(--panel2); border:1px solid var(--rule2); border-radius:9px;
+  padding:9px 12px; color:var(--ink); font-family:var(--serif); font-weight:600; font-size:0.98rem; outline:none; }
+.composer-title::placeholder { color:var(--pencil); font-weight:400; }
+.composer-topic { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:9px 12px;
+  color:var(--soft); font-family:var(--sans); font-size:0.9rem; outline:none; cursor:pointer; }
+.composer-foot .ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); margin-right:8px; }
+
+.feed-tabs { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 20px; padding-bottom:2px; }
+.feed-tabs a { font-size:0.84rem; color:var(--soft); padding:6px 13px; border-radius:20px; border:1px solid transparent; transition:.12s; white-space:nowrap; }
+.feed-tabs a:hover { background:var(--panel); color:var(--ink); }
+.feed-tabs a.on { background:var(--panel2); color:var(--ink); border-color:var(--rule2); }
+
+.post-who { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.post-name { display:flex; align-items:center; gap:8px; }
+.post-name b { font-size:0.95rem; }
+.post-meta { color:var(--pencil); font-size:0.78rem; margin-left:0; display:flex; align-items:center; gap:6px; }
+.role-badge { font-size:0.56rem; font-weight:800; letter-spacing:0.07em; text-transform:uppercase;
+  padding:2px 7px; border-radius:20px; color:var(--amber); border:1px solid #7a5e2c; }
+.role-badge.r-founder { color:var(--green); border-color:var(--green-deep); background:rgba(127,192,138,0.08); }
+.topic-chip { font-size:0.68rem; font-weight:700; letter-spacing:0.03em; color:var(--soft);
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:20px; padding:2px 9px; }
+.post-title { font-family:var(--serif); font-weight:700; font-size:1.18rem; line-height:1.3; margin:2px 0 8px; color:var(--ink); }
+.post-link { color:var(--green); text-decoration:none; border-bottom:1px solid var(--green-deep); }
+.post-link:hover { color:var(--green-bright); }
+.post.pinned { border-color:var(--green-deep); background:linear-gradient(180deg,rgba(127,192,138,0.05),var(--panel)); }
+.post-pinmark { font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); margin:0 0 10px; }
+.pin-btn { margin-left:auto; align-self:flex-start; font-family:var(--sans); font-size:0.74rem; font-weight:700; color:var(--pencil);
+  background:transparent; border:1px solid var(--rule2); border-radius:20px; padding:4px 11px; cursor:pointer; white-space:nowrap; }
+.pin-btn:hover { color:var(--ink); border-color:var(--pencil); }
+.pin-btn.on { color:var(--green); border-color:var(--green-deep); }
+.pin-btn:disabled { opacity:.5; cursor:default; }

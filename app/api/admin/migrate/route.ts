@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { currentUser } from "@clerk/nextjs/server";
 import { sql } from "@vercel/postgres";
-import { RESET_STATEMENTS, DDL_STATEMENTS } from "@/db/ddl";
+import { RESET_STATEMENTS, DDL_STATEMENTS, PATCH_STATEMENTS } from "@/db/ddl";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -53,7 +53,26 @@ export async function GET(req: Request) {
   const gate = await requireFounder();
   if (!gate.ok) return NextResponse.json({ error: gate.error }, { status: gate.status });
 
-  const run = new URL(req.url).searchParams.get("run");
+  const sp = new URL(req.url).searchParams;
+  const run = sp.get("run");
+  const patch = sp.get("patch");
+
+  // Additive patch — safe, non-destructive. Adds new columns/tables only.
+  if (patch === "1") {
+    const done: string[] = [];
+    try {
+      for (const stmt of PATCH_STATEMENTS) {
+        await sql.query(stmt);
+        done.push(stmt.slice(0, 70).replace(/\s+/g, " "));
+      }
+    } catch (e) {
+      return NextResponse.json(
+        { ok: false, connectedTo: dbHost(), applied: done, error: e instanceof Error ? e.message : String(e) },
+        { status: 500 },
+      );
+    }
+    return NextResponse.json({ ok: true, connectedTo: dbHost(), applied: done, message: "Patches applied (non-destructive). Reload the app." });
+  }
 
   // Diagnostic view — safe, read-only.
   if (run !== "1") {

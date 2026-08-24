@@ -1,21 +1,24 @@
-import { asc, desc, eq, inArray, isNull, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { comments, posts, profiles, reactions } from "@/db/schema";
 
-export type FeedAuthor = { id: string; name: string; avatarUrl: string | null; handle: string | null };
+export type FeedAuthor = { id: string; name: string; avatarUrl: string | null; handle: string | null; role: string };
 export type FeedComment = { id: string; body: string; createdAt: Date; author: FeedAuthor };
 export type FeedPost = {
-  id: string; body: string; createdAt: Date; author: FeedAuthor;
+  id: string; title: string | null; topic: string | null; body: string; createdAt: Date;
+  pinned: boolean; author: FeedAuthor;
   reactionCount: number; iReacted: boolean; comments: FeedComment[];
 };
 
 function author(a: typeof profiles.$inferSelect): FeedAuthor {
-  return { id: a.clerkUserId, name: a.displayName ?? a.email.split("@")[0], avatarUrl: a.avatarUrl, handle: a.handle };
+  return { id: a.clerkUserId, name: a.displayName ?? a.email.split("@")[0], avatarUrl: a.avatarUrl, handle: a.handle, role: a.role };
 }
 
-/** The whole-community feed (podId null), newest first, with comments + reactions. */
-export function getCommunityFeed(meId: string | null): Promise<FeedPost[]> {
-  return buildFeed(isNull(posts.podId), meId);
+/** The whole-community feed (podId null), pinned first then newest, optionally filtered by topic. */
+export function getCommunityFeed(meId: string | null, topic?: string | null): Promise<FeedPost[]> {
+  const base = isNull(posts.podId);
+  const where = topic ? and(base, eq(posts.topic, topic)) : base;
+  return buildFeed(where, meId);
 }
 
 /** A single pod's feed (posts scoped to that pod). */
@@ -30,7 +33,7 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
     .from(posts)
     .innerJoin(profiles, eq(posts.authorId, profiles.clerkUserId))
     .where(where)
-    .orderBy(desc(posts.createdAt))
+    .orderBy(desc(posts.pinned), desc(posts.createdAt))
     .limit(50);
   if (!rows.length) return [];
 
@@ -57,7 +60,8 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
   }
 
   return rows.map(({ p, a }) => ({
-    id: p.id, body: p.body, createdAt: p.createdAt, author: author(a),
+    id: p.id, title: p.title, topic: p.topic, body: p.body, createdAt: p.createdAt,
+    pinned: p.pinned, author: author(a),
     reactionCount: reactCount.get(p.id) ?? 0, iReacted: mine.has(p.id),
     comments: commentsByPost.get(p.id) ?? [],
   }));

@@ -83,7 +83,11 @@ export const posts = pgTable("posts", {
   id: uid(),
   authorId: memberFk("author_id"),
   podId: uuid("pod_id").references(() => pods.id, { onDelete: "cascade" }), // null = whole community
+  title: text("title"),
+  topic: text("topic"), // curated topic slug (see lib/feed-topics.ts); null = general
   body: text("body").notNull(),
+  pinned: boolean("pinned").notNull().default(false),
+  pinnedAt: timestamp("pinned_at", { withTimezone: true }),
   createdAt: now(),
 }, (t) => ({ feedIdx: index("posts_feed_idx").on(t.podId, t.createdAt) }));
 
