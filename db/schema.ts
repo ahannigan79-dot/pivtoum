@@ -71,6 +71,7 @@ export const pods = pgTable("pods", {
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
   description: text("description"),
+  goal: text("goal"), // pinned pod focus/goal
   createdAt: now(),
 });
 export const podMembers = pgTable("pod_members", {

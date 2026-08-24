@@ -12,6 +12,7 @@ import { Avatar } from "@/components/hub/community/Avatar";
 import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 import { PodComposer } from "@/components/hub/pods/PodComposer";
 import { ThreadNav } from "@/components/hub/pods/ThreadNav";
+import { PodGoal } from "@/components/hub/pods/PodGoal";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -58,6 +59,10 @@ export default async function PodPage({
           </div>
           <JoinButton slug={pod.slug} joined={iAmIn} />
         </header>
+
+        {(pod.goal || iAmIn || canModerate) && (
+          <PodGoal slug={pod.slug} goal={pod.goal} canEdit={iAmIn || canModerate} />
+        )}
 
         <ThreadNav threads={threads} activeSlug={active?.slug ?? ""} podSlug={pod.slug} />
 

@@ -116,6 +116,19 @@ export async function createPodPost(slug: string, threadId: string | null, formD
   revalidatePath(`/hub/pods/${slug}`);
 }
 
+/** Set the pod's pinned goal. Pod members only. */
+export async function setPodGoal(slug: string, goal: string) {
+  const { userId } = await auth();
+  if (!userId) return;
+  const pod = await getPodBySlug(slug);
+  if (!pod) return;
+  const member = await db.select({ podId: podMembers.podId }).from(podMembers)
+    .where(and(eq(podMembers.podId, pod.id), eq(podMembers.memberId, userId))).limit(1);
+  if (!member.length) return;
+  await db.update(pods).set({ goal: goal.trim().slice(0, 280) || null }).where(eq(pods.id, pod.id));
+  revalidatePath(`/hub/pods/${slug}`);
+}
+
 /** Create a new thread in a pod. Members only. */
 export async function createThread(slug: string, formData: FormData) {
   const { userId } = await auth();

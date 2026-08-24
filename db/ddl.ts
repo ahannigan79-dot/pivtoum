@@ -48,6 +48,7 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "post_attachments_post_idx" ON "post_attachments" ("post_id")`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "goal" text`,
   // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
   `INSERT INTO "pods" ("name","slug","description") VALUES
      ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),
