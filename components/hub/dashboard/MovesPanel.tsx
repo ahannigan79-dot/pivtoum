@@ -14,6 +14,10 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
   const [showShipped, setShowShipped] = useState(false);
   const ref = useRef<HTMLFormElement>(null);
 
+  // Keep the Map's prescribed moves visible until they've been committed.
+  const taken = new Set([...active, ...shipped].map((m) => m.title.trim().toLowerCase()));
+  const fresh = suggestions.filter((s) => !taken.has(s.title.trim().toLowerCase()));
+
   return (
     <section className="moves">
       <div className="moves-head">
@@ -21,10 +25,10 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
         {!adding && <button className="moves-add" onClick={() => setAdding(true)}>+ Commit to a move</button>}
       </div>
 
-      {suggestions.length > 0 && active.length === 0 && !adding && (
+      {fresh.length > 0 && !adding && (
         <div className="moves-sugg">
           <p className="sugg-lead">From your Map — turn your winning move into action:</p>
-          {suggestions.map((s, i) => (
+          {fresh.map((s, i) => (
             <button key={i} className="sugg" disabled={pending}
               onClick={() => start(() => acceptSuggestion(s.title, s.lever))}>
               <span className="sugg-plus">+</span>
@@ -51,7 +55,7 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
         </form>
       )}
 
-      {active.length === 0 && !adding && suggestions.length === 0 && (
+      {active.length === 0 && !adding && fresh.length === 0 && (
         <p className="feed-empty">No moves in flight. Commit to one — it&apos;s how the score bends.</p>
       )}
 
