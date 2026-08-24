@@ -1,0 +1,58 @@
+// AUTO-GENERATED from db/migrations/0000_init.sql. Do not edit by hand.
+// Full DDL as an ordered statement list so it can run through the app's own
+// Vercel-Postgres connection (see app/api/admin/migrate/route.ts).
+
+export const RESET_STATEMENTS: string[] = [
+  `DROP SCHEMA IF EXISTS public CASCADE`,
+  `CREATE SCHEMA public`,
+  `GRANT ALL ON SCHEMA public TO public`,
+];
+
+export const DDL_STATEMENTS: string[] = [
+  "CREATE TYPE \"public\".\"event_type\" AS ENUM('welcome_1to1', 'deep_dive', 'rescore', 'clinic', 'social')",
+  "CREATE TYPE \"public\".\"member_role\" AS ENUM('member', 'moderator', 'founder')",
+  "CREATE TABLE \"badges\" (\n\t\"key\" text PRIMARY KEY NOT NULL,\n\t\"name\" text NOT NULL,\n\t\"description\" text,\n\t\"icon\" text\n)",
+  "CREATE TABLE \"comments\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"post_id\" uuid NOT NULL,\n\t\"author_id\" text NOT NULL,\n\t\"body\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"commitments\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"lever\" text NOT NULL,\n\t\"title\" text NOT NULL,\n\t\"status\" text DEFAULT 'active' NOT NULL,\n\t\"due_at\" timestamp with time zone,\n\t\"completed_at\" timestamp with time zone,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"dm_messages\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"thread_id\" uuid NOT NULL,\n\t\"sender_id\" text NOT NULL,\n\t\"body\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"dm_thread_members\" (\n\t\"thread_id\" uuid NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"last_read_at\" timestamp with time zone,\n\tCONSTRAINT \"dm_thread_members_thread_id_member_id_pk\" PRIMARY KEY(\"thread_id\",\"member_id\")\n)",
+  "CREATE TABLE \"dm_threads\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"event_rsvps\" (\n\t\"event_id\" uuid NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"status\" text DEFAULT 'going' NOT NULL,\n\tCONSTRAINT \"event_rsvps_event_id_member_id_pk\" PRIMARY KEY(\"event_id\",\"member_id\")\n)",
+  "CREATE TABLE \"events\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"title\" text NOT NULL,\n\t\"type\" \"event_type\" DEFAULT 'deep_dive' NOT NULL,\n\t\"description\" text,\n\t\"starts_at\" timestamp with time zone NOT NULL,\n\t\"duration_mins\" integer DEFAULT 60,\n\t\"join_url\" text,\n\t\"recording_url\" text,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"lesson_progress\" (\n\t\"member_id\" text NOT NULL,\n\t\"lesson_key\" text NOT NULL,\n\t\"status\" text DEFAULT 'started' NOT NULL,\n\t\"updated_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\tCONSTRAINT \"lesson_progress_member_id_lesson_key_pk\" PRIMARY KEY(\"member_id\",\"lesson_key\")\n)",
+  "CREATE TABLE \"map_states\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"edition\" text DEFAULT 'Fall 2026' NOT NULL,\n\t\"answers\" jsonb NOT NULL,\n\t\"computed\" jsonb NOT NULL,\n\t\"overall\" real,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"member_badges\" (\n\t\"member_id\" text NOT NULL,\n\t\"badge_key\" text NOT NULL,\n\t\"earned_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\tCONSTRAINT \"member_badges_member_id_badge_key_pk\" PRIMARY KEY(\"member_id\",\"badge_key\")\n)",
+  "CREATE TABLE \"notifications\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"type\" text NOT NULL,\n\t\"payload\" jsonb,\n\t\"read_at\" timestamp with time zone,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"pod_members\" (\n\t\"pod_id\" uuid NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"joined_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\tCONSTRAINT \"pod_members_pod_id_member_id_pk\" PRIMARY KEY(\"pod_id\",\"member_id\")\n)",
+  "CREATE TABLE \"pods\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"name\" text NOT NULL,\n\t\"slug\" text NOT NULL,\n\t\"description\" text,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\tCONSTRAINT \"pods_slug_unique\" UNIQUE(\"slug\")\n)",
+  "CREATE TABLE \"posts\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"author_id\" text NOT NULL,\n\t\"pod_id\" uuid,\n\t\"body\" text NOT NULL,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n)",
+  "CREATE TABLE \"profiles\" (\n\t\"clerk_user_id\" text PRIMARY KEY NOT NULL,\n\t\"email\" text NOT NULL,\n\t\"handle\" text,\n\t\"display_name\" text,\n\t\"avatar_url\" text,\n\t\"bio\" text,\n\t\"role\" \"member_role\" DEFAULT 'member' NOT NULL,\n\t\"career_slug\" text,\n\t\"current_lane\" text,\n\t\"onboarded_at\" timestamp with time zone,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL,\n\tCONSTRAINT \"profiles_handle_unique\" UNIQUE(\"handle\")\n)",
+  "CREATE TABLE \"reactions\" (\n\t\"post_id\" uuid NOT NULL,\n\t\"member_id\" text NOT NULL,\n\t\"emoji\" text DEFAULT '👍' NOT NULL,\n\tCONSTRAINT \"reactions_post_id_member_id_emoji_pk\" PRIMARY KEY(\"post_id\",\"member_id\",\"emoji\")\n)",
+  "ALTER TABLE \"comments\" ADD CONSTRAINT \"comments_post_id_posts_id_fk\" FOREIGN KEY (\"post_id\") REFERENCES \"public\".\"posts\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"comments\" ADD CONSTRAINT \"comments_author_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"author_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"commitments\" ADD CONSTRAINT \"commitments_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"dm_messages\" ADD CONSTRAINT \"dm_messages_thread_id_dm_threads_id_fk\" FOREIGN KEY (\"thread_id\") REFERENCES \"public\".\"dm_threads\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"dm_messages\" ADD CONSTRAINT \"dm_messages_sender_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"sender_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"dm_thread_members\" ADD CONSTRAINT \"dm_thread_members_thread_id_dm_threads_id_fk\" FOREIGN KEY (\"thread_id\") REFERENCES \"public\".\"dm_threads\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"dm_thread_members\" ADD CONSTRAINT \"dm_thread_members_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"event_rsvps\" ADD CONSTRAINT \"event_rsvps_event_id_events_id_fk\" FOREIGN KEY (\"event_id\") REFERENCES \"public\".\"events\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"event_rsvps\" ADD CONSTRAINT \"event_rsvps_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"lesson_progress\" ADD CONSTRAINT \"lesson_progress_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"map_states\" ADD CONSTRAINT \"map_states_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"member_badges\" ADD CONSTRAINT \"member_badges_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"member_badges\" ADD CONSTRAINT \"member_badges_badge_key_badges_key_fk\" FOREIGN KEY (\"badge_key\") REFERENCES \"public\".\"badges\"(\"key\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"notifications\" ADD CONSTRAINT \"notifications_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"pod_members\" ADD CONSTRAINT \"pod_members_pod_id_pods_id_fk\" FOREIGN KEY (\"pod_id\") REFERENCES \"public\".\"pods\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"pod_members\" ADD CONSTRAINT \"pod_members_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"posts\" ADD CONSTRAINT \"posts_author_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"author_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"posts\" ADD CONSTRAINT \"posts_pod_id_pods_id_fk\" FOREIGN KEY (\"pod_id\") REFERENCES \"public\".\"pods\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"reactions\" ADD CONSTRAINT \"reactions_post_id_posts_id_fk\" FOREIGN KEY (\"post_id\") REFERENCES \"public\".\"posts\"(\"id\") ON DELETE cascade ON UPDATE no action",
+  "ALTER TABLE \"reactions\" ADD CONSTRAINT \"reactions_member_id_profiles_clerk_user_id_fk\" FOREIGN KEY (\"member_id\") REFERENCES \"public\".\"profiles\"(\"clerk_user_id\") ON DELETE cascade ON UPDATE no action",
+  "CREATE INDEX \"comments_post_idx\" ON \"comments\" USING btree (\"post_id\",\"created_at\")",
+  "CREATE INDEX \"commitments_member_idx\" ON \"commitments\" USING btree (\"member_id\",\"status\")",
+  "CREATE INDEX \"dm_messages_thread_idx\" ON \"dm_messages\" USING btree (\"thread_id\",\"created_at\")",
+  "CREATE INDEX \"events_when_idx\" ON \"events\" USING btree (\"starts_at\")",
+  "CREATE INDEX \"map_states_member_idx\" ON \"map_states\" USING btree (\"member_id\",\"created_at\")",
+  "CREATE INDEX \"notifications_member_idx\" ON \"notifications\" USING btree (\"member_id\",\"created_at\")",
+  "CREATE INDEX \"posts_feed_idx\" ON \"posts\" USING btree (\"pod_id\",\"created_at\")"
+];
