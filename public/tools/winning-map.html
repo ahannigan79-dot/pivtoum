@@ -896,7 +896,17 @@
       you.judg=clampP(base.judg-(((S.analytical+S.creative)/2)-50)*0.4);
     }
     var bands={}; SIGMETA.forEach(function(s){ bands[s.k]=[clampP(base[s.k]-20), clampP(base[s.k]+6)]; });
-    var overall=Math.round(laneScore*10);
+    // Exposure = the lane's Pivotum baseline (which carries the MARKET forces —
+    // automatability + the ladder — that are out of anyone's control), adjusted only
+    // by the PROTECTION factors the member can personally influence (hands-on, trust,
+    // licensing, judgment), using the scoring-model weights. The personal adjustment is
+    // capped so it can shift the picture but never overwhelm the Pivotum baseline.
+    var laneBaseline = laneScore*10;
+    var protDelta = 0.15*(you.phys-base.phys) + 0.15*(you.trust-base.trust)
+                  + 0.10*(you.lic-base.lic) + 0.10*(you.judg-base.judg);
+    var PERSONAL_CAP = 15; // personal factors may move exposure at most ±15 pts
+    protDelta = Math.max(-PERSONAL_CAP, Math.min(PERSONAL_CAP, protDelta));
+    var overall = Math.max(3, Math.min(97, Math.round(laneBaseline + protDelta)));
     var driver = you.auto>=you.ladder ? {name:'Automatability',rating:F[0]} : {name:'The Ladder',rating:F[1]};
     var prots=[{k:'trust',label:'Your relationships',v:you.trust},{k:'judg',label:'Your judgment',v:you.judg},{k:'phys',label:'Being on the ground',v:you.phys}];
     prots.sort(function(a,b){return a.v-b.v;}); var lever=prots[0];
