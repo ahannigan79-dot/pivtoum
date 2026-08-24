@@ -3,6 +3,7 @@ import type Stripe from "stripe";
 import { Resend } from "resend";
 import { getStripe } from "@/lib/stripe";
 import { upsertOrder } from "@/lib/db";
+import { syncSubscription } from "@/lib/billing";
 import { EDITION } from "@/lib/site";
 
 /** Stripe → order. Verifies the signature against the raw body, then records the order. */
@@ -21,8 +22,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid signature." }, { status: 400 });
   }
 
+  // Community membership: keep each member's subscription snapshot fresh.
+  if (event.type === "customer.subscription.created" ||
+      event.type === "customer.subscription.updated" ||
+      event.type === "customer.subscription.deleted") {
+    await syncSubscription(event.data.object as Stripe.Subscription);
+    return NextResponse.json({ received: true });
+  }
+
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
+    // A subscription checkout → link the member immediately (don't treat as a guide order).
+    if (session.mode === "subscription" && session.subscription) {
+      const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
+      try { await syncSubscription(await getStripe().subscriptions.retrieve(subId)); } catch { /* ignore */ }
+      return NextResponse.json({ received: true });
+    }
     const email = session.customer_details?.email ?? session.customer_email ?? "";
     const packSize = Number(session.metadata?.pack_size ?? 0);
     const edition = session.metadata?.edition ?? EDITION;

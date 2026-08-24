@@ -113,6 +113,11 @@ export const PATCH_STATEMENTS: string[] = [
    )`,
   `ALTER TABLE "post_reports" ADD COLUMN IF NOT EXISTS "resolved_at" timestamp with time zone`,
   `ALTER TABLE "post_reports" ADD COLUMN IF NOT EXISTS "resolved_by" text`,
+  // Membership billing — link members to their Stripe subscription.
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "stripe_customer_id" text`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "sub_status" text`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "sub_renews_at" timestamp with time zone`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "sub_plan" text`,
   // Badge catalog — credentials for real milestones. Idempotent.
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),

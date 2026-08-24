@@ -38,6 +38,10 @@ export const profiles = pgTable("profiles", {
   digestSentAt: timestamp("digest_sent_at", { withTimezone: true }),
   dmPrivacy: text("dm_privacy").notNull().default("all"), // all | pods | none — who can DM me
   showMap: boolean("show_map").notNull().default(true),   // show my exposure/map on my profile
+  stripeCustomerId: text("stripe_customer_id"),           // links this member to Stripe billing
+  subStatus: text("sub_status"),                          // active | trialing | past_due | canceled | ...
+  subRenewsAt: timestamp("sub_renews_at", { withTimezone: true }),
+  subPlan: text("sub_plan"),                              // human plan label (price/product nickname)
   createdAt: now(),
 });
 

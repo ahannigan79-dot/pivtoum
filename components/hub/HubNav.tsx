@@ -20,6 +20,9 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
     { href: "/hub/library", icon: "📁", label: "Library" },
     { href: "/hub/messages", icon: "✉️", label: "Messages" },
   ]},
+  { label: "Account", items: [
+    { href: "/hub/membership", icon: "💳", label: "Membership" },
+  ]},
 ];
 
 export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 }: {
