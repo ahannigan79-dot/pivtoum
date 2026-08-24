@@ -1,13 +1,13 @@
-import { and, asc, desc, eq, inArray, isNull, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
-import { comments, posts, profiles, reactions } from "@/db/schema";
+import { comments, postReports, posts, profiles, reactions } from "@/db/schema";
 
 export type FeedAuthor = { id: string; name: string; avatarUrl: string | null; handle: string | null; role: string };
 export type FeedComment = { id: string; body: string; createdAt: Date; author: FeedAuthor };
 export type FeedPost = {
   id: string; title: string | null; topic: string | null; body: string; createdAt: Date;
   pinned: boolean; author: FeedAuthor;
-  reactionCount: number; iReacted: boolean; comments: FeedComment[];
+  reactionCount: number; iReacted: boolean; comments: FeedComment[]; reportCount: number;
 };
 
 function author(a: typeof profiles.$inferSelect): FeedAuthor {
@@ -45,6 +45,9 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
     .where(inArray(comments.postId, ids))
     .orderBy(asc(comments.createdAt));
   const rRows = await db.select().from(reactions).where(inArray(reactions.postId, ids));
+  const repRows = await db.select({ postId: postReports.postId, n: sql<number>`count(*)::int` })
+    .from(postReports).where(inArray(postReports.postId, ids)).groupBy(postReports.postId);
+  const reportCount = new Map(repRows.map((r) => [r.postId, r.n]));
 
   const commentsByPost = new Map<string, FeedComment[]>();
   for (const { c, a } of cRows) {
@@ -63,7 +66,7 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
     id: p.id, title: p.title, topic: p.topic, body: p.body, createdAt: p.createdAt,
     pinned: p.pinned, author: author(a),
     reactionCount: reactCount.get(p.id) ?? 0, iReacted: mine.has(p.id),
-    comments: commentsByPost.get(p.id) ?? [],
+    comments: commentsByPost.get(p.id) ?? [], reportCount: reportCount.get(p.id) ?? 0,
   }));
 }
 

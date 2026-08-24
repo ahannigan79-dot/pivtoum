@@ -18,6 +18,14 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned_at" timestamp with time zone`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "career_stage" text`,
   `ALTER TABLE "pod_members" ADD COLUMN IF NOT EXISTS "auto" boolean DEFAULT false NOT NULL`,
+  `CREATE TABLE IF NOT EXISTS "post_reports" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "post_id" uuid NOT NULL REFERENCES "posts"("id") ON DELETE cascade,
+     "reporter_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "reason" text,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "post_reports_post_idx" ON "post_reports" ("post_id")`,
   // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
   `INSERT INTO "pods" ("name","slug","description") VALUES
      ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),

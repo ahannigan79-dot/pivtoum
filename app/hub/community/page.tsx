@@ -5,6 +5,7 @@ import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPICS, TOPIC_BY_SLUG, postableTopics } from "@/lib/feed-topics";
 import { Composer } from "@/components/hub/community/Composer";
 import { PostCard } from "@/components/hub/community/PostCard";
+import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 
 export const metadata = { title: "Community — Pivotum" };
 
@@ -25,6 +26,7 @@ export default async function CommunityPage({
     <>
       <div className="hub-top"><h1>Community</h1><span className="sp" /></div>
       <div className="hub-body hub-feed">
+        <ValuesBanner />
         <Composer topics={postableTopics(founder)} />
 
         <nav className="feed-tabs">
@@ -43,7 +45,7 @@ export default async function CommunityPage({
               : "Nothing here yet — be the first. Share a win, a question, or what you're working on this week."}
           </p>
         ) : (
-          feed.map((p) => <PostCard key={p.id} post={p} canPin={founder} />)
+          feed.map((p) => <PostCard key={p.id} post={p} canPin={founder} meId={userId} canModerate={founder} />)
         )}
       </div>
     </>

@@ -3,9 +3,34 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
-import { comments, posts, reactions } from "@/db/schema";
+import { comments, postReports, posts, reactions } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPIC_BY_SLUG } from "@/lib/feed-topics";
+
+function revalidateFeeds() {
+  revalidatePath("/hub/community");
+  revalidatePath("/hub/pods", "layout");
+}
+
+/** Delete a post — author or founder/moderator only. */
+export async function deletePost(postId: string) {
+  const { userId } = await auth();
+  if (!userId) return;
+  const rows = await db.select({ authorId: posts.authorId }).from(posts).where(eq(posts.id, postId)).limit(1);
+  if (!rows[0]) return;
+  const profile = await getOrCreateProfile();
+  if (rows[0].authorId !== userId && !isFounder(profile)) return;
+  await db.delete(posts).where(eq(posts.id, postId));
+  revalidateFeeds();
+}
+
+/** Report a post to the founders. */
+export async function reportPost(postId: string, reason: string) {
+  const { userId } = await auth();
+  if (!userId) return;
+  await db.insert(postReports).values({ postId, reporterId: userId, reason: reason.slice(0, 500) || null });
+  revalidateFeeds();
+}
 
 export async function createPost(formData: FormData) {
   const { userId } = await auth();

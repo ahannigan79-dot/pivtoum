@@ -5,12 +5,20 @@ import { Avatar } from "./Avatar";
 import { ReactButton } from "./ReactButton";
 import { CommentBox } from "./CommentBox";
 import { PinButton } from "./PinButton";
+import { PostMenu } from "./PostMenu";
 
 const ROLE_BADGE: Record<string, string> = { founder: "Founder", moderator: "Guide" };
 
-export function PostCard({ post, canPin = false }: { post: FeedPost; canPin?: boolean }) {
+function fullDate(d: Date) {
+  return new Date(d).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+}
+
+export function PostCard({ post, canPin = false, meId = null, canModerate = false }: {
+  post: FeedPost; canPin?: boolean; meId?: string | null; canModerate?: boolean;
+}) {
   const badge = ROLE_BADGE[post.author.role];
   const topic = topicLabel(post.topic);
+  const isOwn = meId != null && post.author.id === meId;
   return (
     <article className={"post" + (post.pinned ? " pinned" : "")}>
       {post.pinned && <div className="post-pinmark">📌 Pinned</div>}
@@ -21,12 +29,16 @@ export function PostCard({ post, canPin = false }: { post: FeedPost; canPin?: bo
             <b>{post.author.name}</b>
             {badge && <span className={"role-badge r-" + post.author.role}>{badge}</span>}
           </span>
-          <span className="post-meta">
+          <span className="post-meta" title={fullDate(post.createdAt)}>
             {timeAgo(post.createdAt)}
             {topic && <> · <span className="topic-chip">{topic}</span></>}
           </span>
         </div>
-        {canPin && <PinButton postId={post.id} pinned={post.pinned} />}
+        <div className="post-head-right">
+          {canModerate && post.reportCount > 0 && <span className="pm-flag">⚑ {post.reportCount}</span>}
+          {canPin && <PinButton postId={post.id} pinned={post.pinned} />}
+          <PostMenu postId={post.id} canDelete={isOwn || canModerate} canReport={!isOwn} />
+        </div>
       </div>
 
       {post.title && <h3 className="post-title">{post.title}</h3>}
@@ -43,7 +55,7 @@ export function PostCard({ post, canPin = false }: { post: FeedPost; canPin?: bo
             <div key={c.id} className="comment">
               <Avatar name={c.author.name} url={c.author.avatarUrl} size={26} />
               <div className="comment-body">
-                <b>{c.author.name}</b> <span className="post-meta">{timeAgo(c.createdAt)}</span>
+                <b>{c.author.name}</b> <span className="post-meta" title={fullDate(c.createdAt)}>{timeAgo(c.createdAt)}</span>
                 <p>{linkify(c.body)}</p>
               </div>
             </div>

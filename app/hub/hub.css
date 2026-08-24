@@ -503,3 +503,37 @@ a.nm:hover { color:var(--ink); }
   border-radius:20px; padding:3px 9px; }
 .mem-pod.more { color:var(--pencil); }
 .mem-card .mem-meta { align-self:flex-start; margin-top:2px; }
+
+/* ---- community values banner ---- */
+.values { display:grid; grid-template-columns:1fr 1fr; gap:16px; border:1px solid var(--rule2); border-radius:14px;
+  background:var(--panel); padding:15px 18px; margin:0 0 18px; }
+.values.pod { background:linear-gradient(180deg,rgba(127,192,138,0.06),var(--panel)); border-color:var(--green-deep); }
+.value-k { font-size:0.66rem; font-weight:800; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); }
+.value p { margin:5px 0 0; font-size:0.85rem; color:var(--soft); line-height:1.5; }
+@media (max-width:640px){ .values { grid-template-columns:1fr; gap:12px; } }
+
+/* ---- post moderation menu + report flag ---- */
+.post-head-right { margin-left:auto; display:flex; align-items:center; gap:8px; }
+.postmenu { position:relative; }
+.pm-btn { background:transparent; border:0; color:var(--pencil); font-size:1.15rem; cursor:pointer; padding:0 6px; border-radius:6px; line-height:1; }
+.pm-btn:hover { color:var(--ink); background:var(--panel2); }
+.pm-pop { position:absolute; right:0; top:26px; z-index:10; background:var(--panel2); border:1px solid var(--rule2);
+  border-radius:10px; padding:6px; min-width:180px; box-shadow:0 12px 30px rgba(0,0,0,0.45); display:flex; flex-direction:column; gap:2px; }
+.pm-pop button { text-align:left; background:transparent; border:0; color:var(--soft); font-family:var(--sans); font-size:0.86rem; padding:8px 10px; border-radius:7px; cursor:pointer; }
+.pm-pop button:hover { background:var(--panel3); color:var(--ink); }
+.pm-pop .pm-del:hover { color:var(--pen); }
+.pm-report { min-width:240px; gap:8px; }
+.pm-report textarea { width:100%; background:var(--bg2); border:1px solid var(--rule2); border-radius:8px; color:var(--ink);
+  font-family:var(--sans); font-size:0.86rem; padding:8px; outline:none; resize:vertical; }
+.pm-report-foot { display:flex; justify-content:flex-end; gap:8px; }
+.pm-report-foot button { font-weight:700; font-size:0.82rem; color:#12100a; background:var(--green); border:0; border-radius:7px; padding:7px 12px; cursor:pointer; }
+.pm-report-foot button.ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); }
+.pm-flag { font-size:0.72rem; font-weight:700; color:var(--amber); background:rgba(214,168,91,0.1); border:1px solid #7a5e2c; border-radius:20px; padding:3px 9px; white-space:nowrap; }
+
+/* ---- emoji quick-add ---- */
+.emoji-row { display:flex; gap:1px; margin-right:auto; }
+.emoji-row .emoji-btn { background:transparent; border:0; color:inherit; font-size:1.15rem; cursor:pointer; padding:3px 5px; border-radius:6px; line-height:1; }
+.emoji-row .emoji-btn:hover { background:var(--panel2); }
+
+/* pod member rows are links now */
+a.pod-member:hover span { color:var(--ink); }

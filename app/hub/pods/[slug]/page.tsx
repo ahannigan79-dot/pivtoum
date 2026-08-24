@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import { getPodFeed } from "@/lib/community";
 import { getPodBySlug, getPodMembers, isPodMember } from "@/lib/pods";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { PostCard } from "@/components/hub/community/PostCard";
 import { Avatar } from "@/components/hub/community/Avatar";
+import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 import { PodComposer } from "@/components/hub/pods/PodComposer";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 
@@ -20,16 +22,18 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
   const pod = await getPodBySlug(slug);
   if (!pod) notFound();
 
-  const [members, iAmIn, feed] = await Promise.all([
+  const [members, iAmIn, feed, profile] = await Promise.all([
     getPodMembers(pod.id),
     isPodMember(pod.id, userId),
     getPodFeed(pod.id, userId),
+    getOrCreateProfile(),
   ]);
+  const canModerate = isFounder(profile);
 
   return (
     <>
       <div className="hub-toolbar">
-        <Link href="/hub/pods" className="back">‹ Pods</Link>
+        <Link href="/hub/pods/browse" className="back">‹ Browse pods</Link>
         <span className="tt">{pod.name}</span>
       </div>
       <div className="hub-body pod-space">
@@ -43,6 +47,7 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
 
         <div className="pod-layout">
           <div className="pod-main hub-feed">
+            <ValuesBanner variant="pod" />
             {iAmIn ? (
               <PodComposer slug={pod.slug} />
             ) : (
@@ -55,7 +60,7 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
             {feed.length === 0 ? (
               <p className="feed-empty">No posts in this pod yet.{iAmIn ? " Kick it off — share what you're committing to." : ""}</p>
             ) : (
-              feed.map((p) => <PostCard key={p.id} post={p} />)
+              feed.map((p) => <PostCard key={p.id} post={p} meId={userId} canModerate={canModerate} />)
             )}
           </div>
 
@@ -64,10 +69,10 @@ export default async function PodPage({ params }: { params: Promise<{ slug: stri
               <p className="ck">{members.length} {members.length === 1 ? "member" : "members"}</p>
               <div className="pod-members">
                 {members.map((m) => (
-                  <div key={m.id} className="pod-member">
+                  <Link key={m.id} href={`/hub/members/${m.handle ?? m.id}`} className="pod-member">
                     <Avatar name={m.name} url={m.avatarUrl} size={30} />
                     <span>{m.name}</span>
-                  </div>
+                  </Link>
                 ))}
                 {members.length === 0 && <p className="muted">No members yet.</p>}
               </div>

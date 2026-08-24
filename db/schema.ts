@@ -107,6 +107,14 @@ export const reactions = pgTable("reactions", {
   emoji: text("emoji").notNull().default("👍"),
 }, (t) => ({ pk: primaryKey({ columns: [t.postId, t.memberId, t.emoji] }) }));
 
+export const postReports = pgTable("post_reports", {
+  id: uid(),
+  postId: uuid("post_id").notNull().references(() => posts.id, { onDelete: "cascade" }),
+  reporterId: memberFk("reporter_id"),
+  reason: text("reason"),
+  createdAt: now(),
+}, (t) => ({ postIdx: index("post_reports_post_idx").on(t.postId) }));
+
 /* ---------- Events (deep-dives, 1:1 welcome, re-score, clinics) ---------- */
 export const eventTypeEnum = pgEnum("event_type", ["welcome_1to1", "deep_dive", "rescore", "clinic", "social"]);
 export const events = pgTable("events", {
