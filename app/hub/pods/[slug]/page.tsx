@@ -4,6 +4,8 @@ import { auth } from "@clerk/nextjs/server";
 import { getThreadFeed } from "@/lib/community";
 import { getPodBySlug, getPodMembers, isPodMember } from "@/lib/pods";
 import { getPodThreads } from "@/lib/threads";
+import { getTrajectory } from "@/lib/trajectory";
+import { mapShareText } from "@/lib/moves";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { PostCard } from "@/components/hub/community/PostCard";
 import { Avatar } from "@/components/hub/community/Avatar";
@@ -30,13 +32,15 @@ export default async function PodPage({
   const pod = await getPodBySlug(slug);
   if (!pod) notFound();
 
-  const [members, iAmIn, profile, threads] = await Promise.all([
+  const [members, iAmIn, profile, threads, traj] = await Promise.all([
     getPodMembers(pod.id),
     isPodMember(pod.id, userId),
     getOrCreateProfile(),
     getPodThreads(pod.id),
+    getTrajectory(userId),
   ]);
   const canModerate = isFounder(profile);
+  const shareText = mapShareText(traj.computed, traj.overall);
   const active = threads.find((t) => t.slug === threadSlug) ?? threads[0];
   const feed = active ? await getThreadFeed(active.id, userId) : [];
 
@@ -61,7 +65,7 @@ export default async function PodPage({
           <div className="pod-main hub-feed">
             <ValuesBanner variant="pod" />
             {iAmIn ? (
-              <PodComposer slug={pod.slug} threadId={active?.id ?? null}
+              <PodComposer slug={pod.slug} threadId={active?.id ?? null} shareText={shareText}
                 placeholder={active ? `Post in ${active.emoji ?? ""} ${active.name}… 🎉` : undefined} />
             ) : (
               <div className="pod-locked">

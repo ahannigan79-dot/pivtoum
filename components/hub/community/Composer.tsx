@@ -5,7 +5,7 @@ import type { Topic } from "@/lib/feed-topics";
 
 const EMOJI = ["🎉", "🔥", "💪", "🙌", "👏", "✅", "🤔", "❤️"];
 
-export function Composer({ topics }: { topics: Topic[] }) {
+export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: string | null }) {
   const ref = useRef<HTMLFormElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
   const [open, setOpen] = useState(false);
@@ -15,6 +15,13 @@ export function Composer({ topics }: { topics: Topic[] }) {
     const ta = taRef.current;
     if (!ta) return;
     ta.value += e;
+    ta.focus();
+  }
+  function shareMap() {
+    const ta = taRef.current;
+    if (!ta || !shareText) return;
+    setOpen(true);
+    ta.value = shareText + (ta.value ? "\n\n" + ta.value : "\n\n");
     ta.focus();
   }
 
@@ -40,6 +47,7 @@ export function Composer({ topics }: { topics: Topic[] }) {
         <div className="composer-foot">
           <div className="emoji-row">
             {EMOJI.map((e) => <button key={e} type="button" className="emoji-btn" onClick={() => addEmoji(e)}>{e}</button>)}
+            {shareText && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
           </div>
           <button type="button" className="ghost" onClick={() => { ref.current?.reset(); setOpen(false); }}>Cancel</button>
           <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post"}</button>

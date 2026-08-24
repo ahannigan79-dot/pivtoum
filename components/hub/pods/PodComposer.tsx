@@ -4,7 +4,9 @@ import { createPodPost } from "@/app/hub/pods/actions";
 
 const EMOJI = ["🎉", "🔥", "💪", "🙌", "👏", "✅", "🤔", "❤️"];
 
-export function PodComposer({ slug, threadId, placeholder }: { slug: string; threadId: string | null; placeholder?: string }) {
+export function PodComposer({ slug, threadId, placeholder, shareText }: {
+  slug: string; threadId: string | null; placeholder?: string; shareText?: string | null;
+}) {
   const ref = useRef<HTMLFormElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
   const [pending, start] = useTransition();
@@ -13,6 +15,12 @@ export function PodComposer({ slug, threadId, placeholder }: { slug: string; thr
     const ta = taRef.current;
     if (!ta) return;
     ta.value += e;
+    ta.focus();
+  }
+  function shareMap() {
+    const ta = taRef.current;
+    if (!ta || !shareText) return;
+    ta.value = shareText + (ta.value ? "\n\n" + ta.value : "\n\n");
     ta.focus();
   }
 
@@ -27,6 +35,7 @@ export function PodComposer({ slug, threadId, placeholder }: { slug: string; thr
       <div className="composer-foot">
         <div className="emoji-row">
           {EMOJI.map((e) => <button key={e} type="button" className="emoji-btn" onClick={() => addEmoji(e)}>{e}</button>)}
+          {shareText && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
         </div>
         <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post to pod"}</button>
       </div>

@@ -1,7 +1,7 @@
 import { and, asc, desc, eq, ne } from "drizzle-orm";
 import { db } from "@/db";
 import { commitments } from "@/db/schema";
-import type { MapComputed } from "@/lib/trajectory";
+import { exposureBand, type MapComputed } from "@/lib/trajectory";
 
 /* Moves = the member's commitments against a lever. This is the actioning layer
  * of Evolve: turn the Map's winning move into concrete work, ship it, watch the
@@ -23,6 +23,20 @@ export const LEVERS: Lever[] = [
 export const LEVER_BY_SLUG: Record<string, Lever> = Object.fromEntries(LEVERS.map((l) => [l.slug, l]));
 export function leverLabel(slug: string): string {
   return LEVER_BY_SLUG[slug]?.label ?? slug;
+}
+
+/** A shareable one-tap summary of the member's Map, for posting into the feed/pods. */
+export function mapShareText(computed: MapComputed | null, overall: number | null): string | null {
+  if (!computed || overall == null) return null;
+  const band = exposureBand(overall);
+  const aim = winningAim(computed.move?.edge2, band.cls);
+  const where = [computed.career, computed.lane].filter(Boolean).join(" · ");
+  const lines = [
+    `📊 My AI Career Map${where ? " — " + where : ""}`,
+    `Exposure ${overall}/100${band.word ? ` (${band.word})` : ""}`,
+    `Aiming to: ${aim}${computed.move?.stance ? ` · strategy: ${computed.move.stance}` : ""}`,
+  ];
+  return lines.join("\n");
 }
 
 /** Plain-language goal the member is ultimately aiming for — grounded in their AI

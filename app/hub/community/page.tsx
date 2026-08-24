@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getCommunityFeed } from "@/lib/community";
+import { getTrajectory } from "@/lib/trajectory";
+import { mapShareText } from "@/lib/moves";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPICS, TOPIC_BY_SLUG, postableTopics } from "@/lib/feed-topics";
 import { Composer } from "@/components/hub/community/Composer";
@@ -20,14 +22,15 @@ export default async function CommunityPage({
 
   const profile = await getOrCreateProfile();
   const founder = isFounder(profile);
-  const feed = await getCommunityFeed(userId, activeTopic);
+  const [feed, traj] = await Promise.all([getCommunityFeed(userId, activeTopic), getTrajectory(userId)]);
+  const shareText = mapShareText(traj.computed, traj.overall);
 
   return (
     <>
       <div className="hub-top"><h1>Community</h1><span className="sp" /></div>
       <div className="hub-body hub-feed">
         <ValuesBanner />
-        <Composer topics={postableTopics(founder)} />
+        <Composer topics={postableTopics(founder)} shareText={shareText} />
 
         <nav className="feed-tabs">
           <Link href="/hub/community" className={!activeTopic ? "on" : ""}>All</Link>
