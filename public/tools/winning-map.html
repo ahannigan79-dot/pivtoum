@@ -1,0 +1,1148 @@
+<title>Your Winning Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" />
+<style>
+  :root{
+    --bg:#141209; --bg2:#17150F; --panel:#201D16; --panel2:#262219; --panel3:#2c2820;
+    --ink:#F3EFE6; --soft:#C7C0B2; --pencil:#948B7C; --rule:#34302A; --rule2:#3f3a31;
+    --green:#7FC08A; --green-bright:#8FD09A; --green-deep:#35804E;
+    --pen:#E0776C; --pen-dim:#a85a52;
+    --amber:#D6A85B; --amber-deep:#7a5e2c;
+    --me:#243021; --me-brd:#3c5a3f;
+    --serif:"Literata",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; }
+  b{ color:#fff; } em,i{ color:var(--soft); font-style:italic; }
+
+  header{ flex:none; background:rgba(20,18,9,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+  .hin{ max-width:760px; margin:0 auto; display:flex; align-items:center; gap:11px; padding:12px 20px; }
+  .mk{ width:30px; height:30px; border:2px solid var(--green); border-radius:8px; position:relative; flex:none; }
+  .mk::after{ content:""; position:absolute; inset:4px; border-radius:4px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+  .htext small{ font-weight:800; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--pencil); display:block; line-height:1; }
+  .htext .ht{ font-weight:700; font-size:1.02rem; line-height:1.2; }
+  .hin .sp{ flex:1; }
+  .hstatus{ font-size:0.72rem; color:var(--green); display:flex; align-items:center; gap:6px; }
+  .hstatus .dot{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 25%,transparent); }
+  .prog{ height:3px; background:var(--panel2); } .prog i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--green-deep),var(--green)); transition:width .5s ease; }
+
+  .scroll{ flex:1; overflow-y:auto; }
+  .chat{ max-width:760px; margin:0 auto; padding:26px 20px 40px; display:flex; flex-direction:column; gap:16px; }
+
+  .msg{ display:flex; gap:11px; max-width:100%; animation:rise .32s ease both; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+  .msg .av{ width:30px; height:30px; border:1.5px solid var(--green-deep); border-radius:8px; position:relative; flex:none; margin-top:2px; }
+  .msg .av::after{ content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.5; }
+  .bubble{ background:var(--panel); border:1px solid var(--rule); border-radius:4px 15px 15px 15px; padding:13px 16px; max-width:80%; font-size:1.02rem; }
+  .bubble.serif{ font-family:var(--serif); }
+  .bubble p{ margin:0 0 9px; } .bubble p:last-child{ margin:0; }
+  .bubble b{ color:#fff; }
+  /* questions keep the normal chat font/size — they're marked by the bubble's outline, not the type */
+  .bubble .q{ font-family:inherit; font-size:inherit; line-height:inherit; }
+  .msg.advisor .bubble:has(.q){ border-color:color-mix(in srgb,var(--green) 60%,transparent); background:color-mix(in srgb,var(--green) 7%,var(--panel)); box-shadow:0 0 0 1px color-mix(in srgb,var(--green) 22%,transparent); }
+  .msg.me{ justify-content:flex-end; }
+  .msg.me .bubble{ background:var(--me); border:1px solid var(--me-brd); border-radius:15px 15px 4px 15px; color:var(--ink); font-weight:600; }
+  .heads-note{ border-color:var(--pen-dim) !important; background:linear-gradient(180deg,#2a1c19,#211714) !important; }
+  .heads-note b{ color:#fff; }
+
+  .typing{ display:inline-flex; gap:4px; padding:15px 16px; background:var(--panel); border:1px solid var(--rule); border-radius:4px 15px 15px 15px; }
+  .typing i{ width:7px; height:7px; border-radius:50%; background:var(--pencil); animation:blink 1.2s infinite both; }
+  .typing i:nth-child(2){ animation-delay:.2s; } .typing i:nth-child(3){ animation-delay:.4s; }
+  @keyframes blink{ 0%,60%,100%{ opacity:.3; transform:translateY(0);} 30%{ opacity:1; transform:translateY(-3px);} }
+
+  /* control dock (contextual, in flow) */
+  .ctrl{ margin:2px 0 2px 41px; animation:rise .3s ease both; }
+  .ctrl.full{ margin-left:0; }
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chip{ border:1px solid var(--rule2); border-radius:100px; background:var(--panel2); color:var(--ink); padding:11px 17px; font-size:0.95rem; font-weight:600; cursor:pointer; font-family:inherit; transition:.14s; text-align:left; }
+  .chip:hover{ border-color:var(--green); background:#1f2c1e; transform:translateY(-1px); }
+  .chip.sel{ background:var(--green-deep); border-color:var(--green); color:#fff; }
+  .multiwrap .hint2{ font-size:0.8rem; color:var(--pencil); margin:10px 2px 0; }
+  .rowbtns{ display:flex; gap:10px; align-items:center; margin-top:12px; }
+  .go{ background:var(--green); color:#10140e; border:none; border-radius:11px; font-family:inherit; font-weight:800; font-size:0.95rem; padding:11px 22px; cursor:pointer; transition:.14s; }
+  .go:hover{ background:var(--green-bright); }
+  .go:disabled{ background:var(--panel3); color:var(--pencil); cursor:not-allowed; }
+  .ghost{ background:transparent; border:none; color:var(--pencil); font-family:inherit; font-size:0.86rem; cursor:pointer; }
+  .ghost:hover{ color:var(--soft); text-decoration:underline; }
+
+  .composer{ display:flex; gap:9px; }
+  .composer input{ flex:1; background:var(--panel2); border:1px solid var(--rule2); border-radius:12px; color:var(--ink); font-family:inherit; font-size:1rem; padding:12px 15px; }
+  .composer input:focus{ outline:none; border-color:var(--green); }
+  .send{ background:var(--green); color:#10140e; border:none; border-radius:12px; width:48px; font-size:1.2rem; cursor:pointer; flex:none; }
+  .send:hover{ background:var(--green-bright); }
+
+  .sliders{ border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:16px 17px; }
+  .slider{ margin:0 0 15px; } .slider:last-of-type{ margin-bottom:6px; }
+  .slider .sl{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px; }
+  .slider .sl .nm{ font-weight:700; font-size:0.92rem; } .slider .sl .vv{ font-family:var(--mono); font-size:0.78rem; color:var(--green); }
+  input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:8px; border-radius:6px; background:linear-gradient(90deg,var(--green-deep) var(--fill,40%),var(--panel3) var(--fill,40%)); outline:none; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:var(--ink); border:3px solid var(--green-deep); cursor:pointer; }
+  input[type=range]::-moz-range-thumb{ width:20px; height:20px; border-radius:50%; background:var(--ink); border:3px solid var(--green-deep); cursor:pointer; }
+  .slider .ends{ display:flex; justify-content:space-between; font-size:0.62rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--pencil); margin-top:5px; }
+
+  .recap{ border:1px solid var(--rule); border-radius:13px; overflow:hidden; margin-top:4px; }
+  .recap .rr{ display:grid; grid-template-columns:130px 1fr; gap:12px; padding:10px 15px; background:var(--panel2); border-bottom:1px solid var(--rule); font-size:0.9rem; }
+  .recap .rr:last-child{ border-bottom:none; }
+  .recap .rr .k{ font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--pencil); align-self:center; }
+  .recap .rr .v{ color:var(--ink); } .recap .rr .v em{ color:var(--pencil); }
+
+  .prodnote{ flex:none; max-width:760px; margin:0 auto; padding:0 20px 16px; width:100%; }
+  .prodnote div{ font-size:0.73rem; color:var(--pencil); background:var(--panel2); border:1px dashed var(--rule2); border-radius:9px; padding:8px 12px; }
+  .prodnote b{ color:var(--green); }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none !important; } }
+
+  /* ============ FUSED: view toggle ============ */
+  body{ display:block; height:auto; }
+  #chatView{ display:flex; flex-direction:column; height:100vh; }
+  #mapView{ display:none; }
+  #mapView.on{ display:block; }
+
+  /* ============ MAP ============ */
+  #mapView .num{ font-family:var(--mono); font-variant-numeric:tabular-nums; }
+  .topbar{ position:sticky; top:0; z-index:50; background:rgba(20,18,9,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+  .tbin{ max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:14px; padding:10px 20px; }
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; letter-spacing:0.02em; }
+  .brand .bmk{ width:22px; height:22px; border:2px solid var(--green); border-radius:5px; position:relative; flex:none; }
+  .brand .bmk::after{ content:""; position:absolute; inset:3px; border-radius:2px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+  .brand small{ font-weight:800; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--pencil); display:block; line-height:1; }
+  .brand .bt{ font-size:0.98rem; line-height:1.05; }
+  .tb-spacer{ flex:1; }
+  .tb-who{ font-size:0.76rem; color:var(--soft); text-align:right; line-height:1.25; } .tb-who b{ color:var(--ink); }
+  .tb-exp{ display:flex; align-items:center; gap:9px; padding:6px 12px; border:1px solid var(--rule2); border-radius:100px; background:var(--panel); }
+  .tb-exp .mini{ width:52px; height:7px; border-radius:5px; background:linear-gradient(90deg,#2f6b44,#7d6a3f 55%,#8f4a3f); position:relative; }
+  .tb-exp .mini i{ position:absolute; top:-3px; width:3px; height:13px; border-radius:2px; background:var(--ink); box-shadow:0 0 0 2px var(--panel); }
+  .tb-exp .v{ font-family:var(--mono); font-weight:600; font-size:0.9rem; } .tb-exp .l{ font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); }
+  .tb-rescore{ font-family:var(--mono); font-size:0.66rem; color:var(--green); letter-spacing:0.04em; text-align:right; } .tb-rescore span{ color:var(--pencil); }
+  @media (max-width:760px){ .tb-who,.tb-rescore{ display:none; } }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:22px 20px 110px; }
+  .hero{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:8px 20px; margin:8px 0 4px; }
+  .hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2.1rem,5.5vw,3rem); line-height:1; letter-spacing:-0.03em; margin:0; }
+  .hero .sub{ font-size:0.82rem; color:var(--soft); margin-top:7px; } .hero .sub b{ color:var(--ink); }
+  .mapnote{ font-size:0.75rem; color:var(--pencil); background:var(--panel2); border:1px dashed var(--rule2); border-radius:9px; padding:9px 13px; margin:14px 0 0; } .mapnote b{ color:var(--green); }
+
+  .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:20px 0 6px; }
+  .kpi{ border:1px solid var(--rule); border-radius:13px; background:linear-gradient(180deg,var(--panel2),var(--panel)); padding:14px 15px; position:relative; overflow:hidden; }
+  .kpi::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; }
+  .kpi.warn::before{ background:var(--pen); } .kpi.good::before{ background:var(--green); } .kpi.neu::before{ background:var(--pencil); }
+  .kpi .kl{ font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); }
+  .kpi .kv{ font-family:var(--mono); font-weight:600; font-size:1.9rem; line-height:1.05; margin:8px 0 2px; }
+  .kpi.warn .kv{ color:var(--pen); } .kpi.good .kv{ color:var(--green-bright); }
+  .kpi .kt{ font-size:0.78rem; color:var(--soft); } .kpi .kt b{ color:var(--ink); }
+  .kpi .kv.word{ font-family:var(--serif); font-size:1.25rem; letter-spacing:0; }
+  @media (max-width:760px){ .kpis{ grid-template-columns:1fr 1fr; } }
+
+  .panel{ border:1px solid var(--rule); border-radius:15px; background:var(--panel); margin-top:16px; overflow:hidden; }
+  .phead{ display:flex; align-items:center; gap:12px; padding:13px 17px; border-bottom:1px solid var(--rule); background:var(--panel2); }
+  .phead .pt{ font-size:0.74rem; font-weight:800; letter-spacing:0.13em; text-transform:uppercase; color:var(--green); }
+  .phead .psp{ flex:1; }
+  .pbody{ padding:17px; }
+  .sorttog{ font-family:var(--sans); font-size:0.66rem; font-weight:700; letter-spacing:0.04em; color:var(--pencil); background:transparent; border:1px solid var(--rule2); border-radius:100px; padding:5px 11px; cursor:pointer; }
+  .sorttog:hover{ color:var(--soft); border-color:var(--soft); }
+
+  .read{ background:linear-gradient(180deg,#22301f,#1b2418); border:1px solid #3a6446; border-radius:15px; padding:20px 22px; }
+  .read .rlab{ font-size:0.66rem; font-weight:800; letter-spacing:0.13em; text-transform:uppercase; color:var(--green); margin-bottom:9px; }
+  .read p{ font-family:var(--serif); font-size:1.14rem; line-height:1.5; margin:0; } .read p b{ color:var(--green-bright); }
+
+  .aimgrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px; }
+  .aim{ border:1px solid #3a6446; border-radius:14px; background:var(--panel); padding:15px 17px; }
+  .aim .al{ font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); }
+  .aim .av{ font-family:var(--serif); font-size:1.12rem; margin:7px 0 3px; } .aim .av b{ color:var(--green-bright); }
+  .move{ border:1px solid var(--rule); border-radius:14px; background:var(--panel2); padding:15px 17px; }
+  .move .al{ font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); }
+  .move p{ margin:7px 0 0; font-size:0.9rem; color:var(--soft); } .move p b{ color:var(--ink); }
+  @media (max-width:700px){ .aimgrid{ grid-template-columns:1fr; } }
+  /* winning move — the renovate/relocate mix */
+  .winpanel{ margin-top:16px; }
+  .wmstance{ font-family:var(--mono); font-size:0.74rem; font-weight:600; letter-spacing:0.02em; }
+  .wmstance.guard{ color:var(--green); } .wmstance.shift{ color:var(--amber); } .wmstance.relocate{ color:var(--pen); }
+  .wmbar{ display:flex; height:9px; border-radius:6px; overflow:hidden; margin:2px 0 13px; background:var(--panel3); }
+  .wmfill{ height:100%; transition:width .5s ease; }
+  .wmfill.e1{ background:var(--green); }
+  .wmfill.e2.guard{ background:var(--green-deep); } .wmfill.e2.shift{ background:var(--amber); } .wmfill.e2.relocate{ background:var(--pen); }
+  .wmcards{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0 0 14px; }
+  .wmc{ border:1px solid var(--rule2); border-radius:11px; padding:12px 13px; display:flex; flex-direction:column; gap:4px; }
+  .wmc .wl{ font-size:0.64rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; }
+  .wmc .ws{ font-size:0.84rem; color:var(--soft); line-height:1.35; }
+  .wmc.e1{ background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); border-color:var(--green-deep); } .wmc.e1 .wl{ color:var(--green); }
+  .wmc.e2.guard{ background:linear-gradient(180deg,rgba(127,192,138,0.07),var(--panel)); border-color:var(--green-deep); } .wmc.e2.guard .wl{ color:var(--green); }
+  .wmc.e2.shift{ background:linear-gradient(180deg,rgba(214,168,91,0.09),var(--panel)); border-color:var(--amber-deep); } .wmc.e2.shift .wl{ color:var(--amber); }
+  .wmc.e2.relocate{ background:linear-gradient(180deg,rgba(224,119,108,0.09),var(--panel)); border-color:var(--pen-dim); } .wmc.e2.relocate .wl{ color:var(--pen); }
+  .wmline{ margin:0; font-size:0.98rem; line-height:1.5; color:var(--soft); } .wmline b{ color:var(--ink); }
+
+  .sig{ border-bottom:1px solid var(--rule); } .sig:last-child{ border-bottom:none; }
+  .sigrow{ display:grid; grid-template-columns:200px 1fr 30px; gap:16px; align-items:center; padding:14px 17px; cursor:pointer; transition:background .15s; }
+  .sigrow:hover{ background:var(--panel2); } .sig.open .sigrow{ background:var(--panel2); }
+  .signame{ font-weight:700; font-size:1rem; }
+  .signame .tag{ display:block; font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-top:3px; }
+  .tag.exp{ color:var(--pen); } .tag.pro{ color:var(--green); }
+  .track{ position:relative; height:14px; border-radius:8px; background:linear-gradient(90deg,#2c5a3f,#6a5e42 55%,#7d453c); }
+  .track .band{ position:absolute; top:0; bottom:0; background:var(--band); border-left:1px dashed rgba(199,192,178,0.4); border-right:1px dashed rgba(199,192,178,0.4); }
+  .track .you{ position:absolute; top:-4px; width:5px; height:22px; border-radius:3px; background:var(--ink); box-shadow:0 0 0 3px var(--panel); transition:left .35s ease; }
+  .sig.open .track .you{ box-shadow:0 0 0 3px var(--panel2); }
+  .ends{ display:flex; justify-content:space-between; font-size:0.56rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--pencil); margin-top:7px; }
+  .caret{ justify-self:center; color:var(--pencil); font-size:0.8rem; transition:transform .2s; font-family:var(--mono); }
+  .sig.open .caret{ transform:rotate(90deg); color:var(--green); }
+  .sigdet{ max-height:0; overflow:hidden; transition:max-height .28s ease; } .sig.open .sigdet{ max-height:360px; }
+  .sigdet .in{ padding:2px 17px 18px; }
+  .sigdet .why{ font-size:0.92rem; color:var(--soft); margin:0 0 12px; } .sigdet .why b{ color:var(--ink); }
+  .mvcols{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+  .mvcol{ border:1px solid var(--rule); border-radius:10px; padding:10px 12px; background:var(--panel); }
+  .mvcol .h{ font-size:0.6rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:5px; }
+  .mvcol.up .h{ color:var(--pen); } .mvcol.down .h{ color:var(--green); }
+  .mvcol p{ margin:0; font-size:0.82rem; color:var(--soft); }
+  .action{ font-size:0.9rem; border-left:3px solid var(--green-deep); padding:8px 12px; background:var(--panel); border-radius:0 9px 9px 0; } .action b{ color:var(--green); }
+  @media (max-width:700px){ .sigrow{ grid-template-columns:1fr 26px; gap:8px 10px; } .sigrow .metric{ grid-column:1 / -1; } .mvcols{ grid-template-columns:1fr; } }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; font-size:0.7rem; color:var(--pencil); padding:12px 17px; border-top:1px solid var(--rule); background:var(--panel2); align-items:center; }
+  .legend .k{ display:inline-flex; align-items:center; gap:6px; }
+  .swatch{ width:20px; height:9px; border-radius:5px; } .swatch.band{ background:var(--band); border:1px dashed rgba(199,192,178,0.5); } .swatch.you{ width:5px; height:15px; background:var(--ink); border-radius:2px; }
+
+  .water .line{ position:relative; height:60px; margin:0 0 6px; border-radius:11px; background:linear-gradient(180deg,#1c2a22 0%,#1c2a22 46%,#22463a 46%,#173a30 100%); overflow:hidden; }
+  .water .surf{ position:absolute; left:0; right:0; top:46%; height:2px; background:var(--green); }
+  .water .rung{ position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:16px; height:16px; border-radius:50%; background:var(--ink); box-shadow:0 0 0 3px #173a30; transition:top .35s ease; }
+  .water .tag2{ position:absolute; font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .water .above{ top:8px; left:14px; color:var(--soft); } .water .below{ bottom:8px; left:14px; color:#7c8a82; } .water .surflab{ top:calc(46% - 19px); right:14px; color:var(--green); }
+  .water p.lead{ margin:0 0 14px; font-size:0.98rem; color:var(--soft); } .water p.lead b{ color:var(--ink); }
+  .ifnothing{ margin:14px 0 0; font-size:0.92rem; color:var(--soft); border-left:3px solid var(--pen); padding:8px 14px; background:var(--panel2); border-radius:0 9px 9px 0; } .ifnothing b{ color:var(--pen); }
+
+  .opintro{ font-size:0.9rem; color:var(--soft); margin:0 0 14px; } .opintro b{ color:var(--ink); }
+  .subhead{ font-size:0.72rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); margin:16px 0 10px; display:flex; align-items:center; gap:10px; } .subhead:first-child{ margin-top:0; }
+  .subhead .edge{ font-weight:700; font-size:0.6rem; letter-spacing:0.05em; padding:3px 9px; border-radius:100px; color:var(--green); border:1px solid color-mix(in srgb,var(--green) 40%,transparent); }
+  .ocards{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .op{ border:1px solid var(--rule); border-radius:12px; padding:14px 15px; background:var(--panel2); cursor:pointer; position:relative; transition:border-color .15s, background .15s, transform .1s; }
+  .op:hover{ border-color:color-mix(in srgb,var(--green) 45%,transparent); transform:translateY(-1px); }
+  .op.flagged{ border-color:var(--green); background:#1f2c1e; }
+  .op .fit{ font-size:0.58rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; } .fit.strong{ color:var(--green); } .fit.poss{ color:var(--pencil); }
+  .op h4{ margin:6px 0 4px; font-size:1rem; font-weight:700; padding-right:28px; } .op p{ margin:0; font-size:0.86rem; color:var(--soft); }
+  .op .star{ position:absolute; top:12px; right:12px; font-size:1.15rem; color:var(--pencil); line-height:1; } .op.flagged .star{ color:var(--green-bright); }
+  .op.flagged .star::before{ content:"★"; } .op .star::before{ content:"☆"; }
+  .flagnote{ font-size:0.82rem; color:var(--soft); margin-top:14px; padding:10px 14px; border-left:3px solid var(--green-deep); background:var(--panel2); border-radius:0 9px 9px 0; } .flagnote b{ color:var(--green); }
+  @media (max-width:700px){ .ocards{ grid-template-columns:1fr; } }
+
+  .spark{ display:block; } .xlab{ display:flex; justify-content:space-between; font-family:var(--mono); font-size:0.66rem; color:var(--pencil); margin-top:6px; } .xlab span:last-child{ color:var(--pen); font-weight:600; }
+  .traj p{ margin:12px 0 0; font-size:0.92rem; color:var(--soft); } .traj p b{ color:var(--ink); }
+  .deltas{ display:flex; flex-direction:column; gap:8px; margin-top:16px; }
+  .delta{ display:grid; grid-template-columns:22px 1fr; gap:12px; align-items:start; font-size:0.9rem; color:var(--soft); }
+  .delta .m{ font-family:var(--mono); font-weight:700; } .delta.up .m{ color:var(--pen); } .delta.win .m{ color:var(--green); } .delta.note .m{ color:var(--pencil); } .delta b{ color:var(--ink); }
+
+  /* tune panel */
+  .tune{ border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:15px; background:linear-gradient(180deg,#1c2620,var(--panel)); margin-top:16px; overflow:hidden; }
+  .tune .phead{ background:#1c2620; border-bottom-color:color-mix(in srgb,var(--green) 20%,transparent); }
+  .tune .tnote{ font-size:0.84rem; color:var(--soft); margin:0 0 14px; } .tune .tnote b{ color:var(--green); }
+  .tune label.tl{ display:block; font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); margin:0 0 6px; }
+  .tune select{ width:100%; background:var(--bg2); border:1px solid var(--rule2); border-radius:10px; color:var(--ink); font-family:var(--sans); font-size:0.95rem; padding:11px 13px; margin-bottom:14px; }
+  .tune .tgrid{ display:grid; grid-template-columns:1fr 1fr; gap:8px 22px; } @media (max-width:700px){ .tune .tgrid{ grid-template-columns:1fr; } }
+  .tune .thd{ font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin:6px 0 2px; grid-column:1/-1; }
+
+  /* plan */
+  .buildbar{ margin-bottom:14px; } .buildbar .kk{ font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); }
+  .badges{ display:flex; flex-wrap:wrap; gap:8px; margin:9px 0; } .badge{ font-size:0.72rem; font-weight:700; padding:5px 11px; border-radius:100px; border:1px solid var(--rule); color:var(--pencil); background:var(--panel); } .badge.on{ color:var(--green); border-color:color-mix(in srgb,var(--green) 40%,transparent); background:#1c2620; }
+  .sentiment{ font-size:0.84rem; color:var(--soft); margin:0; } .sentiment b{ color:var(--ink); }
+  .planflag{ font-size:0.84rem; color:var(--soft); margin:0 0 12px; padding:10px 13px; border-left:3px solid var(--green-deep); background:var(--panel2); border-radius:0 9px 9px 0; } .planflag b{ color:var(--green); }
+  .planprog{ font-size:0.74rem; color:var(--pencil); margin:0 0 12px; } .planprog b{ color:var(--green); font-family:var(--mono); }
+  .plan{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  .plan li{ position:relative; display:grid; grid-template-columns:26px 1fr; gap:12px; padding:13px 15px; background:var(--panel2); border:1px solid var(--rule); border-radius:11px; align-items:start; cursor:pointer; transition:.15s; }
+  .plan li:hover{ border-color:var(--rule2); }
+  .plan li .box{ width:20px; height:20px; border:2px solid var(--pencil); border-radius:6px; margin-top:2px; position:relative; transition:.15s; }
+  .plan li.done .box{ background:var(--green-deep); border-color:var(--green); }
+  .plan li.done .box::after{ content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.8rem; font-weight:800; }
+  .plan li .txt{ font-size:0.95rem; color:var(--soft); } .plan li.done .txt{ color:var(--pencil); } .plan li.done .txt b{ color:var(--soft); text-decoration:line-through; } .plan li .txt b{ color:var(--ink); }
+  .plan li .kind{ font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--pencil); display:block; margin-bottom:4px; }
+  .plan li .sub{ display:block; margin-top:3px; font-size:0.84rem; color:var(--pencil); }
+  .plan li.pin{ background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel2)); border-color:var(--green-deep); }
+  .plan li.pin .kind{ color:var(--green); }
+  .plan li.pin .box{ border-color:var(--green); }
+  .plan li.pin::after{ content:"★ start here"; position:absolute; top:11px; right:13px; font-size:0.56rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); }
+  .pod{ margin-top:12px; border:1px solid color-mix(in srgb,var(--green) 32%,transparent); border-radius:11px; padding:13px 16px; background:#1c2620; }
+  .pod .kk{ font-size:0.62rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); } .pod p{ margin:5px 0 0; font-size:0.9rem; color:var(--soft); } .pod p b{ color:var(--ink); }
+
+  /* mobile breathing room */
+  @media (max-width:560px){
+    .wrap{ padding:16px 14px 90px; }
+    .hero{ margin-bottom:2px; } .hero h1{ font-size:2rem; }
+    .mapnote{ padding:11px 13px; line-height:1.55; }
+    .kpis{ gap:9px; margin-top:16px; }
+    .kpi{ padding:13px 13px; } .kpi .kv{ font-size:1.7rem; } .kpi .kv.word{ font-size:1.06rem; line-height:1.2; } .kpi .kt{ font-size:0.75rem; line-height:1.4; }
+    .panel{ margin-top:13px; border-radius:13px; } .pbody{ padding:15px; }
+    .phead{ padding:12px 15px; }
+    .read{ padding:18px 16px; border-radius:13px; } .read p{ font-size:1.06rem; line-height:1.55; }
+    .aimgrid{ margin-top:13px; gap:10px; } .aim,.move{ padding:14px 15px; }
+    .sigrow{ padding:13px 15px; gap:6px 10px; } .signame{ font-size:0.98rem; }
+    .sigdet .in{ padding:2px 15px 16px; }
+    .legend{ padding:12px 15px; gap:10px 14px; }
+    .op{ padding:13px 14px; } .op h4{ font-size:0.98rem; }
+    .water .line{ height:56px; }
+    .tune .pbody{ padding:15px; }
+  }
+
+  footer{ margin-top:28px; padding:20px 4px 0; border-top:1px solid var(--rule); } .bound{ font-size:0.92rem; color:var(--soft); } .bound b{ color:var(--ink); } .living{ font-size:0.72rem; color:var(--pencil); margin-top:10px; }
+</style>
+
+<div id="chatView">
+<header>
+  <div class="hin">
+    <span class="mk"></span>
+    <span class="htext"><small>Pivotum</small><span class="ht">Map advisor</span></span>
+    <span class="sp"></span>
+    <span class="hstatus"><span class="dot"></span> building your Map</span>
+  </div>
+  <div class="prog"><i id="prog"></i></div>
+</header>
+
+<div class="scroll" id="scroll"><div class="chat" id="chat"></div></div>
+
+<div class="prodnote"><div><b>Illustrative intake — the Map advisor in conversation.</b> Answer the questions and hit <b>Build my Map</b> — your answers compute a real Map. Then use <b>Tune your answers</b> on the Map to change them live. Nothing is saved.</div></div>
+</div>
+
+<div id="mapView">
+  <div class="topbar"><div class="tbin">
+    <div class="brand"><span class="bmk"></span><span><small>Pivotum</small><span class="bt">Your Map</span></span></div>
+    <div class="tb-spacer"></div>
+    <div class="tb-who" id="mWho"></div>
+    <div class="tb-exp" title="Your overall exposure"><span class="l">Exp</span><span class="mini"><i id="mExpMini"></i></span><span class="v" id="mExp">0</span></div>
+    <div class="tb-rescore">REBUILDS IN<br><b class="num">172</b> <span>DAYS</span></div>
+  </div></div>
+
+  <div class="wrap">
+    <div class="hero"><div><h1>Your Map</h1><div class="sub" id="mSub"></div></div>
+      <button class="sorttog" id="backChat">← back to the chat</button>
+    </div>
+    <div class="mapnote"><b>Live from your answers.</b> Every number below is computed from what you told the advisor, against our scored career data (<code>careers.ts</code>). Scroll to <b>Tune your answers</b> at the bottom — drag a slider and watch the Map move.</div>
+
+    <div class="kpis">
+      <div class="kpi warn"><div class="kl">Overall exposure</div><div class="kv" id="kExp">0</div><div class="kt" id="kExpT"></div></div>
+      <div class="kpi warn"><div class="kl">Biggest driver</div><div class="kv word" id="kDriver"></div><div class="kt" id="kDriverT"></div></div>
+      <div class="kpi good"><div class="kl">Your best lever</div><div class="kv word" id="kLever"></div><div class="kt" id="kLeverT"></div></div>
+      <div class="kpi neu" id="kUrg"><div class="kl">Urgency to act</div><div class="kv word" id="kWindow"></div><div class="kt" id="kWindowT"></div></div>
+    </div>
+
+    <div class="read"><div class="rlab">The read · where you stand</div><p id="mRead"></p></div>
+
+    <div class="panel winpanel"><div class="phead"><span class="pt">Your winning move</span><span class="psp"></span><span class="wmstance" id="wmStance"></span></div><div class="pbody">
+      <div class="wmbar"><div class="wmfill e1" id="wmFillE1"></div><div class="wmfill e2" id="wmFillE2"></div></div>
+      <div class="wmcards">
+        <div class="wmc e1"><span class="wl">◆ Renovate</span><span class="ws">Master the machine — always on.</span></div>
+        <div class="wmc e2" id="wmC2"><span class="wl" id="wmE2L"></span><span class="ws" id="wmE2S"></span></div>
+      </div>
+      <p class="wmline" id="wmLine"></p>
+    </div></div>
+
+    <div class="aimgrid">
+      <div class="aim"><div class="al">Your stated aim</div><div class="av" id="mAim"></div><div class="ae">Captured in the chat · change it and the Map re-orients.</div></div>
+      <div class="move"><div class="al">Your move</div><p id="mMove"></p></div>
+    </div>
+
+    <div class="panel">
+      <div class="phead"><span class="pt">Your six signals</span><span class="psp"></span><button class="sorttog" id="sigSort" data-mode="field">Sort: field order</button></div>
+      <div id="mSigList"></div>
+      <div class="legend"><span class="k"><span class="swatch band"></span> your field's range (<span id="mFieldName"></span>)</span><span class="k"><span class="swatch you"></span> where <b style="color:var(--ink)">you</b> sit</span><span class="k">every read traces to your answers — no black box</span></div>
+    </div>
+
+    <div class="panel water"><div class="phead"><span class="pt">Your waterline</span></div><div class="pbody">
+      <p class="lead" id="mWaterLead"></p>
+      <div class="line"><span class="tag2 above" id="mWaterAbove"></span><span class="tag2 surflab">the waterline</span><span class="surf"></span><span class="rung" id="mRung"></span><span class="tag2 below" id="mWaterBelow"></span></div>
+      <p class="ifnothing" id="mIfNothing"></p>
+    </div></div>
+
+    <div class="panel"><div class="phead"><span class="pt">Your openings</span></div><div class="pbody">
+      <p class="opintro" id="mOpIntro"></p>
+      <div id="mOpenings"></div>
+      <div class="flagnote" id="mFlagnote"><b>Nothing flagged yet.</b> Tap the openings that appeal.</div>
+    </div></div>
+
+    <div class="panel" id="planPanel"><div class="phead"><span class="pt">Your plan</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">orients around your flags</span></div><div class="pbody">
+      <div class="buildbar"><span class="kk">Badges on your path</span><div class="badges" id="mBadges"></div><p class="sentiment" id="mSentiment"></p></div>
+      <div class="planflag" id="mPlanFlag"></div>
+      <p class="planprog">Your first moves — tick them off as you go. <b><span id="mPlanDone">0</span>/<span id="mPlanTot">3</span></b> done.</p>
+      <ul class="plan" id="mPlan"></ul>
+      <div class="pod"><span class="kk">Your accountability pod</span><p id="mPod"></p></div>
+    </div></div>
+
+    <div class="panel traj"><div class="phead"><span class="pt">Your trajectory</span></div><div class="pbody">
+      <div id="mSparkWrap"></div>
+      <div class="xlab" id="mXlab"></div>
+      <p id="mTrajText"></p>
+      <div class="deltas" id="mDeltas"></div>
+    </div></div>
+
+    <div class="tune"><div class="phead"><span class="pt">Tune your answers</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">live</span></div><div class="pbody">
+      <p class="tnote"><b>This is the point.</b> Change anything here and the whole Map above recomputes instantly — the same math the live advisor runs.</p>
+      <div id="tuneBody"></div>
+    </div></div>
+
+    <footer>
+      <p class="bound"><b>What this Map does — and doesn't.</b> It tells you <b>where you stand</b>, <b>where your openings are</b>, and <b>where to focus</b>. It doesn't do the work — that happens in the community. The plain-language read and opening write-ups here are templated; in the live product Claude writes those from these same numbers.</p>
+      <p class="living">A living map — rebuilt at every re-score. · Winning in the Age of AI, by Pivotum.</p>
+    </footer>
+  </div>
+</div>
+
+<script>
+(function(){
+  var chat=document.getElementById('chat'), scroll=document.getElementById('scroll'), prog=document.getElementById('prog');
+  var A={ path:null, role:'', careerSlug:null, lane:null, laneScore:null, laneBand:null, phase:null, tasks:{routine:60,complex:40,people:50,physical:15,manage:30}, trust:{name:35,relationships:35,accountable:35,judgment:35}, licence:null, pace:null, aim:null,
+          situation:null, study:'', direction:[], strengths:{people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}, experience:null, changing:false, changeFrom:null };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function scrollDown(){ scroll.scrollTop=scroll.scrollHeight; }
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function advisor(html, cls, cb){
+    var typing=document.createElement('div'); typing.className='msg';
+    typing.innerHTML='<span class="av"></span><span class="typing"><i></i><i></i><i></i></span>';
+    var len = html.replace(/<[^>]+>/g,'').length; // visible characters, tags stripped
+    // 1) a beat, then the typing dots appear
+    var pre = reduce?0:300;
+    setTimeout(function(){
+      chat.appendChild(typing); scrollDown();
+      // 2) the advisor "types" for a moment (scales gently with length)
+      var typingTime = reduce?60 : Math.min(1200, 380 + len*5);
+      setTimeout(function(){
+        typing.remove();
+        var m=document.createElement('div'); m.className='msg advisor';
+        m.innerHTML='<span class="av"></span><div class="bubble'+(cls?' '+cls:'')+'">'+html+'</div>';
+        chat.appendChild(m); scrollDown();
+        // 3) hold — give a human time to actually READ this before the next thing happens
+        var readPause = reduce?0 : Math.min(4200, 1100 + len*30);
+        setTimeout(function(){ if(cb) cb(); }, readPause);
+      }, typingTime);
+    }, pre);
+  }
+  function me(text){
+    var m=document.createElement('div'); m.className='msg me';
+    m.innerHTML='<div class="bubble">'+esc(text)+'</div>';
+    chat.appendChild(m); scrollDown();
+  }
+  var curCtrl=null;
+  function control(node, full){
+    if(curCtrl) curCtrl.remove();
+    var c=document.createElement('div'); c.className='ctrl'+(full?' full':''); c.appendChild(node);
+    chat.appendChild(c); scrollDown(); curCtrl=c; return c;
+  }
+  function clearCtrl(){ if(curCtrl){ curCtrl.remove(); curCtrl=null; } }
+
+  /* control builders return {node} and call done(storeVal,label) */
+  function chips(opts, done, cls){
+    var w=document.createElement('div'); w.className='chips';
+    opts.forEach(function(o){
+      var b=document.createElement('button'); b.className='chip'; b.textContent=o.label;
+      b.onclick=function(){ done(o.v,o.label); };
+      w.appendChild(b);
+    });
+    return w;
+  }
+  function multi(opts, done, opt){
+    opt=opt||{};
+    var picked=[];
+    var wrap=document.createElement('div'); wrap.className='multiwrap';
+    var w=document.createElement('div'); w.className='chips'; wrap.appendChild(w);
+    opts.forEach(function(o){
+      var b=document.createElement('button'); b.className='chip'; b.textContent=o.label;
+      b.onclick=function(){
+        if(o.solo){ picked=[o.v]; [].forEach.call(w.children,function(x){x.classList.remove('sel');}); b.classList.add('sel'); }
+        else{
+          // clicking a normal one clears any solo
+          var soloVals=opts.filter(function(x){return x.solo;}).map(function(x){return x.v;});
+          picked=picked.filter(function(v){ return soloVals.indexOf(v)<0; });
+          [].forEach.call(w.children,function(x,i){ if(opts[i].solo) x.classList.remove('sel'); });
+          var idx=picked.indexOf(o.v);
+          if(idx>=0){ picked.splice(idx,1); b.classList.remove('sel'); } else { picked.push(o.v); b.classList.add('sel'); }
+        }
+        upd();
+      };
+      w.appendChild(b);
+    });
+    var row=document.createElement('div'); row.className='rowbtns';
+    var go=document.createElement('button'); go.className='go'; go.textContent=opt.cta||'Done'; go.disabled=true;
+    row.appendChild(go); wrap.appendChild(row);
+    if(opt.hint){ var h=document.createElement('div'); h.className='hint2'; h.textContent=opt.hint; wrap.insertBefore(h,row); }
+    function upd(){ go.disabled = picked.length < (opt.min||1); }
+    go.onclick=function(){
+      var labels=picked.map(function(v){ var o=opts.filter(function(x){return x.v===v;})[0]; return o?o.label:v; });
+      done(picked, labels.join(' · '));
+    };
+    return wrap;
+  }
+  function textInput(placeholder, done){
+    var w=document.createElement('div'); w.className='composer';
+    var inp=document.createElement('input'); inp.type='text'; inp.placeholder=placeholder;
+    var s=document.createElement('button'); s.className='send'; s.innerHTML='&uarr;';
+    function submit(){ var v=inp.value.trim(); if(v.length<1) return; done(v,v); }
+    s.onclick=submit; inp.addEventListener('keydown',function(e){ if(e.key==='Enter') submit(); });
+    w.appendChild(inp); w.appendChild(s);
+    setTimeout(function(){ inp.focus(); },50);
+    return w;
+  }
+  function label01(v){ return v<20?'little':v<45?'some':v<70?'a lot':'most of it'; }
+  function strengthLabel(v){ return v<25?'not really':v<50?'a bit':v<75?'pretty good':'a strength'; }
+  // generic slider group: defs = [[key,name,loLabel,hiLabel],…], store = state object, done(store, summaryText), labelFn optional
+  function sliderGroup(defs, store, cta, summarize, done, labelFn){
+    var lf=labelFn||label01;
+    var wrap=document.createElement('div');
+    var box=document.createElement('div'); box.className='sliders';
+    defs.forEach(function(d){
+      var v=store[d[0]];
+      var s=document.createElement('div'); s.className='slider';
+      s.innerHTML='<div class="sl"><span class="nm">'+d[1]+'</span><span class="vv">'+lf(v)+'</span></div>'
+        +'<input type="range" min="0" max="100" value="'+v+'" style="--fill:'+v+'%">'
+        +'<div class="ends"><span>'+d[2]+'</span><span>'+d[3]+'</span></div>';
+      var r=s.querySelector('input'), vv=s.querySelector('.vv');
+      r.addEventListener('input',function(){ store[d[0]]=+r.value; r.style.setProperty('--fill',r.value+'%'); vv.textContent=lf(+r.value); });
+      box.appendChild(s);
+    });
+    wrap.appendChild(box);
+    var row=document.createElement('div'); row.className='rowbtns'; row.style.marginTop='12px';
+    var go=document.createElement('button'); go.className='go'; go.textContent=cta;
+    go.onclick=function(){ done(store, summarize(store)); };
+    row.appendChild(go); wrap.appendChild(row);
+    return wrap;
+  }
+  function sliders(done){
+    return sliderGroup(
+      [['routine','Routine analysis & processing','little','most of it'],
+       ['complex','Complex, novel decisions','rare','constant'],
+       ['people','Relationships & stakeholders','little','central'],
+       ['physical','Hands-on / physical / on-site','none','core'],
+       ['manage','Managing & directing people','none','core']],
+      A.tasks, "That’s about right →",
+      function(t){ return 'Routine '+label01(t.routine)+' · complex '+label01(t.complex)+' · relationships '+label01(t.people); },
+      done);
+  }
+  function trustSliders(done){
+    return sliderGroup(
+      [['name','People come to you by name','rarely','all the time'],
+       ['relationships','You own key relationships','none','they’re yours'],
+       ['accountable','You’re accountable when it matters','not really','the buck stops with you'],
+       ['judgment','Others lean on your judgment','little','constantly']],
+      A.trust, "That’s about right →",
+      function(t){ return 'By name '+label01(t.name)+' · relationships '+label01(t.relationships)+' · accountable '+label01(t.accountable); },
+      done);
+  }
+
+  /* ---------------- conversation ---------------- */
+  var STEP=0;
+  function setProg(n){ var t=A.path==='ent'?8:10; prog.style.width=Math.round(n/t*100)+'%'; }
+
+  function start(){
+    advisor("Hey — good to meet you. I’m going to help you build your <b>Winning in the Age of AI Map</b> — a clear read on where AI leaves your work standing, and where your best openings are.", null, function(){
+      advisor("I’ll just ask you a handful of things — takes a couple of minutes, and nothing’s set in stone. You can change any of it later.", null, function(){
+        advisor("<span class=\"q\">So, first up — where are you on your career journey?</span>", null, function(){
+          control(chips([
+            {v:'inc',label:'I’m in a role now'},
+            {v:'ent',label:'I’m just entering — student or new grad'}
+          ], function(v,l){ A.path=v; me(l); clearCtrl(); STEP=1; setProg(1); v==='inc'?incRole():entSituation(); }));
+        });
+      });
+    });
+  }
+
+  /* ---------- INCUMBENT ---------- */
+  function incRole(){
+    advisor("<span class=\"q\">Nice — so what’s your role? Your job title, or just what you actually do.</span>", null, function(){
+      control(textInput('e.g. Accountant · UX designer · Registered nurse', function(v,l){ A.role=v; me(l); clearCtrl(); STEP=2; setProg(2);
+        var c=resolveTypedCareer(v);
+        if(c){ A.careerSlug=c.slug;
+          advisor("Cool. Here’s the thing, though — a job title’s a pretty blunt label. Two people with the same one can be doing completely different work.", null, incLane);
+        } else {
+          advisor("Cool. Job titles are broad, though — let me make sure I’m scoring the right field.", null, incFieldPick);
+        }
+      }), true);
+    });
+  }
+  // Real tracks from data/careers.ts (Marketing, Fall 2026). The lane the member
+  // picks selects one of these scored tracks — the same object the live engine reads.
+  var MK = { field:'Marketing', lo:5.5, hi:8.2, tracks:[
+    { name:'Brand strategy / marketing leadership', score:5.5, band:'moderate' },
+    { name:'Marketing science / analytics',        score:6.2, band:'mod-high' },
+    { name:'Product marketing',                     score:6.5, band:'mod-high' },
+    { name:'Campaign management',                   score:7.2, band:'high' },
+    { name:'Content & social execution',            score:8.2, band:'high' }
+  ]};
+  function bandWord(b){ return {moderate:'moderate','mod-high':'moderate-to-high',high:'high','low-mod':'low-to-moderate',low:'low','very-low':'very low'}[b]||b; }
+
+  function incFieldPick(){
+    advisor("<span class=\"q\">Which of these is your field closest to?</span>", null, function(){
+      var opts=FIELDS.map(function(f){ return {v:f, label:f}; });
+      control(chips(opts, function(v,l){ var c=findCareer(v); A.careerSlug=c?c.slug:'marketing'; me(l); clearCtrl();
+        advisor("Got it — I’ll score "+v.toLowerCase()+".", null, incLane);
+      }));
+    });
+  }
+  function incLane(){
+    var c=curCareer();
+    advisor("So — "+c.name.toLowerCase()+" isn’t really one job. It’s a handful of pretty different lanes, and they score differently.", null, function(){
+     advisor("<span class=\"q\">Which of these is closest to how you actually spend your days?</span>", null, function(){
+      advisor("Just pick the nearest one — we’ll fine-tune it in a moment.", null, function(){
+        var lo=Math.min.apply(null,c.tracks.map(function(t){return t.s;})), hi=Math.max.apply(null,c.tracks.map(function(t){return t.s;}));
+        var opts = c.tracks.map(function(t){ return {v:t.n, label:t.n}; });
+        opts.push({v:'__mix', label:'A mix / not one lane'});
+        control(chips(opts, function(v,l){ me(l); clearCtrl(); STEP=3; setProg(3);
+          if(v==='__mix'){
+            A.lane='General '+c.name.toLowerCase(); A.laneScore=null; A.laneBand='range';
+            advisor("No worries — I’ll take the general read for now, and we’ll pin down exactly where you sit with the next few questions.", null, incPhase);
+          } else {
+            var t = c.tracks.filter(function(x){ return x.n===v; })[0];
+            A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b;
+            advisor("Right — "+t.n.toLowerCase()+", got it. That’s a distinct corner of "+c.name.toLowerCase()+", and it reads quite differently from the rest. I’ll show you exactly where it lands on your Map.", null, incPhase);
+          }
+        }));
+      });
+     });
+    });
+  }
+  function incPhase(){
+    advisor("<span class=\"q\">And how long have you been doing this kind of work?</span>", null, function(){
+      control(chips([
+        {v:'Establishing',label:'Just starting out'},
+        {v:'Advancing',label:'A few years — building seniority'},
+        {v:'Leading',label:'Senior — running things'}
+      ], function(v,l){ A.phase=v; me(l); clearCtrl(); STEP=4; setProg(4);
+        var pa={Establishing:"Early days, then — honestly, that’s the best time to be thinking about this.",Advancing:"Right in the thick of it — which is exactly when this matters most.",Leading:"Senior — so you’ve got real judgment and standing to lean on. That counts for a lot."}[v];
+        advisor(pa, null, incTasks); }));
+    });
+  }
+  function incTasks(){
+    advisor("<span class=\"q\">Okay, the big one — how does a normal week actually break down for you?</span>", null, function(){
+      advisor("Just drag each one to what feels true. This is the bit that makes it about <b>you</b>, not your job title.", null, function(){
+        control(sliders(function(t,l){ me(l); clearCtrl(); STEP=5; setProg(5);
+          advisor("Perfect — that tells me a lot. Now I actually know where <b>you</b> sit, not just the average for your role.", null, incTrust);
+        }), true);
+      });
+    });
+  }
+  function incTrust(){
+    advisor("<span class=\"q\">When something important’s on the line at work, who’s actually relying on <i>you</i> — personally?</span>", null, function(){
+      advisor("Slide each to how true it is — a lot, or a little. This is the stuff AI can’t easily take from you.", null, function(){
+        control(trustSliders(function(t,l){ me(l); clearCtrl(); STEP=6; setProg(6);
+          var hi = Math.max(t.name,t.relationships,t.accountable,t.judgment);
+          var warm = hi<40
+            ? "Fair enough — sounds like your work’s fairly behind-the-scenes. We’ll lean on your other strengths, then."
+            : "That’s real cover, actually. When people rely on you like that, you’re a lot harder to replace.";
+          advisor(warm, null, incLicence);
+        }), true);
+      });
+    });
+  }
+  function incLicence(){
+    advisor("<span class=\"q\">Does your job need a licence, or some kind of formal sign-off?</span>", null, function(){
+      control(chips([
+        {v:'no',label:'No — open profession'},
+        {v:'some',label:'Some regulated bits'},
+        {v:'yes',label:'Yes — licensed / chartered'}
+      ], function(v,l){ A.licence=v; me(l); clearCtrl(); STEP=7; setProg(7);
+        var la=v==='no'?"Right, no licence — so there’s nothing legal protecting the role. We’ll lean on your other strengths.":"That helps — a licence is real protection, the kind AI can’t just get around.";
+        advisor(la, null, incPace); }));
+    });
+  }
+  function incPace(){
+    advisor("<span class=\"q\">And how fast is where you work actually moving on AI?</span>", null, function(){
+      advisor("No wrong answer here — a slower employer just buys you a bit more time, that’s all.", null, function(){
+        control(chips([
+          {v:'behind',label:'Behind — barely started'},
+          {v:'mid',label:'Somewhere in the middle'},
+          {v:'fast',label:'Fast — reshaping workflows'}
+        ], function(v,l){ A.pace=v; me(l); clearCtrl(); STEP=8; setProg(8); incAim(); }));
+      });
+    });
+  }
+  function incAim(){
+    advisor("<span class=\"q\">Last one — what do you actually want out of this?</span>", null, function(){
+      control(chips([
+        {v:'defend',label:'Defend & future-proof this role'},
+        {v:'promote',label:'Get promoted / level up'},
+        {v:'change',label:'Change field or career'},
+        {v:'unsure',label:'Not sure yet — show me my options'}
+      ], function(v,l){ A.aim=v; me(l); clearCtrl(); STEP=9; setProg(9);
+        if(v==='change'){ advisor("A move — nice. Let me show you the lanes you could step into.", null, incTargetPick); }
+        else { advisor("Got it. You’ll see all your options either way — this just tells me where to start.", null, incRecap); }
+      }));
+    });
+  }
+  function incTargetPick(){
+    var c=curCareer();
+    var others=c.tracks.filter(function(t){ return t.n!==A.lane; }).sort(function(a,b){ return a.s-b.s; });
+    advisor("<span class=\"q\">Which lane would you want to move toward?</span>", null, function(){
+      advisor("These are the other lanes in "+c.name.toLowerCase()+", listed roughly safest-first. Your Map will rebuild around the one you pick.", null, function(){
+        var opts=others.map(function(t,i){ return {v:String(i), label:t.n}; });
+        opts.push({v:'__stay', label:'Actually — keep my current lane'});
+        control(chips(opts, function(v,l){
+          if(v==='__stay'){ A.changing=false; me('Keep my current lane'); clearCtrl(); advisor("No problem — I’ll keep you where you are and show the moves from there.", null, incRecap); return; }
+          var t=others[+v]; A.changing=true; A.changeFrom=A.lane; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; me('Move toward '+t.n); clearCtrl();
+          advisor("Good move — "+t.n.toLowerCase()+", a more protected lane than where you are now. I’ll build your Map and openings around getting there.", null, incRecap);
+        }));
+      });
+    });
+  }
+  function incRecap(){
+    var t=A.tasks;
+    var aimT={defend:'Defend & future-proof this role',promote:'Get promoted / level up',change:'Change field or career',unsure:'Not sure — show options'}[A.aim];
+    var licT={no:'Open profession',some:'Some regulated duties',yes:'Licensed'}[A.licence];
+    var laneV = A.lane ? (esc(A.lane) + (A.laneScore==null ? ' · <em>general profile</em>' : '')) : '—';
+    var rows=[['Role',esc(A.role)],['Scored lane',laneV],['Phase',A.phase],['Your week','Routine '+label01(t.routine)+' · complex '+label01(t.complex)+' · relationships '+label01(t.people)+' · hands-on '+label01(t.physical)],
+      ['People rely on you',(function(t){var h=Math.max(t.name,t.relationships,t.accountable,t.judgment);return h<25?'lightly':h<45?'somewhat':'strongly';})(A.trust)],['Licensing',licT],['Employer pace',A.pace],['You want',aimT]];
+    advisor("Okay — here’s what I’ve got. Does this look right to you?", null, function(){
+      var wrap=document.createElement('div');
+      var r=document.createElement('div'); r.className='recap';
+      r.innerHTML=rows.map(function(x){ return '<div class="rr"><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>'; }).join('');
+      wrap.appendChild(r);
+      var row=document.createElement('div'); row.className='rowbtns';
+      var go=document.createElement('button'); go.className='go'; go.textContent='Build my Map →'; go.onclick=finishInc;
+      var again=document.createElement('button'); again.className='ghost'; again.textContent='Start over'; again.onclick=restart;
+      row.appendChild(go); row.appendChild(again); wrap.appendChild(row);
+      control(wrap, true);
+    });
+  }
+  function finishInc(){ clearCtrl(); setProg(10); me('Build my Map →');
+    advisor("Perfect. Give me a second — putting your Map together now…", null, function(){ buildMap(); });
+  }
+
+  /* ---------- ENTERING ---------- */
+  function entSituation(){
+    advisor("Honestly — this is the best possible time to be thinking about it.", null, function(){
+     advisor("<span class=\"q\">So — still studying, just graduated, or moving into something new?</span>", null, function(){
+      control(chips([
+        {v:'student',label:'Still studying'},
+        {v:'grad',label:'Recent grad — first role hunt'},
+        {v:'changer',label:'New to a field'}
+      ], function(v,l){ A.situation=v; me(l); clearCtrl(); STEP=2; setProg(2);
+        advisor("I’ll be straight with you — <b>entry-level roles are where AI’s biting hardest right now</b>. The junior rungs tend to go first.", 'heads-note', function(){
+          advisor("But that’s actually your edge. You get to start <b>AI-native from day one</b>, with none of the old habits to unlearn. I’ll show you the ways in that genuinely work.", null, entField);
+        });
+      }));
+     });
+    });
+  }
+  // Real career fields from careers.ts (the 28 we score). Picking one = your target;
+  // picking several = you're weighing them and we compare the entries side by side.
+  var FIELDS = ['Accounting','Agriculture','Allied health','Architecture','Business','Construction',
+    'Cybersecurity','Data science','Dentistry','Design','Engineering','Finance','Hospitality',
+    'Journalism','Law','Life sciences','Marketing','Medicine','Nursing','Pharmacy','Psychology',
+    'Social work','Teaching','Trades','Translation','Transport','Veterinary','Computer science'];
+  function entField(){
+    advisor("<span class=\"q\">So which field are you heading into?</span>", null, function(){
+      advisor("Pick the one you’re set on — or a few, if you’re still deciding.", null, function(){
+        var opts = FIELDS.map(function(f){ return {v:f, label:f}; });
+        opts.push({v:'__open', label:'Not sure yet — I’m open', solo:true});
+        control(multi(opts, function(v,l){ A.direction=v; A.directionLabel=l; me(l); clearCtrl(); STEP=3; setProg(3);
+          var ack;
+          if(v.indexOf('__open')>=0){ A.directionLabel='exploring'; ack="No worries — let me show you the most protected ways in across a range of fields."; }
+          else if(v.length===1){ ack="Nice — let me show you the most durable lanes in "+l.toLowerCase()+", and you can pick the one that appeals."; }
+          else { ack="Good — let me line up the most protected lanes across those, so you can choose which pulls at you."; }
+          advisor(ack, null, entLanePick);
+        }, {min:1, cta:'That’s my field'}));
+      });
+    });
+  }
+  // winnable-lane pick: the most protected lanes across the chosen field(s), member chooses their target
+  function entLanePick(){
+    var careers = (A.direction.indexOf('__open')>=0 || !A.direction.length) ? CAREERS.slice()
+      : A.direction.map(function(f){ return findCareer(f); }).filter(Boolean);
+    var lanes=[];
+    careers.forEach(function(c){ c.tracks.forEach(function(t){ lanes.push({c:c, n:t.n, s:t.s, b:t.b}); }); });
+    lanes.sort(function(a,b){ return a.s-b.s; });
+    var many = (A.direction.indexOf('__open')>=0 || A.direction.length>1);
+    var top = lanes.slice(0, many?7:5);
+    advisor("<span class=\"q\">Here are some of the safer, more durable ways in — the lanes AI is least likely to take. Which appeals most?</span>", null, function(){
+      advisor("These are the better-protected corners of the field. Pick the one that pulls at you, and your Map builds around getting in there.", null, function(){
+        var opts=top.map(function(l,i){ return {v:String(i), label: l.n+(many?' · '+l.c.name:'') }; });
+        control(chips(opts, function(v,l){
+          var pk=top[+v]; A.careerSlug=pk.c.slug; A.lane=pk.n; A.laneScore=pk.s; A.laneBand=pk.b; me(pk.n); clearCtrl(); STEP=4; setProg(4);
+          advisor("Nice — "+pk.n.toLowerCase()+" it is. That’s one of the more protected corners of "+pk.c.name.toLowerCase()+". I’ll build your Map around getting in there AI-native.", null, entStrengths);
+        }));
+      });
+    });
+  }
+  function entStrengths(){
+    advisor("<span class=\"q\">What do you feel you’re good at?</span>", null, function(){
+      advisor("Slide each to how strong you are — this is how I match the openings to <b>your</b> grain, not just the field average.", null, function(){
+        control(sliderGroup(
+          [['people','People & communication','not really','a strength'],
+           ['care','Care &amp; empathy','not really','a strength'],
+           ['handson','Hands-on / practical','not really','a strength'],
+           ['creative','Creative / original','not really','a strength'],
+           ['analytical','Analytical / problem-solving','not really','a strength'],
+           ['persuasion','Persuasion / influence','not really','a strength']],
+          A.strengths, "That’s me →",
+          function(s){ var ks=Object.keys(s).sort(function(a,b){return s[b]-s[a];}); var nm={people:'people',care:'empathy',handson:'hands-on',creative:'creative',analytical:'analytical',persuasion:'persuasion'}; return 'Strongest: '+nm[ks[0]]+' &amp; '+nm[ks[1]]; },
+          function(store,l){ me(l.replace(/&amp;/g,'&')); clearCtrl(); STEP=5; setProg(5);
+            advisor("Great — I’ll lean your openings toward where you’re strongest.", null, entExp);
+          }, strengthLabel), true);
+      });
+    });
+  }
+  function entExp(){
+    advisor("<span class=\"q\">Any real-world experience under your belt yet? Internships, projects, part-time jobs — it all counts.</span>", null, function(){
+      control(chips([
+        {v:'none',label:'None yet'},{v:'some',label:'A bit — projects / internships'},{v:'solid',label:'Solid — real work behind me'}
+      ], function(v,l){ A.experience=v; me(l); clearCtrl(); STEP=6; setProg(6); entAim(); }));
+    });
+  }
+  function entAim(){
+    advisor("<span class=\"q\">And right now, what would winning actually look like for you?</span>", null, function(){
+      control(chips([
+        {v:'firstrole',label:'Land a strong first role'},
+        {v:'native',label:'Start AI-native from day one'},
+        {v:'protected',label:'Find a protected / human path'},
+        {v:'explore',label:'Still exploring — help me choose'}
+      ], function(v,l){ A.aim=v; me(l); clearCtrl(); STEP=7; setProg(7);
+        advisor("Love that. You’ll see all the options either way — this just tells me where to start.", null, entRecap);
+      }));
+    });
+  }
+  function entRecap(){
+    var sitT={student:'Still studying',grad:'Recent grad',changer:'New to a field'}[A.situation];
+    var expT={none:'None yet',some:'A bit',solid:'Solid'}[A.experience];
+    var aimT={firstrole:'Land a strong first role',native:'Start AI-native',protected:'Protected / human path',explore:'Still exploring'}[A.aim];
+    var fieldV = (A.directionLabel==='exploring') ? '<em>exploring — open</em>' : esc(A.directionLabel||'—');
+    var st=A.strengths, ks=Object.keys(st).sort(function(a,b){return st[b]-st[a];}), nm={people:'People',care:'Empathy',handson:'Hands-on',creative:'Creative',analytical:'Analytical',persuasion:'Persuasion'};
+    var laneV = A.lane ? esc(A.lane) : '—';
+    var rows=[['Situation',sitT],['Fields',fieldV],['Target lane',laneV],['Strongest',nm[ks[0]]+' · '+nm[ks[1]]],['Experience',expT],['Winning is',aimT]];
+    advisor("Okay — here’s what I’ve got. Does this look right to you?", null, function(){
+      var wrap=document.createElement('div');
+      var r=document.createElement('div'); r.className='recap';
+      r.innerHTML=rows.map(function(x){ return '<div class="rr"><span class="k">'+x[0]+'</span><span class="v">'+x[1]+'</span></div>'; }).join('');
+      wrap.appendChild(r);
+      var row=document.createElement('div'); row.className='rowbtns';
+      var go=document.createElement('button'); go.className='go'; go.textContent='Build my Map →'; go.onclick=finishEnt;
+      var again=document.createElement('button'); again.className='ghost'; again.textContent='Start over'; again.onclick=restart;
+      row.appendChild(go); row.appendChild(again); wrap.appendChild(row);
+      control(wrap, true);
+    });
+  }
+  function finishEnt(){ clearCtrl(); setProg(8); me('Build my Map →');
+    advisor("Perfect — putting your Map together now. I’ll show you where the field stands, and the smartest ways in…", null, function(){ buildMap(); });
+  }
+
+  /* ================= ENGINE: intake answers → Map ================= */
+  var CAREERS = [{"slug":"accounting","name":"Accounting","head":5.2,"f":[7.3,4,1.5,7.5,9,7],"tracks":[{"n":"Audit / CPA advisory","s":5.2,"b":"moderate","tr":[4.4,4.8,5.2],"auto":7.9,"ladder":4,"phys":1.5,"trust":8.5,"lic":9.5,"judg":7},{"n":"Tax advisory (complex)","s":5.6,"b":"moderate","tr":[4.8,5.2,5.6],"auto":8.5,"ladder":4.4,"phys":1.5,"trust":8,"lic":9,"judg":7},{"n":"Management accounting / controller","s":6.3,"b":"mod-high","tr":[5.5,6,6.3],"auto":8,"ladder":5.5,"phys":1.5,"trust":7,"lic":4,"judg":6.5},{"n":"Routine tax preparation","s":7,"b":"high","tr":[6.1,6.6,7],"auto":9.1,"ladder":6.5,"phys":1.5,"trust":5.5,"lic":6.5,"judg":4.5},{"n":"Bookkeeping / transactional","s":7.9,"b":"high","tr":[6.8,7.4,7.9],"auto":9.2,"ladder":7.8,"phys":1.5,"trust":4,"lic":3,"judg":3.5}]},{"slug":"agriculture","name":"Agriculture","head":4,"f":[6,2.5,9,6,4,8.5],"tracks":[{"n":"Farm management / mixed farming","s":4,"b":"low-mod","tr":[3.3,3.7,4],"auto":6.5,"ladder":2.5,"phys":9.3,"trust":6,"lic":5,"judg":8.5},{"n":"Horticulture / landscaping","s":4,"b":"low-mod","tr":[3.5,3.8,4],"auto":5.7,"ladder":2.2,"phys":9.5,"trust":7,"lic":6,"judg":8.5},{"n":"Conservation / field ecology","s":4.7,"b":"moderate","tr":[4,4.4,4.7],"auto":6,"ladder":2.5,"phys":9.3,"trust":6.5,"lic":4.5,"judg":8.5},{"n":"Environmental consultancy","s":5.2,"b":"moderate","tr":[4.7,5,5.2],"auto":7.2,"ladder":3.2,"phys":7.5,"trust":6.5,"lic":5,"judg":8},{"n":"Controlled environment agriculture","s":5.8,"b":"moderate","tr":[5.2,5.5,5.8],"auto":8.3,"ladder":4,"phys":5.5,"trust":6.5,"lic":6,"judg":7},{"n":"Precision agriculture / agtech","s":6.2,"b":"mod-high","tr":[5.6,5.9,6.2],"auto":7.4,"ladder":5,"phys":2.5,"trust":5.5,"lic":3.5,"judg":6}]},{"slug":"allied-health","name":"Allied Health","head":2.5,"f":[4.9,2,9.5,9,9,8.5],"tracks":[{"n":"Physical therapy (hands-on)","s":2.5,"b":"very-low","tr":[2,2.2,2.5],"auto":5.2,"ladder":1.8,"phys":9.5,"trust":9.3,"lic":9.3,"judg":8.5},{"n":"Occupational therapy","s":2.6,"b":"very-low","tr":[2.1,2.3,2.6],"auto":5.5,"ladder":1.8,"phys":9.4,"trust":9.3,"lic":9.3,"judg":8.5},{"n":"Speech-language pathology","s":3.1,"b":"low","tr":[2.6,2.8,3.1],"auto":6.4,"ladder":2,"phys":8.5,"trust":9.3,"lic":9.3,"judg":8.5},{"n":"Respiratory therapy","s":3.1,"b":"low","tr":[2.6,2.8,3.1],"auto":6.3,"ladder":2,"phys":8.8,"trust":9,"lic":9.3,"judg":8.2},{"n":"Diagnostic imaging technologist","s":4.4,"b":"low-mod","tr":[3.5,4,4.4],"auto":7,"ladder":3.4,"phys":7.5,"trust":7,"lic":8.5,"judg":5.5},{"n":"Records / screen-based allied roles","s":6.1,"b":"mod-high","tr":[5.1,5.6,6.1],"auto":7.1,"ladder":5.5,"phys":1.5,"trust":5.5,"lic":7,"judg":4.5}]},{"slug":"architecture","name":"Architecture","head":5,"f":[8,4.5,5,7.5,8.5,7.5],"tracks":[{"n":"Construction administration / site","s":4.7,"b":"moderate","tr":[4,4.3,4.7],"auto":9.1,"ladder":3.8,"phys":7.5,"trust":8.5,"lic":8.5,"judg":8},{"n":"Licensed architect / design lead","s":5,"b":"moderate","tr":[4.3,4.6,5],"auto":9.4,"ladder":4,"phys":6.5,"trust":8.5,"lic":8.5,"judg":8},{"n":"Specialist (sustainability, computational)","s":5.5,"b":"moderate","tr":[4.8,5.2,5.5],"auto":9.8,"ladder":4.2,"phys":5,"trust":8,"lic":8,"judg":8},{"n":"Technical / BIM coordination","s":6.7,"b":"mod-high","tr":[5.8,6.3,6.7],"auto":8.9,"ladder":5.5,"phys":2.5,"trust":5.5,"lic":5.5,"judg":5},{"n":"Production drafting","s":7.6,"b":"high","tr":[6.1,7,7.6],"auto":9.7,"ladder":7.2,"phys":2,"trust":4.5,"lic":5,"judg":4}]},{"slug":"business","name":"Business & Management","head":7.6,"f":[8.5,7.5,1.5,4.5,1.5,4.5],"tracks":[{"n":"General management / P&L ownership","s":4.9,"b":"moderate","tr":[4.2,4.5,4.9],"auto":5.7,"ladder":3.8,"phys":2.5,"trust":8.5,"lic":2,"judg":8},{"n":"Supply chain & operations","s":5,"b":"moderate","tr":[4.3,4.6,5],"auto":5.7,"ladder":4,"phys":3.5,"trust":7.5,"lic":2,"judg":7.5},{"n":"HR / people","s":5.3,"b":"moderate","tr":[4.7,5,5.3],"auto":5.4,"ladder":4.8,"phys":1.5,"trust":7.5,"lic":2.5,"judg":7},{"n":"Project management","s":6.1,"b":"mod-high","tr":[5.3,5.7,6.1],"auto":5.8,"ladder":6.2,"phys":1.5,"trust":6,"lic":1.5,"judg":6},{"n":"Business analyst / coordinator","s":7.6,"b":"high","tr":[6.2,7,7.6],"auto":8.5,"ladder":7.5,"phys":1.5,"trust":4.5,"lic":1.5,"judg":4.5}]},{"slug":"construction","name":"Construction","head":3.3,"f":[5.5,2.5,9,8,6,8.5],"tracks":[{"n":"Site superintendent","s":3.3,"b":"low","tr":[2.8,3.1,3.3],"auto":5.5,"ladder":2.5,"phys":8.5,"trust":8.5,"lic":6,"judg":8.5},{"n":"Construction project manager","s":4.2,"b":"low-mod","tr":[3.7,4,4.2],"auto":6.7,"ladder":3,"phys":7,"trust":8,"lic":5.5,"judg":8},{"n":"Estimator / quantity surveyor","s":6.3,"b":"mod-high","tr":[5.5,5.9,6.3],"auto":8.1,"ladder":5,"phys":2.5,"trust":6,"lic":4,"judg":6},{"n":"Scheduler / planner","s":7,"b":"high","tr":[6.1,6.5,7],"auto":8.8,"ladder":5.5,"phys":2,"trust":5,"lic":3.5,"judg":5},{"n":"Preconstruction / document coordination","s":7.4,"b":"high","tr":[6.5,7,7.4],"auto":8.9,"ladder":6.2,"phys":1.5,"trust":4.5,"lic":3,"judg":4.5}]},{"slug":"cybersecurity","name":"Cybersecurity","head":5,"f":[6,4.5,2,8,3.5,9],"tracks":[{"n":"Incident response / threat hunting","s":5,"b":"moderate","tr":[4.2,4.6,5],"auto":5.1,"ladder":5,"phys":1,"trust":7.5,"lic":3.5,"judg":9},{"n":"Security architecture","s":5.5,"b":"moderate","tr":[4.7,5.1,5.5],"auto":6.1,"ladder":5,"phys":1,"trust":7,"lic":3.5,"judg":8.5},{"n":"Penetration testing / offensive","s":5.7,"b":"moderate","tr":[4.9,5.3,5.7],"auto":6.5,"ladder":5.2,"phys":1.5,"trust":6.5,"lic":3,"judg":8.5},{"n":"GRC / compliance","s":6.1,"b":"mod-high","tr":[5.2,5.7,6.1],"auto":6.7,"ladder":5.8,"phys":1,"trust":6,"lic":5,"judg":5.5},{"n":"SOC analyst (tier 1)","s":7.4,"b":"high","tr":[6.1,6.8,7.4],"auto":8.3,"ladder":7.2,"phys":1,"trust":4.5,"lic":3,"judg":4.5}]},{"slug":"data-science","name":"Data Science","head":8.2,"f":[9,8.5,1,4,1,4],"tracks":[{"n":"ML / AI engineer","s":6,"b":"moderate","tr":[5,5.5,6],"auto":6.5,"ladder":5,"phys":1,"trust":6.5,"lic":1,"judg":8},{"n":"Senior data scientist","s":6.5,"b":"mod-high","tr":[5.5,6.1,6.5],"auto":7.2,"ladder":5.5,"phys":1,"trust":6,"lic":1,"judg":7},{"n":"Data engineer","s":7,"b":"mod-high","tr":[6,6.5,7],"auto":7.9,"ladder":6,"phys":1,"trust":5.5,"lic":1,"judg":6},{"n":"Analytics engineer / BI developer","s":7.6,"b":"high","tr":[6.4,7.1,7.6],"auto":8.4,"ladder":7.2,"phys":1,"trust":4.5,"lic":1,"judg":5},{"n":"Entry data analyst","s":8.2,"b":"high","tr":[6.7,7.5,8.2],"auto":9.4,"ladder":7.8,"phys":1,"trust":4,"lic":1,"judg":4}]},{"slug":"dentistry","name":"Dentistry","head":2.7,"f":[5,2.5,9.5,8.5,9.5,7.5],"tracks":[{"n":"Oral & maxillofacial surgery","s":2.3,"b":"very-low","tr":[1.9,2.1,2.3],"auto":4.8,"ladder":1.8,"phys":9.5,"trust":9.5,"lic":9.5,"judg":8.5},{"n":"General dentistry","s":2.7,"b":"very-low","tr":[2.3,2.5,2.7],"auto":5.6,"ladder":2,"phys":9.3,"trust":9.5,"lic":9.5,"judg":8},{"n":"Dental hygienist","s":3,"b":"low","tr":[2.6,2.8,3],"auto":5.7,"ladder":2.2,"phys":9.2,"trust":9,"lic":9,"judg":7},{"n":"Orthodontics","s":3.4,"b":"low","tr":[2.9,3.1,3.4],"auto":7.7,"ladder":2.5,"phys":8.5,"trust":9,"lic":9.5,"judg":7},{"n":"Dental technician / laboratory","s":5.5,"b":"moderate","tr":[4.6,5.1,5.5],"auto":5.1,"ladder":5.5,"phys":5,"trust":4,"lic":3,"judg":4.5}]},{"slug":"design","name":"Graphic Design","head":8.4,"f":[9.1,8,1,3,1,3],"tracks":[{"n":"Creative direction / brand identity","s":5.6,"b":"moderate","tr":[4.8,5.2,5.6],"auto":5.9,"ladder":4.5,"phys":1,"trust":7.5,"lic":1,"judg":7.5},{"n":"UX / product design","s":6,"b":"moderate","tr":[5.2,5.6,6],"auto":6.4,"ladder":5,"phys":1,"trust":7,"lic":1,"judg":7},{"n":"Motion, 3D & technical craft","s":7,"b":"mod-high","tr":[5.9,6.5,7],"auto":7.8,"ladder":6.5,"phys":1.5,"trust":5.5,"lic":1,"judg":5.5},{"n":"Illustration / commercial art","s":7.5,"b":"high","tr":[6.3,7,7.5],"auto":8.2,"ladder":7.2,"phys":1.5,"trust":4.5,"lic":1,"judg":4.5},{"n":"Production / execution design","s":8.4,"b":"high","tr":[6.7,7.8,8.4],"auto":8.7,"ladder":9,"phys":1,"trust":3,"lic":1,"judg":3}]},{"slug":"engineering","name":"Engineering","head":3.4,"f":[6.5,3,6,7.5,9,8],"tracks":[{"n":"Civil / structural (PE, site-based)","s":4,"b":"low-mod","tr":[3.4,3.7,4],"auto":7.4,"ladder":3.2,"phys":7,"trust":8.5,"lic":9,"judg":8.5},{"n":"Electrical power & grid","s":3.9,"b":"low-mod","tr":[3.3,3.6,3.9],"auto":7.1,"ladder":3.2,"phys":7,"trust":8.5,"lic":9,"judg":8.5},{"n":"Mechanical (industrial)","s":4.4,"b":"moderate","tr":[3.9,4.1,4.4],"auto":7.5,"ladder":3.6,"phys":6,"trust":8,"lic":8.5,"judg":8},{"n":"Manufacturing / process","s":4.9,"b":"moderate","tr":[4.4,4.7,4.9],"auto":7.9,"ladder":4.2,"phys":5.5,"trust":7.5,"lic":8,"judg":7.5},{"n":"Design & analysis (desk, CAD-centered)","s":6.3,"b":"mod-high","tr":[5.2,5.8,6.3],"auto":8.6,"ladder":5.8,"phys":2,"trust":6.5,"lic":7,"judg":6}]},{"slug":"finance","name":"Finance","head":8,"f":[6.3,4,2,9,8,7.5],"tracks":[{"n":"Wealth / financial advisory","s":4.6,"b":"low-mod","tr":[3.9,4.2,4.6],"auto":6,"ladder":3.8,"phys":1.5,"trust":9,"lic":7.5,"judg":7.5},{"n":"Risk & compliance","s":5.3,"b":"moderate","tr":[4.5,4.8,5.3],"auto":6.6,"ladder":4.4,"phys":1,"trust":7.5,"lic":6.5,"judg":7.5},{"n":"Investment banking (senior)","s":5.7,"b":"moderate","tr":[4.9,5.3,5.7],"auto":7,"ladder":4.6,"phys":1,"trust":7.5,"lic":4,"judg":7.5},{"n":"Corporate finance / FP&A","s":6.8,"b":"mod-high","tr":[6,6.4,6.8],"auto":8.2,"ladder":5.8,"phys":1,"trust":6,"lic":3,"judg":6},{"n":"Entry analyst / research","s":8,"b":"high","tr":[6.4,7.3,8],"auto":9.4,"ladder":8,"phys":1,"trust":4,"lic":3,"judg":4.5}]},{"slug":"hospitality","name":"Hospitality","head":4,"f":[5.5,2.5,9,7,2,6],"tracks":[{"n":"Head chef / kitchen leadership","s":4,"b":"low-mod","tr":[3.5,3.8,4],"auto":2.9,"ladder":2,"phys":9.5,"trust":5.5,"lic":4,"judg":6.5},{"n":"Front of house / service management","s":4.1,"b":"low-mod","tr":[3.6,3.9,4.1],"auto":4.5,"ladder":2,"phys":9.5,"trust":6,"lic":6,"judg":7.5},{"n":"Chef de partie / line cook","s":4.3,"b":"moderate","tr":[3.8,4.1,4.3],"auto":5.4,"ladder":2.2,"phys":9.3,"trust":6.5,"lic":5,"judg":7.5},{"n":"Hotel operations management","s":4.9,"b":"moderate","tr":[4.4,4.7,4.9],"auto":7,"ladder":3,"phys":8,"trust":7,"lic":4.5,"judg":8},{"n":"Events & catering coordination","s":6,"b":"mod-high","tr":[5.5,5.7,6],"auto":7.7,"ladder":3.8,"phys":6.5,"trust":8,"lic":5,"judg":8},{"n":"Reservations / booking administration","s":8,"b":"high","tr":[7,7.5,8],"auto":7,"ladder":5.5,"phys":1,"trust":5.5,"lic":2,"judg":5}]},{"slug":"journalism","name":"Journalism","head":8.3,"f":[8.6,8.5,1,3,1,3],"tracks":[{"n":"Investigative reporting","s":5.1,"b":"moderate","tr":[4.5,4.8,5.1],"auto":6.1,"ladder":7.5,"phys":6,"trust":8.5,"lic":1,"judg":9},{"n":"Specialist / trade reporting","s":5.8,"b":"moderate","tr":[5.2,5.5,5.8],"auto":6.8,"ladder":7.8,"phys":4.5,"trust":7.5,"lic":1,"judg":8.5},{"n":"Data journalism","s":6.5,"b":"mod-high","tr":[5.7,6.1,6.5],"auto":7.1,"ladder":8,"phys":2.5,"trust":6.5,"lic":1,"judg":7.5},{"n":"General news reporting","s":6.7,"b":"mod-high","tr":[6,6.4,6.7],"auto":7.7,"ladder":8.3,"phys":3.5,"trust":6,"lic":1,"judg":7},{"n":"Desk / aggregation & rewrite","s":8.3,"b":"high","tr":[7,7.8,8.3],"auto":8.8,"ladder":9,"phys":1,"trust":3.5,"lic":1,"judg":3.5}]},{"slug":"law","name":"Law","head":4.5,"f":[9.2,9.5,1,3.5,7,3.5],"tracks":[{"n":"Trial litigator / advocacy","s":4.5,"b":"low-mod","tr":[3.8,4.1,4.5],"auto":6.9,"ladder":5,"phys":4,"trust":8.5,"lic":9.5,"judg":8.5},{"n":"Regulatory & compliance counsel","s":5,"b":"moderate","tr":[4.1,4.5,5],"auto":6.5,"ladder":5.6,"phys":1.5,"trust":8,"lic":9,"judg":8},{"n":"In-house counsel","s":5.2,"b":"moderate","tr":[4.3,4.8,5.2],"auto":6.5,"ladder":5.8,"phys":1,"trust":8,"lic":8.5,"judg":7.5},{"n":"Transactional / corporate associate","s":6.3,"b":"mod-high","tr":[5.1,5.7,6.3],"auto":7.7,"ladder":7.5,"phys":1,"trust":6.5,"lic":8,"judg":6},{"n":"Junior associate / document review","s":7.9,"b":"high","tr":[6,7.2,7.9],"auto":9.1,"ladder":9.5,"phys":1,"trust":3.5,"lic":7,"judg":3.5}]},{"slug":"life-sciences","name":"Life Sciences","head":5,"f":[6.5,6,7.5,5,3,8],"tracks":[{"n":"Clinical trials / field research","s":5,"b":"moderate","tr":[4.2,4.6,5],"auto":6.4,"ladder":3.8,"phys":8.5,"trust":6.5,"lic":5.5,"judg":8},{"n":"Wet lab research scientist","s":5.2,"b":"moderate","tr":[4.5,4.8,5.2],"auto":7.6,"ladder":4.4,"phys":8,"trust":5.5,"lic":2.5,"judg":8.5},{"n":"Regulatory / QA in pharma","s":5.8,"b":"moderate","tr":[5,5.4,5.8],"auto":8.9,"ladder":5,"phys":7.5,"trust":5.5,"lic":5.5,"judg":5.5},{"n":"Laboratory technician","s":6.3,"b":"mod-high","tr":[5.6,5.9,6.3],"auto":6.9,"ladder":4,"phys":3.5,"trust":8.5,"lic":9,"judg":7},{"n":"Bioinformatics / computational biology","s":7.1,"b":"high","tr":[6.3,6.7,7.1],"auto":8.6,"ladder":5.8,"phys":1,"trust":5.5,"lic":1,"judg":7},{"n":"Degree only, no further qualification","s":7.2,"b":"high","tr":[6.4,6.8,7.2],"auto":9.2,"ladder":6.8,"phys":1,"trust":4.5,"lic":1,"judg":5}]},{"slug":"marketing","name":"Marketing","head":8.2,"f":[8.6,8,1,3,1,3],"tracks":[{"n":"Brand strategy / marketing leadership","s":5.5,"b":"moderate","tr":[4.7,5,5.5],"auto":5.4,"ladder":4.5,"phys":1,"trust":7,"lic":1,"judg":7.5},{"n":"Marketing science / analytics","s":6.2,"b":"mod-high","tr":[5.4,5.8,6.2],"auto":6.4,"ladder":5.4,"phys":1,"trust":6,"lic":1,"judg":7},{"n":"Product marketing","s":6.5,"b":"mod-high","tr":[5.6,6,6.5],"auto":6.8,"ladder":5.6,"phys":1,"trust":5.5,"lic":1,"judg":6.5},{"n":"Campaign management","s":7.2,"b":"high","tr":[6.2,6.8,7.2],"auto":7.4,"ladder":6.8,"phys":1,"trust":4.5,"lic":1,"judg":5},{"n":"Content & social execution","s":8.2,"b":"high","tr":[6.5,7.6,8.2],"auto":8.3,"ladder":9,"phys":1,"trust":3,"lic":1,"judg":3.5}]},{"slug":"medicine","name":"Medicine","head":2.1,"f":[6,1.5,8,9.5,9.5,8.5],"tracks":[{"n":"Surgery","s":2.1,"b":"very-low","tr":[1.8,1.9,2.1],"auto":4.5,"ladder":1.5,"phys":9.5,"trust":9.5,"lic":9.5,"judg":9},{"n":"Emergency medicine","s":2.5,"b":"very-low","tr":[2,2.2,2.5],"auto":5.5,"ladder":1.5,"phys":9,"trust":9.5,"lic":9.5,"judg":9.2},{"n":"Primary care / family medicine","s":2.9,"b":"low","tr":[2.4,2.6,2.9],"auto":6,"ladder":1.5,"phys":8,"trust":9.5,"lic":9.5,"judg":8.5},{"n":"Anesthesiology","s":3.1,"b":"low","tr":[2.7,2.9,3.1],"auto":6.6,"ladder":1.5,"phys":8,"trust":9.5,"lic":9.5,"judg":8.5},{"n":"Psychiatry","s":3.7,"b":"low","tr":[3.1,3.4,3.7],"auto":7.4,"ladder":1.8,"phys":6,"trust":9.5,"lic":9.5,"judg":9},{"n":"Pathology","s":4.7,"b":"moderate","tr":[3.8,4.3,4.7],"auto":8.6,"ladder":2,"phys":5,"trust":8,"lic":9.5,"judg":7},{"n":"Radiology","s":4.9,"b":"moderate","tr":[3.9,4.4,4.9],"auto":8.9,"ladder":2,"phys":4.5,"trust":8,"lic":9.5,"judg":7}]},{"slug":"nursing","name":"Nursing","head":2.8,"f":[5.5,2,9,9,9,8],"tracks":[{"n":"Specialist clinical (ICU, ER, perioperative)","s":2.4,"b":"low","tr":[1.9,2.1,2.4],"auto":4.8,"ladder":2,"phys":9,"trust":9.5,"lic":9.5,"judg":8.5},{"n":"Community / home health nursing","s":2.7,"b":"low","tr":[2.2,2.4,2.7],"auto":5.4,"ladder":2.2,"phys":8.8,"trust":9.5,"lic":9.5,"judg":8.2},{"n":"Bedside RN (hospital, acute care)","s":2.8,"b":"low","tr":[2.1,2.4,2.8],"auto":6.1,"ladder":2,"phys":9.2,"trust":9.5,"lic":9.5,"judg":8.8},{"n":"Nurse practitioner / advanced practice","s":3.2,"b":"low","tr":[2.6,2.9,3.2],"auto":6.4,"ladder":2.5,"phys":8,"trust":9.5,"lic":9.5,"judg":8.5},{"n":"Telehealth triage nurse","s":5.2,"b":"moderate","tr":[4.1,4.8,5.2],"auto":6.6,"ladder":4.5,"phys":2,"trust":7,"lic":9,"judg":5.5},{"n":"Utilization review / case management","s":5.4,"b":"moderate","tr":[4.3,5,5.4],"auto":6.1,"ladder":5,"phys":1.5,"trust":6,"lic":8.5,"judg":5}]},{"slug":"pharmacy","name":"Pharmacy","head":4.9,"f":[7.4,4.5,5,7,9.5,6],"tracks":[{"n":"Specialist clinical (oncology, ICU)","s":4.4,"b":"low-mod","tr":[3.6,4,4.4],"auto":6.9,"ladder":3.5,"phys":4.5,"trust":8.2,"lic":9.5,"judg":7},{"n":"Hospital clinical pharmacist","s":4.7,"b":"moderate","tr":[4,4.4,4.7],"auto":6.4,"ladder":3.2,"phys":5,"trust":8.5,"lic":9.5,"judg":7.5},{"n":"Community pharmacist","s":4.9,"b":"moderate","tr":[4.1,4.5,4.9],"auto":7,"ladder":4,"phys":3.5,"trust":7.5,"lic":9.5,"judg":5.5},{"n":"Industry / regulatory affairs","s":5.8,"b":"moderate","tr":[5.1,5.4,5.8],"auto":6.7,"ladder":5,"phys":3.5,"trust":5.5,"lic":6.5,"judg":4},{"n":"Dispensing-focused roles","s":6.4,"b":"mod-high","tr":[5.4,5.9,6.4],"auto":8.4,"ladder":6.8,"phys":2,"trust":4,"lic":8.5,"judg":3}]},{"slug":"psychology","name":"Psychology","head":3.5,"f":[6.8,2.5,6.5,9.5,9.5,9],"tracks":[{"n":"Clinical psychologist (licensed)","s":3.5,"b":"low","tr":[2.8,3.2,3.5],"auto":6.7,"ladder":2.8,"phys":6.5,"trust":9.5,"lic":9.5,"judg":9},{"n":"Counselor / psychotherapist (licensed)","s":3.9,"b":"low","tr":[3.2,3.5,3.9],"auto":7.4,"ladder":3,"phys":6,"trust":9.5,"lic":9.2,"judg":8.8},{"n":"School psychologist","s":4,"b":"low-mod","tr":[3.2,3.6,4],"auto":7.4,"ladder":3,"phys":6,"trust":9.3,"lic":9,"judg":8.5},{"n":"Research / academic psychology","s":6.5,"b":"mod-high","tr":[5.4,5.9,6.5],"auto":7.4,"ladder":6.2,"phys":2,"trust":5.5,"lic":2.5,"judg":6.5},{"n":"Organizational / HR-adjacent roles","s":7,"b":"high","tr":[5.9,6.5,7],"auto":7.6,"ladder":6.8,"phys":1.5,"trust":5,"lic":1.5,"judg":5.5},{"n":"Degree only, no further qualification","s":7.1,"b":"high","tr":[6.1,6.6,7.1],"auto":7.3,"ladder":7,"phys":1.5,"trust":4.5,"lic":1,"judg":5}]},{"slug":"social-work","name":"Social Work","head":3.3,"f":[6.1,3.5,6,9,7.5,8.5],"tracks":[{"n":"Child protection","s":3.3,"b":"low","tr":[2.7,3,3.3],"auto":7.4,"ladder":2,"phys":8.5,"trust":9.5,"lic":9.5,"judg":9.5},{"n":"Mental health social work","s":3.7,"b":"low","tr":[3.2,3.4,3.7],"auto":8.4,"ladder":2.2,"phys":8,"trust":9.3,"lic":9.5,"judg":9.2},{"n":"Adult safeguarding / community","s":3.8,"b":"low","tr":[3.3,3.6,3.8],"auto":8.7,"ladder":2.8,"phys":6.5,"trust":9.3,"lic":9,"judg":8.8},{"n":"Hospital / medical social work","s":3.9,"b":"low-mod","tr":[3.3,3.6,3.9],"auto":9.1,"ladder":3,"phys":6,"trust":9,"lic":8.5,"judg":8.5},{"n":"Case management / assessment coordination","s":6.1,"b":"mod-high","tr":[5.3,5.7,6.1],"auto":7.4,"ladder":5,"phys":1.5,"trust":6.5,"lic":4,"judg":6.5}]},{"slug":"teaching","name":"Teaching","head":3.6,"f":[7.7,1.5,9,9.5,8,7.5],"tracks":[{"n":"Special education","s":3.1,"b":"low","tr":[2.7,2.9,3.1],"auto":6.6,"ladder":2,"phys":9,"trust":9.5,"lic":9,"judg":8.5},{"n":"Elementary / early years","s":3.6,"b":"low","tr":[3.2,3.4,3.6],"auto":7.8,"ladder":2.2,"phys":9,"trust":9.5,"lic":9,"judg":8},{"n":"Secondary — STEM subjects","s":3.8,"b":"low","tr":[3.4,3.6,3.8],"auto":8.2,"ladder":2.2,"phys":8.8,"trust":9.3,"lic":9,"judg":7.8},{"n":"Secondary — general subjects","s":4.1,"b":"low-mod","tr":[3.7,3.9,4.1],"auto":8.8,"ladder":2.5,"phys":8.8,"trust":9.3,"lic":9,"judg":7.5},{"n":"Online instruction / tutoring","s":6.8,"b":"mod-high","tr":[5.5,6.2,6.8],"auto":7.6,"ladder":5.8,"phys":1.5,"trust":5,"lic":3,"judg":4.5}]},{"slug":"trades","name":"Skilled Trades","head":2.5,"f":[5,2,9.5,8.5,9,9],"tracks":[{"n":"Electrician — service & maintenance","s":2.5,"b":"very-low","tr":[2.1,2.3,2.5],"auto":4.9,"ladder":2,"phys":9.5,"trust":8.5,"lic":9,"judg":9},{"n":"Plumbing / HVAC — service","s":2.6,"b":"very-low","tr":[2.2,2.4,2.6],"auto":5,"ladder":2,"phys":9.5,"trust":8.5,"lic":8.8,"judg":8.8},{"n":"Welding & fabrication — site work","s":3.2,"b":"low","tr":[2.8,3,3.2],"auto":5.4,"ladder":2.5,"phys":9.2,"trust":7.5,"lic":7.5,"judg":8.2},{"n":"Construction site trades","s":3.4,"b":"low","tr":[2.8,3.1,3.4],"auto":5.7,"ladder":2.8,"phys":9.2,"trust":7.5,"lic":7,"judg":8},{"n":"Production line / prefab / modular","s":5,"b":"moderate","tr":[4,4.5,5],"auto":6.4,"ladder":4.5,"phys":8,"trust":5,"lic":4.5,"judg":5}]},{"slug":"translation","name":"Translation","head":8.8,"f":[9.5,9,1,2.5,1,2.5],"tracks":[{"n":"Community / medical interpreting","s":4.3,"b":"low-mod","tr":[3.5,3.9,4.3],"auto":8,"ladder":4.5,"phys":7.5,"trust":9,"lic":8.5,"judg":8.5},{"n":"Legal / court interpreting","s":4.3,"b":"low-mod","tr":[3.6,3.9,4.3],"auto":8.5,"ladder":4.6,"phys":7.5,"trust":8.8,"lic":8,"judg":8.2},{"n":"Conference / simultaneous interpreting","s":5.1,"b":"moderate","tr":[4.2,4.6,5.1],"auto":8.3,"ladder":5,"phys":7,"trust":8,"lic":5.5,"judg":8.5},{"n":"Literary translation","s":7,"b":"high","tr":[5.9,6.5,7],"auto":6,"ladder":6.8,"phys":1,"trust":6.5,"lic":1,"judg":8},{"n":"Localization / technical translation","s":8.2,"b":"high","tr":[7.1,7.7,8.2],"auto":7.6,"ladder":7.2,"phys":1,"trust":6,"lic":1,"judg":7},{"n":"General document translation","s":8.8,"b":"high","tr":[7.7,8.4,8.8],"auto":9.7,"ladder":9.4,"phys":1,"trust":3,"lic":1,"judg":3}]},{"slug":"transport","name":"Transport","head":4.2,"f":[7.5,4,6,9,9.5,8.5],"tracks":[{"n":"Marine officer / ship's officer","s":4.1,"b":"low-mod","tr":[3.5,3.8,4.1],"auto":5.7,"ladder":2,"phys":9.5,"trust":8.5,"lic":9,"judg":9},{"n":"Airline pilot","s":4.2,"b":"low-mod","tr":[3.5,3.9,4.2],"auto":7.7,"ladder":2.8,"phys":8.5,"trust":7.5,"lic":8.5,"judg":6.5},{"n":"Local delivery / urban driving","s":4.6,"b":"moderate","tr":[4,4.3,4.6],"auto":5.6,"ladder":2.2,"phys":9.3,"trust":7,"lic":6.5,"judg":8},{"n":"Rail operations","s":5.2,"b":"moderate","tr":[4.4,4.8,5.2],"auto":7.1,"ladder":3,"phys":8,"trust":8.5,"lic":9.5,"judg":9},{"n":"Long-haul highway trucking","s":5.9,"b":"moderate","tr":[5,5.5,5.9],"auto":7.3,"ladder":3.2,"phys":9,"trust":6,"lic":6.5,"judg":6.5},{"n":"Logistics planning & coordination","s":7.3,"b":"high","tr":[6.3,6.9,7.3],"auto":8.3,"ladder":6.2,"phys":1,"trust":5,"lic":2,"judg":4.5}]},{"slug":"veterinary","name":"Veterinary Medicine","head":2.7,"f":[5.2,2.5,9,9,9,9],"tracks":[{"n":"Emergency & critical care","s":2.4,"b":"very-low","tr":[2,2.2,2.4],"auto":5.3,"ladder":1.8,"phys":9.5,"trust":9.5,"lic":9.5,"judg":9.2},{"n":"Large animal / mixed practice","s":2.5,"b":"very-low","tr":[2,2.2,2.5],"auto":5.4,"ladder":1.8,"phys":9.5,"trust":9.3,"lic":9.5,"judg":9},{"n":"Veterinary specialist / surgery","s":2.5,"b":"very-low","tr":[2,2.2,2.5],"auto":5.4,"ladder":1.8,"phys":9.5,"trust":9.3,"lic":9.5,"judg":9},{"n":"Small animal general practice","s":2.7,"b":"very-low","tr":[2.2,2.5,2.7],"auto":5.8,"ladder":2,"phys":9.2,"trust":9.3,"lic":9.5,"judg":9},{"n":"Veterinary nurse / technician","s":3,"b":"low","tr":[2.5,2.7,3],"auto":5.6,"ladder":2.2,"phys":9.2,"trust":8.5,"lic":8.5,"judg":8},{"n":"Lab / diagnostic veterinary roles","s":5.4,"b":"moderate","tr":[4.6,5,5.4],"auto":6.4,"ladder":4.5,"phys":4,"trust":5,"lic":6,"judg":5.5}]},{"slug":"computer-science","name":"Computer science","head":8.1,"f":[6.96,5.57,1.43,6,2.07,6.79],"tracks":[{"n":"Embedded / safety-critical systems","s":4.7,"b":"moderate","tr":[4,4.3,4.7],"auto":6.2,"ladder":4,"phys":4,"trust":7.5,"lic":6,"judg":7.5},{"n":"Security engineering","s":5.3,"b":"moderate","tr":[4.6,5,5.3],"auto":5.8,"ladder":4.5,"phys":1,"trust":7,"lic":3.5,"judg":8.5},{"n":"Senior engineer / architect","s":5.4,"b":"moderate","tr":[4.6,5,5.4],"auto":5.4,"ladder":4,"phys":1,"trust":7,"lic":1,"judg":8},{"n":"ML / AI engineering","s":6,"b":"moderate","tr":[5,5.5,6],"auto":6.5,"ladder":5,"phys":1,"trust":6.5,"lic":1,"judg":8},{"n":"Backend / infrastructure","s":6.8,"b":"mod-high","tr":[5.8,6.4,6.8],"auto":7.5,"ladder":6,"phys":1,"trust":5.5,"lic":1,"judg":6.5},{"n":"Frontend / application development","s":7.6,"b":"high","tr":[6.5,7.1,7.6],"auto":8.5,"ladder":7,"phys":1,"trust":4.5,"lic":1,"judg":5},{"n":"Entry-level developer","s":8.1,"b":"high","tr":[6.3,7.4,8.1],"auto":8.8,"ladder":8.5,"phys":1,"trust":4,"lic":1,"judg":4}]}];
+  function findCareer(q){ q=(q||'').toLowerCase(); return CAREERS.filter(function(c){ return c.name.toLowerCase()===q || c.slug===q; })[0]; }
+  function curCareer(){ return findCareer(A.careerSlug) || findCareer('marketing'); }
+  // lightweight role/field → one of the 28 scored careers (the resolver, keyword version)
+  var CAREER_ALIASES=[
+    [['account','cpa','bookkeep','audit'],'accounting'],
+    [['nurse','nursing'],'nursing'],[['pharmac'],'pharmacy'],[['dentist','dental'],'dentistry'],[['veterinar',' vet'],'veterinary'],
+    [['physician','doctor','surgeon','medicine','medical'],'medicine'],
+    [['physio','occupational therap','radiograph','allied health','paramedic','sonograph','dietit','speech therap'],'allied-health'],
+    [['psycholog','counsel','therapist'],'psychology'],[['social work'],'social-work'],
+    [['teacher','teaching','educator','lecturer','tutor'],'teaching'],
+    [['lawyer','solicitor','attorney','barrister','legal','law'],'law'],[['architect'],'architecture'],
+    [['software','developer','programmer','coder',' swe','computer scien','web dev','full stack','frontend','backend'],'computer-science'],
+    [['data scien','data analyst','machine learning','ml engineer','data engineer'],'data-science'],
+    [['cyber','infosec','information security','security engineer','soc analyst','penetration'],'cybersecurity'],
+    [['marketing','brand','content','social media',' seo','copywrit','communications'],'marketing'],
+    [['journalis','reporter','editor','newsroom'],'journalism'],[['design','ux','ui ','graphic','illustrat'],'design'],
+    [['finance','financial','banker','investment','equity','fund','trader'],'finance'],
+    [['engineer','mechanical','civil eng','electrical eng','aerospace'],'engineering'],
+    [['construction','builder','site manager','quantity survey'],'construction'],
+    [['plumber','electrician','carpenter','welder','mechanic','tradesperson','hvac'],'trades'],
+    [['farm','agricultur','agronom'],'agriculture'],[['hospitality','hotel','chef','restaurant','barista','catering'],'hospitality'],
+    [['translat','interpret'],'translation'],[['transport','logistics','driver','supply chain','freight','warehouse'],'transport'],
+    [['biolog','biotech','life scien','geneticist','microbiolog'],'life-sciences'],
+    [['business','operations','consult','project manager','product manager','analyst','procurement','human resources','administrat'],'business']
+  ];
+  function resolveTypedCareer(text){
+    var t=' '+(text||'').toLowerCase()+' ';
+    for(var i=0;i<CAREER_ALIASES.length;i++){ var kws=CAREER_ALIASES[i][0]; for(var j=0;j<kws.length;j++){ if(t.indexOf(kws[j])>=0) return findCareer(CAREER_ALIASES[i][1]); } }
+    return null;
+  }
+  function clampP(x){ return Math.max(4, Math.min(96, Math.round(x))); }
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  function ew(p){ return p>=75?'very high':p>=60?'high':p>=45?'moderate':p>=30?'low-to-moderate':'low'; }
+  function shortName(r){ return (r||'You').split(/[,·]/)[0].trim(); }
+  var SIGMETA=[{k:'auto',name:'Automatability',kind:'exp'},{k:'ladder',name:'The Ladder',kind:'exp'},
+    {k:'phys',name:'Physical presence',kind:'pro'},{k:'trust',name:'Trust & accountability',kind:'pro'},
+    {k:'lic',name:'Licensing',kind:'pro'},{k:'judg',name:'Judgment',kind:'pro'}];
+
+  function computeMap(A){
+    var incumbent = A.path!=='ent';
+    var career = incumbent ? curCareer()
+      : (findCareer(A.careerSlug) || findCareer((A.direction&&A.direction.length&&A.direction[0]!=='__open')?A.direction[0]:'Marketing') || findCareer('marketing'));
+    var lane, laneScore, laneBand, laneTrend, tk;
+    if(A.lane && A.laneScore!=null){ lane=A.lane; laneScore=A.laneScore; laneBand=A.laneBand; tk=career.tracks.filter(function(t){return t.n===A.lane;})[0]; laneTrend=tk?tk.tr:[laneScore-1.5,laneScore-0.6,laneScore]; }
+    else if(incumbent){ lane='General '+career.name.toLowerCase(); laneScore=career.head; laneBand='—'; tk=career.tracks.filter(function(t){return t.s===career.head;})[0]||career.tracks[career.tracks.length-1]; laneTrend=tk.tr; }
+    else { var sorted=career.tracks.slice().sort(function(a,b){return b.s-a.s;}); tk=sorted[0]; lane=tk.n; laneScore=tk.s; laneBand=tk.b; laneTrend=tk.tr; }
+    // factors: real lane-level scores when a specific lane is chosen; headline field-level factors otherwise
+    var F = (A.lane && tk && tk.phys!=null) ? [tk.auto,tk.ladder,tk.phys,tk.trust,tk.lic,tk.judg] : career.f;
+    var base={ auto:F[0]*10, ladder:F[1]*10, phys:100-F[2]*10, trust:100-F[3]*10, lic:100-F[4]*10, judg:100-F[5]*10 };
+    var you={};
+    if(incumbent){
+      var T=A.tasks, TR=A.trust; var trustAvg=(TR.name+TR.relationships+TR.accountable+TR.judgment)/4;
+      var phAdj={Establishing:12,Advancing:0,Leading:-12}[A.phase]||0;
+      you.auto=clampP(base.auto+(T.routine-50)*0.5);
+      you.ladder=clampP(base.ladder+phAdj+(T.routine-50)*0.2);
+      you.phys=clampP(base.phys-(T.physical-50)*0.6);
+      you.trust=clampP(base.trust-(trustAvg-50)*0.7);
+      you.lic=clampP({no:base.lic,some:base.lic-25,yes:25}[A.licence!=null?A.licence:'no']);
+      you.judg=clampP(base.judg-(T.complex-50)*0.5);
+    } else {
+      var S=A.strengths;
+      you.auto=clampP(base.auto+4);
+      you.ladder=clampP(base.ladder+8);
+      you.phys=clampP(base.phys-(S.handson-50)*0.5);
+      you.trust=clampP(base.trust-(((S.people+S.care+S.persuasion)/3)-50)*0.6);
+      you.lic=clampP(base.lic);
+      you.judg=clampP(base.judg-(((S.analytical+S.creative)/2)-50)*0.4);
+    }
+    var bands={}; SIGMETA.forEach(function(s){ bands[s.k]=[clampP(base[s.k]-20), clampP(base[s.k]+6)]; });
+    var overall=Math.round(laneScore*10);
+    var driver = you.auto>=you.ladder ? {name:'Automatability',rating:F[0]} : {name:'The Ladder',rating:F[1]};
+    var prots=[{k:'trust',label:'Your relationships',v:you.trust},{k:'judg',label:'Your judgment',v:you.judg},{k:'phys',label:'Being on the ground',v:you.phys}];
+    prots.sort(function(a,b){return a.v-b.v;}); var lever=prots[0];
+    var leverNoun={trust:'relationships and trust',judg:'judgment',phys:'hands-on work'}[lever.k]||'judgment';
+    var us = (overall>=72?2:overall>=52?1:0) + (incumbent?({behind:-1,mid:0,fast:1}[A.pace]||0):0.5) + ((!incumbent||A.phase==='Establishing')?1:0);
+    var urgLevel = us>=2.5?'High':(us>=1?'Medium':'Low');
+    var urgWhy = urgLevel==='High' ? (incumbent ? ('Exposed lane'+(A.pace==='fast'?' · fast-moving employer.':'.')) : 'Entry-level is where AI hits first.')
+      : urgLevel==='Medium' ? (incumbent ? 'Real pressure — but you’ve some runway.' : 'You’ve time, and the entrant’s edge.')
+      : 'Well-protected — steady as you build.';
+    var drier = career.tracks.filter(function(t){ return t.s < laneScore-0.2; }).sort(function(a,b){return a.s-b.s;});
+    // Winning move: Renovate is always on; weight the second move (guard / shift / relocate) by position
+    var protStrength = Math.min(you.trust, you.judg, you.phys); // low = strongly protected
+    var wellProtected = overall < 50 || protStrength < 38;
+    var hasSaferLanes = drier.length > 0;
+    var move;
+    if(wellProtected){
+      move={stance:'Renovate + Guard', edge2:'guard', weight:26, e2short:'Watch your moat for erosion.',
+        line:'You stand on protected ground. Go AI-native anyway — and watch your moat for the first signs it’s weakening.'};
+    } else if(hasSaferLanes){
+      move={stance:'Renovate + Shift', edge2:'shift', weight:42, e2short:'Steer toward your field’s drier lanes.',
+        line:'Go AI-native where you are — and steer toward the safer lanes in your own field, before you’d ever need to leave it.'};
+    } else {
+      move={stance:'Renovate now · plan Relocate', edge2:'relocate', weight:58, e2short:'Scout protected careers while you can.',
+        line:'Master the machine to buy time — but this ground is thin. Start scouting protected careers while you still have the runway.'};
+    }
+    return {A:A,career:career,incumbent:incumbent,lane:lane,laneScore:laneScore,laneBand:laneBand,laneTrend:laneTrend,base:base,you:you,bands:bands,overall:overall,driver:driver,lever:lever,leverNoun:leverNoun,urgency:{level:urgLevel,why:urgWhy},drier:drier,move:move};
+  }
+
+  function sigContent(k,M){
+    var p=M.you[k], lane=M.lane.toLowerCase();
+    if(k==='auto') return {why:"<b>"+cap(ew(p))+".</b> A lot of "+lane+" is the kind of screen-and-language work AI already handles well.",up:"Routine, high-volume, pattern-following tasks.",down:"Original strategy, judgment, and the relationships behind the work.",action:"Put AI on the routine volume — and move your own hours to what it can't do."};
+    if(k==='ladder') return {why:"<b>"+cap(ew(p))+".</b> The junior rungs automate first, and the ladder above compresses as one person plus AI does the work of a team.",up:"Rungs built from junior, repeatable tasks; step-by-step promotion.",down:"Owning outcomes and senior judgment that don't collapse into a tool.",action:"Climb toward the judgment rungs — don't wait your turn up a shortening ladder."};
+    if(k==='phys') return p>=55 ? {why:"<b>Little cover.</b> This work is mostly on-screen, so being physically present protects you barely at all.",up:"Fully on-screen, remote-friendly work.",down:"On-site, hands-on tasks a model can't reach.",action:"Not really your lever — put your effort on the others."} : {why:"<b>Real cover.</b> This work has to happen in person, with your hands or your presence — somewhere AI can't reach.",up:"On-screen, remote work.",down:"Being physically needed, on the ground.",action:"Lean into it — the in-person part of your work is durable protection."};
+    if(k==='trust') return p>=55 ? {why:"<b>Thin today — but yours to grow.</b> The work is fairly anonymous right now, yet trust is the one thing AI can't manufacture.",up:"Anonymous, interchangeable output.",down:"Being the trusted human others rely on by name.",action:"Make the relationships you own the centre of your role."} : {why:"<b>A real anchor.</b> People rely on you personally — a human they trust and hold responsible.",up:"Anonymous, low-stakes work.",down:"Being the name others rely on.",action:"Deepen it — the more people come to you by name, the safer you are."};
+    if(k==='lic') return p>=55 ? {why:"<b>None.</b> No licence or regulator gates this work, so this signal gives you no cover.",up:"Open professions with no credential gate.",down:"Regulated roles where the law requires a human.",action:"No licence to earn here — lean on your other levers."} : {why:"<b>Strong cover.</b> The law requires a licensed human for this work — a gate software can't pass.",up:"Open, unregulated work.",down:"Licensed, legally-gated duties.",action:"Your licence is a moat — keep it current and central."};
+    return p>=55 ? {why:"<b>Limited today.</b> Execution carries little novel judgment; the senior, strategic end of the field carries a lot.",up:"Rule-following execution with a clear brief.",down:"High-stakes, ambiguous, novel calls.",action:"Move toward the higher-stakes decisions where being right matters."} : {why:"<b>Strong.</b> Your work turns on judgment AI can't safely make — ambiguous, high-stakes, novel.",up:"Routine, rule-based calls.",down:"Novel, high-consequence decisions.",action:"Protect and grow it — this is your most durable cover."};
+  }
+
+  var sigSortMode='field', lastM=null, flags={};
+  function renderSignals(M){
+    var arr=SIGMETA.map(function(s){ return {k:s.k,name:s.name,kind:s.kind,you:M.you[s.k],band:M.bands[s.k]}; });
+    if(sigSortMode==='exp') arr.sort(function(a,b){return b.you-a.you;});
+    var html=arr.map(function(s){
+      var c=sigContent(s.k,M), bandR=100-s.band[1], tag=s.kind==='exp'?'▾ exposing':'▴ protective';
+      return '<div class="sig" data-sig="'+s.k+'"><div class="sigrow"><div class="signame">'+s.name+'<span class="tag '+(s.kind==='exp'?'exp':'pro')+'">'+tag+'</span></div>'
+        +'<div class="metric"><div class="track"><div class="band" style="left:'+s.band[0]+'%;right:'+bandR+'%"></div><div class="you" style="left:'+s.you+'%"></div></div><div class="ends"><span>◀ protected</span><span>exposed ▶</span></div></div>'
+        +'<div class="caret">›</div></div><div class="sigdet"><div class="in"><p class="why">'+c.why+'</p>'
+        +'<div class="mvcols"><div class="mvcol up"><div class="h">▲ what raises it</div><p>'+c.up+'</p></div><div class="mvcol down"><div class="h">▼ what lowers it</div><p>'+c.down+'</p></div></div>'
+        +'<div class="action"><b>Your action.</b> '+c.action+'</div></div></div></div>';
+    }).join('');
+    var el=document.getElementById('mSigList'); el.innerHTML=html;
+    [].forEach.call(el.querySelectorAll('.sig'),function(sig){ sig.querySelector('.sigrow').addEventListener('click',function(){ sig.classList.toggle('open'); }); });
+  }
+  /* ---- openings matrix: AI-native × protected, keyed to phase · lane · winning strategy ---- */
+  function phaseBucket(M){ return M.incumbent ? (M.A.phase||'Advancing') : 'entering'; }
+  function strongestProtection(M){ return [{k:'lic',b:M.base.lic},{k:'phys',b:M.base.phys},{k:'trust',b:M.base.trust},{k:'judg',b:M.base.judg}].sort(function(a,b){return a.b-b.b;})[0].k; }
+  function protectionMove(M){
+    var k=strongestProtection(M), field=M.career.name.toLowerCase(), Field=cap(field), ent=!M.incumbent;
+    if(k==='lic') return ent ? {id:'p_lic',title:'Get qualified — early',desc:'In '+field+' the licence is the moat: a legal gate AI can’t pass. Getting credentialed is the single most protective move you can make.'} : {id:'p_lic',title:'Guard your licence',desc:'Your credential is a gate software can’t pass — keep it current and take the work only a licensed human can sign off.'};
+    if(k==='phys') return ent ? {id:'p_phys',title:'Aim for the hands-on work',desc:Field+' has a strong in-person core AI can’t reach. Target the roles done with your hands or on the ground.'} : {id:'p_phys',title:'Lean into the on-the-ground work',desc:'The hands-on, in-person part of your role is what AI can’t touch — make it the centre, not the edge.'};
+    if(k==='trust') return ent ? {id:'p_trust',title:'Get close to the relationships',desc:'The trusted-human side of '+field+' is where the protection lives. Apprentice under someone who owns those relationships and start building your own.'} : {id:'p_trust',title:'Own the key relationships',desc:'Make the clients and partners who rely on you the centre of your role — trust is the moat AI can’t manufacture.'};
+    return ent ? {id:'p_judg',title:'Aim for the judgment work',desc:'The high-stakes, ambiguous calls in '+field+' are where humans stay essential. Point yourself at that senior judgment from the start.'} : {id:'p_judg',title:'Get onto the highest-stakes calls',desc:'The novel, high-consequence decisions are your durable cover — move toward the work where being right really matters.'};
+  }
+  function aiNativeOps(M){
+    var ph=phaseBucket(M), lane=M.lane.toLowerCase(), field=M.career.name.toLowerCase(), Field=M.career.name;
+    if(ph==='entering') return [
+      {id:'a_enter',edge:'ai',title:'Enter '+field+' AI-native',desc:'Walk in already fluent with the tools — the graduate who does the work of a small team from day one. That’s how you skip the junior rungs automating fastest.'},
+      {id:'a_folio',edge:'ai',title:'Build an AI-native portfolio first',desc:'Before you apply, rebuild a real '+field+' task end-to-end with AI and show it. In a crowded entry market, proof you’re AI-native is the differentiator.'}];
+    if(ph==='Establishing') return [
+      {id:'a_native',edge:'ai',title:'Be the AI-native one on your team',desc:'You’ve no old habits to unlearn — become the person who does '+lane+' faster and better with AI, and make that indispensable.'},
+      {id:'a_tools',edge:'ai',title:'Bring the AI tools in',desc:'Own the AI tooling for your team’s '+lane+' work — the one who finds and lands the tools everyone ends up relying on.'}];
+    if(ph==='Leading') return [
+      {id:'a_reshape',edge:'ai',title:'Reshape your '+field+' function AI-native',desc:'You’ve the standing to redesign how the whole team works, not just your own desk — make the function AI-native before the org forces it.'},
+      {id:'a_strategy',edge:'ai',title:'Set the AI strategy for '+field,desc:'Own the org-level call on where AI goes — the judgment about what to automate and what to protect.'}];
+    return [
+      {id:'a_operator',edge:'ai',title:'Become the AI-native operator of '+lane,desc:'Run the whole '+lane+' engine with AI — across what used to take a team. You already do the work; this is the seat that commands the machine.'},
+      {id:'a_lead',edge:'ai',title:Field+' AI lead',desc:'Own how your team adopts AI — the person who rebuilds the '+lane+' workflow and writes the playbook while others wait.'}];
+  }
+  function computeOpenings(M){
+    var ent=!M.incumbent, field=M.career.name.toLowerCase();
+    var ops=aiNativeOps(M).slice();
+    M.drier.slice(0,2).forEach(function(t,i){ ops.push({id:'lane'+i,edge:'prot',fit:i?'poss':'strong',title:(ent?'Aim for ':'Move toward ')+t.n,desc:'<b>'+t.s+'/10</b> — '+(ent?'one of the best-protected corners of '+field+'; a smart target to build toward.':'drier than your '+M.laneScore+', where judgment and relationships rule.')}); });
+    ops.push(Object.assign({edge:'prot'}, protectionMove(M)));
+    var pref={defend:'ai',promote:'ai',change:'ai',firstrole:'ai',native:'ai',protected:'prot'}[M.A.aim]||null;
+    ops.forEach(function(o){ if(!o.fit) o.fit='strong'; });
+    if(pref){ var s=ops.filter(function(o){return o.edge===pref;})[0]; if(s) s.star=true; }
+    return ops;
+  }
+  function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote'); el.innerHTML = picked.length ? ('<b>'+picked.length+' flagged.</b> Your plan and pod would orient around '+(picked.length>1?'these':'this')+'.') : '<b>Nothing flagged yet.</b> Tap the openings that appeal — your plan would orient around them.'; }
+  function renderOpenings(M){
+    var ops=computeOpenings(M), ai=ops.filter(function(o){return o.edge==='ai';}), pr=ops.filter(function(o){return o.edge==='prot';});
+    var ent=!M.incumbent, leadProt=(M.A.aim==='protected'), field=M.career.name.toLowerCase();
+    function card(o){ return '<div class="op'+(flags[o.id]?' flagged':'')+'" data-op="'+o.id+'"><span class="star"></span><span class="fit '+(o.fit==='strong'?'strong':'poss')+'">'+(o.star?'★ your winning strategy':(o.fit==='strong'?'strong fit':'possible fit'))+'</span><h4>'+o.title+'</h4><p>'+o.desc+'</p></div>'; }
+    function head(first,label,sub,cards){ return '<div class="subhead"'+(first?'':' style="margin-top:16px;"')+'><span class="edge">'+label+'</span> '+sub+'</div><div class="ocards">'+cards+'</div>'; }
+    var aiHead=function(first){ return head(first,'AI-native edge',(ent?'get in ahead of the pack':'master the machine'),ai.map(card).join('')); };
+    var prHead=function(first){ return pr.length?head(first,'Protected edge',(ent?'the ways in that last':'deepen what AI can’t take'),pr.map(card).join('')):''; };
+    var html = leadProt ? (prHead(true)+aiHead(false)) : (aiHead(true)+prHead(false));
+    document.getElementById('mOpenings').innerHTML=html;
+    var ph=phaseBucket(M);
+    document.getElementById('mOpIntro').innerHTML = ent
+      ? "The smartest ways into "+field+" — how to <b>get in AI-native</b>, and the entries that <b>stay protected</b> as you grow. Lead with your winning strategy; flag what appeals."
+      : (ph==='Leading' ? "At your level it’s about reshaping the work, not just doing it. Go AI-native across the function <b>and</b> own the judgment. Flag what appeals — your plan orients around it."
+        : "Hold <b>both edges</b> — go AI-native on your lane, and deepen what protects you. We lead with your winning strategy; flag what appeals.");
+    var el=document.getElementById('mOpenings');
+    [].forEach.call(el.querySelectorAll('.op'),function(c){ c.addEventListener('click',function(){ var id=c.getAttribute('data-op'); flags[id]=!flags[id]; c.classList.toggle('flagged'); updateFlagnote(); if(lastM) renderPlan(lastM); }); });
+    updateFlagnote();
+  }
+  function renderTrajectory(M){
+    var vals=M.laneTrend.map(function(x){return Math.round(x*10);});
+    var lo=Math.min.apply(null,vals)-6, hi=Math.max.apply(null,vals)+6; if(hi-lo<20) hi=lo+20;
+    var xs=[40,320,600]; function yFor(v){ return Math.round(100-((v-lo)/(hi-lo))*66); }
+    var pts=vals.map(function(v,i){ return [xs[i], yFor(v)]; });
+    var line='M'+pts.map(function(p){return p[0]+','+p[1];}).join(' L');
+    var svg='<svg class="spark" viewBox="0 0 640 120" width="100%" height="118" role="img" aria-label="Exposure trend"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7FC08A"/><stop offset="1" stop-color="#E0776C"/></linearGradient><linearGradient id="sgf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(224,119,108,0.20)"/><stop offset="1" stop-color="rgba(224,119,108,0)"/></linearGradient></defs>'
+      +'<path d="'+line+' L600,120 L40,120 Z" fill="url(#sgf)"/><path d="'+line+'" fill="none" stroke="url(#sg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+      +'<circle cx="40" cy="'+pts[0][1]+'" r="4" fill="#7FC08A"/><circle cx="320" cy="'+pts[1][1]+'" r="4" fill="#c07a5c"/><circle cx="600" cy="'+pts[2][1]+'" r="6" fill="#E0776C" stroke="#141209" stroke-width="2.5"/></svg>';
+    document.getElementById('mSparkWrap').innerHTML=svg;
+    document.getElementById('mXlab').innerHTML='<span>2023 · '+vals[0]+'</span><span>2025 · '+vals[1]+'</span><span>now · '+vals[2]+'</span>';
+    var dir = vals[2]>vals[0]+1 ? "climbed <b>"+vals[0]+" → "+vals[2]+"</b>" : (vals[2]<vals[0]-1 ? "eased to <b>"+vals[2]+"</b>" : "held around <b>"+vals[2]+"</b>");
+    document.getElementById('mTrajText').innerHTML="Exposure for "+M.lane.toLowerCase()+" has "+dir+" over the past two years. <b>This is why we re-score twice a year</b> — so your read stays true and your move stays ahead of the line.";
+    document.getElementById('mDeltas').innerHTML='<div class="delta up"><span class="m">▲</span><span><b>The line moved.</b> AI got materially better at the routine parts of this work over the last year.</span></div><div class="delta win"><span class="m">◆</span><span><b>Your read reflects your answers.</b> Change anything in <i>Tune your answers</i> below and every number here recomputes.</span></div><div class="delta note"><span class="m">↳</span><span>Re-scored twice a year, so the map keeps pace with the field.</span></div>';
+  }
+  function renderWaterline(M){
+    var rungTop=Math.max(12,Math.min(80, 20+(M.overall-40)*0.6));
+    document.getElementById('mRung').style.top=rungTop+'%';
+    document.getElementById('mWaterAbove').textContent='▲ drier — judgment & seniority';
+    document.getElementById('mWaterBelow').textContent='▼ automated — the exposed rungs';
+    var phaseW={Establishing:'early in',Advancing:'building through',Leading:'senior in'}[M.A.phase]||'in';
+    var lvl=M.overall>=70?'high':M.overall>=50?'rising':'low-ish';
+    document.getElementById('mWaterLead').innerHTML="<b>The water is "+lvl+" for "+M.lane.toLowerCase()+".</b> "+(M.incumbent?("As someone "+phaseW+" the field, "):"As an entrant, ")+"the move is to climb toward the drier rungs — judgment, relationships, seniority — while going AI-native on the work itself.";
+    document.getElementById('mIfNothing').innerHTML="<b>If you do nothing:</b> the line keeps rising and the exposed rungs go under first. In a spot like this, standing still is the move the water rewards least.";
+  }
+  function renderHead(M){
+    document.getElementById('mExp').textContent=M.overall;
+    document.getElementById('mExpMini').style.left=M.overall+'%';
+    document.getElementById('mWho').innerHTML = M.incumbent ? (esc(shortName(M.A.role))+'<br>'+M.career.name+' · '+(M.A.phase||'')) : ('New entrant<br>'+M.career.name);
+    document.getElementById('mSub').innerHTML = M.incumbent ? (M.A.changing ? (esc(M.A.role)+' · moving toward <b>'+M.lane+'</b>') : (esc(M.A.role)+' · <b>'+M.lane+'</b> lane · '+(M.A.phase||'')+' phase')) : (M.career.name+' · aiming at <b>'+M.lane+'</b> · '+({student:'still studying',grad:'recent grad',changer:'new to the field'}[M.A.situation]||''));
+    document.getElementById('mFieldName').textContent=M.career.name;
+    document.getElementById('kExp').textContent=M.overall;
+    document.getElementById('kExpT').innerHTML='<b>'+cap(ew(M.overall))+'.</b> '+M.lane+' ('+M.laneScore+'/10).';
+    document.getElementById('kDriver').textContent=M.driver.name;
+    document.getElementById('kDriverT').innerHTML='<b>'+M.driver.rating+'/10</b> — the sharpest force on your work.';
+    document.getElementById('kLever').textContent=M.lever.label;
+    document.getElementById('kLeverT').innerHTML = M.lever.k==='trust'?'People rely on <b>you</b> — deepen it.':(M.lever.k==='judg'?"The calls AI can't safely make.":"Work AI can't reach.");
+    document.getElementById('kWindow').textContent=M.urgency.level;
+    document.getElementById('kWindowT').textContent = M.urgency.why;
+    document.getElementById('kUrg').className='kpi '+(M.urgency.level==='High'?'warn':M.urgency.level==='Low'?'good':'neu');
+    var prot = (M.you.trust<50||M.you.judg<50) ? "you've got real anchors in the judgment and relationships AI can't take" : "your protection is thinner — it has to be built, and it sits at the senior end";
+    var expPhrase={'very high':'very highly exposed','high':'highly exposed','moderate':'moderately exposed','low-to-moderate':'lightly-to-moderately exposed','low':'lightly exposed'}[ew(M.overall)];
+    var subj = M.incumbent ? (M.A.changing ? "The lane you’re eyeing —" : "Your work is") : (M.A.changing?"":"The lane you’re aiming at —");
+    var verbRead = (M.incumbent && !M.A.changing) ? ("Your work is <b>"+expPhrase+"</b> — "+M.lane+" scores <b>"+M.laneScore+"/10</b>.") : (M.lane+" is <b>"+expPhrase+"</b> — it scores <b>"+M.laneScore+"/10</b>"+(M.incumbent?", more protected than where you are now.":", where you’re heading."));
+    document.getElementById('mRead').innerHTML=verbRead+" The drivers are <b>"+M.driver.name+"</b> and an eroding ladder, and "+prot+". Your move is to go <b>AI-native</b> on the work itself and climb toward what it can't do. This is not a verdict — it's a map to your move.";
+    document.getElementById('mAim').innerHTML = M.incumbent ? ({defend:'<b>Defend &amp; future-proof</b> my role.',promote:'<b>Get promoted</b> / level up.',change:'<b>Change field</b> or career.',unsure:'Not sure yet — show me my options.'}[M.A.aim]||'—') : ({firstrole:'<b>Land a strong first role.</b>',native:'<b>Start AI-native</b> from day one.',protected:'Find a <b>protected / human</b> path.',explore:'Still exploring.'}[M.A.aim]||'—');
+    document.getElementById('mMove').innerHTML="Hold <b>both edges at once</b> — become the AI-native operator of your work <i>and</i> deepen the "+M.leverNoun+" AI can't take. For almost everyone, winning is <b>both</b>, not either/or.";
+  }
+  var planDone={};
+  /* opening -> a real, named community session on a cadence (deduped by session name) */
+  function sessionFor(o,M){
+    var field=M.career.name.toLowerCase(), id=o.id;
+    if(o.edge==='ai'){
+      if(id==='a_enter'||id==='a_folio') return {k:'Portfolio lab · weekly', t:'AI-Native Portfolio Lab', s:'Rebuild a real '+field+' task end-to-end with AI and ship it — your proof you’re AI-native before you apply.'};
+      if(id==='a_reshape'||id==='a_strategy') return {k:'Strategy table · monthly', t:'AI Strategy Table', s:'Bring a real '+field+' process and redesign how the function works with AI — leave with a plan you can run.'};
+      return {k:'Build clinic · weekly', t:'AI-Native Build Clinic', s:'Bring a live '+field+' workflow; rebuild it AI-native with the group and watch where your human value moves.'};
+    }
+    if(id==='p_lic') return {k:'Pathway · at your pace', t:'Licensing Pathway', s:'Map the credential that gates your work and lock a plan to earn or keep it — your hardest moat.'};
+    if(id==='p_phys') return {k:'Track · monthly', t:'On-the-Ground Track', s:'Aim your hours at the hands-on, in-person '+field+' work AI can’t reach.'};
+    if(id==='p_trust') return {k:'Relationships lab · monthly', t:'Trust & Relationships Lab', s:'Build and own the relationships that make you the human others rely on by name.'};
+    if(id==='p_judg') return {k:'Judgment lab · monthly', t:'Judgment Lab', s:'Move toward the high-stakes, ambiguous calls where being right really matters.'};
+    return {k:field+' deep-dive · monthly', t:o.title, s:'A drier corner of '+field+' — build the skills that carry you there, with members aiming the same way.'};
+  }
+  function planItemsFor(M){
+    var items=[{pin:true, k:'Welcome · this week', t:'Your 1:1 welcome with Adam', s:'A 60-minute session with the founder — meet, walk your map together, and set your real next steps. Then you’re part of the community.'}];
+    var ops=computeOpenings(M), picked=ops.filter(function(o){return flags[o.id];}), src;
+    if(picked.length){ src=picked; }
+    else {
+      var ai=ops.filter(function(o){return o.edge==='ai';})[0];
+      var prot=ops.filter(function(o){return /^p_/.test(o.id);})[0] || ops.filter(function(o){return o.edge==='prot';})[0];
+      src=[ai,prot].filter(Boolean);
+    }
+    var seen={};
+    src.forEach(function(o){ var sv=sessionFor(o,M); if(seen[sv.t])return; seen[sv.t]=1; items.push(sv); });
+    return items.slice(0,4);
+  }
+  function renderPlan(M){
+    document.getElementById('mBadges').innerHTML='<span class="badge">◇ AI-Native Fluency</span><span class="badge">◇ '+M.career.name+' Foundations</span><span class="badge">◇ '+cap(M.leverNoun.split(' ')[0])+' Lab</span><span class="badge">◇ Operator Clinic</span>';
+    document.getElementById('mSentiment').innerHTML='These are the badges on your path — none earned yet, and that’s the point. Your welcome session with <b>Adam</b> sets which one you go for first.';
+    var ops=computeOpenings(M), picked=ops.filter(function(o){return flags[o.id];});
+    document.getElementById('mPlanFlag').innerHTML = picked.length ? ('<b>Orienting around:</b> '+picked.map(function(o){return o.title;}).join(' · ')+'.') : '<b>Nothing flagged yet.</b> Flag an opening above and these steps re-order around it.';
+    var items=planItemsFor(M), ul=document.getElementById('mPlan');
+    ul.innerHTML=items.map(function(it,i){ var cls=(planDone[i]?'done':'')+(it.pin?(planDone[i]?' pin':'pin'):''); return '<li data-p="'+i+'"'+(cls?' class="'+cls+'"':'')+'><span class="box"></span><span class="txt"><span class="kind">'+it.k+'</span><b>'+it.t+'</b><span class="sub">'+it.s+'</span></span></li>'; }).join('');
+    [].forEach.call(ul.querySelectorAll('li'),function(li){ li.addEventListener('click',function(){ var id=li.getAttribute('data-p'); planDone[id]=!planDone[id]; li.classList.toggle('done'); document.getElementById('mPlanDone').textContent=Object.keys(planDone).filter(function(k){return planDone[k];}).length; }); });
+    document.getElementById('mPlanDone').textContent=Object.keys(planDone).filter(function(k){return planDone[k];}).length;
+    document.getElementById('mPlanTot').textContent=items.length;
+    document.getElementById('mPod').innerHTML='<b>“'+M.career.name+' · '+(M.incumbent?(M.A.phase||'Advancing'):'Starting out')+'”</b> — five members with maps like yours, matched so you’re not doing this alone. Weekly check-in; celebrate the wins together.';
+  }
+  function renderWinMove(M){
+    var mv=M.move;
+    var st=document.getElementById('wmStance'); st.textContent=mv.stance; st.className='wmstance '+mv.edge2;
+    document.getElementById('wmFillE1').style.width=(100-mv.weight)+'%';
+    var f2=document.getElementById('wmFillE2'); f2.style.width=mv.weight+'%'; f2.className='wmfill e2 '+mv.edge2;
+    document.getElementById('wmC2').className='wmc e2 '+mv.edge2;
+    document.getElementById('wmE2L').textContent=(mv.edge2==='guard'?'✦ Guard':mv.edge2==='shift'?'↳ Shift':'⇒ Relocate');
+    document.getElementById('wmE2S').textContent=mv.e2short;
+    document.getElementById('wmLine').innerHTML=mv.line;
+  }
+  function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); }
+  function refresh(){ renderDisplay(computeMap(A)); }
+
+  function thd(t){ var d=document.createElement('div'); d.className='thd'; d.textContent=t; return d; }
+  function tuneSlider(grid,store,key,name,lo,hi){
+    var s=document.createElement('div'); s.className='slider'; var v=A[store][key];
+    s.innerHTML='<div class="sl"><span class="nm">'+name+'</span><span class="vv">'+label01(v)+'</span></div><input type="range" min="0" max="100" value="'+v+'" style="--fill:'+v+'%"><div class="ends"><span>'+lo+'</span><span>'+hi+'</span></div>';
+    var r=s.querySelector('input'), vv=s.querySelector('.vv');
+    r.addEventListener('input',function(){ A[store][key]=+r.value; r.style.setProperty('--fill',r.value+'%'); vv.textContent=label01(+r.value); refresh(); });
+    grid.appendChild(s);
+  }
+  function buildTune(){
+    var body=document.getElementById('tuneBody'); body.innerHTML='';
+    if(A.path!=='ent'){
+      var cc=curCareer();
+      var lab=document.createElement('label'); lab.className='tl'; lab.textContent='Your lane · '+cc.name; body.appendChild(lab);
+      var sel=document.createElement('select');
+      cc.tracks.forEach(function(t){ var o=document.createElement('option'); o.value=t.n; o.textContent=t.n+' — '+t.s+'/10'; if(t.n===A.lane)o.selected=true; sel.appendChild(o); });
+      sel.onchange=function(){ var t=cc.tracks.filter(function(x){return x.n===sel.value;})[0]; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; refresh(); };
+      body.appendChild(sel);
+      var grid=document.createElement('div'); grid.className='tgrid';
+      grid.appendChild(thd('Your week'));
+      tuneSlider(grid,'tasks','routine','Routine work','little','most');
+      tuneSlider(grid,'tasks','complex','Complex decisions','rare','constant');
+      tuneSlider(grid,'tasks','people','Relationships','little','central');
+      tuneSlider(grid,'tasks','physical','Hands-on','none','core');
+      grid.appendChild(thd('People rely on you'));
+      tuneSlider(grid,'trust','name','By name','rarely','always');
+      tuneSlider(grid,'trust','relationships','Own relationships','none','yours');
+      tuneSlider(grid,'trust','accountable','Accountable','no','buck stops');
+      tuneSlider(grid,'trust','judgment','Lean on judgment','little','constantly');
+      body.appendChild(grid);
+    } else {
+      var lab2=document.createElement('label'); lab2.className='tl'; lab2.textContent='Target field'; body.appendChild(lab2);
+      var sel2=document.createElement('select');
+      FIELDS.forEach(function(f){ var o=document.createElement('option'); o.value=f; o.textContent=f; if(A.direction[0]===f)o.selected=true; sel2.appendChild(o); });
+      sel2.onchange=function(){ A.direction=[sel2.value]; A.directionLabel=sel2.value; refresh(); };
+      body.appendChild(sel2);
+      var note=document.createElement('p'); note.className='tnote'; note.style.marginTop='12px'; note.innerHTML='Switch field and watch the whole entry-level read change — nursing and marketing are worlds apart.'; body.appendChild(note);
+    }
+  }
+  function buildMap(){ renderDisplay(computeMap(A)); try{ if(window.parent!==window){ var M=lastM; window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, lever:M.lever, urgency:M.urgency, move:M.move } }, "*"); } }catch(e){} buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on'); window.scrollTo(0,0); }
+
+  document.getElementById('sigSort').addEventListener('click',function(){ if(sigSortMode==='field'){sigSortMode='exp'; this.textContent='Sort: most exposed';} else {sigSortMode='field'; this.textContent='Sort: field order';} if(lastM) renderSignals(lastM); });
+  document.getElementById('backChat').addEventListener('click',function(){ document.getElementById('mapView').classList.remove('on'); document.getElementById('chatView').style.display='flex'; window.scrollTo(0,0); });
+
+  function restart(){ clearCtrl(); chat.innerHTML=''; A.path=null; A.careerSlug=null; A.lane=null; A.laneScore=null; A.changing=false; A.changeFrom=null; A.trust={name:35,relationships:35,accountable:35,judgment:35}; A.direction=[]; A.strengths={people:40,care:40,handson:40,creative:40,analytical:40,persuasion:40}; flags={}; planDone={}; STEP=0; setProg(0); start(); }
+
+  setProg(0.4); start();
+})();
+</script>

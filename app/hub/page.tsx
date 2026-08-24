@@ -1,9 +1,26 @@
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
+import { desc, eq } from "drizzle-orm";
+import { db } from "@/db";
+import { mapStates } from "@/db/schema";
 import { getOrCreateProfile } from "@/lib/member";
+
+type Computed = {
+  overall?: number; career?: string; lane?: string;
+  urgency?: { level?: string }; move?: { stance?: string };
+};
 
 export default async function Dashboard() {
   const profile = await getOrCreateProfile();
   const first = (profile?.displayName ?? "there").split(" ")[0];
+
+  const { userId } = await auth();
+  const latest = userId
+    ? (await db.select().from(mapStates).where(eq(mapStates.memberId, userId)).orderBy(desc(mapStates.createdAt)).limit(1))[0]
+    : null;
+  const c = (latest?.computed ?? null) as Computed | null;
+  const exposure = typeof latest?.overall === "number" ? Math.round(latest.overall) : null;
+  const expClass = exposure == null ? "" : exposure >= 65 ? "warn" : exposure >= 45 ? "" : "ok";
 
   return (
     <>
@@ -16,15 +33,27 @@ export default async function Dashboard() {
 
         <div className="hub-sectlabel">The Winning Loop</div>
         <div className="hub-grid">
-          <Link href="/hub/map" className="card">
-            <p className="ck">🧭 Map</p>
-            <h3>Your Winning Map</h3>
-            <p>Where you stand today — your exposure, your levers, and your winning move.</p>
-          </Link>
+          {/* Map card — data-driven once a map is saved */}
+          {c ? (
+            <Link href="/hub/map" className="card">
+              <p className="ck">🧭 Your Map · {c.career ?? ""}</p>
+              <div className={`big ${expClass}`}>{exposure}</div>
+              <p style={{ color: "var(--pencil)", fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px" }}>
+                Overall exposure{c.lane ? ` · ${c.lane}` : ""}
+              </p>
+              <p>{c.move?.stance ? `Your move: ${c.move.stance}.` : "Open your Map to tune it."}</p>
+            </Link>
+          ) : (
+            <Link href="/hub/map" className="card">
+              <p className="ck">🧭 Map</p>
+              <h3>Build your Winning Map</h3>
+              <p>Answer a few questions and see exactly where you stand — your exposure, your levers, and your winning move.</p>
+            </Link>
+          )}
           <Link href="/hub/learn" className="card">
             <p className="ck">📚 Learn</p>
             <h3>The levers</h3>
-            <p>Understand what decides who's exposed and who's protected in the age of AI.</p>
+            <p>Understand what decides who&apos;s exposed and who&apos;s protected in the age of AI.</p>
           </Link>
           <Link href="/hub/build" className="card">
             <p className="ck">🛠 Build</p>
@@ -53,14 +82,9 @@ export default async function Dashboard() {
           <Link href="/hub/community" className="card">
             <p className="ck">💬 Feed</p>
             <h3>The conversation</h3>
-            <p>Wins, questions, and what everyone's working on this week.</p>
+            <p>Wins, questions, and what everyone&apos;s working on this week.</p>
           </Link>
         </div>
-
-        <p style={{ color: "var(--pencil)", fontSize: "0.82rem", marginTop: 28 }}>
-          <span className="pill">Building</span>&nbsp; The platform is being stood up section by section —
-          your Map and the tools land first.
-        </p>
       </div>
     </>
   );
