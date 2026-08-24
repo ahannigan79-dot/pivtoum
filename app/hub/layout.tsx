@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { getOrCreateProfile, touchVisit } from "@/lib/member";
+import { getUnreadCount } from "@/lib/dms";
 import { HubNav } from "@/components/hub/HubNav";
 import "./hub.css";
 
@@ -9,6 +10,7 @@ export const metadata = { title: "Winning in the Age of AI — Your Community", 
 export default async function HubLayout({ children }: { children: React.ReactNode }) {
   const profile = await getOrCreateProfile();
   if (profile) await touchVisit(profile.clerkUserId);
+  const messagesUnread = profile ? await getUnreadCount(profile.clerkUserId) : 0;
   return (
     <div className="hub">
       <aside className="hub-side">
@@ -16,7 +18,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
           <span className="hub-mk" />
           <span><small>Pivotum · Your community</small><b>Winning in the Age of AI</b></span>
         </Link>
-        <HubNav />
+        <HubNav messagesUnread={messagesUnread} />
         <div className="hub-side-foot">
           <UserButton />
           {profile ? (

@@ -22,7 +22,7 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   ]},
 ];
 
-export function HubNav() {
+export function HubNav({ messagesUnread = 0 }: { messagesUnread?: number }) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
   return (
@@ -34,6 +34,7 @@ export function HubNav() {
             <Link key={it.href} href={it.href} className={isActive(it.href) ? "on" : ""}>
               <span className="ic">{it.icon}</span>
               {it.label}
+              {it.href === "/hub/messages" && messagesUnread > 0 && <span className="nav-badge">{messagesUnread}</span>}
             </Link>
           ))}
         </div>

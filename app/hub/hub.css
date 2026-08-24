@@ -23,6 +23,8 @@
 .hub-nav a:hover { background:var(--panel); color:var(--ink); }
 .hub-nav a.on { background:var(--panel2); color:var(--ink); }
 .hub-nav .ic { width:18px; text-align:center; opacity:.85; }
+.hub-nav .nav-badge { margin-left:auto; min-width:18px; height:18px; padding:0 5px; border-radius:9px;
+  background:var(--green); color:#12100a; font-size:0.68rem; font-weight:800; line-height:18px; text-align:center; }
 .hub-navsep { font-size:0.56rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--pencil); padding:14px 11px 6px; }
 .hub-side-foot { margin-top:auto; display:flex; align-items:center; gap:10px; padding:10px 8px 4px; border-top:1px solid var(--rule); }
 .hub-side-foot .nm { font-size:0.82rem; color:var(--soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -716,3 +718,50 @@ a.pod-member:hover span { color:var(--ink); }
 .drv-personal .neg { color:var(--pen); font-weight:700; }
 .drv-k.pos-k { color:var(--green); }
 .drv-k.neg-k { color:var(--pen); }
+
+/* ── Direct messages ───────────────────────────────────────────── */
+.prof-msg-btn { font-family:var(--sans); font-weight:700; font-size:0.86rem; color:#12100a;
+  background:var(--green); border:0; border-radius:9px; padding:9px 15px; cursor:pointer; transition:.12s; }
+.prof-msg-btn:hover { background:var(--green-bright); }
+
+/* inbox */
+.dm-list { display:flex; flex-direction:column; gap:2px; }
+.dm-row { display:flex; align-items:center; gap:13px; padding:12px 13px; border-radius:12px;
+  border:1px solid transparent; transition:.12s; }
+.dm-row:hover { background:var(--panel); border-color:var(--rule2); }
+.dm-row.unread { background:var(--panel); }
+.dm-main { flex:1; min-width:0; }
+.dm-top { display:flex; align-items:baseline; gap:9px; }
+.dm-top b { font-size:0.94rem; }
+.dm-row.unread .dm-top b { color:var(--ink); }
+.dm-when { font-size:0.72rem; color:var(--pencil); margin-left:auto; flex:none; }
+.dm-preview { margin:2px 0 0; font-size:0.85rem; color:var(--soft); overflow:hidden;
+  text-overflow:ellipsis; white-space:nowrap; }
+.dm-row.unread .dm-preview { color:var(--ink); }
+.dm-badge { flex:none; min-width:20px; height:20px; padding:0 6px; border-radius:10px;
+  background:var(--green); color:#12100a; font-size:0.72rem; font-weight:800; line-height:20px;
+  text-align:center; }
+
+/* conversation */
+.dm-tt { display:inline-flex; align-items:center; gap:9px; }
+.dm-convo { display:flex; flex-direction:column; min-height:calc(100dvh - 120px); }
+.dm-stream { flex:1; display:flex; flex-direction:column; gap:12px; padding:8px 0 18px; }
+.dm-msg { display:flex; flex-direction:column; align-items:flex-start; max-width:74%; }
+.dm-msg.mine { align-self:flex-end; align-items:flex-end; }
+.dm-bubble { padding:10px 14px; border-radius:15px; border-top-left-radius:5px;
+  background:var(--panel2); border:1px solid var(--rule2); color:var(--ink);
+  font-size:0.93rem; line-height:1.5; white-space:pre-wrap; word-break:break-word; }
+.dm-msg.mine .dm-bubble { background:var(--green-deep); border-color:transparent;
+  border-radius:15px; border-top-right-radius:5px; }
+.dm-msg-when { font-size:0.68rem; color:var(--pencil); margin:3px 4px 0; }
+.dm-composer { position:sticky; bottom:0; display:flex; gap:10px; align-items:flex-end;
+  padding:12px 0; background:linear-gradient(0deg,var(--bg) 82%,transparent); }
+.dm-composer textarea { flex:1; resize:vertical; min-height:44px; border:1px solid var(--rule2);
+  border-radius:12px; background:var(--panel); color:var(--ink); font-family:var(--sans);
+  font-size:0.93rem; padding:11px 13px; line-height:1.5; }
+.dm-composer textarea::placeholder { color:var(--pencil); }
+.dm-composer textarea:focus { outline:none; border-color:var(--green); }
+.dm-composer button { font-family:var(--sans); font-weight:700; font-size:0.9rem; color:#12100a;
+  background:var(--green); border:0; border-radius:11px; padding:0 20px; height:44px; cursor:pointer; transition:.12s; }
+.dm-composer button:hover { background:var(--green-bright); }
+.dm-composer button:disabled { opacity:.5; cursor:default; }

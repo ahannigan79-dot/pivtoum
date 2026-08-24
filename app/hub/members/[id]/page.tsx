@@ -7,6 +7,7 @@ import { exposureBand } from "@/lib/trajectory";
 import { timeAgo } from "@/lib/community";
 import { Avatar } from "@/components/hub/community/Avatar";
 import { ProfileEditor } from "@/components/hub/members/ProfileEditor";
+import { startDM } from "@/app/hub/messages/actions";
 
 const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim();
 const ROLE_LABEL: Record<string, string> = { founder: "Founder", moderator: "Moderator" };
@@ -43,7 +44,15 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
             {m.handle && <span className="prof-handle">@{m.handle}</span>}
             <p className="prof-where">{[career, m.stage, m.lane].filter(Boolean).join(" · ") || "Mapping in progress"}</p>
           </div>
-          {m.isMe && <div className="prof-head-actions"><ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage }} /></div>}
+          <div className="prof-head-actions">
+            {m.isMe ? (
+              <ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage }} />
+            ) : (
+              <form action={startDM.bind(null, m.clerkUserId)}>
+                <button type="submit" className="prof-msg-btn">✉ Message</button>
+              </form>
+            )}
+          </div>
         </header>
 
         {m.bio && <p className="prof-bio">{m.bio}</p>}
