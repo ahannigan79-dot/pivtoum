@@ -189,6 +189,14 @@ export const notifications = pgTable("notifications", {
   createdAt: now(),
 }, (t) => ({ memberIdx: index("notifications_member_idx").on(t.memberId, t.createdAt) }));
 
+/* ---------- Weekly ritual: the community heartbeat (founder-set prompt) ---------- */
+export const weeklyPrompts = pgTable("weekly_prompts", {
+  id: uid(),
+  title: text("title").notNull(),
+  body: text("body").notNull(),
+  createdAt: now(),
+});
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),

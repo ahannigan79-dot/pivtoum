@@ -775,6 +775,41 @@ a.pod-member:hover span { color:var(--ink); }
 .drv-k.pos-k { color:var(--green); }
 .drv-k.neg-k { color:var(--pen); }
 
+/* ── Weekly ritual (prompt of the week) ────────────────────────── */
+.week-prompt { display:flex; gap:15px; align-items:flex-start; border:1px solid var(--green-deep);
+  border-radius:16px; padding:16px 18px; margin:0 0 18px;
+  background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); }
+.week-prompt.week-prompt-link { transition:.14s; }
+.week-prompt.week-prompt-link:hover { background:linear-gradient(180deg,rgba(127,192,138,0.16),var(--panel)); }
+.wp-tag { flex:none; font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
+  color:#12100a; background:var(--green); border-radius:20px; padding:5px 11px; margin-top:2px; }
+.wp-main { min-width:0; }
+.wp-main h3 { font-family:var(--serif); font-weight:700; font-size:1.16rem; margin:0 0 5px; color:var(--ink); }
+.wp-main p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.55; }
+.wp-cta { display:inline-block; margin-top:9px; font-size:0.82rem; font-weight:700; color:var(--green); }
+
+/* founder prompt setter (on health) */
+.wp-set { margin:0 0 26px; }
+.wp-set-cur { display:flex; gap:14px; align-items:flex-start; border:1px solid var(--green-deep); border-radius:14px;
+  padding:14px 16px; background:linear-gradient(180deg,rgba(127,192,138,0.08),var(--panel)); }
+.wp-set-cur > div { flex:1; min-width:0; }
+.wp-set-cur b { font-family:var(--serif); font-size:1.05rem; color:var(--ink); }
+.wp-set-cur p { margin:4px 0 0; color:var(--soft); font-size:0.88rem; line-height:1.5; }
+.wp-set-edit { flex:none; font-family:var(--sans); font-weight:700; font-size:0.8rem; color:var(--soft);
+  background:transparent; border:1px solid var(--rule2); border-radius:9px; padding:8px 14px; cursor:pointer; transition:.12s; }
+.wp-set-edit:hover { border-color:var(--green); color:var(--green); }
+.wp-set-edit.solo { border-style:dashed; color:var(--green); border-color:var(--green-deep); }
+.wp-set-form { display:flex; flex-direction:column; gap:10px; border:1px solid var(--rule2); border-radius:14px;
+  background:var(--panel); padding:14px 15px; margin-top:10px; }
+.wp-set-form input, .wp-set-form textarea { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px;
+  padding:10px 12px; color:var(--ink); font-family:var(--sans); font-size:0.9rem; resize:vertical; }
+.wp-set-form input::placeholder, .wp-set-form textarea::placeholder { color:var(--pencil); }
+.wp-set-foot { display:flex; justify-content:flex-end; gap:9px; }
+.wp-set-foot button { font-family:var(--sans); font-weight:700; font-size:0.86rem; color:#12100a; background:var(--green);
+  border:0; border-radius:9px; padding:9px 16px; cursor:pointer; }
+.wp-set-foot button.ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); }
+.wp-set-foot button:disabled { opacity:.5; cursor:default; }
+
 /* ── Member health (founder) ───────────────────────────────────── */
 .hub-pill { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);
   border:1px solid #7a5e2c; border-radius:20px; padding:4px 11px; }

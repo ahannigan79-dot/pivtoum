@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getCommunityFeed } from "@/lib/community";
+import { ensureCommunityWelcome } from "@/lib/seed-content";
+import { getCurrentPrompt } from "@/lib/ritual";
 import { getTrajectory } from "@/lib/trajectory";
 import { mapShareText } from "@/lib/moves";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
@@ -22,7 +24,8 @@ export default async function CommunityPage({
 
   const profile = await getOrCreateProfile();
   const founder = isFounder(profile);
-  const [feed, traj] = await Promise.all([getCommunityFeed(userId, activeTopic), getTrajectory(userId)]);
+  await ensureCommunityWelcome();
+  const [feed, traj, prompt] = await Promise.all([getCommunityFeed(userId, activeTopic), getTrajectory(userId), getCurrentPrompt()]);
   const shareText = mapShareText(traj.computed, traj.overall);
 
   return (
@@ -30,6 +33,16 @@ export default async function CommunityPage({
       <div className="hub-top"><h1>Community</h1><span className="sp" /></div>
       <div className="hub-body hub-feed">
         <ValuesBanner />
+        {prompt && (
+          <div className="week-prompt">
+            <span className="wp-tag">This week</span>
+            <div className="wp-main">
+              <h3>{prompt.title}</h3>
+              <p>{prompt.body}</p>
+              <span className="wp-cta">Share your answer below ↓</span>
+            </div>
+          </div>
+        )}
         <Composer topics={postableTopics(founder)} shareText={shareText} />
 
         <nav className="feed-tabs">

@@ -81,6 +81,13 @@ export const PATCH_STATEMENTS: string[] = [
      ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.'),
      ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.')
    ON CONFLICT ("slug") DO NOTHING`,
+  // Weekly ritual — the community heartbeat prompt (founder-set).
+  `CREATE TABLE IF NOT EXISTS "weekly_prompts" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "title" text NOT NULL,
+     "body" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
   // Email lifecycle preferences (default on) + digest bookkeeping.
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_instant" boolean DEFAULT true NOT NULL`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_digest" boolean DEFAULT true NOT NULL`,

@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { getThreadFeed } from "@/lib/community";
 import { getPodBySlug, getPodMembers, isPodMember } from "@/lib/pods";
 import { getPodThreads } from "@/lib/threads";
+import { ensurePodWelcome } from "@/lib/seed-content";
 import { getTrajectory } from "@/lib/trajectory";
 import { mapShareText } from "@/lib/moves";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
@@ -42,6 +43,9 @@ export default async function PodPage({
   ]);
   const canModerate = isFounder(profile);
   const shareText = mapShareText(traj.computed, traj.overall);
+  // Never an empty room: seed a pinned welcome in Announcements on first visit.
+  const announcements = threads.find((t) => t.slug === "announcements") ?? threads[0];
+  await ensurePodWelcome(pod.id, pod.name, pod.goal, announcements?.id ?? null);
   const active = threads.find((t) => t.slug === threadSlug) ?? threads[0];
   const feed = active ? await getThreadFeed(active.id, userId) : [];
 

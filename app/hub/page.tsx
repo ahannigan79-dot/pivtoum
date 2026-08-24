@@ -6,6 +6,7 @@ import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity, computeEffort, effortBreakdown } from "@/lib/effort";
+import { getCurrentPrompt } from "@/lib/ritual";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
@@ -31,9 +32,10 @@ export default async function Dashboard() {
   const effort = activity ? computeEffort(activity) : 0;
   const breakdown = activity ? effortBreakdown(activity) : [];
 
-  const [moves, earned] = await Promise.all([
+  const [moves, earned, prompt] = await Promise.all([
     t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
     getEarnedBadges(userId),
+    getCurrentPrompt(),
   ]);
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
   // Recently-earned credentials → an "earned moment" (last 48h).
@@ -91,6 +93,17 @@ export default async function Dashboard() {
             <span className="earned-spark">✨</span>
             <span>You earned {recent.length === 1 ? "a new credential" : `${recent.length} new credentials`}: <b>{recent.map((b) => b.name).join(", ")}</b> — the work is showing.</span>
           </div>
+        )}
+
+        {prompt && (
+          <Link href="/hub/community" className="week-prompt week-prompt-link">
+            <span className="wp-tag">This week</span>
+            <div className="wp-main">
+              <h3>{prompt.title}</h3>
+              <p>{prompt.body}</p>
+              <span className="wp-cta">Join the conversation →</span>
+            </div>
+          </Link>
         )}
 
         {t?.hasMap ? (

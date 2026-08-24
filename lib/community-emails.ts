@@ -69,6 +69,7 @@ export function digestEmail(opts: {
   events: { title: string; when: string; href: string }[];
   rescoreDue: boolean;
   dormant: boolean;
+  prompt?: { title: string; body: string } | null;
 }): { subject: string; html: string; text: string } {
   const first = opts.name.split(" ")[0] || "there";
   const subject = opts.dormant
@@ -102,6 +103,14 @@ export function digestEmail(opts: {
     ? sect("This week", `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};">${eventRows}</table>`)
     : "";
 
+  const promptBlock = opts.prompt
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0 0;"><tr><td style="padding:16px 18px;background:#EEF5EF;border:1px solid #D3E5D8;border-radius:6px;">
+        <div style="font-family:Arial;font-size:10px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${green};margin:0 0 6px;">This week's prompt</div>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.5;color:${ink};margin:0 0 6px;"><strong>${esc(opts.prompt.title)}</strong></p>
+        <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.55;color:${inkSoft};margin:0 0 12px;">${esc(opts.prompt.body)}</p>
+        ${button("/hub/community", "Share your answer")}</td></tr></table>`
+    : "";
+
   const rescoreBlock = opts.rescoreDue
     ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0 0;"><tr><td style="padding:16px 18px;background:${bg};border-radius:6px;">
         <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55;color:${ink};margin:0 0 12px;"><strong>Your Map is due for a re-score.</strong> The field moves every couple of months — take two minutes to keep your exposure honest.</p>
@@ -111,6 +120,7 @@ export function digestEmail(opts: {
   const inner = `
     <p style="font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.4;color:${ink};margin:0 0 6px;">Hi ${esc(first)},</p>
     <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${inkSoft};margin:0 0 4px;">${intro}</p>
+    ${promptBlock}
     ${updatesBlock}
     ${eventsBlock}
     ${rescoreBlock}
@@ -118,6 +128,7 @@ export function digestEmail(opts: {
 
   const textParts = [
     `Hi ${first},`, intro, "",
+    ...(opts.prompt ? [`THIS WEEK'S PROMPT: ${opts.prompt.title}`, opts.prompt.body, `Share your answer: ${abs("/hub/community")}`, ""] : []),
     ...(opts.updates.length ? ["WAITING FOR YOU:", ...opts.updates.slice(0, 6).map((u) => `• ${u.line} — ${abs(u.href)}`), ""] : []),
     ...(opts.events.length ? ["THIS WEEK:", ...opts.events.slice(0, 4).map((e) => `• ${e.when} — ${e.title} — ${abs(e.href)}`), ""] : []),
     ...(opts.rescoreDue ? ["Your Map is due for a re-score: " + abs("/hub/map"), ""] : []),

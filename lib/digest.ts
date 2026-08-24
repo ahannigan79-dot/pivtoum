@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { profiles, notifications, mapStates, events } from "@/db/schema";
 import { PERSONAL_RESCORE_DAYS } from "@/lib/trajectory";
 import { formatWhen } from "@/lib/events";
+import { getCurrentPrompt } from "@/lib/ritual";
 import { digestEmail } from "@/lib/community-emails";
 import { sendMail, mailConfigured } from "@/lib/mailer";
 import type { NotifPayload } from "@/lib/notifications";
@@ -30,9 +31,12 @@ export async function runWeeklyDigest(now = new Date(), limit = 500): Promise<Di
   const ids = members.map((m) => m.id);
 
   // Shared: community events in the next 7 days.
-  const upcoming = await db.select({ id: events.id, title: events.title, startsAt: events.startsAt })
-    .from(events).where(and(gte(events.startsAt, now), lte(events.startsAt, new Date(now.getTime() + 7 * DAY))))
-    .orderBy(events.startsAt).limit(4);
+  const [upcoming, prompt] = await Promise.all([
+    db.select({ id: events.id, title: events.title, startsAt: events.startsAt })
+      .from(events).where(and(gte(events.startsAt, now), lte(events.startsAt, new Date(now.getTime() + 7 * DAY))))
+      .orderBy(events.startsAt).limit(4),
+    getCurrentPrompt(),
+  ]);
   const eventItems = upcoming.map((e) => ({ title: e.title, when: formatWhen(e.startsAt), href: "/hub/events" }));
 
   // Per-member: unread notifications + last map date, fetched in bulk.
@@ -62,10 +66,10 @@ export async function runWeeklyDigest(now = new Date(), limit = 500): Promise<Di
     const dormant = !m.lastSeenAt || (now.getTime() - m.lastSeenAt.getTime()) / DAY >= DORMANT_DAYS;
 
     // Nothing to say and they're active → don't email.
-    if (!updates.length && !eventItems.length && !rescoreDue && !dormant) { skipped++; continue; }
+    if (!updates.length && !eventItems.length && !rescoreDue && !dormant && !prompt) { skipped++; continue; }
 
     const { subject, html, text } = digestEmail({
-      name: m.name ?? m.email.split("@")[0], updates, events: eventItems, rescoreDue, dormant,
+      name: m.name ?? m.email.split("@")[0], updates, events: eventItems, rescoreDue, dormant, prompt,
     });
     const ok = await sendMail({ to: m.email, subject, html, text });
     if (ok) {
