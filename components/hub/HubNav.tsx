@@ -22,12 +22,15 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   ]},
 ];
 
-export function HubNav({ messagesUnread = 0 }: { messagesUnread?: number }) {
+export function HubNav({ messagesUnread = 0, isFounder = false }: { messagesUnread?: number; isFounder?: boolean }) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
+  const sections = isFounder
+    ? [...SECTIONS, { label: "Founder", items: [{ href: "/hub/health", icon: "❤", label: "Member health" }] }]
+    : SECTIONS;
   return (
     <nav className="hub-nav">
-      {SECTIONS.map((s, i) => (
+      {sections.map((s, i) => (
         <div key={i}>
           {s.label && <div className="hub-navsep">{s.label}</div>}
           {s.items.map((it) => (

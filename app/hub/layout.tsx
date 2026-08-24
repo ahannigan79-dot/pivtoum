@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { getOrCreateProfile, touchVisit } from "@/lib/member";
+import { getOrCreateProfile, touchVisit, isFounder } from "@/lib/member";
 import { getUnreadCount } from "@/lib/dms";
 import { getUnreadNotifCount } from "@/lib/notifications";
 import { HubNav } from "@/components/hub/HubNav";
@@ -27,7 +27,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
             {notifUnread > 0 && <span className="hub-bell-dot">{notifUnread > 9 ? "9+" : notifUnread}</span>}
           </Link>
         </div>
-        <HubNav messagesUnread={messagesUnread} />
+        <HubNav messagesUnread={messagesUnread} isFounder={isFounder(profile)} />
         <div className="hub-side-foot">
           <UserButton />
           {profile ? (
