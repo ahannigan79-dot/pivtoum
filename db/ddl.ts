@@ -81,6 +81,10 @@ export const PATCH_STATEMENTS: string[] = [
      ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.'),
      ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.')
    ON CONFLICT ("slug") DO NOTHING`,
+  // Email lifecycle preferences (default on) + digest bookkeeping.
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_instant" boolean DEFAULT true NOT NULL`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_digest" boolean DEFAULT true NOT NULL`,
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "digest_sent_at" timestamp with time zone`,
   // Badge catalog — credentials for real milestones. Idempotent.
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),

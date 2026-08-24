@@ -33,6 +33,9 @@ export const profiles = pgTable("profiles", {
   lastSeenAt: timestamp("last_seen_at", { withTimezone: true }),
   streakDays: integer("streak_days").notNull().default(0),
   visitDays: integer("visit_days").notNull().default(0),
+  emailInstant: boolean("email_instant").notNull().default(true), // reply/DM/report emails
+  emailDigest: boolean("email_digest").notNull().default(true),    // weekly digest
+  digestSentAt: timestamp("digest_sent_at", { withTimezone: true }),
   createdAt: now(),
 });
 

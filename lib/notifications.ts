@@ -2,6 +2,8 @@ import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { notifications, posts, pods, profiles } from "@/db/schema";
 import { getFounderIds } from "@/lib/pods";
+import { sendMail, mailConfigured } from "@/lib/mailer";
+import { notificationEmail } from "@/lib/community-emails";
 
 /** What we stash in the notification's jsonb payload so rendering needs no joins. */
 export type NotifPayload = {
@@ -46,6 +48,11 @@ async function postHref(postId: string, podId: string | null): Promise<string> {
   return r[0] ? `/hub/pods/${r[0].slug}#post-${postId}` : `/hub/community#post-${postId}`;
 }
 
+/** High-signal kinds that also send an instant email (reactions never do). */
+const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
+  reply: "View the reply", dm: "Open the message", report: "Review the post", mention: "View the post",
+};
+
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
   memberId: string,
@@ -65,6 +72,20 @@ export async function notify(
     ));
   }
   await db.insert(notifications).values({ memberId, type: kind, payload });
+  await maybeEmail(memberId, kind, payload);
+}
+
+/** Send an instant email for high-signal kinds, if the member opted in. */
+async function maybeEmail(memberId: string, kind: NotifKind, payload: NotifPayload): Promise<void> {
+  const cta = INSTANT_EMAIL[kind];
+  if (!cta || !mailConfigured()) return;
+  const r = await db.select({ email: profiles.email, on: profiles.emailInstant })
+    .from(profiles).where(eq(profiles.clerkUserId, memberId)).limit(1);
+  if (!r[0] || r[0].on === false || !r[0].email) return;
+  const { subject, html, text } = notificationEmail({
+    actorName: payload.actorName, title: payload.title, preview: payload.preview, href: payload.href, cta,
+  });
+  await sendMail({ to: r[0].email, subject, html, text });
 }
 
 /* ── Typed emitters, called from server actions ────────────────────────── */

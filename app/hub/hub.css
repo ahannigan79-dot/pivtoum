@@ -775,6 +775,27 @@ a.pod-member:hover span { color:var(--ink); }
 .drv-k.pos-k { color:var(--green); }
 .drv-k.neg-k { color:var(--pen); }
 
+/* ── Settings / email preferences ──────────────────────────────── */
+.hub-side-foot .nm { flex:1; }
+.hub-gear { flex:none; font-size:1rem; color:var(--pencil); width:28px; height:28px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; transition:.12s; }
+.hub-gear:hover { background:var(--panel); color:var(--ink); }
+.settings-lead { margin:0 0 16px; color:var(--soft); font-size:0.92rem; line-height:1.55; max-width:52ch; }
+.prefs { display:flex; flex-direction:column; gap:2px; }
+.pref-row { display:flex; align-items:flex-start; gap:13px; padding:14px 15px; border:1px solid var(--rule);
+  border-radius:13px; background:var(--panel); cursor:pointer; margin-bottom:10px; transition:.12s; }
+.pref-row:hover { border-color:var(--rule2); }
+.pref-row input[type="checkbox"] { width:18px; height:18px; margin-top:2px; accent-color:var(--green); flex:none; cursor:pointer; }
+.pref-row b { display:block; font-size:0.96rem; color:var(--ink); }
+.pref-row small { display:block; margin-top:3px; font-size:0.84rem; color:var(--soft); line-height:1.5; }
+.prefs-to { margin:6px 0 0; font-size:0.84rem; color:var(--pencil); }
+.prefs-to b { color:var(--soft); }
+.prefs-foot { margin-top:16px; }
+.prefs-foot button { font-family:var(--sans); font-weight:700; font-size:0.9rem; color:#12100a;
+  background:var(--green); border:0; border-radius:10px; padding:10px 20px; cursor:pointer; transition:.12s; }
+.prefs-foot button:hover:not(:disabled) { background:var(--green-bright); }
+.prefs-foot button:disabled { opacity:.5; cursor:default; }
+
 /* ── Notifications ─────────────────────────────────────────────── */
 .notif-list { display:flex; flex-direction:column; gap:2px; }
 .notif-row { display:flex; align-items:flex-start; gap:13px; padding:13px 13px; border-radius:12px;

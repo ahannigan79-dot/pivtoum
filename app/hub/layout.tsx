@@ -37,6 +37,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
           ) : (
             <span className="nm">Member</span>
           )}
+          <Link href="/hub/settings" className="hub-gear" aria-label="Settings">⚙</Link>
         </div>
       </aside>
       <main className="hub-main">{children}</main>
