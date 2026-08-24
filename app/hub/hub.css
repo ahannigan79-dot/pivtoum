@@ -339,3 +339,39 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .moves-shipped { margin-top:12px; }
 .shipped-toggle { font-family:var(--sans); font-size:0.82rem; color:var(--pencil); background:transparent; border:0; cursor:pointer; padding:4px 0; }
 .shipped-toggle:hover { color:var(--soft); }
+
+/* ---- Build rep logging + credentials ---- */
+.tool-rep { margin-left:auto; }
+.rep-log { font-family:var(--sans); font-weight:700; font-size:0.82rem; color:#12100a; background:var(--green);
+  border:0; border-radius:20px; padding:6px 14px; cursor:pointer; white-space:nowrap; }
+.rep-log:hover { background:var(--green-bright); }
+.rep-log:disabled { opacity:.6; cursor:default; }
+.rep-done { font-family:var(--sans); font-weight:700; font-size:0.82rem; color:var(--green); white-space:nowrap; }
+
+.creds { display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 16px; }
+.cred { display:inline-flex; align-items:center; gap:7px; font-size:0.8rem; color:var(--soft);
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:20px; padding:5px 12px; }
+.cred i { font-style:normal; }
+.creds-empty { font-size:0.86rem; color:var(--pencil); margin:2px 0 16px; }
+
+/* ---- command dashboard: KPIs + new-here banner ---- */
+.newhere { display:flex; align-items:center; gap:12px; border:1px solid var(--rule2); border-radius:12px;
+  background:var(--panel); padding:12px 16px; margin:0 0 18px; font-size:0.92rem; color:var(--soft); }
+.newhere:hover { border-color:var(--green-deep); }
+.nh-dot { width:8px; height:8px; border-radius:50%; background:var(--green); flex:none; box-shadow:0 0 0 4px rgba(127,192,138,0.15); }
+.newhere b { color:var(--ink); }
+.nh-go { margin-left:auto; color:var(--green); font-weight:600; white-space:nowrap; }
+
+.kpis { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:0 0 8px; }
+.kpi { position:relative; border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:15px 16px;
+  display:flex; flex-direction:column; gap:4px; }
+.kpi-exp { border-color:var(--rule2); }
+.kpi-n { font-family:var(--mono); font-weight:600; font-size:2rem; line-height:1; color:var(--ink); }
+.kpi-exp.warn .kpi-n { color:var(--pen); } .kpi-exp.mid .kpi-n { color:var(--amber); } .kpi-exp.ok .kpi-n { color:var(--green-bright); }
+.kpi-l { font-size:0.64rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--pencil); }
+.kpi-delta { position:absolute; top:14px; right:15px; font-family:var(--mono); font-size:0.78rem; font-weight:600; }
+.kpi-delta.good { color:var(--green); } .kpi-delta.bad { color:var(--pen); }
+
+.cta-hero-actions { display:flex; align-items:center; gap:10px; flex:none; }
+.cred.locked { color:var(--pencil); border-style:dashed; }
+@media (max-width:820px){ .kpis { grid-template-columns:repeat(2,1fr); } }

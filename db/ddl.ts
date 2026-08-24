@@ -16,6 +16,15 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "topic" text`,
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`,
   `ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "pinned_at" timestamp with time zone`,
+  // Badge catalog — credentials for real milestones. Idempotent.
+  `INSERT INTO "badges" ("key","name","icon","description") VALUES
+     ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
+     ('mapped','Mapped','🧭','Built your first Winning Map'),
+     ('cohort','In a Pod','👥','Joined your accountability pod'),
+     ('committed','In Motion','◆','Committed your first move'),
+     ('shipped','First Ship','🚀','Shipped your first move'),
+     ('operator','Operator','🎯','Logged your first Build rep')
+   ON CONFLICT ("key") DO NOTHING`,
 ];
 
 export const DDL_STATEMENTS: string[] = [

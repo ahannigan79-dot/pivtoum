@@ -3,7 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SECTIONS: { label?: string; items: { href: string; icon: string; label: string }[] }[] = [
-  { items: [{ href: "/hub", icon: "◆", label: "Evolve" }] },
+  { items: [
+    { href: "/hub/welcome", icon: "★", label: "Welcome" },
+    { href: "/hub", icon: "◆", label: "Evolve" },
+  ] },
   { label: "The Winning Loop", items: [
     { href: "/hub/map", icon: "🧭", label: "Your Map" },
     { href: "/hub/learn", icon: "📚", label: "Learn" },

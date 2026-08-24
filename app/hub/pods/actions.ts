@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { podMembers, pods, posts } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { getPodBySlug } from "@/lib/pods";
+import { awardBadge } from "@/lib/badges";
 
 function slugify(s: string): string {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "pod";
@@ -34,6 +35,8 @@ export async function joinPod(slug: string) {
   const pod = await getPodBySlug(slug);
   if (!pod) return;
   await db.insert(podMembers).values({ podId: pod.id, memberId: userId }).onConflictDoNothing();
+  await awardBadge(userId, "cohort");
+  revalidatePath("/hub");
   revalidatePath("/hub/pods");
   revalidatePath(`/hub/pods/${slug}`);
 }

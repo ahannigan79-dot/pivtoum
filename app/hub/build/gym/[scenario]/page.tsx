@@ -10,5 +10,5 @@ export default async function Page({ params }: { params: Promise<{ scenario: str
   const { scenario } = await params;
   const t = SCENARIOS[scenario];
   if (!t) notFound();
-  return <ToolFrame src={`/tools/${t.file}.html`} title={t.title} backHref="/hub/build/gym" backLabel="Judgment Gym" />;
+  return <ToolFrame src={`/tools/${t.file}.html`} title={t.title} backHref="/hub/build/gym" backLabel="Judgment Gym" repKey={`gym-${scenario}`} />;
 }

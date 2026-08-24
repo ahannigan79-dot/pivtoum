@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { mapStates, profiles } from "@/db/schema";
+import { awardBadge } from "@/lib/badges";
 
 // Save a computed Map for the signed-in member (one snapshot per completion → the
 // Evolve trajectory). Also stamps the member's current career/lane on their profile.
@@ -28,6 +29,8 @@ export async function POST(req: Request) {
   if (careerSlug || currentLane) {
     await db.update(profiles).set({ careerSlug, currentLane }).where(eq(profiles.clerkUserId, userId));
   }
+
+  await awardBadge(userId, "mapped");
 
   return NextResponse.json({ ok: true });
 }

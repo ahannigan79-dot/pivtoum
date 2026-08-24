@@ -1,33 +1,20 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
-import { getPlan, type PlanStep } from "@/lib/plan";
+import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves } from "@/lib/moves";
+import { getEarnedBadges } from "@/lib/badges";
+import { BADGES } from "@/lib/badges";
 import { Trend } from "@/components/hub/dashboard/Trend";
-import { NextAction } from "@/components/hub/dashboard/NextAction";
-import { Checklist } from "@/components/hub/dashboard/Checklist";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 
-export const metadata = { title: "Evolve — Pivotum" };
+export const metadata = { title: "Evolve to Win — Pivotum" };
 
 const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim();
-
 const EDGE2: Record<string, { label: string }> = {
-  guard: { label: "Guard your moat" },
-  shift: { label: "Shift lanes" },
-  relocate: { label: "Plan your relocate" },
+  guard: { label: "Guard your moat" }, shift: { label: "Shift lanes" }, relocate: { label: "Plan your relocate" },
 };
-
-/* When fully activated, the hero shifts to continuous improvement. */
-function continuousNext(movesActive: number, movesDone: number): PlanStep {
-  if (movesActive === 0) {
-    return { key: "commit", label: "Set your next move", href: "/hub/map", cta: "Pick a lever",
-      blurb: "You've got no move in flight. Turn your winning move into one concrete commitment this week.", done: false };
-  }
-  return { key: "ship", label: "Ship what you've committed to", href: "/hub/pods", cta: "Report progress",
-    blurb: `You've shipped ${movesDone} and have ${movesActive} in flight. Keep the trajectory bending — report progress to your pod.`, done: false };
-}
 
 export default async function Dashboard() {
   const profile = await getOrCreateProfile();
@@ -36,7 +23,11 @@ export default async function Dashboard() {
   const plan = await getPlan(userId);
   const t = plan?.traj ?? null;
   const c = t?.computed ?? null;
-  const moves = t?.hasMap ? await getMoves(userId) : { active: [], shipped: [] };
+
+  const [moves, earned] = await Promise.all([
+    t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
+    getEarnedBadges(userId),
+  ]);
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
 
   const band = exposureBand(t?.overall ?? null);
@@ -48,30 +39,37 @@ export default async function Dashboard() {
   const edge2W = move?.weight ?? 40;
   const delta = t && t.history.length >= 2 ? t.history[t.history.length - 1].overall - t.history[0].overall : null;
 
-  const heroStep = plan ? (plan.next ?? continuousNext(t?.movesActive ?? 0, t?.movesDone ?? 0)) : null;
-  const heroNum = plan ? Math.min(plan.activatedCount + 1, plan.activationTotal) : 0;
-
   return (
     <>
-      <div className="hub-top"><h1>Evolve</h1><span className="sp" /></div>
+      <div className="hub-top"><h1>Evolve to Win</h1><span className="sp" /></div>
       <div className="hub-body">
-        <p className="hub-lead">
-          Welcome back, <b>{first}</b>. This is where it all comes together — your plan, your progress,
-          and the next move that wins. {plan?.fullyActivated ? "Keep pulling the levers." : "Evolve to win."}
-        </p>
-
-        {heroStep && <NextAction step={heroStep} stepNum={heroNum} total={plan!.activationTotal} />}
-
         {plan && !plan.fullyActivated && (
-          <Checklist steps={plan.steps} done={plan.activatedCount} total={plan.activationTotal} />
+          <Link href="/hub/welcome" className="newhere">
+            <span className="nh-dot" />
+            <span>New here? Your <b>Welcome</b> walks you through your opening, step by step.</span>
+            <span className="nh-go">Open Welcome →</span>
+          </Link>
         )}
 
-        {t?.hasMap && (
+        {t?.hasMap ? (
           <>
-            <div className="hub-sectlabel">Your trajectory</div>
+            {/* Command KPIs */}
+            <div className="kpis">
+              <div className={`kpi kpi-exp ${band.cls}`}>
+                <span className="kpi-n">{t.overall}</span>
+                <span className="kpi-l">Exposure{band.word ? ` · ${band.word}` : ""}</span>
+                {delta != null && <span className={`kpi-delta ${delta <= 0 ? "good" : "bad"}`}>{delta <= 0 ? "↓" : "↑"} {Math.abs(delta)}</span>}
+              </div>
+              <div className="kpi"><span className="kpi-n">{t.movesDone}</span><span className="kpi-l">Moves shipped</span></div>
+              <div className="kpi"><span className="kpi-n">{t.movesActive}</span><span className="kpi-l">In flight</span></div>
+              <div className="kpi"><span className="kpi-n">{t.badgeCount}</span><span className="kpi-l">Credentials</span></div>
+              <div className="kpi"><span className="kpi-n">{t.editions}</span><span className="kpi-l">Re-scores</span></div>
+            </div>
+
+            <div className="hub-sectlabel">Where you stand</div>
             <div className="cockpit">
               <section className="ck-card ck-stand">
-                <p className="ck">Where you stand{c?.career ? ` · ${c.career}` : ""}</p>
+                <p className="ck">Trajectory{c?.career ? ` · ${c.career}` : ""}</p>
                 <div className="stand-row">
                   <div className="stand-num">
                     <div className={`big ${band.cls}`}>{t.overall}</div>
@@ -82,11 +80,9 @@ export default async function Dashboard() {
                     <span className="trend-note">
                       {t.history.length < 2
                         ? "Your first reading — the line builds at each re-score."
-                        : delta != null && delta < 0
-                          ? `↓ ${Math.abs(delta)} since you started. That's the direction.`
-                          : delta != null && delta > 0
-                            ? `↑ ${delta} — the world moved. Time to pull levers.`
-                            : "Holding steady across re-scores."}
+                        : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction.`
+                        : delta != null && delta > 0 ? `↑ ${delta} — the world moved. Time to pull levers.`
+                        : "Holding steady across re-scores."}
                     </span>
                   </div>
                 </div>
@@ -109,7 +105,6 @@ export default async function Dashboard() {
                   {e2 && <span>✦ {e2.label} · {edge2W}%</span>}
                 </div>
                 {move?.e2short && <p className="move-blurb">{strip(move.e2short)}</p>}
-                <div className="stand-foot"><Link href="/hub/build" className="cardlink">Go to Build →</Link></div>
               </section>
 
               {c?.driver && (
@@ -120,60 +115,40 @@ export default async function Dashboard() {
                   {c.driver.action && <p className="drv-action">{strip(c.driver.action)}</p>}
                 </section>
               )}
-
-              <section className="ck-card ck-ledger">
-                <p className="ck">Your progress</p>
-                <div className="ledger">
-                  <div className="led"><span className="led-n">{t.movesDone}</span><span className="led-l">moves shipped</span></div>
-                  <div className="led"><span className="led-n">{t.movesActive}</span><span className="led-l">in flight</span></div>
-                  <div className="led"><span className="led-n">{t.badgeCount}</span><span className="led-l">credentials</span></div>
-                  <div className="led"><span className="led-n">{t.editions}</span><span className="led-l">re-scores</span></div>
-                </div>
-                <Link href="/hub/build" className="cardlink">Train your edges →</Link>
-              </section>
             </div>
 
+            {/* Targets — the moves they control */}
+            <div className="hub-sectlabel">Your targets</div>
             <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} />
+
+            {/* Achievements */}
+            <div className="hub-sectlabel">Achievements</div>
+            {earned.length > 0 ? (
+              <div className="creds">
+                {earned.map((b) => (
+                  <span key={b.key} className="cred" title={b.note}><i>{b.icon}</i> {b.name}</span>
+                ))}
+                {earned.length < BADGES.length && (
+                  <span className="cred locked"><i>🔒</i> {BADGES.length - earned.length} more to earn</span>
+                )}
+              </div>
+            ) : (
+              <p className="creds-empty">No credentials yet — they&apos;re earned by doing the work: your first Map, first move shipped, first rep.</p>
+            )}
           </>
+        ) : (
+          <div className="cta-hero">
+            <div>
+              <p className="ck">◆ Activate your dashboard</p>
+              <h3>Build your Winning Map</h3>
+              <p>Your command dashboard comes alive once you&apos;ve mapped where you stand. New here? Start with your Welcome.</p>
+            </div>
+            <div className="cta-hero-actions">
+              <Link href="/hub/map" className="btn-primary">Build your Map →</Link>
+              <Link href="/hub/welcome" className="btn-ghost">Open Welcome</Link>
+            </div>
+          </div>
         )}
-
-        <div className="hub-sectlabel">The Winning Loop</div>
-        <div className="hub-grid">
-          <Link href="/hub/map" className="card">
-            <p className="ck">🧭 Map</p>
-            <h3>{t?.hasMap ? "Re-tune your Map" : "Your Map"}</h3>
-            <p>Where you stand — exposure, levers, and your winning move.</p>
-          </Link>
-          <Link href="/hub/learn" className="card">
-            <p className="ck">📚 Learn</p>
-            <h3>The levers</h3>
-            <p>What decides who&apos;s exposed and who&apos;s protected in the age of AI.</p>
-          </Link>
-          <Link href="/hub/build" className="card">
-            <p className="ck">🛠 Build</p>
-            <h3>Do the work</h3>
-            <p>Master the machine and train your judgment — the Gym, the Operator, your rebuilds.</p>
-          </Link>
-        </div>
-
-        <div className="hub-sectlabel">Your community</div>
-        <div className="hub-grid">
-          <Link href="/hub/pods" className="card">
-            <p className="ck">👥 Pod</p>
-            <h3>Your accountability pod</h3>
-            <p>The people on the same path, holding you to what you commit to.</p>
-          </Link>
-          <Link href="/hub/events" className="card">
-            <p className="ck">📅 Next up</p>
-            <h3>Book your 1:1 welcome</h3>
-            <p>A 60-minute session with Adam to walk your Map and set your first moves.</p>
-          </Link>
-          <Link href="/hub/community" className="card">
-            <p className="ck">💬 Feed</p>
-            <h3>The conversation</h3>
-            <p>Wins, questions, and what everyone&apos;s working on this week.</p>
-          </Link>
-        </div>
       </div>
     </>
   );
