@@ -26,12 +26,14 @@
     "remark-gfm": "^4.0.1",
     "resend": "^6.18.1",
     "stripe": "^22.3.2",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.1.0",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/web-push": "^3.6.4",
     "drizzle-kit": "^0.31.10",
     "playwright-core": "^1.62.0",
     "typescript": "^5"

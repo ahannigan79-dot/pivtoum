@@ -6,6 +6,7 @@ import { getUnreadNotifCount } from "@/lib/notifications";
 import { openReportCount } from "@/lib/moderation";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
+import { PwaRegister } from "@/components/hub/PwaRegister";
 import "./hub.css";
 
 export const metadata = { title: "Winning in the Age of AI — Your Community", robots: { index: false, follow: false } };
@@ -48,6 +49,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
         </div>
       </aside>
       <MobileBar notifUnread={notifUnread} messagesUnread={messagesUnread} openReports={openReports} isFounder={founder} />
+      <PwaRegister />
       <main className="hub-main">{children}</main>
     </div>
   );

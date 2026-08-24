@@ -81,6 +81,16 @@ export const PATCH_STATEMENTS: string[] = [
      ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.'),
      ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.')
    ON CONFLICT ("slug") DO NOTHING`,
+  // Web push subscriptions for the PWA (lock-screen notifications).
+  `CREATE TABLE IF NOT EXISTS "push_subscriptions" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL,
+     "endpoint" text NOT NULL UNIQUE,
+     "p256dh" text NOT NULL,
+     "auth" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "push_subs_member_idx" ON "push_subscriptions" ("member_id")`,
   // Weekly ritual — the community heartbeat prompt (founder-set).
   `CREATE TABLE IF NOT EXISTS "weekly_prompts" (
      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,

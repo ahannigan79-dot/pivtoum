@@ -1,6 +1,7 @@
 import { getOrCreateProfile } from "@/lib/member";
 import { updateEmailPrefs } from "./actions";
 import { PrefsForm } from "@/components/hub/settings/PrefsForm";
+import { PushToggle } from "@/components/hub/settings/PushToggle";
 
 export const metadata = { title: "Settings — Winning in the Age of AI" };
 
@@ -23,6 +24,11 @@ export default async function SettingsPage() {
           }}
           email={profile?.email ?? ""}
         />
+
+        <div className="hub-sectlabel" style={{ marginTop: 26 }}>On this device</div>
+        <div className="prefs">
+          <PushToggle />
+        </div>
       </div>
     </>
   );

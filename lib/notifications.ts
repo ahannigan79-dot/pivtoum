@@ -4,6 +4,7 @@ import { notifications, posts, pods, profiles } from "@/db/schema";
 import { getFounderIds } from "@/lib/pods";
 import { sendMail, mailConfigured } from "@/lib/mailer";
 import { notificationEmail } from "@/lib/community-emails";
+import { sendPushToMember } from "@/lib/push";
 
 /** What we stash in the notification's jsonb payload so rendering needs no joins. */
 export type NotifPayload = {
@@ -53,6 +54,9 @@ const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
   reply: "View the reply", dm: "Open the message", report: "Review the post", mention: "View the post",
 };
 
+/** Kinds worth a lock-screen push (reactions stay in-app only to avoid noise). */
+const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge"]);
+
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
   memberId: string,
@@ -72,7 +76,16 @@ export async function notify(
     ));
   }
   await db.insert(notifications).values({ memberId, type: kind, payload });
-  await maybeEmail(memberId, kind, payload);
+  await Promise.all([maybeEmail(memberId, kind, payload), maybePush(memberId, kind, payload)]);
+}
+
+/** Send a lock-screen push for high-signal kinds (member opts in per device). */
+async function maybePush(memberId: string, kind: NotifKind, payload: NotifPayload): Promise<void> {
+  if (!PUSH_KINDS.has(kind)) return;
+  const title = payload.actorName ? `${payload.actorName} ${payload.title}` : payload.title;
+  await sendPushToMember(memberId, {
+    title, body: payload.preview, url: payload.href, tag: `${kind}:${payload.entityId ?? ""}`,
+  });
 }
 
 /** Send an instant email for high-signal kinds, if the member opted in. */

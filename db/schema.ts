@@ -200,6 +200,16 @@ export const notifications = pgTable("notifications", {
   createdAt: now(),
 }, (t) => ({ memberIdx: index("notifications_member_idx").on(t.memberId, t.createdAt) }));
 
+/* ---------- Web push subscriptions (PWA lock-screen notifications) ---------- */
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: uid(),
+  memberId: memberFk(),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("push_subs_member_idx").on(t.memberId) }));
+
 /* ---------- Weekly ritual: the community heartbeat (founder-set prompt) ---------- */
 export const weeklyPrompts = pgTable("weekly_prompts", {
   id: uid(),
