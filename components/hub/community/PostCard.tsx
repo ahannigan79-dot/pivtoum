@@ -2,7 +2,7 @@ import { timeAgo, type FeedPost } from "@/lib/community";
 import { topicLabel } from "@/lib/feed-topics";
 import { linkify } from "@/lib/linkify";
 import { Avatar } from "./Avatar";
-import { ReactButton } from "./ReactButton";
+import { ReactionBar } from "./ReactionBar";
 import { CommentBox } from "./CommentBox";
 import { PinButton } from "./PinButton";
 import { PostMenu } from "./PostMenu";
@@ -58,7 +58,7 @@ export function PostCard({ post, canPin = false, meId = null, canModerate = fals
       )}
 
       <div className="post-actions">
-        <ReactButton postId={post.id} count={post.reactionCount} mine={post.iReacted} />
+        <ReactionBar postId={post.id} reactions={post.reactions} />
         <span className="react-static">💬 {post.comments.length}</span>
       </div>
 

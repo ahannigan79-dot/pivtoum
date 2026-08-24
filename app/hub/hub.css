@@ -597,3 +597,16 @@ a.pod-member:hover span { color:var(--ink); }
 .att-file { display:inline-flex; align-items:center; gap:6px; font-size:0.86rem; color:var(--green);
   background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:8px 12px; }
 .att-file:hover { border-color:var(--green-deep); }
+
+/* ---- multi-emoji reactions + comment emojis ---- */
+.reactbar { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.react-add { position:relative; }
+.react-plus { color:var(--pencil); font-weight:700; padding:5px 11px; }
+.react-plus:hover { color:var(--ink); }
+.react-pop { position:absolute; bottom:36px; left:0; z-index:10; display:flex; gap:1px; background:var(--panel2);
+  border:1px solid var(--rule2); border-radius:22px; padding:4px 7px; box-shadow:0 10px 26px rgba(0,0,0,0.45); }
+.react-pop button { background:transparent; border:0; font-size:1.2rem; cursor:pointer; padding:3px 5px; border-radius:6px; line-height:1; }
+.react-pop button:hover { background:var(--panel3); }
+.cbox-emoji { display:flex; gap:0; flex:none; }
+.cbox-emoji button { background:transparent; border:0; font-size:1.05rem; cursor:pointer; padding:2px 4px; border-radius:6px; line-height:1; }
+.cbox-emoji button:hover { background:var(--panel2); }

@@ -88,13 +88,16 @@ export async function addComment(postId: string, body: string) {
   revalidatePath("/hub/pods", "layout");
 }
 
-export async function toggleReaction(postId: string) {
+const REACTION_SET = new Set(["👍", "❤️", "🔥", "🎉", "💡", "👏"]);
+
+export async function toggleReaction(postId: string, emoji: string = "👍") {
   const { userId } = await auth();
   if (!userId) return;
-  const where = and(eq(reactions.postId, postId), eq(reactions.memberId, userId), eq(reactions.emoji, "👍"));
+  const e = REACTION_SET.has(emoji) ? emoji : "👍";
+  const where = and(eq(reactions.postId, postId), eq(reactions.memberId, userId), eq(reactions.emoji, e));
   const existing = await db.select().from(reactions).where(where).limit(1);
   if (existing[0]) await db.delete(reactions).where(where);
-  else await db.insert(reactions).values({ postId, memberId: userId, emoji: "👍" });
+  else await db.insert(reactions).values({ postId, memberId: userId, emoji: e });
   revalidatePath("/hub/community");
   revalidatePath("/hub/pods", "layout");
 }

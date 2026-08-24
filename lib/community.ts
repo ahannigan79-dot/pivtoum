@@ -10,7 +10,7 @@ export type FeedPost = {
   id: string; title: string | null; topic: string | null; body: string; createdAt: Date;
   pinned: boolean; author: FeedAuthor;
   reactionCount: number; iReacted: boolean; comments: FeedComment[]; reportCount: number;
-  attachments: FeedAttachment[];
+  attachments: FeedAttachment[]; reactions: { emoji: string; count: number; mine: boolean }[];
 };
 
 function author(a: typeof profiles.$inferSelect): FeedAuthor {
@@ -73,9 +73,16 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
   }
   const reactCount = new Map<string, number>();
   const mine = new Set<string>();
+  const reactAgg = new Map<string, Map<string, { count: number; mine: boolean }>>();
   for (const r of rRows) {
     reactCount.set(r.postId, (reactCount.get(r.postId) ?? 0) + 1);
     if (meId && r.memberId === meId) mine.add(r.postId);
+    const byEmoji = reactAgg.get(r.postId) ?? new Map();
+    const cell = byEmoji.get(r.emoji) ?? { count: 0, mine: false };
+    cell.count++;
+    if (meId && r.memberId === meId) cell.mine = true;
+    byEmoji.set(r.emoji, cell);
+    reactAgg.set(r.postId, byEmoji);
   }
 
   return rows.map(({ p, a }) => ({
@@ -84,6 +91,8 @@ async function buildFeed(where: SQL | undefined, meId: string | null): Promise<F
     reactionCount: reactCount.get(p.id) ?? 0, iReacted: mine.has(p.id),
     comments: commentsByPost.get(p.id) ?? [], reportCount: reportCount.get(p.id) ?? 0,
     attachments: attByPost.get(p.id) ?? [],
+    reactions: Array.from((reactAgg.get(p.id) ?? new Map()).entries())
+      .map(([emoji, v]) => ({ emoji, count: (v as { count: number }).count, mine: (v as { mine: boolean }).mine })),
   }));
 }
 
