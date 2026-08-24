@@ -3,12 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SECTIONS: { label?: string; items: { href: string; icon: string; label: string }[] }[] = [
-  { items: [{ href: "/hub", icon: "◆", label: "Dashboard" }] },
+  { items: [{ href: "/hub", icon: "◆", label: "Evolve" }] },
   { label: "The Winning Loop", items: [
     { href: "/hub/map", icon: "🧭", label: "Your Map" },
     { href: "/hub/learn", icon: "📚", label: "Learn" },
     { href: "/hub/build", icon: "🛠", label: "Build" },
-    { href: "/hub/evolve", icon: "📈", label: "Evolve" },
   ]},
   { label: "Community", items: [
     { href: "/hub/community", icon: "💬", label: "Feed" },

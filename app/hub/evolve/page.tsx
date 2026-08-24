@@ -1,4 +1,6 @@
-import { Coming } from "@/components/hub/Coming";
-export default function Page() {
-  return <Coming title="Evolve" blurb="Pull the levers and implement the change — your commitments, your accountability, and your trajectory as the world re-scores." />;
+import { redirect } from "next/navigation";
+
+// Evolve is the home dashboard now — "Evolve to Win" is where the plan lives.
+export default function EvolvePage() {
+  redirect("/hub");
 }
