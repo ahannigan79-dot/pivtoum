@@ -20,7 +20,7 @@ export function PostCard({ post, canPin = false, meId = null, canModerate = fals
   const topic = topicLabel(post.topic);
   const isOwn = meId != null && post.author.id === meId;
   return (
-    <article className={"post" + (post.pinned ? " pinned" : "")}>
+    <article id={`post-${post.id}`} className={"post" + (post.pinned ? " pinned" : "")}>
       {post.pinned && <div className="post-pinmark">📌 Pinned</div>}
       <div className="post-head">
         <Avatar name={post.author.name} url={post.author.avatarUrl} />

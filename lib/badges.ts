@@ -2,6 +2,7 @@ import { asc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { memberBadges } from "@/db/schema";
 import type { MemberActivity } from "@/lib/effort";
+import { notifyBadge } from "@/lib/notifications";
 
 /* Credentials, not points. Each badge marks a real milestone in the work —
  * something the member actually did, shown as an earned credential. */
@@ -51,8 +52,11 @@ export type EarnedBadge = BadgeDef & { earnedAt: Date };
 
 /** Award a badge (idempotent). The catalog row is seeded via the migration patch. */
 export async function awardBadge(userId: string, key: string): Promise<void> {
-  if (!BADGE_BY_KEY[key]) return;
-  await db.insert(memberBadges).values({ memberId: userId, badgeKey: key }).onConflictDoNothing();
+  const def = BADGE_BY_KEY[key];
+  if (!def) return;
+  const inserted = await db.insert(memberBadges).values({ memberId: userId, badgeKey: key })
+    .onConflictDoNothing().returning({ key: memberBadges.badgeKey });
+  if (inserted.length) await notifyBadge(userId, def.name, def.icon); // only on a genuinely new badge
 }
 
 export async function getEarnedBadges(userId: string | null): Promise<EarnedBadge[]> {

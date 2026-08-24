@@ -7,6 +7,7 @@ import { comments, postAttachments, postReports, posts, reactions } from "@/db/s
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPIC_BY_SLUG } from "@/lib/feed-topics";
 import { uploadPostFiles } from "@/lib/blob";
+import { notifyReply, notifyReaction, notifyReport } from "@/lib/notifications";
 
 /** Upload any files in the form and attach them to a post. */
 export async function attachFiles(postId: string, formData: FormData) {
@@ -42,6 +43,7 @@ export async function reportPost(postId: string, reason: string) {
   const { userId } = await auth();
   if (!userId) return;
   await db.insert(postReports).values({ postId, reporterId: userId, reason: reason.slice(0, 500) || null });
+  await notifyReport(postId, userId, reason.slice(0, 500) || null);
   revalidateFeeds();
 }
 
@@ -84,6 +86,7 @@ export async function addComment(postId: string, body: string) {
   const b = body.trim();
   if (!b) return;
   await db.insert(comments).values({ postId, authorId: userId, body: b.slice(0, 3000) });
+  await notifyReply(postId, userId, b);
   revalidatePath("/hub/community");
   revalidatePath("/hub/pods", "layout");
 }
@@ -97,7 +100,10 @@ export async function toggleReaction(postId: string, emoji: string = "👍") {
   const where = and(eq(reactions.postId, postId), eq(reactions.memberId, userId), eq(reactions.emoji, e));
   const existing = await db.select().from(reactions).where(where).limit(1);
   if (existing[0]) await db.delete(reactions).where(where);
-  else await db.insert(reactions).values({ postId, memberId: userId, emoji: e });
+  else {
+    await db.insert(reactions).values({ postId, memberId: userId, emoji: e });
+    await notifyReaction(postId, userId, e);
+  }
   revalidatePath("/hub/community");
   revalidatePath("/hub/pods", "layout");
 }

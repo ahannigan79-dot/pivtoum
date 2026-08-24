@@ -14,6 +14,16 @@
 /* sidebar */
 .hub-side { position:sticky; top:0; height:100dvh; background:var(--bg2); border-right:1px solid var(--rule);
   display:flex; flex-direction:column; padding:18px 14px; gap:4px; }
+.hub-head { display:flex; align-items:flex-start; gap:6px; }
+.hub-head .hub-brand { flex:1; min-width:0; }
+.hub-bell { position:relative; flex:none; display:inline-flex; align-items:center; justify-content:center;
+  width:34px; height:34px; margin-top:2px; border-radius:9px; border:1px solid var(--rule2);
+  background:var(--bg2); transition:.12s; }
+.hub-bell:hover { background:var(--panel); border-color:var(--rule); }
+.hub-bell-ic { font-size:0.95rem; line-height:1; filter:grayscale(0.2); }
+.hub-bell-dot { position:absolute; top:-6px; right:-6px; min-width:17px; height:17px; padding:0 4px;
+  border-radius:9px; background:var(--pen); color:#12100a; font-size:0.62rem; font-weight:800;
+  line-height:17px; text-align:center; border:2px solid var(--bg2); }
 .hub-brand { display:flex; align-items:center; gap:10px; padding:4px 8px 16px; }
 .hub-mk { width:26px; height:26px; border:2px solid var(--green); border-radius:7px; position:relative; flex:none; }
 .hub-mk::after { content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
@@ -764,6 +774,22 @@ a.pod-member:hover span { color:var(--ink); }
 .drv-personal .neg { color:var(--pen); font-weight:700; }
 .drv-k.pos-k { color:var(--green); }
 .drv-k.neg-k { color:var(--pen); }
+
+/* ── Notifications ─────────────────────────────────────────────── */
+.notif-list { display:flex; flex-direction:column; gap:2px; }
+.notif-row { display:flex; align-items:flex-start; gap:13px; padding:13px 13px; border-radius:12px;
+  border:1px solid transparent; transition:.12s; }
+.notif-row:hover { background:var(--panel); border-color:var(--rule2); }
+.notif-row.unread { background:var(--panel); border-left:2px solid var(--green); }
+.notif-icon { flex:none; width:40px; height:40px; border-radius:50%; background:var(--panel3);
+  display:inline-flex; align-items:center; justify-content:center; font-size:1.1rem; }
+.notif-main { flex:1; min-width:0; }
+.notif-text { margin:0; font-size:0.92rem; line-height:1.45; color:var(--ink); }
+.notif-row:not(.unread) .notif-text { color:var(--soft); }
+.notif-text b { color:var(--ink); font-weight:700; }
+.notif-preview { margin:3px 0 0; font-size:0.85rem; color:var(--soft); line-height:1.45;
+  overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+.notif-when { display:block; margin-top:4px; font-size:0.72rem; color:var(--pencil); }
 
 /* ── Direct messages ───────────────────────────────────────────── */
 .prof-msg-btn { font-family:var(--sans); font-weight:700; font-size:0.86rem; color:#12100a;
