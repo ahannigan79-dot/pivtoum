@@ -14,6 +14,7 @@ export async function markWelcomeBooked() {
   await db.update(profiles).set({ onboardedAt: new Date() }).where(eq(profiles.clerkUserId, userId));
   await awardBadge(userId, "welcomed");
   revalidatePath("/hub");
+  revalidatePath("/hub/welcome");
 }
 
 /** Log a completed Build rep (self-attested from the tool page). Ticks the plan + Operator badge. */
