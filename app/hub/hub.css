@@ -1680,3 +1680,33 @@ a.pod-member:hover span { color:var(--ink); }
   background:var(--green); border:0; border-radius:11px; padding:0 20px; height:44px; cursor:pointer; transition:.12s; }
 .dm-composer button:hover { background:var(--green-bright); }
 .dm-composer button:disabled { opacity:.5; cursor:default; }
+
+/* ── Market baselines (founder console) ─────────────────────────────────── */
+.lbgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; margin:14px 0 0; }
+.lbrow { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:20px 22px;
+  display:flex; flex-direction:column; gap:13px; }
+.lb-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.lb-lane { font-family:var(--serif); font-weight:600; font-size:1.08rem; color:var(--ink); }
+.lb-career { display:block; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--pencil); margin-top:4px; }
+.lb-count { font-size:0.74rem; color:var(--soft); white-space:nowrap; }
+.lb-nums { display:flex; gap:18px; font-size:0.82rem; color:var(--soft); }
+.lb-nums b { font-family:var(--mono); color:var(--ink); }
+.lb-ov b { color:var(--accent); }
+.lb-controls { display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap; }
+.lb-field { display:flex; flex-direction:column; gap:6px; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--pencil); }
+.lb-input { width:78px; font-family:var(--mono); font-size:1.1rem; font-weight:600; padding:8px 10px;
+  border:1px solid var(--rule2); border-radius:9px; background:var(--panel); color:var(--ink); }
+.lb-note { flex:1; min-width:150px; padding:9px 12px; border:1px solid var(--rule2); border-radius:9px;
+  background:var(--panel); color:var(--ink); font-family:var(--sans); font-size:0.86rem; }
+.lb-input:focus, .lb-note:focus { outline:none; border-color:var(--accent); }
+.lb-save { flex:none; background:var(--ink); color:var(--on-fill); border:none; border-radius:9px;
+  padding:9px 17px; font-family:var(--sans); font-weight:700; font-size:0.86rem; cursor:pointer; transition:.12s; }
+.lb-save:hover { background:#000; }
+.lb-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; min-height:20px; }
+.lb-preview { font-size:0.78rem; color:var(--soft); }
+.lb-preview.up { color:var(--exp); }
+.lb-preview.down { color:var(--prot); }
+.lb-preview.none { color:var(--pencil); }
+.lb-clear { background:transparent; border:none; color:var(--pencil); font-family:var(--sans);
+  font-size:0.76rem; cursor:pointer; text-decoration:underline; text-underline-offset:2px; padding:0; }
+.lb-clear:hover { color:var(--exp); }

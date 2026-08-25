@@ -176,6 +176,17 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "rebuild_generated_lane_idx" ON "rebuild_generated" ("lane","created_at")`,
+  // Founder-set market baselines per lane — a Pivotum re-score moves these, and
+  // every member in the lane moves with it (earned improvement carries forward).
+  `CREATE TABLE IF NOT EXISTS "lane_baselines" (
+     "career_slug" text NOT NULL,
+     "lane" text NOT NULL,
+     "baseline" integer NOT NULL,
+     "note" text,
+     "updated_by" text,
+     "updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+     CONSTRAINT "lane_baselines_pk" PRIMARY KEY("career_slug","lane")
+   )`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

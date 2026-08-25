@@ -279,6 +279,18 @@ export const rebuildGenerated = pgTable("rebuild_generated", {
   createdAt: now(),
 }, (t) => ({ laneIdx: index("rebuild_generated_lane_idx").on(t.lane, t.createdAt) }));
 
+/* ---------- Pivotum market baselines: founder-set exposure baseline per lane.
+   Overrides the lane's baseline the Map tool computed. When it moves, every
+   member in the lane moves with it — their earned improvement carries forward. */
+export const laneBaselines = pgTable("lane_baselines", {
+  careerSlug: text("career_slug").notNull(),
+  lane: text("lane").notNull(),
+  baseline: integer("baseline").notNull(),  // current market baseline, 0–100
+  note: text("note"),                        // why it moved (shown to members)
+  updatedBy: text("updated_by"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+}, (t) => ({ pk: primaryKey({ columns: [t.careerSlug, t.lane] }) }));
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),

@@ -17,7 +17,7 @@ export type NotifPayload = {
   entityId?: string; // for de-duping bursts (e.g. the post id)
 };
 
-export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event";
+export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore";
 
 export type NotifItem = {
   id: string;
@@ -27,7 +27,7 @@ export type NotifItem = {
 } & NotifPayload;
 
 const ICON: Record<NotifKind, string> = {
-  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅",
+  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊",
 };
 
 export function notifIcon(kind: string): string {
@@ -157,6 +157,18 @@ export async function notifyReport(postId: string, reporterId: string, reason: s
     actorId: reporterId, actorName: actor.name, actorAvatar: actor.avatar,
     title: "reported a post", preview: reason ? reason.slice(0, 140) : undefined, href, entityId: postId,
   })));
+}
+
+/** The market re-scored a member's lane → tell them their number moved, and why. */
+export async function notifyRescore(
+  memberId: string, opts: { lane: string; from: number; to: number; note?: string | null },
+): Promise<void> {
+  const dir = opts.to > opts.from ? "rose" : "eased";
+  const title = `The market re-scored ${opts.lane} — your exposure ${dir}`;
+  const preview = opts.note?.trim()
+    ? opts.note.trim()
+    : `Baseline ${opts.from} → ${opts.to}. Your protections and effort carry forward — open your dashboard for the new read.`;
+  await notify(memberId, "rescore", { title, preview, href: "/hub", entityId: `rescore:${opts.lane}` });
 }
 
 /* ── Reads ─────────────────────────────────────────────────────────────── */

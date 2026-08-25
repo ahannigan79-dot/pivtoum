@@ -9,7 +9,8 @@ import { getMemberActivity, computeEffort } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
 import { ExposureJourney, type JourneyPoint } from "@/components/hub/dashboard/ExposureJourney";
-import { effortDividend as calcEffortDividend, monthsSince, currentExposure } from "@/lib/score";
+import { effortDividend as calcEffortDividend, monthsSince, currentExposure, clampScore } from "@/lib/score";
+import { getLaneOverride } from "@/lib/baselines";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
 import { Icon } from "@/components/hub/Icon";
@@ -43,12 +44,19 @@ export default async function Dashboard() {
   const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
   const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));
 
+  // Market baseline: if Pivotum has re-scored this member's lane, apply the shift.
+  // Their saved score already carries their old baseline + personal, so we move it
+  // by (new baseline − old baseline) — earned improvement (personal + effort) rides along.
+  const savedBaseline = c?.personal?.laneBaseline ?? null;
+  const laneOverride = await getLaneOverride(profile?.careerSlug, profile?.currentLane);
+  const marketShift = laneOverride != null && savedBaseline != null ? laneOverride - savedBaseline : 0;
+
   // Effort dividend — the work you put in buys down exposure, but slowly: ~1 point
   // per month and never more than 12 total, so exposure comes down as a journey, not
   // a sprint to zero. (See lib/score.ts.)
   const elapsedMonths = monthsSince(t?.history?.[0]?.at ?? null);
   const effortDividend = calcEffortDividend(effort, elapsedMonths);
-  const baseExp = t?.overall ?? null;
+  const baseExp = t?.overall != null ? t.overall + marketShift : null;
   const exposureNow = baseExp != null ? currentExposure(baseExp, effortDividend) : null;
 
   const band = exposureBand(exposureNow);
@@ -81,6 +89,17 @@ export default async function Dashboard() {
         kind: i === 0 ? "baseline" : marketMoved ? "market" : "rescore",
       });
     });
+    // A live Pivotum re-score (baseline moved since the last saved Map) shows as its
+    // own node before today, so the member sees exactly what the market did.
+    if (marketShift !== 0 && savedBaseline != null && laneOverride != null && journey.length) {
+      const lastOverall = t.history[t.history.length - 1].overall;
+      journey.push({
+        value: clampScore(lastOverall + marketShift),
+        label: "Market re-score",
+        sub: `Baseline ${savedBaseline}→${laneOverride}`,
+        kind: "market",
+      });
+    }
     if (effortDividend > 0 && exposureNow != null) {
       journey.push({ value: exposureNow, label: "Today", sub: `Effort dividend −${effortDividend}`, kind: "today" });
     } else if (journey.length) {
