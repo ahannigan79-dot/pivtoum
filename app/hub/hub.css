@@ -851,6 +851,64 @@ a.pod-member:hover span { color:var(--ink); }
   .glass-perks { grid-template-columns:1fr; }
 }
 
+/* ── Workflow Rebuild ──────────────────────────────────────────── */
+.rb { max-width: 900px; }
+.rb-kk { display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); margin-bottom: 12px; }
+.rb-head h2 { font-family: var(--serif); font-weight: 700; font-size: 1.7rem; margin: 4px 0 10px; }
+.rb-thesis { font-family: var(--serif); font-size: 1.08rem; line-height: 1.55; color: var(--soft); margin: 0 0 4px; max-width: 62ch; }
+.rb-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 26px 0; }
+.rb-col { border: 1px solid var(--rule); border-radius: 14px; background: var(--panel); padding: 16px 17px; }
+.rb-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.rb-flow li { display: flex; gap: 12px; }
+.rb-sn { flex: none; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.78rem; color: var(--pencil); border: 1px solid var(--rule2); margin-top: 1px; }
+.rb-flow.native .rb-sn { color: var(--green); border-color: var(--green-deep); }
+.rb-fl { margin: 0 0 3px; font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+.rb-ft { margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--soft); }
+.rb-own { font-family: var(--sans); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--green); border: 1px solid var(--green-deep); border-radius: 20px; padding: 2px 8px; margin-left: 6px; white-space: nowrap; }
+.rb-ai { color: var(--pen); font-weight: 700; } .rb-you { color: var(--green-bright); font-weight: 700; }
+
+.rb-delta { border: 1px solid var(--rule); border-radius: 14px; background: var(--panel); padding: 18px 20px; margin-bottom: 26px; }
+.rb-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.rb-stat { text-align: center; }
+.rb-stat .v { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; color: var(--ink); }
+.rb-stat .l { margin-top: 5px; font-size: 0.72rem; color: var(--pencil); line-height: 1.4; }
+.rb-pull { margin: 18px 0 0; font-family: var(--serif); font-size: 1.08rem; line-height: 1.5; color: var(--ink);
+  border-left: 3px solid var(--green); padding-left: 15px; }
+
+.rb-ladder { margin-bottom: 26px; }
+.rb-ladnote { margin: 0 0 14px; font-size: 0.92rem; line-height: 1.55; color: var(--soft); max-width: 66ch; }
+.rb-rung { border: 1px solid var(--rule); border-left-width: 3px; border-radius: 12px; background: var(--panel); padding: 14px 16px; margin-bottom: 10px; }
+.rb-rung.t-new { border-left-color: var(--green); } .rb-rung.t-hi { border-left-color: var(--pen); }
+.rb-rung.t-md { border-left-color: var(--amber); } .rb-rung.t-lo { border-left-color: var(--green-bright); }
+.rb-rung-top { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.rb-who { font-weight: 700; font-size: 0.94rem; }
+.rb-risk { font-size: 0.72rem; font-weight: 700; margin-left: auto; }
+.rb-risk.t-new { color: var(--green); } .rb-risk.t-hi { color: var(--pen); } .rb-risk.t-md { color: var(--amber); } .rb-risk.t-lo { color: var(--green-bright); }
+.rb-what { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--soft); }
+.rb-move { margin: 9px 0 0; font-size: 0.88rem; line-height: 1.5; color: var(--ink); }
+.rb-move b { color: var(--green); margin-right: 5px; }
+
+.rb-moves { margin-bottom: 20px; }
+.rb-movesintro { margin: 0 0 14px; font-size: 0.92rem; line-height: 1.55; color: var(--soft); max-width: 64ch; }
+.rb-movecard { border: 1px solid var(--rule); border-radius: 13px; background: var(--panel); padding: 15px 17px; margin-bottom: 10px; }
+.rb-movecard.key { border-color: var(--green-deep); background: linear-gradient(180deg, rgba(127,192,138,0.06), var(--panel)); }
+.rb-keymark { font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+.rb-mh { display: flex; align-items: baseline; gap: 11px; margin-bottom: 7px; }
+.rb-mi { font-family: var(--mono); font-size: 0.9rem; color: var(--pencil); }
+.rb-mh h3 { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin: 0; }
+.rb-etag { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; margin-left: auto; white-space: nowrap; }
+.rb-etag.e-master { color: var(--amber); } .rb-etag.e-deepen { color: var(--green); } .rb-etag.e-both { color: var(--green-bright); }
+.rb-do { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--soft); }
+.rb-sit { margin: 9px 0 0; font-size: 0.86rem; color: var(--ink); }
+.rb-sit b { color: var(--pencil); font-weight: 700; margin-right: 5px; }
+.rb-week { margin: 7px 0 0; font-size: 0.76rem; color: var(--green); font-weight: 600; }
+.rb-foot { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+.rb-foot > div { flex: 1; min-width: 200px; font-size: 0.88rem; color: var(--soft); line-height: 1.5; }
+.rb-foot b { color: var(--ink); }
+@media (max-width: 720px) { .rb-cols { grid-template-columns: 1fr; } .rb-stats { grid-template-columns: 1fr; } }
+
 /* ── Judgment Gym ──────────────────────────────────────────────── */
 .gym-card .ck { color: var(--amber); }
 .gym-thesis { font-family: var(--serif); font-size: 1.14rem; line-height: 1.55; color: var(--soft); margin: 0 0 20px; max-width: 60ch; }
