@@ -98,6 +98,14 @@ export const PATCH_STATEMENTS: string[] = [
      "body" text NOT NULL,
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
+  // Looking-glass highlights — founder-curated proof-of-life for non-members.
+  `CREATE TABLE IF NOT EXISTS "glass_highlights" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "title" text NOT NULL,
+     "body" text NOT NULL,
+     "attribution" text,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
   // Email lifecycle preferences (default on) + digest bookkeeping.
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_instant" boolean DEFAULT true NOT NULL`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "email_digest" boolean DEFAULT true NOT NULL`,

@@ -801,6 +801,16 @@ a.pod-member:hover span { color:var(--ink); }
 .glass-hero h1 { font-family:var(--serif); font-weight:700; font-size:2rem; line-height:1.15; margin:0 0 12px; max-width:16ch; }
 .glass-hero p { margin:0; color:var(--soft); font-size:1.02rem; line-height:1.6; max-width:58ch; }
 
+.glass-reel { margin:26px 0 0; }
+.glass-reel-lbl { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); margin-bottom:10px; }
+.glass-reel-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.glass-card { border:1px solid var(--rule); border-left:3px solid var(--green); border-radius:13px;
+  background:var(--panel); padding:14px 16px; }
+.glass-card b { display:block; font-family:var(--serif); font-size:1.02rem; color:var(--ink); margin-bottom:5px; }
+.glass-card p { margin:0; font-size:0.9rem; color:var(--soft); line-height:1.5; }
+.glass-card-attr { display:block; margin-top:8px; font-size:0.78rem; color:var(--pencil); font-style:italic; }
+@media (max-width:680px){ .glass-reel-cards { grid-template-columns:1fr; } }
+
 .glass-live { display:grid; grid-template-columns:auto 1fr; gap:18px 28px; align-items:start;
   border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:20px 22px; margin:26px 0; }
 .glass-stat { text-align:center; padding-right:28px; border-right:1px solid var(--rule); align-self:center; }
@@ -978,6 +988,32 @@ a.pod-member:hover span { color:var(--ink); }
   border:0; border-radius:9px; padding:9px 16px; cursor:pointer; }
 .wp-set-foot button.ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); }
 .wp-set-foot button:disabled { opacity:.5; cursor:default; }
+
+/* looking-glass highlight manager (founder) */
+.hl-mgr { margin:0 0 26px; }
+.hl-list { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+.hl-item { display:flex; align-items:flex-start; gap:12px; border:1px solid var(--rule); border-left:3px solid var(--green);
+  border-radius:12px; background:var(--panel); padding:12px 14px; }
+.hl-item-main { flex:1; min-width:0; }
+.hl-item-main b { font-family:var(--serif); font-size:0.98rem; color:var(--ink); }
+.hl-item-main p { margin:4px 0 0; font-size:0.86rem; color:var(--soft); line-height:1.5; }
+.hl-attr { display:block; margin-top:6px; font-size:0.76rem; color:var(--pencil); font-style:italic; }
+.hl-del { flex:none; font-family:var(--sans); font-weight:700; font-size:0.76rem; color:var(--pencil);
+  background:transparent; border:1px solid var(--rule2); border-radius:8px; padding:6px 11px; cursor:pointer; transition:.12s; }
+.hl-del:hover { border-color:var(--pen); color:var(--pen); }
+.hl-add { font-family:var(--sans); font-weight:700; font-size:0.84rem; color:var(--green); background:transparent;
+  border:1px dashed var(--green-deep); border-radius:10px; padding:9px 15px; cursor:pointer; }
+.hl-add:hover { background:rgba(127,192,138,0.06); }
+.hl-form { display:flex; flex-direction:column; gap:10px; border:1px solid var(--rule2); border-radius:14px;
+  background:var(--panel); padding:14px 15px; }
+.hl-form input, .hl-form textarea { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px;
+  padding:10px 12px; color:var(--ink); font-family:var(--sans); font-size:0.9rem; resize:vertical; }
+.hl-form input::placeholder, .hl-form textarea::placeholder { color:var(--pencil); }
+.hl-form-foot { display:flex; justify-content:flex-end; gap:9px; }
+.hl-form-foot button { font-family:var(--sans); font-weight:700; font-size:0.86rem; color:#12100a; background:var(--green);
+  border:0; border-radius:9px; padding:9px 16px; cursor:pointer; }
+.hl-form-foot button.ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); }
+.hl-hint { margin:10px 0 0; font-size:0.78rem; color:var(--pencil); }
 
 /* ── Member health (founder) ───────────────────────────────────── */
 .hub-pill { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber);

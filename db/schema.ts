@@ -222,6 +222,15 @@ export const weeklyPrompts = pgTable("weekly_prompts", {
   createdAt: now(),
 });
 
+/* ---------- Looking-glass highlights: founder-curated proof-of-life for non-members ---------- */
+export const glassHighlights = pgTable("glass_highlights", {
+  id: uid(),
+  title: text("title").notNull(),
+  body: text("body").notNull(),
+  attribution: text("attribution"),
+  createdAt: now(),
+});
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),

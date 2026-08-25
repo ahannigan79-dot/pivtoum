@@ -1,5 +1,6 @@
 import { getGlassData } from "@/lib/gate";
 import { getMembershipOffer } from "@/lib/billing";
+import { getHighlights } from "@/lib/highlights";
 import { formatWhen } from "@/lib/events";
 import { startMembership } from "@/app/hub/membership/actions";
 
@@ -11,7 +12,7 @@ const PERKS = [
 ];
 
 export async function LookingGlass() {
-  const [data, offer] = await Promise.all([getGlassData(), getMembershipOffer()]);
+  const [data, offer, highlights] = await Promise.all([getGlassData(), getMembershipOffer(), getHighlights()]);
   const trial = offer.trialDays > 0;
 
   return (
@@ -21,6 +22,21 @@ export async function LookingGlass() {
         <h1>You can see the room. Step inside to win in it.</h1>
         <p>Winning in the Age of AI is a working community — you get your own plan, your own pod, and people in your exact lane figuring this out alongside you. Here&apos;s what&apos;s happening inside right now.</p>
       </div>
+
+      {highlights.length > 0 && (
+        <div className="glass-reel">
+          <div className="glass-reel-lbl">What&apos;s happening inside</div>
+          <div className="glass-reel-cards">
+            {highlights.map((h) => (
+              <div key={h.id} className="glass-card">
+                <b>{h.title}</b>
+                <p>{h.body}</p>
+                {h.attribution && <span className="glass-card-attr">— {h.attribution}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="glass-live">
         <div className="glass-stat">

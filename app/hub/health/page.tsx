@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { getHealthReport, type MemberHealth } from "@/lib/health";
 import { getCurrentPrompt } from "@/lib/ritual";
+import { getHighlights } from "@/lib/highlights";
 import { startDM } from "@/app/hub/messages/actions";
 import { Avatar } from "@/components/hub/community/Avatar";
 import { PromptSetter } from "@/components/hub/health/PromptSetter";
+import { HighlightManager } from "@/components/hub/health/HighlightManager";
 
 export const metadata = { title: "Member health — Winning in the Age of AI" };
 
@@ -51,7 +53,7 @@ function AttentionRow({ m }: { m: MemberHealth }) {
 export default async function HealthPage() {
   const profile = await getOrCreateProfile();
   if (!isFounder(profile)) notFound();
-  const [r, prompt] = await Promise.all([getHealthReport(), getCurrentPrompt()]);
+  const [r, prompt, highlights] = await Promise.all([getHealthReport(), getCurrentPrompt(), getHighlights()]);
 
   const kpis: { label: string; value: number; cls?: string }[] = [
     { label: "Members", value: r.summary.total },
@@ -69,6 +71,9 @@ export default async function HealthPage() {
       <div className="hub-body">
         <div className="hub-sectlabel">This week&apos;s prompt · the community heartbeat</div>
         <PromptSetter current={prompt ? { title: prompt.title, body: prompt.body } : null} />
+
+        <div className="hub-sectlabel">Looking-glass highlights · what non-members see</div>
+        <HighlightManager highlights={highlights} />
 
         <div className="mh-kpis">
           {kpis.map((k) => (
