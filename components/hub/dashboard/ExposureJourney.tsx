@@ -5,7 +5,7 @@ export type JourneyPoint = {
   value: number;
   label: string;
   sub?: string;
-  kind: "baseline" | "rescore" | "today";
+  kind: "baseline" | "rescore" | "market" | "today";
 };
 
 export function ExposureJourney({ points }: { points: JourneyPoint[] }) {
@@ -41,15 +41,18 @@ export function ExposureJourney({ points }: { points: JourneyPoint[] }) {
       <path d={line} fill="none" stroke="var(--prot)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       {points.map((p, i) => {
         const today = p.kind === "today";
+        const market = p.kind === "market";
         return (
           <g key={i}>
             <text x={x(i)} y={y(p.value) - 14} textAnchor="middle" className="ej-val">{p.value}</text>
             {today ? (
               <circle cx={x(i)} cy={y(p.value)} r="6.5" fill="var(--prot)" stroke="var(--panel)" strokeWidth="2.5" />
+            ) : market ? (
+              <circle cx={x(i)} cy={y(p.value)} r="5.5" fill="var(--panel)" stroke="var(--accent)" strokeWidth="2.5" />
             ) : (
               <circle cx={x(i)} cy={y(p.value)} r="4.5" fill="var(--ink)" stroke="var(--panel)" strokeWidth="2" />
             )}
-            <text x={x(i)} y={baseY + 22} textAnchor="middle" className={"ej-lab" + (today ? " on" : "")}>{p.label}</text>
+            <text x={x(i)} y={baseY + 22} textAnchor="middle" className={"ej-lab" + (today ? " on" : "") + (market ? " mkt" : "")}>{p.label}</text>
             {p.sub && <text x={x(i)} y={baseY + 37} textAnchor="middle" className="ej-sub">{p.sub}</text>}
           </g>
         );

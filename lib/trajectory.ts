@@ -17,7 +17,12 @@ export type MapComputed = {
   move?: { stance?: string; edge2?: string; weight?: number; e2short?: string };
 };
 
-export type TrajectoryPoint = { at: Date; overall: number };
+export type TrajectoryPoint = {
+  at: Date;
+  overall: number;
+  laneBaseline?: number;   // the market baseline at this reading (Pivotum-set)
+  personalDelta?: number;  // the personal adjustment the member carried at this reading
+};
 
 export type Trajectory = {
   hasMap: boolean;
@@ -65,7 +70,15 @@ export async function getTrajectory(userId: string | null): Promise<Trajectory> 
 
   const history: TrajectoryPoint[] = maps
     .filter((m) => typeof m.overall === "number")
-    .map((m) => ({ at: m.at, overall: Math.round(m.overall as number) }));
+    .map((m) => {
+      const p = (m.computed as MapComputed | null)?.personal;
+      return {
+        at: m.at,
+        overall: Math.round(m.overall as number),
+        laneBaseline: typeof p?.laneBaseline === "number" ? Math.round(p.laneBaseline) : undefined,
+        personalDelta: typeof p?.delta === "number" ? Math.round(p.delta) : undefined,
+      };
+    });
   const last = maps[maps.length - 1];
   const daysSinceMap = Math.floor((Date.now() - last.at.getTime()) / (1000 * 60 * 60 * 24));
 

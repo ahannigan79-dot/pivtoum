@@ -9,6 +9,7 @@ import { getMemberActivity, computeEffort } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
 import { ExposureJourney, type JourneyPoint } from "@/components/hub/dashboard/ExposureJourney";
+import { effortDividend as calcEffortDividend, monthsSince, currentExposure } from "@/lib/score";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
 import { Icon } from "@/components/hub/Icon";
@@ -42,12 +43,13 @@ export default async function Dashboard() {
   const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
   const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));
 
-  // Effort dividend — the work you put in buys down exposure. Every 30 points = −1,
-  // capped at −12 so it rewards effort without overwhelming the market baseline.
-  const EFFORT_PER_POINT = 30, EFFORT_CAP = 12;
-  const effortDividend = Math.min(EFFORT_CAP, Math.floor(effort / EFFORT_PER_POINT));
+  // Effort dividend — the work you put in buys down exposure, but slowly: ~1 point
+  // per month and never more than 12 total, so exposure comes down as a journey, not
+  // a sprint to zero. (See lib/score.ts.)
+  const elapsedMonths = monthsSince(t?.history?.[0]?.at ?? null);
+  const effortDividend = calcEffortDividend(effort, elapsedMonths);
   const baseExp = t?.overall ?? null;
-  const exposureNow = baseExp != null ? Math.max(3, Math.min(97, baseExp - effortDividend)) : null;
+  const exposureNow = baseExp != null ? currentExposure(baseExp, effortDividend) : null;
 
   const band = exposureBand(exposureNow);
   const laneBandWord = bandWord(c?.band);
@@ -67,8 +69,18 @@ export default async function Dashboard() {
   const fmtMonth = (d: Date) => new Date(d).toLocaleDateString("en-US", { month: "short", year: "2-digit" });
   const journey: JourneyPoint[] = [];
   if (t?.hasMap) {
-    t.history.forEach((h, i) =>
-      journey.push({ value: h.overall, label: i === 0 ? "Baseline" : "Re-score", sub: fmtMonth(h.at), kind: i === 0 ? "baseline" : "rescore" }));
+    t.history.forEach((h, i) => {
+      const prev = i > 0 ? t.history[i - 1] : null;
+      // A re-score is a "market" node when the Pivotum baseline moved between saves;
+      // otherwise it's the member's own personal re-score.
+      const marketMoved = !!(prev && prev.laneBaseline != null && h.laneBaseline != null && h.laneBaseline !== prev.laneBaseline);
+      journey.push({
+        value: h.overall,
+        label: i === 0 ? "Baseline" : marketMoved ? "Market re-score" : "Re-score",
+        sub: i === 0 ? fmtMonth(h.at) : marketMoved ? `Baseline ${prev!.laneBaseline}→${h.laneBaseline}` : fmtMonth(h.at),
+        kind: i === 0 ? "baseline" : marketMoved ? "market" : "rescore",
+      });
+    });
     if (effortDividend > 0 && exposureNow != null) {
       journey.push({ value: exposureNow, label: "Today", sub: `Effort dividend −${effortDividend}`, kind: "today" });
     } else if (journey.length) {

@@ -913,9 +913,9 @@
     // licensing, judgment), using the scoring-model weights. The personal adjustment is
     // capped so it can shift the picture but never overwhelm the Pivotum baseline.
     var laneBaseline = laneScore*10;
-    var PERSONAL_CAP = 15; // personal factors may move exposure at most ±15 pts
+    var PERSONAL_CAP = 10; // personal factors may move exposure at most ±10 pts
     // -protPts*0.5: more protection lowers exposure. Single strong slider (e.g. hands-on
-    // 50→100) ≈ -7.5; maxing all protections caps at -15. Weakening (below 50) raises it.
+    // 50→100) ≈ -7.5; maxing all protections caps at -10. Weakening (below 50) raises it.
     var protDelta = Math.max(-PERSONAL_CAP, Math.min(PERSONAL_CAP, -protPts*0.5));
     var overall = Math.max(3, Math.min(97, Math.round(laneBaseline + protDelta)));
     var driver = you.auto>=you.ladder ? {name:'Automatability',rating:F[0]} : {name:'The Ladder',rating:F[1]};
