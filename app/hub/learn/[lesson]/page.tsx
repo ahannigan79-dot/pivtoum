@@ -32,7 +32,10 @@ export default async function LessonPage({ params }: { params: Promise<{ lesson:
           {l.sections.map((s, i) => (
             <section key={i} className="les-sect">
               <h2>{s.h}</h2>
-              <p>{s.p}</p>
+              {(Array.isArray(s.p) ? s.p : s.p ? [s.p] : []).map((para, j) => <p key={j}>{para}</p>)}
+              {s.bullets && s.bullets.length > 0 && (
+                <ul className="les-bullets">{s.bullets.map((b, j) => <li key={j}>{b}</li>)}</ul>
+              )}
             </section>
           ))}
         </article>

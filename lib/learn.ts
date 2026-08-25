@@ -2,7 +2,10 @@ import { and, eq, like } from "drizzle-orm";
 import { db } from "@/db";
 import { lessonProgress } from "@/db/schema";
 
-export type Section = { h: string; p: string };
+// A section can carry one paragraph, several paragraphs (string[]), and/or a
+// bullet list — enough to hold the full depth of the source lessons without any
+// HTML/markdown (stays plain-text, auto-escaped, no sanitizer needed).
+export type Section = { h: string; p?: string | string[]; bullets?: string[] };
 export type Lesson = { key: string; title: string; minutes: number; summary: string; sections: Section[] };
 export type Module = { slug: string; title: string; blurb: string; lessons: Lesson[] };
 
