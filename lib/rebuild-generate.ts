@@ -87,7 +87,7 @@ export async function generateRebuildVariant(lane: string, career: string, workf
     (workflow?.trim() ? `Use this specific workflow: "${workflow.trim()}".\n` : "Choose the most representative core workflow for the lane.\n") +
     `Make every step specific to the real work of this lane. Return only the JSON object.`;
 
-  for (const thinking of [true, false]) {
+  for (const thinking of [false, true]) {
     const raw = await complete({ system: SYSTEM, maxTokens: 6000, thinking, messages: [{ role: "user", content }] });
     const variant = coerce(parseJSON<RawVariant>(raw ?? ""), slug);
     if (variant) return variant;

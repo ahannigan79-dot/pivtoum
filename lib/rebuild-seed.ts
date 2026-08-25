@@ -10,7 +10,7 @@ import { aiConfigured } from "@/lib/ai";
  *  batches (caller loops until `done`). Idempotent; reps stored unowned. */
 export type SeedResult = { seeded: string[]; filled: number; remaining: number; total: number; done: boolean };
 
-export async function seedRebuildCatalogue(target = 2, maxCareers = 3): Promise<SeedResult> {
+export async function seedRebuildCatalogue(target = 2, maxCareers = 1): Promise<SeedResult> {
   if (!aiConfigured()) return { seeded: [], filled: 0, remaining: 0, total: careers.length, done: true };
 
   const rows = await db

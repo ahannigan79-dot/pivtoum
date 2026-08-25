@@ -129,9 +129,9 @@ export async function generateGymScenario(lane: string, career: string): Promise
     `Write one Judgment Gym rep for this lane: "${lane}"${career && career !== lane ? ` (career shown to the member: "${career}")` : ""}.\n` +
     `Make the client, brief, and every item specific to the real day-to-day work of this lane. Return only the JSON object.`;
 
-  // Attempt 1: full reasoning. Attempt 2: no thinking, so the whole budget goes to
-  // the JSON (the usual cause of a bad first attempt is a truncated response).
-  for (const thinking of [true, false]) {
+  // Attempt 1: no thinking — the whole budget goes to the JSON, so it's fast and
+  // rarely truncates. Attempt 2 (fallback): thinking on, in case the first misses.
+  for (const thinking of [false, true]) {
     const raw = await complete({ system: SYSTEM, maxTokens: 6000, thinking, messages: [{ role: "user", content }] });
     const scenario = coerce(parseJSON<RawScenario>(raw ?? ""), slug, career || lane);
     if (scenario) return scenario;
