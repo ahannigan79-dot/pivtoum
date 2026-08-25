@@ -1002,6 +1002,23 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ── Judgment Gym ──────────────────────────────────────────────── */
 .gym-card .ck { color: var(--amber); }
+
+/* Generate a fresh rep — Claude-written, on-demand */
+.gym-gen { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  border:1px solid var(--green-deep); border-radius:16px;
+  background:linear-gradient(135deg,rgba(127,192,138,0.14),var(--panel) 60%); padding:18px 22px; margin:2px 0 14px; }
+.gym-gen-copy { flex:1 1 320px; }
+.gym-gen-copy .ck { color:var(--green); margin:0 0 6px; }
+.gym-gen-copy h3 { font-family:var(--serif); font-weight:700; font-size:1.2rem; margin:0 0 6px; color:var(--ink); }
+.gym-gen-copy p { margin:0; color:var(--soft); font-size:0.94rem; line-height:1.5; max-width:60ch; }
+.gym-gen-err { margin-top:8px !important; color:var(--pen) !important; font-weight:600; }
+.gym-gen-btn { flex:0 0 auto; border:0; cursor:pointer; border-radius:12px; padding:13px 20px;
+  background:var(--green); color:#12100a; font-weight:800; font-size:0.94rem; letter-spacing:0.01em;
+  transition:filter 0.15s ease, opacity 0.15s ease; }
+.gym-gen-btn:hover:not(:disabled) { filter:brightness(1.06); }
+.gym-gen-btn:disabled { opacity:0.7; cursor:progress; }
+.gym-fresh-note { color:var(--pencil); font-size:0.85rem; margin:0 0 16px; max-width:60ch; }
+
 .gym-lane { margin-bottom: 8px; }
 .gym-lane-head { display: flex; align-items: baseline; gap: 12px; }
 .gym-lane-head .hub-sectlabel { margin: 20px 0 12px; }
