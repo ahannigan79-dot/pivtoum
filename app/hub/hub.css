@@ -311,6 +311,42 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .cockpit { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:0 0 10px; align-items:start; }
 .ck-card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:18px 20px; }
 .ck-ledger { grid-column:1 / -1; }
+.ck-driver-solo { margin:0 0 24px; padding:26px 28px; }
+
+/* ── The Evolve Dashboard hero — exposure today + progress ──────────────
+   The one loud number on the page. Everything else is kept quiet so the
+   score, and how far it's moved, do the talking (per the brand doc). */
+.escore { border:1px solid var(--rule); border-radius:18px; background:var(--panel);
+  padding:30px 32px; margin:0 0 26px; }
+.escore-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.escore-head .cardlink { margin-left:0; }
+.escore-aim { font-family:var(--serif); font-weight:600; font-size:1.5rem; line-height:1.16;
+  letter-spacing:-0.01em; margin:4px 0 22px; color:var(--ink); max-width:28ch; }
+.escore-main { display:flex; align-items:flex-end; gap:38px; flex-wrap:wrap; margin:0 0 22px; }
+.escore-now { display:flex; align-items:baseline; gap:13px; }
+.escore-n { font-family:var(--serif); font-weight:600; font-size:4.6rem; line-height:0.86;
+  letter-spacing:-0.02em; font-variant-numeric:tabular-nums lining-nums; color:var(--ink); }
+.escore-band { font-size:0.7rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--pencil); }
+.escore-prog { display:flex; align-items:baseline; gap:11px; flex-wrap:wrap; padding-bottom:8px; }
+.escore-prog-n { font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--soft);
+  font-variant-numeric:tabular-nums; white-space:nowrap; }
+.escore-prog.good .escore-prog-n { color:var(--prot); }
+.escore-prog.bad .escore-prog-n { color:var(--exp); }
+.escore-prog-l { font-size:0.9rem; color:var(--soft); max-width:24ch; line-height:1.42; }
+.escore-spark { width:118px; flex:none; align-self:center; opacity:.8; }
+.escore-figs { display:flex; gap:40px; flex-wrap:wrap; padding:20px 0 0; margin:20px 0 0; border-top:1px solid var(--rule); }
+.efig { display:flex; flex-direction:column; gap:4px; }
+.efig-n { font-family:var(--serif); font-weight:600; font-size:1.55rem; line-height:1; color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums; }
+.efig-l { font-size:0.64rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--pencil); }
+.escore-foot { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:20px 0 0; }
+@media (max-width:640px){ .escore { padding:24px 22px; } .escore-n { font-size:3.4rem; } .escore-main { gap:22px; } .escore-figs { gap:26px; } }
+
+/* Quiet stat strip — the lesser numbers, deliberately understated. */
+.statline { display:flex; flex-wrap:wrap; gap:7px 22px; margin:0 0 24px; padding:0 2px;
+  font-size:0.82rem; color:var(--pencil); }
+.statline span { display:inline-flex; align-items:baseline; gap:6px; }
+.statline b { font-family:var(--mono); font-weight:600; color:var(--soft); }
 
 .stand-row { display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
 .stand-num { display:flex; flex-direction:column; gap:2px; }
@@ -340,9 +376,9 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 
 .drv-why { margin:6px 0 12px; font-size:1rem; line-height:1.55; color:var(--ink); }
 .drv-line { margin:0 0 10px; font-size:0.92rem; color:var(--soft); line-height:1.5; }
-.drv-k { font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); margin-right:8px; }
-.drv-action { margin:12px 0 0; padding:11px 14px; border-left:2px solid var(--green-deep); background:rgba(127,192,138,0.06);
-  border-radius:0 9px 9px 0; font-family:var(--serif); font-size:0.98rem; line-height:1.5; color:var(--ink); }
+.drv-k { font-size:0.64rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-right:8px; }
+.drv-action { margin:16px 0 0; padding:14px 18px; border-left:2px solid var(--accent); background:var(--surface);
+  border-radius:0 9px 9px 0; font-family:var(--serif); font-size:1rem; line-height:1.55; color:var(--ink); }
 
 .ledger { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:10px 0 16px; }
 .led { display:flex; flex-direction:column; gap:3px; }
@@ -701,11 +737,12 @@ a.pod-member:hover span { color:var(--ink); }
 .reminder { display:flex; align-items:center; gap:13px; border:1px solid var(--rule2); border-radius:12px;
   background:var(--panel); padding:13px 16px; transition:.12s; }
 .reminder:hover { border-color:var(--pencil); background:var(--panel2); }
-.reminder.warn { border-color:#7a5e2c; background:linear-gradient(180deg,rgba(214,168,91,0.09),var(--panel)); }
-.rem-ic { font-size:1.05rem; flex:none; width:22px; text-align:center; }
+.reminder.warn { border-color:var(--rule2); background:var(--surface); }
+.rem-ic { flex:none; width:22px; display:inline-flex; align-items:center; justify-content:center; color:var(--accent); }
+.reminder.warn .rem-ic { color:var(--mod); }
 .rem-text { flex:1; min-width:0; font-size:0.95rem; color:var(--ink); line-height:1.4; }
-.rem-go { color:var(--green); font-weight:700; flex:none; }
-.reminder.warn .rem-go { color:var(--amber); }
+.rem-go { color:var(--accent); font-weight:700; flex:none; }
+.reminder.warn .rem-go { color:var(--mod); }
 
 /* ---- post attachments ---- */
 .emoji-row .attach-btn { background:transparent; border:0; color:var(--soft); font-size:1.05rem; cursor:pointer;
@@ -835,10 +872,10 @@ a.pod-member:hover span { color:var(--ink); }
 .gauge-avg { fill:var(--pencil); font-family:var(--sans); font-size:8px; letter-spacing:0.04em; text-transform:uppercase; }
 .drv-personal { margin-top:12px; padding-top:12px; border-top:1px solid var(--rule); }
 .drv-personal b { color:var(--ink); font-family:var(--mono); }
-.drv-personal .pos { color:var(--green); font-weight:700; }
-.drv-personal .neg { color:var(--pen); font-weight:700; }
-.drv-k.pos-k { color:var(--green); }
-.drv-k.neg-k { color:var(--pen); }
+.drv-personal .pos { color:var(--prot); font-weight:700; }
+.drv-personal .neg { color:var(--exp); font-weight:700; }
+.drv-k.pos-k { color:var(--prot); }
+.drv-k.neg-k { color:var(--exp); }
 
 /* ── Looking glass (paywall for non-members) ───────────────────── */
 .glass { max-width:760px; }

@@ -5,7 +5,7 @@ import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
-import { getMemberActivity, computeEffort, effortBreakdown } from "@/lib/effort";
+import { getMemberActivity, computeEffort } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
 import { Trend } from "@/components/hub/dashboard/Trend";
@@ -15,12 +15,9 @@ import { MapRead } from "@/components/hub/dashboard/MapRead";
 import { Icon } from "@/components/hub/Icon";
 import { ArticleWhy } from "@/components/hub/dashboard/ArticleWhy";
 
-export const metadata = { title: "Evolve to Win — Pivotum" };
+export const metadata = { title: "The Evolve Dashboard — Pivotum" };
 
 const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim();
-const EDGE2: Record<string, { label: string }> = {
-  guard: { label: "Guard your moat" }, shift: { label: "Shift lanes" }, relocate: { label: "Plan your relocate" },
-};
 
 type Reminder = { icon: string; text: string; href: string; tone?: string };
 
@@ -34,7 +31,6 @@ export default async function Dashboard() {
   const activity = userId ? await getMemberActivity(userId) : null;
   if (userId && activity) await evaluateBadges(userId, activity); // catch up on milestone credentials
   const effort = activity ? computeEffort(activity) : 0;
-  const breakdown = activity ? effortBreakdown(activity) : [];
 
   const [moves, earned, prompt] = await Promise.all([
     t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
@@ -58,32 +54,35 @@ export default async function Dashboard() {
   const laneBandWord = bandWord(c?.band);
   const urgency = c?.urgency?.level ?? null;
   const move = c?.move ?? null;
-  const e2 = move?.edge2 ? EDGE2[move.edge2] : null;
-  const renovateW = move?.weight != null ? 100 - move.weight : 60;
-  const edge2W = move?.weight ?? 40;
-  const delta = t && t.history.length >= 2 ? t.history[t.history.length - 1].overall - t.history[0].overall : null;
   const dd = c?.driverDetail ?? null;
+
+  // The two figures that lead the dashboard: where you are today, and how far
+  // you've moved from your first reading. `startExp` is that first baseline;
+  // `improvement` is positive when today's score is lower (better) than it.
+  const startExp = t?.history?.[0]?.overall ?? baseExp;
+  const improvement = startExp != null && exposureNow != null ? startExp - exposureNow : null;
+  const laneAvg = c?.personal?.laneBaseline ?? null;
 
   // "To evolve to win" — reminders auto-generated from the Map, Build, and activity.
   const stepDone = (k: string) => plan?.steps.find((s) => s.key === k)?.done ?? false;
   const months = Math.max(2, Math.round((t?.daysSinceMap ?? 60) / 30));
   const reminders: Reminder[] = [];
   if (t?.hasMap) {
-    if (!stepDone("welcome")) reminders.push({ icon: "📅", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
-    if (t.personalRescoreDue) reminders.push({ icon: "🔄", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
-    else if (shippedSinceRescore) reminders.push({ icon: "🔄", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
-    if (moves.active.length === 0) reminders.push({ icon: "◆", text: "Turn your winning move into a commitment", href: "#moves" });
-    else reminders.push({ icon: "🚀", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
-    if (!stepDone("build")) reminders.push({ icon: "🥊", text: "Train your judgment — log a Build rep", href: "/hub/build" });
-    if (!stepDone("learn")) reminders.push({ icon: "📚", text: "Learn your six levers", href: "/hub/learn" });
-    if (stepDone("pod")) reminders.push({ icon: "👥", text: "Check in with your pod this week", href: "/hub/pods" });
-    else reminders.push({ icon: "👥", text: "Join your Together Pod", href: "/hub/pods/browse" });
+    if (!stepDone("welcome")) reminders.push({ icon: "events", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
+    if (t.personalRescoreDue) reminders.push({ icon: "evolve", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
+    else if (shippedSinceRescore) reminders.push({ icon: "evolve", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
+    if (moves.active.length === 0) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
+    else reminders.push({ icon: "build", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
+    if (!stepDone("build")) reminders.push({ icon: "build", text: "Train your judgment — log a Build rep", href: "/hub/build" });
+    if (!stepDone("learn")) reminders.push({ icon: "learn", text: "Learn your six levers", href: "/hub/learn" });
+    if (stepDone("pod")) reminders.push({ icon: "pods", text: "Check in with your pod this week", href: "/hub/pods" });
+    else reminders.push({ icon: "pods", text: "Join your Together Pod", href: "/hub/pods/browse" });
   }
   const shownReminders = reminders.slice(0, 5);
 
   return (
     <>
-      <div className="hub-top"><h1>Evolve to Win</h1><span className="sp" /></div>
+      <div className="hub-top"><h1>The Evolve Dashboard</h1><span className="sp" /></div>
       <div className="hub-body">
         {plan && !plan.fullyActivated && (
           <Link href="/hub/welcome" className="newhere">
@@ -124,115 +123,86 @@ export default async function Dashboard() {
 
         {t?.hasMap ? (
           <>
-            {/* Winning strategy — front and centre: what they're working toward */}
-            {move?.stance && (
-              <section className="strategy">
-                <div className="strat-top">
-                  <p className="ck">What you&apos;re aiming for · grounded in your AI impact</p>
-                  <Link href="/hub/map" className="cardlink">See your full map →</Link>
+            {/* The lead: your exposure today, and how far you've moved from baseline. */}
+            <section className="escore">
+              <div className="escore-head">
+                <p className="ck">Your exposure today{c?.career ? ` · ${c.career}` : ""}</p>
+                <Link href="/hub/map" className="cardlink">Open your Map →</Link>
+              </div>
+              {move?.stance && <h2 className="escore-aim">{winningAim(move.edge2, band.cls)}</h2>}
+              <div className="escore-main">
+                <div className="escore-now">
+                  <span className={`escore-n ${band.cls}`}>{exposureNow}</span>
+                  <span className="escore-band">{band.word ? `${band.word} exposure` : "exposure"}</span>
                 </div>
-                <h2 className="strat-stance">{winningAim(move.edge2, band.cls)}</h2>
-                <p className="strat-via">Your strategy: <b>{move.stance}</b></p>
-                <div className="mixbar" aria-hidden="true">
-                  <span className="mix-reno" style={{ width: `${renovateW}%` }} />
-                  <span className="mix-e2" style={{ width: `${edge2W}%` }} />
-                </div>
-                <div className="mix-legend">
-                  <span className="ml a">Master the machine · {renovateW}%</span>
-                  {e2 && <span className="ml b">{e2.label} · {edge2W}%</span>}
-                </div>
-              </section>
-            )}
+                {improvement != null && t.history.length >= 2 ? (
+                  <div className={`escore-prog ${improvement > 0 ? "good" : improvement < 0 ? "bad" : ""}`}>
+                    <span className="escore-prog-n">{improvement > 0 ? "↓" : improvement < 0 ? "↑" : "–"} {Math.abs(improvement)}</span>
+                    <span className="escore-prog-l">
+                      {improvement > 0 ? "lower than when you started" : improvement < 0 ? "higher than when you started" : "unchanged since you started"}
+                    </span>
+                    {t.history.length >= 2 && <span className="escore-spark"><Trend points={t.history} /></span>}
+                  </div>
+                ) : (
+                  <div className="escore-prog">
+                    <span className="escore-prog-l">Your first reading — your progress line starts building at your next re-score.</span>
+                  </div>
+                )}
+              </div>
+              <Gauge value={exposureNow ?? 0} avg={laneAvg} />
+              <div className="escore-figs">
+                {startExp != null && <div className="efig"><span className="efig-n">{startExp}</span><span className="efig-l">Baseline</span></div>}
+                {laneAvg != null && <div className="efig"><span className="efig-n">{laneAvg}</span><span className="efig-l">Career average</span></div>}
+                <div className="efig"><span className="efig-n">−{effortDividend}</span><span className="efig-l">Earned by effort</span></div>
+              </div>
+              <div className="escore-foot">
+                {move?.stance && <span className="tag">Your play · {move.stance}</span>}
+                {c?.lane && <span className="tag">{c.lane}{laneBandWord ? ` · ${laneBandWord} risk` : ""}</span>}
+                {urgency && <span className={`tag urg u-${urgency.toLowerCase()}`}>Urgency: {urgency}</span>}
+              </div>
+              <p className="rescore-cadence">Personal re-score every 2 months · Pivotum re-scores the market every 6.</p>
+            </section>
 
             {/* Adam's read — Claude's in-voice narrative of their Map, grounded in `computed` */}
             <MapRead />
 
-            {/* Command KPIs */}
-            <div className="kpis">
-              <div className={`kpi kpi-exp ${band.cls}`}>
-                <span className="kpi-n">{exposureNow}</span>
-                <span className="kpi-l">Exposure{band.word ? ` · ${band.word}` : ""}{effortDividend > 0 ? ` · −${effortDividend} effort` : ""}</span>
-                {delta != null && <span className={`kpi-delta ${delta <= 0 ? "good" : "bad"}`}>{delta <= 0 ? "↓" : "↑"} {Math.abs(delta)}</span>}
-              </div>
-              <div className="kpi"><span className="kpi-n">{t.movesDone}</span><span className="kpi-l">Moves shipped</span></div>
-              <div className="kpi"><span className="kpi-n">{t.movesActive}</span><span className="kpi-l">In flight</span></div>
-              <div className="kpi"><span className="kpi-n">{t.badgeCount}</span><span className="kpi-l">Credentials</span></div>
-              <div className="kpi"><span className="kpi-n">{t.editions}</span><span className="kpi-l">Re-scores</span></div>
-            </div>
-
-            {/* Effort — the work put in. Only goes up; a key factor in winning. */}
-            <section className="effort">
-              <div className="effort-main">
-                <span className="effort-n">{effort}</span>
-                <div className="effort-copy">
-                  <p className="ck">Your effort · putting in the work</p>
-                  <p className="effort-lead">Winning isn&apos;t just your exposure — it&apos;s the work you put in to change it. Every move, rep, re-score and contribution adds up, and it only goes up.</p>
-                  {effortDividend > 0 ? (
-                    <p className="effort-div">Your effort has pulled your exposure down <b>−{effortDividend}</b>{baseExp != null ? ` (${baseExp} → ${exposureNow})` : ""}. Every {EFFORT_PER_POINT} points earns −1, up to −{EFFORT_CAP}.</p>
-                  ) : effort > 0 ? (
-                    <p className="effort-div"><b>{EFFORT_PER_POINT - (effort % EFFORT_PER_POINT)}</b> more points earns your first −1 on exposure.</p>
-                  ) : null}
-                </div>
-              </div>
-              {breakdown.length > 0 && (
-                <div className="effort-break">
-                  {breakdown.map((b, i) => <span key={i} className="eb"><b>{b.n}</b> {b.label}</span>)}
+            {/* What's driving this — the single reason behind the score */}
+            <section className="ck-card ck-driver ck-driver-solo">
+              <p className="ck">What&apos;s driving this{c?.driver?.name ? ` · ${c.driver.name}` : ""}</p>
+              {dd?.why ? (
+                <p className="drv-why">{strip(dd.why)}</p>
+              ) : (
+                <p className="drv-why">Your exposure is driven mainly by {c?.driver?.name ?? "market automatability"}. Re-open your Map for the full read, then re-score to refresh this.</p>
+              )}
+              {dd?.down && <p className="drv-line"><span className="drv-k">Deepen</span> {strip(dd.down)}</p>}
+              {dd?.action && <p className="drv-action">{strip(dd.action)}</p>}
+              {c?.personal && c.personal.laneBaseline != null && (
+                <div className="drv-personal">
+                  <p className="drv-line">
+                    <span className="drv-k">You vs your lane</span>
+                    Your lane averages <b>{c.personal.laneBaseline}</b>. You&apos;re at <b>{baseExp}</b> —{" "}
+                    {(c.personal.delta ?? 0) < 0
+                      ? <span className="pos">{Math.abs(c.personal.delta ?? 0)} better than average</span>
+                      : (c.personal.delta ?? 0) > 0
+                        ? <span className="neg">{c.personal.delta} worse than average</span>
+                        : <span>right at the average</span>}.
+                  </p>
+                  {c.personal.helps && c.personal.helps.length > 0 && (
+                    <p className="drv-line"><span className="drv-k pos-k">Working for you</span> {c.personal.helps.join(", ")}</p>
+                  )}
+                  {c.personal.hurts && c.personal.hurts.length > 0 && (
+                    <p className="drv-line"><span className="drv-k neg-k">Holding you back</span> {c.personal.hurts.join(", ")}</p>
+                  )}
                 </div>
               )}
             </section>
 
-            <div className="hub-sectlabel">Where you stand</div>
-            <div className="cockpit">
-              <section className="ck-card ck-stand">
-                <p className="ck">Where you stand{c?.career ? ` · ${c.career}` : ""}</p>
-                <Gauge value={exposureNow ?? 0} avg={c?.personal?.laneBaseline ?? null} />
-                <div className="stand-mini">
-                  {t.history.length >= 2 && <span className="stand-spark"><Trend points={t.history} /></span>}
-                  <span className="trend-note">
-                    {t.history.length < 2
-                      ? "Your first reading — your line starts building at your next re-score."
-                      : delta != null && delta < 0 ? `↓ ${Math.abs(delta)} since you started. That's the direction — keep pulling levers.`
-                      : delta != null && delta > 0 ? `↑ ${delta} — the market moved. Time to pull levers.`
-                      : "Holding steady across re-scores."}
-                  </span>
-                </div>
-                <div className="stand-foot">
-                  {c?.lane && <span className="tag">{c.lane}{laneBandWord ? ` · ${laneBandWord} risk` : ""}</span>}
-                  {urgency && <span className={`tag urg u-${urgency.toLowerCase()}`}>Urgency: {urgency}</span>}
-                  <Link href="/hub/map" className="cardlink">Open your Map →</Link>
-                </div>
-                <p className="rescore-cadence">Personal re-score every 2 months · Pivotum re-scores the market every 6.</p>
-              </section>
-
-              <section className="ck-card ck-driver">
-                <p className="ck">What&apos;s driving this{c?.driver?.name ? ` · ${c.driver.name}` : ""}</p>
-                {dd?.why ? (
-                  <p className="drv-why">{strip(dd.why)}</p>
-                ) : (
-                  <p className="drv-why">Your exposure is driven mainly by {c?.driver?.name ?? "market automatability"}. Re-open your Map for the full read, then re-score to refresh this.</p>
-                )}
-                {dd?.down && <p className="drv-line"><span className="drv-k">Deepen</span> {strip(dd.down)}</p>}
-                {dd?.action && <p className="drv-action">{strip(dd.action)}</p>}
-                {c?.personal && c.personal.laneBaseline != null && (
-                  <div className="drv-personal">
-                    <p className="drv-line">
-                      <span className="drv-k">You vs your lane</span>
-                      Your lane averages <b>{c.personal.laneBaseline}</b>. You&apos;re at <b>{baseExp}</b> —{" "}
-                      {(c.personal.delta ?? 0) < 0
-                        ? <span className="pos">{Math.abs(c.personal.delta ?? 0)} better than average</span>
-                        : (c.personal.delta ?? 0) > 0
-                          ? <span className="neg">{c.personal.delta} worse than average</span>
-                          : <span>right at the average</span>}.
-                    </p>
-                    {c.personal.helps && c.personal.helps.length > 0 && (
-                      <p className="drv-line"><span className="drv-k pos-k">Working for you</span> {c.personal.helps.join(", ")}</p>
-                    )}
-                    {c.personal.hurts && c.personal.hurts.length > 0 && (
-                      <p className="drv-line"><span className="drv-k neg-k">Holding you back</span> {c.personal.hurts.join(", ")}</p>
-                    )}
-                  </div>
-                )}
-              </section>
+            {/* The rest of your numbers, kept quiet — the score above is the point. */}
+            <div className="statline">
+              <span><b>{t.movesDone}</b> shipped</span>
+              <span><b>{t.movesActive}</b> in flight</span>
+              <span><b>{t.editions}</b> re-scores</span>
+              <span><b>{t.badgeCount}</b> credentials</span>
             </div>
 
             {/* To evolve to win — automated reminders from map, build, activity */}
@@ -242,7 +212,7 @@ export default async function Dashboard() {
                 <div className="reminders">
                   {shownReminders.map((r, i) => (
                     <Link key={i} href={r.href} className={"reminder" + (r.tone ? ` ${r.tone}` : "")}>
-                      <span className="rem-ic">{r.icon}</span>
+                      <span className="rem-ic"><Icon name={r.icon} size={17} /></span>
                       <span className="rem-text">{r.text}</span>
                       <span className="rem-go">→</span>
                     </Link>
@@ -260,10 +230,10 @@ export default async function Dashboard() {
             {earned.length > 0 ? (
               <div className="creds">
                 {earned.map((b) => (
-                  <span key={b.key} className="cred" title={b.note}><i>{b.icon}</i> {b.name}</span>
+                  <span key={b.key} className="cred" title={b.note}>{b.name}</span>
                 ))}
                 {earned.length < BADGES.length && (
-                  <span className="cred locked"><i>🔒</i> {BADGES.length - earned.length} more to earn</span>
+                  <span className="cred locked">{BADGES.length - earned.length} more to earn</span>
                 )}
               </div>
             ) : (
@@ -273,7 +243,7 @@ export default async function Dashboard() {
         ) : (
           <div className="cta-hero">
             <div>
-              <p className="ck">◆ Activate your dashboard</p>
+              <p className="ck">Activate your dashboard</p>
               <h3>Build your Winning Map</h3>
               <p>Your command dashboard comes alive once you&apos;ve mapped where you stand. New here? Start with your Welcome.</p>
             </div>
