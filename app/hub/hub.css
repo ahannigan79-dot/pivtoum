@@ -582,7 +582,8 @@ a.nm:hover { color:var(--ink); }
 .mapread-regen:hover:not(:disabled) { border-color:var(--pen); color:var(--pen); }
 .mapread-regen:disabled { cursor:progress; opacity:.6; }
 .mapread > .ck { color:var(--pen); margin:0 0 10px; }
-.mapread-body { font-family:var(--serif); color:var(--ink); font-size:1.04rem; line-height:1.6; max-width:66ch; }
+.mapread-body { font-family:var(--serif); color:var(--ink); font-size:1.06rem; line-height:1.6; max-width:none; }
+.mapread-body p { max-width:none; }
 .mapread-body p { margin:0 0 0.7em; }
 .mapread-body p:last-child { margin-bottom:0; }
 .mapread-load { display:flex; flex-direction:column; gap:9px; padding:2px 0 4px; }
@@ -1289,8 +1290,20 @@ a.pod-member:hover span { color:var(--ink); }
   border-radius:12px; background:rgba(127,192,138,0.06); color:var(--green); font-size:0.86rem; font-weight:700;
   text-decoration:none; transition:.14s; }
 .moves-playbook:hover { background:rgba(127,192,138,0.12); }
-.play-rec { margin-bottom:6px; }
-.play-aim-blurb { color:var(--soft); font-size:0.9rem; margin:-4px 0 12px; max-width:66ch; }
+/* grouped, scannable layout */
+.pb-group { margin:0 0 30px; padding:0 0 0 16px; border-left:3px solid var(--rule2); }
+.pb-group.rec { border-left-color:var(--green); }
+.pb-group.aim-master { border-left-color:var(--green-deep); }
+.pb-group.aim-guard { border-left-color:var(--amber); }
+.pb-group.aim-shift { border-left-color:#7F9FC0; }
+.pb-group.aim-relocate { border-left-color:var(--pen); }
+.pb-group-head { margin:0 0 14px; }
+.pb-aim-tag { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); }
+.pb-aim-tag.rec { color:var(--green); }
+.pb-aim-title { font-family:var(--serif); font-weight:700; font-size:1.42rem; line-height:1.15; margin:5px 0 5px; color:var(--ink); }
+.pb-aim-blurb { color:var(--soft); font-size:0.95rem; line-height:1.5; margin:0; max-width:68ch; }
+.pb-alllabel { font-family:var(--serif); font-weight:700; font-size:1.05rem; color:var(--ink);
+  margin:6px 0 16px; padding-top:14px; border-top:1px solid var(--rule); }
 .play-card { display:flex; flex-direction:column; }
 .play-card.rec { border-color:var(--green-deep); background:linear-gradient(135deg,rgba(127,192,138,0.12),var(--panel) 60%); }
 .play-lever { font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber); margin:0 0 7px; }

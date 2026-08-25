@@ -33,22 +33,30 @@ export default async function PlaybookPage() {
         </div>
 
         {recommended.length > 0 && (
-          <div className="play-rec">
-            <div className="hub-sectlabel">Recommended for you · from your Map</div>
+          <section className="pb-group rec">
+            <div className="pb-group-head">
+              <span className="pb-aim-tag rec">★ Recommended for you</span>
+              <h3 className="pb-aim-title">Matched to your Map</h3>
+              <p className="pb-aim-blurb">Start with these — they line up with your winning strategy and your lane.</p>
+            </div>
             <div className="hub-grid">
               {recommended.map((p) => <PlayCard key={p.slug} p={p} rec />)}
             </div>
-          </div>
+          </section>
         )}
 
-        {groups.map((g) => (
-          <div key={g.aim}>
-            <div className="hub-sectlabel">{g.label}</div>
-            <p className="play-aim-blurb">{g.blurb}</p>
+        <div className="pb-alllabel">All plays · by what you&rsquo;re aiming for</div>
+        {groups.map((g, i) => (
+          <section className={"pb-group aim-" + g.aim} key={g.aim}>
+            <div className="pb-group-head">
+              <span className="pb-aim-tag">{["◆", "✦", "✦", "✦"][i] ?? "✦"} {i + 1} of {groups.length}</span>
+              <h3 className="pb-aim-title">{g.label}</h3>
+              <p className="pb-aim-blurb">{g.blurb}</p>
+            </div>
             <div className="hub-grid">
               {g.plays.map((p) => <PlayCard key={p.slug} p={p} />)}
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </>
