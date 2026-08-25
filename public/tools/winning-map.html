@@ -248,6 +248,13 @@
   .go.ghost{ background:transparent; border:1px solid var(--green); color:var(--green); padding:8px 15px; font-weight:700; font-size:0.84rem; }
   .go.ghost:hover{ background:color-mix(in srgb,var(--green) 10%,transparent); }
 
+  /* loop handoff */
+  .loopgrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; } @media (max-width:640px){ .loopgrid{ grid-template-columns:1fr; } }
+  .loopcard{ display:block; text-decoration:none; border:1px solid var(--rule); border-radius:12px; background:var(--panel); padding:14px 16px; transition:.12s; }
+  .loopcard:hover{ border-color:var(--green); background:var(--panel2); }
+  .loopcard b{ display:block; color:var(--green); font-size:0.94rem; font-weight:700; margin-bottom:3px; }
+  .loopcard span{ display:block; color:var(--soft); font-size:0.84rem; line-height:1.4; }
+
   /* plan */
   .buildbar{ margin-bottom:14px; } .buildbar .kk{ font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); }
   .badges{ display:flex; flex-wrap:wrap; gap:8px; margin:9px 0; } .badge{ font-size:0.72rem; font-weight:700; padding:5px 11px; border-radius:100px; border:1px solid var(--rule); color:var(--pencil); background:var(--panel); } .badge.on{ color:var(--green); border-color:color-mix(in srgb,var(--green) 40%,transparent); background:#E9F0EA; }
@@ -364,12 +371,14 @@
       <div class="flagnote" id="mFlagnote"><b>Nothing flagged yet.</b> Tap the openings that appeal.</div>
     </div></div>
 
-    <div class="panel" id="planPanel"><div class="phead"><span class="pt">Your plan</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">orients around your flags</span></div><div class="pbody">
-      <div class="buildbar"><span class="kk">Badges on your path</span><div class="badges" id="mBadges"></div><p class="sentiment" id="mSentiment"></p></div>
-      <div class="planflag" id="mPlanFlag"></div>
-      <p class="planprog">Your first moves — tick them off as you go. <b><span id="mPlanDone">0</span>/<span id="mPlanTot">3</span></b> done.</p>
-      <ul class="plan" id="mPlan"></ul>
-      <div class="pod"><span class="kk">Your accountability pod</span><p id="mPod"></p></div>
+    <div class="panel" id="planPanel"><div class="phead"><span class="pt">Take it into your loop</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">openings, put to work</span></div><div class="pbody">
+      <p class="opintro">Your openings say <b>where</b> to move. The rest of the community turns them into progress — that&rsquo;s the loop:</p>
+      <div class="loopgrid">
+        <a class="loopcard" href="/hub/learn" target="_parent"><b>Learn the lever →</b><span>Understand the force behind each opening.</span></a>
+        <a class="loopcard" href="/hub/build" target="_parent"><b>Train it in Build →</b><span>Reps that sharpen the judgment it takes.</span></a>
+        <a class="loopcard" href="/hub/playbook" target="_parent"><b>Find the play →</b><span>The proven how-to for the move you pick.</span></a>
+        <a class="loopcard" href="/hub" target="_parent"><b>Commit it in Evolve →</b><span>Make it a move and watch your exposure come down.</span></a>
+      </div>
     </div></div>
 
     <div class="panel traj"><div class="phead"><span class="pt">Your trajectory</span></div><div class="pbody">
@@ -1012,7 +1021,7 @@
     if(pref){ var s=ops.filter(function(o){return o.edge===pref;})[0]; if(s) s.star=true; }
     return ops;
   }
-  function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote'); el.innerHTML = picked.length ? ('<b>'+picked.length+' flagged.</b> Your plan and pod would orient around '+(picked.length>1?'these':'this')+'.') : '<b>Nothing flagged yet.</b> Tap the openings that appeal — your plan would orient around them.'; }
+  function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote'); el.innerHTML = picked.length ? ('<b>'+picked.length+' flagged.</b> Take '+(picked.length>1?'these':'this')+' into your Playbook and commit '+(picked.length>1?'them':'it')+' in Evolve.') : '<b>Nothing flagged yet.</b> Tap the openings that appeal — then take them into your loop below.'; }
   function renderOpenings(M){
     var ops=computeOpenings(M), ai=ops.filter(function(o){return o.edge==='ai';}), pr=ops.filter(function(o){return o.edge==='prot';});
     var ent=!M.incumbent, leadProt=(M.A.aim==='protected'), field=M.career.name.toLowerCase();
@@ -1107,18 +1116,10 @@
     src.forEach(function(o){ var sv=sessionFor(o,M); if(seen[sv.t])return; seen[sv.t]=1; items.push(sv); });
     return items.slice(0,4);
   }
-  function renderPlan(M){
-    document.getElementById('mBadges').innerHTML='<span class="badge">◇ AI-Native Fluency</span><span class="badge">◇ '+M.career.name+' Foundations</span><span class="badge">◇ '+cap(M.leverNoun.split(' ')[0])+' Lab</span><span class="badge">◇ Operator Clinic</span>';
-    document.getElementById('mSentiment').innerHTML='These are the badges on your path — none earned yet, and that’s the point. Your welcome session with <b>Adam</b> sets which one you go for first.';
-    var ops=computeOpenings(M), picked=ops.filter(function(o){return flags[o.id];});
-    document.getElementById('mPlanFlag').innerHTML = picked.length ? ('<b>Orienting around:</b> '+picked.map(function(o){return o.title;}).join(' · ')+'.') : '<b>Nothing flagged yet.</b> Flag an opening above and these steps re-order around it.';
-    var items=planItemsFor(M), ul=document.getElementById('mPlan');
-    ul.innerHTML=items.map(function(it,i){ var cls=(planDone[i]?'done':'')+(it.pin?(planDone[i]?' pin':'pin'):''); return '<li data-p="'+i+'"'+(cls?' class="'+cls+'"':'')+'><span class="box"></span><span class="txt"><span class="kind">'+it.k+'</span><b>'+it.t+'</b><span class="sub">'+it.s+'</span></span></li>'; }).join('');
-    [].forEach.call(ul.querySelectorAll('li'),function(li){ li.addEventListener('click',function(){ var id=li.getAttribute('data-p'); planDone[id]=!planDone[id]; li.classList.toggle('done'); document.getElementById('mPlanDone').textContent=Object.keys(planDone).filter(function(k){return planDone[k];}).length; }); });
-    document.getElementById('mPlanDone').textContent=Object.keys(planDone).filter(function(k){return planDone[k];}).length;
-    document.getElementById('mPlanTot').textContent=items.length;
-    document.getElementById('mPod').innerHTML='<b>“'+M.career.name+' · '+(M.incumbent?(M.A.phase||'Advancing'):'Starting out')+'”</b> — five members with maps like yours, matched so you’re not doing this alone. Weekly check-in; celebrate the wins together.';
-  }
+  // "Your plan" was retired — the Map now hands openings off to the loop (Learn →
+  // Build → Playbook → Evolve) via the static "Take it into your loop" panel, so
+  // there's nothing to render here. Kept as a no-op so callers stay simple.
+  function renderPlan(M){}
   function renderWinMove(M){
     var mv=M.move;
     var st=document.getElementById('wmStance'); st.textContent=mv.stance; st.className='wmstance '+mv.edge2;
