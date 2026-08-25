@@ -1,5 +1,5 @@
 import "server-only";
-import { sql } from "drizzle-orm";
+import { isNull, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { rebuildGenerated } from "@/db/schema";
 import { careers } from "@/data/careers";
@@ -37,4 +37,10 @@ export async function seedRebuildCatalogue(target = 2, maxCareers = 3): Promise<
 
   const remaining = needing.length - filled;
   return { seeded, filled, remaining, total: careers.length, done: remaining <= 0 };
+}
+
+/** Remove the unowned catalogue seeds (leaves member-generated rebuilds intact). */
+export async function clearRebuildCatalogue(): Promise<number> {
+  const rows = await db.delete(rebuildGenerated).where(isNull(rebuildGenerated.memberId)).returning({ id: rebuildGenerated.id });
+  return rows.length;
 }

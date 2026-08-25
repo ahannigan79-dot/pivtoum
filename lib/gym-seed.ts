@@ -1,5 +1,5 @@
 import "server-only";
-import { sql } from "drizzle-orm";
+import { isNull, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { gymGenerated } from "@/db/schema";
 import { careers } from "@/data/careers";
@@ -41,4 +41,10 @@ export async function seedGymCatalogue(target = 2, maxCareers = 3): Promise<Seed
 
   const remaining = needing.length - filled;
   return { seeded, filled, remaining, total: careers.length, done: remaining <= 0 };
+}
+
+/** Remove the unowned catalogue seeds (leaves member-generated reps intact). */
+export async function clearGymCatalogue(): Promise<number> {
+  const rows = await db.delete(gymGenerated).where(isNull(gymGenerated.memberId)).returning({ id: gymGenerated.id });
+  return rows.length;
 }

@@ -39,7 +39,7 @@ The premise: an AI has produced a complete, polished, confident piece of profess
 ## Output format — STRICT
 Return ONLY a JSON object (no prose, no markdown fence) with exactly these keys:
 {
-  "client": "the subject of the brief — a specific company/matter and what it is",
+  "client": "a SHORT client/matter name — 3 to 7 words, like 'FreshBowl — healthy meal delivery' or 'Northwind Ltd — FY25 statutory audit'. This is the card title. Do NOT put the full brief, revenue, dates, or a sentence here — all of that goes in the brief array.",
   "artifact": "a believable deliverable filename, e.g. Acme_Q3_Plan.draft",
   "thesis": "2 sentences framing the rep — the AI produced this, some is subtly wrong, catch it at speed",
   "brief": [ { "l": "short label", "v": "the value" }, ... 4–5 items ],
@@ -62,6 +62,17 @@ type RawScenario = {
 };
 
 const SEV: Severity[] = ["minor", "major", "critical"];
+
+/** Keep the card title short — trim a model that crams the whole brief into `client`. */
+function shortClient(s: string): string {
+  const c = s.trim();
+  if (c.length <= 56) return c;
+  const beforeDash = c.split(/\s+[—–-]\s+/)[0].trim();      // "Acme Ltd — big desc" → "Acme Ltd"
+  if (beforeDash.length >= 3 && beforeDash.length <= 56) return beforeDash;
+  const beforeComma = c.split(/,\s+/)[0].trim();            // "Acme Ltd, ... , ..." → "Acme Ltd"
+  if (beforeComma.length >= 3 && beforeComma.length <= 56) return beforeComma;
+  return c.slice(0, 52).trim() + "…";
+}
 
 /** Validate + normalise the model output into a real Scenario, or null if it doesn't hold. */
 function coerce(raw: RawScenario | null, slug: string, career: string): Scenario | null {
@@ -99,7 +110,7 @@ function coerce(raw: RawScenario | null, slug: string, career: string): Scenario
   return {
     slug, career,
     short: `A fresh AI-built deliverable for ${career} — judge it against the brief at speed.`,
-    client: String(raw.client),
+    client: shortClient(String(raw.client)),
     artifact: String(raw.artifact ?? `${career.replace(/\s+/g, "_")}_Draft.draft`),
     thesis: String(raw.thesis),
     brief,

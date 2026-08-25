@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { seedGymCatalogue } from "@/lib/gym-seed";
+import { seedGymCatalogue, clearGymCatalogue } from "@/lib/gym-seed";
 
 // Founder-only: pre-seed the Gym catalogue with 2 reps per career, one bounded
 // batch per call (the client loops until done to stay inside the timeout).
@@ -11,4 +11,11 @@ export async function POST() {
   if (!isFounder(profile)) return new NextResponse("Forbidden", { status: 403 });
   const result = await seedGymCatalogue();
   return NextResponse.json(result);
+}
+
+export async function DELETE() {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return new NextResponse("Forbidden", { status: 403 });
+  const cleared = await clearGymCatalogue();
+  return NextResponse.json({ cleared });
 }

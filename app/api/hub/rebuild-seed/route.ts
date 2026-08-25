@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { seedRebuildCatalogue } from "@/lib/rebuild-seed";
+import { seedRebuildCatalogue, clearRebuildCatalogue } from "@/lib/rebuild-seed";
 
 // Founder-only: pre-seed the Workflow Rebuild catalogue, 2 per career, one
 // bounded batch per call (client loops until done to stay inside the timeout).
@@ -11,4 +11,11 @@ export async function POST() {
   if (!isFounder(profile)) return new NextResponse("Forbidden", { status: 403 });
   const result = await seedRebuildCatalogue();
   return NextResponse.json(result);
+}
+
+export async function DELETE() {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return new NextResponse("Forbidden", { status: 403 });
+  const cleared = await clearRebuildCatalogue();
+  return NextResponse.json({ cleared });
 }

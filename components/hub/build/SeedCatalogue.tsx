@@ -33,6 +33,22 @@ export function SeedCatalogue({ endpoint = "/api/hub/gym-seed", noun = "rep" }: 
     }
   }
 
+  async function clear() {
+    if (!confirm(`Remove all pre-seeded ${noun}s from the catalogue? (Member-generated ones are kept.) You can re-seed after.`)) return;
+    setRunning(true);
+    setMsg("Clearing the seeded catalogue…");
+    try {
+      const res = await fetch(endpoint, { method: "DELETE" });
+      const data = (await res.json()) as { cleared?: number };
+      setMsg(`Cleared ${data.cleared ?? 0} seeded ${noun}s. Run "Seed 2 per career" to rebuild them.`);
+      router.refresh();
+    } catch {
+      setMsg("Couldn't clear — try again.");
+    } finally {
+      setRunning(false);
+    }
+  }
+
   return (
     <div className="gymseed">
       <div className="gymseed-copy">
@@ -40,9 +56,12 @@ export function SeedCatalogue({ endpoint = "/api/hub/gym-seed", noun = "rep" }: 
         <p>Pre-seed <b>2 {noun}s for every career</b> so the first member in any lane gets an instant one. Safe to run again — it only tops up what&rsquo;s missing.</p>
         {msg && <p className="gymseed-msg">{msg}</p>}
       </div>
-      <button className="gymseed-btn" onClick={run} disabled={running} aria-busy={running}>
-        {running ? "Seeding…" : `Seed 2 per career`}
-      </button>
+      <div className="gymseed-actions">
+        <button className="gymseed-btn" onClick={run} disabled={running} aria-busy={running}>
+          {running ? "Working…" : "Seed 2 per career"}
+        </button>
+        <button className="gymseed-clear" onClick={clear} disabled={running}>Clear seeded</button>
+      </div>
     </div>
   );
 }
