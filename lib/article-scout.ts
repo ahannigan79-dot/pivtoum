@@ -190,6 +190,12 @@ export async function getLatestScoutReport(): Promise<ScoutReport | null> {
   return { ...(row.report as ScoutReport), generatedAt: row.createdAt.toISOString() };
 }
 
+/** Find a pick (by id) in the latest report — used to hand a scouted piece to the brief. */
+export async function findScoutPick(id: string): Promise<ScoutPick | null> {
+  const report = await getLatestScoutReport();
+  return report?.picks.find((p) => p.id === id) ?? null;
+}
+
 /** Generate + persist in one step (used by the cron and the founder "run now"). */
 export async function runScout(): Promise<ScoutReport | null> {
   const report = await generateScoutReport();

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { aiConfigured } from "@/lib/ai";
@@ -38,6 +39,7 @@ function PickCard({ p, lead }: { p: ScoutPick; lead?: boolean }) {
       {p.summary && <p className="scout-sum">{p.summary}</p>}
       {p.pullQuote && <blockquote className="scout-quote">“{p.pullQuote}”</blockquote>}
       {p.thesisLink && <p className="scout-thesis"><span className="k">Our angle</span> {p.thesisLink}</p>}
+      <Link href={`/hub/health?feature=${encodeURIComponent(p.id)}`} className="scout-use">Use in this week&apos;s brief →</Link>
     </div>
   );
 }

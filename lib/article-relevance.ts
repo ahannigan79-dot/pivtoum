@@ -5,7 +5,7 @@ import { articleRelevance, mapStates } from "@/db/schema";
 import { complete, aiConfigured } from "@/lib/ai";
 import { VOICE } from "@/lib/voice";
 import { exposureBand, bandWord, type MapComputed } from "@/lib/trajectory";
-import { articleRef, latestArticles } from "@/lib/brief";
+import { latestArticles, type PromptArticle } from "@/lib/brief";
 
 /**
  * "Why this matters to you" — a one-line, per-member reading of the week's
@@ -61,15 +61,14 @@ async function latestMap(userId: string): Promise<{ computed: MapComputed; overa
  * the member hasn't mapped (nothing to personalise), the article is unknown, or
  * generation fails. Cached per (member, article).
  */
-export async function getArticleRelevance(userId: string | null, articleSlug: string | null): Promise<string | null> {
-  if (!userId || !articleSlug || !aiConfigured()) return null;
-  const article = articleRef(articleSlug);
-  if (!article) return null;
+export async function getArticleRelevance(userId: string | null, article: PromptArticle | null): Promise<string | null> {
+  if (!userId || !article || !aiConfigured()) return null;
+  const cacheKey = article.key; // slug for internal, url for external — stable per article
 
   const cached = await db
     .select({ note: articleRelevance.note })
     .from(articleRelevance)
-    .where(and(eq(articleRelevance.memberId, userId), eq(articleRelevance.articleSlug, articleSlug)))
+    .where(and(eq(articleRelevance.memberId, userId), eq(articleRelevance.articleSlug, cacheKey)))
     .limit(1);
   if (cached[0]?.note) return cached[0].note;
 
@@ -78,7 +77,7 @@ export async function getArticleRelevance(userId: string | null, articleSlug: st
 
   // Other pieces, so the note can redirect when the featured article is off-lane.
   const others = latestArticles(6)
-    .filter((a) => a.slug !== articleSlug)
+    .filter((a) => a.slug !== article.key && a.title !== article.title)
     .map((a) => `- "${a.title}" — ${a.description}`);
 
   const note = await complete({
@@ -88,7 +87,7 @@ export async function getArticleRelevance(userId: string | null, articleSlug: st
       {
         role: "user",
         content:
-          `THIS WEEK'S ARTICLE:\n"${article.title}" — ${article.description}\n\n` +
+          `THIS WEEK'S ARTICLE:\n"${article.title}"${article.description ? ` — ${article.description}` : ""}\n\n` +
           `THE MEMBER'S MAP (given facts):\n${memberFacts(map.computed, map.overall)}\n\n` +
           (others.length ? `OTHER PIECES AVAILABLE (only name one if it clearly fits them better):\n${others.join("\n")}\n\n` : "") +
           `Write their one-line "why this matters to you" — genuinely useful to them, never a forced fit. Plain text only.`,
@@ -100,7 +99,7 @@ export async function getArticleRelevance(userId: string | null, articleSlug: st
 
   try {
     await db.insert(articleRelevance)
-      .values({ memberId: userId, articleSlug, note: clean })
+      .values({ memberId: userId, articleSlug: cacheKey, note: clean })
       .onConflictDoNothing();
   } catch (err) {
     console.error("[article-relevance] persist failed", String(err));

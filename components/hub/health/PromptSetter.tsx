@@ -1,36 +1,44 @@
 "use client";
 import { useRef, useState, useTransition } from "react";
-import { setPrompt, draftBrief } from "@/app/hub/health/actions";
+import { setPrompt, draftBrief, type DraftArticleOut } from "@/app/hub/health/actions";
 
 type Current = { title: string; body: string } | null;
+export type ScoutSeed = { url: string; title: string; summary: string | null; source: string | null };
 
-export function PromptSetter({ current, aiOn = false }: { current: Current; aiOn?: boolean }) {
-  const [open, setOpen] = useState(false);
+export function PromptSetter({ current, aiOn = false, seed = null }: { current: Current; aiOn?: boolean; seed?: ScoutSeed | null }) {
+  const [open, setOpen] = useState(!!seed);
   const ref = useRef<HTMLFormElement>(null);
   const [pending, start] = useTransition();
   const [drafting, startDraft] = useTransition();
 
-  // Controlled so "Draft with Claude" can fill them; the founder always edits before posting.
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [articleSlug, setArticleSlug] = useState<string | null>(null);
-  const [articleTitle, setArticleTitle] = useState<string | null>(null);
+  // The highlighted article (internal essay or external scouted piece).
+  const [article, setArticle] = useState<DraftArticleOut>(
+    seed ? { kind: "external", url: seed.url, title: seed.title, summary: seed.summary } : null,
+  );
   const [draftErr, setDraftErr] = useState(false);
 
-  function reset() {
-    setTitle(""); setBody(""); setArticleSlug(null); setArticleTitle(null); setDraftErr(false);
-  }
+  function reset() { setTitle(""); setBody(""); setArticle(null); setDraftErr(false); }
   function close() { setOpen(false); reset(); }
 
   function draft() {
     setDraftErr(false);
     startDraft(async () => {
-      const d = await draftBrief();
+      // If a scouted article is pinned, draft around it; otherwise let Claude pick one of our essays.
+      const featured = article?.kind === "external"
+        ? { url: article.url, title: article.title, summary: article.summary, source: seed?.source ?? null }
+        : null;
+      const d = await draftBrief(featured);
       if (!d) { setDraftErr(true); return; }
       setTitle(d.title); setBody(d.body);
-      setArticleSlug(d.articleSlug); setArticleTitle(d.articleTitle);
+      if (d.article) setArticle(d.article);
     });
   }
+
+  const draftLabel = drafting
+    ? "Drafting…"
+    : article?.kind === "external" ? "✦ Draft brief around this article" : "✦ Draft with Claude";
 
   return (
     <div className="wp-set">
@@ -52,9 +60,13 @@ export function PromptSetter({ current, aiOn = false }: { current: Current; aiOn
           {aiOn && (
             <div className="wp-draft">
               <button type="button" className="wp-draft-btn" onClick={draft} disabled={drafting} aria-busy={drafting}>
-                {drafting ? "Drafting…" : "✦ Draft with Claude"}
+                {draftLabel}
               </button>
-              <span className="wp-draft-hint">Grounded in your latest article + what&apos;s landing. You edit before it posts.</span>
+              <span className="wp-draft-hint">
+                {article?.kind === "external"
+                  ? "Builds the brief around your scouted article. You edit before it posts."
+                  : "Grounded in your latest article + what’s landing. You edit before it posts."}
+              </span>
             </div>
           )}
           {draftErr && <p className="wp-draft-err">Couldn&apos;t draft one just now — write it below, or try again.</p>}
@@ -65,11 +77,17 @@ export function PromptSetter({ current, aiOn = false }: { current: Current; aiOn
             placeholder="Set the ask. What should members reflect on and post about this week?"
             value={body} onChange={(e) => setBody(e.target.value)} />
 
-          <input type="hidden" name="articleSlug" value={articleSlug ?? ""} />
-          {articleTitle && (
+          {/* Article highlight — internal slug or external url/title/summary. */}
+          <input type="hidden" name="articleSlug" value={article?.kind === "internal" ? article.slug : ""} />
+          <input type="hidden" name="articleUrl" value={article?.kind === "external" ? article.url : ""} />
+          <input type="hidden" name="articleTitle" value={article?.kind === "external" ? article.title : ""} />
+          <input type="hidden" name="articleSummary" value={article?.kind === "external" ? (article.summary ?? "") : ""} />
+          {article && (
             <div className="wp-draft-art">
-              <span>Highlighting: <b>{articleTitle}</b></span>
-              <button type="button" onClick={() => { setArticleSlug(null); setArticleTitle(null); }}>remove</button>
+              <span>
+                Highlighting{article.kind === "external" ? " (scouted)" : ""}: <b>{article.title}</b>
+              </span>
+              <button type="button" onClick={() => setArticle(null)}>remove</button>
             </div>
           )}
 

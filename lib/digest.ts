@@ -4,7 +4,7 @@ import { profiles, notifications, mapStates, events } from "@/db/schema";
 import { PERSONAL_RESCORE_DAYS } from "@/lib/trajectory";
 import { formatWhen } from "@/lib/events";
 import { getCurrentPrompt } from "@/lib/ritual";
-import { articleRef } from "@/lib/brief";
+import { resolvePromptArticle } from "@/lib/brief";
 import { digestEmail } from "@/lib/community-emails";
 import { sendMail, mailConfigured } from "@/lib/mailer";
 import type { NotifPayload } from "@/lib/notifications";
@@ -69,8 +69,9 @@ export async function runWeeklyDigest(now = new Date(), limit = 500): Promise<Di
     // Nothing to say and they're active → don't email.
     if (!updates.length && !eventItems.length && !rescoreDue && !dormant && !prompt) { skipped++; continue; }
 
+    const pa = resolvePromptArticle(prompt);
     const promptForEmail = prompt
-      ? { title: prompt.title, body: prompt.body, article: articleRef(prompt.articleSlug) }
+      ? { title: prompt.title, body: prompt.body, article: pa ? { title: pa.title, url: pa.url } : null }
       : null;
     const { subject, html, text } = digestEmail({
       name: m.name ?? m.email.split("@")[0], updates, events: eventItems, rescoreDue, dormant, prompt: promptForEmail,

@@ -220,7 +220,10 @@ export const weeklyPrompts = pgTable("weekly_prompts", {
   id: uid(),
   title: text("title").notNull(),
   body: text("body").notNull(),
-  articleSlug: text("article_slug"), // optional: the article this week's brief highlights
+  articleSlug: text("article_slug"),     // internal registry article this week's brief highlights
+  articleUrl: text("article_url"),       // OR an external (scouted) article's URL
+  articleTitle: text("article_title"),   // external article's title
+  articleSummary: text("article_summary"), // external article's summary (for the personalized note)
   createdAt: now(),
 });
 

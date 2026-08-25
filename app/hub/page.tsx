@@ -7,7 +7,7 @@ import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity, computeEffort, effortBreakdown } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
-import { articleRef } from "@/lib/brief";
+import { resolvePromptArticle } from "@/lib/brief";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
@@ -41,7 +41,7 @@ export default async function Dashboard() {
     getCurrentPrompt(),
   ]);
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
-  const promptArticle = articleRef(prompt?.articleSlug);
+  const promptArticle = resolvePromptArticle(prompt);
   // Recently-earned credentials → an "earned moment" (last 48h).
   const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
   const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));

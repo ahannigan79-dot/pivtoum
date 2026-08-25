@@ -9,6 +9,7 @@ import { Avatar } from "@/components/hub/community/Avatar";
 import { PromptSetter } from "@/components/hub/health/PromptSetter";
 import { HighlightManager } from "@/components/hub/health/HighlightManager";
 import { aiConfigured } from "@/lib/ai";
+import { findScoutPick } from "@/lib/article-scout";
 
 export const metadata = { title: "Member health — Winning in the Age of AI" };
 
@@ -51,10 +52,15 @@ function AttentionRow({ m }: { m: MemberHealth }) {
   );
 }
 
-export default async function HealthPage() {
+export default async function HealthPage({ searchParams }: { searchParams: Promise<{ feature?: string }> }) {
   const profile = await getOrCreateProfile();
   if (!isFounder(profile)) notFound();
-  const [r, prompt, highlights] = await Promise.all([getHealthReport(), getCurrentPrompt(), getHighlights()]);
+  const { feature } = await searchParams;
+  const [r, prompt, highlights, pick] = await Promise.all([
+    getHealthReport(), getCurrentPrompt(), getHighlights(),
+    feature ? findScoutPick(feature) : Promise.resolve(null),
+  ]);
+  const seed = pick ? { url: pick.url, title: pick.title, summary: pick.summary || null, source: pick.source || null } : null;
 
   const kpis: { label: string; value: number; cls?: string }[] = [
     { label: "Members", value: r.summary.total },
@@ -71,7 +77,7 @@ export default async function HealthPage() {
       <div className="hub-top"><h1>Member health</h1><span className="sp" /><span className="hub-pill">Founder view</span></div>
       <div className="hub-body">
         <div className="hub-sectlabel">This week&apos;s prompt · the community heartbeat</div>
-        <PromptSetter current={prompt ? { title: prompt.title, body: prompt.body } : null} aiOn={aiConfigured()} />
+        <PromptSetter current={prompt ? { title: prompt.title, body: prompt.body } : null} aiOn={aiConfigured()} seed={seed} />
 
         <div className="hub-sectlabel">Looking-glass highlights · what non-members see</div>
         <HighlightManager highlights={highlights} />

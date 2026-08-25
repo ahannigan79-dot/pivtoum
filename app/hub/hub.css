@@ -1253,6 +1253,9 @@ a.pod-member:hover span { color:var(--ink); }
 .scout-thesis .k { display:inline-block; font-size:0.56rem; font-weight:800; letter-spacing:0.09em;
   text-transform:uppercase; color:var(--green); margin-right:6px; }
 .scout-thesis .k.pen { color:var(--pen); }
+.scout-use { display:inline-block; margin-top:12px; font-size:0.8rem; font-weight:800; color:var(--green);
+  text-decoration:none; border:1px solid var(--green-deep); border-radius:9px; padding:7px 12px; transition:.14s; }
+.scout-use:hover { background:rgba(127,192,138,0.12); }
 .scout-counter { border:1px solid var(--pen); border-radius:14px; padding:16px 18px; margin-bottom:10px;
   background:linear-gradient(135deg,rgba(224,119,108,0.10),var(--panel) 60%); }
 .scout-counter-tag { display:inline-block; font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;

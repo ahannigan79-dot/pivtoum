@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { getCurrentPrompt } from "@/lib/ritual";
+import { resolvePromptArticle } from "@/lib/brief";
 import { getArticleRelevance } from "@/lib/article-relevance";
 import { aiConfigured } from "@/lib/ai";
 
@@ -15,6 +16,6 @@ export async function GET() {
   if (!aiConfigured()) return NextResponse.json({ note: null });
 
   const prompt = await getCurrentPrompt();
-  const note = await getArticleRelevance(userId, prompt?.articleSlug ?? null);
+  const note = await getArticleRelevance(userId, resolvePromptArticle(prompt));
   return NextResponse.json({ note });
 }
