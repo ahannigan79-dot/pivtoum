@@ -5,16 +5,18 @@ import { CURRICULUM, getLearnProgress, learnTotals } from "@/lib/learn";
 import { getOrCreateProfile } from "@/lib/member";
 import { aiConfigured } from "@/lib/ai";
 import { resolveCareer, CAREER_OPTIONS } from "@/lib/deepdive";
+import { memberLane } from "@/lib/gym-generate";
 import { CareerDeepDivePicker } from "@/components/hub/learn/CareerDeepDivePicker";
 
 export const metadata = { title: "Learn — Winning in the Age of AI" };
 
 export default async function LearnPage() {
   const { userId } = await auth();
-  const [done, profile] = await Promise.all([getLearnProgress(userId), getOrCreateProfile()]);
+  const [done, profile, lane] = await Promise.all([getLearnProgress(userId), getOrCreateProfile(), memberLane(userId)]);
   const totals = learnTotals(done);
+  // Resolve the member's field from profile, then the Map (career, then lane).
   const myCareer = aiConfigured()
-    ? (resolveCareer(profile?.careerSlug) ?? resolveCareer(profile?.currentLane))
+    ? (resolveCareer(profile?.careerSlug) ?? resolveCareer(profile?.currentLane) ?? resolveCareer(lane?.career) ?? resolveCareer(lane?.lane))
     : null;
 
   return (

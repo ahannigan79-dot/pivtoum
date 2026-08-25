@@ -84,20 +84,27 @@ function factSheet(c: Career): string {
 
 const stripMd = (s: string) => (s ?? "").replace(/\*\*/g, "").trim();
 
-/** Generate a Deep Dive for a career (no persistence). Null if AI off or unusable. */
+/** Generate a Deep Dive for a career (no persistence). Null if AI off or unusable.
+ *  A Deep Dive is long, so thinking-on tends to truncate the JSON — generate with
+ *  thinking off first (whole budget to the content), retry with thinking as a fallback. */
 export async function generateDeepDive(c: Career): Promise<DeepDive | null> {
   if (!aiConfigured()) return null;
-  const doc = await completeJSON<DeepDive>({
-    system: SYSTEM,
-    maxTokens: 5000,
-    messages: [{ role: "user", content: `Write the Deep Dive for this field, reframed for the individual.\n\n${factSheet(c)}\n\nReturn only the JSON object.` }],
-  });
-  if (!doc?.sample?.trim() || !Array.isArray(doc.sections)) return null;
-  const sections = doc.sections
-    .filter((s) => s && s.heading && s.body)
-    .map((s) => ({ heading: String(s.heading), body: String(s.body) }));
-  if (sections.length < 3) return null;
-  return { sample: doc.sample.trim(), sections };
+  const content = `Write the Deep Dive for this field, reframed for the individual.\n\n${factSheet(c)}\n\nReturn only the JSON object.`;
+
+  for (const thinking of [false, true]) {
+    const doc = await completeJSON<DeepDive>({
+      system: SYSTEM,
+      maxTokens: 8000,
+      thinking,
+      messages: [{ role: "user", content }],
+    });
+    if (!doc?.sample?.trim() || !Array.isArray(doc.sections)) continue;
+    const sections = doc.sections
+      .filter((s) => s && s.heading && s.body)
+      .map((s) => ({ heading: String(s.heading), body: String(s.body) }));
+    if (sections.length >= 3) return { sample: doc.sample.trim(), sections };
+  }
+  return null;
 }
 
 /** Return the Deep Dive for a career, generating + caching it the first time. */

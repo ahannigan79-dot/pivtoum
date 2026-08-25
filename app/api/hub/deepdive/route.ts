@@ -7,7 +7,7 @@ import { aiConfigured } from "@/lib/ai";
 // A member's self-framed career Deep Dive. Generated on first view (grounded in
 // the career's scores), then cached and shared. Members-only; fetched client-side
 // so the (one-time) generation never blocks the page.
-export const maxDuration = 90;
+export const maxDuration = 180;
 
 export async function GET(req: Request) {
   const profile = await getOrCreateProfile();
