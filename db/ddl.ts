@@ -160,6 +160,16 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "gym_generated_lane_idx" ON "gym_generated" ("lane","created_at")`,
+  // Claude-generated Workflow Rebuilds — fresh workflows for any lane.
+  `CREATE TABLE IF NOT EXISTS "rebuild_generated" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text REFERENCES "profiles"("clerk_user_id") ON DELETE set null,
+     "lane" text NOT NULL,
+     "career" text NOT NULL,
+     "variant" jsonb NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "rebuild_generated_lane_idx" ON "rebuild_generated" ("lane","created_at")`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

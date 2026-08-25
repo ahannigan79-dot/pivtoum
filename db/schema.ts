@@ -262,6 +262,16 @@ export const gymGenerated = pgTable("gym_generated", {
   createdAt: now(),
 }, (t) => ({ laneIdx: index("gym_generated_lane_idx").on(t.lane, t.createdAt) }));
 
+/* ---------- Claude-generated Workflow Rebuilds (any lane, on demand) ---------- */
+export const rebuildGenerated = pgTable("rebuild_generated", {
+  id: uid(),
+  memberId: text("member_id").references(() => profiles.clerkUserId, { onDelete: "set null" }),
+  lane: text("lane").notNull(),
+  career: text("career").notNull(),
+  variant: jsonb("variant").notNull(), // a full RebuildVariant (see lib/rebuild.ts)
+  createdAt: now(),
+}, (t) => ({ laneIdx: index("rebuild_generated_lane_idx").on(t.lane, t.createdAt) }));
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),
