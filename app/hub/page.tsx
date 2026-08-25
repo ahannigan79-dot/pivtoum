@@ -12,6 +12,7 @@ import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
+import { Icon } from "@/components/hub/Icon";
 import { ArticleWhy } from "@/components/hub/dashboard/ArticleWhy";
 
 export const metadata = { title: "Evolve to Win — Pivotum" };
@@ -94,7 +95,7 @@ export default async function Dashboard() {
 
         {recent.length > 0 && (
           <div className="earned">
-            <span className="earned-spark">✨</span>
+            <span className="earned-spark"><Icon name="done" size={16} /></span>
             <span>You earned {recent.length === 1 ? "a new credential" : `${recent.length} new credentials`}: <b>{recent.map((b) => b.name).join(", ")}</b> — the work is showing.</span>
           </div>
         )}

@@ -141,9 +141,9 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .feed-empty { color:var(--pencil); font-size:0.95rem; padding:24px 4px; }
 
 /* events */
-.welcome-cta { display:flex; align-items:center; gap:16px; border:1px solid var(--green-deep); border-radius:16px;
+.welcome-cta { display:flex; align-items:center; gap:16px; border:1px solid var(--rule); border-radius:16px;
   background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); padding:18px 20px; margin:0 0 22px; }
-.welcome-cta:hover { background:linear-gradient(180deg,rgba(127,192,138,0.15),var(--panel)); }
+.welcome-cta:hover { background:var(--panel2); }
 .welcome-cta .ck { color:var(--green); }
 .welcome-cta h3 { font-family:var(--serif); font-weight:700; font-size:1.24rem; margin:0 0 5px; }
 .welcome-cta p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.5; }
@@ -337,9 +337,9 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .led-l { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--pencil); }
 .ck-ledger .cardlink { margin-left:0; }
 
-.cta-hero { display:flex; align-items:center; gap:16px; border:1px solid var(--green-deep); border-radius:16px;
+.cta-hero { display:flex; align-items:center; gap:16px; border:1px solid var(--rule); border-radius:16px;
   background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); padding:20px 22px; margin:0 0 8px; }
-.cta-hero:hover { background:linear-gradient(180deg,rgba(127,192,138,0.16),var(--panel)); }
+.cta-hero:hover { background:var(--panel2); }
 .cta-hero .ck { color:var(--green); }
 .cta-hero h3 { font-family:var(--serif); font-weight:700; font-size:1.3rem; margin:0 0 5px; }
 .cta-hero p { margin:0; color:var(--soft); font-size:0.95rem; line-height:1.5; max-width:62ch; }
@@ -568,8 +568,8 @@ a.nm:hover { color:var(--ink); }
 @media (max-width:820px){ .mem-cols { grid-template-columns:1fr; } }
 
 /* ---- Evolve: winning strategy hero (front and centre) ---- */
-.strategy { border:1px solid var(--green-deep); border-radius:18px;
-  background:linear-gradient(135deg,rgba(127,192,138,0.15),var(--panel) 62%); padding:22px 24px; margin:0 0 16px; }
+.strategy { border:1px solid var(--rule); border-radius:18px;
+  background:var(--surface); padding:22px 24px; margin:0 0 16px; }
 .strat-top { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 .strat-top .ck { color:var(--green); }
 .strat-top .cardlink { margin-left:0; }
@@ -582,15 +582,15 @@ a.nm:hover { color:var(--ink); }
 @media (max-width:640px){ .strat-stance { font-size:1.6rem; } }
 
 /* Adam's read — Claude's in-voice narrative of the member's Map */
-.mapread { border:1px solid var(--rule); border-left:3px solid var(--pen); border-radius:14px;
-  background:var(--panel); padding:16px 20px; margin:0 0 16px; }
+.mapread { border:1px solid var(--rule); border-left:2px solid var(--accent); border-radius:14px;
+  background:var(--surface); padding:16px 20px; margin:0 0 16px; }
 .mapread-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 10px; }
 .mapread-head > .ck { margin:0; }
 .mapread-regen { flex:none; background:transparent; border:1px solid var(--rule2); border-radius:8px;
   color:var(--pencil); font-family:var(--sans); font-weight:700; font-size:0.72rem; padding:4px 9px; cursor:pointer; transition:.12s; }
 .mapread-regen:hover:not(:disabled) { border-color:var(--pen); color:var(--pen); }
 .mapread-regen:disabled { cursor:progress; opacity:.6; }
-.mapread > .ck { color:var(--pen); margin:0 0 10px; }
+.mapread > .ck { color:var(--accent); margin:0 0 10px; }
 .mapread-body { font-family:var(--serif); color:var(--ink); font-size:1.06rem; line-height:1.6; max-width:none; }
 .mapread-body p { max-width:none; }
 .mapread-body p { margin:0 0 0.7em; }
@@ -758,10 +758,10 @@ a.pod-member:hover span { color:var(--ink); }
 .eb b { color:var(--ink); font-family:var(--mono); }
 
 /* ---- earned-moment banner ---- */
-.earned { display:flex; align-items:center; gap:12px; border:1px solid var(--green-deep); border-radius:12px;
-  background:linear-gradient(180deg,rgba(127,192,138,0.14),var(--panel)); padding:12px 16px; margin:0 0 16px; font-size:0.94rem; color:var(--soft); }
+.earned { display:flex; align-items:center; gap:12px; border:1px solid var(--rule); border-radius:12px;
+  background:var(--surface); padding:12px 16px; margin:0 0 16px; font-size:0.94rem; color:var(--soft); }
 .earned b { color:var(--ink); }
-.earned-spark { font-size:1.2rem; flex:none; }
+.earned-spark { flex:none; color:var(--accent); display:inline-flex; align-items:center; }
 
 /* ---- ship confirm + proof ---- */
 .move-ship-confirm { display:flex; align-items:center; gap:8px; flex:none; }
@@ -1238,11 +1238,11 @@ a.pod-member:hover span { color:var(--ink); }
 .mod-remove:hover { filter:brightness(1.08); }
 
 /* ── Weekly ritual (prompt of the week) ────────────────────────── */
-.week-prompt { display:flex; gap:15px; align-items:flex-start; border:1px solid var(--green-deep);
+.week-prompt { display:flex; gap:15px; align-items:flex-start; border:1px solid var(--rule); border-left:2px solid var(--accent);
   border-radius:16px; padding:16px 18px; margin:0 0 18px;
-  background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); }
+  background:var(--surface); }
 .week-prompt.week-prompt-link { transition:.14s; }
-.week-prompt.week-prompt-link:hover { background:linear-gradient(180deg,rgba(127,192,138,0.16),var(--panel)); }
+.week-prompt.week-prompt-link:hover { background:var(--panel2); }
 .wp-tag { flex:none; font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
   color:var(--on-fill); background:var(--green); border-radius:20px; padding:5px 11px; margin-top:2px; }
 .wp-main { min-width:0; }
