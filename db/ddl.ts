@@ -129,6 +129,8 @@ export const PATCH_STATEMENTS: string[] = [
   // Badge catalog — credentials for real milestones. Idempotent.
   // Claude-generated Map reading — grounded in the saved `computed`, cached per snapshot.
   `ALTER TABLE "map_states" ADD COLUMN IF NOT EXISTS "narrative" text`,
+  // Weekly brief can highlight an article — the thinking behind the week's prompt.
+  `ALTER TABLE "weekly_prompts" ADD COLUMN IF NOT EXISTS "article_slug" text`,
   // Claude-generated Judgment Gym reps — fresh scenarios per career/lane.
   `CREATE TABLE IF NOT EXISTS "gym_generated" (
      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,

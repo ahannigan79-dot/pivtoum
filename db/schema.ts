@@ -220,6 +220,7 @@ export const weeklyPrompts = pgTable("weekly_prompts", {
   id: uid(),
   title: text("title").notNull(),
   body: text("body").notNull(),
+  articleSlug: text("article_slug"), // optional: the article this week's brief highlights
   createdAt: now(),
 });
 

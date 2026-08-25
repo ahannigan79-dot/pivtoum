@@ -7,6 +7,7 @@ import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity, computeEffort, effortBreakdown } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
+import { articleRef } from "@/lib/brief";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
@@ -39,6 +40,7 @@ export default async function Dashboard() {
     getCurrentPrompt(),
   ]);
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
+  const promptArticle = articleRef(prompt?.articleSlug);
   // Recently-earned credentials → an "earned moment" (last 48h).
   const recent = earned.filter((b) => Date.now() - new Date(b.earnedAt).getTime() < 48 * 3600 * 1000);
   const shippedSinceRescore = !!(t?.hasMap && t.lastMapAt && moves.shipped.some((m) => m.completedAt && m.completedAt > t.lastMapAt!));
@@ -97,14 +99,22 @@ export default async function Dashboard() {
         )}
 
         {prompt && (
-          <Link href="/hub/community" className="week-prompt week-prompt-link">
-            <span className="wp-tag">This week</span>
-            <div className="wp-main">
-              <h3>{prompt.title}</h3>
-              <p>{prompt.body}</p>
-              <span className="wp-cta">Join the conversation →</span>
-            </div>
-          </Link>
+          <div className="week-prompt-wrap">
+            <Link href="/hub/community" className="week-prompt week-prompt-link">
+              <span className="wp-tag">This week</span>
+              <div className="wp-main">
+                <h3>{prompt.title}</h3>
+                <p>{prompt.body}</p>
+                <span className="wp-cta">Join the conversation →</span>
+              </div>
+            </Link>
+            {promptArticle && (
+              <a href={promptArticle.url} className="wp-article" target="_blank" rel="noopener noreferrer">
+                <span className="wp-article-k">The thinking behind this</span>
+                <span className="wp-article-t">{promptArticle.title} →</span>
+              </a>
+            )}
+          </div>
         )}
 
         {t?.hasMap ? (

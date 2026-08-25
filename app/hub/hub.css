@@ -1202,6 +1202,16 @@ a.pod-member:hover span { color:var(--ink); }
 .wp-main p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.55; }
 .wp-cta { display:inline-block; margin-top:9px; font-size:0.82rem; font-weight:700; color:var(--green); }
 
+/* week prompt + the article it highlights */
+.week-prompt-wrap { margin:0 0 18px; }
+.week-prompt-wrap .week-prompt { margin-bottom:0; border-bottom-left-radius:0; border-bottom-right-radius:0; border-bottom:0; }
+.wp-article { display:flex; flex-direction:column; gap:1px; text-decoration:none;
+  border:1px solid var(--green-deep); border-top:0; border-radius:0 0 16px 16px; padding:11px 18px;
+  background:var(--panel2); transition:.14s; }
+.wp-article:hover { background:var(--panel3); }
+.wp-article-k { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); }
+.wp-article-t { font-family:var(--serif); font-size:0.95rem; color:var(--green); }
+
 /* founder prompt setter (on health) */
 .wp-set { margin:0 0 26px; }
 .wp-set-cur { display:flex; gap:14px; align-items:flex-start; border:1px solid var(--green-deep); border-radius:14px;
@@ -1223,6 +1233,19 @@ a.pod-member:hover span { color:var(--ink); }
   border:0; border-radius:9px; padding:9px 16px; cursor:pointer; }
 .wp-set-foot button.ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2); }
 .wp-set-foot button:disabled { opacity:.5; cursor:default; }
+/* draft-with-Claude */
+.wp-draft { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.wp-draft-btn { flex:none; font-family:var(--sans); font-weight:800; font-size:0.84rem; color:var(--pen);
+  background:transparent; border:1px solid var(--pen); border-radius:9px; padding:8px 14px; cursor:pointer; transition:.14s; }
+.wp-draft-btn:hover:not(:disabled) { background:rgba(224,119,108,0.12); }
+.wp-draft-btn:disabled { opacity:.6; cursor:progress; }
+.wp-draft-hint { font-size:0.78rem; color:var(--pencil); flex:1 1 200px; }
+.wp-draft-err { margin:0; color:var(--pen); font-size:0.82rem; font-weight:600; }
+.wp-draft-art { display:flex; align-items:center; gap:10px; font-size:0.82rem; color:var(--soft);
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:8px 12px; }
+.wp-draft-art b { color:var(--ink); }
+.wp-draft-art button { margin-left:auto; background:transparent; border:0; color:var(--pencil);
+  font-size:0.76rem; cursor:pointer; text-decoration:underline; }
 
 /* looking-glass highlight manager (founder) */
 .hl-mgr { margin:0 0 26px; }

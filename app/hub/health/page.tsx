@@ -8,6 +8,7 @@ import { startDM } from "@/app/hub/messages/actions";
 import { Avatar } from "@/components/hub/community/Avatar";
 import { PromptSetter } from "@/components/hub/health/PromptSetter";
 import { HighlightManager } from "@/components/hub/health/HighlightManager";
+import { aiConfigured } from "@/lib/ai";
 
 export const metadata = { title: "Member health — Winning in the Age of AI" };
 
@@ -70,7 +71,7 @@ export default async function HealthPage() {
       <div className="hub-top"><h1>Member health</h1><span className="sp" /><span className="hub-pill">Founder view</span></div>
       <div className="hub-body">
         <div className="hub-sectlabel">This week&apos;s prompt · the community heartbeat</div>
-        <PromptSetter current={prompt ? { title: prompt.title, body: prompt.body } : null} />
+        <PromptSetter current={prompt ? { title: prompt.title, body: prompt.body } : null} aiOn={aiConfigured()} />
 
         <div className="hub-sectlabel">Looking-glass highlights · what non-members see</div>
         <HighlightManager highlights={highlights} />
