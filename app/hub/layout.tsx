@@ -6,11 +6,12 @@ import { getOrCreateProfile, touchVisit, isFounder } from "@/lib/member";
 import { getUnreadCount } from "@/lib/dms";
 import { getUnreadNotifCount } from "@/lib/notifications";
 import { openReportCount } from "@/lib/moderation";
-import { getAccess, isPreviewAllowed } from "@/lib/gate";
+import { getAccess, getViewMode, isPreviewAllowed } from "@/lib/gate";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
 import { PwaRegister } from "@/components/hub/PwaRegister";
 import { LookingGlass } from "@/components/hub/LookingGlass";
+import { ViewModeToggle } from "@/components/hub/ViewModeToggle";
 import "./hub.css";
 
 export const metadata = { title: "Winning in the Age of AI — Your Community", robots: { index: false, follow: false } };
@@ -19,11 +20,14 @@ export default async function HubLayout({ children }: { children: React.ReactNod
   const { userId } = await auth();
   const profile = await getOrCreateProfile();
   if (profile) await touchVisit(profile.clerkUserId);
-  const founder = isFounder(profile);
+  const realFounder = isFounder(profile);        // true founder — decides who sees the switch
+  const viewMode = await getViewMode();
 
   // Gate: non-members (no active subscription) get the looking glass on every
-  // route except the ones that let them subscribe or manage settings.
+  // route except the ones that let them subscribe or manage settings. A founder
+  // can preview the member/guest flow via the view-mode switch.
   const access = await getAccess(userId, profile);
+  const founder = access.founder;                 // effective — reflects the preview mode
   const path = (await headers()).get("x-pathname");
   const gated = !access.member && !isPreviewAllowed(path);
 
@@ -48,6 +52,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
           </Link>
         </div>
         <HubNav messagesUnread={messagesUnread} isFounder={founder} openReports={openReports} />
+        {realFounder && <ViewModeToggle current={viewMode} />}
         <div className="hub-side-foot">
           <UserButton />
           {profile ? (

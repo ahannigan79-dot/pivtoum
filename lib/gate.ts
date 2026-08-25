@@ -1,9 +1,19 @@
+import { cookies } from "next/headers";
 import { and, desc, eq, gte, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles, pods, podMembers, events } from "@/db/schema";
 import { isFounder } from "@/lib/member";
 import { getMembership } from "@/lib/billing";
 import { getCurrentPrompt, type WeeklyPrompt } from "@/lib/ritual";
+
+/** Founder-only preview override — lets a founder walk each flow while testing. */
+export const VIEW_COOKIE = "pv_view";
+export type ViewMode = "founder" | "member" | "guest";
+
+export async function getViewMode(): Promise<ViewMode> {
+  const v = (await cookies()).get(VIEW_COOKIE)?.value;
+  return v === "member" || v === "guest" ? v : "founder";
+}
 
 /** Routes a signed-in non-member may still reach (to subscribe / manage settings). */
 const PREVIEW_OK = ["/hub/membership", "/hub/settings"];
@@ -15,10 +25,16 @@ export function isPreviewAllowed(path: string | null): boolean {
 
 export type Access = { member: boolean; founder: boolean };
 
-/** A member (active/trialing subscription) OR a founder gets the full hub. */
+/** A member (active/trialing subscription) OR a founder gets the full hub.
+ *  A real founder can preview the member or guest flow via the view-mode cookie. */
 export async function getAccess(userId: string | null, profile: { role?: string | null; email?: string | null } | null): Promise<Access> {
   const founder = isFounder(profile);
-  if (founder) return { member: true, founder: true };
+  if (founder) {
+    const mode = await getViewMode();
+    if (mode === "guest") return { member: false, founder: false };  // preview the looking glass
+    if (mode === "member") return { member: true, founder: false };  // preview a plain member
+    return { member: true, founder: true };
+  }
   if (!userId) return { member: false, founder: false };
   const m = await getMembership(userId);
   return { member: m.active, founder: false };

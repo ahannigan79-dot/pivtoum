@@ -1226,6 +1226,17 @@ a.pod-member:hover span { color:var(--ink); }
   animation:mapread-sh 1.3s ease-in-out infinite; }
 @media (prefers-reduced-motion:reduce){ .wp-why.loading span { animation:none; } }
 
+/* ===== Founder view-mode switch ===== */
+.viewmode { margin:auto 10px 8px; padding:9px 10px; border:1px solid var(--rule2); border-radius:11px; background:var(--panel2); }
+.viewmode[data-pending="true"] { opacity:0.6; }
+.viewmode-k { display:block; font-size:0.54rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); margin:0 0 6px; }
+.viewmode-row { display:flex; gap:4px; }
+.viewmode-btn { flex:1; border:1px solid var(--rule2); background:transparent; color:var(--soft);
+  font-family:var(--sans); font-weight:700; font-size:0.72rem; padding:5px 4px; border-radius:7px; cursor:pointer; transition:.12s; }
+.viewmode-btn:hover:not(:disabled) { border-color:var(--green); color:var(--ink); }
+.viewmode-btn.on { background:var(--green); border-color:var(--green); color:#12100a; }
+.viewmode-btn:disabled { cursor:progress; }
+
 /* ===== Career Deep Dives (Learn) ===== */
 .learn-dd { display:flex; flex-direction:column; gap:10px; margin:0 0 20px; }
 .learn-dd-card { display:block; border:1px solid var(--green-deep); border-radius:16px; padding:18px 20px;

@@ -1,11 +1,24 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { commitments, lessonProgress, profiles } from "@/db/schema";
 import { LEVER_BY_SLUG } from "@/lib/moves";
 import { awardBadge } from "@/lib/badges";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { VIEW_COOKIE, type ViewMode } from "@/lib/gate";
+
+/** Founder-only: switch the preview mode (full founder / plain member / guest). */
+export async function setViewMode(mode: ViewMode) {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return;
+  const jar = await cookies();
+  if (mode === "founder") jar.delete(VIEW_COOKIE);
+  else jar.set(VIEW_COOKIE, mode, { httpOnly: false, sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 30 });
+  revalidatePath("/hub", "layout");
+}
 
 /** Member confirms they've booked their 1:1 welcome — advances the plan. */
 export async function markWelcomeBooked() {
