@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" />
 <style>
   :root{
-    --bg:#141209; --bg2:#17150F; --panel:#201D16; --panel2:#262219; --panel3:#2c2820;
-    --ink:#F3EFE6; --soft:#C7C0B2; --pencil:#948B7C; --rule:#34302A; --rule2:#3f3a31;
-    --green:#7FC08A; --green-bright:#8FD09A; --green-deep:#35804E;
-    --pen:#E0776C; --pen-dim:#a85a52;
-    --amber:#D6A85B; --amber-deep:#7a5e2c;
+    --bg:#FBFAF6; --bg2:#FBFAF6; --panel:#FBFAF6; --panel2:#F4F1EA; --panel3:#EEEAE0;
+    --ink:#1C1A16; --soft:#6B655B; --pencil:#948D80; --rule:#E7E2D8; --rule2:#DAD3C6;
+    --green:#2E7D55; --green-bright:#3A9268; --green-deep:#1F5C3F;
+    --pen:#B4442F; --pen-dim:#C56A5A;
+    --amber:#B8873A; --amber-deep:#8A6A2F;
     --serif:"Literata",Georgia,serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
@@ -66,9 +66,9 @@
   .pfdet .dur .dh{ font-weight:800; font-size:0.72rem; letter-spacing:0.02em; text-transform:uppercase; color:var(--pencil); }
   .pfdet .dur b{ color:var(--soft); }
   .stance{ margin:22px 0 2px; border-radius:12px; padding:15px 16px; display:flex; align-items:flex-start; gap:11px; }
-  .stance.guard{ background:rgba(127,192,138,0.08); border:1px solid var(--green-deep); }
-  .stance.shift{ background:rgba(214,168,91,0.12); border:1px solid var(--amber-deep); }
-  .stance.relocate{ background:rgba(224,119,108,0.10); border:1px solid var(--pen-dim); }
+  .stance.guard{ background:rgba(46,125,85,0.08); border:1px solid var(--green-deep); }
+  .stance.shift{ background:rgba(184,135,58,0.12); border:1px solid var(--amber-deep); }
+  .stance.relocate{ background:rgba(180,68,47,0.10); border:1px solid var(--pen-dim); }
   .stance .si{ font-size:1.2rem; line-height:1; flex:none; }
   .stance .st{ font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin:0 0 3px; }
   .stance.guard .st{ color:var(--green); } .stance.shift .st{ color:var(--amber); } .stance.relocate .st{ color:var(--pen); }
@@ -94,7 +94,7 @@
   .lane .ln{ font-size:0.96rem; color:var(--ink); } .lane .le{ margin-left:auto; font-family:var(--mono); font-size:0.8rem; flex:none; }
   .lane .le.lo{ color:var(--green); } .lane .le.mid{ color:var(--amber); } .lane .le.hi{ color:var(--pen); }
   .lane.here{ border-color:var(--rule2); background:var(--panel3); } .lane.here .ln{ color:var(--soft); }
-  .lane.target{ border-color:var(--green-deep); background:linear-gradient(180deg,rgba(127,192,138,0.09),var(--panel2)); }
+  .lane.target{ border-color:var(--green-deep); background:linear-gradient(180deg,rgba(46,125,85,0.09),var(--panel2)); }
   .tgt{ font-size:0.54rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--green); margin-left:8px; white-space:nowrap; }
   .tgt.you{ color:var(--pencil); }
   .none{ color:var(--pencil); font-size:0.92rem; font-style:italic; }
