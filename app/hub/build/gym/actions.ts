@@ -1,7 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { createGeneratedRep, memberLane } from "@/lib/gym-generate";
+import { pickOrCreateRep, memberLane } from "@/lib/gym-generate";
 
 /**
  * Generate a fresh, Claude-written Judgment Gym rep and open it. Seeded by the
@@ -20,7 +20,7 @@ export async function generateGymRep(formData: FormData): Promise<void> {
   }
   if (!lane) redirect("/hub/build/gym?gen=nolane");
 
-  const id = await createGeneratedRep(userId, lane, career || lane);
+  const id = await pickOrCreateRep(userId, lane, career || lane);
   if (!id) redirect("/hub/build/gym?gen=failed");
   redirect(`/hub/build/gym/g/${id}`);
 }

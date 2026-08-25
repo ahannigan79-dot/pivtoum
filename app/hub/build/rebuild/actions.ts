@@ -1,7 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { createGeneratedRebuild } from "@/lib/rebuild-generate";
+import { pickOrCreateRebuild } from "@/lib/rebuild-generate";
 import { memberLane } from "@/lib/gym-generate";
 
 /**
@@ -21,7 +21,7 @@ export async function generateRebuild(formData: FormData): Promise<void> {
   }
   if (!lane) redirect("/hub/build/rebuild?gen=nolane");
 
-  const id = await createGeneratedRebuild(userId, lane, career || lane, workflow);
+  const id = await pickOrCreateRebuild(userId, lane, career || lane, workflow);
   if (!id) redirect("/hub/build/rebuild?gen=failed");
   redirect(`/hub/build/rebuild/g/${id}`);
 }

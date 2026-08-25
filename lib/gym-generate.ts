@@ -1,9 +1,10 @@
 import "server-only";
 import { randomUUID } from "crypto";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { gymGenerated, mapStates } from "@/db/schema";
 import { complete, parseJSON, aiConfigured } from "@/lib/ai";
+import { getBuildReps } from "@/lib/build";
 import { VOICE } from "@/lib/voice";
 import type { Scenario, GymItem, Severity } from "@/lib/gym";
 
@@ -64,12 +65,13 @@ const SEV: Severity[] = ["minor", "major", "critical"];
 
 /** Validate + normalise the model output into a real Scenario, or null if it doesn't hold. */
 function coerce(raw: RawScenario | null, slug: string, career: string): Scenario | null {
-  if (!raw || !Array.isArray(raw.items) || raw.items.length !== 6) return null;
+  if (!raw || !Array.isArray(raw.items)) return null;
 
+  // Skip malformed items rather than failing the whole rep.
   const items: GymItem[] = [];
   for (const it of raw.items) {
     const verdict = it.verdict === "flag" ? "flag" : it.verdict === "ship" ? "ship" : null;
-    if (!verdict || !it.area || !it.output || !it.why || !it.cost || !it.trains) return null;
+    if (!verdict || !it.area || !it.output || !it.why || !it.cost || !it.trains) continue;
     const item: GymItem = {
       area: String(it.area), output: String(it.output), verdict,
       why: String(it.why), cost: String(it.cost), trains: String(it.trains),
@@ -79,12 +81,13 @@ function coerce(raw: RawScenario | null, slug: string, career: string): Scenario
     }
     items.push(item);
   }
+  if (items.length > 8) items.length = 8;
 
   const flags = items.filter((i) => i.verdict === "flag");
   const ships = items.filter((i) => i.verdict === "ship");
-  // Guardrails that keep the rep scoreable and honest.
-  if (flags.length < 2 || ships.length < 2) return null;
-  // Ensure exactly one critical exists (promote the first flag if the model gave none).
+  // Guardrails that keep the rep scoreable and honest — but forgiving on count.
+  if (items.length < 5 || flags.length < 2 || ships.length < 2) return null;
+  // Ensure one critical exists (promote the first flag if the model gave none).
   if (!flags.some((f) => f.severity === "critical")) flags[0].severity = "critical";
 
   const brief = (raw.brief ?? [])
@@ -105,23 +108,24 @@ function coerce(raw: RawScenario | null, slug: string, career: string): Scenario
   };
 }
 
-/** Generate one fresh scenario for a lane. Returns null if AI is off or output is unusable. */
+/** Generate one fresh scenario for a lane. Retries once (with thinking off, which
+ *  avoids truncating the JSON) so it lands reliably. Null only if AI is off or
+ *  both attempts fail. */
 export async function generateGymScenario(lane: string, career: string): Promise<Scenario | null> {
   if (!aiConfigured()) return null;
   const slug = `gen-${randomUUID()}`;
-  const raw = await complete({
-    system: SYSTEM,
-    maxTokens: 2600,
-    messages: [
-      {
-        role: "user",
-        content:
-          `Write one Judgment Gym rep for this lane: "${lane}"${career && career !== lane ? ` (career shown to the member: "${career}")` : ""}.\n` +
-          `Make the client, brief, and every item specific to the real day-to-day work of this lane. Return only the JSON object.`,
-      },
-    ],
-  });
-  return coerce(parseJSON<RawScenario>(raw ?? ""), slug, career || lane);
+  const content =
+    `Write one Judgment Gym rep for this lane: "${lane}"${career && career !== lane ? ` (career shown to the member: "${career}")` : ""}.\n` +
+    `Make the client, brief, and every item specific to the real day-to-day work of this lane. Return only the JSON object.`;
+
+  // Attempt 1: full reasoning. Attempt 2: no thinking, so the whole budget goes to
+  // the JSON (the usual cause of a bad first attempt is a truncated response).
+  for (const thinking of [true, false]) {
+    const raw = await complete({ system: SYSTEM, maxTokens: 6000, thinking, messages: [{ role: "user", content }] });
+    const scenario = coerce(parseJSON<RawScenario>(raw ?? ""), slug, career || lane);
+    if (scenario) return scenario;
+  }
+  return null;
 }
 
 /** Generate, persist, and return the stored row id (for /hub/build/gym/g/[id]). Null on failure. */
@@ -141,6 +145,26 @@ export async function createGeneratedRep(
     console.error("[gym-generate] persist failed", String(err));
     return null;
   }
+}
+
+/**
+ * Serve a fresh rep for a lane, catalogue-first: reuse an existing generated rep
+ * this member hasn't done yet (no API call), and only generate — and add to the
+ * shared catalogue — when they've worked through the pool. Keeps cost bounded to
+ * the number of distinct reps a lane needs, shared across everyone in it.
+ */
+export async function pickOrCreateRep(userId: string | null, lane: string, career: string): Promise<string | null> {
+  const done = await getBuildReps(userId); // keys like "gym:gen-<id>"
+  const pool = await db
+    .select({ id: gymGenerated.id })
+    .from(gymGenerated)
+    .where(sql`lower(${gymGenerated.lane}) = lower(${lane})`)
+    .orderBy(desc(gymGenerated.createdAt))
+    .limit(40);
+  const unseen = pool.find((r) => !done.has(`gym:gen-${r.id}`));
+  if (unseen) return unseen.id; // reuse from the catalogue — free
+
+  return createGeneratedRep(userId, lane, career); // pool exhausted → make a new one
 }
 
 export async function getGeneratedRep(id: string): Promise<Scenario | null> {

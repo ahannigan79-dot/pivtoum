@@ -1,9 +1,10 @@
 import "server-only";
 import { randomUUID } from "crypto";
-import { eq } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { rebuildGenerated } from "@/db/schema";
 import { complete, parseJSON, aiConfigured } from "@/lib/ai";
+import { getBuildReps } from "@/lib/build";
 import { VOICE } from "@/lib/voice";
 import type { RebuildVariant, RebuildStep } from "@/lib/rebuild";
 
@@ -75,24 +76,43 @@ function coerce(raw: RawVariant | null, slug: string): RebuildVariant | null {
   };
 }
 
-/** Generate one fresh rebuild for a lane (optionally a specific workflow). Null on failure. */
+/** Generate one fresh rebuild for a lane (optionally a specific workflow). Retries
+ *  once with thinking off (avoids truncating the JSON). Null only if AI is off or
+ *  both attempts fail. */
 export async function generateRebuildVariant(lane: string, career: string, workflow?: string): Promise<RebuildVariant | null> {
   if (!aiConfigured()) return null;
   const slug = `gen-${randomUUID()}`;
-  const raw = await complete({
-    system: SYSTEM,
-    maxTokens: 2600,
-    messages: [
-      {
-        role: "user",
-        content:
-          `Build one Workflow Rebuild for this lane: "${lane}"${career && career !== lane ? ` (career: "${career}")` : ""}.\n` +
-          (workflow?.trim() ? `Use this specific workflow: "${workflow.trim()}".\n` : "Choose the most representative core workflow for the lane.\n") +
-          `Make every step specific to the real work of this lane. Return only the JSON object.`,
-      },
-    ],
-  });
-  return coerce(parseJSON<RawVariant>(raw ?? ""), slug);
+  const content =
+    `Build one Workflow Rebuild for this lane: "${lane}"${career && career !== lane ? ` (career: "${career}")` : ""}.\n` +
+    (workflow?.trim() ? `Use this specific workflow: "${workflow.trim()}".\n` : "Choose the most representative core workflow for the lane.\n") +
+    `Make every step specific to the real work of this lane. Return only the JSON object.`;
+
+  for (const thinking of [true, false]) {
+    const raw = await complete({ system: SYSTEM, maxTokens: 6000, thinking, messages: [{ role: "user", content }] });
+    const variant = coerce(parseJSON<RawVariant>(raw ?? ""), slug);
+    if (variant) return variant;
+  }
+  return null;
+}
+
+/**
+ * Serve a fresh rebuild, catalogue-first: reuse one this member hasn't done yet
+ * (no API call), and only generate when they've worked through the pool — unless
+ * they named a specific workflow, which always generates that one.
+ */
+export async function pickOrCreateRebuild(userId: string | null, lane: string, career: string, workflow?: string): Promise<string | null> {
+  if (!workflow?.trim()) {
+    const done = await getBuildReps(userId); // keys like "rebuild:gen-<id>"
+    const pool = await db
+      .select({ id: rebuildGenerated.id })
+      .from(rebuildGenerated)
+      .where(sql`lower(${rebuildGenerated.lane}) = lower(${lane})`)
+      .orderBy(desc(rebuildGenerated.createdAt))
+      .limit(40);
+    const unseen = pool.find((r) => !done.has(`rebuild:gen-${r.id}`));
+    if (unseen) return unseen.id;
+  }
+  return createGeneratedRebuild(userId, lane, career, workflow);
 }
 
 export async function createGeneratedRebuild(
