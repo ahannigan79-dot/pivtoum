@@ -215,6 +215,13 @@ export const pushSubscriptions = pgTable("push_subscriptions", {
   createdAt: now(),
 }, (t) => ({ memberIdx: index("push_subs_member_idx").on(t.memberId) }));
 
+/* ---------- Self-framed career Deep Dives (Claude, grounded in career scores) ---------- */
+export const careerDeepdives = pgTable("career_deepdives", {
+  careerSlug: text("career_slug").primaryKey(),
+  content: jsonb("content").notNull(), // a DeepDive doc (sample + sections)
+  createdAt: now(),
+});
+
 /* ---------- Weekly ritual: the community heartbeat (founder-set prompt) ---------- */
 export const weeklyPrompts = pgTable("weekly_prompts", {
   id: uid(),

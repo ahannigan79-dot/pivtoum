@@ -2,13 +2,20 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { MarkStarted } from "@/components/hub/MarkStarted";
 import { CURRICULUM, getLearnProgress, learnTotals } from "@/lib/learn";
+import { getOrCreateProfile } from "@/lib/member";
+import { aiConfigured } from "@/lib/ai";
+import { resolveCareer, CAREER_OPTIONS } from "@/lib/deepdive";
+import { CareerDeepDivePicker } from "@/components/hub/learn/CareerDeepDivePicker";
 
 export const metadata = { title: "Learn — Winning in the Age of AI" };
 
 export default async function LearnPage() {
   const { userId } = await auth();
-  const done = await getLearnProgress(userId);
+  const [done, profile] = await Promise.all([getLearnProgress(userId), getOrCreateProfile()]);
   const totals = learnTotals(done);
+  const myCareer = aiConfigured()
+    ? (resolveCareer(profile?.careerSlug) ?? resolveCareer(profile?.currentLane))
+    : null;
 
   return (
     <>
@@ -20,6 +27,25 @@ export default async function LearnPage() {
           <h2>Your score isn&apos;t luck — it&apos;s a system you can play.</h2>
           <p>Ten short lessons on the ideas behind your Map: the stance that wins, the six levers that set your exposure, and the plays that lower it. Read them in a sitting — and every one you finish counts as effort that buys down your score.</p>
         </div>
+
+        {aiConfigured() && (
+          <div className="learn-dd">
+            {myCareer ? (
+              <Link href={`/hub/learn/career/${myCareer.slug}`} className="learn-dd-card">
+                <span className="ck">📖 Your field, in full</span>
+                <h3>The {myCareer.name} Deep Dive</h3>
+                <p>The complete picture for your field — the tracks safest to most exposed, what&rsquo;s driving it, the trajectory, and how to win in it. Plus the free sample. <b>Read it →</b></p>
+              </Link>
+            ) : (
+              <div className="learn-dd-card empty">
+                <span className="ck">📖 Career Deep Dives</span>
+                <h3>Get the full picture of your field</h3>
+                <p><Link href="/hub/map">Build your Map</Link> to unlock your field&rsquo;s Deep Dive — or read any field below.</p>
+              </div>
+            )}
+            <CareerDeepDivePicker options={CAREER_OPTIONS} current={myCareer?.slug} />
+          </div>
+        )}
 
         <div className="learn-prog">
           <div className="learn-prog-top">

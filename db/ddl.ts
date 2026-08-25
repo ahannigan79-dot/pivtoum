@@ -129,6 +129,12 @@ export const PATCH_STATEMENTS: string[] = [
   // Badge catalog — credentials for real milestones. Idempotent.
   // Claude-generated Map reading — grounded in the saved `computed`, cached per snapshot.
   `ALTER TABLE "map_states" ADD COLUMN IF NOT EXISTS "narrative" text`,
+  // Self-framed career Deep Dives — Claude, grounded in career scores, shared/cached per career.
+  `CREATE TABLE IF NOT EXISTS "career_deepdives" (
+     "career_slug" text PRIMARY KEY NOT NULL,
+     "content" jsonb NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
   // Weekly brief can highlight an article — the thinking behind the week's prompt.
   `ALTER TABLE "weekly_prompts" ADD COLUMN IF NOT EXISTS "article_slug" text`,
   // ...or an external (scouted) article, handed straight from the article scout.
