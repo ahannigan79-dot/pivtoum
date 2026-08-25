@@ -34,15 +34,15 @@ export const PLAYS: Play[] = [
   {
     slug: "take-control", title: "Take control of your function's AI transformation", lever: "renovate", aim: "master",
     tagline: "Don't wait for AI to be done to you — be the person driving how it lands in your team.",
-    fit: "Anyone who'd rather shape the change than be reorganised by it. Especially strong if you have any say over how your team works.",
+    fit: "Anyone who'd rather shape the change than be reorganized by it. You don't need authority to start — you need a sharp recommendation that makes you the person who saw it first.",
     steps: [
       { title: "Map your function's real workflows", detail: "List the 5–8 workflows your function actually runs each month. For each, note the hours and who does them today." },
       { title: "Score each for exposure", detail: "Mark which steps AI can already do well, which it can't, and where the risk (and the opportunity) is highest." },
-      { title: "Pick one workflow to rebuild", detail: "Choose the highest-volume, most-exposed one. Rebuild it AI-native end to end — the Workflow Rebuild tool is built for exactly this." },
-      { title: "Run a pilot and measure it", detail: "Ship the rebuilt version for two weeks. Capture the before/after: time saved, quality, what still needs a human." },
-      { title: "Bring it to your lead as a proposal", detail: "Present the pilot as a plan, not a threat — here's what we automate, here's where our people move up. Volunteer to own the rollout." },
+      { title: "Design the AI-native version on paper", detail: "Take the highest-volume, most-exposed workflow and map it again — step by step, what AI does, what a human still owns, where the freed hours go. The Workflow Rebuild tool helps you lay this out." },
+      { title: "Build the transformation recommendation", detail: "Turn it into a sharp one-pager: the before/after, projected time saved, the quality and risk trade-offs, what stays human, and what a real trial would need. This is the artifact that puts you in the driver's seat." },
+      { title: "Take it to your lead (or IT) as a plan", detail: "Bring the recommendation as an opportunity, not a threat — here's what we could automate, here's where our people move up. Offer to help scope a proper pilot with whoever owns the tools." },
     ],
-    firstMove: "Map my function's workflows and pick one to rebuild AI-native",
+    firstMove: "Map my function's workflows and build one AI-native transformation recommendation",
   },
   {
     slug: "prove-mastery", title: "Demonstrate your AI-native mastery — visibly", lever: "renovate", aim: "master",
@@ -52,7 +52,7 @@ export const PLAYS: Play[] = [
       { title: "Pick one signature output", detail: "Choose a deliverable you produce regularly that AI makes dramatically faster or better. This becomes your proof piece." },
       { title: "Document the before/after", detail: "Capture what it took before and what it takes now — time, quality, what you now do with the freed hours." },
       { title: "Share the method, not just the result", detail: "Write a short internal note or run a lunch-and-learn showing how you did it. Teaching it is what marks you as the expert." },
-      { title: "Make it repeatable for others", detail: "Turn your approach into a template or checklist your team can use. Now you're the person who levelled up the function." },
+      { title: "Make it repeatable for others", detail: "Turn your approach into a template or checklist your team can use. Now you're the person who leveled up the function." },
     ],
     firstMove: "Turn my best AI-native workflow into a proof piece and share the method",
   },
@@ -61,10 +61,10 @@ export const PLAYS: Play[] = [
     tagline: "The gap isn't knowing AI exists — it's using it on real, messy work until it's second nature.",
     fit: "You've dabbled but it hasn't changed how you actually work. Time to close the gap for real.",
     steps: [
-      { title: "Choose your daily driver", detail: "Pick the one AI tool closest to your core work and commit to using it every day for a month — not for toys, for the real thing." },
+      { title: "Choose your daily driver", detail: "Pick the one approved AI tool closest to your core work and commit to using it every day for a month — not for toys, for the real thing." },
       { title: "Push it past the easy wins", detail: "Each week, hand it a task you'd normally do yourself. Learn where it's strong, where it lies, and how to check it." },
       { title: "Build your prompt library", detail: "Save the prompts and patterns that work for your actual job. This is the compounding asset most people never build." },
-      { title: "Learn to verify fast", detail: "Get sharp at judging AI output at speed — the Judgment Gym trains exactly this. Fluency is trust plus scepticism." },
+      { title: "Learn to verify fast", detail: "Get sharp at judging AI output at speed — the Judgment Gym trains exactly this. Fluency is trust plus skepticism." },
     ],
     firstMove: "Use my core AI tool daily on real work for the next month",
   },
@@ -88,7 +88,7 @@ export const PLAYS: Play[] = [
     fit: "Your role has real decisions inside it — risk, trade-offs, taste, ethics. Lean into them hard.",
     steps: [
       { title: "Name your judgment core", detail: "Write down the three calls in your work where being wrong is expensive and there's no clean formula. That's your moat." },
-      { title: "Shift hours toward it", detail: "Use AI to clear the mechanical work so you spend more time on the hard calls, not less." },
+      { title: "Shift hours toward it", detail: "Use your org's approved AI tools to clear the mechanical work, so you spend more time on the hard calls, not less." },
       { title: "Build a track record", detail: "Start logging the tough calls you make and how they played out. Evidence of good judgment is rare and valuable." },
       { title: "Get closer to the decision", detail: "Position yourself where the real decisions are made — in the room, on the account, at the table." },
     ],
@@ -128,7 +128,7 @@ export const PLAYS: Play[] = [
       { title: "Reframe your role as the reviewer", detail: "Shift from producing the work to setting the standard, checking the output, and owning the result." },
       { title: "Sharpen your review judgment", detail: "The skill is catching what AI gets subtly wrong. Train it deliberately — the Judgment Gym is built for this." },
       { title: "Take responsibility explicitly", detail: "Volunteer to be accountable for AI-assisted output in your area. Accountability is the thing that doesn't automate." },
-      { title: "Build the guardrails", detail: "Design the checks and quality bars your team uses. Own the system, not just the output." },
+      { title: "Propose the guardrails", detail: "Draft the checks and quality bars for AI-assisted work in your area, and offer to own them. Owning the standard beats just owning the output." },
     ],
     firstMove: "Take ownership of reviewing and standing behind AI-assisted work in my area",
   },
@@ -138,11 +138,11 @@ export const PLAYS: Play[] = [
     fit: "You're considering a move, feel your role narrowing, or just want to be ready. Job-hunt from strength.",
     steps: [
       { title: "Target resilient roles", detail: "Aim your search at roles heavier on judgment, trust, and ownership — the ones with real runway, not the ones AI is hollowing out." },
-      { title: "Rewrite your story around AI", detail: "Rebuild your CV and profile around what you now do AI-native and the outcomes you own — not the tasks you used to run." },
+      { title: "Rewrite your story around AI", detail: "Rebuild your resume and profile around what you now do AI-native and the outcomes you own — not the tasks you used to run." },
       { title: "Build one portfolio proof", detail: "Create one concrete example of AI-native work you can show — the thing that makes an interviewer lean in." },
       { title: "Prepare the AI conversation", detail: "Every serious employer now asks how you use AI. Have a sharp, specific answer with a real example ready." },
     ],
-    firstMove: "Rewrite my CV and profile around my AI-native work and outcomes",
+    firstMove: "Rewrite my resume and profile around my AI-native work and outcomes",
   },
 
   // ---------------- Relocate to protected ground (edge 2) ----------------
@@ -165,14 +165,14 @@ export const PLAYS: Play[] = [
     steps: [
       { title: "Name your physical core", detail: "Identify the parts of your work that require being physically present and skilled — the parts a screen can't do." },
       { title: "Deepen the craft", detail: "Invest in mastery of the hands-on skill itself. Depth here is durable in a way screen work no longer is." },
-      { title: "Let AI handle your admin", detail: "Use AI to clear the paperwork and scheduling around your real work, so more of your time is the irreplaceable part." },
+      { title: "Let AI handle your admin", detail: "Use your approved AI tools to clear the paperwork and scheduling around your real work, so more of your time is the irreplaceable part." },
       { title: "Signal the human premium", detail: "As AI floods digital work, in-person skill becomes more valuable, not less. Position yourself as the trusted human option." },
     ],
     firstMove: "Invest in deepening the hands-on core of my work this quarter",
   },
   {
     slug: "earn-credential", title: "Earn the credential that gates the work", lever: "licensing", aim: "relocate",
-    tagline: "Some work stays human because the law or a licence says a qualified person must do it. Get on that side of the line.",
+    tagline: "Some work stays human because the law or a license says a qualified person must do it. Get on that side of the line.",
     fit: "Your field (or an adjacent one) has licensed, regulated, or accredited roles AI can assist but never legally own.",
     steps: [
       { title: "Find the licensed roles near you", detail: "Identify the credentials in or adjacent to your field that legally gate the work — where a human must sign, certify, or be accountable." },
