@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
-import { REBUILD_LIST } from "@/lib/rebuild";
+import { REBUILDS, careerVariantCount } from "@/lib/rebuild";
 import { getBuildReps } from "@/lib/build";
 
 export const metadata = { title: "Workflow Rebuild — Pivotum" };
@@ -8,6 +8,8 @@ export const metadata = { title: "Workflow Rebuild — Pivotum" };
 export default async function RebuildLanding() {
   const { userId } = await auth();
   const done = await getBuildReps(userId);
+  const countDone = (c: (typeof REBUILDS)[number]) =>
+    c.lanes.reduce((n, l) => n + l.variants.filter((v) => done.has(`rebuild:${v.slug}`)).length, 0);
 
   return (
     <>
@@ -16,14 +18,14 @@ export default async function RebuildLanding() {
         <div className="build-hero">
           <p className="ck">🔧 Workflow Rebuild</p>
           <h2>Watch your job get rebuilt — then rebuild yourself.</h2>
-          <p>Pick your field. See a core workflow done today vs. rebuilt AI-native, where your value moves up the ladder, and the <b>five moves</b> that turn the rebuild into your own climb.</p>
+          <p>Pick your field, then a lane, then a workflow. See it done today vs. rebuilt AI-native, where your value moves up the ladder, and the <b>five moves</b> that turn the rebuild into your own climb. Many examples per lane — work through the ones closest to your day.</p>
         </div>
         <div className="hub-grid">
-          {REBUILD_LIST.map((r) => (
-            <Link key={r.slug} href={`/hub/build/rebuild/${r.slug}`} className="card">
-              <p className="ck">🔧 Rebuild{done.has(`rebuild:${r.slug}`) ? " · done ✓" : ""}</p>
-              <h3>{r.career}</h3>
-              <p>{r.short}</p>
+          {REBUILDS.map((c) => (
+            <Link key={c.slug} href={`/hub/build/rebuild/${c.slug}`} className="card">
+              <p className="ck">🔧 {careerVariantCount(c)} workflows{countDone(c) > 0 ? ` · ${countDone(c)} done` : ""}</p>
+              <h3>{c.career}</h3>
+              <p>{c.blurb}</p>
             </Link>
           ))}
         </div>

@@ -1,14 +1,14 @@
-import { LADDER, MOVES, type Rebuild } from "@/lib/rebuild";
+import { LADDER, MOVES, type RebuildVariant } from "@/lib/rebuild";
 import { LogRep } from "@/components/hub/LogRep";
 
 const EDGE_LABEL = { master: "◆ Master", deepen: "✦ Deepen", both: "◆✦ Master + Deepen" };
 
-export function WorkflowRebuild({ rebuild, done }: { rebuild: Rebuild; done: boolean }) {
+export function WorkflowRebuild({ variant: rebuild, careerName, done }: { variant: RebuildVariant; careerName: string; done: boolean }) {
   return (
     <div className="rb">
       <div className="rb-head">
-        <p className="ck">Workflow Rebuild · {rebuild.field}</p>
-        <h2>{rebuild.workflow}</h2>
+        <p className="ck">Workflow Rebuild · {careerName} · {rebuild.field}</p>
+        <h2>{rebuild.title}</h2>
         <p className="rb-thesis">{rebuild.thesis}</p>
       </div>
 
@@ -69,7 +69,7 @@ export function WorkflowRebuild({ rebuild, done }: { rebuild: Rebuild; done: boo
       </div>
 
       <div className="rb-foot">
-        <div><b>{rebuild.career}</b> — one of the rebuilds. Your Map points to which edge to push first; your Build Clinic is where you run it.</div>
+        <div><b>{careerName} · {rebuild.title}</b> — one of the rebuilds. Your Map points to which edge to push first; your Build Clinic is where you run it.</div>
         <LogRep repKey={`rebuild:${rebuild.slug}`} done={done} />
       </div>
     </div>
