@@ -26,6 +26,7 @@ export default async function RebuildLanding({ searchParams }: { searchParams: P
           <p className="ck">🔧 Workflow Rebuild</p>
           <h2>Watch your job get rebuilt — then rebuild yourself.</h2>
           <p>Pick your field, then a lane, then a workflow. See it done today vs. rebuilt AI-native, where your value moves up the ladder, and the <b>five moves</b> that turn the rebuild into your own climb. Many examples per lane — work through the ones closest to your day.</p>
+          <Link href="/hub/build/rebuild/browse" className="build-hero-link">🗂 Browse the full catalogue by career →</Link>
         </div>
 
         {aiConfigured() && (
