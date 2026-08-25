@@ -5,7 +5,7 @@ import { articleRelevance, mapStates } from "@/db/schema";
 import { complete, aiConfigured } from "@/lib/ai";
 import { VOICE } from "@/lib/voice";
 import { exposureBand, bandWord, type MapComputed } from "@/lib/trajectory";
-import { articleRef } from "@/lib/brief";
+import { articleRef, latestArticles } from "@/lib/brief";
 
 /**
  * "Why this matters to you" — a one-line, per-member reading of the week's
@@ -17,13 +17,16 @@ import { articleRef } from "@/lib/brief";
 const SYSTEM = `${VOICE}
 
 ## Your task right now
-The community is highlighting one article this week. Write ONE short note to a specific member explaining why THIS article matters for THEIR lane and exposure — turning a general piece into a personal nudge.
+The community highlights one article each week for everyone. Write ONE short, personal note to a specific member.
+
+First, judge honestly: does this week's article genuinely connect to THIS member's lane, driver, and exposure?
+- If it DOES: in 1–2 sentences, make that connection specific to their work — why it matters for them, pointing gently forward.
+- If it does NOT (it's really about a different field, life stage, or situation): do NOT force a thin or generic connection. Instead, give them the one thing about THEIR own lane worth their attention right now — drawn from their biggest factor and next move — in the same warm voice, so the note still lands. If one of the OTHER listed pieces clearly fits them better, you may name it (by its exact title) and say it's the more relevant read for them.
 
 Rules:
 - 1–2 sentences. ~30 words max. Second person. Plain text, no preamble, no quotes, no emoji.
-- Connect the article's point to their actual lane / driver / exposure — be specific to their work, not generic.
 - The member's numbers are given facts; use them as-is, never restate a different number or recompute anything.
-- End pointing gently forward (read it, bring it to your pod, try the move) — never alarmist.`;
+- Never alarmist. Always leave them with something specific and useful to THEM — never a forced stretch to make an off-topic article fit.`;
 
 function memberFacts(c: MapComputed, overall: number | null): string {
   const band = exposureBand(overall);
@@ -33,9 +36,13 @@ function memberFacts(c: MapComputed, overall: number | null): string {
     exposure: overall,
     band: band.word || bandWord(c.band) || null,
     biggest_factor: c.driver?.name ?? null,
+    biggest_factor_why: strip(c.driverDetail?.why) || null,
+    next_move_to_try: strip(c.driverDetail?.action) || null,
     second_move: c.move?.edge2 ?? null,
   });
 }
+
+const strip = (s: string | undefined | null) => (s ?? "").replace(/<[^>]+>/g, "").trim();
 
 async function latestMap(userId: string): Promise<{ computed: MapComputed; overall: number | null } | null> {
   const rows = await db
@@ -69,6 +76,11 @@ export async function getArticleRelevance(userId: string | null, articleSlug: st
   const map = await latestMap(userId);
   if (!map) return null; // no Map → nothing to personalise
 
+  // Other pieces, so the note can redirect when the featured article is off-lane.
+  const others = latestArticles(6)
+    .filter((a) => a.slug !== articleSlug)
+    .map((a) => `- "${a.title}" — ${a.description}`);
+
   const note = await complete({
     system: SYSTEM,
     maxTokens: 200,
@@ -78,7 +90,8 @@ export async function getArticleRelevance(userId: string | null, articleSlug: st
         content:
           `THIS WEEK'S ARTICLE:\n"${article.title}" — ${article.description}\n\n` +
           `THE MEMBER'S MAP (given facts):\n${memberFacts(map.computed, map.overall)}\n\n` +
-          `Write their one-line "why this matters to you". Plain text only.`,
+          (others.length ? `OTHER PIECES AVAILABLE (only name one if it clearly fits them better):\n${others.join("\n")}\n\n` : "") +
+          `Write their one-line "why this matters to you" — genuinely useful to them, never a forced fit. Plain text only.`,
       },
     ],
   });
