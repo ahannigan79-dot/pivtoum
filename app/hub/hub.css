@@ -1293,23 +1293,41 @@ a.pod-member:hover span { color:var(--ink); }
 .dd-score span { font-size:0.9rem; color:var(--pencil); font-weight:700; }
 .dd-score-l { color:var(--soft); font-size:0.9rem; line-height:1.45; max-width:52ch; }
 .dd-score-l b { color:var(--ink); }
-.dd-load { display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center;
-  padding:44px 20px; color:var(--soft); max-width:60ch; margin:12px auto; }
-.dd-load p { margin:0; font-size:0.96rem; line-height:1.55; }
-.dd-spinner { width:34px; height:34px; border-radius:50%; border:3px solid var(--rule2); border-top-color:var(--green);
-  animation:dd-spin 0.9s linear infinite; }
-@keyframes dd-spin { to { transform:rotate(360deg); } }
-@media (prefers-reduced-motion:reduce){ .dd-spinner { animation:none; } }
-.dd-sample { border:1px solid var(--rule2); border-left:3px solid var(--green); border-radius:14px;
-  background:var(--panel); padding:16px 20px; margin:0 0 22px; }
-.dd-sample > .ck { color:var(--green); margin:0 0 8px; }
-.dd-sample-body { font-family:var(--serif); color:var(--ink); font-size:1.06rem; line-height:1.6; max-width:68ch; }
-.dd-sample-body p { margin:0 0 0.7em; }
-.dd-pdf { display:inline-block; margin-top:6px; font-size:0.84rem; font-weight:700; color:var(--green); text-decoration:none; }
-.dd-body { display:flex; flex-direction:column; gap:22px; max-width:720px; }
-.dd-sect h3 { font-family:var(--serif); font-weight:700; font-size:1.24rem; color:var(--ink); margin:0 0 8px; }
-.dd-sect p { color:var(--soft); font-size:1rem; line-height:1.65; margin:0 0 0.7em; max-width:68ch; }
-.dd-sect p:last-child { margin-bottom:0; }
+.dd-controls { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.dd-stage-toggle { font-size:0.84rem; font-weight:700; color:var(--green); text-decoration:none; }
+.dd-stage-toggle:hover { text-decoration:underline; }
+.dd-pdf { display:inline-block; margin-top:10px; font-size:0.84rem; font-weight:700; color:var(--green); text-decoration:none; }
+/* free sample (collapsible) */
+.dd-sample-fold { border:1px solid var(--rule2); border-left:3px solid var(--green); border-radius:14px;
+  background:var(--panel); padding:4px 20px; margin:14px 0 22px; }
+.dd-sample-fold > summary { cursor:pointer; padding:12px 0; font-weight:700; color:var(--ink); list-style:none; }
+.dd-sample-fold > summary::-webkit-details-marker { display:none; }
+.dd-sample-fold > summary::before { content:"▸ "; color:var(--green); }
+.dd-sample-fold[open] > summary::before { content:"▾ "; }
+.dd-sample-fold[open] > summary { border-bottom:1px solid var(--rule); margin-bottom:10px; }
+/* rendered profile prose (Deep Dive + sample) */
+.dd-prose { max-width:74ch; color:var(--soft); font-size:1.04rem; line-height:1.7; }
+.dd-prose.deep { margin-top:6px; }
+.dd-prose h1 { font-family:var(--serif); font-weight:700; font-size:1.85rem; line-height:1.15; color:var(--ink); margin:0 0 6px; }
+.dd-prose h2 { font-family:var(--serif); font-weight:700; font-size:1.4rem; color:var(--ink); margin:1.6em 0 0.5em; padding-top:0.4em; border-top:1px solid var(--rule); }
+.dd-prose h3 { font-family:var(--serif); font-weight:700; font-size:1.15rem; color:var(--ink); margin:1.3em 0 0.4em; }
+.dd-prose p { margin:0 0 1em; }
+.dd-prose strong { color:var(--ink); font-weight:700; }
+.dd-prose em { color:var(--soft); }
+.dd-prose ul, .dd-prose ol { margin:0 0 1em; padding-left:1.3em; }
+.dd-prose li { margin:0 0 0.4em; }
+.dd-prose blockquote { margin:1em 0; padding:2px 0 2px 16px; border-left:3px solid var(--rule2); color:var(--soft); font-style:italic; }
+.dd-prose hr { border:0; border-top:1px solid var(--rule); margin:1.6em 0; }
+.dd-prose a { color:var(--green); text-decoration:underline; }
+.dd-prose code { font-family:var(--mono); font-size:0.9em; background:var(--panel2); padding:1px 5px; border-radius:4px; }
+.dd-prose table { border-collapse:collapse; margin:1em 0; font-size:0.92rem; display:block; overflow-x:auto; }
+.dd-prose th, .dd-prose td { border:1px solid var(--rule2); padding:7px 11px; text-align:left; }
+.dd-prose th { background:var(--panel2); color:var(--ink); }
+/* Pivotum highlight markers from the content pipeline */
+.dd-prose .hl { background:rgba(214,168,91,0.22); color:var(--ink); padding:0 3px; border-radius:3px; }
+.dd-prose .hl.g { background:rgba(127,192,138,0.24); }
+.dd-prose .hl.r { background:rgba(224,119,108,0.24); }
+.dd-prose .hl.b { background:rgba(127,159,192,0.24); }
 
 /* ===== The Playbook (Evolve) ===== */
 .moves-playbook { display:block; margin:0 0 14px; padding:11px 14px; border:1px dashed var(--green-deep);

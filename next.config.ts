@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/upload-profiles": ["./profiles-src/**"],
     "/api/upload-samplers": ["./samplers-src/**"],
+    // Career Deep Dives read the produced profile write-ups at runtime.
+    "/hub/learn/career/[slug]": ["./content/profiles-md/**", "./content/full/**"],
   },
   // The essays section was renamed to /articles — 301 the old URLs so the
   // one indexed piece keeps its SEO and any external links don't 404.
