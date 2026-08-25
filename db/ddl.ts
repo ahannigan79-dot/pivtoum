@@ -131,6 +131,13 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "map_states" ADD COLUMN IF NOT EXISTS "narrative" text`,
   // Weekly brief can highlight an article — the thinking behind the week's prompt.
   `ALTER TABLE "weekly_prompts" ADD COLUMN IF NOT EXISTS "article_slug" text`,
+  // Weekly article-scout reports — Claude + web search, founder-facing newsletter prep.
+  `CREATE TABLE IF NOT EXISTS "scout_reports" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "report" jsonb NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "scout_reports_when_idx" ON "scout_reports" ("created_at")`,
   // Per-member "why this article matters to your lane" — Claude, cached per (member, article).
   `CREATE TABLE IF NOT EXISTS "article_relevance" (
      "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,

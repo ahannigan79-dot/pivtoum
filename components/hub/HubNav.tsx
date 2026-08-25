@@ -33,6 +33,7 @@ export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 
   const sections = isFounder
     ? [...SECTIONS, { label: "Founder", items: [
         { href: "/hub/health", icon: "❤", label: "Member health" },
+        { href: "/hub/scout", icon: "🛰", label: "Article scout" },
         { href: "/hub/moderation", icon: "🛡", label: "Moderation" },
       ] }]
     : SECTIONS;

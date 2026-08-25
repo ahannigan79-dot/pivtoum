@@ -233,6 +233,13 @@ export const glassHighlights = pgTable("glass_highlights", {
   createdAt: now(),
 });
 
+/* ---------- Weekly article-scout reports (Claude + web search, founder-facing) ---------- */
+export const scoutReports = pgTable("scout_reports", {
+  id: uid(),
+  report: jsonb("report").notNull(), // the full ScoutReport (picks, counterpoint, overview)
+  createdAt: now(),
+}, (t) => ({ whenIdx: index("scout_reports_when_idx").on(t.createdAt) }));
+
 /* ---------- Per-member "why this article matters to your lane" (Claude, cached) ---------- */
 export const articleRelevance = pgTable("article_relevance", {
   memberId: memberFk(),

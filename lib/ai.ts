@@ -79,6 +79,41 @@ export async function complete(opts: CompleteOpts): Promise<string | null> {
   }
 }
 
+/**
+ * Completion with Anthropic's server-side web search (the searching runs on
+ * Anthropic's infra, not ours). Streams to the final message so long reports
+ * don't hit request timeouts. Opus only. Returns the assistant text, or null.
+ */
+export async function completeWithSearch(opts: {
+  system: string;
+  messages: ChatTurn[];
+  maxTokens?: number;
+  maxSearches?: number;
+}): Promise<string | null> {
+  const c = client();
+  if (!c) return null;
+  try {
+    const stream = c.messages.stream({
+      model: OPUS,
+      max_tokens: opts.maxTokens ?? 8000,
+      thinking: { type: "adaptive" },
+      system: [{ type: "text", text: opts.system, cache_control: { type: "ephemeral" } }],
+      tools: [{ type: "web_search_20260209", name: "web_search", max_uses: opts.maxSearches ?? 8 }],
+      messages: opts.messages.map((m) => ({ role: m.role, content: m.content })),
+    });
+    const msg = await stream.finalMessage();
+    const text = msg.content
+      .filter((b): b is Anthropic.TextBlock => b.type === "text")
+      .map((b) => b.text)
+      .join("")
+      .trim();
+    return text || null;
+  } catch (err) {
+    console.error("[ai] completeWithSearch threw", String(err));
+    return null;
+  }
+}
+
 /** Completion that expects JSON — parses the model's output. Null on any failure. */
 export async function completeJSON<T>(opts: CompleteOpts): Promise<T | null> {
   const raw = await complete(opts);
