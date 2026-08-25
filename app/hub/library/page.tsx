@@ -2,40 +2,40 @@ import Link from "next/link";
 
 export const metadata = { title: "Library — Winning in the Age of AI" };
 
-type Item = { icon: string; title: string; body: string; href?: string; tag?: string; external?: boolean };
+type Item = { title: string; body: string; href?: string; tag?: string; external?: boolean };
 type Section = { label: string; items: Item[] };
 
 const SECTIONS: Section[] = [
   {
     label: "Start here",
     items: [
-      { icon: "📦", title: "The Welcome Pack", body: "How this community works, the Winning Loop, and how to win here. Read this first.", href: "/hub/library/welcome-pack" },
-      { icon: "🗺", title: "Your step-by-step Welcome", body: "The ten-step on-ramp: build your Map, book your session, join your pod, get moving.", href: "/hub/welcome" },
+      { title: "The Welcome Pack", body: "How this community works, the Winning Loop, and how to win here. Read this first.", href: "/hub/library/welcome-pack" },
+      { title: "Your step-by-step Welcome", body: "The ten-step on-ramp: build your Map, book your session, join your pod, get moving.", href: "/hub/welcome" },
     ],
   },
   {
     label: "The framework — Learn",
     items: [
-      { icon: "◆✦", title: "Embrace & Together", body: "The two foundations everything stands on — the stance that wins, and why nobody wins alone.", href: "/hub/learn/embrace" },
-      { icon: "📚", title: "The six levers", body: "The forces that decide who's exposed and who's protected. The full ten-lesson curriculum.", href: "/hub/learn" },
-      { icon: "📐", title: "The methodology", body: "How we score every career and lane — the model behind your Map.", href: "/methodology", external: true },
+      { title: "Embrace & Together", body: "The two foundations everything stands on — the stance that wins, and why nobody wins alone.", href: "/hub/learn/embrace" },
+      { title: "The six levers", body: "The forces that decide who's exposed and who's protected. The full ten-lesson curriculum.", href: "/hub/learn" },
+      { title: "The methodology", body: "How we score every career and lane — the model behind your Map.", href: "/methodology", external: true },
     ],
   },
   {
     label: "Your tools — Map & Build",
     items: [
-      { icon: "🧭", title: "Your AI Career Map", body: "Where you stand — exposure, levers, and your winning move.", href: "/hub/map" },
-      { icon: "🎯", title: "The Operator", body: "The judgment in the age of AI — and the seven-step Operator Track that trains it.", href: "/hub/build/operator" },
-      { icon: "🥊", title: "The Judgment Gym", body: "Judge AI's work at speed and get scored. Fresh reps rotate in every lane.", href: "/hub/build/gym" },
-      { icon: "🔧", title: "Workflow Rebuild", body: "Watch your job rebuilt AI-native — a library of workflows across careers and lanes.", href: "/hub/build/rebuild" },
-      { icon: "🛡", title: "Protected Ground", body: "Where the protected ground is, and whether your moat is holding.", href: "/hub/build/protected-ground" },
+      { title: "Your AI Career Map", body: "Where you stand — exposure, levers, and your winning move.", href: "/hub/map" },
+      { title: "The Operator", body: "The judgment in the age of AI — and the seven-step Operator Track that trains it.", href: "/hub/build/operator" },
+      { title: "The Judgment Gym", body: "Judge AI's work at speed and get scored. Fresh reps rotate in every lane.", href: "/hub/build/gym" },
+      { title: "Workflow Rebuild", body: "Watch your job rebuilt AI-native — a library of workflows across careers and lanes.", href: "/hub/build/rebuild" },
+      { title: "Protected Ground", body: "Where the protected ground is, and whether your moat is holding.", href: "/hub/build/protected-ground" },
     ],
   },
   {
     label: "Field signals · reading the shifts",
     items: [
-      { icon: "📰", title: "Essays & analysis", body: "How AI is reshaping the world of work — read to stay ahead of the shifts.", href: "/articles", external: true },
-      { icon: "💬", title: "This week in the community", body: "The weekly prompt and what the community's working on — the live pulse.", href: "/hub/community" },
+      { title: "Essays & analysis", body: "How AI is reshaping the world of work — read to stay ahead of the shifts.", href: "/articles", external: true },
+      { title: "This week in the community", body: "The weekly prompt and what the community's working on — the live pulse.", href: "/hub/community" },
     ],
   },
 ];
@@ -43,7 +43,7 @@ const SECTIONS: Section[] = [
 function Card({ it }: { it: Item }) {
   const inner = (
     <>
-      <h3 className="lib-title"><span className="lib-ic">{it.icon}</span> {it.title}</h3>
+      <h3 className="lib-title">{it.title}</h3>
       <p>{it.body}</p>
       {it.tag ? <span className="lib-tag">{it.tag}</span> : <span className="lib-go">Open →</span>}
     </>

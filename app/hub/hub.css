@@ -824,9 +824,8 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ---- library ---- */
 .lib-card { display:flex; flex-direction:column; }
-.lib-title { font-family:var(--serif); font-weight:700; font-size:1.14rem; margin:0 0 7px; color:var(--ink); }
-.lib-ic { margin-right:4px; }
-.lib-go { margin-top:auto; padding-top:13px; color:var(--green); font-size:0.86rem; font-weight:600; }
+.lib-title { font-family:var(--serif); font-weight:600; font-size:1.14rem; line-height:1.22; letter-spacing:-0.01em; margin:0 0 9px; color:var(--ink); }
+.lib-go { margin-top:auto; padding-top:15px; color:var(--accent); font-size:0.86rem; font-weight:600; }
 .lib-tag { display:inline-block; margin-top:13px; font-size:0.62rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--pencil); border:1px dashed var(--rule2); border-radius:20px; padding:3px 10px; }
 
