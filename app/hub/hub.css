@@ -851,6 +851,47 @@ a.pod-member:hover span { color:var(--ink); }
   .glass-perks { grid-template-columns:1fr; }
 }
 
+/* ── The Operator ──────────────────────────────────────────────── */
+.op { max-width: 820px; }
+.op-kk { display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); margin-bottom: 10px; }
+.op-head h2 { font-family: var(--serif); font-weight: 700; font-size: 1.9rem; margin: 4px 0 12px; }
+.op-thesis { font-family: var(--serif); font-size: 1.12rem; line-height: 1.55; color: var(--soft); margin: 0; max-width: 62ch; }
+.op-sect { margin-top: 36px; }
+.op-sect h3 { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; margin: 2px 0 12px; }
+.op-lead { font-size: 0.96rem; line-height: 1.6; color: var(--soft); margin: 0 0 16px; max-width: 64ch; }
+.op-def { border: 1px solid var(--green-deep); border-radius: 12px; background: rgba(127,192,138,0.06); padding: 14px 16px; margin-bottom: 18px; }
+.op-def b { color: var(--green); font-size: 0.82rem; } .op-def p { margin: 5px 0 0; font-size: 0.94rem; line-height: 1.55; color: var(--soft); }
+.op-stack { display: flex; flex-direction: column; gap: 10px; }
+.op-stackitem { display: flex; gap: 13px; border: 1px solid var(--rule); border-radius: 12px; background: var(--panel); padding: 14px 16px; }
+.op-n { flex: none; font-family: var(--mono); font-size: 0.9rem; color: var(--pencil); margin-top: 1px; }
+.op-verb { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 1.06rem; color: var(--ink); }
+.op-do { margin: 4px 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--soft); }
+.op-jd { margin: 7px 0 0; font-size: 0.84rem; color: var(--ink); } .op-jd b { color: var(--green); margin-right: 5px; }
+.op-traps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.op-trap { border: 1px solid var(--rule); border-left: 3px solid var(--pen); border-radius: 12px; background: var(--panel); padding: 14px 16px; }
+.op-trap-tag { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase; color: var(--pen); }
+.op-trap-title { margin: 6px 0 5px; font-family: var(--serif); font-weight: 700; font-size: 1rem; color: var(--ink); }
+.op-trap-body { margin: 0; font-size: 0.86rem; line-height: 1.5; color: var(--soft); }
+.op-contrast { border: 1px solid var(--rule); border-radius: 13px; overflow: hidden; }
+.op-crow { display: grid; grid-template-columns: 1fr 1fr; }
+.op-crow > span { padding: 12px 15px; font-size: 0.9rem; line-height: 1.45; border-top: 1px solid var(--rule); }
+.op-crow > span:first-child { color: var(--pencil); border-right: 1px solid var(--rule); }
+.op-crow .aft { color: var(--ink); }
+.op-chead > span { border-top: 0; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pencil); background: var(--panel2); }
+.op-track { display: flex; flex-direction: column; gap: 10px; }
+.op-move { border: 1px solid var(--rule); border-radius: 12px; background: var(--panel); padding: 14px 16px; }
+.op-move.ai { border-color: var(--green-deep); background: linear-gradient(180deg, rgba(127,192,138,0.06), var(--panel)); }
+.op-mh { display: flex; align-items: baseline; gap: 11px; margin-bottom: 6px; }
+.op-mi { font-family: var(--mono); font-size: 0.88rem; color: var(--pencil); }
+.op-mh h4 { font-family: var(--serif); font-weight: 700; font-size: 1.06rem; margin: 0; }
+.op-aitag { margin-left: auto; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.op-mdo { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--soft); }
+.op-sit { margin: 8px 0 0; font-size: 0.86rem; color: var(--ink); } .op-sit b { color: var(--pencil); margin-right: 5px; }
+.op-week { margin: 6px 0 0; font-size: 0.76rem; color: var(--green); font-weight: 600; }
+.op-foot { display: flex; align-items: center; gap: 16px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+.op-foot > div { flex: 1; min-width: 200px; font-size: 0.88rem; color: var(--soft); line-height: 1.5; }
+@media (max-width: 620px) { .op-traps { grid-template-columns: 1fr; } .op-crow { grid-template-columns: 1fr; } .op-crow > span:first-child { border-right: 0; } }
+
 /* ── Workflow Rebuild ──────────────────────────────────────────── */
 .rb { max-width: 900px; }
 .rb-kk { display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); margin-bottom: 12px; }
@@ -911,6 +952,10 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ── Judgment Gym ──────────────────────────────────────────────── */
 .gym-card .ck { color: var(--amber); }
+.gym-lane { margin-bottom: 8px; }
+.gym-lane-head { display: flex; align-items: baseline; gap: 12px; }
+.gym-lane-head .hub-sectlabel { margin: 20px 0 12px; }
+.gym-lane-count { margin-left: auto; font-family: var(--mono); font-size: 0.76rem; color: var(--pencil); }
 .gym-thesis { font-family: var(--serif); font-size: 1.14rem; line-height: 1.55; color: var(--soft); margin: 0 0 20px; max-width: 60ch; }
 .gym-thesis, .gym-brief, .gym-cta { max-width: 720px; }
 .gym-brief { border: 1px solid var(--rule2); border-radius: 14px; background: var(--panel2); padding: 17px 18px; margin: 0 0 20px; }
