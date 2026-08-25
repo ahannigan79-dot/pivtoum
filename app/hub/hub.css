@@ -1226,6 +1226,42 @@ a.pod-member:hover span { color:var(--ink); }
   animation:mapread-sh 1.3s ease-in-out infinite; }
 @media (prefers-reduced-motion:reduce){ .wp-why.loading span { animation:none; } }
 
+/* ===== The Playbook (Evolve) ===== */
+.moves-playbook { display:block; margin:0 0 14px; padding:11px 14px; border:1px dashed var(--green-deep);
+  border-radius:12px; background:rgba(127,192,138,0.06); color:var(--green); font-size:0.86rem; font-weight:700;
+  text-decoration:none; transition:.14s; }
+.moves-playbook:hover { background:rgba(127,192,138,0.12); }
+.play-rec { margin-bottom:6px; }
+.play-aim-blurb { color:var(--soft); font-size:0.9rem; margin:-4px 0 12px; max-width:66ch; }
+.play-card { display:flex; flex-direction:column; }
+.play-card.rec { border-color:var(--green-deep); background:linear-gradient(135deg,rgba(127,192,138,0.12),var(--panel) 60%); }
+.play-lever { font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber); margin:0 0 7px; }
+.play-lever.big { color:var(--amber); font-size:0.64rem; margin-bottom:9px; }
+.play-card h3 { font-family:var(--serif); font-weight:700; font-size:1.12rem; line-height:1.2; margin:0 0 6px; color:var(--ink); }
+.play-tag { color:var(--soft); font-size:0.9rem; line-height:1.5; margin:0 0 10px; }
+.play-go { margin-top:auto; font-size:0.8rem; font-weight:700; color:var(--green); }
+/* play detail */
+.play-head { margin:0 0 8px; }
+.play-head h2 { font-family:var(--serif); font-weight:700; font-size:1.7rem; line-height:1.14; margin:0 0 8px; color:var(--ink); }
+.play-thesis { font-family:var(--serif); font-size:1.1rem; line-height:1.5; color:var(--soft); margin:0 0 12px; max-width:64ch; }
+.play-fit { font-size:0.9rem; color:var(--soft); line-height:1.5; max-width:66ch;
+  border-left:3px solid var(--rule2); padding-left:12px; margin:0 0 6px; }
+.play-fit span { display:block; font-size:0.56rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:var(--pencil); margin-bottom:3px; }
+.play-steps { list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:12px; max-width:720px; }
+.play-step { display:flex; gap:13px; align-items:flex-start; }
+.play-sn { flex:none; width:26px; height:26px; border-radius:8px; background:var(--panel2); border:1px solid var(--rule2);
+  color:var(--green); font-family:var(--mono); font-weight:700; font-size:0.82rem; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.play-st { font-family:var(--serif); font-weight:700; font-size:1.04rem; color:var(--ink); margin:0 0 3px; }
+.play-sd { color:var(--soft); font-size:0.94rem; line-height:1.55; margin:0; }
+.play-commit { border:1px solid var(--green-deep); border-radius:14px; padding:16px 18px; margin:0 0 10px;
+  background:linear-gradient(135deg,rgba(127,192,138,0.12),var(--panel) 60%); }
+.play-commit-btn { border:0; cursor:pointer; border-radius:11px; padding:12px 18px; background:var(--green);
+  color:#12100a; font-weight:800; font-size:0.94rem; transition:filter .15s ease; }
+.play-commit-btn:hover:not(:disabled){ filter:brightness(1.06); }
+.play-commit-btn:disabled { opacity:.7; cursor:default; }
+.play-commit-first { margin:10px 0 0; font-size:0.9rem; color:var(--ink); }
+.play-commit-first span { color:var(--pencil); }
+
 /* ===== Article scout (founder) ===== */
 .scout-intro { color:var(--soft); font-size:0.96rem; line-height:1.55; max-width:70ch; margin:0 0 16px; }
 .scout-run { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 8px; }

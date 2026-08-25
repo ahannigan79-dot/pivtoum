@@ -6,6 +6,7 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   { items: [
     { href: "/hub/welcome", icon: "★", label: "Welcome" },
     { href: "/hub", icon: "◆", label: "Evolve" },
+    { href: "/hub/playbook", icon: "📋", label: "Playbook" },
   ] },
   { label: "The Winning Loop", items: [
     { href: "/hub/map", icon: "🧭", label: "Your Map" },

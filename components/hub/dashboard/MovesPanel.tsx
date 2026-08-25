@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRef, useState, useTransition } from "react";
 import { acceptSuggestion, createMove, dropMove, shipMove } from "@/app/hub/actions";
 import { LEVERS, type Move, type Suggestion } from "@/lib/moves";
@@ -28,6 +29,10 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
         <p className="ck">Your moves · pull the levers</p>
         {!adding && <button className="moves-add" onClick={() => setAdding(true)}>+ Commit to a move</button>}
       </div>
+
+      <Link href="/hub/playbook" className="moves-playbook">
+        📋 Not sure what to do? Browse the Playbook — proven plays with how-to guides →
+      </Link>
 
       {fresh.length > 0 && !adding && (
         <div className="moves-sugg">
