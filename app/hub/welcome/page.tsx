@@ -13,7 +13,7 @@ type Step = {
 };
 
 const STEPS: Step[] = [
-  { n: 1, title: "Read the Welcome pack", body: "Start in the Library — how the community works, what the Winning Loop is, and how to win here.", href: "/hub/library", cta: "Open the Library" },
+  { n: 1, title: "Read the Welcome Pack", body: "Ten minutes on how the community works, what the Winning Loop is, and how to win here. Read this first.", href: "/hub/library/welcome-pack", cta: "Read the Welcome Pack" },
   { n: 2, title: "Build your AI Career Map", body: "The fun, eye-opening part. Some of it might not fully click yet — that's expected. Your Welcome session with Adam clears it up.", href: "/hub/map", cta: "Build your Map", doneKey: "map" },
   { n: 3, title: "Do the Learn courses", body: "Work through the six levers, then explore our extensive library. This is where your Map stops being a verdict and starts being dials you can turn.", href: "/hub/learn", cta: "Open Learn" },
   { n: 4, title: "Book your Welcome Session with Adam", body: "Sixty minutes to walk your Map together, make sense of it, and set your first moves.", href: "/hub/events/welcome", cta: "Book it", doneKey: "welcome", booked: true },

@@ -9,7 +9,7 @@ const SECTIONS: Section[] = [
   {
     label: "Start here",
     items: [
-      { icon: "📦", title: "The Welcome Pack", body: "How this community works, the Winning Loop, and how to win here. Read this first.", tag: "Coming soon" },
+      { icon: "📦", title: "The Welcome Pack", body: "How this community works, the Winning Loop, and how to win here. Read this first.", href: "/hub/library/welcome-pack" },
       { icon: "🧭", title: "How the Winning Loop works", body: "Embrace + Together, then Learn → Map → Build → Evolve. Your on-ramp, step by step.", href: "/hub/welcome" },
     ],
   },
