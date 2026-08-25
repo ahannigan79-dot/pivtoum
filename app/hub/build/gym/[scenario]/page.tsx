@@ -1,14 +1,27 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ToolFrame } from "@/components/hub/ToolFrame";
+import { GYM_SCENARIOS } from "@/lib/gym";
+import { GymRep } from "@/components/hub/build/GymRep";
 
-const SCENARIOS: Record<string, { file: string; title: string }> = {
-  marketing: { file: "judgment-gym-marketing", title: "Judgment Gym — Marketing" },
-  nursing: { file: "judgment-gym-nursing", title: "Judgment Gym — Nursing" },
-};
+export async function generateMetadata({ params }: { params: Promise<{ scenario: string }> }) {
+  const { scenario } = await params;
+  const s = GYM_SCENARIOS[scenario];
+  return { title: s ? `Judgment Gym — ${s.career}` : "Judgment Gym — Pivotum" };
+}
 
 export default async function Page({ params }: { params: Promise<{ scenario: string }> }) {
   const { scenario } = await params;
-  const t = SCENARIOS[scenario];
-  if (!t) notFound();
-  return <ToolFrame src={`/tools/${t.file}.html`} title={t.title} backHref="/hub/build/gym" backLabel="Judgment Gym" repKey={`gym-${scenario}`} />;
+  const s = GYM_SCENARIOS[scenario];
+  if (!s) notFound();
+  return (
+    <>
+      <div className="hub-toolbar">
+        <Link href="/hub/build/gym" className="back">‹ Judgment Gym</Link>
+        <span className="tt">{s.career} · one rep</span>
+      </div>
+      <div className="hub-body">
+        <GymRep scenario={s} />
+      </div>
+    </>
+  );
 }

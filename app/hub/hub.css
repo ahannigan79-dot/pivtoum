@@ -851,6 +851,71 @@ a.pod-member:hover span { color:var(--ink); }
   .glass-perks { grid-template-columns:1fr; }
 }
 
+/* ── Judgment Gym ──────────────────────────────────────────────── */
+.gym-card .ck { color: var(--amber); }
+.gym-thesis { font-family: var(--serif); font-size: 1.14rem; line-height: 1.55; color: var(--soft); margin: 0 0 20px; max-width: 60ch; }
+.gym-thesis, .gym-brief, .gym-cta { max-width: 720px; }
+.gym-brief { border: 1px solid var(--rule2); border-radius: 14px; background: var(--panel2); padding: 17px 18px; margin: 0 0 20px; }
+.gym-brief-t { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; margin: 0 0 12px; }
+.gym-client { color: var(--green); }
+.gym-brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+.gym-bf { display: flex; flex-direction: column; gap: 2px; }
+.gym-bf .l { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pencil); }
+.gym-bf .v { font-size: 0.9rem; color: var(--ink); }
+.gym-cta { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; color: #12100a; background: var(--amber);
+  border: 0; border-radius: 11px; padding: 13px 22px; cursor: pointer; transition: .12s; }
+.gym-cta:hover:not(:disabled) { filter: brightness(1.06); }
+.gym-cta:disabled { opacity: .45; cursor: default; }
+.gym-cta.ghost { background: transparent; color: var(--soft); border: 1px solid var(--rule2); margin-top: 22px; }
+
+.gym-clockbar { display: flex; align-items: center; gap: 12px; border: 1px solid var(--rule2); border-radius: 12px;
+  background: var(--panel); padding: 10px 15px; margin: 0 0 14px; position: sticky; top: 6px; z-index: 3; }
+.gym-clock { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--amber); }
+.gym-clab { font-size: 0.78rem; color: var(--pencil); }
+.gym-prog { margin-left: auto; font-family: var(--mono); font-size: 0.82rem; color: var(--soft); }
+.gym-aihead { font-size: 0.86rem; color: var(--soft); margin: 0 0 14px; }
+.gym-aihead b { font-family: var(--mono); color: var(--ink); }
+.gym-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.gym-item { border: 1px solid var(--rule); border-radius: 13px; background: var(--panel); padding: 15px 16px; transition: .12s; }
+.gym-item.done { border-color: var(--rule2); }
+.gym-area { font-weight: 700; font-size: 0.94rem; color: var(--ink); margin-bottom: 8px; }
+.gym-num { font-family: var(--mono); font-size: 0.78rem; color: var(--pencil); }
+.gym-out { font-family: var(--mono); font-size: 0.86rem; line-height: 1.5; color: var(--soft); background: var(--bg2);
+  border: 1px solid var(--rule); border-radius: 9px; padding: 10px 12px; margin-bottom: 11px; word-break: break-word; }
+.gym-out.sm { margin: 8px 0; font-size: 0.8rem; }
+.gym-choice { display: flex; gap: 8px; }
+.gym-cb { font-family: var(--sans); font-weight: 700; font-size: 0.84rem; border-radius: 9px; padding: 8px 15px; cursor: pointer;
+  background: transparent; border: 1px solid var(--rule2); color: var(--soft); transition: .12s; }
+.gym-cb.ship.on { border-color: var(--green); background: rgba(127,192,138,0.10); color: var(--green); }
+.gym-cb.flag.on { border-color: var(--pen); background: rgba(224,119,108,0.10); color: var(--pen); }
+
+.gym-scorecard { border: 1px solid var(--rule2); border-radius: 16px; background: var(--panel2); padding: 22px 20px; margin: 0 0 18px; }
+.gym-kk { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); }
+.gym-scorecard h2 { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; margin: 6px 0 16px; color: var(--ink); }
+.gym-scorecard h2.bad { color: var(--pen); } .gym-scorecard h2.ok { color: var(--green); }
+.gym-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.gym-st { border: 1px solid var(--rule); border-radius: 11px; padding: 13px; text-align: center; }
+.gym-st.caught { border-color: var(--green-deep); } .gym-st.missed { border-color: #7a3630; } .gym-st.over { border-color: #7a5e2c; }
+.gym-n { font-family: var(--serif); font-weight: 700; font-size: 1.7rem; line-height: 1; }
+.gym-st.caught .gym-n { color: var(--green); } .gym-st.missed .gym-n { color: var(--pen); } .gym-st.over .gym-n { color: var(--amber); }
+.gym-l { margin-top: 6px; font-size: 0.68rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--pencil); }
+.gym-time { margin: 14px 0 0; font-family: var(--mono); font-size: 0.8rem; color: var(--pencil); }
+
+.gym-review { display: flex; flex-direction: column; gap: 10px; }
+.gym-rev { border: 1px solid var(--rule); border-left-width: 3px; border-radius: 12px; background: var(--panel); padding: 14px 16px; }
+.gym-rev.right { border-left-color: var(--green-deep); } .gym-rev.wrong { border-left-color: var(--pen); }
+.gym-rev-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.gym-rev-area { font-weight: 700; font-size: 0.92rem; }
+.gym-verdict { font-size: 0.72rem; font-weight: 700; margin-left: auto; }
+.gym-verdict.v-flag { color: var(--pen); } .gym-verdict.v-ship { color: var(--green); }
+.gym-why { margin: 2px 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--soft); }
+.gym-cost { margin: 8px 0 0; font-size: 0.86rem; line-height: 1.5; color: var(--soft); }
+.gym-cost b { color: var(--ink); }
+.gym-trains { margin: 6px 0 0; font-size: 0.8rem; color: var(--pencil); font-style: italic; }
+.gym-lesson { font-family: var(--serif); font-size: 1.02rem; line-height: 1.55; color: var(--ink);
+  border-left: 3px solid var(--amber); padding-left: 15px; margin: 22px 0 0; }
+@media (max-width: 620px) { .gym-brief-grid { grid-template-columns: 1fr; } .gym-stats { grid-template-columns: 1fr; } }
+
 /* ── Learn: curriculum + progress ──────────────────────────────── */
 .learn-prog { margin: 0 0 22px; }
 .learn-prog-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
