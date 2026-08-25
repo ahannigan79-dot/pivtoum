@@ -12,6 +12,7 @@ import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
+import { ArticleWhy } from "@/components/hub/dashboard/ArticleWhy";
 
 export const metadata = { title: "Evolve to Win — Pivotum" };
 
@@ -109,10 +110,13 @@ export default async function Dashboard() {
               </div>
             </Link>
             {promptArticle && (
-              <a href={promptArticle.url} className="wp-article" target="_blank" rel="noopener noreferrer">
-                <span className="wp-article-k">The thinking behind this</span>
-                <span className="wp-article-t">{promptArticle.title} →</span>
-              </a>
+              <>
+                <a href={promptArticle.url} className="wp-article" target="_blank" rel="noopener noreferrer">
+                  <span className="wp-article-k">The thinking behind this</span>
+                  <span className="wp-article-t">{promptArticle.title} →</span>
+                </a>
+                <ArticleWhy />
+              </>
             )}
           </div>
         )}

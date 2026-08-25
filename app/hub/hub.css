@@ -1211,6 +1211,15 @@ a.pod-member:hover span { color:var(--ink); }
 .wp-article:hover { background:var(--panel3); }
 .wp-article-k { font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); }
 .wp-article-t { font-family:var(--serif); font-size:0.95rem; color:var(--green); }
+/* personalised "why this matters to your lane" */
+.wp-why { margin:8px 0 0; border:1px solid var(--rule2); border-left:3px solid var(--pen);
+  border-radius:10px; background:var(--panel); padding:10px 14px; }
+.wp-why-k { font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pen); }
+.wp-why p { margin:3px 0 0; color:var(--ink); font-size:0.92rem; line-height:1.5; font-family:var(--serif); }
+.wp-why.loading span { display:block; height:10px; width:66%; border-radius:6px;
+  background:linear-gradient(90deg,var(--panel2) 25%,var(--rule2) 50%,var(--panel2) 75%); background-size:200% 100%;
+  animation:mapread-sh 1.3s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce){ .wp-why.loading span { animation:none; } }
 
 /* founder prompt setter (on health) */
 .wp-set { margin:0 0 26px; }

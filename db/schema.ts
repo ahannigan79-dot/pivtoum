@@ -233,6 +233,14 @@ export const glassHighlights = pgTable("glass_highlights", {
   createdAt: now(),
 });
 
+/* ---------- Per-member "why this article matters to your lane" (Claude, cached) ---------- */
+export const articleRelevance = pgTable("article_relevance", {
+  memberId: memberFk(),
+  articleSlug: text("article_slug").notNull(),
+  note: text("note").notNull(),
+  createdAt: now(),
+}, (t) => ({ pk: primaryKey({ columns: [t.memberId, t.articleSlug] }) }));
+
 /* ---------- Claude-generated Judgment Gym reps (infinite fresh scenarios) ---------- */
 export const gymGenerated = pgTable("gym_generated", {
   id: uid(),
