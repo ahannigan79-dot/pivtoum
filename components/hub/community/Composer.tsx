@@ -44,7 +44,7 @@ export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: s
       )}
       <textarea ref={taRef} name="body" rows={open ? 4 : 2} required maxLength={5000}
         onFocus={() => setOpen(true)}
-        placeholder="Share a win, a question, or what you're working on this week… 🎉" />
+        placeholder="Share a win, a question, or what you're working on this week…" />
       <input ref={fileRef} type="file" name="files" multiple hidden accept="image/*,.pdf,.doc,.docx,.txt,.csv,.xlsx,.pptx"
         onChange={(e) => { setOpen(true); setFiles(Array.from(e.target.files ?? []).slice(0, 4).map((f) => f.name)); }} />
       {open && files.length > 0 && <div className="attach-chips">{files.map((n, i) => <span key={i} className="attach-chip">📎 {n}</span>)}</div>}

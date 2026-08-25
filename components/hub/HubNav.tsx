@@ -7,7 +7,7 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   { items: [
     { href: "/hub/welcome", icon: "welcome", label: "Welcome" },
     { href: "/hub", icon: "evolve", label: "Evolve" },
-    { href: "/hub/playbook", icon: "playbook", label: "Playbook" },
+    { href: "/hub/playbook", icon: "playbook", label: "Winning Playbook" },
   ] },
   { label: "The Winning Loop", items: [
     { href: "/hub/map", icon: "map", label: "Your Map" },

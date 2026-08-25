@@ -20,8 +20,7 @@ const PROTECT: Tile[] = [
 
 function BuildTile({ t }: { t: Tile }) {
   return (
-    <Link href={t.href} className={`build-tile a-${t.accent}`}>
-      <span className="bt-ic">{t.icon}</span>
+    <Link href={t.href} className="build-tile">
       <div className="bt-body">
         <span className="bt-kicker">{t.kicker}</span>
         <h3>{t.title}</h3>
@@ -43,10 +42,10 @@ export default function BuildPage() {
           <p>Your Map says where you stand and prescribes your mix. Build is the gym: <b>renovate</b> — master the machine and sharpen your judgment — and, where you need it, <b>relocate</b> to protected ground. Every rep here moves your trajectory.</p>
         </div>
 
-        <div className="hub-sectlabel">◆ Renovate — master the machine</div>
+        <div className="hub-sectlabel">Renovate — master the machine</div>
         <div className="build-grid">{RENOVATE.map((t) => <BuildTile key={t.href} t={t} />)}</div>
 
-        <div className="hub-sectlabel">✦ Relocate or guard — protected ground</div>
+        <div className="hub-sectlabel">Relocate or guard — protected ground</div>
         <div className="build-grid">{PROTECT.map((t) => <BuildTile key={t.href} t={t} />)}</div>
       </div>
     </>

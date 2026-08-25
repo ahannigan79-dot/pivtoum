@@ -40,7 +40,7 @@ export default async function LearnPage() {
               </Link>
             ) : (
               <div className="learn-dd-card empty">
-                <span className="ck">📖 Career Deep Dives</span>
+                <span className="ck">Career Deep Dives</span>
                 <h3>Get the full picture of your field</h3>
                 <p><Link href="/hub/map">Build your Map</Link> to unlock your field&rsquo;s Deep Dive — or read any field below.</p>
               </div>
@@ -89,8 +89,8 @@ export default async function LearnPage() {
 
         <div className="hub-sectlabel">Put it to work</div>
         <div className="build-grid">
-          <Link href="/hub/map" className="build-tile a-green"><span className="bt-ic">🧭</span><div className="bt-body"><span className="bt-kicker">Your Map</span><h3>See your own levers</h3><p>Your Map scores each of these for your exact lane — and names the one to pull first.</p><span className="bt-cta">Open your Map →</span></div></Link>
-          <Link href="/hub/build" className="build-tile a-green"><span className="bt-ic">🛠</span><div className="bt-body"><span className="bt-kicker">Build</span><h3>Train the two edges</h3><p>Master the machine on the exposing levers; deepen what AI can&apos;t take on the protecting ones.</p><span className="bt-cta">Go to Build →</span></div></Link>
+          <Link href="/hub/map" className="build-tile"><div className="bt-body"><span className="bt-kicker">Your Map</span><h3>See your own levers</h3><p>Your Map scores each of these for your exact lane — and names the one to pull first.</p><span className="bt-cta">Open your Map →</span></div></Link>
+          <Link href="/hub/build" className="build-tile"><div className="bt-body"><span className="bt-kicker">Build</span><h3>Train the two edges</h3><p>Master the machine on the exposing levers; deepen what AI can&apos;t take on the protecting ones.</p><span className="bt-cta">Go to Build →</span></div></Link>
         </div>
       </div>
     </>
