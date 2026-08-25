@@ -10,28 +10,32 @@ const SECTIONS: Section[] = [
     label: "Start here",
     items: [
       { icon: "📦", title: "The Welcome Pack", body: "How this community works, the Winning Loop, and how to win here. Read this first.", href: "/hub/library/welcome-pack" },
-      { icon: "🧭", title: "How the Winning Loop works", body: "Embrace + Together, then Learn → Map → Build → Evolve. Your on-ramp, step by step.", href: "/hub/welcome" },
+      { icon: "🗺", title: "Your step-by-step Welcome", body: "The ten-step on-ramp: build your Map, book your session, join your pod, get moving.", href: "/hub/welcome" },
     ],
   },
   {
-    label: "The framework",
+    label: "The framework — Learn",
     items: [
-      { icon: "📚", title: "The six levers", body: "The forces that decide who's exposed and who's protected in the age of AI.", href: "/hub/learn" },
+      { icon: "◆✦", title: "Embrace & Together", body: "The two foundations everything stands on — the stance that wins, and why nobody wins alone.", href: "/hub/learn/embrace" },
+      { icon: "📚", title: "The six levers", body: "The forces that decide who's exposed and who's protected. The full ten-lesson curriculum.", href: "/hub/learn" },
       { icon: "📐", title: "The methodology", body: "How we score every career and lane — the model behind your Map.", href: "/methodology", external: true },
     ],
   },
   {
-    label: "Your tools",
+    label: "Your tools — Map & Build",
     items: [
       { icon: "🧭", title: "Your AI Career Map", body: "Where you stand — exposure, levers, and your winning move.", href: "/hub/map" },
-      { icon: "🛠", title: "The Build tools", body: "The Operator, the Judgment Gym, Workflow Rebuilds, and Protected Ground.", href: "/hub/build" },
+      { icon: "🎯", title: "The Operator", body: "The judgment in the age of AI — and the seven-step Operator Track that trains it.", href: "/hub/build/operator" },
+      { icon: "🥊", title: "The Judgment Gym", body: "Judge AI's work at speed and get scored. Fresh reps rotate in every lane.", href: "/hub/build/gym" },
+      { icon: "🔧", title: "Workflow Rebuild", body: "Watch your job rebuilt AI-native — a library of workflows across careers and lanes.", href: "/hub/build/rebuild" },
+      { icon: "🛡", title: "Protected Ground", body: "Where the protected ground is, and whether your moat is holding.", href: "/hub/build/protected-ground" },
     ],
   },
   {
     label: "Field signals · reading the shifts",
     items: [
       { icon: "📰", title: "Essays & analysis", body: "How AI is reshaping the world of work — read to stay ahead of the shifts.", href: "/articles", external: true },
-      { icon: "🗞", title: "The weekly newsletter", body: "A short weekly read on what moved in AI and what it means for your work.", tag: "Coming soon" },
+      { icon: "💬", title: "This week in the community", body: "The weekly prompt and what the community's working on — the live pulse.", href: "/hub/community" },
     ],
   },
 ];
