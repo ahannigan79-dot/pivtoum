@@ -571,6 +571,23 @@ a.nm:hover { color:var(--ink); }
 .strat-line { margin:14px 0 0; color:var(--soft); font-size:1.02rem; line-height:1.5; max-width:70ch; }
 @media (max-width:640px){ .strat-stance { font-size:1.6rem; } }
 
+/* Adam's read — Claude's in-voice narrative of the member's Map */
+.mapread { border:1px solid var(--rule); border-left:3px solid var(--pen); border-radius:14px;
+  background:var(--panel); padding:16px 20px; margin:0 0 16px; }
+.mapread > .ck { color:var(--pen); margin:0 0 10px; }
+.mapread-body { font-family:var(--serif); color:var(--ink); font-size:1.04rem; line-height:1.6; max-width:66ch; }
+.mapread-body p { margin:0 0 0.7em; }
+.mapread-body p:last-child { margin-bottom:0; }
+.mapread-load { display:flex; flex-direction:column; gap:9px; padding:2px 0 4px; }
+.mapread-load span { height:11px; border-radius:6px; background:var(--panel2);
+  background:linear-gradient(90deg,var(--panel2) 25%,var(--rule2) 50%,var(--panel2) 75%);
+  background-size:200% 100%; animation:mapread-sh 1.3s ease-in-out infinite; }
+.mapread-load span:nth-child(1){ width:96%; }
+.mapread-load span:nth-child(2){ width:88%; }
+.mapread-load span:nth-child(3){ width:70%; }
+@keyframes mapread-sh { 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
+@media (prefers-reduced-motion:reduce){ .mapread-load span { animation:none; } }
+
 /* directory: strategy + pods on member cards */
 .mem-card { align-items:flex-start; }
 .mem-strat { font-size:0.82rem; color:var(--green); margin-top:5px; }

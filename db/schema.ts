@@ -60,6 +60,7 @@ export const mapStates = pgTable("map_states", {
   answers: jsonb("answers").notNull(),      // intake state A
   computed: jsonb("computed").notNull(),    // computeMap() snapshot
   overall: real("overall"),                 // headline exposure, for quick trajectory queries
+  narrative: text("narrative"),             // Claude's in-voice reading, grounded in `computed` (lazy, cached)
   createdAt: now(),
 }, (t) => ({ memberIdx: index("map_states_member_idx").on(t.memberId, t.createdAt) }));
 
@@ -230,6 +231,17 @@ export const glassHighlights = pgTable("glass_highlights", {
   attribution: text("attribution"),
   createdAt: now(),
 });
+
+/* ---------- Claude-generated Judgment Gym reps (infinite fresh scenarios) ---------- */
+export const gymGenerated = pgTable("gym_generated", {
+  id: uid(),
+  // Who generated it (null = seeded/shared). Not a hard member requirement.
+  memberId: text("member_id").references(() => profiles.clerkUserId, { onDelete: "set null" }),
+  lane: text("lane").notNull(),        // the pod/lane label it was generated for
+  career: text("career").notNull(),    // display career on the rep
+  scenario: jsonb("scenario").notNull(), // a full Scenario (see lib/gym.ts)
+  createdAt: now(),
+}, (t) => ({ laneIdx: index("gym_generated_lane_idx").on(t.lane, t.createdAt) }));
 
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {

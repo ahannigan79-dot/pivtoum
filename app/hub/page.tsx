@@ -10,6 +10,7 @@ import { getCurrentPrompt } from "@/lib/ritual";
 import { Trend } from "@/components/hub/dashboard/Trend";
 import { Gauge } from "@/components/hub/dashboard/Gauge";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
+import { MapRead } from "@/components/hub/dashboard/MapRead";
 
 export const metadata = { title: "Evolve to Win — Pivotum" };
 
@@ -127,6 +128,9 @@ export default async function Dashboard() {
                 </div>
               </section>
             )}
+
+            {/* Adam's read — Claude's in-voice narrative of their Map, grounded in `computed` */}
+            <MapRead />
 
             {/* Command KPIs */}
             <div className="kpis">

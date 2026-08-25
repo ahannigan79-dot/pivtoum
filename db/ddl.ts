@@ -127,6 +127,18 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "sub_renews_at" timestamp with time zone`,
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "sub_plan" text`,
   // Badge catalog — credentials for real milestones. Idempotent.
+  // Claude-generated Map reading — grounded in the saved `computed`, cached per snapshot.
+  `ALTER TABLE "map_states" ADD COLUMN IF NOT EXISTS "narrative" text`,
+  // Claude-generated Judgment Gym reps — fresh scenarios per career/lane.
+  `CREATE TABLE IF NOT EXISTS "gym_generated" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text REFERENCES "profiles"("clerk_user_id") ON DELETE set null,
+     "lane" text NOT NULL,
+     "career" text NOT NULL,
+     "scenario" jsonb NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "gym_generated_lane_idx" ON "gym_generated" ("lane","created_at")`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),
