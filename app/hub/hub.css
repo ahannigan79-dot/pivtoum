@@ -2,7 +2,11 @@
    warm paper ground, ink text, a petrol accent used sparingly, and green/amber/
    coral reserved for exposure data. */
 .hub {
-  --bg:#FBFAF6; --bg2:#FCFBF8; --panel:#F3EFE7; --panel2:#EFEAE0; --panel3:#E9E3D8;
+  /* Single tone: cards share the page ground (--panel = --bg), so they read as
+     hairline outlines, not filled boxes. --panel2/3 are faint steps for hovers,
+     inputs and the rare recessed area only. */
+  --bg:#FBFAF6; --bg2:#FBFAF6; --panel:#FBFAF6; --panel2:#F4F1EA; --panel3:#EEEAE0;
+  --surface:#F4F1EA; /* faint recessed fill — quotes, callout strips */
   --ink:#1C1A16; --soft:#6B655B; --pencil:#948D80; --rule:#E7E2D8; --rule2:#DAD3C6;
   /* petrol accent — the one brand accent (links, active, focus, wordmark) */
   --accent:#10605E; --accent-deep:#0B4A48; --accent-wash:#E4EDEC;
@@ -28,7 +32,7 @@
 .hub-bell { position:relative; flex:none; display:inline-flex; align-items:center; justify-content:center;
   width:34px; height:34px; margin-top:2px; border-radius:9px; border:1px solid var(--rule2);
   background:var(--bg2); transition:.12s; }
-.hub-bell:hover { background:var(--panel); border-color:var(--rule); }
+.hub-bell:hover { background:var(--panel2); border-color:var(--rule); }
 .hub-bell-ic { font-size:0.95rem; line-height:1; filter:grayscale(0.2); }
 .hub-bell-dot { position:absolute; top:-6px; right:-6px; min-width:17px; height:17px; padding:0 4px;
   border-radius:9px; background:var(--pen); color:var(--on-fill); font-size:0.62rem; font-weight:800;
@@ -40,7 +44,7 @@
 .hub-brand small { display:block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); }
 .hub-side .hub-nav { flex:1 1 auto; min-height:0; overflow-y:auto; margin:0 -6px; padding:0 6px; }
 .hub-nav a { display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; font-size:0.92rem; color:var(--soft); transition:.12s; }
-.hub-nav a:hover { background:var(--panel); color:var(--ink); }
+.hub-nav a:hover { background:var(--panel2); color:var(--ink); }
 .hub-nav a.on { background:var(--accent-wash); color:var(--accent); font-weight:600; }
 .hub-nav .ic { width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center; flex:none; }
 .hub-nav .nav-badge { margin-left:auto; min-width:18px; height:18px; padding:0 5px; border-radius:9px;
@@ -95,7 +99,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
   .mdrawer-close { margin-left:auto; font-size:1rem; color:var(--soft); background:transparent; border:0; cursor:pointer; padding:4px 6px; }
   .mdrawer-foot { margin-top:14px; padding-top:12px; border-top:1px solid var(--rule); display:flex; flex-direction:column; gap:2px; }
   .mdrawer-foot a { display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; font-size:0.92rem; color:var(--soft); }
-  .mdrawer-foot a:hover { background:var(--panel); color:var(--ink); }
+  .mdrawer-foot a:hover { background:var(--panel2); color:var(--ink); }
 }
 @media (prefers-reduced-motion:reduce){ .mdrawer { transition:none; } }
 
@@ -104,7 +108,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
   padding:11px 20px; background:var(--bg2); border-bottom:1px solid var(--rule); }
 .hub-toolbar .back { font-size:0.86rem; color:var(--soft); padding:5px 11px; border:1px solid var(--rule2);
   border-radius:8px; }
-.hub-toolbar .back:hover { background:var(--panel); color:var(--ink); }
+.hub-toolbar .back:hover { background:var(--panel2); color:var(--ink); }
 .hub-toolbar .tt { font-family:var(--serif); font-weight:700; font-size:1.02rem; }
 .hub-toolframe { width:100%; height:calc(100dvh - 47px); border:0; display:block; background:var(--bg); }
 @media (max-width:820px){ .hub-toolframe { height:calc(100dvh - 47px - 62px); } }
@@ -273,7 +277,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 
 .feed-tabs { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 20px; padding-bottom:2px; }
 .feed-tabs a { font-size:0.84rem; color:var(--soft); padding:6px 13px; border-radius:20px; border:1px solid transparent; transition:.12s; white-space:nowrap; }
-.feed-tabs a:hover { background:var(--panel); color:var(--ink); }
+.feed-tabs a:hover { background:var(--panel2); color:var(--ink); }
 .feed-tabs a.on { background:var(--panel2); color:var(--ink); border-color:var(--rule2); }
 
 .post-who { display:flex; flex-direction:column; gap:2px; min-width:0; }
@@ -1543,7 +1547,7 @@ a.pod-member:hover span { color:var(--ink); }
 .hub-side-foot .nm { flex:1; }
 .hub-gear { flex:none; font-size:1rem; color:var(--pencil); width:28px; height:28px; border-radius:8px;
   display:inline-flex; align-items:center; justify-content:center; transition:.12s; }
-.hub-gear:hover { background:var(--panel); color:var(--ink); }
+.hub-gear:hover { background:var(--panel2); color:var(--ink); }
 .settings-lead { margin:0 0 16px; color:var(--soft); font-size:0.92rem; line-height:1.55; max-width:52ch; }
 .prefs { display:flex; flex-direction:column; gap:2px; }
 .pref-row { display:flex; align-items:flex-start; gap:13px; padding:14px 15px; border:1px solid var(--rule);
@@ -1570,7 +1574,7 @@ a.pod-member:hover span { color:var(--ink); }
 .notif-list { display:flex; flex-direction:column; gap:2px; }
 .notif-row { display:flex; align-items:flex-start; gap:13px; padding:13px 13px; border-radius:12px;
   border:1px solid transparent; transition:.12s; }
-.notif-row:hover { background:var(--panel); border-color:var(--rule2); }
+.notif-row:hover { background:var(--panel2); border-color:var(--rule2); }
 .notif-row.unread { background:var(--panel); border-left:2px solid var(--green); }
 .notif-icon { flex:none; width:40px; height:40px; border-radius:50%; background:var(--panel3);
   display:inline-flex; align-items:center; justify-content:center; font-size:1.1rem; }
@@ -1591,7 +1595,7 @@ a.pod-member:hover span { color:var(--ink); }
 .dm-list { display:flex; flex-direction:column; gap:2px; }
 .dm-row { display:flex; align-items:center; gap:13px; padding:12px 13px; border-radius:12px;
   border:1px solid transparent; transition:.12s; }
-.dm-row:hover { background:var(--panel); border-color:var(--rule2); }
+.dm-row:hover { background:var(--panel2); border-color:var(--rule2); }
 .dm-row.unread { background:var(--panel); }
 .dm-main { flex:1; min-width:0; }
 .dm-top { display:flex; align-items:baseline; gap:9px; }
