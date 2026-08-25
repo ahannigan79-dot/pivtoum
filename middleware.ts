@@ -40,7 +40,10 @@ export default clerkMiddleware(async (auth, req) => {
   const country = req.headers.get("x-vercel-ip-country")?.toUpperCase() ?? "";
   const region = country && !CONSENT_REGION.has(country) ? "open" : "eu";
 
-  const res = NextResponse.next();
+  // Forward the path as a request header so the hub layout can gate per-route.
+  const fwd = new Headers(req.headers);
+  fwd.set("x-pathname", path);
+  const res = NextResponse.next({ request: { headers: fwd } });
   res.cookies.set("pv_region", region, { path: "/", maxAge: 60 * 60 * 24, sameSite: "lax", httpOnly: false });
   return res;
 });

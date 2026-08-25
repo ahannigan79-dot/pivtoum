@@ -793,6 +793,54 @@ a.pod-member:hover span { color:var(--ink); }
 .drv-k.pos-k { color:var(--green); }
 .drv-k.neg-k { color:var(--pen); }
 
+/* ── Looking glass (paywall for non-members) ───────────────────── */
+.glass { max-width:760px; }
+.glass-hero { padding:8px 0 4px; }
+.glass-eyebrow { display:inline-block; font-size:0.6rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--amber); border:1px solid #7a5e2c; border-radius:20px; padding:5px 12px; margin-bottom:14px; }
+.glass-hero h1 { font-family:var(--serif); font-weight:700; font-size:2rem; line-height:1.15; margin:0 0 12px; max-width:16ch; }
+.glass-hero p { margin:0; color:var(--soft); font-size:1.02rem; line-height:1.6; max-width:58ch; }
+
+.glass-live { display:grid; grid-template-columns:auto 1fr; gap:18px 28px; align-items:start;
+  border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:20px 22px; margin:26px 0; }
+.glass-stat { text-align:center; padding-right:28px; border-right:1px solid var(--rule); align-self:center; }
+.glass-num { font-family:var(--serif); font-weight:700; font-size:2.6rem; line-height:1; color:var(--green); }
+.glass-lbl { margin-top:6px; font-size:0.72rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--pencil); max-width:12ch; }
+.glass-block { grid-column:2; }
+.glass-block-lbl { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); margin-bottom:8px; }
+.glass-pods { display:flex; flex-wrap:wrap; gap:7px; }
+.glass-pod { display:inline-flex; align-items:center; gap:7px; font-size:0.84rem; color:var(--soft);
+  border:1px solid var(--rule2); border-radius:20px; padding:5px 8px 5px 12px; }
+.glass-pod i { font-style:normal; font-family:var(--mono); font-size:0.72rem; color:#12100a; background:var(--green-bright);
+  border-radius:20px; padding:1px 7px; }
+.glass-events { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.glass-events li { display:flex; justify-content:space-between; gap:12px; font-size:0.9rem; }
+.glass-events b { color:var(--ink); font-weight:600; }
+.glass-events span { color:var(--pencil); font-family:var(--mono); font-size:0.8rem; flex:none; }
+.glass-prompt { margin:0; font-family:var(--serif); font-size:1.02rem; color:var(--ink); }
+
+.glass-perks { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:26px 0; }
+.glass-perk { display:flex; gap:13px; align-items:flex-start; border:1px solid var(--rule); border-radius:13px; background:var(--panel); padding:15px 16px; }
+.glass-perk-ic { font-size:1.4rem; flex:none; }
+.glass-perk b { display:block; font-size:0.96rem; margin-bottom:3px; }
+.glass-perk p { margin:0; font-size:0.85rem; color:var(--soft); line-height:1.5; }
+
+.glass-cta { text-align:center; border:1px solid var(--green-deep); border-radius:16px;
+  background:linear-gradient(180deg,rgba(127,192,138,0.10),var(--panel)); padding:26px 22px; }
+.glass-price { font-family:var(--mono); font-size:1.1rem; color:var(--ink); margin:0 0 14px; }
+.glass-price span { color:var(--green); font-family:var(--sans); font-weight:700; font-size:0.92rem; }
+.glass-join { font-family:var(--sans); font-weight:700; font-size:1rem; color:#12100a; background:var(--green);
+  border:0; border-radius:11px; padding:14px 28px; cursor:pointer; transition:.12s; }
+.glass-join:hover { background:var(--green-bright); }
+.glass-fine { margin:14px 0 0; font-size:0.8rem; color:var(--pencil); }
+@media (max-width:680px){
+  .glass-hero h1 { font-size:1.6rem; }
+  .glass-live { grid-template-columns:1fr; }
+  .glass-stat { border-right:0; border-bottom:1px solid var(--rule); padding:0 0 16px; margin-bottom:2px; }
+  .glass-block { grid-column:1; }
+  .glass-perks { grid-template-columns:1fr; }
+}
+
 /* ── Membership / billing ──────────────────────────────────────── */
 .mbr-card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:20px 22px; }
 .mbr-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:16px; }

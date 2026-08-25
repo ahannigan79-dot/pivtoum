@@ -1,21 +1,33 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile, touchVisit, isFounder } from "@/lib/member";
 import { getUnreadCount } from "@/lib/dms";
 import { getUnreadNotifCount } from "@/lib/notifications";
 import { openReportCount } from "@/lib/moderation";
+import { getAccess, isPreviewAllowed } from "@/lib/gate";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
 import { PwaRegister } from "@/components/hub/PwaRegister";
+import { LookingGlass } from "@/components/hub/LookingGlass";
 import "./hub.css";
 
 export const metadata = { title: "Winning in the Age of AI — Your Community", robots: { index: false, follow: false } };
 
 export default async function HubLayout({ children }: { children: React.ReactNode }) {
+  const { userId } = await auth();
   const profile = await getOrCreateProfile();
   if (profile) await touchVisit(profile.clerkUserId);
   const founder = isFounder(profile);
-  const [messagesUnread, notifUnread, openReports] = profile
+
+  // Gate: non-members (no active subscription) get the looking glass on every
+  // route except the ones that let them subscribe or manage settings.
+  const access = await getAccess(userId, profile);
+  const path = (await headers()).get("x-pathname");
+  const gated = !access.member && !isPreviewAllowed(path);
+
+  const [messagesUnread, notifUnread, openReports] = profile && access.member
     ? await Promise.all([
         getUnreadCount(profile.clerkUserId),
         getUnreadNotifCount(profile.clerkUserId),
@@ -50,7 +62,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
       </aside>
       <MobileBar notifUnread={notifUnread} messagesUnread={messagesUnread} openReports={openReports} isFounder={founder} />
       <PwaRegister />
-      <main className="hub-main">{children}</main>
+      <main className="hub-main">{gated ? <LookingGlass /> : children}</main>
     </div>
   );
 }
