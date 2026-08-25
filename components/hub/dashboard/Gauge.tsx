@@ -11,7 +11,7 @@ export function Gauge({ value, avg }: { value: number; avg?: number | null }) {
     <svg className="gauge" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={`Exposure ${v} of 100`}>
       <defs>
         <linearGradient id="gaugegrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="var(--green)" />
+          <stop offset="0%" stopColor="var(--prot)" />
           <stop offset="45%" stopColor="var(--amber)" />
           <stop offset="100%" stopColor="var(--pen)" />
         </linearGradient>

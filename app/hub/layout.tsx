@@ -12,6 +12,7 @@ import { MobileBar } from "@/components/hub/MobileBar";
 import { PwaRegister } from "@/components/hub/PwaRegister";
 import { LookingGlass } from "@/components/hub/LookingGlass";
 import { ViewModeToggle } from "@/components/hub/ViewModeToggle";
+import { Icon } from "@/components/hub/Icon";
 import "./hub.css";
 
 export const metadata = { title: "Winning in the Age of AI — Your Community", robots: { index: false, follow: false } };
@@ -47,7 +48,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
             <span><small>Pivotum · Your community</small><b>Winning in the Age of AI</b></span>
           </Link>
           <Link href="/hub/notifications" className="hub-bell" aria-label={`Notifications${notifUnread ? ` (${notifUnread} unread)` : ""}`}>
-            <span className="hub-bell-ic">🔔</span>
+            <span className="hub-bell-ic"><Icon name="alerts" size={19} /></span>
             {notifUnread > 0 && <span className="hub-bell-dot">{notifUnread > 9 ? "9+" : notifUnread}</span>}
           </Link>
         </div>
@@ -62,7 +63,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
           ) : (
             <span className="nm">Member</span>
           )}
-          <Link href="/hub/settings" className="hub-gear" aria-label="Settings">⚙</Link>
+          <Link href="/hub/settings" className="hub-gear" aria-label="Settings"><Icon name="settings" size={18} /></Link>
         </div>
       </aside>
       <MobileBar notifUnread={notifUnread} messagesUnread={messagesUnread} openReports={openReports} isFounder={founder} />

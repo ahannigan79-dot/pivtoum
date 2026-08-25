@@ -14,8 +14,8 @@ export function Trend({ points, className }: { points: TrajectoryPoint[]; classN
     const cx = W / 2, cy = y(points[0].overall);
     return (
       <svg className={className} viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="First reading">
-        <circle cx={cx} cy={cy} r="4.5" fill="var(--green)" />
-        <circle cx={cx} cy={cy} r="9" fill="none" stroke="var(--green-deep)" strokeWidth="1.5" opacity="0.5" />
+        <circle cx={cx} cy={cy} r="4.5" fill="var(--prot)" />
+        <circle cx={cx} cy={cy} r="9" fill="none" stroke="var(--prot)" strokeWidth="1.5" opacity="0.5" />
       </svg>
     );
   }
@@ -25,7 +25,7 @@ export function Trend({ points, className }: { points: TrajectoryPoint[]; classN
   const lastX = x(points.length - 1), lastY = y(points[points.length - 1].overall);
   const first = points[0].overall, last = points[points.length - 1].overall;
   const improving = last <= first; // exposure down or flat = good
-  const stroke = improving ? "var(--green)" : "var(--pen)";
+  const stroke = improving ? "var(--prot)" : "var(--pen)";
 
   return (
     <svg className={className} viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img"
