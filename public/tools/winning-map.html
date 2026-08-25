@@ -219,6 +219,8 @@
   .op.flagged{ border-color:var(--green); background:#E9F0EA; }
   .op .fit{ font-size:0.58rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; } .fit.strong{ color:var(--green); } .fit.poss{ color:var(--pencil); }
   .op h4{ margin:6px 0 4px; font-size:1rem; font-weight:700; padding-right:28px; } .op p{ margin:0; font-size:0.86rem; color:var(--soft); }
+  .opplay{ display:inline-block; margin-top:10px; font-size:0.76rem; font-weight:700; color:var(--green); text-decoration:none; letter-spacing:0.01em; }
+  .opplay:hover{ color:var(--green-bright); text-decoration:underline; }
   .op .star{ position:absolute; top:12px; right:12px; font-size:1.15rem; color:var(--pencil); line-height:1; } .op.flagged .star{ color:var(--green-bright); }
   .op.flagged .star::before{ content:"★"; } .op .star::before{ content:"☆"; }
   .flagnote{ font-size:0.82rem; color:var(--soft); margin-top:14px; padding:10px 14px; border-left:3px solid var(--green-deep); background:var(--panel2); border-radius:0 9px 9px 0; } .flagnote b{ color:var(--green); }
@@ -1022,10 +1024,23 @@
     return ops;
   }
   function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote'); el.innerHTML = picked.length ? ('<b>'+picked.length+' flagged.</b> Take '+(picked.length>1?'these':'this')+' into your Playbook and commit '+(picked.length>1?'them':'it')+' in Evolve.') : '<b>Nothing flagged yet.</b> Tap the openings that appeal — then take them into your loop below.'; }
+  // Each opening maps to one Playbook play — so an opening, a play and a
+  // committed move are the same thing under different verbs. This is the
+  // one-to-one lookup that ties Map → Playbook → Evolve together.
+  var OPLAY = {
+    a_enter:['build-fluency','Build real AI fluency'], a_folio:['prove-mastery','Show your AI-native mastery'],
+    a_native:['prove-mastery','Show your AI-native mastery'], a_tools:['build-fluency','Build real AI fluency'],
+    a_reshape:['take-control','Take control of your function'], a_strategy:['take-control','Take control of your function'],
+    a_operator:['take-control','Take control of your function'], a_lead:['take-control','Take control of your function'],
+    p_judg:['deepen-judgment','Deepen your judgment'], p_trust:['own-relationships','Own the relationships'],
+    p_phys:['double-down-physical','Double down on hands-on'], p_lic:['deepen-judgment','Guard the licensed work'],
+    lane0:['shift-resilient-lane','Reposition to a safer lane'], lane1:['shift-resilient-lane','Reposition to a safer lane']
+  };
+  function opPlayLink(id){ var p=OPLAY[id]; return p ? '<a class="opplay" href="/hub/playbook/'+p[0]+'" target="_parent">Play · '+p[1]+' →</a>' : ''; }
   function renderOpenings(M){
     var ops=computeOpenings(M), ai=ops.filter(function(o){return o.edge==='ai';}), pr=ops.filter(function(o){return o.edge==='prot';});
     var ent=!M.incumbent, leadProt=(M.A.aim==='protected'), field=M.career.name.toLowerCase();
-    function card(o){ return '<div class="op'+(flags[o.id]?' flagged':'')+'" data-op="'+o.id+'"><span class="star"></span><span class="fit '+(o.fit==='strong'?'strong':'poss')+'">'+(o.star?'★ your winning strategy':(o.fit==='strong'?'strong fit':'possible fit'))+'</span><h4>'+o.title+'</h4><p>'+o.desc+'</p></div>'; }
+    function card(o){ return '<div class="op'+(flags[o.id]?' flagged':'')+'" data-op="'+o.id+'"><span class="star"></span><span class="fit '+(o.fit==='strong'?'strong':'poss')+'">'+(o.star?'★ your winning strategy':(o.fit==='strong'?'strong fit':'possible fit'))+'</span><h4>'+o.title+'</h4><p>'+o.desc+'</p>'+opPlayLink(o.id)+'</div>'; }
     function head(first,label,sub,cards){ return '<div class="subhead"'+(first?'':' style="margin-top:16px;"')+'><span class="edge">'+label+'</span> '+sub+'</div><div class="ocards">'+cards+'</div>'; }
     var aiHead=function(first){ return head(first,'AI-native edge',(ent?'get in ahead of the pack':'master the machine'),ai.map(card).join('')); };
     var prHead=function(first){ return pr.length?head(first,'Protected edge',(ent?'the ways in that last':'deepen what AI can’t take'),pr.map(card).join('')):''; };
@@ -1033,11 +1048,11 @@
     document.getElementById('mOpenings').innerHTML=html;
     var ph=phaseBucket(M);
     document.getElementById('mOpIntro').innerHTML = ent
-      ? "The smartest ways into "+field+" — how to <b>get in AI-native</b>, and the entries that <b>stay protected</b> as you grow. Lead with your winning strategy; flag what appeals."
-      : (ph==='Leading' ? "At your level it’s about reshaping the work, not just doing it. Go AI-native across the function <b>and</b> own the judgment. Flag what appeals — your plan orients around it."
-        : "Hold <b>both edges</b> — go AI-native on your lane, and deepen what protects you. We lead with your winning strategy; flag what appeals.");
+      ? "The smartest ways into "+field+" — how to <b>get in AI-native</b>, and the entries that <b>stay protected</b> as you grow. Each opening is a <b>play</b> you can open in your Playbook."
+      : (ph==='Leading' ? "At your level it’s about reshaping the work, not just doing it. Go AI-native across the function <b>and</b> own the judgment. Each opening opens as a <b>play</b> in your Playbook."
+        : "Hold <b>both edges</b> — go AI-native on your lane, and deepen what protects you. Each opening opens as a <b>play</b> in your Playbook.");
     var el=document.getElementById('mOpenings');
-    [].forEach.call(el.querySelectorAll('.op'),function(c){ c.addEventListener('click',function(){ var id=c.getAttribute('data-op'); flags[id]=!flags[id]; c.classList.toggle('flagged'); updateFlagnote(); if(lastM) renderPlan(lastM); }); });
+    [].forEach.call(el.querySelectorAll('.op'),function(c){ c.addEventListener('click',function(e){ if(e.target.closest('.opplay')) return; var id=c.getAttribute('data-op'); flags[id]=!flags[id]; c.classList.toggle('flagged'); updateFlagnote(); if(lastM) renderPlan(lastM); }); });
     updateFlagnote();
   }
   function renderTrajectory(M){
