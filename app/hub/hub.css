@@ -29,6 +29,7 @@
 .hub-mk::after { content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
 .hub-brand b { font-weight:700; font-size:0.92rem; line-height:1.2; display:block; font-family:var(--serif); }
 .hub-brand small { display:block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); }
+.hub-side .hub-nav { flex:1 1 auto; min-height:0; overflow-y:auto; margin:0 -6px; padding:0 6px; }
 .hub-nav a { display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; font-size:0.92rem; color:var(--soft); transition:.12s; }
 .hub-nav a:hover { background:var(--panel); color:var(--ink); }
 .hub-nav a.on { background:var(--panel2); color:var(--ink); }
@@ -36,7 +37,7 @@
 .hub-nav .nav-badge { margin-left:auto; min-width:18px; height:18px; padding:0 5px; border-radius:9px;
   background:var(--green); color:#12100a; font-size:0.68rem; font-weight:800; line-height:18px; text-align:center; }
 .hub-navsep { font-size:0.56rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--pencil); padding:14px 11px 6px; }
-.hub-side-foot { margin-top:auto; display:flex; align-items:center; gap:10px; padding:10px 8px 4px; border-top:1px solid var(--rule); }
+.hub-side-foot { flex:none; display:flex; align-items:center; gap:10px; padding:10px 8px 4px; border-top:1px solid var(--rule); }
 .hub-side-foot .nm { font-size:0.82rem; color:var(--soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
 /* main */
@@ -1227,7 +1228,7 @@ a.pod-member:hover span { color:var(--ink); }
 @media (prefers-reduced-motion:reduce){ .wp-why.loading span { animation:none; } }
 
 /* ===== Founder view-mode switch ===== */
-.viewmode { margin:auto 10px 8px; padding:9px 10px; border:1px solid var(--rule2); border-radius:11px; background:var(--panel2); }
+.viewmode { flex:none; margin:8px 0 6px; padding:9px 10px; border:1px solid var(--rule2); border-radius:11px; background:var(--panel2); }
 .viewmode[data-pending="true"] { opacity:0.6; }
 .viewmode-k { display:block; font-size:0.54rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); margin:0 0 6px; }
 .viewmode-row { display:flex; gap:4px; }
