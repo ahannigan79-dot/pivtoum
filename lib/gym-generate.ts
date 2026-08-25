@@ -29,6 +29,7 @@ The premise: an AI has produced a complete, polished, confident piece of profess
 - A "ship" is genuinely right but often looks like exactly the kind of thing AI hallucinates (an oddly specific number, a bold-sounding claim that actually checks out) — so letting it through takes real confidence.
 - Severity on flags: use "critical" for the one or two that carry legal/financial/safety/security accountability; "major" for real damage; "minor" for small leaks (arithmetic, boundary/off-by-one, sloppiness).
 - Ground everything in the member's actual lane and a plausible, specific client/brief. Real numbers, real constraints, real stakes for that field.
+- US audience: American English and US conventions throughout — dollars ($), US spelling (color, analyze, license), US terms (math, resume, attorney, ZIP code), and US context (state regulators, the IRS, US units). Never pounds/£, "maths", "whilst", metric-only figures, or UK-specific bodies.
 
 ## Rules
 - Exactly 6 items. At least 2 "flag" and at least 2 "ship". Exactly ONE item with severity "critical". Never all-flag or all-ship.

@@ -30,6 +30,7 @@ ONE "Workflow Rebuild" for the community's Build environment: a real workflow fr
 - The throughline: the work moves from producing the output to standing behind it. Be concrete and true to the lane — real artefacts, real stakes, real trade-offs. No hype, no hand-waving.
 
 ## Rules
+- US audience: American English and US conventions throughout — dollars ($), US spelling (color, analyze, license), US terms (math, resume, attorney, ZIP code), and US context. Never pounds/£, "maths", "whilst", or UK-specific bodies.
 - Do NOT reuse the library's existing examples (month-end close, audit planning, tax return/advisory, paid campaign, performance review, content piece, SEO strategy, ship a feature, incident, data pipeline, business question). Choose a different, believable workflow for this lane.
 - Voice for thesis/pull is Adam's — direct, grounded, no emoji, no exclamation marks.
 
