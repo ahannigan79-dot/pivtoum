@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Wordmark } from "@/components/Wordmark";
+import { SITE } from "@/lib/site";
 
 const NAV = [
   { href: "/", label: "Careers" },
   { href: "/methodology", label: "Methodology" },
   { href: "/articles", label: "Articles" },
-  { href: "/#subscribe", label: "Subscribe" },
+  { href: "/buy", label: "Career guides" },
 ];
 
 /** Thin, quiet global header — wordmark plus wayfinding. On phones the links
@@ -35,8 +36,8 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
-          <Link className="site-nav-link site-nav-cta" href="/buy">
-            Career guides
+          <Link className="site-nav-link site-nav-cta" href={SITE.join}>
+            Join &rarr;
           </Link>
         </nav>
 
@@ -62,8 +63,8 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
-          <Link href="/buy" className="nav-panel-link nav-panel-cta" onClick={close}>
-            Career guides
+          <Link href={SITE.join} className="nav-panel-link nav-panel-cta" onClick={close}>
+            Join &rarr;
           </Link>
         </div>
       ) : null}

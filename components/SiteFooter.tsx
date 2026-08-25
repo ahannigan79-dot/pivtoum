@@ -5,6 +5,10 @@ export function SiteFooter({ creed = SITE.creed }: { creed?: string } = {}) {
   return (
     <footer>
       <p className="footer-creed">{creed}</p>
+      <p className="footer-join">
+        <b>{SITE.communityName}</b> — the community for getting ahead of the change.{" "}
+        <a href={SITE.join}>Join us &rarr;</a>
+      </p>
       {careerCount} careers, scored the same way. Scores measure exposure to what AI can already
       do &mdash; not how much any particular employer has deployed.
       <br />

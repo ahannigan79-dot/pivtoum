@@ -802,6 +802,9 @@ footer {
   font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.5;
   color: var(--ink); margin: 0 0 1.2rem; max-width: 36rem;
 }
+.footer-join { font-family: var(--sans); font-size: .92rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 1.2rem; }
+.footer-join b { color: var(--ink); }
+.footer-join a { color: var(--win); font-weight: 600; }
 .lp-creed {
   font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5;
   color: var(--ink-soft); margin: 1.4rem 0 0; max-width: 30rem;

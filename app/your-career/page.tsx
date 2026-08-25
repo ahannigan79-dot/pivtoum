@@ -55,6 +55,15 @@ export default function YourCareer() {
           </div>
         </section>
 
+        {/* Community — the step up from the free score */}
+        <a className="lp-community-strip" href={SITE.join}>
+          <span className="lp-community-strip-k">More than a score</span>
+          <span>
+            It&rsquo;s <b>{SITE.communityName}</b> — a community for getting ahead of the change,
+            together. <span className="go">Start your free trial →</span>
+          </span>
+        </a>
+
         {/* Index */}
         <section className="lp-index" id="index">
           <div className="lp-index-head">
