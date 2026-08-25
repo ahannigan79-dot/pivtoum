@@ -55,7 +55,7 @@ export default async function MapLanding({
             The Exposure Check is the alarm. Inside the community you get the plan — your living Map,
             your pod, and people in your exact lane figuring this out together, so you ultimately <b>win.</b>
           </p>
-          <a className="scr-community-go" href={SITE.community}>See inside the community →</a>
+          <a className="scr-community-go" href={SITE.join}>See inside the community →</a>
         </div>
 
         <p className="scr-foot">

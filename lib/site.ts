@@ -9,12 +9,13 @@ export const SITE = {
   /** The same trust line, framed for the worried-adult (your-career) audience. */
   creedWorker: "We build AI for a living, and we’re worried about our own careers too — right alongside you.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pivotum.ai",
-  /** The Winning in the Age of AI community, hosted on Mighty Networks. */
-  community: process.env.NEXT_PUBLIC_COMMUNITY_URL ?? "https://community.pivotum.ai",
-  /** Where "join / start your free trial" sends people. Defaults to the new hub
-   *  (sign in → looking glass → trial). Point NEXT_PUBLIC_JOIN_URL elsewhere to
-   *  control the cutover from Mighty Networks. */
+  /** Where "join / start your free trial / see inside" sends people — the new hub
+   *  (sign in → looking glass → trial). Point NEXT_PUBLIC_JOIN_URL elsewhere only
+   *  to control a deliberate cutover. */
   join: process.env.NEXT_PUBLIC_JOIN_URL ?? "/hub",
+  /** DEPRECATED — the old Mighty Networks community. Everything now routes to the
+   *  looking glass via `join`; kept as an alias so nothing can leak to Mighty. */
+  get community() { return this.join; },
   /** The community's name — the paid membership people join. */
   communityName: "Winning in the Age of AI",
 } as const;
