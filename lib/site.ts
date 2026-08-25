@@ -11,6 +11,10 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pivotum.ai",
   /** The Winning in the Age of AI community, hosted on Mighty Networks. */
   community: process.env.NEXT_PUBLIC_COMMUNITY_URL ?? "https://community.pivotum.ai",
+  /** Where "join / start your free trial" sends people. Defaults to the new hub
+   *  (sign in → looking glass → trial). Point NEXT_PUBLIC_JOIN_URL elsewhere to
+   *  control the cutover from Mighty Networks. */
+  join: process.env.NEXT_PUBLIC_JOIN_URL ?? "/hub",
   /** The community's name — the paid membership people join. */
   communityName: "Winning in the Age of AI",
 } as const;

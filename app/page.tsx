@@ -9,11 +9,26 @@ import { HeroContrast } from "@/components/HeroContrast";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Pivotum — Which careers is AI reshaping?",
+  title: "Winning in the Age of AI — the community for getting ahead",
   description:
-    "Pivotum scores 28 careers on how exposed they are to AI — the same six factors, re-scored every six months, with the reasoning shown. Help your family choose a degree with evidence, not fear.",
+    "Winning in the Age of AI is the community where you map exactly how exposed your career is, do the reps to get ahead, and win with people in your exact lane. Start free — 28 careers scored, plus a free trial inside.",
   alternates: { canonical: "/" },
 };
+
+const LOOP = [
+  { k: "Learn", d: "The rules of the game — the stance that wins and the six levers that decide your exposure." },
+  { k: "Map", d: "Where you stand: your exposure, your winning strategy, and the moves that lower it." },
+  { k: "Build", d: "The reps — master the machine on what it's taking, and deepen the judgment it can't." },
+  { k: "Evolve", d: "Ship your moves, re-score, and watch your exposure come down. The loop closing." },
+];
+
+const INCLUDED = [
+  "Your living AI Career Map — re-scored as the field moves",
+  "Your Together pod — a small group in your exact lane, keeping you at it",
+  "The Judgment Gym & Workflow Rebuilds — reps that build your edge",
+  "Live clinics, events, and direct access to the founder",
+  "The full Learn curriculum and asset library, from day one",
+];
 
 export default function Home() {
   const indexRows = buildIndexRows();
@@ -21,78 +36,87 @@ export default function Home() {
   return (
     <div className="lp">
       <div className="lp-wrap">
-        {/* Hero — dark bookend */}
+        {/* Hero — lead with the community */}
         <section className="lp-hero dark">
           <div className="lp-hero-grid">
             <div>
               <div className="lp-eyebrow">
-                <b>Pivotum</b> · Winning in the Age of AI · Fall 2026
+                <b>Pivotum</b> · Winning in the Age of AI · {SITE.communityName ? "Fall 2026" : ""}
               </div>
               <h1 className="lp-h1">
                 <span className="hl">Win</span> in the age of AI.
               </h1>
               <p className="lp-lede">
                 The biggest shift work has seen in a century is also the biggest opening — for the
-                people who can see it first. It starts with knowing exactly where you stand: we
-                score {careerCount} careers on their exposure to AI, free, with the reasoning shown —
-                then show you where the room to move is.
+                people who face it head-on, together. <b>Winning in the Age of AI</b> is the community
+                where you map exactly where you stand, do the reps to get ahead, and win alongside
+                people in your exact lane.
               </p>
               <div className="lp-cta-row lp-hero-cta">
-                <Link className="lp-btn" href="/map">
-                  Get your free Career Map &rarr;
+                <Link className="lp-btn" href={SITE.join}>
+                  Start your free trial &rarr;
                 </Link>
-                <a className="lp-btn ghost" href="#index">
-                  See all {careerCount} scores
-                </a>
+                <Link className="lp-btn ghost" href="/map">
+                  Get your free Career Map
+                </Link>
               </div>
               <p className="lp-hero-browse">
-                <Link href="/methodology">How we score &rarr;</Link>
+                <a href="#inside">See what&rsquo;s inside &darr;</a> · <a href="#index">All {careerCount} scores</a>
               </p>
-              <p className="lp-creed">{SITE.creed}</p>
+              <p className="lp-creed">{SITE.creedWorker}</p>
             </div>
 
             <HeroContrast />
           </div>
         </section>
 
-        {/* Community teaser — the point, up top */}
-        <a className="lp-community-strip" href="#community">
-          <span className="lp-community-strip-k">More than a score</span>
+        {/* What it is */}
+        <a className="lp-community-strip" href="#inside">
+          <span className="lp-community-strip-k">Not another course</span>
           <span>
-            It’s <b>Winning in the Age of AI</b> — a community learning to get ahead of the change,
-            together. <span className="go">Join us →</span>
+            A working community — a plan that&rsquo;s <b>yours</b>, and people who keep you at it.
+            <span className="go"> See how it works →</span>
           </span>
         </a>
 
-        {/* Confidence / value */}
-        <section className="lp-values">
-          <div className="lp-value">
-            <h3>One number, fully explained</h3>
-            <p>Every score comes with its reasoning and a three-year trend — never a black box.</p>
+        {/* Inside — the Winning Loop */}
+        <section className="lp-inside" id="inside">
+          <div className="lp-inside-head">
+            <div className="lp-community-eyebrow">Inside the community</div>
+            <h2>One loop turns the fear into a plan you run every week.</h2>
+            <p className="sub">
+              Learn the game, map your ground, build your edge, and evolve as the field moves. Your
+              Map is the spine — everything hangs off it, and your Together pod keeps you moving.
+            </p>
           </div>
-          <div className="lp-value">
-            <h3>The same yardstick for all {careerCount}</h3>
-            <p>A paramedic and a paralegal, scored on the identical six factors and weights.</p>
-          </div>
-          <div className="lp-value">
-            <h3>We publish where we might be wrong</h3>
-            <p>A fixed, public methodology, re-scored twice a year. The scores are free.</p>
+          <div className="lp-loop">
+            {LOOP.map((s, i) => (
+              <div className="lp-loopcard" key={s.k}>
+                <span className="lp-loopnum">{i + 1}</span>
+                <h3>{s.k}</h3>
+                <p>{s.d}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* The finding */}
+        {/* The free hook */}
         <section className="lp-finding">
           <p>
-            <span className="hl">The safest degrees aren&rsquo;t the ones you&rsquo;d guess.</span>{" "}
-            Bedside nursing scores 2.8; entry-level software, 8.1. Physical therapy, 2.5; graphic
-            design, 8.4. Move the same work behind a screen and its exposure roughly doubles.
+            <span className="hl">Start free: see exactly how exposed your career is.</span>{" "}
+            We score {careerCount} careers on the same six factors — bedside nursing 2.8, entry-level
+            software 8.1; physical therapy 2.5, graphic design 8.4. Move the same work behind a screen
+            and its exposure roughly doubles. Your free Career Map makes it personal.
           </p>
+          <div className="lp-cta-row" style={{ justifyContent: "center", marginTop: "1.4rem" }}>
+            <Link className="lp-btn" href="/map">Get your free Career Map &rarr;</Link>
+          </div>
         </section>
 
-        {/* Index */}
+        {/* Index — free scores as proof */}
         <section className="lp-index" id="index">
           <div className="lp-index-head">
-            <h2>Every career, scored</h2>
+            <h2>Every career, scored — free</h2>
             <p className="sub">
               Each row runs from a field&rsquo;s most protected role to its most exposed. Green marks
               a genuinely low-exposure entry; red, one that&rsquo;s highly exposed.
@@ -105,7 +129,6 @@ export default function Home() {
 
           <CareerIndex rows={indexRows} />
 
-          {/* Print: two numeric columns, no bars */}
           <div className="index-print">
             <div className="ipr-head">
               <span>Career</span>
@@ -122,30 +145,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* The community — the destination */}
-        <section className="lp-community" id="community">
+        {/* Membership — the trial */}
+        <section className="lp-membership" id="join">
           <div className="lp-community-eyebrow">Winning in the Age of AI</div>
-          <h2>You don’t have to figure this out alone.</h2>
+          <h2>You don&rsquo;t have to figure this out alone.</h2>
           <p>
-            This is the strangest, biggest change work has ever seen — and the people who come
-            through it ahead won’t be the ones who did it alone. They’ll be the ones who learned and
-            grew together. So take the step and join us: a community to understand what’s happening,
-            see where you stand, get ahead of the change — and ultimately win.
+            The people who come through this ahead won&rsquo;t be the ones who did it alone — they&rsquo;ll
+            be the ones who learned and grew together. Membership gives you the whole loop, your pod,
+            and the room. Try it free for seven days.
           </p>
-          <ul className="lp-community-list">
-            <li><b>Know exactly where you stand</b> — 28 careers scored, your field’s safe and exposed sides.</li>
-            <li><b>Go deep on your field</b> — a live deep-dive on rotation, plus a library from day one.</li>
-            <li><b>Become AI-native</b> — no-code playbooks for how your role actually evolves.</li>
-            <li><b>Learn from people inside the change</b> — live sessions, guest insiders, and each other.</li>
-            <li><b>Celebrate the wins</b> — a community that moves forward together.</li>
+          <ul className="lp-membership-list">
+            {INCLUDED.map((it) => <li key={it}>{it}</li>)}
           </ul>
           <div className="lp-cta-row">
-            <Link className="lp-btn" href="/map">
-              Take the first step — get your free Career Map
+            <Link className="lp-btn" href={SITE.join}>
+              Start your free trial &rarr;
             </Link>
-            <a className="lp-btn ghost" href={SITE.community}>
-              See inside the community →
-            </a>
+            <Link className="lp-btn ghost" href="/map">
+              Not ready? Get your free Career Map
+            </Link>
           </div>
         </section>
 
