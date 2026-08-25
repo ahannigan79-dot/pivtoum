@@ -231,7 +231,7 @@
   .delta .m{ font-family:var(--mono); font-weight:700; } .delta.up .m{ color:var(--pen); } .delta.win .m{ color:var(--green); } .delta.note .m{ color:var(--pencil); } .delta b{ color:var(--ink); }
 
   /* tune panel */
-  .tune{ border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:15px; background:linear-gradient(180deg,#1c2620,var(--panel)); margin-top:16px; overflow:hidden; scroll-margin-top:16px; }
+  .tune{ border:1px solid color-mix(in srgb,var(--green) 30%,transparent); border-radius:15px; background:linear-gradient(180deg,#EEF3EF,var(--panel)); margin-top:16px; overflow:hidden; scroll-margin-top:16px; }
   .tune.flash{ animation:tuneflash 1.8s ease; }
   @keyframes tuneflash{ 0%{ box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent); border-color:var(--green); } 100%{ box-shadow:0 0 0 10px transparent; } }
   @media (prefers-reduced-motion:reduce){ .tune.flash{ animation:none; border-color:var(--green); } }
@@ -241,6 +241,12 @@
   .tune select{ width:100%; background:var(--bg2); border:1px solid var(--rule2); border-radius:10px; color:var(--ink); font-family:var(--sans); font-size:0.95rem; padding:11px 13px; margin-bottom:14px; }
   .tune .tgrid{ display:grid; grid-template-columns:1fr 1fr; gap:8px 22px; } @media (max-width:700px){ .tune .tgrid{ grid-template-columns:1fr; } }
   .tune .thd{ font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin:6px 0 2px; grid-column:1/-1; }
+  .tune .pbody.tlocked .tgrid, .tune .pbody.tlocked > select, .tune .pbody.tlocked > label.tl{ opacity:.5; pointer-events:none; }
+  .tune .lockbar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:var(--panel2); border:1px solid var(--rule2); border-radius:11px; padding:11px 15px; margin:0 0 16px; font-size:0.88rem; color:var(--soft); line-height:1.4; }
+  .tune .lockbar .lk{ color:var(--ink); font-weight:800; }
+  .tune .lockbar .go{ margin-left:auto; flex:none; }
+  .go.ghost{ background:transparent; border:1px solid var(--green); color:var(--green); padding:8px 15px; font-weight:700; font-size:0.84rem; }
+  .go.ghost:hover{ background:color-mix(in srgb,var(--green) 10%,transparent); }
 
   /* plan */
   .buildbar{ margin-bottom:14px; } .buildbar .kk{ font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); }
@@ -299,7 +305,7 @@
 
 <div class="scroll" id="scroll"><div class="chat" id="chat"></div></div>
 
-<div class="prodnote"><div><b>Illustrative intake — the Map advisor in conversation.</b> Answer the questions and hit <b>Build my Map</b> — your answers compute a real Map. Then use <b>Tune your answers</b> on the Map to change them live. Nothing is saved.</div></div>
+<div class="prodnote"><div><b>Illustrative intake — the Map advisor in conversation.</b> Answer the questions and hit <b>Build my Map</b> — your answers compute a real Map. Your answers then stay <b>locked</b> on the Map; re-scoring unlocks them. Nothing is saved.</div></div>
 </div>
 
 <div id="mapView">
@@ -313,7 +319,7 @@
 
   <div class="wrap">
     <div class="hero"><div><h1>Your Map</h1><div class="sub" id="mSub"></div></div>
-      <button class="sorttog" id="backChat">← back to the chat</button>
+      <button class="sorttog" id="backChat">Change or unlock with the advisor →</button>
     </div>
     <div class="mapnote"><b>Live from your answers.</b> Every number below is computed from what you told the advisor, against our scored career data (<code>careers.ts</code>). Scroll to <b>Tune your answers</b> at the bottom — drag a slider and watch the Map move.</div>
 
@@ -1146,6 +1152,7 @@
     r.addEventListener('input',function(){ A[store][key]=+r.value; r.style.setProperty('--fill',r.value+'%'); vv.textContent=label01(+r.value); refresh(); });
     grid.appendChild(s);
   }
+  var tuneLocked=false; // answers are read-only unless the member is re-scoring
   function buildTune(){
     var body=document.getElementById('tuneBody'); body.innerHTML='';
     if(A.path!=='ent'){
@@ -1175,8 +1182,19 @@
       body.appendChild(sel2);
       var note=document.createElement('p'); note.className='tnote'; note.style.marginTop='12px'; note.innerHTML='Switch field and watch the whole entry-level read change — nursing and marketing are worlds apart.'; body.appendChild(note);
     }
+    // Locked view: the answers show but can't be dragged. Re-scoring unlocks them —
+    // this keeps a member's Map stable between check-ins instead of drifting on a stray drag.
+    if(tuneLocked){
+      body.classList.add('tlocked');
+      body.querySelectorAll('input,select').forEach(function(i){ i.disabled=true; });
+      var bar=document.createElement('div'); bar.className='lockbar';
+      bar.innerHTML='<span class="lk">Locked.</span> These are the answers behind your Map. Re-score to change them — it keeps your numbers steady between check-ins.';
+      var b=document.createElement('button'); b.type='button'; b.className='go ghost'; b.textContent='Re-score now'; b.onclick=function(){ buildMap('tune'); };
+      bar.appendChild(b);
+      body.insertBefore(bar, body.firstChild);
+    }
   }
-  function buildMap(focus){ renderDisplay(computeMap(A)); buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on');
+  function buildMap(focus){ tuneLocked = focus!=='tune'; renderDisplay(computeMap(A)); buildTune(); document.getElementById('chatView').style.display='none'; document.getElementById('mapView').classList.add('on');
     if(focus==='tune'){
       var tp=document.getElementById('tunePanel');
       if(tp){ tp.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); tp.classList.remove('flash'); void tp.offsetWidth; tp.classList.add('flash'); }
@@ -1217,7 +1235,15 @@
     });
   }
   window.addEventListener('message', function(e){
-    var d=e.data; if(d && d.type==='pivotum:restore' && d.answers && !restored){ restored=true; returning(d.answers, d.rescoreDue); }
+    var d=e.data;
+    if(d && d.type==='pivotum:restore' && d.answers && !restored){
+      restored=true;
+      // Don't make them ask the advisor to see their Map. Load the advisor chat
+      // (reachable via "back to the chat" to unlock or change), but show the Map
+      // document straight away. If a re-score is due, open it unlocked on the answers.
+      returning(d.answers, d.rescoreDue);
+      buildMap(d.rescoreDue ? 'tune' : undefined);
+    }
   });
 
   setProg(0.4);
