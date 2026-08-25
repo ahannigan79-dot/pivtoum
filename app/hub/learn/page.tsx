@@ -1,40 +1,15 @@
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
 import { MarkStarted } from "@/components/hub/MarkStarted";
+import { CURRICULUM, getLearnProgress, learnTotals } from "@/lib/learn";
 
 export const metadata = { title: "Learn — Winning in the Age of AI" };
 
-const FOUNDATIONS = [
-  { icon: "◆", name: "Embrace", short: "Face the change — go AI-native",
-    body: "Stop resisting the shift and move toward it. Bring AI into your actual work, do the reps, share what you learn. The people who thrive make AI their instrument. Build is how you Embrace." },
-  { icon: "✦", name: "Together", short: "You win faster as a group",
-    body: "No one navigates a shift this big alone. Being seen, held to your commitments, and learning from people on the same path turns intention into motion. Your pod, the feed, the events — that's Together." },
-];
+export default async function LearnPage() {
+  const { userId } = await auth();
+  const done = await getLearnProgress(userId);
+  const totals = learnTotals(done);
 
-const EXPOSING = [
-  { icon: "⚙️", name: "Automatability", short: "How much AI can already do", body: "The screen-and-language work AI handles well today. The more of your day is routine and pattern-following, the more exposed — and the faster it moves." },
-  { icon: "🪜", name: "Entry-erosion", short: "The junior rungs go first", body: "AI hits entry-level tasks first, and the ladder compresses as one person plus AI does the work of a team. Value built from junior rungs gets a steeper climb." },
-];
-
-const PROTECTING = [
-  { icon: "🤝", name: "Trust", short: "Relied on by name", body: "Work where the relationship is the product. AI can draft, but it can't be the person a client trusts with the call." },
-  { icon: "⚖️", name: "Judgment", short: "High-stakes, ambiguous calls", body: "Decisions where being right really matters and the answer isn't in the data. Owning the call is the job." },
-  { icon: "🩺", name: "Physical", short: "Hands-on, in person", body: "Work that happens in the room, with your hands. The further from a screen, the harder for AI to reach." },
-  { icon: "📜", name: "Licensing", short: "Credentials that gate the work", body: "Where the law says only a credentialed human may do it. The hardest moat to cross, slowest to erode." },
-];
-
-type L = { icon: string; name: string; short: string; body: string };
-function LeverTile({ l, kind }: { l: L; kind: "expose" | "protect" | "found" }) {
-  return (
-    <div className={`lever-tile k-${kind}`}>
-      <span className="lv-ic">{l.icon}</span>
-      <h3>{l.name}</h3>
-      <p className="lv-short">{l.short}</p>
-      <p className="lv-body">{l.body}</p>
-    </div>
-  );
-}
-
-export default function LearnPage() {
   return (
     <>
       <MarkStarted />
@@ -43,17 +18,46 @@ export default function LearnPage() {
         <div className="build-hero">
           <p className="ck">The rules of the game</p>
           <h2>Your score isn&apos;t luck — it&apos;s a system you can play.</h2>
-          <p>Two <b>foundations</b> set your stance. Six <b>levers</b> decide your exposure: two that expose you as AI improves, four that protect you where it can&apos;t reach. Learn these, and your Map becomes a set of dials — not a verdict.</p>
+          <p>Ten short lessons on the ideas behind your Map: the stance that wins, the six levers that set your exposure, and the plays that lower it. Read them in a sitting — and every one you finish counts as effort that buys down your score.</p>
         </div>
 
-        <div className="hub-sectlabel">The two foundations</div>
-        <div className="lever-grid">{FOUNDATIONS.map((l) => <LeverTile key={l.name} l={l} kind="found" />)}</div>
+        <div className="learn-prog">
+          <div className="learn-prog-top">
+            <span className="learn-prog-lbl">{totals.complete} of {totals.total} lessons</span>
+            <span className="learn-prog-pct">{totals.pct}%</span>
+          </div>
+          <div className="learn-prog-bar"><span style={{ width: `${totals.pct}%` }} /></div>
+        </div>
 
-        <div className="hub-sectlabel">⚠ What exposes you</div>
-        <div className="lever-grid">{EXPOSING.map((l) => <LeverTile key={l.name} l={l} kind="expose" />)}</div>
-
-        <div className="hub-sectlabel">🛡 What protects you</div>
-        <div className="lever-grid">{PROTECTING.map((l) => <LeverTile key={l.name} l={l} kind="protect" />)}</div>
+        {CURRICULUM.map((m) => {
+          const mDone = m.lessons.filter((l) => done.has(l.key)).length;
+          return (
+            <div key={m.slug} className="learn-mod">
+              <div className="learn-mod-head">
+                <div>
+                  <div className="hub-sectlabel">{m.title}</div>
+                  <p className="learn-mod-blurb">{m.blurb}</p>
+                </div>
+                <span className="learn-mod-count">{mDone}/{m.lessons.length}</span>
+              </div>
+              <div className="learn-lessons">
+                {m.lessons.map((l) => {
+                  const isDone = done.has(l.key);
+                  return (
+                    <Link key={l.key} href={`/hub/learn/${l.key}`} className={"learn-lesson" + (isDone ? " done" : "")}>
+                      <span className="learn-check">{isDone ? "✓" : "○"}</span>
+                      <span className="learn-lesson-main">
+                        <b>{l.title}</b>
+                        <span className="learn-lesson-sum">{l.summary}</span>
+                      </span>
+                      <span className="learn-mins">{l.minutes}m</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
 
         <div className="hub-sectlabel">Put it to work</div>
         <div className="build-grid">
