@@ -7,7 +7,6 @@ import { trackEvent } from "@/lib/analytics";
 import { captureClickIds, readClickIds } from "@/lib/attribution";
 
 type Stage = "planning" | "active";
-type Audience = "child" | "self";
 interface CareerOpt {
   slug: string;
   name: string;
@@ -26,7 +25,6 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
   // a real option, so arriving from a sampler starts one pick ahead.
   const seeded = preselect && careers.some((c) => c.slug === preselect) ? [preselect] : [];
   const [stage, setStage] = useState<Stage | "">("");
-  const [audience, setAudience] = useState<Audience | "">("");
   const [picks, setPicks] = useState<string[]>(seeded);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +49,6 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!stage) return setHint("Pick where you are right now.");
-    if (!audience) return setHint("Tell us who this is for.");
     if (picks.length === 0) return setHint("Choose at least one career.");
     if (!firstName.trim()) return setHint("Add your first name.");
     setHint("");
@@ -68,7 +65,7 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
         firstName: firstName.trim(),
         source: "index",
         stage,
-        audience,
+        audience: "self", // /map is self-framing ("your career"); the package fork defaults here
         careers: picks,
         eventId,
         ...readClickIds(),
@@ -121,32 +118,8 @@ export function PackageSignup({ careers, preselect }: { careers: CareerOpt[]; pr
       </fieldset>
 
       <fieldset className="pkg-field">
-        <legend className="pkg-q">2 · Who’s this for?</legend>
-        <div className="pkg-opts">
-          <button
-            type="button"
-            className={`pkg-opt${audience === "child" ? " on" : ""}`}
-            onClick={() => setAudience("child")}
-            aria-pressed={audience === "child"}
-          >
-            <b>My child</b>
-            <span>I’m the parent</span>
-          </button>
-          <button
-            type="button"
-            className={`pkg-opt${audience === "self" ? " on" : ""}`}
-            onClick={() => setAudience("self")}
-            aria-pressed={audience === "self"}
-          >
-            <b>Myself</b>
-            <span>it’s my career</span>
-          </button>
-        </div>
-      </fieldset>
-
-      <fieldset className="pkg-field">
         <legend className="pkg-q">
-          3 · Pick the careers that matter <span className="pkg-count">{picks.length}/{MAX_PICKS}</span>
+          2 · Pick the careers that matter <span className="pkg-count">{picks.length}/{MAX_PICKS}</span>
         </legend>
         <div className="pkg-chips">
           {careers.map((c) => {

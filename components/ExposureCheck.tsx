@@ -2,11 +2,23 @@
 import { useMemo, useState } from "react";
 import { PackageSignup } from "@/components/PackageSignup";
 import { trackEvent } from "@/lib/analytics";
-import { BAND_LABELS, type CheckResult } from "@/lib/exposure";
+import {
+  BAND_LABELS, bandByStep, tunedStep, personalWhy,
+  type CheckResult, type Seniority, type Routine,
+} from "@/lib/exposure";
 
 const TONE_COLOR: Record<string, string> = {
   red: "#E0776C", orange: "#D6A85B", yellow: "#DFD5A2", lime: "#A7CBA0", green: "#7FC08A",
 };
+
+const SENIORITY: { key: Seniority; label: string }[] = [
+  { key: "early", label: "Early-career" }, { key: "mid", label: "Mid-career" },
+  { key: "senior", label: "Senior" }, { key: "leader", label: "Leader" },
+];
+const ROUTINE: { key: Routine; label: string }[] = [
+  { key: "repeatable", label: "Mostly repeatable" }, { key: "mix", label: "A mix" },
+  { key: "judgment", label: "Mostly judgment" },
+];
 
 export function ExposureCheck({ checks, careerOpts, preselect }: {
   checks: CheckResult[];
@@ -15,12 +27,28 @@ export function ExposureCheck({ checks, careerOpts, preselect }: {
 }) {
   const sorted = useMemo(() => [...checks].sort((a, b) => a.name.localeCompare(b.name)), [checks]);
   const [slug, setSlug] = useState<string>(preselect && checks.some((c) => c.slug === preselect) ? preselect : "");
-  const result = checks.find((c) => c.slug === slug) ?? null;
+  const [seniority, setSeniority] = useState<Seniority | "">("");
+  const [routine, setRoutine] = useState<Routine | "">("");
+  const base = checks.find((c) => c.slug === slug) ?? null;
+  const ready = base && seniority && routine;
 
   function choose(next: string) {
     setSlug(next);
     if (next) trackEvent("exposure_check", { career: next });
   }
+
+  // Personalised result once both taps are answered.
+  const result = ready
+    ? (() => {
+        const band = bandByStep(tunedStep(base!.band.step, seniority as Seniority, routine as Routine));
+        const pw = personalWhy(seniority as Seniority, routine as Routine);
+        return {
+          name: base!.name, band,
+          expose: [...pw.expose, ...base!.expose].slice(0, 3),
+          protect: [...pw.protect, ...base!.protect].slice(0, 2),
+        };
+      })()
+    : null;
 
   return (
     <div className="chk">
@@ -32,6 +60,29 @@ export function ExposureCheck({ checks, careerOpts, preselect }: {
         </select>
       </div>
 
+      {base && (
+        <div className="chk-taps">
+          <div className="chk-tap">
+            <span className="chk-tap-q">Where are you in your career?</span>
+            <div className="chk-tap-row">
+              {SENIORITY.map((o) => (
+                <button key={o.key} type="button" className={"chk-tap-btn" + (seniority === o.key ? " on" : "")}
+                  onClick={() => setSeniority(o.key)} aria-pressed={seniority === o.key}>{o.label}</button>
+              ))}
+            </div>
+          </div>
+          <div className="chk-tap">
+            <span className="chk-tap-q">How much of your work is routine vs judgment?</span>
+            <div className="chk-tap-row">
+              {ROUTINE.map((o) => (
+                <button key={o.key} type="button" className={"chk-tap-btn" + (routine === o.key ? " on" : "")}
+                  onClick={() => setRoutine(o.key)} aria-pressed={routine === o.key}>{o.label}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {result && (
         <>
           <div className="chk-result">
@@ -39,7 +90,7 @@ export function ExposureCheck({ checks, careerOpts, preselect }: {
               <span className="chk-k">Your AI exposure looks</span>
               <span className="chk-band-word" style={{ color: TONE_COLOR[result.band.tone] }}>{result.band.word}</span>
             </div>
-            <p className="chk-phrase">Based on <b>{result.name}</b>, your work looks <b>{result.band.phrase}</b>.</p>
+            <p className="chk-phrase">Based on <b>{result.name}</b> and your answers, your work looks <b>{result.band.phrase}</b>.</p>
 
             <div className="chk-scale" aria-hidden="true">
               {BAND_LABELS.map((label, i) => (
