@@ -8,8 +8,7 @@ import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity, computeEffort } from "@/lib/effort";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
-import { Trend } from "@/components/hub/dashboard/Trend";
-import { Gauge } from "@/components/hub/dashboard/Gauge";
+import { ExposureJourney, type JourneyPoint } from "@/components/hub/dashboard/ExposureJourney";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
 import { Icon } from "@/components/hub/Icon";
@@ -61,7 +60,21 @@ export default async function Dashboard() {
   // `improvement` is positive when today's score is lower (better) than it.
   const startExp = t?.history?.[0]?.overall ?? baseExp;
   const improvement = startExp != null && exposureNow != null ? startExp - exposureNow : null;
-  const laneAvg = c?.personal?.laneBaseline ?? null;
+
+  // The journey: every saved Map is a node (first = baseline, rest = re-scores),
+  // and — when effort has bought exposure down since the last re-score — today
+  // is appended as a final node, the drop to it being the effort dividend.
+  const fmtMonth = (d: Date) => new Date(d).toLocaleDateString("en-US", { month: "short", year: "2-digit" });
+  const journey: JourneyPoint[] = [];
+  if (t?.hasMap) {
+    t.history.forEach((h, i) =>
+      journey.push({ value: h.overall, label: i === 0 ? "Baseline" : "Re-score", sub: fmtMonth(h.at), kind: i === 0 ? "baseline" : "rescore" }));
+    if (effortDividend > 0 && exposureNow != null) {
+      journey.push({ value: exposureNow, label: "Today", sub: `Effort dividend −${effortDividend}`, kind: "today" });
+    } else if (journey.length) {
+      journey[journey.length - 1] = { ...journey[journey.length - 1], label: "Today", kind: "today" };
+    }
+  }
 
   // "To evolve to win" — reminders auto-generated from the Map, Build, and activity.
   const stepDone = (k: string) => plan?.steps.find((s) => s.key === k)?.done ?? false;
@@ -130,31 +143,25 @@ export default async function Dashboard() {
                 <Link href="/hub/map" className="cardlink">Open your Map →</Link>
               </div>
               {move?.stance && <h2 className="escore-aim">{winningAim(move.edge2, band.cls)}</h2>}
-              <div className="escore-main">
-                <div className="escore-now">
-                  <span className={`escore-n ${band.cls}`}>{exposureNow}</span>
-                  <span className="escore-band">{band.word ? `${band.word} exposure` : "exposure"}</span>
+              <div className="escore-nums">
+                <div className="escore-stat">
+                  <span className="escore-stat-n">{exposureNow}</span>
+                  <span className="escore-stat-l">Current Exposure{band.word ? ` · ${band.word}` : ""}</span>
                 </div>
-                {improvement != null && t.history.length >= 2 ? (
-                  <div className={`escore-prog ${improvement > 0 ? "good" : improvement < 0 ? "bad" : ""}`}>
-                    <span className="escore-prog-n">{improvement > 0 ? "↓" : improvement < 0 ? "↑" : "–"} {Math.abs(improvement)}</span>
-                    <span className="escore-prog-l">
-                      {improvement > 0 ? "lower than when you started" : improvement < 0 ? "higher than when you started" : "unchanged since you started"}
-                    </span>
-                    {t.history.length >= 2 && <span className="escore-spark"><Trend points={t.history} /></span>}
-                  </div>
-                ) : (
-                  <div className="escore-prog">
-                    <span className="escore-prog-l">Your first reading — your progress line starts building at your next re-score.</span>
+                {improvement != null && t.history.length >= 2 && (
+                  <div className={`escore-stat ${improvement > 0 ? "good" : improvement < 0 ? "bad" : ""}`}>
+                    <span className="escore-stat-n">{improvement > 0 ? "↓ " : improvement < 0 ? "↑ " : ""}{Math.abs(improvement)}</span>
+                    <span className="escore-stat-l">Exposure Improvement{improvement < 0 ? " · rose" : ""}</span>
                   </div>
                 )}
               </div>
-              <Gauge value={exposureNow ?? 0} avg={laneAvg} />
-              <div className="escore-figs">
-                {startExp != null && <div className="efig"><span className="efig-n">{startExp}</span><span className="efig-l">Baseline</span></div>}
-                {laneAvg != null && <div className="efig"><span className="efig-n">{laneAvg}</span><span className="efig-l">Career average</span></div>}
-                <div className="efig"><span className="efig-n">−{effortDividend}</span><span className="efig-l">Earned by effort</span></div>
-              </div>
+
+              {journey.length >= 2 ? (
+                <ExposureJourney points={journey} />
+              ) : (
+                <p className="escore-firstread">Your first reading — your journey line starts building at your next re-score.</p>
+              )}
+
               <div className="escore-foot">
                 {move?.stance && <span className="tag">Your play · {move.stance}</span>}
                 {c?.lane && <span className="tag">{c.lane}{laneBandWord ? ` · ${laneBandWord} risk` : ""}</span>}

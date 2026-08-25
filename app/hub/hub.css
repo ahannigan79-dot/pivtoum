@@ -321,26 +321,27 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .escore-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 .escore-head .cardlink { margin-left:0; }
 .escore-aim { font-family:var(--serif); font-weight:600; font-size:1.5rem; line-height:1.16;
-  letter-spacing:-0.01em; margin:4px 0 22px; color:var(--ink); max-width:28ch; }
-.escore-main { display:flex; align-items:flex-end; gap:38px; flex-wrap:wrap; margin:0 0 22px; }
-.escore-now { display:flex; align-items:baseline; gap:13px; }
-.escore-n { font-family:var(--serif); font-weight:600; font-size:4.6rem; line-height:0.86;
+  letter-spacing:-0.01em; margin:4px 0 24px; color:var(--ink); max-width:28ch; }
+/* The two figures that lead the page: current exposure + how far it's improved. */
+.escore-nums { display:flex; gap:56px; flex-wrap:wrap; margin:0 0 8px; }
+.escore-stat { display:flex; flex-direction:column; gap:5px; }
+.escore-stat-n { font-family:var(--serif); font-weight:600; font-size:3.4rem; line-height:0.92;
   letter-spacing:-0.02em; font-variant-numeric:tabular-nums lining-nums; color:var(--ink); }
-.escore-band { font-size:0.7rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--pencil); }
-.escore-prog { display:flex; align-items:baseline; gap:11px; flex-wrap:wrap; padding-bottom:8px; }
-.escore-prog-n { font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--soft);
-  font-variant-numeric:tabular-nums; white-space:nowrap; }
-.escore-prog.good .escore-prog-n { color:var(--prot); }
-.escore-prog.bad .escore-prog-n { color:var(--exp); }
-.escore-prog-l { font-size:0.9rem; color:var(--soft); max-width:24ch; line-height:1.42; }
-.escore-spark { width:118px; flex:none; align-self:center; opacity:.8; }
-.escore-figs { display:flex; gap:40px; flex-wrap:wrap; padding:20px 0 0; margin:20px 0 0; border-top:1px solid var(--rule); }
-.efig { display:flex; flex-direction:column; gap:4px; }
-.efig-n { font-family:var(--serif); font-weight:600; font-size:1.55rem; line-height:1; color:var(--ink);
-  font-variant-numeric:tabular-nums lining-nums; }
-.efig-l { font-size:0.64rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--pencil); }
+.escore-stat.good .escore-stat-n { color:var(--prot); }
+.escore-stat.bad .escore-stat-n { color:var(--exp); }
+.escore-stat-l { font-size:0.66rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); }
+
+/* Exposure journey chart */
+.ej { display:block; margin:14px 0 4px; overflow:visible; }
+.ej-val { font-family:var(--serif); font-weight:600; font-size:15px; fill:var(--ink); }
+.ej-lab { font-family:var(--sans); font-size:9.5px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; fill:var(--pencil); }
+.ej-lab.on { fill:var(--prot); }
+.ej-sub { font-family:var(--sans); font-size:9px; fill:var(--pencil); }
+.ej-axis { font-family:var(--sans); font-size:8.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; fill:var(--rule2); }
+.escore-firstread { font-size:0.9rem; color:var(--soft); margin:14px 0 6px; }
+
 .escore-foot { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:20px 0 0; }
-@media (max-width:640px){ .escore { padding:24px 22px; } .escore-n { font-size:3.4rem; } .escore-main { gap:22px; } .escore-figs { gap:26px; } }
+@media (max-width:640px){ .escore { padding:24px 22px; } .escore-stat-n { font-size:2.7rem; } .escore-nums { gap:34px; } }
 
 /* Quiet stat strip — the lesser numbers, deliberately understated. */
 .statline { display:flex; flex-wrap:wrap; gap:7px 22px; margin:0 0 24px; padding:0 2px;
