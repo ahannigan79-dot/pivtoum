@@ -61,11 +61,17 @@
 .hub-top .sp { margin-left:auto; }
 .hub-body { padding:6px 26px 60px; max-width:1080px; }
 
+/* Eyebrow — the one micro-label style, taken straight from the brand doc:
+   uppercase, letter-spaced, petrol, small. Context rules may shift only its
+   colour or margin, never its size or weight, so every eyebrow reads alike. */
+.ck { font-size:0.7rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 12px; line-height:1.3; }
+
 /* cards */
 .hub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
 .card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:22px 24px; display:block; transition:.14s; }
 a.card:hover { border-color:var(--rule2); background:var(--panel2); }
-.card .ck { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin:0 0 8px; }
+.card .ck { margin:0 0 8px; }
 .card h3 { font-family:var(--serif); font-weight:700; font-size:1.24rem; margin:0 0 6px; }
 .card p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.5; }
 .card .big { font-family:var(--mono); font-weight:600; font-size:2.1rem; line-height:1; margin:6px 0 2px; }
@@ -322,10 +328,13 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .cardlink:hover { color:var(--green-bright); }
 
 .move-stance { font-family:var(--serif); font-weight:700; font-size:1.28rem; margin:6px 0 14px; color:var(--ink); }
-.mixbar { display:flex; height:10px; border-radius:20px; overflow:hidden; background:var(--panel2); border:1px solid var(--rule2); }
-.mix-reno { background:linear-gradient(90deg,var(--green-deep),var(--green)); }
-.mix-e2 { background:linear-gradient(90deg,#8a6a2f,var(--amber)); }
-.mix-legend { display:flex; gap:16px; flex-wrap:wrap; margin:11px 0 0; font-size:0.8rem; color:var(--soft); }
+.mixbar { display:flex; height:8px; border-radius:20px; overflow:hidden; background:var(--panel3); }
+.mix-reno { background:var(--accent); }
+.mix-e2 { background:var(--rule2); }
+.mix-legend { display:flex; gap:18px; flex-wrap:wrap; margin:11px 0 0; font-size:0.8rem; color:var(--soft); }
+.mix-legend .ml { display:inline-flex; align-items:center; gap:7px; }
+.mix-legend .ml::before { content:""; width:8px; height:8px; border-radius:2px; background:var(--rule2); flex:none; }
+.mix-legend .ml.a::before { background:var(--accent); }
 .mix-legend i.d { display:none; }
 .move-blurb { margin:12px 0 0; color:var(--soft); font-size:0.92rem; line-height:1.5; }
 
@@ -452,15 +461,15 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .newhere b { color:var(--ink); }
 .nh-go { margin-left:auto; color:var(--green); font-weight:600; white-space:nowrap; }
 
-.kpis { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin:0 0 20px; }
-.kpi { position:relative; border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:18px 18px;
-  display:flex; flex-direction:column; gap:4px; }
+.kpis { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin:0 0 26px; }
+.kpi { position:relative; border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:20px 20px;
+  display:flex; flex-direction:column; gap:6px; }
 .kpi-exp { border-color:var(--rule2); }
-.kpi-n { font-family:var(--mono); font-weight:600; font-size:2rem; line-height:1; color:var(--ink); }
+.kpi-n { font-family:var(--mono); font-weight:600; font-size:1.9rem; line-height:1; color:var(--ink); }
 .kpi-exp.warn .kpi-n { color:var(--pen); } .kpi-exp.mid .kpi-n { color:var(--amber); } .kpi-exp.ok .kpi-n { color:var(--prot); }
 .kpi-l { font-size:0.64rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--pencil); }
-.kpi-delta { position:absolute; top:14px; right:15px; font-family:var(--mono); font-size:0.78rem; font-weight:600; }
-.kpi-delta.good { color:var(--green); } .kpi-delta.bad { color:var(--pen); }
+.kpi-delta { position:absolute; top:16px; right:16px; font-family:var(--mono); font-size:0.78rem; font-weight:600; }
+.kpi-delta.good { color:var(--prot); } .kpi-delta.bad { color:var(--pen); }
 
 .cta-hero-actions { display:flex; align-items:center; gap:10px; flex:none; }
 .cred.locked { color:var(--pencil); border-style:dashed; }
@@ -573,21 +582,21 @@ a.nm:hover { color:var(--ink); }
 
 /* ---- Evolve: winning strategy hero (front and centre) ---- */
 .strategy { border:1px solid var(--rule); border-radius:18px;
-  background:var(--panel); padding:24px 26px; margin:0 0 20px; }
+  background:var(--panel); padding:28px 30px; margin:0 0 26px; }
 .strat-top { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-.strat-top .ck { color:var(--green); }
+.strat-top .ck { color:var(--accent); }
 .strat-top .cardlink { margin-left:0; }
-.strat-stance { font-family:var(--serif); font-weight:700; font-size:1.95rem; line-height:1.14; margin:6px 0 6px; color:var(--ink); }
-.strat-via { margin:0 0 14px; font-size:0.9rem; color:var(--soft); }
+.strat-stance { font-family:var(--serif); font-weight:600; font-size:1.5rem; line-height:1.16; letter-spacing:-0.01em; margin:2px 0 8px; color:var(--ink); }
+.strat-via { margin:0 0 18px; font-size:0.9rem; color:var(--soft); }
 .strat-via b { color:var(--ink); font-weight:700; }
-.strategy .mixbar { height:12px; }
-.strategy .mix-legend { font-size:0.86rem; margin-top:12px; }
+.strategy .mixbar { height:8px; }
+.strategy .mix-legend { font-size:0.82rem; margin-top:14px; }
 .strat-line { margin:14px 0 0; color:var(--soft); font-size:1.02rem; line-height:1.5; max-width:70ch; }
-@media (max-width:640px){ .strat-stance { font-size:1.6rem; } }
+@media (max-width:640px){ .strat-stance { font-size:1.35rem; } }
 
 /* Adam's read — Claude's in-voice narrative of the member's Map */
 .mapread { border:1px solid var(--rule); border-radius:16px;
-  background:var(--panel); padding:24px 28px; margin:0 0 20px; }
+  background:var(--panel); padding:28px 30px; margin:0 0 26px; }
 .mapread-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 10px; }
 .mapread-head > .ck { margin:0; }
 .mapread-regen { flex:none; background:transparent; border:1px solid var(--rule2); border-radius:8px;
@@ -752,9 +761,9 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ---- effort score ("putting in the work") ---- */
 .effort { border:1px solid var(--rule); border-radius:16px;
-  background:var(--panel); padding:22px 24px; margin:0 0 20px; }
-.effort-main { display:flex; align-items:center; gap:18px; }
-.effort-n { font-family:var(--mono); font-weight:600; font-size:2.6rem; line-height:1; color:var(--prot); flex:none; }
+  background:var(--panel); padding:26px 28px; margin:0 0 26px; }
+.effort-main { display:flex; align-items:center; gap:20px; }
+.effort-n { font-family:var(--mono); font-weight:600; font-size:2.3rem; line-height:1; color:var(--ink); flex:none; }
 .effort-copy .ck { color:var(--green); }
 .effort-lead { margin:4px 0 0; color:var(--soft); font-size:0.92rem; line-height:1.5; max-width:64ch; }
 .effort-break { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0; }
@@ -891,7 +900,7 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ── The Welcome Pack ──────────────────────────────────────────── */
 .pack { max-width: 720px; }
-.pack-head .ck { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin: 0 0 6px; }
+.pack-head .ck { margin: 0 0 6px; }
 .pack-head h2 { font-family: var(--serif); font-weight: 700; font-size: 2rem; line-height: 1.14; margin: 4px 0 14px; }
 .pack-lede { font-family: var(--serif); font-size: 1.16rem; line-height: 1.6; color: var(--soft); margin: 0; max-width: 60ch; }
 .pack-sect { margin-top: 38px; }
@@ -1185,7 +1194,7 @@ a.pod-member:hover span { color:var(--ink); }
 /* ── Membership / billing ──────────────────────────────────────── */
 .mbr-card { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:20px 22px; }
 .mbr-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:16px; }
-.mbr-head .ck { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin:0 0 5px; }
+.mbr-head .ck { margin:0 0 5px; }
 .mbr-head h2 { font-family:var(--serif); font-weight:700; font-size:1.3rem; margin:0; }
 .mbr-status { margin-left:auto; flex:none; font-size:0.66rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase;
   padding:5px 11px; border-radius:20px; }
@@ -1205,7 +1214,7 @@ a.pod-member:hover span { color:var(--ink); }
 .mbr-note.ok { color:var(--green); background:rgba(127,192,138,0.08); border:1px solid var(--rule); }
 
 /* join card */
-.mbr-join .ck { font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin:0 0 5px; }
+.mbr-join .ck { margin:0 0 5px; }
 .mbr-join h2 { font-family:var(--serif); font-weight:700; font-size:1.5rem; margin:0 0 4px; }
 .mbr-price { font-family:var(--mono); font-size:1.05rem; color:var(--ink); margin:0 0 16px; }
 .mbr-trial { color:var(--green); font-family:var(--sans); font-weight:700; font-size:0.9rem; }

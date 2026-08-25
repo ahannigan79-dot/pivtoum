@@ -138,8 +138,8 @@ export default async function Dashboard() {
                   <span className="mix-e2" style={{ width: `${edge2W}%` }} />
                 </div>
                 <div className="mix-legend">
-                  <span>◆ Master the machine · {renovateW}%</span>
-                  {e2 && <span>✦ {e2.label} · {edge2W}%</span>}
+                  <span className="ml a">Master the machine · {renovateW}%</span>
+                  {e2 && <span className="ml b">{e2.label} · {edge2W}%</span>}
                 </div>
               </section>
             )}
