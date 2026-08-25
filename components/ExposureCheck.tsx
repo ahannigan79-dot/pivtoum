@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import { PackageSignup } from "@/components/PackageSignup";
+import { MapCapture } from "@/components/MapCapture";
 import { trackEvent } from "@/lib/analytics";
 import {
   BAND_LABELS, bandByStep, tunedStep, personalWhy,
@@ -12,17 +12,16 @@ const TONE_COLOR: Record<string, string> = {
 };
 
 const SENIORITY: { key: Seniority; label: string }[] = [
-  { key: "early", label: "Early-career" }, { key: "mid", label: "Mid-career" },
-  { key: "senior", label: "Senior" }, { key: "leader", label: "Leader" },
+  { key: "student", label: "Studying" }, { key: "early", label: "Early-career" },
+  { key: "mid", label: "Mid-career" }, { key: "senior", label: "Senior" }, { key: "leader", label: "Leader" },
 ];
 const ROUTINE: { key: Routine; label: string }[] = [
   { key: "repeatable", label: "Mostly repeatable" }, { key: "mix", label: "A mix" },
   { key: "judgment", label: "Mostly judgment" },
 ];
 
-export function ExposureCheck({ checks, careerOpts, preselect }: {
+export function ExposureCheck({ checks, preselect }: {
   checks: CheckResult[];
-  careerOpts: { slug: string; name: string }[];
   preselect?: string;
 }) {
   const sorted = useMemo(() => [...checks].sort((a, b) => a.name.localeCompare(b.name)), [checks]);
@@ -128,7 +127,11 @@ export function ExposureCheck({ checks, careerOpts, preselect }: {
           </div>
 
           <div className="chk-capture">
-            <PackageSignup careers={careerOpts} preselect={slug} />
+            <MapCapture
+              careerSlug={slug}
+              careerName={base!.name}
+              stage={seniority === "student" ? "planning" : "active"}
+            />
           </div>
         </>
       )}

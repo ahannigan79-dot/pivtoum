@@ -938,6 +938,11 @@ footer {
 .scr .pkg-hint { color: #E0776C; }
 .scr .pkg-done-h { color: #f5f1e8; }
 .scr .pkg-done-s { color: #cfc8ba; }
+.pkg-lean { gap: 0.9rem; }
+.pkg-lean-lede { font-family: var(--serif); font-size: 1.02rem; line-height: 1.5; margin: 0; }
+.scr .pkg-lean-lede { color: #cfc8ba; }
+.pkg-lean-lede b { color: inherit; font-weight: 700; }
+.scr .pkg-lean-lede b { color: #f0ece3; }
 .scr .scr-community { background: #262219; border-color: #39342b; border-left-color: #7FC08A; }
 .scr .scr-community-k { color: #7FC08A; }
 .scr .scr-community p { color: #cfc8ba; }

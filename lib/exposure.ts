@@ -26,13 +26,13 @@ export function bandByStep(step: number): CheckBand {
 }
 
 /* Two quick taps personalise the band by at most one step — the role still anchors it. */
-export type Seniority = "early" | "mid" | "senior" | "leader";
+export type Seniority = "student" | "early" | "mid" | "senior" | "leader";
 export type Routine = "repeatable" | "mix" | "judgment";
 
 /** Nudge the role's band step by the personal taps (net ±1, 0 = most exposed). */
 export function tunedStep(baseStep: number, seniority: Seniority, routine: Routine): number {
   const r = routine === "repeatable" ? -1 : routine === "judgment" ? 1 : 0; // repeatable = more exposed
-  const s = seniority === "early" ? -0.5 : seniority === "senior" || seniority === "leader" ? 0.5 : 0;
+  const s = seniority === "early" || seniority === "student" ? -0.5 : seniority === "senior" || seniority === "leader" ? 0.5 : 0;
   const net = Math.max(-1, Math.min(1, Math.round(r + s)));
   return clampStep(baseStep + net);
 }
@@ -42,6 +42,7 @@ export function personalWhy(seniority: Seniority, routine: Routine): { expose: s
   const expose: string[] = [], protect: string[] = [];
   if (routine === "repeatable") expose.push("Most of your day is repeatable work AI can already do.");
   if (routine === "judgment") protect.push("Your day leans on judgment calls the model can't own.");
+  if (seniority === "student") expose.push("You're still studying — you'll enter a market AI is already reshaping.");
   if (seniority === "early") expose.push("You're early — still building the judgment that protects you.");
   if (seniority === "leader") protect.push("You set the direction; you don't just execute it.");
   return { expose, protect };

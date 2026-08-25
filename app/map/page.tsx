@@ -23,7 +23,6 @@ export default async function MapLanding({
 }) {
   const { career } = await searchParams;
   const preselect = typeof career === "string" ? career : undefined;
-  const opts = careers.map((c) => ({ slug: c.slug, name: c.name })).sort((a, b) => a.name.localeCompare(b.name));
   const checks = careers.map(buildCheck);
 
   return (
@@ -48,7 +47,7 @@ export default async function MapLanding({
           Career Map: your exact score, your winning strategy, and the moves that lower it.
         </p>
 
-        <ExposureCheck checks={checks} careerOpts={opts} preselect={preselect} />
+        <ExposureCheck checks={checks} preselect={preselect} />
 
         <div className="scr-community">
           <span className="scr-community-k">Winning in the Age of AI</span>
