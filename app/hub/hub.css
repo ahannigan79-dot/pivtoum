@@ -1026,6 +1026,26 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-gen-btn:hover:not(:disabled) { filter:brightness(1.06); }
 .gym-gen-btn:disabled { opacity:0.7; cursor:progress; }
 .gym-fresh-note { color:var(--pencil); font-size:0.85rem; margin:0 0 16px; max-width:60ch; }
+.build-hero-link { display:inline-block; margin-top:12px; font-size:0.86rem; font-weight:700; color:var(--green); text-decoration:none; }
+.build-hero-link:hover { text-decoration:underline; }
+/* catalogue browse */
+.gymcat-bar { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:2px 0 14px; }
+.gymcat-pick { display:inline-flex; align-items:center; gap:9px; font-size:0.86rem; color:var(--soft); }
+.gymcat-pick select { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:8px 11px;
+  color:var(--ink); font-family:var(--sans); font-size:0.9rem; min-width:220px; }
+.gymcat-count { font-size:0.78rem; color:var(--pencil); font-family:var(--mono); }
+/* founder seeder */
+.gymseed { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  border:1px solid var(--amber); border-radius:14px; padding:15px 18px; margin:0 0 16px;
+  background:linear-gradient(135deg,rgba(214,168,91,0.10),var(--panel) 60%); }
+.gymseed-copy { flex:1 1 320px; }
+.gymseed-copy .ck { color:var(--amber); margin:0 0 5px; }
+.gymseed-copy p { margin:0; color:var(--soft); font-size:0.9rem; line-height:1.5; }
+.gymseed-msg { margin-top:7px !important; color:var(--ink) !important; font-weight:600; }
+.gymseed-btn { flex:0 0 auto; border:0; cursor:pointer; border-radius:11px; padding:11px 18px;
+  background:var(--amber); color:#12100a; font-weight:800; font-size:0.9rem; transition:filter .15s ease; }
+.gymseed-btn:hover:not(:disabled){ filter:brightness(1.06); }
+.gymseed-btn:disabled { opacity:.7; cursor:progress; }
 .gym-gen-form { display:flex; flex-direction:column; gap:9px; flex:0 0 auto; min-width:240px; }
 .gym-gen-input { background:var(--panel2); border:1px solid var(--rule2); border-radius:10px; padding:10px 12px;
   color:var(--ink); font-family:var(--sans); font-size:0.88rem; }
