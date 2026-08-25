@@ -10,7 +10,13 @@ import { useEffect, useRef, useState } from "react";
 export function MapRead() {
   const [state, setState] = useState<"loading" | "ready" | "empty">("loading");
   const [paras, setParas] = useState<string[]>([]);
+  const [regen, setRegen] = useState(false);
   const started = useRef(false);
+
+  function apply(text: string) {
+    setParas(text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean));
+    setState("ready");
+  }
 
   useEffect(() => {
     if (started.current) return;
@@ -23,8 +29,7 @@ export function MapRead() {
         if (!alive) return;
         const text = (data.narrative ?? "").trim();
         if (!text) return setState("empty");
-        setParas(text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean));
-        setState("ready");
+        apply(text);
       } catch {
         if (alive) setState("empty");
       }
@@ -32,12 +37,33 @@ export function MapRead() {
     return () => { alive = false; };
   }, []);
 
+  async function regenerate() {
+    setRegen(true);
+    try {
+      const res = await fetch("/api/hub/map/narrative", { method: "POST" });
+      const data = (await res.json()) as { narrative: string | null };
+      const text = (data.narrative ?? "").trim();
+      if (text) apply(text);
+    } catch {
+      /* keep what's shown */
+    } finally {
+      setRegen(false);
+    }
+  }
+
   if (state === "empty") return null;
 
   return (
     <section className="mapread">
-      <p className="ck">Adam&apos;s read · your Map in plain words</p>
-      {state === "loading" ? (
+      <div className="mapread-head">
+        <p className="ck">Adam&apos;s read · your Map in plain words</p>
+        {state === "ready" && (
+          <button className="mapread-regen" onClick={regenerate} disabled={regen}>
+            {regen ? "…" : "↻ Regenerate"}
+          </button>
+        )}
+      </div>
+      {state === "loading" || regen ? (
         <div className="mapread-load" aria-hidden="true">
           <span /><span /><span />
         </div>

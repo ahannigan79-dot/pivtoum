@@ -16,3 +16,13 @@ export async function GET() {
   const read = await getOrCreateMapNarrative(userId);
   return NextResponse.json({ narrative: read?.narrative ?? null });
 }
+
+// Force a fresh read (ignores the cached one) — the member's "regenerate".
+export async function POST() {
+  const { userId } = await auth();
+  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  if (!aiConfigured()) return NextResponse.json({ narrative: null });
+
+  const read = await getOrCreateMapNarrative(userId, 0, true);
+  return NextResponse.json({ narrative: read?.narrative ?? null });
+}

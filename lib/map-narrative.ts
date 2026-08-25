@@ -17,16 +17,16 @@ import { winningAim } from "@/lib/moves";
 const SYSTEM = `${VOICE}
 
 ## Your task right now
-Write the member a short personal reading of their AI Career Map — the kind of thing Adam would say if he sat down with their scorecard for two minutes.
+Explain this member's AI Career Map to them in plain, natural English — the way you'd talk it through sitting next to them, not the way an article is written. The goal is that they finish reading and clearly understand where they stand and what to do.
 
-Length: 2–3 short paragraphs, ~90–150 words total. No headings, no lists, no preamble like "Here's your reading". Just talk to them.
+Length: exactly 3 short paragraphs, ~110–150 words total. No headings, no lists, no preamble like "Here's your reading". Just talk to them, simply.
 
-Cover, in your own flow (not as labelled sections):
-1. Where they stand and what their exposure honestly means for their specific lane — name the real work that's exposed.
-2. What's actually working in their favour (their protections / what the machine can't take from their role).
-3. The one move that matters most next, tied to their given strategy. End on momentum, not fear.
+Say one clear thing per paragraph:
+1. What their exposure score actually means for them in everyday terms — is this reassuring or worrying, and why. Name the real work AI is taking, in plain words.
+2. What's keeping them safe — the parts of their job AI genuinely can't do.
+3. The single most useful thing to do next, from their strategy. End plainly and encouragingly — no slogan.
 
-Ground every claim in the facts provided. The exposure number, band, driver, and strategy are given — use them exactly, never invent others. Second person throughout. Plain text only.`;
+Write so they understand it on the first read. Ordinary words, complete sentences, no clever turns of phrase. Ground every claim in the facts provided — use the given score, band, driver and strategy exactly, never invent others. Second person throughout. Plain text only.`;
 
 /** Compact, already-computed facts handed to Claude — never asks it to score. */
 function factSheet(c: MapComputed, overall: number, effortDividend: number): string {
@@ -84,7 +84,7 @@ export type MapRead = { narrative: string; cached: boolean } | null;
  * the first time. Best-effort: returns null when AI is off, there's no map, or a
  * generation fails — callers render the rest of the dashboard regardless.
  */
-export async function getOrCreateMapNarrative(userId: string | null, effortDividend = 0): Promise<MapRead> {
+export async function getOrCreateMapNarrative(userId: string | null, effortDividend = 0, force = false): Promise<MapRead> {
   if (!userId) return null;
   const rows = await db
     .select({ id: mapStates.id, computed: mapStates.computed, overall: mapStates.overall, narrative: mapStates.narrative })
@@ -94,7 +94,7 @@ export async function getOrCreateMapNarrative(userId: string | null, effortDivid
     .limit(1);
   const row = rows[0];
   if (!row) return null;
-  if (row.narrative) return { narrative: row.narrative, cached: true };
+  if (row.narrative && !force) return { narrative: row.narrative, cached: true };
 
   const text = await generateMapNarrative(
     (row.computed ?? null) as MapComputed | null,

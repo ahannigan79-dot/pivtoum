@@ -575,6 +575,12 @@ a.nm:hover { color:var(--ink); }
 /* Adam's read — Claude's in-voice narrative of the member's Map */
 .mapread { border:1px solid var(--rule); border-left:3px solid var(--pen); border-radius:14px;
   background:var(--panel); padding:16px 20px; margin:0 0 16px; }
+.mapread-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 10px; }
+.mapread-head > .ck { margin:0; }
+.mapread-regen { flex:none; background:transparent; border:1px solid var(--rule2); border-radius:8px;
+  color:var(--pencil); font-family:var(--sans); font-weight:700; font-size:0.72rem; padding:4px 9px; cursor:pointer; transition:.12s; }
+.mapread-regen:hover:not(:disabled) { border-color:var(--pen); color:var(--pen); }
+.mapread-regen:disabled { cursor:progress; opacity:.6; }
 .mapread > .ck { color:var(--pen); margin:0 0 10px; }
 .mapread-body { font-family:var(--serif); color:var(--ink); font-size:1.04rem; line-height:1.6; max-width:66ch; }
 .mapread-body p { margin:0 0 0.7em; }
