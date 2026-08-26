@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Teaching
 
-*For anyone already in teacher training — or qualified and job-hunting for a classroom*
+*For anyone teaching — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in teacher training, or qualified and into the job hunt. So this guide skips the "should you teach" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're already teaching — whether you're early in your career or well established. So this guide skips the "should you teach" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where teaching sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -346,7 +344,7 @@ And it's worth stating what the score can't measure. Watching a child understand
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

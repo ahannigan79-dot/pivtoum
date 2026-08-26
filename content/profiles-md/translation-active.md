@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Translation & Interpreting
 
-*For anyone already in a translation or interpreting degree or training — or graduated and job-hunting with one*
+*For anyone working in translation or interpreting — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a translation or interpreting degree or training, or out of one and into the job hunt. So this guide skips the "should you study languages" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're already working in translation or interpreting — whether you're early in your career or well established. So this guide skips the "should you go into languages" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where translation and interpreting sit in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -329,7 +327,7 @@ And one honest thing, if you already love languages. ==+Nothing here says that's
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

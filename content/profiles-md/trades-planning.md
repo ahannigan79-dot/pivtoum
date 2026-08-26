@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Skilled Trades
 
-*For anyone still choosing — weighing the skilled trades, or a path into one*
+*For anyone considering a move into the skilled trades — weighing whether to make the switch*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing the skilled trades — or a path into a trade — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a move into the skilled trades — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
 
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. And be honest with yourself about your own first reaction, because for many parents this is the choice they least expected to be reading about — if your instinct was disappointment, that's worth examining before the conversation rather than during it. ==?The scores here are better than most degrees, the debt position is better than all of them, and the demand picture is stronger than anything else we measure. The disappointment is usually about status rather than outcomes.==
+**One thing worth sitting with before the scores.** For many people weighing this move, the skilled trades are the option they least expected to be considering — and if your first reaction was disappointment, that's worth examining before you go any further. ==?The scores here are better than most degrees, the debt position is better than all of them, and the demand picture is stronger than anything else we measure. The disappointment is usually about status rather than outcomes.==
 
 **And one thing specific to the trades — honest on both sides: this is not a consolation prize, and it is also not for everyone.** The physical demands over thirty years are real, the income ceiling without business ownership is real, and someone who dislikes being outdoors in February will dislike it for a very long time. Good news should open the conversation, not close it.
 
@@ -368,7 +366,7 @@ And if your first reaction to this was disappointment — it's worth sitting wit
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

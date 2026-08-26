@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Teaching
 
-*For anyone still choosing — weighing a teaching qualification, or a path into the classroom*
+*For anyone considering a move into teaching — weighing whether to make the switch*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a route into teaching — or a path toward the classroom — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a move into teaching — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to teaching.** ==?This is the guide where the AI answer and the career answer point in opposite directions, and it would be easy to conflate them.== AI is genuinely good news for classroom teachers — it removes the parts of the job people leave over. The reasons teaching is hard have nothing to do with technology and haven't changed.
 
@@ -374,7 +370,7 @@ And it's worth stating what the score can't measure. Watching a child understand
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Social Work
 
-*For anyone still choosing — weighing a social work degree, or a path into the profession*
+*For anyone considering a move into social work — weighing whether to make the switch*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a social work degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a move into social work — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to social work.** ==?The AI answer here is genuinely reassuring, and the honest answer about the working conditions is difficult.== The section on what's genuinely hard sets out what the research says about burnout, caseloads and trauma exposure in child welfare specifically, and it isn't comfortable reading. It's here because anyone choosing this deserves to know what they're choosing, and because the profession's own bodies publish this data precisely so it can be addressed. It is not a reason to avoid social work. It is a reason to choose the *setting* deliberately, which matters more here than in almost any career we score.
 
@@ -376,7 +372,7 @@ And one thing worth saying plainly. ==+Social work is among the small number of 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
