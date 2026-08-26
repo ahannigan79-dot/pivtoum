@@ -2,9 +2,11 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getUpcomingEvents, getPastEvents, getEventsInMonth } from "@/lib/events";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { getMyLedPods } from "@/lib/pods";
 import { EventCard } from "@/components/hub/events/EventCard";
 import { EventCalendar } from "@/components/hub/events/EventCalendar";
 import { NewEventForm } from "@/components/hub/events/NewEventForm";
+import { HostSessionForm } from "@/components/hub/events/HostSessionForm";
 
 export const metadata = { title: "Events — Pivotum" };
 
@@ -28,10 +30,11 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
   const { m } = await searchParams;
   const { year, month0 } = parseMonth(m);
 
-  const [monthEvents, upcoming, past] = await Promise.all([
+  const [monthEvents, upcoming, past, ledPods] = await Promise.all([
     getEventsInMonth(userId, year, month0),
     getUpcomingEvents(userId),
     getPastEvents(userId),
+    getMyLedPods(userId),
   ]);
 
   const prev = month0 === 0 ? { y: year - 1, m: 11 } : { y: year, m: month0 - 1 };
@@ -52,6 +55,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
         </Link>
 
         {founder && <NewEventForm />}
+        {!founder && ledPods.length > 0 && <HostSessionForm pods={ledPods} />}
 
         <EventCalendar
           year={year} month0={month0} events={monthEvents}

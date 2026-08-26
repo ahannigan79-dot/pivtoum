@@ -33,6 +33,24 @@ export async function setPodLeader(podId: string, memberId: string, on: boolean)
     .where(sql`${podMembers.podId} = ${podId} and ${podMembers.memberId} = ${memberId}`);
 }
 
+/** True if the member leads this specific pod — the gate for hosting its sessions. */
+export async function leadsPod(meId: string | null | undefined, podId: string): Promise<boolean> {
+  if (!meId) return false;
+  const r = await db.select({ podId: podMembers.podId }).from(podMembers)
+    .where(sql`${podMembers.memberId} = ${meId} and ${podMembers.podId} = ${podId} and ${podMembers.leader} = true`).limit(1);
+  return r.length > 0;
+}
+
+/** Pods the member leads — to populate their "Host a session" picker. */
+export async function getMyLedPods(meId: string | null): Promise<Pod[]> {
+  if (!meId) return [];
+  const rows = await db.select({ p: pods }).from(podMembers)
+    .innerJoin(pods, eq(podMembers.podId, pods.id))
+    .where(sql`${podMembers.memberId} = ${meId} and ${podMembers.leader} = true`)
+    .orderBy(asc(pods.name));
+  return rows.map((r) => r.p);
+}
+
 /** Pods the member belongs to. */
 export async function getMyPods(meId: string | null): Promise<Pod[]> {
   if (!meId) return [];

@@ -166,6 +166,9 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .event-type.t-welcome_1to1 { color:var(--green); border-color:var(--green-deep); }
 .event-type.t-rescore { color:var(--amber); border-color:#7a5e2c; }
 .event-when { font-family:var(--mono); font-size:0.78rem; color:var(--pencil); }
+.event-pod { font-size:0.56rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-wash); border-radius:99px; padding:0.15rem 0.5rem; }
+.event-host { margin:2px 0 0; font-family:var(--sans); font-size:0.78rem; color:var(--soft); }
 .event h3 { font-family:var(--serif); font-weight:700; font-size:1.12rem; margin:0; }
 .event-desc { margin:6px 0 0; color:var(--soft); font-size:0.9rem; line-height:1.5; }
 .event-actions { display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex:none; }

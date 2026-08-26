@@ -8,9 +8,11 @@ export function EventCard({ e, past = false, admin = false }: { e: EventRow; pas
       <div className="event-main">
         <div className="event-head">
           <span className={"event-type t-" + e.type}>{EVENT_LABELS[e.type] ?? e.type}</span>
+          {e.podName && <span className="event-pod">Pod · {e.podName}</span>}
           <span className="event-when">{formatWhen(e.startsAt)}{e.durationMins ? ` · ${e.durationMins}m` : ""}</span>
         </div>
         <h3>{e.title}</h3>
+        {e.hostName && <p className="event-host">Hosted by {e.hostName}</p>}
         {e.description && <p className="event-desc">{e.description}</p>}
         {admin && <EventAdmin event={e} />}
       </div>

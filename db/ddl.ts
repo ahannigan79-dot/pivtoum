@@ -214,6 +214,13 @@ export const PATCH_STATEMENTS: string[] = [
      CONSTRAINT "member_weeks_pk" PRIMARY KEY("member_id","week")
    )`,
   `ALTER TABLE "pod_members" ADD COLUMN IF NOT EXISTS "leader" boolean DEFAULT false NOT NULL`,
+  `ALTER TABLE "events" ADD COLUMN IF NOT EXISTS "host_id" text REFERENCES "profiles"("clerk_user_id") ON DELETE set null`,
+  `ALTER TABLE "events" ADD COLUMN IF NOT EXISTS "pod_id" uuid REFERENCES "pods"("id") ON DELETE cascade`,
+  `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'q_and_a'`,
+  `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'open_stage'`,
+  `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'sme'`,
+  `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'wins'`,
+  `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'pod_checkin'`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

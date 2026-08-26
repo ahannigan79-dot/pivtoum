@@ -163,7 +163,10 @@ export const postAttachments = pgTable("post_attachments", {
 }, (t) => ({ postIdx: index("post_attachments_post_idx").on(t.postId) }));
 
 /* ---------- Events (deep-dives, 1:1 welcome, re-score, clinics) ---------- */
-export const eventTypeEnum = pgEnum("event_type", ["welcome_1to1", "deep_dive", "rescore", "clinic", "social"]);
+export const eventTypeEnum = pgEnum("event_type", [
+  "welcome_1to1", "deep_dive", "rescore", "clinic", "social",
+  "q_and_a", "open_stage", "sme", "wins", "pod_checkin",
+]);
 export const events = pgTable("events", {
   id: uid(),
   title: text("title").notNull(),
@@ -173,6 +176,8 @@ export const events = pgTable("events", {
   durationMins: integer("duration_mins").default(60),
   joinUrl: text("join_url"),
   recordingUrl: text("recording_url"),
+  hostId: text("host_id").references(() => profiles.clerkUserId, { onDelete: "set null" }), // who hosts (founder or pod leader)
+  podId: uuid("pod_id").references(() => pods.id, { onDelete: "cascade" }),                 // null = community-wide; set = pod-scoped
   createdAt: now(),
 }, (t) => ({ whenIdx: index("events_when_idx").on(t.startsAt) }));
 export const eventRsvps = pgTable("event_rsvps", {
