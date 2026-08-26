@@ -39,7 +39,7 @@ export function ContributeForms() {
             <input name="startsAt" type="datetime-local" title="Proposed time" />
             <input name="durationMins" type="number" defaultValue={45} min={15} step={15} title="Minutes" />
           </div>
-          <input name="joinUrl" placeholder="Join link (Zoom / Meet) — optional, can add later" maxLength={500} />
+          <input name="joinUrl" placeholder="Google Meet link — optional, Adam can add one" maxLength={500} />
           <textarea name="body" rows={4} required maxLength={8000}
             placeholder="What's the session about? Who's it for, and what will people walk away with?" />
           <div className="newevent-foot">

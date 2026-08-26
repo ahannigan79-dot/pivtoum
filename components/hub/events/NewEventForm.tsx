@@ -24,8 +24,8 @@ export function NewEventForm() {
         <input name="startsAt" type="datetime-local" required />
         <input name="durationMins" type="number" defaultValue={60} min={15} step={15} title="Minutes" />
       </div>
-      <input name="joinUrl" placeholder="Join link (Zoom / Meet) — optional" maxLength={500} />
-      <input name="recordingUrl" placeholder="Recording link — optional" maxLength={500} />
+      <input name="joinUrl" placeholder="Google Meet link — optional" maxLength={500} />
+      <input name="recordingUrl" placeholder="Recording link (Google Drive) — add after it runs" maxLength={500} />
       <textarea name="description" rows={2} placeholder="Description — optional" maxLength={2000} />
       <div className="newevent-foot">
         <button type="button" className="ghost" onClick={() => setOpen(false)}>Cancel</button>

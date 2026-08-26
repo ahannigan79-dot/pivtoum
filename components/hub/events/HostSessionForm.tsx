@@ -34,7 +34,7 @@ export function HostSessionForm({ pods }: { pods: { id: string; name: string }[]
           <option value="community">Whole community</option>
         </select>
       </div>
-      <input name="joinUrl" placeholder="Join link (Zoom / Meet) — optional" maxLength={500} />
+      <input name="joinUrl" placeholder="Google Meet link — optional" maxLength={500} />
       <textarea name="description" rows={2} placeholder="What's the session about? — optional" maxLength={2000} />
       <div className="newevent-foot">
         <button type="button" className="ghost" onClick={() => setOpen(false)}>Cancel</button>
