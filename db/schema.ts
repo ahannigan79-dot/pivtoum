@@ -329,6 +329,17 @@ export const laneBaselines = pgTable("lane_baselines", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => ({ pk: primaryKey({ columns: [t.careerSlug, t.lane] }) }));
 
+/* ---------- Founder cadence: the one dial that drives the community month.
+   A single row (id = 'singleton'). pinnedKey overrides the calendar-driven
+   active month; null = follow the calendar. See lib/cadence.ts. */
+export const cadenceState = pgTable("cadence_state", {
+  id: text("id").primaryKey().default("singleton"),
+  pinnedKey: text("pinned_key"),          // a CadenceMonth.key, or null to follow the calendar
+  scheduledKey: text("scheduled_key"),    // the month key whose events were last scheduled (guards double-booking)
+  updatedBy: text("updated_by"),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),

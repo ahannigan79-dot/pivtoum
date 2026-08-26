@@ -34,6 +34,7 @@ export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
   const sections = isFounder
     ? [...SECTIONS, { label: "Founder", items: [
+        { href: "/hub/cadence", icon: "events", label: "Cadence" },
         { href: "/hub/health", icon: "health", label: "Member health" },
         { href: "/hub/market", icon: "exposure", label: "Market baselines" },
         { href: "/hub/scout", icon: "scout", label: "Article scout" },

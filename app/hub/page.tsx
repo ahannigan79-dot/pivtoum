@@ -8,6 +8,8 @@ import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity } from "@/lib/effort";
 import { qualifyingMonths } from "@/lib/gym-gate";
 import { getCurrentPrompt } from "@/lib/ritual";
+import { activeCadenceMonth } from "@/lib/cadence-state";
+import { weekOfMonth } from "@/lib/cadence";
 import { resolvePromptArticle } from "@/lib/brief";
 import { ExposureJourney, type JourneyPoint } from "@/components/hub/dashboard/ExposureJourney";
 import { currentExposure, clampScore } from "@/lib/score";
@@ -33,11 +35,13 @@ export default async function Dashboard() {
   const activity = userId ? await getMemberActivity(userId) : null;
   if (userId && activity) await evaluateBadges(userId, activity); // catch up on milestone credentials
 
-  const [moves, earned, prompt] = await Promise.all([
+  const [moves, earned, prompt, cadence] = await Promise.all([
     t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
     getEarnedBadges(userId),
     getCurrentPrompt(),
+    activeCadenceMonth(),
   ]);
+  const cadenceWeekPrompt = cadence.prompts[weekOfMonth() - 1];
   const suggestions = t?.hasMap ? suggestMoves(c) : [];
   const promptArticle = resolvePromptArticle(prompt);
   // Recently-earned credentials → an "earned moment" (last 48h).
@@ -141,6 +145,15 @@ export default async function Dashboard() {
             <span>You earned {recent.length === 1 ? "a new credential" : `${recent.length} new credentials`}: <b>{recent.map((b) => b.name).join(", ")}</b> — the work is showing.</span>
           </div>
         )}
+
+        <Link href="/hub/community" className="month-band">
+          <span className="mb-tag">This month{cadence.reScore ? " · re-score" : ""}</span>
+          <div className="mb-main">
+            <h3>{cadence.subject}</h3>
+            <p>{cadenceWeekPrompt}</p>
+          </div>
+          <span className="mb-go">→</span>
+        </Link>
 
         {prompt && (
           <div className="week-prompt-wrap">

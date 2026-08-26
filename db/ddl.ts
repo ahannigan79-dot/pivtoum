@@ -221,6 +221,15 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'sme'`,
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'wins'`,
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'pod_checkin'`,
+  // Founder cadence — the one dial that drives the community month. Singleton row.
+  `CREATE TABLE IF NOT EXISTS "cadence_state" (
+     "id" text PRIMARY KEY DEFAULT 'singleton' NOT NULL,
+     "pinned_key" text,
+     "scheduled_key" text,
+     "updated_by" text,
+     "updated_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `INSERT INTO "cadence_state" ("id") VALUES ('singleton') ON CONFLICT ("id") DO NOTHING`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

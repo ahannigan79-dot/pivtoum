@@ -1802,3 +1802,62 @@ a.pod-member:hover span { color:var(--ink); }
 .gymgate-track { height:7px; border-radius:99px; background:var(--panel3); overflow:hidden; }
 .gymgate-track span { display:block; height:100%; border-radius:99px; background:var(--accent); transition:width .3s; }
 @media (max-width:520px){ .gymgate-bars { grid-template-columns:1fr; } }
+
+/* ---------- Founder cadence tool + member "This month" band ---------- */
+.month-band { display:flex; gap:15px; align-items:center; border:1px solid var(--rule);
+  border-radius:14px; background:var(--accent-wash); padding:14px 16px; margin:0 0 18px; transition:.14s; }
+.month-band:hover { border-color:var(--accent); }
+.mb-tag { flex:none; font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--accent); align-self:flex-start; margin-top:2px; }
+.mb-main { min-width:0; flex:1; }
+.mb-main h3 { font-family:var(--serif); font-weight:700; font-size:1.1rem; margin:0 0 4px; color:var(--ink); }
+.mb-main p { margin:0; color:var(--soft); font-size:0.9rem; line-height:1.5; }
+.mb-go { flex:none; color:var(--accent); font-size:1.1rem; }
+
+.cadence .cad-now { border:1px solid var(--rule); border-radius:16px; background:var(--panel);
+  padding:20px 22px; margin:14px 0 8px; }
+.cad-now-head { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:14px; }
+.cad-tag { font-size:0.62rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); }
+.cad-now-head h2 { font-family:var(--serif); font-weight:700; font-size:1.6rem; margin:4px 0 4px; color:var(--ink); }
+.cad-anchor { margin:0; font-size:0.82rem; color:var(--pencil); }
+.cad-steps { display:flex; gap:7px; flex:none; }
+.cad-steps button { font-family:var(--sans); font-weight:700; font-size:0.8rem; color:var(--soft);
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:8px; padding:6px 11px; cursor:pointer; transition:.12s; }
+.cad-steps button:hover { border-color:var(--pencil); color:var(--ink); }
+.cad-k { display:block; font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--pencil); margin-bottom:4px; }
+.cad-lesson { margin:0 0 14px; font-size:0.92rem; color:var(--soft); }
+.cad-lesson .cad-k { display:inline; margin-right:8px; color:var(--accent); }
+.cad-prompt-now { border:1px solid var(--accent); border-radius:12px; background:var(--accent-wash);
+  padding:13px 15px; margin:0 0 16px; }
+.cad-prompt-now p { margin:0; font-family:var(--serif); font-size:1.05rem; line-height:1.5; color:var(--ink); }
+.cad-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin:0 0 16px; }
+.cad-grid p { margin:0; font-size:0.9rem; line-height:1.5; color:var(--ink); }
+.cad-sub { color:var(--pencil) !important; font-size:0.82rem !important; margin-top:3px !important; }
+.cad-prompts-all ol { margin:6px 0 16px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:6px; }
+.cad-prompts-all li { font-size:0.88rem; line-height:1.5; color:var(--soft); padding:6px 10px; border-radius:8px; }
+.cad-prompts-all li b { color:var(--pencil); font-family:var(--mono); font-size:0.76rem; margin-right:8px; }
+.cad-prompts-all li.on { background:var(--accent-wash); color:var(--ink); }
+.cad-prompts-all li.on b { color:var(--accent); }
+.cad-events { border-top:1px solid var(--rule); padding-top:16px; }
+.cad-events-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+.cad-events-head button { font-family:var(--sans); font-weight:700; font-size:0.84rem; color:var(--on-fill);
+  background:var(--accent); border:0; border-radius:9px; padding:9px 16px; cursor:pointer; }
+.cad-events-head button:disabled { background:var(--panel3); color:var(--pencil); cursor:default; }
+.cad-evlist { list-style:none; margin:0 0 10px; padding:0; display:flex; flex-direction:column; gap:9px; }
+.cad-evlist li { font-size:0.92rem; color:var(--ink); }
+.cad-evlist li b { font-weight:600; }
+.cad-evlist .event-type { margin-right:8px; }
+.cad-evlist li p { margin:3px 0 0; }
+.cad-year-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+.cad-mcard { display:block; }
+.cad-mcard button { width:100%; text-align:left; border:1px solid var(--rule); border-radius:12px;
+  background:var(--panel); padding:12px 13px; cursor:pointer; transition:.14s; position:relative; }
+.cad-mcard button:hover { border-color:var(--accent); }
+.cad-mcard.on button { border-color:var(--accent); background:var(--accent-wash); }
+.cad-mtag { display:block; font-size:0.58rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--pencil); margin-bottom:5px; }
+.cad-mcard b { font-family:var(--serif); font-weight:700; font-size:1rem; color:var(--ink); line-height:1.25; }
+.cad-re { display:inline-block; margin-top:6px; font-size:0.56rem; font-weight:800; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--amber); }
+@media (max-width:560px){ .cad-grid { grid-template-columns:1fr; } .cad-now-head { flex-direction:column; } }
