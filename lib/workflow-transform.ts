@@ -108,13 +108,20 @@ Return the transformation document as strict JSON per the format.`;
   return null;
 }
 
-/** Most recent transformation for a member (or null). */
+/** Most recent transformation for a member (or null). Best-effort: if the table
+ *  isn't there yet (migration not run) or the query fails, degrade to null so the
+ *  page renders the empty state rather than crashing the render. */
 export async function latestTransform(memberId: string): Promise<{ id: string; workflow: string; doc: Transformation; createdAt: Date } | null> {
-  const r = await db.select().from(workflowTransforms)
-    .where(eq(workflowTransforms.memberId, memberId))
-    .orderBy(desc(workflowTransforms.createdAt)).limit(1);
-  const row = r[0];
-  return row ? { id: row.id, workflow: row.workflow, doc: row.doc as Transformation, createdAt: row.createdAt } : null;
+  try {
+    const r = await db.select().from(workflowTransforms)
+      .where(eq(workflowTransforms.memberId, memberId))
+      .orderBy(desc(workflowTransforms.createdAt)).limit(1);
+    const row = r[0];
+    return row ? { id: row.id, workflow: row.workflow, doc: row.doc as Transformation, createdAt: row.createdAt } : null;
+  } catch (e) {
+    console.error("latestTransform failed (is the workflow_transforms table migrated?)", e);
+    return null;
+  }
 }
 
 /** Days until the member can generate again (0 = now), given the 1/month cap. */

@@ -53,6 +53,11 @@ export async function transformWorkflow(formData: FormData): Promise<void> {
   };
   const doc = await generateTransformation(inputs);
   if (!doc) redirect("/hub/build/rebuild/mine?err=failed");
-  await storeTransform(userId, inputs, doc!);
+  try {
+    await storeTransform(userId, inputs, doc!);
+  } catch (e) {
+    console.error("storeTransform failed (is the workflow_transforms table migrated?)", e);
+    redirect("/hub/build/rebuild/mine?err=failed");
+  }
   redirect("/hub/build/rebuild/mine?ok=1");
 }
