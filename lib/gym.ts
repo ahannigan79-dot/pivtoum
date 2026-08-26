@@ -2,6 +2,8 @@
    some of it is subtly wrong. Judge each piece Ship or Flag, then get scored.
    Adding a lane is just another Scenario here — no bespoke tool per career. */
 
+import { ACCOUNTING_SCENARIOS } from "@/lib/gym-accounting";
+
 export type Severity = "minor" | "major" | "critical";
 export type GymItem = {
   area: string;              // "Audience targeting"
@@ -26,6 +28,9 @@ export type Scenario = {
 };
 
 export const GYM_SCENARIOS: Record<string, Scenario> = {
+  // Audit & Accounting — the first lane built 12 reps deep. See lib/gym-accounting.ts.
+  ...ACCOUNTING_SCENARIOS,
+
   marketing: {
     slug: "marketing", career: "Marketing",
     short: "Judge an AI-built paid campaign against the brief — targeting, budget, claims, creative.",
@@ -72,54 +77,6 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
         trains: "Confirming the fundamentals are right — fast — and moving on." },
     ],
     lesson: "The wrong audience and the “guaranteed” claim were the two that would have been yours to answer for. Judging fast and right is the operator's edge — the machine drafts, you own the call.",
-  },
-
-  "audit-accounting": {
-    slug: "audit-accounting", career: "Audit & Accounting",
-    short: "Sign off an AI-drafted set of audit workpapers against the file — recognition, materiality, disclosure.",
-    client: "Northwind Ltd — FY25 statutory audit",
-    artifact: "Northwind_FY25_Workpapers.draft",
-    thesis: "The AI has drafted the workpapers and conclusions for this audit — clean, referenced, confident. Some of it doesn't hold against the standards or the numbers. Sign off only what's right.",
-    brief: [
-      { l: "Engagement", v: "FY25 statutory audit, revenue $42.0m (PY $38.4m)" },
-      { l: "Materiality", v: "Set at 1.5% of revenue for planning" },
-      { l: "Key risk", v: "Revenue recognition on multi-year support contracts (IFRS 15)" },
-      { l: "New this year", v: "A related-party lease with a director's company" },
-      { l: "Standard", v: "UK GAAP / IFRS as applicable; document the basis" },
-    ],
-    items: [
-      { area: "Materiality calculation", verdict: "flag", severity: "minor",
-        output: "Planning materiality = 1.5% × $42.0m = $680,000.",
-        why: "The arithmetic is off. 1.5% of $42.0m is $630,000, not $680,000. A number that sets the threshold for everything downstream, quietly wrong.",
-        cost: "An inflated threshold lets ~$50k of misstatements pass untested. If it later matters, the file shows you approved the wrong basis.",
-        trains: "Re-performing the figure that anchors the whole file, not trusting the machine's arithmetic." },
-      { area: "Revenue recognition memo", verdict: "flag", severity: "critical",
-        output: "“The full $1.2m on the 3-year support contract signed in June is recognized in FY25, as the contract is executed and non-cancellable.”",
-        why: "Wrong under IFRS 15. Support delivered over time is a performance obligation satisfied over the three years — roughly $1.2m ÷ 3 in FY25, not the whole amount up front. Non-cancellable doesn't mean earned.",
-        cost: "Revenue overstated by ~$800k — well over materiality. A misstated set of accounts with your name on the opinion, and a restatement risk.",
-        trains: "Testing the AI's technical conclusion against the actual standard, not its confident phrasing." },
-      { area: "Sample selection — receivables", verdict: "ship",
-        output: "Selected 25 items: all balances > materiality, plus a random monetary-unit sample of the remainder.",
-        why: "Sound. Covers everything individually material and gives representative coverage of the rest — a defensible sampling approach.",
-        cost: "Re-designing a valid sample wastes hours and signals you can't tell good work from bad.",
-        trains: "Recognizing a methodologically sound approach and letting it stand." },
-      { area: "Analytical review commentary", verdict: "flag", severity: "major",
-        output: "“Gross margin rose 4 points; management attribute this to improved supplier terms. No further work required.”",
-        why: "It accepts management's explanation without corroboration. A 4-point margin swing on a key risk is exactly what you're meant to substantiate — the AI wrote a plausible reason and closed the point.",
-        cost: "An unexplained margin movement — potentially a recognition or cut-off error — goes untested. This is how real misstatements slip through.",
-        trains: "Professional skepticism — refusing to let a tidy narrative substitute for evidence." },
-      { area: "Going concern conclusion", verdict: "ship",
-        output: "“Net current assets positive, facility renewed to 2027, 12-month cash forecast stress-tested. Going concern basis appropriate.”",
-        why: "Appropriate and evidenced — headroom, a renewed facility, and a stress-tested forecast. The conclusion follows the work.",
-        cost: "Second-guessing a well-supported conclusion delays sign-off for no gain.",
-        trains: "Confirming a conclusion is actually backed by the evidence cited." },
-      { area: "Related-party disclosure", verdict: "flag", severity: "critical",
-        output: "The director's-company lease is recorded in operating costs; the related-party note lists “None requiring disclosure.”",
-        why: "A required disclosure is missing. A lease with a director's company is a related-party transaction that must be disclosed — the AI booked the cost but never surfaced the relationship.",
-        cost: "A non-compliant set of accounts and a governance red flag omitted from the file. This is the omission a regulator or the next auditor finds.",
-        trains: "Catching what the machine leaves out — the missing disclosure is invisible unless you know to look." },
-    ],
-    lesson: "The recognition memo and the missing related-party note were the two that would have been yours to answer for. AI can draft the file at speed — but the opinion, and the accountability, are still human.",
   },
 
   "software-review": {
@@ -215,53 +172,6 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
         trains: "Confirming the fundamentals fast and moving on." },
     ],
     lesson: "The stackable code and the unsubscribed contacts were the two that would have been yours to answer for. The AI writes the email in seconds — you're the one who catches what it costs.",
-  },
-
-  "audit-tax": {
-    slug: "audit-tax", career: "Audit & Accounting",
-    short: "Sign off an AI-drafted inventory and tax provision — valuation, deferred tax, cut-off.",
-    client: "Meridian Manufacturing — FY25 year-end",
-    artifact: "Meridian_FY25_InventoryTax.draft",
-    thesis: "The AI has drafted the inventory valuation and tax provision — referenced and confident. Some of it doesn't hold against the standards or the numbers. Sign off only what's right.",
-    brief: [
-      { l: "Inventory", v: "$6.4m at cost; includes a slow-moving product line" },
-      { l: "NRV", v: "The slow-moving line now sells below cost" },
-      { l: "Tax", v: "Corporation tax rate is 25% for FY25 (was 19%)" },
-      { l: "Year-end", v: "Goods-in-transit at 31 Dec, FOB shipping point" },
-    ],
-    items: [
-      { area: "NRV write-down", verdict: "flag", severity: "major",
-        output: "“Inventory held at cost of $6.4m. No write-down required.”",
-        why: "Wrong. Inventory is the lower of cost and net realizable value. The slow-moving line sells below cost, so it must be written down to NRV — the AI left it at cost.",
-        cost: "Inventory and profit overstated by the write-down you skipped. A known impairment ignored — exactly what the standard exists to catch.",
-        trains: "Applying lower-of-cost-and-NRV, not accepting “held at cost” at face value." },
-      { area: "Standard cost variance", verdict: "ship",
-        output: "Favorable variance of $40k released to cost of sales, immaterial and consistent with prior year.",
-        why: "Reasonable. Immaterial and treated consistently — a defensible call.",
-        cost: "Re-opening an immaterial, consistent treatment wastes time.",
-        trains: "Letting a sound, immaterial judgement stand." },
-      { area: "Deferred tax rate", verdict: "flag", severity: "critical",
-        output: "Deferred tax on timing differences calculated at 19%.",
-        why: "Wrong rate. Deferred tax is measured at the rate expected when the difference reverses — 25% for FY25, not the old 19%. A single wrong percentage flows through the whole provision.",
-        cost: "The deferred tax liability is understated by a third. A material misstatement in the tax line, with your sign-off on it.",
-        trains: "Checking the rate the machine used against the enacted rate, not last year's." },
-      { area: "Inventory count coverage", verdict: "ship",
-        output: "Attended count covered 92% of value; roll-forward reconciled to year-end with no exceptions.",
-        why: "Sound. High value coverage and a clean roll-forward — a defensible basis.",
-        cost: "Demanding more on a well-covered count just delays sign-off.",
-        trains: "Confirming coverage is adequate and moving on." },
-      { area: "Cut-off — goods in transit", verdict: "flag", severity: "minor",
-        output: "Goods shipped 30 Dec (FOB shipping point) excluded from year-end inventory.",
-        why: "A cut-off error. FOB shipping point means title passed on despatch — those goods are the buyer's at year-end and should be in inventory. Small, but it's the boundary you're meant to test.",
-        cost: "Inventory understated and a cut-off error in the file — the kind of detail the next auditor re-performs and finds.",
-        trains: "Getting the cut-off right on the shipping terms, not the invoice date." },
-      { area: "Accounting policy note", verdict: "ship",
-        output: "Policy note states inventory valued at lower of cost and NRV; cost on a FIFO basis.",
-        why: "The disclosed policy is correct and standard — even though the AI failed to apply it above. The note itself is fine.",
-        cost: "Flagging a correct policy note is a false positive.",
-        trains: "Judging the note on its own merits — the policy is right even where the application wasn't." },
-    ],
-    lesson: "The deferred-tax rate and the missing NRV write-down were the two that would have been yours to answer for. The machine drafts the numbers — you're the one who stands behind them.",
   },
 
   "software-auth": {
