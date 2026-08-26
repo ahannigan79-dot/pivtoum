@@ -33,7 +33,7 @@ export default async function RebuildLanding({ searchParams }: { searchParams: P
           <div className="bt-body">
             <span className="bt-kicker">New · put yourself in the driver's seat</span>
             <h3>Rebuild your own workflow, AI-native</h3>
-            <p>Describe a workflow you actually run and Claude hands you a boss-shareable transformation doc — what changes, the risks, where your people move up, the gains. One per month.</p>
+            <p>Describe a workflow you actually run and get a boss-shareable transformation doc — what changes, the risks, where your people move up, the gains. One per month.</p>
             <span className="bt-cta">Rebuild my workflow →</span>
           </div>
         </Link>

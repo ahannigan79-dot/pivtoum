@@ -28,7 +28,7 @@ export function TransformForm({ role }: { role: string }) {
         <input name="role" maxLength={120} defaultValue={role} placeholder="e.g. Senior Financial Analyst" className="tf-input" />
       </label>
       <SubmitBtn />
-      <p className="tf-note">One rebuild per month. It takes a minute — Claude is doing the real work.</p>
+      <p className="tf-note">One rebuild per month. Give it a minute — it&apos;s building the full transformation.</p>
     </form>
   );
 }

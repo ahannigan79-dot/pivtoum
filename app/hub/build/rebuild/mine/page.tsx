@@ -114,7 +114,7 @@ export default async function MyWorkflowPage({ searchParams }: { searchParams: P
         <div className="build-hero">
           <p className="ck">Put yourself in the driver's seat</p>
           <h2>Rebuild your own workflow, AI-native.</h2>
-          <p>Describe a workflow you actually run. Claude rebuilds it AI-native and hands you a sharp, boss-shareable transformation doc — what changes, where the risks are, where your people move up, and the gains. The artifact that makes you the person who saw it first.</p>
+          <p>Describe a workflow you actually run. Pivotum rebuilds it AI-native and hands you a sharp, boss-shareable transformation doc — what changes, where the risks are, where your people move up, and the gains. The artifact that makes you the person who saw it first.</p>
         </div>
 
         {err === "limit" && <p className="wt-alert">You've used this month's rebuild. It refreshes so each one is worth doing — your latest is below.</p>}
