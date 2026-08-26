@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Life Sciences
 
-*For anyone still choosing — weighing a life sciences degree, or a path into the field*
+*For anyone considering a move into life sciences — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a life sciences degree — or a path into the field — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're considering a move into life sciences — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as an adult weighing the move. It's the same decision however you come to it.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to life sciences.** ==?The AI finding here is genuinely surprising and the financial finding is genuinely important, and they're different things.==
 
@@ -32,7 +30,7 @@ Field ecology and environmental science scores **4.2** out of 10. Wet lab and be
 
 The people at the bench are better protected than the people analyzing what the bench produces.
 
-And the bigger question for most students isn't exposure at all — it's that a life sciences bachelor's is a gateway qualification rather than a destination, and where it leads varies by a factor of three in pay. Which version you aim at is most of the decision in front of you.
+And the bigger question for most people isn't exposure at all — it's that a life sciences bachelor's is a gateway qualification rather than a destination, and where it leads varies by a factor of three in pay. Which version you aim at is most of the decision in front of you.
 
 ---
 
@@ -397,7 +395,7 @@ And one thing worth saying to someone who simply finds living things fascinating
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

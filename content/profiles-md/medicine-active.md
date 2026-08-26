@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Medicine
 
-*For anyone already in a medical degree or training — or graduated and job-hunting with one*
+*For anyone working in medicine — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in a medical degree or training, or out of one and into the job hunt and the Match. So this guide skips the "should you study medicine" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in medicine. So this guide skips the "should you study medicine" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly — whether you're early in the field or well established. The moves are the same either way.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where medicine sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -286,7 +286,7 @@ Radiology has been the poster child for imminent AI displacement for roughly a d
 
 **The situation, factually:** AI is already in clinical settings. As of early 2025 the FDA had authorized 882 AI-enabled medical devices, and the large majority of US hospitals use some form of AI-enabled clinical decision support. Meanwhile most practicing physicians are encountering these tools without any formal training in them.
 
-==That gap is the entire opportunity.== The technology is deployed. The people who know how to use it well are not — and being already in it, close to the work, is a real advantage here. You can build this fluency inside a placement, a training post or a first job, which is exactly where it counts.
+==That gap is the entire opportunity.== The technology is deployed. The people who know how to use it well are not — and being already in it, close to the work, is a real advantage here. You can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native doctor actually looks like
 
@@ -347,7 +347,7 @@ Here the specialty you match into matters more than it looks, because that singl
 
 ## The AI-native move, from where you stand
 
-You can't change the specialty divergence, but you can be the doctor who *directs* these tools rather than works around them. The five capabilities above — verify, escalate, explain, recognize the limits, contribute — are all available right now, inside a placement, a training post or a first job. The most powerful for someone already in it is the first: ==+be the person who catches the generated note, read or recommendation that's subtly wrong.== That's a clinical skill, not a technical one; it requires knowing the patient well enough to catch a plausible error, and it's barely taught anywhere yet — which means seniority confers no advantage on it. You can start building it this rotation, not after some future qualification.
+You can't change the specialty divergence, but you can be the doctor who *directs* these tools rather than works around them. The five capabilities above — verify, escalate, explain, recognize the limits, contribute — are all available right now, inside your current role. The most powerful for someone already in it is the first: ==+be the person who catches the generated note, read or recommendation that's subtly wrong.== That's a clinical skill, not a technical one; it requires knowing the patient well enough to catch a plausible error, and it's barely taught anywhere yet — which means seniority confers no advantage on it. You can start building it now, not after some future qualification.
 
 ---
 
@@ -416,7 +416,7 @@ And it's worth restating what the risk analysis can't measure. Doctors report am
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

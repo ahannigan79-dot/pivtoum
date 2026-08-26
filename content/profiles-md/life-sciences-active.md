@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Life Sciences
 
-*For anyone already in a life sciences degree — or graduated and job-hunting with one*
+*For anyone working in life sciences — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in a life sciences degree, or out of one and into the job hunt. So this guide skips the "should you study biology" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in life sciences. So this guide skips the "should you study biology" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly — whether you're early in the field or well established. The moves are the same either way.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where life sciences sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -32,7 +32,7 @@ Field ecology and environmental science scores **4.2** out of 10. Wet lab and be
 
 The people at the bench are better protected than the people analyzing what the bench produces.
 
-And the bigger question for most students isn't exposure at all — it's that a life sciences bachelor's is a gateway qualification rather than a destination, and where it leads varies by a factor of three in pay. Where you steer from here is decided mostly by moves still in front of you, which is the whole reason being already in it is not a problem.
+And the bigger question for most people isn't exposure at all — it's that a life sciences bachelor's is a gateway qualification rather than a destination, and where it leads varies by a factor of three in pay. Where you steer from here is decided mostly by moves still in front of you, which is the whole reason being already in it is not a problem.
 
 ---
 
@@ -252,7 +252,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** the analysis layer of biology is automating quickly, and the experimental and regulated layers are not. That points to a clear strategy — and being already in it, close to the work, is a real advantage, because you can build this fluency inside a live placement or first job, which is exactly where it counts.
+**The situation:** the analysis layer of biology is automating quickly, and the experimental and regulated layers are not. That points to a clear strategy — and being already in it, close to the work, is a real advantage, because you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native life scientist looks like
 
@@ -303,7 +303,7 @@ Here the title on the offer matters more than it looks, because the most exposed
 
 ## The AI-native move, from where you stand
 
-You can't undo the tasks that are already automating, but you can be the scientist who *directs* these tools rather than competes with them. The five capabilities above — own the question, keep the hands, move toward regulated work, verify, understand hypothesis assistance honestly — are all available right now, inside a current placement or a first job. The most powerful for someone already in it is verification: ==+be the person who catches the confidently-wrong analysis or the synthesized literature summary that's subtly off.== That only works on biology you actually understand — which is exactly the judgment the protected end is built on, and you can start building it this term, not after some future qualification.
+You can't undo the tasks that are already automating, but you can be the scientist who *directs* these tools rather than competes with them. The five capabilities above — own the question, keep the hands, move toward regulated work, verify, understand hypothesis assistance honestly — are all available right now, inside your current role. The most powerful for someone already in it is verification: ==+be the person who catches the confidently-wrong analysis or the synthesized literature summary that's subtly off.== That only works on biology you actually understand — which is exactly the judgment the protected end is built on, and you can start building it now, not after some future qualification.
 
 ---
 
@@ -372,7 +372,7 @@ And one thing worth saying if you simply find living things fascinating. ==+That
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

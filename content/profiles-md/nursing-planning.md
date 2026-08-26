@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Nursing
 
-*For anyone still choosing — weighing a nursing degree, or a path into it*
+*For anyone considering a move into nursing — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a nursing degree — or a path into nursing — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're considering a move into nursing — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as an adult weighing the move. It's the same decision however you come to it.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it. What it deliberately doesn't do is tell you what to choose. Nobody who hasn't met you is in a position to.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they get frightened and shut down, or they get defensive about a decision they've already made. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it. And if they're already certain about nursing, that's an asset, not an obstacle. Don't try to unpick it; use this to help build the strongest possible version of the path they've chosen.
 
 **And one thing specific to nursing.** The single most useful fact in this whole guide is one a quick internet search will never surface: ==?the protection lives at the bedside, not in the badge.== The same license leads to hands-on clinical roles that score among the safest in the entire index, and to desk-based roles that score nearly twice as high. If the pull toward nursing is genuine, this guide will help you choose the version that holds up — and understand that "should I be a nurse?" matters far less than "what kind of nurse, where?"
 
@@ -550,7 +548,7 @@ And it's worth restating what the risk analysis can't measure. Most nurses would
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about. Don't do them all at once, and don't treat them as a quiz — several have no right answer, and the disagreements are usually the most useful part.*
+*These are the conversations that lead to a better decision. Don't do them all at once, and don't treat them as a quiz — several have no right answer, and the disagreements are usually the most useful part.*
 
 ## About the work itself
 

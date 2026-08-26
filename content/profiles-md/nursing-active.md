@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Nursing
 
-*For anyone already in a nursing degree or training — or graduated and job-hunting*
+*For anyone working in nursing — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in a nursing degree or training, or out of it and into the job hunt. So this guide skips the "should you study nursing" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in nursing. So this guide skips the "should you study nursing" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly — whether you're early in the field or well established. The moves are the same either way.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where nursing sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -339,7 +339,7 @@ Not someone who has memorised tools. Someone who can do five things:
 
 **5. Contribute.** Being the person on the unit who can give useful feedback on whether a system works in practice. Nurses are the largest clinical workforce and the most affected by these tools; the ones who can speak to implementation get pulled into projects, committees and eventually informatics roles.
 
-All five are available to you *now* — inside a clinical placement, an internship, or a first job — not after some future qualification.
+All five are available to you *now* — inside your current role — not after some future qualification.
 
 ### Concrete preparation, from where you stand
 
@@ -418,7 +418,7 @@ Here what the role actually *is* matters more than the title on the offer, becau
 
 ## The AI-native move, from where you stand
 
-You can't change the last two years, but you can be the nurse who *directs* these tools rather than the one they happen to. The five capabilities above — verify, escalate, explain, recognize the limits, contribute — are all available right now, inside a clinical placement or a first job. The most powerful for someone already in it is the last: ==+be the clinical voice on the unit who can say whether a system actually works in practice.== Nurses are the largest and most affected clinical workforce, units badly need that feedback, and the ones who give it well get pulled into pilots, committees and eventually informatics and leadership roles — a ladder that opens out of the disruption itself. In a profession where advancement usually means time served, that's an unusual opening, and it's one you can start building this term rather than after some future qualification.
+You can't change the last two years, but you can be the nurse who *directs* these tools rather than the one they happen to. The five capabilities above — verify, escalate, explain, recognize the limits, contribute — are all available right now, inside a clinical placement or a first job. The most powerful for someone already in it is the last: ==+be the clinical voice on the unit who can say whether a system actually works in practice.== Nurses are the largest and most affected clinical workforce, units badly need that feedback, and the ones who give it well get pulled into pilots, committees and eventually informatics and leadership roles — a ladder that opens out of the disruption itself. In a profession where advancement usually means time served, that's an unusual opening, and it's one you can start building now rather than after some future qualification.
 
 ---
 
@@ -495,7 +495,7 @@ And it's worth restating what the risk analysis can't measure. Most nurses would
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through together, these are the conversations that move the needle now. Read "you" as whoever the decision is about. Several have no right answer — the disagreements are usually the most useful part.*
+*These are the conversations that move the needle now. Several have no right answer — the disagreements are usually the most useful part.*
 
 ## Where you actually stand
 

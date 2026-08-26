@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Medicine
 
-*For anyone still choosing — weighing a medical degree, or a path into the profession*
+*For anyone considering a move into medicine — weighing whether to enter the profession*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a medical degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're considering a move into medicine — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as an adult weighing the move. It's the same decision however you come to it.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — including the parts that don't support our own conclusions — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to medicine.** It is a longer commitment than almost anything else you can choose — ten to fifteen years from starting a degree to independent practice. If the certainty is already there, that certainty is an asset; don't unpick it. Use this to understand what the commitment involves, and to choose a specialty knowingly when the time comes — because for the first time, ==?that choice carries an AI dimension it didn't a few years ago.==
 
@@ -24,7 +22,7 @@ It's written to you directly, whether *you* are the one choosing or a parent thi
 
 # The short answer
 
-**Yes — medicine remains one of the safest paths available, and patient-facing practice holds the strongest protection stack in this entire index.** But for the first time, ==choice of specialty carries an AI dimension==. A student entering medical school today will choose a specialty in five or six years, and the specialties are no longer moving together.
+**Yes — medicine remains one of the safest paths available, and patient-facing practice holds the strongest protection stack in this entire index.** But for the first time, ==choice of specialty carries an AI dimension==. Someone entering medical school today will choose a specialty in five or six years, and the specialties are no longer moving together.
 
 Surgery scores 2.1 — the lowest score of any career we measure. Radiology scores 4.9 and is the fastest-moving protected career we track. Same degree, same training, a 2.8-point gap.
 
@@ -266,7 +264,7 @@ The AI score measures task exposure. It cannot see supply, demand, funding or th
 
 # The radiology question — where our own score is contested
 
-We flag this because it is the strongest evidence against any number in this index, and it concerns the specialty most students ask about.
+We flag this because it is the strongest evidence against any number in this index, and it concerns the specialty most people ask about.
 
 **The case for our 4.9.** Image interpretation is pattern recognition on structured visual data — the single thing AI does best. Around three-quarters of all FDA-authorized AI-enabled medical devices are in radiology, because that is where the technology works. The score has moved a full point in three years, faster than any other protected career we track.
 
@@ -469,7 +467,7 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 
 Medicine holds the strongest protection stack in this index — comprehensive licensure, deep trust, physical presence in most specialties, legal accountability, and constant novel judgment. Its entry route is the most protected we measure anywhere. That's the good news for someone still choosing: the risk question is largely settled before you begin.
 
-**The real questions are the ones families have always faced:** ten to fifteen years to independence, the cost, the hours, and whether the vocation is genuine.
+**The real questions are the ones anyone entering this profession has always faced:** ten to fifteen years to independence, the cost, the hours, and whether the vocation is genuine.
 
 **What this index adds is one thing:** ==specialty choice now carries an AI dimension it didn't carry five years ago==. The protection concentrates where the human is in the room, and thins where the work is reading patterns off a screen. That divergence is widening every year we measure it.
 
@@ -482,12 +480,12 @@ And it's worth restating what the risk analysis can't measure. Doctors report am
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
 1. What made medicine appealing in the first place? Push past "helping people" to something specific — a moment, a person, a situation.
-2. When you picture the job, what does a Tuesday look like? If a parent is reading too, compare pictures — they're often very different.
+2. When you picture the job, what does a Tuesday look like?
 3. Do you want continuity with patients over years, or acute problems solved and moved on from? Those point to very different specialties.
 4. How do you feel about being wrong in front of colleagues — regularly, throughout a career?
 
