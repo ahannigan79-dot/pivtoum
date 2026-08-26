@@ -679,7 +679,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
    Landing page — scoped under .lp so it never touches the document pages.
    Whiter ground, bolder type, the red circle as a recurring motif.
    ============================================================================ */
-.lp { background: #fff; }
+.lp { background: var(--paper); }
 .lp-wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.75rem; }
 
 .lp-hero { padding: 4rem 0 3.25rem; }
@@ -708,13 +708,12 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-num-lo .mark { background: rgba(var(--hl2), .55); padding: .02em .16em; border-radius: 2px; }
 .lp-cap { font-family: var(--sans); font-size: .8rem; line-height: 1.35; color: var(--ink-soft); max-width: 16ch; }
 .lp-cap b { display: block; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pencil); margin-bottom: .2rem; }
-.lp-draw { position: relative; display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; line-height: 1; letter-spacing: -.02em; }
-.lp-draw.big { font-size: 4.8rem; padding: .1em .28em; }
-.lp-draw svg { position: absolute; inset: -.28em -.16em; width: calc(100% + .32em); height: calc(100% + .56em); overflow: visible; pointer-events: none; }
-.lp-draw path { fill: none; stroke: var(--pen); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 360; stroke-dashoffset: 360; animation: draw 1.1s cubic-bezier(.4, .1, .3, 1) .4s forwards; }
-.lp-draw.dual { font-size: 3.05rem; padding: .12em .34em; }
-.lp-draw.safe path { stroke: var(--pen-safe); }
-.lp-draw.delay path { animation-delay: .85s; }
+/* Single-tone contrast numbers — no drawn circle; the exposure palette carries
+   the meaning (protected green vs exposed coral) as the numeral color itself. */
+.lp-draw { display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--pen); }
+.lp-draw.big { font-size: 4.8rem; }
+.lp-draw.dual { font-size: 3.05rem; }
+.lp-draw.safe { color: var(--pen-safe); }
 
 .lp-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; padding: 2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .lp-value h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); text-transform: none; margin: 0 0 .35rem; }
@@ -728,11 +727,11 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-index-head .sub { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: 0 0 .6rem; }
 .idx-free {
   font-family: var(--sans); font-size: .9rem; line-height: 1.4; color: var(--ink);
-  margin: 0 0 1.4rem; padding: .55rem .8rem; border-radius: 4px;
-  background: rgba(var(--hl), .5); border: 1px solid rgba(var(--hl), .9);
+  margin: 0 0 1.4rem; padding: .2rem 0 .2rem .9rem;
+  border-left: 2px solid var(--accent);
 }
 .idx-free strong { font-weight: 700; }
-.lp .idx-track { background: #F1F1EF; }
+.lp .idx-track { background: var(--paper-edge); }
 /* No circles in the index — colour the range numbers by tier instead, so red
    shows up where high exposure actually lives (the exposed end). The circle
    stays special to the hero and the career pages. */
@@ -745,13 +744,13 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-closing .lp-cta-row { justify-content: center; }
 
 /* Community — the destination. A teaser high up, a light single-tone card as the climax. */
-.lp-community-strip { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; margin: 2.2rem 0 0; padding: 1rem 1.3rem; border: 1px solid var(--rule); border-left: 3px solid var(--win); border-radius: 10px; background: var(--paper-edge); text-decoration: none; color: var(--ink-soft); font-size: .96rem; line-height: 1.5; transition: border-color .15s; }
+.lp-community-strip { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; margin: 2.2rem 0 0; padding: 1rem 1.3rem; border: 1px solid var(--rule); border-left: 3px solid var(--win); border-radius: 10px; background: transparent; text-decoration: none; color: var(--ink-soft); font-size: .96rem; line-height: 1.5; transition: border-color .15s; }
 .lp-community-strip:hover { border-color: var(--win); }
 .lp-community-strip-k { font-family: var(--sans); font-weight: 700; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--win); }
 .lp-community-strip b { color: var(--ink); font-weight: 600; }
 .lp-community-strip .go { color: var(--win); font-weight: 700; white-space: nowrap; }
 
-.lp-community { background: var(--paper-edge); color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
+.lp-community { background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
 .lp-community-list { list-style: none; margin: 1.7rem auto 0; padding: 0; max-width: 620px; text-align: left; display: grid; gap: .7rem; }
 .lp-community-list li { font-family: var(--serif); font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft); padding-left: 1.4rem; position: relative; }
 .lp-community-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
@@ -767,13 +766,13 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-inside-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; letter-spacing: -.01em; margin: .2rem 0 .5rem; text-wrap: balance; max-width: 26ch; }
 .lp-inside-head .sub { font-size: 1rem; color: var(--ink-soft); line-height: 1.6; max-width: 62ch; margin: 0; }
 .lp-loop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.lp-loopcard { border: 1px solid var(--rule); border-radius: 12px; background: var(--paper-edge); padding: 1.1rem 1.15rem; }
+.lp-loopcard { border: 1px solid var(--rule); border-radius: 12px; background: transparent; padding: 1.1rem 1.15rem; }
 .lp-loopnum { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--win); color: var(--win); font-family: monospace; font-size: .8rem; font-weight: 700; }
 .lp-loopcard h3 { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; margin: .6rem 0 .35rem; color: var(--ink); }
 .lp-loopcard p { font-size: .9rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
 
 /* Membership — light single-tone card, the trial */
-.lp-membership { background: var(--paper-edge); color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
+.lp-membership { background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
 .lp-membership .lp-community-eyebrow { color: var(--accent); }
 .lp-membership h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.35rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; color: var(--ink); text-wrap: balance; }
 .lp-membership p { font-size: 1.08rem; line-height: 1.6; color: var(--ink-soft); max-width: 56ch; margin: 0 auto 1.6rem; }
@@ -888,7 +887,7 @@ footer {
 /* Homepage hero — light single-tone card on the paper ground, hairline outline.
    (The `.dark` class stays in the markup; these rules make it read light so no
    JSX change is needed.) */
-.lp-hero.dark { background: var(--paper-edge); border: 1px solid var(--rule); border-radius: 22px; padding: 3rem 2.6rem 2.8rem; margin-top: 1.4rem; }
+.lp-hero.dark { background: transparent; border: 0; border-radius: 0; padding: 3rem 0 2.4rem; margin-top: .4rem; }
 .lp-hero.dark .lp-eyebrow { color: var(--pencil); }
 .lp-hero.dark .lp-eyebrow b { color: var(--accent); }
 .lp-hero.dark .lp-h1 { color: var(--ink); }
@@ -901,8 +900,6 @@ footer {
 .lp-hero.dark .lp-contrast { color: var(--ink); }
 .lp-hero.dark .lp-cap { color: var(--ink-soft); }
 .lp-hero.dark .lp-cap b { color: var(--pencil); }
-.lp-hero.dark .lp-draw path { stroke: var(--pen); }
-.lp-hero.dark .lp-draw.safe path { stroke: var(--pen-safe); }
 
 /* /map as a light card floating on paper — the same inset look as the homepage
    hero (paper page + rounded hairline card). */
