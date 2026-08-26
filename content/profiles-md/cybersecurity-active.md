@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Cybersecurity
 
-*For anyone already in a cybersecurity degree or training — or graduated and job-hunting with one*
+*For anyone working in cybersecurity — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a cybersecurity degree or training, or out of one and into the job hunt. So this guide skips the "should you study cybersecurity" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+The choice is already made — you're working in cybersecurity, early in your career or established in it. So this guide skips the "should you go into cybersecurity" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where cybersecurity sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -250,7 +248,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the fi
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** security teams are adopting AI faster than they trust it. Only about one in nine trusts it completely for mission-critical work, while a third plan to use it to fill skills gaps. That gap is the opportunity. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a home lab, a live internship or a first job, which is exactly where it counts.
+**The situation:** security teams are adopting AI faster than they trust it. Only about one in nine trusts it completely for mission-critical work, while a third plan to use it to fill skills gaps. That gap is the opportunity. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a home lab or your current role, which is exactly where it counts.
 
 ### What an AI-native security professional looks like
 
@@ -280,17 +278,17 @@ Broad and well-paid: incident response and digital forensics, security architect
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Cybersecurity is a 2.4-point spread from 5.0 to 7.4, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward the roles that face the adversary directly.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
 **1. The specialization is the whole game.** Tier-one SOC monitoring (7.4) is the exposed rung and the one Gartner projects half-automated by 2028. The protected destinations — incident response and threat hunting (5.0), security architecture (5.5), penetration testing and offensive work (5.7) — are reached by concentration, not by generic security coursework. If you haven't committed to a track, this is the single highest-leverage decision left. If you have, hold it against the scores above and ask honestly whether it points at *investigation and judgment* or at *queue-work*.
 
-**2. Hands-on evidence, while it's still free to build.** In a field with no license, demonstrable capability *is* the credential — and it's the one thing you can accumulate right now for nothing. Home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling: ==+every hour of it is a step from the exposed end toward the protected one==, and it's far cheaper to acquire as a student than to manufacture later. Certification breadth alone is the fastest-depreciating asset here; verifiable, hands-on capability is not.
+**2. Hands-on evidence, while it's still free to build.** In a field with no license, demonstrable capability *is* the credential — and it's the one thing you can accumulate right now for nothing. Home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling: ==+every hour of it is a step from the exposed end toward the protected one==, and it's far cheaper to acquire early than to manufacture later. Certification breadth alone is the fastest-depreciating asset here; verifiable, hands-on capability is not.
 
 **3. The apprenticeship, and the experience it generates.** The single hardest problem in this field is that "entry level" wants two years of experience. Degree apprenticeships and placement routes are paid, and they solve that paradox directly — they are the on-ramp the marketed route doesn't give you. Secure one if you possibly can, and aim it at a protected track rather than pure SOC monitoring.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career security title is also the most exposed.
 
@@ -301,17 +299,17 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the tasks that are already automating, but you can be the entrant who *directs* these tools rather than competes with them. The five capabilities above — verify, think adversarially about AI itself, move up the escalation chain, own a decision, communicate — are all available right now, inside a home lab, a current internship or a first job. The most powerful for someone already in it is verification: ==+be the person who knows when an automated detection is wrong in either direction== — a false negative is a breach, a false positive at scale is alert fatigue, and both are security failures. In a field with no license, that judgment is the credential, and you can start building it this term, not after some future certification.
+You can't undo the tasks that are already automating, but you can be the entrant who *directs* these tools rather than competes with them. The five capabilities above — verify, think adversarially about AI itself, move up the escalation chain, own a decision, communicate — are all available right now, inside a home lab or your current role. The most powerful for someone already in it is verification: ==+be the person who knows when an automated detection is wrong in either direction== — a false negative is a breach, a false positive at scale is alert fatigue, and both are security failures. In a field with no license, that judgment is the credential, and you can start building it now, not after some future certification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in cybersecurity is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in cybersecurity is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for the job hunt itself.
 
-## During the degree / training — build what can't be automated
+## Where you are now — build what can't be automated
 
-- **Aim at a protected specialization, not the SOC queue.** Incident response and threat hunting (5.0), security architecture (5.5) and offensive security / penetration testing (5.7) are the protected end; tier-one SOC monitoring (7.4) is the exposed one. Point every elective and placement at the former.
+- **Aim at a protected specialization, not the SOC queue.** Incident response and threat hunting (5.0), security architecture (5.5) and offensive security / penetration testing (5.7) are the protected end; tier-one SOC monitoring (7.4) is the exposed one. Point every specialization choice at the former.
 - **Build hands-on evidence before anyone asks for it.** Home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling. In a field with no license, demonstrable capability *is* the credential — and it's free to a sixteen-year-old tonight.
 - **Get Security+ or an equivalent early, then specialize.** The baseline cert opens the door; depth in one protected track is what carries you through it. Certification breadth alone is among the fastest-depreciating things you can collect.
 - **Chase the apprenticeship or placement route.** Degree apprenticeships are paid and solve the experience paradox directly — the single hardest problem in this field — and they're badly under-used.
@@ -370,7 +368,7 @@ And weigh the burnout data honestly: 47% reporting burnout and attrition above o
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -381,7 +379,7 @@ And weigh the burnout data honestly: 47% reporting burnout and attrition above o
 ## The move from here
 
 4. What's the single most protected role you could realistically aim for from where you are now, and what would make you a credible candidate for it?
-5. If you're still studying: what's the most valuable placement or apprenticeship still open to you, and is there a reason not to chase it?
+5. If you're early in your career: what's the most valuable placement or apprenticeship still open to you, and is there a reason not to chase it?
 6. If you're job-hunting: are you aiming at a protected lane on purpose, or applying to whatever's open? Name the three roles you're actually chasing.
 
 ## The AI question, practically

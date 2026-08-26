@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Dentistry
 
-*For anyone still choosing — weighing dentistry, or a path into it*
+*For anyone considering a move into dentistry*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing dentistry — or a path into it — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into dentistry — and you want to know what that move actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to dentistry.** ==?This is the profession where our whole framework has already been tested by history — and it passed.== A tier of dentistry was automated more than a decade ago, before anyone was discussing AI, and the profession is fine. The section on the experiment dentistry already ran explains what happened and what it predicts.
 
@@ -291,7 +287,7 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before applying:** ==+compare total program cost seriously. The spread between the cheapest and most expensive accredited school exceeds $400,000, for the same license.==
+**Before you make the move:** ==+compare total program cost seriously. The spread between the cheapest and most expensive accredited school exceeds $400,000, for the same license.==
 
 **During:** take practice management and business content seriously rather than treating it as peripheral. Get exposure to digital workflows, and to a range of practice settings including DSO-affiliated ones.
 
@@ -357,9 +353,9 @@ Both are where the profession is going and both are commonly underweighted.
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to choose your route in is knowing exactly what you'll need to do with it. The first list is for while you make the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Treat total cost and the ownership path as the core decision.** The income model assumes eventual ownership — $166,810 employed against roughly $239,000 for owners. Attend the least expensive accredited school you get into, because the spread between programs exceeds $400,000 for the identical license.
 - **Maximise clinical volume.** The protected core (2.7) is the hands-in-the-mouth work. The more procedures you actually perform before graduating, the more of that core you own — and it varies enormously between programs, so chase it.
@@ -420,7 +416,7 @@ And look properly at **dental hygiene** before committing — median pay slightl
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

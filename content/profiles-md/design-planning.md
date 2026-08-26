@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Graphic & Visual Design
 
-*For anyone still choosing — weighing a design degree, or a path into the field*
+*For anyone considering a move into design*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a design degree — or a path into the field — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into design — and you want to know what that move actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It is also not a case for giving up on design. The protected end of this field is real, it is well paid, and it is reachable — but it has to be aimed at deliberately from the start rather than drifted into.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores — this matters more here than anywhere else in the index. The person reading has probably built part of their identity around being the creative one, and ==?someone who has spent five years being told they're talented does not need a document telling them the market disagrees.== They need to understand that the field split, and which part of it to aim for. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. And if your instinct on seeing the score is "I told you to do something sensible," please don't say it — the useful role here is to help steer, not to confirm a worry.
 
 **And one thing specific to design.** It's the field where the automatable layer isn't the paperwork around the work — it *is* the craft. That single fact reshapes the honest advice, and the section on when the automatable layer is the craft is the one to read most carefully.
 
@@ -52,7 +48,7 @@ And here is what makes design different from every other exposed career in this 
 
 # Why design scores so high — the six factors
 
-Here's how production and execution design answers them — the exposed end, and where most graduates start. Knowing *why* the production roles score 8.4 is what tells you which version of the degree to choose.
+Here's how production and execution design answers them — the exposed end, and where most graduates start. Knowing *why* the production roles score 8.4 is what tells you which way into the field to aim for.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
@@ -264,9 +260,9 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** aim at UX, product or direction from the start rather than assuming a production job leads there. ==-That progression is the specific thing that has broken.==
+**Before you make the move:** aim at UX, product or direction from the start rather than assuming a production job leads there. ==-That progression is the specific thing that has broken.==
 
-**During:** build a portfolio of *decisions*, not assets. For every piece, be able to say what the problem was, what you rejected, and what happened. Learn to present and defend work — most programs underweight this and it's the protected skill.
+**As you make the switch:** build a portfolio of *decisions*, not assets. For every piece, be able to say what the problem was, what you rejected, and what happened. Learn to present and defend work — most programs underweight this and it's the protected skill.
 
 **And take the adjacent seriously:** research methods, basic analytics, a domain. Design paired with healthcare, accessibility or industrial contexts is far more defensible than design alone.
 
@@ -333,9 +329,9 @@ Not "employed in a creative field." What are they *doing*?
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to choose your route in is knowing exactly what you'll need to do with it. The first list is for while you make the switch; the second is for the job hunt that follows.
 
-## During the degree — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Aim at UX, product or direction from the start.** The exposed lane is the general degree pointed at production work — the weakest combination in this index (8.4). UX / product (6.0) and creative direction (5.6) are reached by concentration, not by assuming production leads there. That progression is precisely the one that has broken.
 - **Build a portfolio of decisions, not assets.** Volume is now free, so a wall of beautiful assets says nothing. For every piece, be able to say what the problem was, what you rejected, and what happened when it shipped. Evidence of judgment is the credential.
@@ -400,7 +396,7 @@ And one thing worth saying to anyone who loves making things. ==+The judgment ab
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

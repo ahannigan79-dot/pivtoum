@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Construction Management
 
-*For anyone already in a construction management degree or training — or graduated and job-hunting with one*
+*For anyone working in construction — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a construction management degree or training, or out of one and into the job hunt. So this guide skips the "should you study construction management" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+The choice is already made — you're working in construction, early in your career or established in it. So this guide skips the "should you go into construction" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where construction management sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -238,7 +236,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** construction's office layer is automating quickly while its site layer barely moves. That creates a specific and valuable position for someone who can operate in both. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live placement or first job, which is exactly where it counts.
+**The situation:** construction's office layer is automating quickly while its site layer barely moves. That creates a specific and valuable position for someone who can operate in both. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native construction manager looks like
 
@@ -268,17 +266,17 @@ Site management, project management, program and portfolio leadership, preconstr
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Construction management is a 4.1-point spread from 3.3 to 7.4, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward the site.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
-**1. The site is the whole game.** The office roles — scheduler (7.0), preconstruction and document coordination (7.4) — are the exposed end and furthest into automation already. The protected destinations — site superintendent (3.3), construction project manager (4.2) — are reached by getting onto the site, not by settling into the document set. If you haven't aimed yourself at site-based work, this is the single highest-leverage decision left in the degree, and every choice should point at the work that gets walked rather than filed.
+**1. The site is the whole game.** The office roles — scheduler (7.0), preconstruction and document coordination (7.4) — are the exposed end and furthest into automation already. The protected destinations — site superintendent (3.3), construction project manager (4.2) — are reached by getting onto the site, not by settling into the document set. If you haven't aimed yourself at site-based work, this is the single highest-leverage decision still in front of you, and every choice should point at the work that gets walked rather than filed.
 
-**2. Site experience and BIM, while they're still free.** Nothing builds the ability to read a site like being on one — laboring, a trade, a summer with a contractor — and it's what separates a good superintendent from a competent administrator. Pair it with BIM learned properly rather than superficially: it pays 10–15% and it's the bridge skill, the ability to connect what the model says with what the site shows, which is the single most valuable position in the profession right now. Both are far cheaper to acquire in the degree than to bolt on later.
+**2. Site experience and BIM, while you can.** Nothing builds the ability to read a site like being on one — laboring, a trade, a summer with a contractor — and it's what separates a good superintendent from a competent administrator. Pair it with BIM learned properly rather than superficially: it pays 10–15% and it's the bridge skill, the ability to connect what the model says with what the site shows, which is the single most valuable position in the profession right now. Both are far cheaper to acquire early than to bolt on later.
 
-**3. The placement, pushed toward site over office.** Genuine site time is rarer than office placement and worth more — first-destination job titles are the whole game, and site-based versus coordination is a 4.1-point difference on our scale. ==+That is the experience that separates the protected site end from the exposed office floor==, and in a field with several routes in, it's how you make yours point at the superintendent's job rather than the coordinator's.
+**3. Your role, pushed toward site over office.** Genuine site time is rarer than office time and worth more — the job titles you take are the whole game, and site-based versus coordination is a 4.1-point difference on our scale. ==+That is the experience that separates the protected site end from the exposed office floor==, and in a field with several routes in, it's how you make yours point at the superintendent's job rather than the coordinator's.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career titles include the most exposed ones.
 
@@ -289,19 +287,19 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the last few years, but you can be the manager who *directs* these tools rather than competes with them. The five capabilities above — bridge model and site, verify, direct the office layer, own safety and outcomes, specialize — are all available right now, inside a current placement or a first job. The most powerful for someone already in it is the first: ==+be the person who connects what the model says with what the site actually shows.== That is the single most valuable position in the profession right now, the BIM premium reflects it, and you can start building it this term — not after some future qualification.
+You can't undo the last few years, but you can be the manager who *directs* these tools rather than competes with them. The five capabilities above — bridge model and site, verify, direct the office layer, own safety and outcomes, specialize — are all available right now, inside your current role. The most powerful for someone already in it is the first: ==+be the person who connects what the model says with what the site actually shows.== That is the single most valuable position in the profession right now, the BIM premium reflects it, and you can start building it now — not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in construction management is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in construction management is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for the job hunt itself.
 
-## During the degree / training — build toward the site
+## Where you are now — build toward the site
 
 - **Treat the site, not the office, as the destination.** The protection lives at the site end (site superintendent 3.3, construction project manager 4.2), not in the office roles (scheduler 7.0, preconstruction and document coordination 7.4). Aim every choice at the work that gets walked, not the work that gets filed.
-- **Get real site experience before and during the degree.** Laboring, a trade, a summer with a contractor — nothing else builds the ability to read a site, and it's what separates a good superintendent from a competent administrator.
-- **Treat the placement as non-negotiable, and push for site over office.** Genuine site time is rarer than office placement and worth more. First-destination job titles are the whole game: site-based or coordination is a 4.1-point difference on our scale.
+- **Get real site experience wherever you can.** Laboring, a trade, a summer with a contractor — nothing else builds the ability to read a site, and it's what separates a good superintendent from a competent administrator.
+- **Treat site exposure as non-negotiable, and push for site over office.** Genuine site time is rarer than office time and worth more. The job titles you take are the whole game: site-based or coordination is a 4.1-point difference on our scale.
 - **Learn BIM properly, not superficially.** It pays 10–15% and it's the bridge skill — the ability to connect what the model says with what the site shows is the single most valuable position in the profession right now.
 - **Get fluent with scheduling and estimating tools as a professional, not a shortcut.** Learn to verify a generated schedule or an automated takeoff — verification is the skill that survives when the office layer automates.
 - **Feed curiosity and adaptability on purpose.** The scheduling platform and the estimating package will turn over repeatedly; the manager who re-tools fastest, and stays genuinely curious about how a building goes together, compounds.
@@ -353,7 +351,7 @@ It scores better at the site end than engineering, architecture or a business de
 
 **The honest costs are real and have nothing to do with technology.** Long hours, weather, sustained pressure from every direction, and genuine cyclicality — with the hiring rate already at its lowest recorded level even as the skills shortage persists.
 
-**So the useful advice isn't a verdict on the degree — it's a direction.** Aim at the site rather than the office, because the difference is 4.1 points and the office roles are the ones that look like promotions. Get real site experience wherever you can. Learn BIM properly, since it's both the bridge skill and a 10–15% premium. Specialize into data centers, healthcare or heavy civil. And weight the demographics more heavily than the current boom.
+**So the useful advice isn't a verdict on the field — it's a direction.** Aim at the site rather than the office, because the difference is 4.1 points and the office roles are the ones that look like promotions. Get real site experience wherever you can. Learn BIM properly, since it's both the bridge skill and a 10–15% premium. Specialize into data centers, healthcare or heavy civil. And weight the demographics more heavily than the current boom.
 
 And one thing worth holding onto: ==+you're already in the third option — the one that pays better at the median than the trades or architecture, and that almost nobody will mention.== The task now is to aim it at the site, where the protection is.
 
@@ -362,7 +360,7 @@ And one thing worth holding onto: ==+you're already in the third option — the 
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -373,7 +371,7 @@ And one thing worth holding onto: ==+you're already in the third option — the 
 ## The move from here
 
 4. What's the single most protected seat you could realistically aim for from where you are now — assistant superintendent, field engineer — and what would make you a credible candidate for it?
-5. If you're still studying: how much genuine site placement can you still secure, and is BIM something you're learning properly or superficially?
+5. If you're early in your career: how much genuine site time can you still secure, and is BIM something you're learning properly or superficially?
 6. If you're job-hunting: are you aiming at a site-based role on purpose, or applying to whatever office seat is open? Name the three roles you're actually chasing.
 
 ## The AI question, practically

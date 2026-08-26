@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Graphic & Visual Design
 
-*For anyone already in a design degree — or graduated and job-hunting with one*
+*For anyone working in design — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a design degree, or out of one and into the job hunt. So this guide skips the "should you study design" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+The choice is already made — you're working in design, early in your career or established in it. So this guide skips the "should you go into design" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where design sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here. It is not a case for giving up on design: the protected end of this field is real, well paid, and reachable from where you are — but it has to be aimed at deliberately rather than drifted into.
 
@@ -236,7 +234,7 @@ It's harder for people who:
 - Want **stable, definable tasks**
 - Are drawn to design as an escape from analytical work; ==?the surviving end of this field is more analytical, not less==
 
-If some of that second list sounds like you, it isn't a reason to abandon the degree — it's a reason to steer toward the problem and away from the artefact, deliberately, which is what the rest of this does.
+If some of that second list sounds like you, it isn't a reason to abandon the field — it's a reason to steer toward the problem and away from the artefact, deliberately, which is what the rest of this does.
 
 ## What else is moving this market
 
@@ -280,17 +278,17 @@ Broader than people assume: creative direction and brand strategy, UX and produc
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+much of where you land is still decided by moves in front of you.== Design is a 2.8-point spread from 5.6 to 8.4, and the difference between the protected end and the exposed one is not the school on your CV but the direction you steer from here — chiefly, away from production and toward judgment.
 
-## If you're still in the degree
+## If you're early in your career
 
 Three levers, in order of leverage.
 
-**1. Aim at UX, product or direction — the concentration is the whole game.** The general degree pointed at production is the exposed one, the row that scores worst in this entire guide (8.4). The protected destinations — creative direction (5.6), UX and product design (6.0) — are reached by concentration, not by assuming production leads up to them, because that progression is precisely the one that has broken. If you haven't committed to a direction, this is the single highest-leverage decision left in the degree. The category migration BLS already counts — graphic design at +2%, web and digital interface design at +7% — is the profession's own answer; move with it.
+**1. Aim at UX, product or direction — the concentration is the whole game.** The general degree pointed at production is the exposed one, the row that scores worst in this entire guide (8.4). The protected destinations — creative direction (5.6), UX and product design (6.0) — are reached by concentration, not by assuming production leads up to them, because that progression is precisely the one that has broken. If you haven't committed to a direction, this is the single highest-leverage decision still in front of you. The category migration BLS already counts — graphic design at +2%, web and digital interface design at +7% — is the profession's own answer; move with it.
 
 **2. A portfolio of decisions, while it's still cheap to build.** Volume is now free, so a wall of polished assets says nothing about you. For every piece, be able to say what the problem was, what you rejected, and what happened when it shipped. That evidence of judgment is what separates the protected end from the exposed floor — and it is far easier to build inside a degree, with real briefs and real critique, than to assemble later.
 
 **3. Critique and a domain, earlier than feels comfortable.** Defending a choice to a client or a board is the whole protected end expressed as a skill, and most programs underweight it — so chase every formal critique you can get. Alongside it, ==+pair design with a domain — healthcare, accessibility, an industrial context== — because the domain is the protection, and design paired with one is far more defensible than design alone.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career design titles are also the most exposed.
 
@@ -301,15 +299,15 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the way production automated, but you can be the designer who *directs* these tools rather than competes with them. The five capabilities above — direct precisely, curate with judgment, articulate the why, understand the business problem, price judgment rather than time — are all available right now, inside a current studio project or a first job. The most powerful for someone already in it is the pairing of the first two: ==+be the person who directs generation precisely and curates the result with judgment — and can show the decision behind every choice.== In a field where volume is free, a portfolio of decisions is the credential — and it's one you can start building this term, not after some future qualification.
+You can't undo the way production automated, but you can be the designer who *directs* these tools rather than competes with them. The five capabilities above — direct precisely, curate with judgment, articulate the why, understand the business problem, price judgment rather than time — are all available right now, inside a current studio project or your current role. The most powerful for someone already in it is the pairing of the first two: ==+be the person who directs generation precisely and curates the result with judgment — and can show the decision behind every choice.== In a field where volume is free, a portfolio of decisions is the credential — and it's one you can start building now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in design is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in design is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for the job hunt itself.
 
-## During the degree — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Aim at UX, product or direction from the start.** The exposed lane is the general degree pointed at production work — the weakest combination in this index (8.4). UX / product (6.0) and creative direction (5.6) are reached by concentration, not by assuming production leads there. That progression is precisely the one that has broken.
 - **Build a portfolio of decisions, not assets.** Volume is now free, so a wall of beautiful assets says nothing. For every piece, be able to say what the problem was, what you rejected, and what happened when it shipped. Evidence of judgment is the credential.
@@ -365,7 +363,7 @@ Production work — the thing most people picture when they say "graphic designe
 
 **What makes design genuinely different is the emotional shape of it.** In most professions automation takes the part people resented. Here it takes the craft — the thing that made the job feel worth doing. That's worth acknowledging honestly rather than reframing as opportunity.
 
-**So the useful advice isn't a verdict on the degree — it's a direction.** Aim at direction, UX or a domain pairing rather than assuming production work leads there. Build a portfolio of decisions rather than assets. Learn to defend choices, because that's the protected skill. And build real AI fluency now, inside whatever project or role you're in, directing generation rather than competing with it — because that's the differentiator this field rewards fastest.
+**So the useful advice isn't a verdict on the field — it's a direction.** Aim at direction, UX or a domain pairing rather than assuming production work leads there. Build a portfolio of decisions rather than assets. Learn to defend choices, because that's the protected skill. And build real AI fluency now, inside whatever project or role you're in, directing generation rather than competing with it — because that's the differentiator this field rewards fastest.
 
 And one thing worth holding onto if you love making things. ==+The judgment about what should exist is now worth more than the ability to make it, and that judgment is built by people who care about craft.== The path is narrower than it was. It hasn't closed — and you're already on it.
 
@@ -374,7 +372,7 @@ And one thing worth holding onto if you love making things. ==+The judgment abou
 
 # Questions worth sitting with
 
-*Whether you're the one in the degree or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -385,7 +383,7 @@ And one thing worth holding onto if you love making things. ==+The judgment abou
 ## The move from here
 
 4. What's the single most protected role you could realistically aim for from where you are now — a UX, product or direction-adjacent seat — and what would make you a credible candidate for it?
-5. If you're still studying: how much formal critique are you actually getting, and is there a UX, product or domain pathway still open to you?
+5. If you're early in your career: how much formal critique are you actually getting, and is there a UX, product or domain pathway still open to you?
 6. If you're job-hunting: are you aiming at a protected lane on purpose, or applying to whatever's open? Name the three roles you're actually chasing.
 
 ## The AI question, practically

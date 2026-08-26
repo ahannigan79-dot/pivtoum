@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Data Science & Analytics
 
-*For anyone still choosing — weighing a data science degree, or a path into the field*
+*For anyone considering a move into data science*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a data science degree — or a path into the field — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into data science — and you want to know what that move actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to data science.** ==?This is the guide where our own score faces the strongest challenge, and we've put that challenge near the front rather than burying it at the end.== The Bureau of Labor Statistics projects this occupation growing 33.5% over the next decade — the fourth-fastest in the entire US economy — while our framework rates the entry tier among the most exposed work we measure. Both readings are defensible. The honest move is to understand the tension rather than take either number at face value, and this guide is written to let you weigh it yourself.
 
@@ -70,7 +66,7 @@ Industry analysis consistently reports the market favoring candidates with two t
 
 ==+But entry-level salaries have risen sharply rather than fallen.== Analyst starting pay is reported around $90,000, up roughly $20,000 in a year. That is not what a collapsing entry market looks like, and we take it seriously in the section on the strongest challenge to our score.
 
-**The way through isn't to wait for the generalist entry rung to soften.** It's to enter *beside* it: aim at the engineering and ML end rather than analysis, build statistical depth that survives the automation of running the analysis, pair the work with a domain — healthcare, finance, energy — that lets you know when a result is wrong, and get real experience on messy data early, because this is a field that prefers demonstrated experience over credentials more than almost any other. Those are concrete moves, not a hope — and choosing a program that makes them possible is what the second half of this guide is about.
+**The way through isn't to wait for the generalist entry rung to soften.** It's to enter *beside* it: aim at the engineering and ML end rather than analysis, build statistical depth that survives the automation of running the analysis, pair the work with a domain — healthcare, finance, energy — that lets you know when a result is wrong, and get real experience on messy data early, because this is a field that prefers demonstrated experience over credentials more than almost any other. Those are concrete moves, not a hope — and choosing a route in that makes them possible is what the second half of this guide is about.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -261,7 +257,7 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** understand that statistical depth travels better than tooling. ==+Knowing why a method applies survives the automation of running it; knowing which button to press does not.==
+**Before you make the move:** understand that statistical depth travels better than tooling. ==+Knowing why a method applies survives the automation of running it; knowing which button to press does not.==
 
 **During:** get real data experience — an internship, a research project, anything with messy real-world data rather than clean teaching sets. Take the statistics and mathematics seriously rather than treating them as prerequisites to the interesting parts.
 
@@ -331,9 +327,9 @@ Health, finance, energy. The specialization is where the premium is.
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to choose your route in is knowing exactly what you'll need to do with it. The first list is for while you make the switch; the second is for the job hunt that follows.
 
-## During the degree — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Aim at the building end, not the querying end.** ML and AI engineering (6.0), senior data science (6.5) and data engineering (7.0) are the protected tracks; analytics-engineer / BI-developer work (7.6) and generalist entry analysis (8.2) are the exposed ones. Point every elective and project at the former.
 - **Take statistics and mathematics seriously — they're the durable layer.** Statistical judgment survives the automation of running the analysis; tooling fluency does not. Knowing why a method applies outlasts knowing which button to press.
@@ -341,7 +337,7 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 - **Pair the work with a domain.** Healthcare, finance, energy, biology. The domain is what lets you know a result is wrong, and it's what those sectors pay a premium for — machine learning already appears in 77% of data scientist postings, so raw tooling alone won't differentiate you.
 - **Learn to build systems, not just use them.** ML engineering and data infrastructure score better precisely because building is different work from running. A program that only teaches Python, SQL and dashboarding is training you for the 8.2 rung.
 - **Feed curiosity and adaptability on purpose.** The language, the library and the platform will all turn over repeatedly; the person who re-tools fastest, and stays curious about the question rather than the technique, compounds.
-- **Keep the frame wide.** Vet statistics or mathematics as the degree with data on top, computer science with an ML specialization, and domain pairings before committing. The most crowded lane is the tooling-focused data science degree, and it points at the automating work.
+- **Keep the frame wide.** Vet a statistics or mathematics route with data on top, computer science with an ML specialization, and domain pairings before committing. The most crowded lane is the tooling-focused data science route, and it points at the automating work.
 
 ## During the job hunt — aim, don't just apply
 
@@ -392,7 +388,7 @@ And one thing worth saying plainly to anyone choosing this because it seemed lik
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
@@ -420,7 +416,7 @@ And one thing worth saying plainly to anyone choosing this because it seemed lik
 
 ## Widening the frame
 
-13. Have you considered **statistics or mathematics** as the degree, with data skills on top? Statistical depth travels better than tooling.
+13. Have you considered **statistics or mathematics** as your route in, with data skills on top? Statistical depth travels better than tooling.
 14. What about pairing it with a **domain** — health, finance, energy? That's where the premium is and where fewer people apply.
 15. Have you compared this with computer science and engineering? Entry data analysis scores 8.2, entry software 8.1, licensed engineering 4.0.
 

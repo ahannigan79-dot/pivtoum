@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Cybersecurity
 
-*For anyone still choosing — weighing a cybersecurity degree, or a path into the field*
+*For anyone considering a move into cybersecurity*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a cybersecurity degree — or a path into the field — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into cybersecurity — and you want to know what that move actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to cybersecurity.** ==?This is the field with the largest gap between how it is marketed and how it actually hires.== You've almost certainly encountered the figure of 4.8 million unfilled cybersecurity jobs — it appears in university prospectuses, bootcamp advertising and certification marketing everywhere. The number is real. What it means for a beginner is not what those sources imply, and the section on that figure explains why. That gap is the single most useful thing in this document.
 
@@ -70,7 +66,7 @@ What resists: deciding whether this is an incident or noise, working out what an
 
 The short version: the shortage is for experienced people. ==-Practitioners consistently report that "entry level" listings ask for two years of experience==, and ISC2's 2025 workforce study found budget constraints have overtaken talent shortage as the number one hiring barrier.
 
-**The way through isn't to wait for the entry rung to soften — it may not.** It's to enter *beside* it: build demonstrable, hands-on evidence before applying — home labs, capture-the-flag competitions, bug bounty work — because in a field with no license that *is* the credential; aim placements at incident response, security engineering or offensive work rather than pure SOC monitoring; and use apprenticeship or degree-apprenticeship routes, which are paid and solve the experience paradox directly. Those are concrete moves, not a hope — and choosing a program that makes them possible is what the second half of this guide is about.
+**The way through isn't to wait for the entry rung to soften — it may not.** It's to enter *beside* it: build demonstrable, hands-on evidence before applying — home labs, capture-the-flag competitions, bug bounty work — because in a field with no license that *is* the credential; aim placements at incident response, security engineering or offensive work rather than pure SOC monitoring; and use apprenticeship or degree-apprenticeship routes, which are paid and solve the experience paradox directly. Those are concrete moves, not a hope — and choosing a route in that makes them possible is what the second half of this guide is about.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -113,7 +109,7 @@ This is the most useful section in the guide, because the claim it examines is e
 
 **Fourth, the pipeline problem this creates.** One industry analysis puts it well: a workforce with no entry-level pipeline produces no tier-two analysts and no senior generalists in five years. ==?The same argument we found in law — the sector may be making a self-defeating mistake — applies here, and nobody has resolved it.==
 
-**Where this leaves a student.** Cybersecurity is a genuinely good career with genuine demand. It is not the frictionless six-figure on-ramp it is marketed as, and the specific route being sold is the weakest one. The AI-native section covers what to do instead.
+**Where this leaves a career-changer.** Cybersecurity is a genuinely good career with genuine demand. It is not the frictionless six-figure on-ramp it is marketed as, and the specific route being sold is the weakest one. The AI-native section covers what to do instead.
 
 ---
 
@@ -264,7 +260,7 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** ==+build hands-on evidence — home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling.== In a field with no license, demonstrable capability is the credential, and it is available to a sixteen-year-old for free.
+**Before you make the move:** ==+build hands-on evidence — home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling.== In a field with no license, demonstrable capability is the credential, and it is available to a sixteen-year-old for free.
 
 **During:** get Security+ or an equivalent early, then specialize. Aim placements at incident response, security engineering or offensive work rather than pure SOC monitoring.
 
@@ -333,9 +329,9 @@ The experience paradox is real; programs that solve it are worth more than ranke
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to choose your route in is knowing exactly what you'll need to do with it. The first list is for while you make the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Aim at a protected specialization, not the SOC queue.** Incident response and threat hunting (5.0), security architecture (5.5) and offensive security / penetration testing (5.7) are the protected end; tier-one SOC monitoring (7.4) is the exposed one. Point every elective and placement at the former.
 - **Build hands-on evidence before anyone asks for it.** Home labs, capture-the-flag competitions, bug bounty work, contributing to open-source security tooling. In a field with no license, demonstrable capability *is* the credential — and it's free to a sixteen-year-old tonight.
@@ -396,7 +392,7 @@ And one thing worth saying plainly. ==+Cybersecurity is one of very few careers 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

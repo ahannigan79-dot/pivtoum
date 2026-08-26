@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Dentistry
 
-*For anyone already in dental school or training — or graduated and job-hunting*
+*For anyone working in dentistry — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in dental school or training, or out of it and into the job hunt. So this guide skips the "should you study dentistry" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+The choice is already made — you're working in dentistry, early in your career or established in it. So this guide skips the "should you go into dentistry" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where dentistry sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -282,17 +280,17 @@ Clinical practice across general and specialist areas, practice ownership and mu
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: on AI exposure, ==+chairside dentistry is already among the safest work we score.== The live spread you're steering inside runs from chairside practice (2.7) to the lab and administrative tier (5.5), and where you land is decided mostly by two things still in front of you: how close you stay to the chair, and whether the path points at ownership.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
-**1. The ownership path is the financial whole game.** The clinical work is protected on the score; the money is not automatic. The income model assumes eventual ownership — $166,810 employed against roughly $239,000 for owners — and dental school teaches practice management poorly. Every practice-management and business unit you can take seriously now is the highest-leverage thing left in the degree, because it's the least-taught and most consequential skill in the profession, and it's far cheaper to acquire in training than to learn on the job with a $293,900 loan behind you.
+**1. The ownership path is the financial whole game.** The clinical work is protected on the score; the money is not automatic. The income model assumes eventual ownership — $166,810 employed against roughly $239,000 for owners — and dental school teaches practice management poorly. Every practice-management and business unit you can take seriously now is the highest-leverage thing still in front of you, because it's the least-taught and most consequential skill in the profession, and it's far cheaper to acquire early than to learn on the job with a $293,900 loan behind you.
 
-**2. The digital workflow, while it's still free.** The lab tier (5.5) moved into the practice via CAD/CAM. A dentist who runs intraoral scanning, chairside milling and digital treatment planning captures value that used to leave the building — and pulls the machine-producible tier inside the protected one rather than ceding it. Get maximum exposure to scanning, milling and digital planning while your program is paying for it.
+**2. The digital workflow, while you can.** The lab tier (5.5) moved into the practice via CAD/CAM. A dentist who runs intraoral scanning, chairside milling and digital treatment planning captures value that used to leave the building — and pulls the machine-producible tier inside the protected one rather than ceding it. Get maximum exposure to scanning, milling and digital planning while you can get it.
 
-**3. Clinical volume and verification, earlier than feels comfortable.** The protection is the hands-in-the-mouth work (2.7). The more procedures you actually perform before graduating, the more of that protected core you own — and it varies enormously between programs, so chase every case you can. Alongside it, build the verification habit: ==+knowing when an automated caries detection is wrong — a false positive means treating a healthy tooth == is a clinical skill, not a technical one, and it's the one the imaging tools make scarcer and more valuable.
+**3. Clinical volume and verification, earlier than feels comfortable.** The protection is the hands-in-the-mouth work (2.7). The more procedures you actually perform, the more of that protected core you own — and it varies enormously between settings, so chase every case you can. Alongside it, build the verification habit: ==+knowing when an automated caries detection is wrong — a false positive means treating a healthy tooth == is a clinical skill, not a technical one, and it's the one the imaging tools make scarcer and more valuable.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the setting on the offer matters more than it looks, because the gradient is fixed: the further from the patient's mouth, the higher the exposure.
 
@@ -303,18 +301,18 @@ Here the setting on the offer matters more than it looks, because the gradient i
 
 ## The AI-native move, from where you stand
 
-You can't change the tier the lab experiment already settled, but you can be the dentist who *captures* the digital workflow rather than watching value leave the building. The five capabilities above — verify, use imaging support properly, run the digital workflow, handle patient AI use, take the business seriously — are all available right now, inside a current rotation or first job. The most powerful for someone already in it is the third: ==+be the dentist who runs intraoral scanning, chairside milling and digital treatment planning end to end.== The lab tier moved into the practice; whoever operates that workflow captures the value that used to leave it — and you can start building that fluency this term, not after some future qualification.
+You can't change the tier the lab experiment already settled, but you can be the dentist who *captures* the digital workflow rather than watching value leave the building. The five capabilities above — verify, use imaging support properly, run the digital workflow, handle patient AI use, take the business seriously — are all available right now, inside your current role. The most powerful for someone already in it is the third: ==+be the dentist who runs intraoral scanning, chairside milling and digital treatment planning end to end.== The lab tier moved into the practice; whoever operates that workflow captures the value that used to leave it — and you can start building that fluency now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in dentistry is inherited from the work itself, but the financial outcome and the tier you land in are built here, in these habits and choices. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in dentistry is inherited from the work itself, but the financial outcome and the tier you land in are built here, in these habits and choices. The first list is for anyone early in their career; the second is for the job hunt itself.
 
-## During the degree / training — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Treat the ownership path as the financial core.** The income model assumes eventual ownership — $166,810 employed against roughly $239,000 for owners — and the $293,900 average debt has to be planned against it. Take every practice-management unit seriously; dental school teaches it poorly, so pursue it deliberately.
-- **Maximise clinical volume.** The protected core (2.7) is the hands-in-the-mouth work. The more procedures you actually perform before graduating, the more of that core you own — and it varies enormously between programs, so chase it.
+- **Maximise clinical volume.** The protected core (2.7) is the hands-in-the-mouth work. The more procedures you actually perform, the more of that core you own — and it varies enormously between settings, so chase it.
 - **Learn the digital workflow while it's free.** Intraoral scanning, chairside CAD/CAM milling, digital treatment planning. The lab tier (5.5) moved into the practice; the dentist who runs that workflow captures value that used to leave the building.
 - **Build verification into how you read imaging.** Automated caries detection is confident when wrong; knowing when to overrule it — a false positive means treating a healthy tooth — is a clinical skill, not a technical one.
 - **Get exposure to a range of practice settings**, including DSO-affiliated ones, so you understand associate versus ownership economics before you're negotiating them.
@@ -362,7 +360,7 @@ The analysis tells you where the exposure is. This is what to do about it — th
 
 **The real decision is financial.** Average debt of **$293,900**, against a mean wage of $166,810 that rises to around $239,000 for practice owners. ==The income model assumes ownership, and steering toward it is most of what turns a protected score into a good living.==
 
-**So the useful advice isn't a verdict on the degree — it's a direction.** Take practice management seriously, because ownership is where the income sits and it's the least-taught skill in the profession. Learn the digital workflow, because the lab tier moved into the practice and whoever runs it captures the value. Maximise clinical volume, because the hands-in-the-mouth work is the protected core. And aim the job hunt at the chair — a seat with real procedure breadth and a path to ownership — not at the administrative or lab-adjacent tier that scores 5.5 and above.
+**So the useful advice isn't a verdict on the field — it's a direction.** Take practice management seriously, because ownership is where the income sits and it's the least-taught skill in the profession. Learn the digital workflow, because the lab tier moved into the practice and whoever runs it captures the value. Maximise clinical volume, because the hands-in-the-mouth work is the protected core. And aim the job hunt at the chair — a seat with real procedure breadth and a path to ownership — not at the administrative or lab-adjacent tier that scores 5.5 and above.
 
 And one honest thing about the physical protection: ==+it's the factor we rank least durable everywhere in this index.== A wet, confined, moving mouth is a hard robotics problem, and the regulatory and trust protections would hold even if that problem were solved — but the dentist who stays closest to the chair, runs the digital workflow, and owns the business is the one best placed however the technology moves.
 
@@ -371,7 +369,7 @@ And one honest thing about the physical protection: ==+it's the factor we rank l
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -382,7 +380,7 @@ And one honest thing about the physical protection: ==+it's the factor we rank l
 ## The move from here
 
 4. What's the most protected, ownership-track seat you could realistically aim for from where you are now, and what would make you a credible candidate for it?
-5. If you're still studying: are you getting real clinical procedure volume and hands-on digital-workflow time, or is that being underweighted — and can you add more before it's no longer free?
+5. If you're early in your career: are you getting real clinical procedure volume and hands-on digital-workflow time, or is that being underweighted — and can you add more while you can?
 6. If you're job-hunting: are you aiming at a chairside clinical seat with a path to ownership on purpose, or applying to whatever's open? Name the roles you're actually chasing.
 
 ## The AI question, practically

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Data Science & Analytics
 
-*For anyone already in a data science degree or training — or graduated and job-hunting with one*
+*For anyone working in data science — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a data science degree or training, or out of one and into the job hunt. So this guide skips the "should you study data science" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+The choice is already made — you're working in data science, early in your career or established in it. So this guide skips the "should you go into data science" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where data science sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -247,7 +245,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the fi
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** this is the field where AI tooling arrived first and most completely, which means the bar for what counts as valuable has already moved. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live internship, a research project or a first job, which is exactly where it counts.
+**The situation:** this is the field where AI tooling arrived first and most completely, which means the bar for what counts as valuable has already moved. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a research project or your current role, which is exactly where it counts.
 
 ### What an AI-native data professional looks like
 
@@ -277,17 +275,17 @@ Broad and well-regarded: data science and ML engineering, data and analytics eng
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Data science is a 2.2-point spread from 6.0 to 8.2, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward building and ownership, and away from generalist querying.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
-**1. Aim at the building end, not the querying end.** Generalist entry analysis (8.2) and analytics-engineer / BI-developer work (7.6) are the exposed rungs — the report-and-dashboard layer, first in line for automation. The protected destinations — ML and AI engineering (6.0), senior data science (6.5), data engineering (7.0) — are reached by learning to *build systems*, not just use them. If you haven't concentrated your electives and projects there, this is the single highest-leverage decision left in the degree.
+**1. Aim at the building end, not the querying end.** Generalist entry analysis (8.2) and analytics-engineer / BI-developer work (7.6) are the exposed rungs — the report-and-dashboard layer, first in line for automation. The protected destinations — ML and AI engineering (6.0), senior data science (6.5), data engineering (7.0) — are reached by learning to *build systems*, not just use them. If you haven't concentrated your work and projects there, this is the single highest-leverage decision still in front of you.
 
-**2. Statistical depth, while it's still free.** Statistical judgment survives the automation of running the analysis; tooling fluency does not. ==+Knowing why a method applies outlasts knowing which button to press== — and every serious statistics, experimental-design and inference module you can still take is a step from the exposed end toward the protected one, far cheaper to acquire now than to bolt on later.
+**2. Statistical depth, while you can.** Statistical judgment survives the automation of running the analysis; tooling fluency does not. ==+Knowing why a method applies outlasts knowing which button to press== — and every serious statistics, experimental-design and inference module you can still take is a step from the exposed end toward the protected one, far cheaper to acquire now than to bolt on later.
 
 **3. A domain, and real messy data.** Pair the work with healthcare, finance, energy or biology: the domain is what lets you know a result is wrong, and it's what those sectors pay a premium for. ==+That domain knowledge, applied to real messy data through an internship or research project, is the experience that separates the protected end from the exposed floor== — and in a field that prefers demonstrated experience over credentials more than almost any other, it's the closest thing to a license.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the titles overlap wildly and the exposure underneath them does not.
 
@@ -298,15 +296,15 @@ Here the title on the offer matters more than it looks, because the titles overl
 
 ## The AI-native move, from where you stand
 
-You can't undo the tasks that are already automating, but you can be the entrant who *directs* these tools rather than competes with them. The five capabilities above — frame the question, verify, build rather than run, own a recommendation, know what shouldn't be automated — are all available right now, inside a live project, an internship or a first job. The most powerful for someone already in it is the first: ==+be the person who decides what question is worth asking==, because analysis is now cheap and framing is not. That judgment requires knowing the business and the data well enough to smell an implausible result — and you can start building it this term, on real messy data, not after some future qualification.
+You can't undo the tasks that are already automating, but you can be the entrant who *directs* these tools rather than competes with them. The five capabilities above — frame the question, verify, build rather than run, own a recommendation, know what shouldn't be automated — are all available right now, inside a live project or your current role. The most powerful for someone already in it is the first: ==+be the person who decides what question is worth asking==, because analysis is now cheap and framing is not. That judgment requires knowing the business and the data well enough to smell an implausible result — and you can start building it now, on real messy data, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in data science is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in data science is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for the job hunt itself.
 
-## During the degree — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Aim at the building end, not the querying end.** ML and AI engineering (6.0), senior data science (6.5) and data engineering (7.0) are the protected tracks; analytics-engineer / BI-developer work (7.6) and generalist entry analysis (8.2) are the exposed ones. Point every elective and project at the former.
 - **Take statistics and mathematics seriously — they're the durable layer.** Statistical judgment survives the automation of running the analysis; tooling fluency does not. Knowing why a method applies outlasts knowing which button to press.
@@ -314,7 +312,7 @@ The analysis tells you where the exposure is. This is what to do about it — th
 - **Pair the work with a domain.** Healthcare, finance, energy, biology. The domain is what lets you know a result is wrong, and it's what those sectors pay a premium for — machine learning already appears in 77% of data scientist postings, so raw tooling alone won't differentiate you.
 - **Learn to build systems, not just use them.** ML engineering and data infrastructure score better precisely because building is different work from running. A program that only teaches Python, SQL and dashboarding is training you for the 8.2 rung.
 - **Feed curiosity and adaptability on purpose.** The language, the library and the platform will all turn over repeatedly; the person who re-tools fastest, and stays curious about the question rather than the technique, compounds.
-- **Keep the frame wide.** Vet statistics or mathematics as the degree with data on top, computer science with an ML specialization, and domain pairings before committing. The most crowded lane is the tooling-focused data science degree, and it points at the automating work.
+- **Keep the frame wide.** Statistics or mathematics with data on top, computer science with an ML specialization, and domain pairings all travel further than tooling alone. The most crowded lane is the tooling-focused data science path, and it points at the automating work.
 
 ## During the job hunt — aim, don't just apply
 
@@ -365,7 +363,7 @@ And one thing worth saying plainly, if you're in this because it seemed like the
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -376,7 +374,7 @@ And one thing worth saying plainly, if you're in this because it seemed like the
 ## The move from here
 
 4. What's the single most protected role you could realistically aim for from where you are now, and what would make you a credible candidate for it?
-5. If you're still studying: what's the most rigorous statistics or systems-building module still open to you, and is there a reason not to take it?
+5. If you're early in your career: what's the most rigorous statistics or systems-building module still open to you, and is there a reason not to take it?
 6. If you're job-hunting: are you aiming at a building track on purpose, or applying to whatever's open? Name the three roles you're actually chasing, and whether they build or only query.
 
 ## The AI question, practically

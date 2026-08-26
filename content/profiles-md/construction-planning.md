@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Construction Management
 
-*For anyone still choosing — weighing a construction management degree, or a path into the profession*
+*For anyone considering a move into construction*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a construction management degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into construction — and you want to know what that move actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to construction management.** ==?This is the career most consistently overlooked by academically capable students, and it is referenced as the better alternative in three other guides in this index — engineering, architecture and the skilled trades.== It scores better than all three at the site end, pays a median above $106,000, and almost nobody's school careers office mentions it.
 
@@ -54,7 +50,7 @@ It is also the natural destination for someone who likes building things but wan
 
 # Why site work scores low — the six factors
 
-Here's how a site superintendent answers them. Knowing *why* the site end holds at 3.3 while preconstruction sits at 7.4 is what tells you which version of the career to choose.
+Here's how a site superintendent answers them. Knowing *why* the site end holds at 3.3 while preconstruction sits at 7.4 is what tells you which way into the field to aim for.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
@@ -114,7 +110,7 @@ We'd rather flag this than let the shortage figures do more work than they shoul
 
 **The construction hiring rate hit 3.3% in February 2026 — the lowest on record since the Bureau of Labor Statistics began measuring it in 2000.**
 
-That sits awkwardly alongside 92% of contractors reporting difficulty filling positions. Both figures are real, and the reconciliation matters for a student.
+That sits awkwardly alongside 92% of contractors reporting difficulty filling positions. Both figures are real, and the reconciliation matters when you're weighing the move.
 
 **What's happening:** construction spending growth has slowed, so firms are starting fewer projects and therefore hiring less — while simultaneously being unable to find experienced people for the projects they do have. ==?It is a shortage of *qualified* people in a market that is *hiring cautiously*, which is a different thing from a boom.==
 
@@ -254,7 +250,7 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** get site experience however possible — laboring, a trade, a summer with a contractor. ==+Nothing else builds the ability to read a site, and it's the thing that separates a good superintendent from a competent administrator.==
+**Before you make the move:** get site experience however possible — laboring, a trade, a summer with a contractor. ==+Nothing else builds the ability to read a site, and it's the thing that separates a good superintendent from a competent administrator.==
 
 **During:** take the placement, and push for site rather than office. Learn BIM properly rather than superficially — it pays 10–15% and it's the bridge skill.
 
@@ -324,12 +320,12 @@ Site-based roles or office coordination? The difference is 4.1 points on our sca
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to choose your route in is knowing exactly what you'll need to do with it. The first list is for while you make the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build toward the site
+## As you make the switch — build toward the site
 
 - **Treat the site, not the office, as the destination.** The protection lives at the site end (site superintendent 3.3, construction project manager 4.2), not in the office roles (scheduler 7.0, preconstruction and document coordination 7.4). Aim every choice at the work that gets walked, not the work that gets filed.
-- **Get real site experience before and during the degree.** Laboring, a trade, a summer with a contractor — nothing else builds the ability to read a site, and it's what separates a good superintendent from a competent administrator.
+- **Get real site experience before and during the switch.** Laboring, a trade, a summer with a contractor — nothing else builds the ability to read a site, and it's what separates a good superintendent from a competent administrator.
 - **Treat the placement as non-negotiable, and push for site over office.** Genuine site time is rarer than office placement and worth more. First-destination job titles are the whole game: site-based or coordination is a 4.1-point difference on our scale.
 - **Learn BIM properly, not superficially.** It pays 10–15% and it's the bridge skill — the ability to connect what the model says with what the site shows is the single most valuable position in the profession right now.
 - **Get fluent with scheduling and estimating tools as a professional, not a shortcut.** Learn to verify a generated schedule or an automated takeoff — verification is the skill that survives when the office layer automates.
@@ -382,7 +378,7 @@ It scores better at the site end than engineering, architecture or a business de
 
 **The honest costs are real and have nothing to do with technology.** Long hours, weather, sustained pressure from every direction, and genuine cyclicality — with the hiring rate already at its lowest recorded level even as the skills shortage persists.
 
-**So the useful advice is:** aim at the site rather than the office, because the difference is 4.1 points and the office roles are the ones that look like promotions. Get real site experience before the degree. Learn BIM properly, since it's both the bridge skill and a 10–15% premium. Specialize into data centers, healthcare or heavy civil. And weight the demographics more heavily than the current boom.
+**So the useful advice is:** aim at the site rather than the office, because the difference is 4.1 points and the office roles are the ones that look like promotions. Get real site experience before you make the move. Learn BIM properly, since it's both the bridge skill and a 10–15% premium. Specialize into data centers, healthcare or heavy civil. And weight the demographics more heavily than the current boom.
 
 And for someone who likes building things and has been told the choice is trades or architecture — ==+this is the third option, it pays better than both at the median, and almost nobody will mention it.==
 
@@ -391,7 +387,7 @@ And for someone who likes building things and has been told the choice is trades
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
