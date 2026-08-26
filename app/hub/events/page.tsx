@@ -56,6 +56,9 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
 
         {founder && <NewEventForm />}
         {!founder && ledPods.length > 0 && <HostSessionForm pods={ledPods} />}
+        {!founder && ledPods.length === 0 && (
+          <Link href="/hub/contribute" className="newevent-toggle">+ Propose a session to host</Link>
+        )}
 
         <EventCalendar
           year={year} month0={month0} events={monthEvents}

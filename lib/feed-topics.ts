@@ -15,6 +15,7 @@ export const TOPICS: Topic[] = [
   { slug: "ask", label: "Ask the room", hint: "A question for people on the same path" },
   { slug: "rebuilds", label: "Workflow rebuilds", hint: "How you're rebuilding your work AI-native" },
   { slug: "signals", label: "Field signals", hint: "What's shifting in your industry" },
+  { slug: "member-article", label: "Member articles", hint: "Longer pieces from members — published after review", founderOnly: true },
 ];
 
 export const TOPIC_BY_SLUG: Record<string, Topic> = Object.fromEntries(TOPICS.map((t) => [t.slug, t]));

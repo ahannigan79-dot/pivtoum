@@ -221,6 +221,23 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'sme'`,
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'wins'`,
   `ALTER TYPE "event_type" ADD VALUE IF NOT EXISTS 'pod_checkin'`,
+  // Member contributions awaiting founder review (sessions to host, articles to publish).
+  `CREATE TABLE IF NOT EXISTS "submissions" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "kind" text NOT NULL,
+     "status" text DEFAULT 'pending' NOT NULL,
+     "title" text NOT NULL,
+     "body" text NOT NULL,
+     "details" jsonb,
+     "review_note" text,
+     "reviewed_by" text,
+     "reviewed_at" timestamp with time zone,
+     "result_id" uuid,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "submissions_status_idx" ON "submissions" ("status","created_at")`,
+  `CREATE INDEX IF NOT EXISTS "submissions_member_idx" ON "submissions" ("member_id","created_at")`,
   // Founder cadence — the one dial that drives the community month. Singleton row.
   `CREATE TABLE IF NOT EXISTS "cadence_state" (
      "id" text PRIMARY KEY DEFAULT 'singleton' NOT NULL,

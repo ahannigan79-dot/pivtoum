@@ -340,6 +340,25 @@ export const cadenceState = pgTable("cadence_state", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+/* ---------- Member contributions awaiting founder review. A member proposes a
+   session to host or an article to publish; it sits pending until the founder
+   approves (→ becomes an event / a published post) or declines. */
+export const submissions = pgTable("submissions", {
+  id: uid(),
+  memberId: memberFk(),
+  kind: text("kind").notNull(),                 // "session" | "article"
+  status: text("status").notNull().default("pending"), // pending | approved | declined
+  title: text("title").notNull(),
+  body: text("body").notNull(),                 // article body, or the session pitch/description
+  details: jsonb("details"),                    // session: {type,startsAt,durationMins,joinUrl}; article: {topic}
+  reviewNote: text("review_note"),              // founder's note (shown to the member on decline)
+  reviewedBy: text("reviewed_by"),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+  resultId: uuid("result_id"),                  // the event/post created on approval
+  createdAt: now(),
+}, (t) => ({ statusIdx: index("submissions_status_idx").on(t.status, t.createdAt),
+             memberIdx: index("submissions_member_idx").on(t.memberId, t.createdAt) }));
+
 /* ---------- Evolve: levers a member is actively pulling ---------- */
 export const commitments = pgTable("commitments", {
   id: uid(),

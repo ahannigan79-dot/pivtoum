@@ -6,6 +6,7 @@ import { getOrCreateProfile, touchVisit, isFounder } from "@/lib/member";
 import { getUnreadCount } from "@/lib/dms";
 import { getUnreadNotifCount } from "@/lib/notifications";
 import { openReportCount } from "@/lib/moderation";
+import { pendingSubmissionCount } from "@/lib/submissions";
 import { getAccess, getViewMode, isPreviewAllowed } from "@/lib/gate";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
@@ -33,13 +34,14 @@ export default async function HubLayout({ children }: { children: React.ReactNod
   const path = (await headers()).get("x-pathname");
   const gated = !access.member && !isPreviewAllowed(path);
 
-  const [messagesUnread, notifUnread, openReports] = profile && access.member
+  const [messagesUnread, notifUnread, openReports, subsPending] = profile && access.member
     ? await Promise.all([
         getUnreadCount(profile.clerkUserId),
         getUnreadNotifCount(profile.clerkUserId),
         founder ? openReportCount() : Promise.resolve(0),
+        founder ? pendingSubmissionCount() : Promise.resolve(0),
       ])
-    : [0, 0, 0];
+    : [0, 0, 0, 0];
   return (
     <div className="hub">
       <aside className="hub-side">
@@ -54,7 +56,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
             {notifUnread > 0 && <span className="hub-bell-dot">{notifUnread > 9 ? "9+" : notifUnread}</span>}
           </Link>
         </div>
-        <HubNav messagesUnread={messagesUnread} isFounder={founder} openReports={openReports} />
+        <HubNav messagesUnread={messagesUnread} isFounder={founder} openReports={openReports} subsPending={subsPending} />
         {realFounder && <ViewModeToggle current={viewMode} />}
         <div className="hub-side-foot">
           <UserButton />

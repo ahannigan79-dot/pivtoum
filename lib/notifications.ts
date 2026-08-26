@@ -17,7 +17,7 @@ export type NotifPayload = {
   entityId?: string; // for de-duping bursts (e.g. the post id)
 };
 
-export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore";
+export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore" | "submission";
 
 export type NotifItem = {
   id: string;
@@ -27,7 +27,7 @@ export type NotifItem = {
 } & NotifPayload;
 
 const ICON: Record<NotifKind, string> = {
-  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊",
+  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊", submission: "📝",
 };
 
 export function notifIcon(kind: string): string {
@@ -52,10 +52,11 @@ async function postHref(postId: string, podId: string | null): Promise<string> {
 /** High-signal kinds that also send an instant email (reactions never do). */
 const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
   reply: "View the reply", dm: "Open the message", report: "Review the post", mention: "View the post",
+  submission: "Open it",
 };
 
 /** Kinds worth a lock-screen push (reactions stay in-app only to avoid noise). */
-const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge"]);
+const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission"]);
 
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
@@ -172,6 +173,27 @@ export async function notifyRescore(
 }
 
 /* ── Reads ─────────────────────────────────────────────────────────────── */
+
+/** A member submitted a session/article → tell the founder(s) to review it. */
+export async function notifySubmission(actorId: string, kind: string, title: string): Promise<void> {
+  const actor = await actorInfo(actorId);
+  const founders = await getFounderIds();
+  const what = kind === "session" ? "proposed a session" : "submitted an article";
+  await Promise.all(founders.filter((f) => f !== actorId).map((f) =>
+    notify(f, "submission", {
+      actorId, actorName: actor.name, actorAvatar: actor.avatar,
+      title: what, preview: title.slice(0, 140), href: "/hub/submissions",
+    })));
+}
+
+/** A submission was approved/declined → tell the member. */
+export async function notifySubmissionDecision(memberId: string, kind: string, title: string, approved: boolean, href: string): Promise<void> {
+  const what = kind === "session" ? "session" : "article";
+  await notify(memberId, "submission", {
+    title: approved ? `Your ${what} was approved` : `Your ${what} needs another look`,
+    preview: title.slice(0, 140), href,
+  });
+}
 
 export async function getNotifications(memberId: string, limit = 40): Promise<NotifItem[]> {
   const rows = await db.select().from(notifications)

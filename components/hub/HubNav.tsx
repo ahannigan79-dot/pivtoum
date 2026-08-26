@@ -19,6 +19,7 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
     { href: "/hub/pods", icon: "pods", label: "Your Pod" },
     { href: "/hub/events", icon: "events", label: "Events" },
     { href: "/hub/members", icon: "members", label: "Members" },
+    { href: "/hub/contribute", icon: "playbook", label: "Contribute" },
     { href: "/hub/library", icon: "library", label: "Library" },
     { href: "/hub/messages", icon: "messages", label: "Messages" },
   ]},
@@ -27,14 +28,15 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   ]},
 ];
 
-export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 }: {
-  messagesUnread?: number; isFounder?: boolean; openReports?: number;
+export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0, subsPending = 0 }: {
+  messagesUnread?: number; isFounder?: boolean; openReports?: number; subsPending?: number;
 }) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
   const sections = isFounder
     ? [...SECTIONS, { label: "Founder", items: [
         { href: "/hub/cadence", icon: "events", label: "Cadence" },
+        { href: "/hub/submissions", icon: "playbook", label: "Submissions" },
         { href: "/hub/health", icon: "health", label: "Member health" },
         { href: "/hub/market", icon: "exposure", label: "Market baselines" },
         { href: "/hub/scout", icon: "scout", label: "Article scout" },
@@ -52,6 +54,7 @@ export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0 
               {it.label}
               {it.href === "/hub/messages" && messagesUnread > 0 && <span className="nav-badge">{messagesUnread}</span>}
               {it.href === "/hub/moderation" && openReports > 0 && <span className="nav-badge warn">{openReports}</span>}
+              {it.href === "/hub/submissions" && subsPending > 0 && <span className="nav-badge">{subsPending}</span>}
             </Link>
           ))}
         </div>
