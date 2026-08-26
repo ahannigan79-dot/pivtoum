@@ -61,12 +61,12 @@ body {
 }
 
 /* ---- Highlighter strokes ------------------------------------------------- */
-/* Emphasis: coloured text (the "winning" green), replacing the yellow
-   highlighter. One consistent device site-wide. Semantic variants keep their
-   meaning as colour: green = the opening, red = the exposed side. */
+/* Emphasis: coloured text, replacing the yellow highlighter. One consistent
+   device site-wide. Semantic variants keep their meaning as colour, in the brand
+   palette: finding = petrol, protection = green, exposure = coral, method = ink. */
 .hl { color: var(--win); font-weight: 600; }
 .hl.d2 { }
-.hl.g { color: var(--win); }
+.hl.g { color: var(--pen-safe); }
 .hl.r { color: var(--pen); }
 .hl.b { color: var(--ink); }
 
