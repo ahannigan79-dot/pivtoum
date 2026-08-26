@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Veterinary
 
-*For anyone already in veterinary training — or graduated and job-hunting*
+*For anyone working in veterinary medicine — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in veterinary training, or out of it and into the job hunt. So this guide skips the "should you study veterinary medicine" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in veterinary medicine, whether you're early-career or long established. So this guide skips the "should you study veterinary medicine" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly, whoever you are in the profession — early-career or established. The moves are the same at any stage.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where veterinary medicine sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -366,7 +366,7 @@ And one honest thing, if the ambition that got you here has started to feel heav
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now, wherever you are in the profession.*
 
 ## Where you actually stand
 

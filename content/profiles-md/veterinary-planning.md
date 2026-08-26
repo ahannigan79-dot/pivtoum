@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Veterinary
 
-*For anyone still choosing — weighing a veterinary path, or a route into the profession*
+*For anyone weighing a move into veterinary medicine*
 
 *Pivotum · Fall 2026*
 
@@ -12,15 +12,13 @@
 
 You're weighing a veterinary path — or a route into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as an adult weighing the move for yourself.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
 
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
-
 **And two things specific to veterinary medicine.**
 
-**First, this is often a very long-held ambition.** More than most careers here, veterinary medicine tends to be something decided on at nine and never revisited. That's worth respecting rather than dismantling — but it does mean the practical realities may never have been examined properly. This guide is for examining them.
+**First, this is often a long-held ambition.** More than most careers here, veterinary medicine tends to be something people have wanted since childhood and never revisited. That's worth respecting rather than dismantling — but it does mean the practical realities may never have been examined properly. This guide is for examining them.
 
 **Second, and handled carefully further down:** ==?the profession openly discusses mental health and wellbeing in a way most don't, because it has genuine occupational stressors that are unusual and worth understanding before committing.== We've covered that further down without sensationalizing it, because it matters and because the profession itself has built real support around it.
 
@@ -219,7 +217,7 @@ Three things make it distinctive:
 
 **The profession discusses this openly**, which is to its credit and unusual. The AVMA and equivalent bodies internationally run substantial wellbeing programs, peer support networks and confidential assistance services, and veterinary schools now build this into training rather than leaving graduates to discover it.
 
-==?We'd rather a seventeen-year-old knew this going in than found out at twenty-six.== It is not a reason to avoid the profession. It is a reason to enter it with open eyes, to take the support seriously, and to choose a practice culture carefully.
+==?Better to know this going in than to find out once you've committed.== It is not a reason to avoid the profession. It is a reason to enter it with open eyes, to take the support seriously, and to choose a practice culture carefully.
 
 ## Who this work suits — and who it doesn't
 
@@ -394,7 +392,7 @@ And one thing worth saying plainly, if this has been the plan since childhood. =
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision as you weigh the move.*
 
 ## About the work itself
 

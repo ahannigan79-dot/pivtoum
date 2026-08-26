@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Transport & Logistics
 
-*For anyone still choosing — weighing a path into transport and logistics*
+*For anyone weighing a move into transport and logistics*
 
 *Pivotum · Fall 2026*
 
@@ -12,11 +12,9 @@
 
 You're weighing a path into transport and logistics — driving, specialist vehicle work, the technician route, or the planning side — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as an adult weighing the move for yourself.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to transport.** ==?This guide contradicts the single most confidently repeated prediction of the last decade — that driving jobs would be the first to go.== Nine years after that prediction became mainstream, the data says something different, and the office is automating considerably faster than the cab. If the instinct is that driving is a dead-end career because of self-driving trucks, the section on the prediction that didn't happen is the one to read. The honest problems here are real, and they are about working conditions rather than about robots.
 
@@ -73,7 +71,7 @@ This deserves the most space in the guide, because it is the most widely believe
 
 ==?So the honest position is not that autonomy isn't coming — it is that after nine years it accounts for roughly one truck in eighty thousand, and the parts of the job it addresses least are the parts most drivers actually do.==
 
-**Why we still score long-haul at 4.5 rather than lower.** Because the trajectory is real even if the timeline was wrong, and because long-haul highway driving is the single most exposed driving category. ==+A student choosing driving work should weight local, specialist and multi-stop work more heavily than over-the-road long-haul — which is also where the pay growth has been strongest.==
+**Why we still score long-haul at 4.5 rather than lower.** Because the trajectory is real even if the timeline was wrong, and because long-haul highway driving is the single most exposed driving category. ==+Anyone considering driving work should weight local, specialist and multi-stop work more heavily than over-the-road long-haul — which is also where the pay growth has been strongest.==
 
 ---
 
@@ -395,7 +393,7 @@ And one thing worth saying to anyone who has been told this career is finished. 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision as you weigh the move.*
 
 ## About the work itself
 

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Transport & Logistics
 
-*For anyone already training or working in transport and logistics — or job-hunting into it*
+*For anyone working in transport and logistics — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in CDL training or a logistics program, already driving or working in the field, or out of training and choosing a carrier. So this guide skips the "should you go into transport" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in transport and logistics, whether you're in CDL training, already driving, or established and weighing your next carrier. So this guide skips the "should you go into transport" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly, whoever you are in the field — early-career or established. The moves are the same at any stage.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where transport sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -373,7 +373,7 @@ And one thing worth saying to anyone who has been told this career is finished. 
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now, wherever you are in the field.*
 
 ## Where you actually stand
 
