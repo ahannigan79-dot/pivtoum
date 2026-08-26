@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   verification: {
     other: { "facebook-domain-verification": "s9vudqllxjp89v7ou91g0ssnhev02p" },
   },
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Winning" },
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "Winning" },
   icons: { apple: "/icons/apple-touch-icon.png" },
 };
 
