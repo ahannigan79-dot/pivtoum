@@ -6,8 +6,29 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
+import { visit } from "unist-util-visit";
 import remarkHighlight from "@/lib/remark-highlight";
 import { careers, type Career } from "@/data/careers";
+
+/**
+ * Evidence links in the deep dives point out to BLS, WEF, academic sources etc.
+ * Open them in a new tab so a member never loses their place in the guide, and
+ * mark them so the prose CSS can flag an outbound source.
+ */
+function rehypeExternalLinks() {
+  return (tree: unknown) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    visit(tree as any, "element", (node: any) => {
+      if (node.tagName !== "a") return;
+      const href: string = node.properties?.href ?? "";
+      if (/^https?:\/\//i.test(href)) {
+        node.properties.target = "_blank";
+        node.properties.rel = "noopener noreferrer";
+        node.properties.className = [...(node.properties.className ?? []), "dd-ext"];
+      }
+    });
+  };
+}
 
 /**
  * Career Deep Dives — served from the content we already produced. The
@@ -64,6 +85,7 @@ async function toHtml(md: string): Promise<string> {
     .use(remarkGfm)
     .use(remarkHighlight)
     .use(remarkRehype)
+    .use(rehypeExternalLinks)
     .use(rehypeStringify)
     .process(md);
   return String(file);
