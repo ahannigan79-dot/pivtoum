@@ -10,6 +10,7 @@ import { getAccess, getViewMode, isPreviewAllowed } from "@/lib/gate";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
 import { PwaRegister } from "@/components/hub/PwaRegister";
+import { InstallPrompt } from "@/components/hub/InstallPrompt";
 import { LookingGlass } from "@/components/hub/LookingGlass";
 import { ViewModeToggle } from "@/components/hub/ViewModeToggle";
 import { Icon } from "@/components/hub/Icon";
@@ -69,6 +70,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
       </aside>
       <MobileBar notifUnread={notifUnread} messagesUnread={messagesUnread} openReports={openReports} isFounder={founder} />
       <PwaRegister />
+      <InstallPrompt />
       <main className="hub-main">{gated ? <LookingGlass /> : children}</main>
     </div>
   );
