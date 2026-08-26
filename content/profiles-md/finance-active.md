@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Finance
 
-*For anyone already in a finance degree or training — or graduated and job-hunting with one*
+*For anyone working in finance — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,15 +10,15 @@
 
 ## Before you read this
 
-The choice is already made — you're in a finance degree or training, or out of one and into the job hunt. So this guide skips the "should you study finance" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in finance. So this guide skips the "should you go into finance" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly, whether you're early in your career or well established — the moves are the same either way.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where finance sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
 **The good news, up front.** Already in it is not too late — not close. Finance isn't one destination, it's a wide spread of them, from 4.6 to 8.0, and ==+almost none of your exposure is fixed yet.== Where you land inside that range is decided mostly by moves still in front of you — chiefly, whether you steer toward the tiers where someone is answerable to a client rather than the spreadsheet rung everyone starts in. The second half of this guide is those moves.
 
-**And one thing specific to finance.** ==?The timing matters more here than in any other guide: investment banking summer analyst applications open up to eighteen months in advance, which means the decision is effectively made in the first year of university rather than the third.== If you're early in the degree and banking is of any interest, that clock is the first thing to check. And be careful with the sources — finance is unusually well covered by recruiting firms with a commercial interest in optimism. We've leaned on Bureau of Labor Statistics data where possible and flagged where we're relying on industry commentary instead.
+**And one thing specific to finance.** ==?The timing matters more here than in any other guide: investment banking summer analyst applications open up to eighteen months in advance, which means the decision is effectively made in the first year of university rather than the third.== If you're early on and banking is of any interest, that clock is the first thing to check. And be careful with the sources — finance is unusually well covered by recruiting firms with a commercial interest in optimism. We've leaned on Bureau of Labor Statistics data where possible and flagged where we're relying on industry commentary instead.
 
 ---
 
@@ -332,13 +332,13 @@ The analysis tells you where the exposure is. This is what to do about it — th
 
 # Bottom line
 
-**Finance's protected end is genuinely protected, and it is not where students are looking** — which is exactly why being already in it is not a problem. The decisive moves were always going to happen from here.
+**Finance's protected end is genuinely protected, and it is not where most people are looking** — which is exactly why being already in it is not a problem. The decisive moves were always going to happen from here.
 
 Wealth advisory at 4.6 and risk at 5.3 are shielded by the two things that hold up across this whole index: a named human answerable to a client, and regulatory obligation attached to a person. Neither is going anywhere.
 
 **The entry tier is the problem**, and it is severe — 8.0, with a job description that reads like a list of automated tasks. Hiring has shifted toward experience, and the training the analyst years used to provide has changed even where the seats remain. Standing still on that rung is the one thing not to do.
 
-**And the practical advice is unusually concrete for this guide.** ==Understand the recruiting timeline, because it starts eighteen months ahead of the job and the internship is now the filter rather than one input among several.== If you're early in the degree and banking is of any interest, that clock is the first thing to check.
+**And the practical advice is unusually concrete for this guide.** ==Understand the recruiting timeline, because it starts eighteen months ahead of the job and the internship is now the filter rather than one input among several.== If you're early on and banking is of any interest, that clock is the first thing to check.
 
 **So the useful advice isn't a verdict on the degree — it's a direction.** Aim at advisory, risk or compliance rather than assuming banking. Take the quantitative modules seriously, because verification depends on them. Get the internship. Move toward being answerable to someone as early as you can. And build real AI fluency now — verification above all — inside whatever role you're in, because that's the differentiator this field rewards fastest.
 
@@ -349,7 +349,7 @@ And one honest thing worth saying. The advisory end of finance — sitting with 
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

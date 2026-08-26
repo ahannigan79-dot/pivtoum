@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Journalism & Media
 
-*For anyone already in a journalism degree or training — or graduated and job-hunting with one*
+*For anyone working in journalism — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,11 +10,11 @@
 
 ## Before you read this
 
-The choice is already made — you're in a journalism degree or training, or out of one and into the job hunt. So this guide skips the "should you study journalism" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in journalism. So this guide skips the "should you go into journalism" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly, whether you're early in your career or well established — the moves are the same either way.
 
-**What this is.** A facts document, not a pep talk. We have not softened the numbers, because a document that did would be doing you no favours. But we've also not written it as a case against journalism, because the skills are genuinely valuable, the work matters, and there are places that are hiring. The honest advice is narrow rather than negative — and from where you already stand, narrow is useful.
+**What this is.** A facts document, not a pep talk. We have not softened the numbers, because a document that did would be doing you no favors. But we've also not written it as a case against journalism, because the skills are genuinely valuable, the work matters, and there are places that are hiring. The honest advice is narrow rather than negative — and from where you already stand, narrow is useful.
 
 **The good news, up front — and the honest version of it.** Already in it is not too late. Journalism isn't one destination, it's a wide spread of them, from 5.1 to 8.3, and ==+where you land inside that range is decided mostly by moves still in front of you== — chiefly whether you aim at original reporting and can show evidence of doing it. What you *can't* steer is the industry's economics, and this guide won't pretend otherwise. But which version of the work you point at, and what you can prove you've done, is genuinely still open.
 
@@ -250,7 +250,7 @@ Everything in the market-context section above, plus one thing worth adding: **s
 
 # The AI-native advantage — what it actually looks like
 
-Journalism is the profession where AI creates the most demand for the thing it can't do — and being already in it, close to real reporting, is where you build that. A current beat, a student masthead, a first job: all of it is somewhere to practise pointing at what the tools can't do.
+Journalism is the profession where AI creates the most demand for the thing it can't do — and being already in it, close to real reporting, is where you build that. A current beat, a side project, a first job: all of it is somewhere to practice pointing at what the tools can't do.
 
 ### What an AI-native journalist looks like
 
@@ -369,7 +369,7 @@ And one honest thing worth saying. Journalism is one of very few careers where t
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

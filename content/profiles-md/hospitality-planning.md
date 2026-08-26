@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Hospitality & Culinary
 
-*For anyone still choosing — weighing a hospitality or culinary path, or a route into the industry*
+*For anyone considering a move into hospitality — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,19 +10,17 @@
 
 ## Before you read this
 
-You're weighing a hospitality or culinary path — a degree, a culinary apprenticeship, or a direct route onto the floor — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're weighing a move into hospitality — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as the person weighing the move.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And two things specific to hospitality.**
 
 **First, this is the guide that inverts the pattern running through the rest of the index.** In law, finance, business and software, the entry tier is collapsing and the senior end is holding. ==?In hospitality the opposite is happening: entry-level hiring has eased, and the acute shortage is now in experienced leadership — general managers, executive chefs, district managers.==
 
-**Second, if the first reaction to "hospitality" is that it isn't a real career, that's worth examining before the conversation.** It employs two million more people than it did in 2020, the chef population has grown nearly 80%, and general manager salaries rose over 12% in a single year. The honest problems here are real — and they are about conditions, not about prospects.
+**Second, if your first reaction to "hospitality" is that it isn't a real career, that's worth examining first.** It employs two million more people than it did in 2020, the chef population has grown nearly 80%, and general manager salaries rose over 12% in a single year. The honest problems here are real — and they are about conditions, not about prospects.
 
 ---
 
@@ -377,7 +375,7 @@ And one honest thing worth saying, if the first reaction was that this isn't a r
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

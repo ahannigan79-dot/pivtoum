@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Law
 
-*For anyone still choosing — weighing a law degree, or a path into the profession*
+*For anyone considering a move into law — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a law degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're weighing a move into law — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as the person weighing the move.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to law.** ==?This is the guide where the financial question matters most.== Law school is expensive, and the debt is priced on assumptions about the graduate job market that have shifted in the last three years. Whatever you think you know about the numbers, run them — properly, against the specific school, not the national average. That deserves a real conversation, not an optimistic one.
 
@@ -460,7 +458,7 @@ And it's worth restating what the risk analysis can't measure. Advocacy — repr
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

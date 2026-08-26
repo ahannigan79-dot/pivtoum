@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Engineering
 
-*For anyone still choosing — weighing an engineering degree, or a path into the profession*
+*For anyone considering a move into engineering — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,21 +10,19 @@
 
 ## Before you read this
 
-You're weighing an engineering degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're weighing a move into engineering — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as the person weighing the move.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
 
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
-
-**And one thing specific to engineering.** This is the most encouraging guide in the index, and that creates its own risk. ==?A document that says "this looks good" can shut down thinking rather than open it up.== The scores here are strong, and the honest difficulties — the length of licensure, the cost of the degree, whether the work actually suits you — haven't gone anywhere. Use the good news to open the conversation, not to close it.
+**And one thing specific to engineering.** This is the most encouraging guide in the index, and that creates its own risk. ==?A document that says "this looks good" can shut down thinking rather than open it up.== The scores here are strong, and the honest difficulties — the length of licensure, the cost of getting qualified, whether the work actually suits you — haven't gone anywhere. Use the good news to open up your thinking, not to close it down.
 
 ---
 
 # The short answer
 
-**Yes — and for a technically-minded student, the engineering-versus-computer-science comparison deserves far more thought than it usually gets.**
+**Yes — and the engineering-versus-computer-science comparison deserves far more thought than it usually gets.**
 
 Licensed, site-based engineering scores **4.0** out of 10. Desk-based design and analysis scores **6.3**. Entry-level software development, for the same kind of mind and much the same maths, scores **8.1**.
 
@@ -52,7 +50,7 @@ Same aptitude. Opposite entry markets.
 
 # Engineering versus computer science — the comparison worth making
 
-This is the most decision-relevant table in the index for a student who is good at maths and likes building things.
+This is the most decision-relevant table in the index for anyone who is good at math and likes building things.
 
 | | Software | Engineering |
 |---|---|---|
@@ -238,7 +236,7 @@ It's harder for people who:
 
 **Infrastructure investment is elevated** across transport, water and grid in most developed economies, and civil demand follows it.
 
-**One honest caution:** some of the current construction and data-center demand is project-driven and will end when the builds do. The demographic case — an ageing workforce retiring faster than replacements arrive — holds regardless of the cycle. ==?A student should weight the demographics more heavily than the current boom.==
+**One honest caution:** some of the current construction and data-center demand is project-driven and will end when the builds do. The demographic case — an ageing workforce retiring faster than replacements arrive — holds regardless of the cycle. ==?You should weight the demographics more heavily than the current boom.==
 
 ---
 
@@ -376,9 +374,9 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 
 # Bottom line
 
-**Engineering is the strongest technical bet in this index, and it is chronically under-chosen by exactly the students who would suit it.**
+**Engineering is the strongest technical bet in this index, and it is chronically under-chosen by exactly the people who would suit it.**
 
-For twenty years the default advice to a mathematically-able teenager was software. On the evidence, ==the same aptitude pointed at the physical world produces materially better protection and a materially better graduate market== — 4.0 against 8.1 at entry, roughly three open positions per candidate against 6.1% unemployment.
+For twenty years the default advice to a mathematically-able newcomer was software. On the evidence, ==the same aptitude pointed at the physical world produces materially better protection and a materially better graduate market== — 4.0 against 8.1 at entry, roughly three open positions per candidate against 6.1% unemployment.
 
 **The protection is real and structural.** A legal monopoly on the stamp, personal liability, site work that cannot be done remotely, and a license that mandates the supervised years that protect the on-ramp.
 
@@ -393,7 +391,7 @@ And if you're currently choosing computer science because you're good at maths a
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

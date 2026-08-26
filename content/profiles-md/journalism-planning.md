@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Journalism & Media
 
-*For anyone still choosing — weighing a journalism degree, or a path into the profession*
+*For anyone considering a move into journalism — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a journalism degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're weighing a move into journalism — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as the person weighing the move.
 
-**What this is.** A facts document, not a recommendation. We have not softened the numbers, because a document that did would be doing real harm to someone about to spend three years and a lot of money. But we've also not written it as a case against journalism, because the skills are genuinely valuable, the work matters, and there are places that are hiring. The honest advice is narrow rather than negative.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores — and in journalism, don't lead with the industry data either. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. If they want to do this, they almost certainly know some of what follows; the useful thing you can offer isn't the bad news but help working out which specific version of this career still exists, and how to get there.
+**What this is.** A facts document, not a recommendation. We have not softened the numbers, because a document that did would be doing real harm to someone about to invest serious time and money. But we've also not written it as a case against journalism, because the skills are genuinely valuable, the work matters, and there are places that are hiring. The honest advice is narrow rather than negative.
 
 **And one thing specific to journalism.** ==?This is the hardest guide in the index, and most of what makes it hard has nothing to do with AI.== The industry has been contracting for twenty-five years for economic reasons, and our framework can't see any of it. Whatever the headline number says, the economics matter more — and this guide is built to make that visible rather than hide it.
 
@@ -383,7 +381,7 @@ And one honest thing worth saying. Journalism is one of very few careers where t
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Engineering
 
-*For anyone already in an engineering degree or training — or graduated and job-hunting with one*
+*For anyone working in engineering — whether early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,9 @@
 
 ## Before you read this
 
-The choice is already made — you're in an engineering degree or training, or out of one and into the job hunt. So this guide skips the "should you study engineering" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
+The choice is already made — you're working in engineering. So this guide skips the "should you go into engineering" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
 
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+It's written to you directly, whether you're early in your career or well established — the moves are the same either way.
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where engineering sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -24,7 +24,7 @@ It's written to you directly — whether *you* are the one in it, or a parent re
 
 # The short answer
 
-**For a technically-minded student, the engineering-versus-computer-science comparison deserves far more thought than it usually gets — and being already in engineering means you're on the better side of it.**
+**The engineering-versus-computer-science comparison deserves far more thought than it usually gets — and being already in engineering means you're on the better side of it.**
 
 Licensed, site-based engineering scores **4.0** out of 10. Desk-based design and analysis scores **6.3**. Entry-level software development, for the same kind of mind and much the same maths, scores **8.1**.
 
@@ -211,7 +211,7 @@ And underneath all five, two traits the score can't grade: ==+curiosity and adap
 
 **Licensure takes years.** Typically four years of supervised experience after graduating, plus examinations. Career-defining, and slow.
 
-**The work can be less creative than students expect.** A great deal of professional engineering is codes, standards, documentation and coordination rather than design.
+**The work can be less creative than many expect.** A great deal of professional engineering is codes, standards, documentation and coordination rather than design.
 
 **Site-based roles can mean travel and relocation**, particularly early on and particularly in civil.
 
@@ -370,7 +370,7 @@ And if the drawing was the part you loved: that's the honest tension worth namin
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 

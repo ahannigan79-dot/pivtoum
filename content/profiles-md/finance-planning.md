@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Finance
 
-*For anyone still choosing — weighing a finance degree, or a path into the profession*
+*For anyone considering a move into finance — weighing whether to enter the field*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,11 @@
 
 ## Before you read this
 
-You're weighing a finance degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
+You're weighing a move into finance — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+It's written to you directly, as the person weighing the move.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And two things specific to finance.** ==?The timing matters more here than in any other guide: investment banking summer analyst applications now open up to eighteen months in advance, which means the decision is effectively made in the first year of university rather than the third.== If that route is of any interest, this is a conversation to have before starting, not during. And be careful with the sources — finance is unusually well covered by recruiting firms with a commercial interest in optimism. We've leaned on Bureau of Labor Statistics data where possible and flagged where we're relying on industry commentary instead.
 
@@ -355,13 +353,13 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 
 # Bottom line
 
-**Finance's protected end is genuinely protected, and it is not where students are looking.**
+**Finance's protected end is genuinely protected, and it is not where most people are looking.**
 
 Wealth advisory at 4.6 and risk at 5.3 are shielded by the two things that hold up across this whole index: a named human answerable to a client, and regulatory obligation attached to a person. Neither is going anywhere.
 
 **The entry tier is the problem**, and it is severe — 8.0, with a job description that reads like a list of automated tasks. Hiring has shifted toward experience, and the training the analyst years used to provide has changed even where the seats remain.
 
-**And the practical advice is unusually concrete for this guide.** ==Understand the recruiting timeline, because it starts eighteen months ahead of the job and the internship is now the filter rather than one input among several.== A student interested in this needs to know that in their first year, not their third.
+**And the practical advice is unusually concrete for this guide.** ==Understand the recruiting timeline, because it starts eighteen months ahead of the job and the internship is now the filter rather than one input among several.== Anyone interested in this needs to know it going in, not once they've started.
 
 **So:** aim at advisory, risk or compliance rather than assuming banking, take the quantitative modules seriously because verification depends on them, get the internship, and move toward being answerable to someone as early as you can.
 
@@ -372,7 +370,7 @@ And one honest thing worth saying. The advisory end of finance — sitting with 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
