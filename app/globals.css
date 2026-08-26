@@ -53,11 +53,10 @@ body {
 .note {
   position: absolute; left: calc(var(--col) + 2.1rem); width: var(--margin-col);
   font-family: var(--sans); font-size: .75rem; line-height: 1.5;
-  color: var(--pencil); font-style: italic; transform: rotate(-.45deg); transform-origin: left top;
+  color: var(--pencil); font-style: italic;
 }
-.note:nth-of-type(even) { transform: rotate(.5deg); }
 .note b {
-  font-style: normal; font-weight: 600; color: var(--pen); display: block; margin-bottom: .15rem;
+  font-style: normal; font-weight: 600; color: var(--accent); display: block; margin-bottom: .15rem;
   font-size: .625rem; letter-spacing: .09em; text-transform: uppercase;
 }
 
@@ -72,9 +71,8 @@ body {
 .hl.b { color: var(--ink); }
 
 .pen-u {
-  background-image: linear-gradient(transparent 84%, rgba(172, 58, 52, .42) 84%,
-      rgba(172, 58, 52, .42) 93%, transparent 93%);
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  text-decoration: underline; text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px; text-underline-offset: 2px;
 }
 
 /* ---- Marker legend ------------------------------------------------------- */
@@ -174,9 +172,9 @@ header { padding: 2rem 0 0; }
   letter-spacing: .13em; text-transform: uppercase; color: var(--pencil);
   display: flex; gap: .6rem; align-items: center; flex-wrap: wrap;
 }
-.crumb i { font-style: normal; color: var(--pen); }
+.crumb i { font-style: normal; color: var(--accent); }
 .crumb a { color: inherit; text-decoration: none; }
-.crumb a:hover { color: var(--pen); }
+.crumb a:hover { color: var(--accent); }
 
 /* ---- Articles index ------------------------------------------------------ */
 .artindex-head { padding-top: 1.2rem; }
@@ -187,7 +185,7 @@ header { padding: 2rem 0 0; }
 .artindex-item a { display: block; text-decoration: none; color: inherit; padding: 1.6rem 0; }
 .artindex-item .aidate { font-family: var(--sans); font-size: .625rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); }
 .artindex-item .aititle { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.22; letter-spacing: -.01em; color: var(--ink); margin: .35rem 0 .45rem; transition: color .15s; font-variation-settings: "opsz" 40; }
-.artindex-item a:hover .aititle { color: var(--pen); }
+.artindex-item a:hover .aititle { color: var(--accent); }
 .artindex-item .aidesc { color: var(--ink-soft); font-size: 1rem; line-height: 1.55; margin: 0; max-width: 42rem; }
 .artindex-sep { margin: 2.6rem 0 0; }
 
@@ -197,7 +195,7 @@ header { padding: 2rem 0 0; }
 }
 .takeaway-label {
   display: block; font-family: var(--sans); font-size: .625rem; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--pen); margin-bottom: .55rem;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: .55rem;
 }
 .takeaway-body {
   font-family: var(--serif); font-size: 1.2rem; line-height: 1.45; color: var(--ink-soft);
@@ -210,7 +208,7 @@ header { padding: 2rem 0 0; }
 .scr-wrap { max-width: 620px; margin: 0 auto; padding: 2.2rem 1.6rem 3rem; }
 .scr-logo { width: 132px; margin-bottom: 2.4rem; }
 .scr-logo svg { width: 100%; height: auto; display: block; }
-.scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pen); margin-bottom: .5rem; }
+.scr-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
 .scr-tag { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--pencil); margin: 0 0 1.1rem; }
 .scr-h1 { font-family: var(--serif); font-weight: 600; font-size: 2.7rem; line-height: 1.16; letter-spacing: -.02em; color: var(--ink); margin: 0 0 1.1rem; }
 .scr-h1 .hl { color: var(--win); font-weight: 600; background: none; padding: 0; margin: 0; }
@@ -226,7 +224,7 @@ header { padding: 2rem 0 0; }
 .scr-hook .s { color: var(--pen-safe, #3E9C6E); font-weight: 700; }
 .scr-hook .x { color: var(--pen); font-weight: 700; }
 .scr .signup { margin: 0; border: 0; padding: 0; }
-.scr .signup-label { font-size: 1.12rem; text-transform: none; letter-spacing: 0; color: var(--pen); font-weight: 700; }
+.scr .signup-label { font-size: 1.12rem; text-transform: none; letter-spacing: 0; color: var(--accent); font-weight: 700; }
 .scr-stats { margin-top: 2.4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule, #E7E4DC); display: flex; gap: 1.6rem; }
 .scr-stat { flex: 1; }
 .scr-stat b { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.55rem; color: var(--ink); }
@@ -247,10 +245,10 @@ header { padding: 2rem 0 0; }
 .gated::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 72%; background: linear-gradient(to bottom, transparent, var(--paper) 84%); pointer-events: none; }
 .gated-veil { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 1.1rem; }
 .gated-card { max-width: 30rem; text-align: center; background: var(--card, #fff); border: 1.5px solid var(--rule); border-radius: 12px; padding: 1.15rem 1.3rem; box-shadow: 0 8px 26px rgba(33, 30, 27, 0.10); }
-.gated-k { font-family: var(--sans); font-weight: 800; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--pen); margin: 0 0 .4rem; }
+.gated-k { font-family: var(--sans); font-weight: 800; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin: 0 0 .4rem; }
 .gated-t { font-family: var(--serif); font-size: 1rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 .9rem; }
 .gated-go { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .8rem; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--ink); border-radius: 9px; padding: .6rem 1.1rem; text-decoration: none; }
-.gated-go:hover { background: var(--pen); }
+.gated-go:hover { background: var(--accent); }
 @media (max-width: 460px) {
   .scr-h1 { font-size: 2.05rem; }
   .scr-sub { font-size: 1.02rem; }
@@ -269,7 +267,7 @@ h1 {
 }
 .quick .lbl {
   font-family: var(--sans); font-size: .625rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin-bottom: .7rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .7rem;
 }
 .quick p { margin: 0; font-size: 1.125rem; line-height: 1.6; }
 
@@ -299,12 +297,12 @@ h2 {
 }
 h3 {
   font-family: var(--sans); font-weight: 600; font-size: .6875rem;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin: 2rem 0 .55rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 2rem 0 .55rem;
 }
 p { margin: 0 0 1.05rem; }
 strong { font-weight: 600; }
-a { color: var(--pen); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-a:focus-visible { outline: 2px solid var(--pen); outline-offset: 3px; border-radius: 2px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 em { font-style: italic; }
 .fine { font-size: .875rem; color: var(--ink-soft); margin: 0 0 .4rem; }
@@ -376,14 +374,14 @@ tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(-
 /* ---- Worked example ------------------------------------------------------ */
 .worked {
   background: var(--paper-edge); padding: 1.5rem 1.6rem; margin: 1.6rem 0;
-  border-left: 2px solid var(--pen);
+  border-left: 2px solid var(--accent);
 }
 .worked h3 { margin-top: 0; }
 
 /* AI-use disclosure on /methodology — a statement of position, not fine print. */
 .disclosure {
   background: var(--paper-edge); padding: 1.5rem 1.6rem; margin: 1.6rem 0;
-  border: 1px solid var(--rule); border-left: 3px solid var(--pen); border-radius: 2px;
+  border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 2px;
 }
 .disclosure > :first-child { margin-top: 0; }
 .disclosure > :last-child { margin-bottom: 0; }
@@ -410,7 +408,7 @@ tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(-
 .consent-btn.decline:hover { border-color: var(--ink); color: var(--ink); }
 .consent-btn.accept { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .consent-btn.accept:hover { background: #000; }
-.consent-btn:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
+.consent-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (prefers-reduced-motion: no-preference) {
   .consent { animation: consent-rise .22s ease-out; }
 }
@@ -422,7 +420,7 @@ tr.low td { background: linear-gradient(90deg, rgba(var(--hl2), .28), rgba(var(-
   margin: 0 0 1.2rem; max-width: 34rem;
   font-family: var(--sans); font-size: .8125rem; line-height: 1.5; color: var(--ink-soft);
 }
-.ack input { margin-top: .15rem; flex: none; width: 1rem; height: 1rem; accent-color: var(--pen); cursor: pointer; }
+.ack input { margin-top: .15rem; flex: none; width: 1rem; height: 1rem; accent-color: var(--accent); cursor: pointer; }
 .worked p:last-child { margin-bottom: 0; }
 
 /* ---- Ranked list --------------------------------------------------------- */
@@ -433,7 +431,7 @@ ol.ranked li {
 }
 ol.ranked li::before {
   content: counter(r); position: absolute; left: 0; top: .15rem;
-  font-family: var(--sans); font-size: .6875rem; font-weight: 600; color: var(--pen);
+  font-family: var(--sans); font-size: .6875rem; font-weight: 600; color: var(--accent);
   width: 1.3rem; height: 1.3rem; border: 1px solid var(--rule); border-radius: 50%;
   display: grid; place-items: center; background: #fff;
 }
@@ -446,10 +444,10 @@ ol.ranked li::before {
   font-weight: 500; display: flex; gap: .75rem; align-items: baseline;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; margin-left: auto; font-family: var(--sans); color: var(--pen); font-size: .9375rem; }
+.faq summary::after { content: "+"; margin-left: auto; font-family: var(--sans); color: var(--accent); font-size: .9375rem; }
 .faq details[open] summary::after { content: "\2212"; }
 .faq .a { padding: 0 0 .9rem; font-size: .9375rem; color: var(--ink-soft); line-height: 1.55; }
-.faq summary:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
+.faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---- Related profiles ---------------------------------------------------- */
 .rel { display: grid; gap: .35rem; margin: 1rem 0 1.4rem; border-top: 1.5px solid var(--ink); padding-top: .4rem; }
@@ -457,7 +455,7 @@ ol.ranked li::before {
   display: flex; gap: .75rem; align-items: baseline; padding: .5rem 0;
   border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: .9375rem;
 }
-.rel a:hover { color: var(--pen); }
+.rel a:hover { color: var(--accent); }
 .rel .s {
   margin-left: auto; font-family: var(--sans); font-size: .75rem; color: var(--pencil);
   text-align: right; flex-shrink: 0;
@@ -487,7 +485,7 @@ ol.ranked li::before {
   border: 1px solid var(--rule); background: #fff; text-decoration: none; color: var(--ink);
   transition: border-color .15s, background .15s;
 }
-.tier:hover { border-color: var(--pen); background: var(--paper-edge); }
+.tier:hover { border-color: var(--accent); background: var(--paper-edge); }
 .tier .n { font-weight: 600; }
 .tier .p { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
 .tier.best { border-color: var(--ink); }
@@ -503,7 +501,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   display: flex; align-items: baseline; gap: .75rem; padding: .7rem .2rem;
   border-bottom: 1px solid var(--rule); cursor: pointer; font-size: .9375rem;
 }
-.claim-opt input { accent-color: var(--pen); }
+.claim-opt input { accent-color: var(--accent); }
 .claim-opt.disabled { opacity: .45; cursor: not-allowed; }
 .claim-opt .s { margin-left: auto; font-family: var(--sans); font-size: .75rem; color: var(--pencil); }
 .claim-bar {
@@ -512,14 +510,14 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 }
 .claim-submit {
   font: inherit; font-family: var(--sans); font-weight: 600; font-size: .8125rem;
-  letter-spacing: .04em; text-transform: uppercase; color: #fff; background: var(--pen);
+  letter-spacing: .04em; text-transform: uppercase; color: var(--on-fill); background: var(--ink);
   border: 0; padding: .7rem 1.3rem; border-radius: 2px; cursor: pointer;
 }
 .claim-submit:disabled { background: var(--pencil); cursor: not-allowed; }
 .claim-note { font-size: .875rem; color: var(--ink-soft); }
 .tier .tag {
   font-family: var(--sans); font-size: .5625rem; font-weight: 600;
-  letter-spacing: .09em; text-transform: uppercase; color: var(--pen); border: 1px solid var(--pen);
+  letter-spacing: .09em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
   padding: .12rem .35rem; border-radius: 2px;
 }
 
@@ -536,7 +534,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   font-family: var(--sans); font-size: .72rem; letter-spacing: .03em; color: var(--pencil);
   background: none; border: 0; padding: .1rem 0; cursor: pointer; line-height: 1.2;
 }
-.idx-sort button:hover { color: var(--pen); }
+.idx-sort button:hover { color: var(--accent); }
 .idx-sort button.on {
   color: var(--ink); font-weight: 700;
   box-shadow: inset 0 -.35em 0 rgba(var(--hl), .85);
@@ -552,13 +550,13 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   display: grid; grid-template-columns: 12rem 1fr 4.2rem 6.6rem; gap: 1rem; align-items: center;
   padding: .6rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink);
 }
-.idx-row:hover, .idx-row:hover .idx-name { color: var(--pen); }
+.idx-row:hover, .idx-row:hover .idx-name { color: var(--accent); }
 /* Per-row "Free sample →" affordance: makes every row read as a tappable link. */
 .idx-go {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: .3rem;
   font-family: var(--sans); font-size: .75rem; white-space: nowrap; color: var(--pencil);
 }
-.idx-row:hover .idx-go { color: var(--pen); }
+.idx-row:hover .idx-go { color: var(--accent); }
 .idx-go-i { width: .8rem; height: .8rem; flex: none; }
 .idx-name { font-size: .9375rem; line-height: 1.3; }
 .idx-track {
@@ -582,7 +580,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   .idx-row, .idx-scale { grid-template-columns: 7.5rem 1fr 3.4rem 1.1rem; gap: .5rem; }
   /* On mobile, drop the text and keep just the arrow so each row still reads as tappable. */
   .idx-go-t, .idx-head-go { display: none; }
-  .idx-go { color: var(--pen); }
+  .idx-go { color: var(--accent); }
 }
 
 /* ---- Index: two numeric columns (print only) ----------------------------- */
@@ -607,25 +605,25 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .signup { margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
 .signup-label {
   display: block; font-family: var(--sans); font-size: .625rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--pen); margin-bottom: .6rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem;
 }
 .signup-row { display: flex; gap: .5rem; max-width: 24rem; }
 .signup-row input {
   flex: 1; font: inherit; font-size: .9375rem; padding: .55rem .7rem;
   background: #fff; color: var(--ink); border: 1px solid var(--rule); border-radius: 2px;
 }
-.signup-row input:focus-visible { outline: 2px solid var(--pen); outline-offset: 1px; }
+.signup-row input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .signup-row button {
   font-family: var(--sans); font-weight: 600; font-size: .75rem; letter-spacing: .04em;
   text-transform: uppercase; color: #fff; background: var(--ink); border: 0;
   padding: 0 1.1rem; border-radius: 2px; cursor: pointer;
 }
-.signup-row button:hover { background: var(--pen); }
+.signup-row button:hover { background: var(--accent); }
 .signup-note { font-size: .875rem; color: var(--ink-soft); margin: .8rem 0 0; }
 .signup-sub { font-size: .875rem; color: var(--ink-soft); margin: .35rem 0 .9rem; max-width: 30rem; line-height: 1.5; }
 /* When the form leads a block (e.g. the primary CTA) rather than closing one. */
 .signup-flush { margin-top: 1rem; padding-top: 0; border-top: none; }
-.signup-deliver { font-weight: 600; color: var(--pen); }
+.signup-deliver { font-weight: 600; color: var(--accent); }
 /* The demoted "ready to buy" tier of BuyBlock, under the free lead capture. */
 .buy-secondary { margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid var(--rule); }
 .buy-secondary h3 { margin: 0 0 .5rem; }
@@ -649,12 +647,12 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
   background: var(--ink); color: #fff; border: 1px solid var(--ink);
   transition: background .15s, border-color .15s;
 }
-.kit-cta-btn:hover { background: var(--pen); border-color: var(--pen); }
+.kit-cta-btn:hover { background: var(--accent); border-color: var(--accent); }
 .kit-cta-buy {
   font-family: var(--sans); font-weight: 600; font-size: .72rem; letter-spacing: .02em;
   color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule);
 }
-.kit-cta-buy:hover { color: var(--pen); border-color: var(--pen); }
+.kit-cta-buy:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ============================================================================
    Landing page — scoped under .lp so it never touches the document pages.
@@ -847,7 +845,7 @@ footer {
 .pkg-go:hover { background: var(--accent); }
 .pkg-go:disabled { opacity: 0.6; cursor: default; }
 .pkg-fine { font-family: var(--sans); font-weight: 600; font-size: 0.98rem; color: var(--ink-soft); margin: 0.35rem 0 0; }
-.pkg-hint { font-family: var(--sans); font-size: 0.86rem; color: var(--pen); margin: 0.2rem 0 0; }
+.pkg-hint { font-family: var(--sans); font-size: 0.86rem; color: var(--accent); margin: 0.2rem 0 0; }
 .pkg-done { text-align: left; padding: 1.2rem 0 0; }
 .pkg-done-h { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; color: var(--ink); margin: 0 0 0.4rem; }
 .pkg-done-s { font-family: var(--serif); color: var(--ink-soft); font-size: 1rem; line-height: 1.5; margin: 0; }
@@ -892,7 +890,7 @@ footer {
 .scr .scr-scale .hi { color: var(--pen-safe); }
 .scr .scr-foot { color: var(--pencil); }
 .scr .scr-foot a { color: var(--ink-soft); }
-.scr .pkg-hint { color: var(--pen); }
+.scr .pkg-hint { color: var(--accent); }
 /* pkg controls use the light base styles defined above — no dark overrides. */
 .pkg-lean { gap: 0.9rem; }
 .pkg-lean-lede { font-family: var(--serif); font-size: 1.02rem; line-height: 1.5; margin: 0; color: var(--ink-soft); }

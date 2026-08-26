@@ -37,11 +37,9 @@
 .hub-bell-dot { position:absolute; top:-6px; right:-6px; min-width:17px; height:17px; padding:0 4px;
   border-radius:9px; background:var(--pen); color:var(--on-fill); font-size:0.62rem; font-weight:800;
   line-height:17px; text-align:center; border:2px solid var(--bg2); }
-.hub-brand { display:flex; align-items:center; gap:10px; padding:4px 8px 16px; }
-.hub-mk { width:26px; height:26px; border:2px solid var(--green); border-radius:7px; position:relative; flex:none; }
-.hub-mk::after { content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
-.hub-brand b { font-weight:700; font-size:0.92rem; line-height:1.2; display:block; font-family:var(--serif); }
-.hub-brand small { display:block; font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--pencil); }
+.hub-brand { display:flex; flex-direction:column; align-items:flex-start; gap:7px; padding:2px 8px 16px; }
+.hub-logo { height:19px; width:auto; display:block; }
+.hub-brand b { font-weight:600; font-size:0.74rem; line-height:1.25; display:block; font-family:var(--serif); color:var(--soft); letter-spacing:0.01em; }
 .hub-side .hub-nav { flex:1 1 auto; min-height:0; overflow-y:auto; margin:0 -6px; padding:0 6px; }
 .hub-nav a { display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; font-size:0.92rem; color:var(--soft); transition:.12s; }
 .hub-nav a:hover { background:var(--panel2); color:var(--ink); }

@@ -44,8 +44,9 @@ export default async function HubLayout({ children }: { children: React.ReactNod
       <aside className="hub-side">
         <div className="hub-head">
           <Link href="/hub" className="hub-brand">
-            <span className="hub-mk" />
-            <span><small>Pivotum · Your community</small><b>Winning in the Age of AI</b></span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="hub-logo" src="/brand/pivotum-logo-plain.svg" alt="Pivotum" />
+            <b>Winning in the Age of AI</b>
           </Link>
           <Link href="/hub/notifications" className="hub-bell" aria-label={`Notifications${notifUnread ? ` (${notifUnread} unread)` : ""}`}>
             <span className="hub-bell-ic"><Icon name="alerts" size={19} /></span>
