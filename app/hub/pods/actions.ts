@@ -5,8 +5,8 @@ import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, posts, podThreads } from "@/db/schema";
-import { getOrCreateProfile } from "@/lib/member";
-import { getFounderIds, getPodBySlug } from "@/lib/pods";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { getFounderIds, getPodBySlug, setPodLeader } from "@/lib/pods";
 import { createThreadIn } from "@/lib/threads";
 import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
@@ -33,6 +33,17 @@ async function syncPodHelper(podId: string) {
     // no real members — don't leave the founder sitting in an empty pod
     await db.delete(podMembers).where(and(eq(podMembers.podId, podId), eq(podMembers.auto, true)));
   }
+}
+
+/** Founder appoints or removes a pod leader — the tier that runs check-ins and
+ *  hosts the monthly Wins and SME sessions. */
+export async function setPodLeaderAction(slug: string, memberId: string, on: boolean) {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) return;
+  const pod = await getPodBySlug(slug);
+  if (!pod) return;
+  await setPodLeader(pod.id, memberId, on);
+  revalidatePath(`/hub/pods/${slug}`);
 }
 
 /** Any member can start a Together Pod when they don't see a good fit. */

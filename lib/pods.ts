@@ -12,11 +12,25 @@ export async function getFounderIds(): Promise<string[]> {
 }
 
 export type Pod = typeof pods.$inferSelect;
-export type PodMember = { id: string; name: string; avatarUrl: string | null; handle: string | null };
+export type PodMember = { id: string; name: string; avatarUrl: string | null; handle: string | null; leader: boolean };
 export type PodSummary = Pod & { memberCount: number; iAmIn: boolean };
 
-function memberView(a: typeof profiles.$inferSelect): PodMember {
-  return { id: a.clerkUserId, name: a.displayName ?? a.email.split("@")[0], avatarUrl: a.avatarUrl, handle: a.handle };
+function memberView(a: typeof profiles.$inferSelect, leader = false): PodMember {
+  return { id: a.clerkUserId, name: a.displayName ?? a.email.split("@")[0], avatarUrl: a.avatarUrl, handle: a.handle, leader };
+}
+
+/** True if the member leads any pod — the gate for hosting check-ins, Wins & SME sessions. */
+export async function isPodLeader(meId: string | null | undefined): Promise<boolean> {
+  if (!meId) return false;
+  const r = await db.select({ podId: podMembers.podId }).from(podMembers)
+    .where(sql`${podMembers.memberId} = ${meId} and ${podMembers.leader} = true`).limit(1);
+  return r.length > 0;
+}
+
+/** Appoint or remove a pod leader. Founder-gated at the action layer. */
+export async function setPodLeader(podId: string, memberId: string, on: boolean): Promise<void> {
+  await db.update(podMembers).set({ leader: on })
+    .where(sql`${podMembers.podId} = ${podId} and ${podMembers.memberId} = ${memberId}`);
 }
 
 /** Pods the member belongs to. */
@@ -56,12 +70,14 @@ export async function getPodBySlug(slug: string): Promise<Pod | null> {
 
 export async function getPodMembers(podId: string): Promise<PodMember[]> {
   const rows = await db
-    .select({ a: profiles })
+    .select({ a: profiles, leader: podMembers.leader })
     .from(podMembers)
     .innerJoin(profiles, eq(podMembers.memberId, profiles.clerkUserId))
     .where(eq(podMembers.podId, podId))
     .orderBy(asc(podMembers.joinedAt));
-  return rows.map((r) => memberView(r.a));
+  return rows
+    .map((r) => memberView(r.a, r.leader))
+    .sort((a, b) => Number(b.leader) - Number(a.leader)); // leaders first
 }
 
 export async function isPodMember(podId: string, meId: string | null): Promise<boolean> {

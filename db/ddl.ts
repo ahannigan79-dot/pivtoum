@@ -213,6 +213,7 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL,
      CONSTRAINT "member_weeks_pk" PRIMARY KEY("member_id","week")
    )`,
+  `ALTER TABLE "pod_members" ADD COLUMN IF NOT EXISTS "leader" boolean DEFAULT false NOT NULL`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

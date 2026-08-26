@@ -10,6 +10,7 @@ import { mapShareText } from "@/lib/moves";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { PostCard } from "@/components/hub/community/PostCard";
 import { Avatar } from "@/components/hub/community/Avatar";
+import { PodLeaderToggle } from "@/components/hub/pods/PodLeaderToggle";
 import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 import { PodComposer } from "@/components/hub/pods/PodComposer";
 import { ThreadNav } from "@/components/hub/pods/ThreadNav";
@@ -98,10 +99,14 @@ export default async function PodPage({
               <p className="ck">{members.length} {members.length === 1 ? "member" : "members"}</p>
               <div className="pod-members">
                 {members.map((m) => (
-                  <Link key={m.id} href={`/hub/members/${m.handle ?? m.id}`} className="pod-member">
-                    <Avatar name={m.name} url={m.avatarUrl} size={30} />
-                    <span>{m.name}</span>
-                  </Link>
+                  <div key={m.id} className="pod-member">
+                    <Link href={`/hub/members/${m.handle ?? m.id}`} className="pod-member-who">
+                      <Avatar name={m.name} url={m.avatarUrl} size={30} />
+                      <span>{m.name}</span>
+                    </Link>
+                    {m.leader && <span className="pod-lead-tag">Leader</span>}
+                    {canModerate && <PodLeaderToggle slug={pod.slug} memberId={m.id} leader={m.leader} />}
+                  </div>
                 ))}
                 {members.length === 0 && <p className="muted">No members yet.</p>}
               </div>

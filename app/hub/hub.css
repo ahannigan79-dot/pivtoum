@@ -263,7 +263,16 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .pod-main { min-width:0; }
 .pod-side .card { position:sticky; top:70px; }
 .pod-members { display:flex; flex-direction:column; gap:11px; margin-top:10px; }
-.pod-member { display:flex; align-items:center; gap:10px; font-size:0.9rem; color:var(--soft); }
+.pod-member { display:flex; align-items:center; gap:8px; font-size:0.9rem; color:var(--soft); }
+.pod-member-who { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-width:0; }
+.pod-member-who span { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+a.pod-member-who:hover span { color:var(--ink); }
+.pod-lead-tag { font-family:var(--sans); font-size:0.56rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-wash); border-radius:99px; padding:0.15rem 0.5rem; flex:none; }
+.pod-lead-btn { margin-left:auto; flex:none; font-family:var(--sans); font-size:0.66rem; font-weight:600; color:var(--soft);
+  background:transparent; border:1px solid var(--rule2); border-radius:99px; padding:0.22rem 0.6rem; cursor:pointer; }
+.pod-lead-btn:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+.pod-lead-btn:disabled { opacity:0.5; cursor:default; }
 .pod-locked { border:1px dashed var(--rule2); border-radius:14px; background:var(--panel); padding:18px 18px 20px; margin:0 0 20px;
   display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
 .pod-locked p { margin:0; color:var(--soft); font-size:0.95rem; line-height:1.5; }

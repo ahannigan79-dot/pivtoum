@@ -98,6 +98,7 @@ export const podMembers = pgTable("pod_members", {
   podId: uuid("pod_id").notNull().references(() => pods.id, { onDelete: "cascade" }),
   memberId: memberFk(),
   auto: boolean("auto").notNull().default(false), // founder auto-added as helper to a small pod
+  leader: boolean("leader").notNull().default(false), // pod leader: runs check-ins, hosts Wins & SME sessions
   joinedAt: timestamp("joined_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => ({ pk: primaryKey({ columns: [t.podId, t.memberId] }) }));
 
