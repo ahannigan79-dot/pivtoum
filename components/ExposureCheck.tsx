@@ -7,8 +7,11 @@ import {
   type CheckResult, type Seniority, type Routine,
 } from "@/lib/exposure";
 
+// Brand exposure palette — legible on the light paper ground both as the band
+// word (text) and as the filled scale segment (with white text). Exposed coral →
+// amber → protected green, matching the hub's data colors.
 const TONE_COLOR: Record<string, string> = {
-  red: "#E0776C", orange: "#D6A85B", yellow: "#DFD5A2", lime: "#A7CBA0", green: "#7FC08A",
+  red: "#B4442F", orange: "#BC6A2C", yellow: "#B8873A", lime: "#5F8A4C", green: "#2E7D55",
 };
 
 const SENIORITY: { key: Seniority; label: string }[] = [
