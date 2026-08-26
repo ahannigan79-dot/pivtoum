@@ -11,7 +11,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Winning in the Age of AI — the community for getting ahead",
   description:
-    "Winning in the Age of AI is the community where you map exactly how exposed your career is, do the reps to get ahead, and win with people in your exact lane. Start free — 28 careers scored, plus a free trial inside.",
+    "Winning in the Age of AI is the community where you turn the biggest shift in work into your opening — map where you stand, do the reps to get ahead, and win with people in your exact lane. Start free — 28 careers scored, plus a free trial inside.",
   alternates: { canonical: "/" },
 };
 
@@ -19,7 +19,7 @@ const LOOP = [
   { k: "Learn", d: "The rules of the game — the stance that wins and the six levers that decide your exposure." },
   { k: "Map", d: "Where you stand: your exposure, your winning strategy, and the moves that lower it." },
   { k: "Build", d: "The reps — master the machine on what it's taking, and deepen the judgment it can't." },
-  { k: "Evolve", d: "Ship your moves, re-score, and watch your exposure come down. The loop closing." },
+  { k: "Evolve", d: "Ship your moves, re-score, and watch yourself pull ahead. The loop closing." },
 ];
 
 const INCLUDED = [
@@ -48,9 +48,8 @@ export default function Home() {
               </h1>
               <p className="lp-lede">
                 The biggest shift work has seen in a century is also the biggest opening — for the
-                people who face it head-on, together. <b>Winning in the Age of AI</b> is the community
-                where you map exactly where you stand, do the reps to get ahead, and win alongside
-                people in your exact lane.
+                people who face it head-on. <b>Winning in the Age of AI</b> is where you find your
+                opening, do the reps to get ahead, and win alongside people in your exact lane.
               </p>
               <div className="lp-cta-row lp-hero-cta">
                 <Link className="lp-btn" href={SITE.join}>
@@ -83,7 +82,7 @@ export default function Home() {
         <section className="lp-inside" id="inside">
           <div className="lp-inside-head">
             <div className="lp-community-eyebrow">Inside the community</div>
-            <h2>One loop turns the fear into a plan you run every week.</h2>
+            <h2>One loop turns the shift into your opening.</h2>
             <p className="sub">
               Learn the game, map your ground, build your edge, and evolve as the field moves. Your
               Map is the spine — everything hangs off it, and your Together pod keeps you moving.
@@ -100,31 +99,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* The free hook */}
-        <section className="lp-finding">
-          <p>
-            <span className="hl">Start free: see exactly how exposed your career is.</span>{" "}
-            We score {careerCount} careers on the same six factors — bedside nursing 2.8, entry-level
-            software 8.1; physical therapy 2.5, graphic design 8.4. Move the same work behind a screen
-            and its exposure roughly doubles. Your free Career Map makes it personal.
-          </p>
-          <div className="lp-cta-row" style={{ justifyContent: "center", marginTop: "1.4rem" }}>
-            <Link className="lp-btn" href="/map">Get your free Career Map &rarr;</Link>
-          </div>
-        </section>
-
-        {/* Index — free scores as proof */}
+        {/* Index — free scores as the opening */}
         <section className="lp-index" id="index">
           <div className="lp-index-head">
-            <h2>Every career, scored — free</h2>
+            <h2>Find your opening — start with the truth.</h2>
             <p className="sub">
-              Each row runs from a field&rsquo;s most protected role to its most exposed. Green marks
-              a genuinely low-exposure entry; red, one that&rsquo;s highly exposed.
+              We score {careerCount} careers on the same six factors — bedside nursing 2.8,
+              entry-level software 8.1. Knowing exactly where you stand is how you spot your opening
+              and get ahead of it. Each row runs from a field&rsquo;s most protected role to its most exposed.
             </p>
             <p className="idx-free">
-              <strong>Every career below is scored free.</strong> Tap any row for the read &mdash;
-              the deeper breakdown opens with your free Career Map.
+              <strong>Every career below is scored free.</strong> Tap any row for the read &mdash; the
+              deeper breakdown, and your personal number, open with your free Career Map.
             </p>
+            <div className="lp-cta-row" style={{ justifyContent: "center", marginTop: "1.2rem", marginBottom: "0.2rem" }}>
+              <Link className="lp-btn" href="/map">Get your free Career Map &rarr;</Link>
+            </div>
           </div>
 
           <CareerIndex rows={indexRows} />
@@ -148,9 +138,9 @@ export default function Home() {
         {/* Membership — the trial */}
         <section className="lp-membership" id="join">
           <div className="lp-community-eyebrow">Winning in the Age of AI</div>
-          <h2>You don&rsquo;t have to figure this out alone.</h2>
+          <h2>Come out ahead — together.</h2>
           <p>
-            The people who come through this ahead won&rsquo;t be the ones who did it alone — they&rsquo;ll
+            The people who come through this in front won&rsquo;t be the ones who did it alone — they&rsquo;ll
             be the ones who learned and grew together. Membership gives you the whole loop, your pod,
             and the room. Try it free for seven days.
           </p>

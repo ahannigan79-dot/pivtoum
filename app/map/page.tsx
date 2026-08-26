@@ -44,7 +44,7 @@ export default async function MapLanding({
         </h1>
         <p className="scr-sub">
           Pick your role and see where you stand — in ten seconds, free. Then unlock your full
-          Career Map: your exact score, your winning strategy, and the moves that lower it.
+          Career Map: your exact score, your winning strategy, and the moves that put you ahead.
         </p>
 
         <ExposureCheck checks={checks} preselect={preselect} />
@@ -52,8 +52,8 @@ export default async function MapLanding({
         <div className="scr-community">
           <span className="scr-community-k">Winning in the Age of AI</span>
           <p>
-            The Exposure Check is the alarm. Inside the community you get the plan — your living Map,
-            your pod, and people in your exact lane figuring this out together, so you ultimately <b>win.</b>
+            The Exposure Check shows you where you stand. Inside the community you turn it into your
+            opening — your living Map, your pod, and people in your exact lane, so you come out <b>ahead.</b>
           </p>
           <a className="scr-community-go" href={SITE.join}>See inside the community →</a>
         </div>
