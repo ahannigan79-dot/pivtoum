@@ -187,6 +187,16 @@ export const PATCH_STATEMENTS: string[] = [
      "updated_at" timestamp with time zone DEFAULT now() NOT NULL,
      CONSTRAINT "lane_baselines_pk" PRIMARY KEY("career_slug","lane")
    )`,
+  // Member workflow transformations — Claude-generated, capped 1/member/month.
+  `CREATE TABLE IF NOT EXISTS "workflow_transforms" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "workflow" text NOT NULL,
+     "inputs" jsonb NOT NULL,
+     "doc" jsonb NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "workflow_transforms_member_idx" ON "workflow_transforms" ("member_id","created_at")`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),

@@ -279,6 +279,18 @@ export const rebuildGenerated = pgTable("rebuild_generated", {
   createdAt: now(),
 }, (t) => ({ laneIdx: index("rebuild_generated_lane_idx").on(t.lane, t.createdAt) }));
 
+/* ---------- Member workflow transformations: the member describes a workflow;
+   Claude returns a boss-shareable AI-native transformation doc. Capped to one
+   generation per member per month (the API cost is real). */
+export const workflowTransforms = pgTable("workflow_transforms", {
+  id: uid(),
+  memberId: memberFk(),
+  workflow: text("workflow").notNull(),      // the workflow name the member gave
+  inputs: jsonb("inputs").notNull(),          // what they told us (steps, role, lane)
+  doc: jsonb("doc").notNull(),                // the generated Transformation document
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("workflow_transforms_member_idx").on(t.memberId, t.createdAt) }));
+
 /* ---------- Pivotum market baselines: founder-set exposure baseline per lane.
    Overrides the lane's baseline the Map tool computed. When it moves, every
    member in the lane moves with it — their earned improvement carries forward. */
