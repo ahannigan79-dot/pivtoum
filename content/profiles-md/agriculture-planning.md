@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Agriculture & Agribusiness
 
-*For anyone still choosing — weighing a path into agriculture, or a route into the sector*
+*For anyone considering a move into agriculture*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a path into agriculture — or a route into the wider sector — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into agriculture and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to agriculture.** ==?There's one statistic in this guide that reframes the entire conversation, and it has nothing to do with AI: USDA forecasts that the **median farm household will lose money farming in 2026**, and earn **$92,815** off the farm.== That isn't an argument against agriculture. It's an argument that *farming* and *working in agriculture* are different careers with different economics — and the economics section below sets out why that distinction matters more than any technology question.
 
@@ -361,9 +357,9 @@ Farm financial management, given the household income data, is the most under-ta
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick your route in is knowing exactly what you'll need to do with it. The first list is for making the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Aim at the physical, wage-paying side of the field.** Equipment technology (3.8), field-based production, livestock and animal management (3.4), the regulated roles — over precision-agriculture analytics (6.2) and agricultural data and supply planning (7.0), which are the exposed lanes. The screen-based end scores worst.
 - **Work a full season, including winter, before you commit.** Agriculture is romanticized more than almost any career in this index; a February morning answers the question faster than anything else.
@@ -430,7 +426,7 @@ And one thing worth saying to someone genuinely drawn to this. ==+Working outdoo
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

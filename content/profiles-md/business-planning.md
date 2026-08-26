@@ -4,19 +4,15 @@
 
 *Pivotum · Fall 2026*
 
-*For anyone still choosing — weighing a business degree, or a path into one*
+*For anyone considering a move into business*
 
 ---
 
 ## Before you read this
 
-You're weighing a business degree — or a path into business — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into business and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to business.** It's the most-taken degree in the country, which makes it the default — the thing people pick when nothing else stood out. ==?That's the single most important fact here, and it isn't about AI at all.== If the interest is genuine — how organizations work, why they succeed and fail — this guide will help you choose the version that holds up. If business is the fallback because nothing else appealed, the honest move is to stop and look wider first.
 
@@ -50,7 +46,7 @@ And here is the thing that separates business from every other career we score: 
 
 # Why business scores the way it does — the six factors
 
-Here's how a business analyst answers them — the exposed end, and where most graduates start. Knowing *why* the entry roles score 7.6 is what tells you which version of the degree to choose.
+Here's how a business analyst answers them — the exposed end, and where most graduates start. Knowing *why* the entry roles score 7.6 is what tells you which way into the field to aim for.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
@@ -72,7 +68,7 @@ The second has nothing to do with AI, and our framework doesn't measure it: **pl
 
 The evidence section below covers what the labor market data actually shows, because it's the most important evidence in this guide.
 
-**The way through the Catch-22 isn't to wait for the entry rung to come back — it may not.** It's to enter *beside* it: through a placement that substitutes for the vanishing analyst years, through a protected lane rather than the generic one, and with a result you can point to instead of a CV that reads like everyone else's. That's a set of concrete moves, not a hope — and choosing a program that makes them possible is exactly what the second half of this guide is about.
+**The way through the Catch-22 isn't to wait for the entry rung to come back — it may not.** It's to enter *beside* it: through a placement that substitutes for the vanishing analyst years, through a protected lane rather than the generic one, and with a result you can point to instead of a CV that reads like everyone else's. That's a set of concrete moves, not a hope — and choosing a route in that makes them possible is exactly what the second half of this guide is about.
 
 ### Does it have to be done in person, with your hands? *(15%)*
 
@@ -317,9 +313,9 @@ An operations or supply chain pathway with genuine depth beats a general degree 
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick your route in is knowing exactly what you'll need to do with it. The first list is for making the switch; the second is for the job hunt that follows.
 
-## During the degree — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Lock in a specialization with structural protection.** Operations, supply chain, or genuine quantitative depth over general management studies. The generic core is the exposed lane.
 - **Treat the placement as non-negotiable.** In a field with no license, the internship is the closest thing to one, and the single strongest signal a graduate can carry. One isn't enough — do two if the program allows it.
@@ -359,7 +355,7 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 
 # Bottom line
 
-Business is the field where the *program* matters more than the *subject*, and by a wider margin than anywhere else in this index. That's the good news for someone still choosing: the decision in front of you — which version, which program — is exactly the one that determines the outcome.
+Business is the field where the *program* matters more than the *subject*, and by a wider margin than anywhere else in this index. That's the good news for someone weighing the move: the decision in front of you — which version, which route in — is exactly the one that determines the outcome.
 
 **The destinations are good.** General management, operations and commercial leadership are well-paid, varied, and protected by real accountability.
 
@@ -374,7 +370,7 @@ And one honest thing worth saying before enrolling, if the pull toward business 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
@@ -398,7 +394,7 @@ And one honest thing worth saying before enrolling, if the pull toward business 
 ## Testing it against reality
 
 11. **The most valuable single action:** find someone 3–5 years into a business career and ask what they actually did in year one, and whether that job still exists in the same form.
-12. Can you get any real commercial experience before or during the degree — a job with responsibility, a small venture, running something? In a field with no credential, evidence is the credential.
+12. Can you get any real commercial experience before or as you make the switch — a job with responsibility, a small venture, running something? In a field with no credential, evidence is the credential.
 
 ## Widening the frame
 

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Accounting
 
-*For anyone already in an accounting degree or training — or graduated and job-hunting with one*
+*For anyone working in accounting — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in an accounting degree or training, or out of one and into the job hunt. So this guide skips the "should you study accounting" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're in accounting. So this guide skips the "should you go into accounting" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where accounting sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -247,7 +245,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** accounting is further into this than most professions. Audit software, automated reconciliation and AI-assisted tax preparation are established rather than emerging. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live internship or first job, which is exactly where it counts.
+**The situation:** accounting is further into this than most professions. Audit software, automated reconciliation and AI-assisted tax preparation are established rather than emerging. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native accountant looks like
 
@@ -277,17 +275,17 @@ Unusually broad, and this is one of accounting's strongest arguments: public pra
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Accounting is a 2.7-point spread from 5.2 to 7.9, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward the license.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
 **1. The license is the whole game.** The transactional core — bookkeeping (7.9) and routine tax preparation (7.0) — is the exposed end and is furthest into automation already. The protected destinations — audit and CPA advisory (5.2), complex tax advisory (5.6) — are reached by the license, not by the general or transactional route. If you haven't committed to the CPA pathway, this is the single highest-leverage decision left. And check the current requirements where you intend to qualify: around 43 states have changed or removed the 150-hour rule, and the cheaper, faster route may now be open to you.
 
-**2. Audit and assurance depth, while it's still free.** This is where the regulatory protection lives. Coursework light on audit is training for the exposed tier. Take audit and assurance seriously rather than as the dull option, and learn full-population testing and audit technology now — that is the version of the job that ages well, and it is far cheaper to acquire in the degree than to bolt on later.
+**2. Audit and assurance depth, while you can.** This is where the regulatory protection lives. Exposure light on audit is training for the exposed tier. Take audit and assurance seriously rather than as the dull option, and learn full-population testing and audit technology now — that is the version of the job that ages well, and it is far cheaper to acquire early than to bolt on later.
 
 **3. The internship, and the supervised hours it leads to.** The profession recruits through internships and conversion rates are high given the shortage. ==+That is the experience that separates the protected licensed tier from the exposed floor== — and it's the on-ramp to the supervised hours that count toward the CPA. Secure one, then convert it, and go into public practice first: the reverse — industry first, then practice — rarely works.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career accounting titles are also the most exposed.
 
@@ -298,15 +296,15 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the tasks that are already automating, but you can be the accountant who *directs* these tools rather than competes with them. The five capabilities above — verify, work with full-population testing, advise rather than report, understand the client's business, get to the license — are all available right now, inside a current internship or a first job. The most powerful for someone already in it is verification: ==+be the person who catches the generated workpaper or the prepared return that's subtly wrong.== In audit that is professional skepticism aimed at a machine rather than a client — the same underlying skill, and the one the licensed tier is built on. You can start building it this term, not after some future qualification.
+You can't undo the tasks that are already automating, but you can be the accountant who *directs* these tools rather than competes with them. The five capabilities above — verify, work with full-population testing, advise rather than report, understand the client's business, get to the license — are all available right now, inside your current role. The most powerful for someone already in it is verification: ==+be the person who catches the generated workpaper or the prepared return that's subtly wrong.== In audit that is professional skepticism aimed at a machine rather than a client — the same underlying skill, and the one the licensed tier is built on. You can start building it now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in accounting is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in accounting is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for moving roles or the job hunt itself.
 
-## During the degree / training — build toward the license
+## Where you are now — build toward the license
 
 - **Treat the license as the product, not the degree.** The protection in accounting lives at the licensed tier (audit / CPA advisory 5.2, complex tax advisory 5.6), not in the transactional core (routine tax prep 7.0, bookkeeping 7.9). Aim every choice at the signature.
 - **Check the current CPA requirements where you intend to qualify.** Around 43 states have changed or removed the 150-hour rule; the route you were told about may no longer be the route, and a cheaper one may be open.
@@ -370,7 +368,7 @@ And one honest thing about the trade-off: the entry salary gap is real, it is su
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -381,7 +379,7 @@ And one honest thing about the trade-off: the entry salary gap is real, it is su
 ## The move from here
 
 4. What's the single most protected seat you could realistically aim for from where you are now — audit, assurance, complex tax advisory — and what would make you a credible candidate for it?
-5. If you're still studying: how much compulsory audit and assurance are you actually taking, and is there more you could add before it's no longer free?
+5. If you're early on: how much compulsory audit and assurance are you actually taking, and is there more you could add while you can?
 6. If you're job-hunting: are you aiming at a licensed pathway on purpose, or applying to whatever's open? Does the first role you're chasing generate supervised hours toward the CPA?
 
 ## The AI question, practically

@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Architecture
 
-*For anyone still choosing — weighing an architecture degree, or a path into the profession*
+*For anyone considering a move into architecture*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing an architecture degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into architecture and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to architecture.** ==?The AI answer here is reasonably good. The honest problems with this career are the ones the profession has had for decades — the length of the path, and the pay relative to that length.== Those deserve more of your attention than the score does, and they're the conversation most families never have properly because architecture sounds prestigious.
 
@@ -52,7 +48,7 @@ The stamp, the site and the client relationship are real protection. ==But the d
 
 # Why licensed architecture holds up — the six factors
 
-Here's how licensed architecture answers them. Knowing *why* the licensed and site-based tiers hold while production drafting sits at 7.6 is what tells you which version of the degree to choose.
+Here's how licensed architecture answers them. Knowing *why* the licensed and site-based tiers hold while production drafting sits at 7.6 is what tells you which way into the field to aim for.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
@@ -262,9 +258,9 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** understand the length honestly, and look at construction management and engineering alongside it — not as lesser options, but because they reach comparable money faster with better scores.
+**Before you make the move:** understand the length honestly, and look at construction management and engineering alongside it — not as lesser options, but because they reach comparable money faster with better scores.
 
-**During:** seek site exposure specifically, not just studio and office work. Take computational design and building science seriously — those are the specialist tracks that pay. And treat the technical modules as what verification will later depend on.
+**As you make the switch:** seek site exposure specifically, not just studio and office work. Take computational design and building science seriously — those are the specialist tracks that pay. And treat the technical modules as what verification will later depend on.
 
 **After:** ==+start the AXP immediately and treat the exams as a project rather than something to get around to. Every year of delay costs the 18–35% licensure premium.==
 
@@ -336,9 +332,9 @@ What proportion of graduates are licensed at five and ten years? This is the num
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick your route in is knowing exactly what you'll need to do with it. The first list is for making the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build toward the stamp
+## As you make the switch — build toward the stamp
 
 - **Treat the license as the product, not the degree.** The protection in architecture lives at the licensed and site-based tiers (construction administration 4.7, licensed architect 5.0), not in production drafting (7.6) or BIM coordination (6.7). Aim every choice at the signature.
 - **Check accreditation against the jurisdiction where you intend to practice.** A degree that doesn't map onto licensure where you'll work is a longer path than it looks.
@@ -385,7 +381,7 @@ Choosing well is step one. This is what turns a good choice into a good outcome 
 
 # Bottom line
 
-Architecture is the field where *which end you aim at* matters more than the subject, and the honest problems have nothing to do with AI. That's the good news for someone still choosing: the decision in front of you — which version, which program — is exactly the one that determines the outcome.
+Architecture is the field where *which end you aim at* matters more than the subject, and the honest problems have nothing to do with AI. That's the good news for someone weighing the move: the decision in front of you — which version, which route in — is exactly the one that determines the outcome.
 
 **The protected end is genuinely protected.** The stamp is a legal monopoly, site work cannot be done remotely, and clients want a named human answerable for a building. Those hold.
 
@@ -402,7 +398,7 @@ And one honest thing worth saying, if the pull toward architecture is really abo
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

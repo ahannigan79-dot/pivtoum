@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Physical Therapy & Allied Health
 
-*For anyone already in a physical therapy or allied health degree or training — or graduated and job-hunting with one*
+*For anyone working in allied health — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in a physical therapy or allied health degree or training, or out of one and into the job hunt. So this guide skips the "should you study this" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're in allied health. So this guide skips the "should you go into allied health" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where this field sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -263,7 +261,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** AI in physical therapy is arriving as documentation relief rather than clinical substitution, which makes this one of the more straightforwardly positive pictures in the index. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live placement or first job, which is exactly where it counts.
+**The situation:** AI in physical therapy is arriving as documentation relief rather than clinical substitution, which makes this one of the more straightforwardly positive pictures in the index. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native therapist looks like
 
@@ -293,7 +291,7 @@ Specialization (orthopaedic, neurological, paediatric, sports, geriatric), priva
 
 The program-selection stage is behind you, or nearly. The useful questions now are different — and the good news bears repeating: ==+on AI exposure, almost nothing about your position is at risk.== The clinical work scores 2.5. What's still in front of you is financial and directional: which setting, at what productivity cost, and how well you manage the debt. Almost all of it is still in your hands.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
@@ -301,9 +299,9 @@ Three levers, in order of leverage.
 
 **2. Borrow as little more as you can, while the choices are still open.** The tuition may be set, but the borrowing around it isn't. The federal loan cap leaves a mean funding gap of around $33,647 a year at an average-cost school — roughly $95,000–$101,000 in private loans over three years — and private loans don't qualify for income-driven repayment or Public Service Loan Forgiveness. Minimize additional and living-cost borrowing now, exhaust federal options before private ones, and know which of your loans qualify for forgiveness.
 
-**3. Get fluent in rehabilitation technology while it's still free.** Robotic and sensor-assisted rehabilitation (already showing better outcomes in some protocols) and continuous outcome data are arriving. ==+Knowing where they help and where they mislead is the new competency, almost nobody is teaching it, and it's far cheaper to build in training than to bolt on later.==
+**3. Get fluent in rehabilitation technology while you can.** Robotic and sensor-assisted rehabilitation (already showing better outcomes in some protocols) and continuous outcome data are arriving. ==+Knowing where they help and where they mislead is the new competency, almost nobody is teaching it, and it's far cheaper to build early than to bolt on later.==
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the setting and the seat matter more than they look, because the field's real variation isn't in the automation risk — it's in what the job does to your finances and your burnout.
 
@@ -314,15 +312,15 @@ Here the setting and the seat matter more than they look, because the field's re
 
 ## The AI-native move, from where you stand
 
-You can't undo the tuition already committed, but you can be the clinician who *directs* these tools rather than lets them absorb your day. The five capabilities above — reclaim the time, verify, work with robotic-assisted rehab, use outcome data, contribute to implementation — are all available right now, inside a current placement or a first job. The most powerful for someone already in it is the first: ==+be deliberate about where the hours documentation automation saves actually go.== Reclaimed for patient contact, they compound your protection; left unmanaged, productivity targets absorb them. And being the practitioner who understands the new rehabilitation technology puts you in the room when services write the policies they're currently writing without practitioner input — a position you can start building toward this term, not after some future qualification.
+You can't undo the tuition already committed, but you can be the clinician who *directs* these tools rather than lets them absorb your day. The five capabilities above — reclaim the time, verify, work with robotic-assisted rehab, use outcome data, contribute to implementation — are all available right now, inside your current role. The most powerful for someone already in it is the first: ==+be deliberate about where the hours documentation automation saves actually go.== Reclaimed for patient contact, they compound your protection; left unmanaged, productivity targets absorb them. And being the practitioner who understands the new rehabilitation technology puts you in the room when services write the policies they're currently writing without practitioner input — a position you can start building toward now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection here is built in these choices and habits, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection here is built in these choices and habits, rather than handed to you. The first list is for anyone early in their career; the second is for moving roles or the job hunt itself.
 
-## During the degree / training — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Protect the clinical core.** Manual therapy and assessment — feeling resistance, guarding and compensation — is the 2.5 work. The records-centered and screen-based allied roles are the 6.1. Take the hands-on modules as seriously as the score says they deserve.
 - **Minimize the borrowing you can still control.** The federal loan cap leaves a mean funding gap of around $33,647 a year at an average-cost school — roughly $95,000–$101,000 in private loans over three years, and private loans don't qualify for income-driven repayment or Public Service Loan Forgiveness. Exhaust federal options first and keep living-cost debt down.
@@ -382,7 +380,7 @@ And one thing worth saying that no score captures. Watching someone walk again, 
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -393,7 +391,7 @@ And one thing worth saying that no score captures. Watching someone walk again, 
 ## The move from here
 
 4. What's the single most protected, most satisfying setting you could realistically aim for from where you are now, and what would make you a credible candidate for it?
-5. If you're still studying: is there any borrowing or living-cost debt still in your control that you could bring down before it's locked in?
+5. If you're early on: is there any borrowing or living-cost debt still in your control that you could bring down before it's locked in?
 6. If you're job-hunting: are you aiming at a clinical, hands-on seat on purpose, or applying to whatever's open? Have you asked about productivity expectations and loan repayment assistance?
 
 ## The AI question, practically

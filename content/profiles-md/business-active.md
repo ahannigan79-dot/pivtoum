@@ -4,15 +4,13 @@
 
 *Pivotum · Fall 2026*
 
-*For anyone already in a business degree — or graduated and job-hunting with one*
+*For anyone working in business — early-career or established*
 
 ---
 
 ## Before you read this
 
-The choice is already made — you're in a business degree, or out of one and into the job hunt. So this guide skips the "should you study business" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're in business. So this guide skips the "should you go into business" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where business sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -222,13 +220,13 @@ It's harder for people who want clear structure and defined tasks (that's exactl
 
 **Skills-based hiring is being announced more than practiced.** A Burning Glass and Harvard Business School analysis found that removing degree requirements from postings hasn't meaningfully changed who gets hired.
 
-**Internships have become the actual filter.** NACE's employer survey rates internship experience **4.5 out of 5** as a hiring factor — the highest-rated item. ==+In a field with no license, the placement is the closest thing to one== — which is why, if you're still in the degree, it's the single most valuable thing left to chase.
+**Internships have become the actual filter.** NACE's employer survey rates internship experience **4.5 out of 5** as a hiring factor — the highest-rated item. ==+In a field with no license, the placement is the closest thing to one== — which is why, if you're early on, it's the single most valuable thing left to chase.
 
 ---
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** business is where AI adoption is fastest, because there's nothing slowing it down — no regulator, no licensing body, no safety case to make. That cuts both ways. The exposure is higher, and so is the opportunity for someone who can direct it. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live internship or first job, which is exactly where it counts.
+**The situation:** business is where AI adoption is fastest, because there's nothing slowing it down — no regulator, no licensing body, no safety case to make. That cuts both ways. The exposure is higher, and so is the opportunity for someone who can direct it. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native business graduate looks like
 
@@ -258,17 +256,17 @@ The good news is genuine breadth: general management, operations, commercial and
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Business is a 2.7-point spread from 4.9 to 7.6, and where you land inside it is decided mostly by things still in front of you.
 
-## If you're still in the degree
+## If you're early in your career
 
 Three levers, in order of leverage.
 
-**1. The specialization is the whole game.** A general business degree is the exposed one — it's the row that scores worst in this entire guide. The protected destinations — general management with P&L accountability (4.9), operations and supply chain (5.0), HR (5.3) — are reached by concentration, not by the generic core. If you haven't committed to a track, this is the single highest-leverage decision left in the degree. If you have, hold it up against the scores above and ask honestly whether it points at *accountability* or at *reporting*.
+**1. The specialization is the whole game.** A general business degree is the exposed one — it's the row that scores worst in this entire guide. The protected destinations — general management with P&L accountability (4.9), operations and supply chain (5.0), HR (5.3) — are reached by concentration, not by the generic core. If you haven't committed to a track, this is the single highest-leverage decision left. If you have, hold it up against the scores above and ask honestly whether it points at *accountability* or at *reporting*.
 
-**2. Quantitative depth, while it's still free.** The analyst and coordinator roles that score 7.6 are the report-builders — pattern-work on structured data, first in line for automation. The same aptitude aimed one level up — owning the model rather than running it, deciding what to measure rather than compiling it — is the judgment layer that ages well. Every quantitative elective you can still take (statistics, econometrics, experimentation) is a step from the exposed end toward the protected one, and it is far cheaper to acquire now than to bolt on later.
+**2. Quantitative depth, while you can.** The analyst and coordinator roles that score 7.6 are the report-builders — pattern-work on structured data, first in line for automation. The same aptitude aimed one level up — owning the model rather than running it, deciding what to measure rather than compiling it — is the judgment layer that ages well. Every quantitative elective you can still take (statistics, econometrics, experimentation) is a step from the exposed end toward the protected one, and it is far cheaper to acquire now than to bolt on later.
 
 **3. Accountability, earlier than feels comfortable.** The through-line of this whole index is that roles where someone *owns* an outcome score better than roles that feed one — and that doesn't have to wait for graduation. A co-op with real P&L exposure, running an actual budget in a student venture or society, an internship where you carry a number rather than support one: ==+that is the experience that separates the protected ceiling from the exposed floor==, and in a field with no license, it's the closest thing to one.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career business titles are also the most exposed.
 
@@ -279,15 +277,15 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the last two years, but you can be the graduate who *directs* these tools rather than competes with them. The five capabilities above — verify, frame, automate visibly, communicate under scrutiny, own something measurable — are all available right now, inside a current internship or a first job. The most powerful for someone already in it is the third: ==+be the person who rebuilds a manual process and can show what it saved.== In a field with no credential, a demonstrable result is the credential — and it's one you can start building this term, not after some future qualification.
+You can't undo the last two years, but you can be the graduate who *directs* these tools rather than competes with them. The five capabilities above — verify, frame, automate visibly, communicate under scrutiny, own something measurable — are all available right now, inside your current role. The most powerful for someone already in it is the third: ==+be the person who rebuilds a manual process and can show what it saved.== In a field with no credential, a demonstrable result is the credential — and it's one you can start building now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in business is built here, in these habits, rather than handed to you. The first list is for anyone still in the degree; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in business is built here, in these habits, rather than handed to you. The first list is for anyone early in their career; the second is for moving roles or the job hunt itself.
 
-## During the degree — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Lock in a specialization with structural protection.** Operations, supply chain, or genuine quantitative depth over general management studies. The generic core is the exposed lane.
 - **Treat the placement as non-negotiable.** In a field with no license, the internship is the closest thing to one, and the single strongest signal you can carry. One isn't enough — do two if the program allows it.
@@ -342,7 +340,7 @@ And one honest thing, if you're in business because nothing else appealed: ==?th
 
 # Questions worth sitting with
 
-*Whether you're the one in the degree or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -353,7 +351,7 @@ And one honest thing, if you're in business because nothing else appealed: ==?th
 ## The move from here
 
 4. What's the single most protected role you could realistically aim for from where you are now, and what would make you a credible candidate for it?
-5. If you're still studying: what's the most quantitative elective still open to you, and is there a reason not to take it?
+5. If you're early on: what's the most quantitative elective still open to you, and is there a reason not to take it?
 6. If you're job-hunting: are you aiming at a protected lane on purpose, or applying to whatever's open? Name the three roles you're actually chasing.
 
 ## The AI question, practically

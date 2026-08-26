@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Architecture
 
-*For anyone already in an architecture degree or training — or graduated and job-hunting with one*
+*For anyone working in architecture — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in an architecture degree or training, or out of one and into the job hunt. So this guide skips the "should you study architecture" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're in architecture. So this guide skips the "should you go into architecture" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where architecture sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -246,7 +244,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** generative design, automated compliance checking and instant visualization are established in large practices. The people who can direct and verify them are not. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live placement or first job, which is exactly where it counts.
+**The situation:** generative design, automated compliance checking and instant visualization are established in large practices. The people who can direct and verify them are not. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role, which is exactly where it counts.
 
 ### What an AI-native architect looks like
 
@@ -276,17 +274,17 @@ Broader than people assume: practice and design leadership, construction adminis
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Architecture is a spread from 4.7 to 7.6, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward the site and the stamp.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
 **1. The license is the whole game.** Production drafting (7.6) and BIM coordination (6.7) are the exposed end and furthest into automation already. The protected destinations — construction administration (4.7), licensed architect (5.0), the specialist tracks (5.5) — are reached through the AXP and the ARE, not by stopping at production work. If you haven't set the AXP as the destination, this is the single highest-leverage decision left, and every choice should be aimed at the signature. Check accreditation against the jurisdiction where you intend to practice; a degree that doesn't map onto licensure there is a longer path than it looks.
 
-**2. Site exposure and building science, while they're still free.** Construction administration scores 4.7 precisely because site visits, commissioning and snagging can't be done remotely — and site judgment is exactly what verification later depends on. Chase site time, not just studio and office work; it's better and rarer. Take building science and computational design seriously too: those are the specialist tracks that carry premiums (5.5), and they age far better than software fluency. It's far cheaper to acquire this in the degree than to bolt on later.
+**2. Site exposure and building science, while you can.** Construction administration scores 4.7 precisely because site visits, commissioning and snagging can't be done remotely — and site judgment is exactly what verification later depends on. Chase site time, not just studio and office work; it's better and rarer. Take building science and computational design seriously too: those are the specialist tracks that carry premiums (5.5), and they age far better than software fluency. It's far cheaper to acquire this early than to bolt on later.
 
 **3. A seat that logs AXP hours, earlier than feels comfortable.** The through-line of this whole index is that roles near the site and the signature score better than roles that only produce drawings — and the on-ramp to that is supervised experience under a licensed practitioner. A placement near the site, a role that starts your AXP hours, exposure to a real client and a real building: ==+that is the experience that separates the protected end from the exposed floor==, and in architecture the logged hours are the mechanism that keeps the door open at all.
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the title on the offer matters more than it looks, because the most common early-career architecture titles are also the most exposed.
 
@@ -297,15 +295,15 @@ Here the title on the offer matters more than it looks, because the most common 
 
 ## The AI-native move, from where you stand
 
-You can't undo the last few years, but you can be the architect who *directs* these tools rather than competes with them. The five capabilities above — verify, specify, judge applicability, own the stamp, bridge model and site — are all available right now, inside a current placement or a first job. The most powerful for someone already in it is verification: ==+be the person who catches the generated design that's buildable on screen and not in reality.== That requires understanding construction well enough to spot a plausible error — which is why site exposure matters more than it used to, and it's the skill the licensed tier is built on. You can start building it this term, not after some future qualification.
+You can't undo the last few years, but you can be the architect who *directs* these tools rather than competes with them. The five capabilities above — verify, specify, judge applicability, own the stamp, bridge model and site — are all available right now, inside your current role. The most powerful for someone already in it is verification: ==+be the person who catches the generated design that's buildable on screen and not in reality.== That requires understanding construction well enough to spot a plausible error — which is why site exposure matters more than it used to, and it's the skill the licensed tier is built on. You can start building it now, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in architecture is built here, in these habits and choices, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in architecture is built here, in these habits and choices, rather than handed to you. The first list is for anyone early in their career; the second is for moving roles or the job hunt itself.
 
-## During the degree / training — build toward the stamp
+## Where you are now — build toward the stamp
 
 - **Treat the license as the product, not the degree.** The protection in architecture lives at the licensed and site-based tiers (construction administration 4.7, licensed architect 5.0), not in production drafting (7.6) or BIM coordination (6.7). Aim every choice at the signature.
 - **Check accreditation against the jurisdiction where you intend to practice.** A degree that doesn't map onto licensure where you'll work is a longer path than it looks.
@@ -369,7 +367,7 @@ And one honest thing worth holding onto through the long middle. ==+You make thi
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -380,7 +378,7 @@ And one honest thing worth holding onto through the long middle. ==+You make thi
 ## The move from here
 
 4. What's the single most protected seat you could realistically aim for from where you are now — construction administration, a design seat under a licensed practitioner — and what would make you a credible candidate for it?
-5. If you're still studying: how much site exposure and building science are you actually getting, and is there more you could add before it's no longer free?
+5. If you're early on: how much site exposure and building science are you actually getting, and is there more you could add while you can?
 6. If you're job-hunting: are you aiming at a seat that logs AXP hours on purpose, or applying to whatever's open? Does the first role you're chasing count toward the stamp?
 
 ## The AI question, practically

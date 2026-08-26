@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Physical Therapy & Allied Health
 
-*For anyone still choosing — weighing a physical therapy or allied health degree, or a path into the field*
+*For anyone considering a move into allied health*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing a physical therapy or allied health degree — or a path into the field — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into allied health and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to this field, which matters more than anything else here.** ==?The AI question in physical therapy is about as settled as anything in this index. The financial question is not, and it is genuinely serious.== The cost of a Doctor of Physical Therapy varies by more than $300,000 between programs offering the identical qualification and leading to the identical career. That single fact should shape this conversation more than any score. If you read one section of this guide, read the financial question below.
 
@@ -347,9 +343,9 @@ How many settings, and which? Setting shapes career satisfaction more than the q
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick your route in is knowing exactly what you'll need to do with it. The first list is for making the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build what can't be automated
+## As you make the switch — build what can't be automated
 
 - **Protect the clinical core.** Manual therapy and assessment — feeling resistance, guarding and compensation — is the 2.5 work. The records-centered and screen-based allied roles are the 6.1. Take the hands-on modules as seriously as the score says they deserve.
 - **Attend the least expensive CAPTE-accredited program, and minimize private borrowing.** The federal loan cap leaves a mean funding gap of around $33,647 a year at an average-cost school — roughly $95,000–$101,000 in private loans over three years, and private loans don't qualify for income-driven repayment or Public Service Loan Forgiveness. Cost is the decision here, not reputation.
@@ -409,7 +405,7 @@ And one thing worth saying that no score captures. Watching someone walk again, 
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 

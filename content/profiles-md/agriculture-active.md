@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Agriculture & Agribusiness
 
-*For anyone already in an agriculture degree or training — or graduated and job-hunting with one*
+*For anyone working in agriculture — early-career or established*
 
 *Pivotum · Fall 2026*
 
@@ -10,9 +10,7 @@
 
 ## Before you read this
 
-The choice is already made — you're in an agriculture degree or training, or out of one and into the job hunt. So this guide skips the "should you go into agriculture" question and goes straight to the one that's actually live: given where you already are, what do you do about it?
-
-It's written to you directly — whether *you* are the one in it, or a parent reading on their behalf. Where it says "you," a parent can simply read "them"; the moves are the same either way.
+You're in agriculture. So this guide skips the "should you go into agriculture" question and goes straight to the one that's actually live: given where you already are, what do you do about it as AI reshapes the work?
 
 **What this is.** A facts document, not a pep talk. It sets out what's known about where agriculture sits in an AI economy, where the evidence is contested, and where we might be wrong — and then what to actually do from here.
 
@@ -278,7 +276,7 @@ If some of that second list sounds like you, it isn't a reason to abandon the pa
 
 # The AI-native advantage — what it actually looks like
 
-**The situation:** agriculture is the most automated sector in this index by history, and the current wave is landing on its analytical layer rather than its physical one. Being already in it, close to the work, is a real advantage here — you can build this fluency inside a live placement, a first job, or the machinery shed, which is exactly where it counts.
+**The situation:** agriculture is the most automated sector in this index by history, and the current wave is landing on its analytical layer rather than its physical one. Being already in it, close to the work, is a real advantage here — you can build this fluency inside your current role — a placement, a job, the machinery shed — which is exactly where it counts.
 
 ### What an AI-native agricultural professional looks like
 
@@ -308,17 +306,17 @@ Farm management, equipment technology and dealership service, agronomy and crop 
 
 The program-selection stage is behind you. The useful questions now are different — and the good news bears repeating: ==+almost none of your exposure is fixed yet.== Agriculture is a 3.6-point spread from 3.4 to 7.0, and where you land inside it is decided mostly by things still in front of you. Nearly all of them point the same way: toward the hands, and away from the screen.
 
-## If you're still in the degree or training
+## If you're early in your career
 
 Three levers, in order of leverage.
 
 **1. The physical, wage-paying side is the whole game.** The exposed rows are precision agriculture technology (6.2) and agricultural data and supply planning (7.0) — screens and data. The protected destinations — livestock husbandry (3.4), equipment technology (3.8), field farming (4.0), farm management (4.6) — are reached by the hands, not the platform. If you haven't committed to a track, this is the single highest-leverage decision left. And work a full season, including winter, before you lock in — a February morning answers the question faster than anything else.
 
-**2. Equipment and machinery diagnostics, while it's still free.** This is the standout opportunity in the whole field: modern machinery needs people who can diagnose mechanical, hydraulic and electronic faults together, and they are short everywhere. It scores 3.8 — physical, diagnostic, unpredictable, the protected profile exactly. Every hour of real diagnostic depth you can add now is a step from the exposed end toward the protected one, and far cheaper to acquire in training than to bolt on later.
+**2. Equipment and machinery diagnostics, while you can.** This is the standout opportunity in the whole field: modern machinery needs people who can diagnose mechanical, hydraulic and electronic faults together, and they are short everywhere. It scores 3.8 — physical, diagnostic, unpredictable, the protected profile exactly. Every hour of real diagnostic depth you can add now is a step from the exposed end toward the protected one, and far cheaper to acquire early than to bolt on later.
 
 **3. The regulated certifications, and the judgment rather than the report.** Chemical application licensing, animal health, food safety and organic certification all require qualified humans and are under-applied to. And get fluent with the precision-ag platforms as an operator who *owns the judgment* — knowing when a recommendation doesn't fit this field — rather than as someone who produces the report. ==+That is the experience that separates the protected field-based end from the exposed analytical floor.==
 
-## If you've graduated and you're job-hunting
+## If you're moving roles or job-hunting
 
 Here the role behind the title matters more than it looks, because the most modern-sounding early-career titles are also the most exposed.
 
@@ -329,15 +327,15 @@ Here the role behind the title matters more than it looks, because the most mode
 
 ## The AI-native move, from where you stand
 
-You can't undo the track you're already on, but you can be the person who *directs* these tools rather than competes with them. The five capabilities above — keep the hands and add the diagnostics, own the judgment, verify, take the regulated roles seriously, understand scale — are all available right now, inside a current placement or a first job. The most powerful for someone already in it is the first: ==+be the technician who diagnoses mechanical and electronic faults together, or the field agronomist who owns the recommendation rather than producing the report.== In agriculture the person deciding at 5am whether the field will travel is more protected than the one interpreting the data — and that's a position you can start building toward this season, not after some future qualification.
+You can't undo the track you're already on, but you can be the person who *directs* these tools rather than competes with them. The five capabilities above — keep the hands and add the diagnostics, own the judgment, verify, take the regulated roles seriously, understand scale — are all available right now, inside your current role. The most powerful for someone already in it is the first: ==+be the technician who diagnoses mechanical and electronic faults together, or the field agronomist who owns the recommendation rather than producing the report.== In agriculture the person deciding at 5am whether the field will travel is more protected than the one interpreting the data — and that's a position you can start building toward this season, not after some future qualification.
 
 ---
 
 # The career-hunting checklist
 
-The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in agriculture is built here, in these choices and habits, rather than handed to you. The first list is for anyone still in the degree or training; the second is for the job hunt itself.
+The analysis tells you where the exposure is. This is what to do about it — the part that's actually in your hands. Most of the protection in agriculture is built here, in these choices and habits, rather than handed to you. The first list is for anyone early in their career; the second is for moving roles or the job hunt itself.
 
-## During the degree / training — build what can't be automated
+## Where you are now — build what can't be automated
 
 - **Aim at the physical, wage-paying side of the field.** Equipment technology (3.8), field-based production, livestock and animal management (3.4), the regulated roles — over precision-agriculture analytics (6.2) and agricultural data and supply planning (7.0), which are the exposed lanes. The screen-based end scores worst.
 - **Work a full season, including winter, before you commit to a track.** Agriculture is romanticized more than almost any career in this index; a February morning answers the question faster than anything else.
@@ -404,7 +402,7 @@ And one thing worth saying to someone genuinely drawn to this. ==+Working outdoo
 
 # Questions worth sitting with
 
-*Whether you're the one in it or a parent thinking it through, these are the conversations that move the needle now. Read "you" as whoever the decision is about.*
+*These are the conversations that move the needle now.*
 
 ## Where you actually stand
 
@@ -415,7 +413,7 @@ And one thing worth saying to someone genuinely drawn to this. ==+Working outdoo
 ## The move from here
 
 4. What's the single most protected role you could realistically aim for from where you are now — equipment technology, field-based agronomy, animal health — and what would make you a credible candidate for it?
-5. If you're still studying: how much real equipment and machinery diagnostics are you getting, and is there more you could add before it's no longer free?
+5. If you're early on: how much real equipment and machinery diagnostics are you getting, and is there more you could add while you can?
 6. If you're job-hunting: are you aiming at a protected, physical lane on purpose, or applying to whatever's open? Name the three roles you're actually chasing.
 
 ## The AI question, practically

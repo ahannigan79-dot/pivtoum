@@ -2,7 +2,7 @@
 
 ## Career Value Guide · Accounting
 
-*For anyone still choosing — weighing an accounting degree, or a path into the profession*
+*For anyone considering a move into accounting*
 
 *Pivotum · Fall 2026*
 
@@ -10,13 +10,9 @@
 
 ## Before you read this
 
-You're weighing an accounting degree — or a path into the profession — and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
-
-It's written to you directly, whether *you* are the one choosing or a parent thinking it through alongside them. Where it says "you," a parent can read "them"; it's the same decision from either side.
+You're weighing a switch into accounting and you want to know what that choice actually looks like in an AI economy. That's the whole job of this guide.
 
 **What this is.** A facts document, not a recommendation. It sets out what's known, where the evidence is contested, and where we might be wrong — and then how to choose well given all of it.
-
-**If you're the parent, a note on how to use it.** Don't lead with the scores. Open a conversation with a risk number and one of two things happens: they shut down, or they get defensive about a choice they're already leaning toward. Read it yourself first, then share it as *information you both react to*, not a verdict you've reached. They're choosing, not you — the job is to widen what's been considered, not to narrow it.
 
 **And one thing specific to accounting.** ==?This guide has changed more in the last eighteen months than any other in the index — and not because of AI.== The profession is in the middle of rewriting its own entry requirements, and a document written in 2024 would give materially wrong advice about how to qualify. Whatever you think you know about the route into accounting, check it.
 
@@ -52,7 +48,7 @@ And there's a second story here that has nothing to do with technology: the prof
 
 # Why accounting scores the way it does — the six factors
 
-Here's how audit and CPA advisory work answers them. Knowing *why* the licensed tier holds at 5.2 while the transactional tier sits at 7.9 is what tells you which version of the degree to choose.
+Here's how audit and CPA advisory work answers them. Knowing *why* the licensed tier holds at 5.2 while the transactional tier sits at 7.9 is what tells you which way into the field to aim for.
 
 ### How much of this job can AI already do? *(35% of the score)*
 
@@ -261,9 +257,9 @@ It's harder for people who:
 
 ### Concrete preparation
 
-**Before the degree:** check the current CPA requirements in the state or country where you intend to qualify. This has genuinely changed.
+**Before you make the move:** check the current CPA requirements in the state or country where you intend to qualify. This has genuinely changed.
 
-**During:** secure an internship — the profession recruits heavily through them and conversion rates are high given the shortage. Take audit and assurance seriously rather than treating them as the dull option; that's where the protection is.
+**As you make the switch:** secure an internship or trainee seat — the profession recruits heavily through them and conversion rates are high given the shortage. Take audit and assurance seriously rather than treating them as the dull option; that's where the protection is.
 
 **Entering:** ==+public practice first, then industry if wanted. The reverse rarely works, and public practice is where the supervised hours and the license come from.==
 
@@ -331,9 +327,9 @@ Full-population testing is the future of the work.
 
 # The career-hunting checklist
 
-Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for the degree and training years; the second is for the job hunt that follows.
+Choosing well is step one. This is what turns a good choice into a good outcome once you're in — worth reading *now*, because the best time to pick a program is knowing exactly what you'll need to do with it. The first list is for making the switch; the second is for the job hunt that follows.
 
-## During the degree / training — build toward the license
+## As you make the switch — build toward the license
 
 - **Treat the license as the product, not the degree.** The protection in accounting lives at the licensed tier (audit / CPA advisory 5.2, complex tax advisory 5.6), not in the transactional core (routine tax prep 7.0, bookkeeping 7.9). Aim every choice at the signature.
 - **Check the current CPA requirements where you intend to qualify.** Around 43 states have changed or removed the 150-hour rule; the route you were told about may no longer be the route.
@@ -397,7 +393,7 @@ And one honest thing to weigh against finance or tech: the entry salary gap is r
 
 # Questions worth sitting with
 
-*Whether you're the one choosing or a parent thinking it through together, these are the conversations that lead to a better decision. Read "you" as whoever the choice is about.*
+*These are the conversations that lead to a better decision.*
 
 ## About the work itself
 
