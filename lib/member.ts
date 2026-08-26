@@ -2,6 +2,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles } from "@/db/schema";
+import { recordWeek } from "@/lib/gym-gate";
 
 /** Founders/moderators can run the community (create events, etc.).
  *  Either the profile role is set, or the email is in FOUNDER_EMAILS. */
@@ -63,6 +64,9 @@ export async function touchVisit(userId: string): Promise<Date | null> {
     return prev; // already counted today — skip the write
   }
 
+  // First visit of the day → also mark presence for the Effort-Dividend gate's
+  // "active 3 of 4 weeks" half (idempotent per ISO week).
+  await recordWeek(userId).catch(() => { /* best-effort; table may pre-migration */ });
   await db.update(profiles).set({ lastSeenAt: now, streakDays: streak, visitDays: visits })
     .where(eq(profiles.clerkUserId, userId));
   return prev;

@@ -5,11 +5,12 @@ import { getPlan } from "@/lib/plan";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
-import { getMemberActivity, computeEffort } from "@/lib/effort";
+import { getMemberActivity } from "@/lib/effort";
+import { qualifyingMonths } from "@/lib/gym-gate";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
 import { ExposureJourney, type JourneyPoint } from "@/components/hub/dashboard/ExposureJourney";
-import { effortDividend as calcEffortDividend, monthsSince, currentExposure, clampScore } from "@/lib/score";
+import { currentExposure, clampScore } from "@/lib/score";
 import { getLaneOverride } from "@/lib/baselines";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
@@ -31,7 +32,6 @@ export default async function Dashboard() {
 
   const activity = userId ? await getMemberActivity(userId) : null;
   if (userId && activity) await evaluateBadges(userId, activity); // catch up on milestone credentials
-  const effort = activity ? computeEffort(activity) : 0;
 
   const [moves, earned, prompt] = await Promise.all([
     t?.hasMap ? getMoves(userId) : Promise.resolve({ active: [], shipped: [] }),
@@ -51,11 +51,10 @@ export default async function Dashboard() {
   const laneOverride = await getLaneOverride(profile?.careerSlug, profile?.currentLane);
   const marketShift = laneOverride != null && savedBaseline != null ? laneOverride - savedBaseline : 0;
 
-  // Effort dividend — the work you put in buys down exposure, but slowly: ~1 point
-  // per month and never more than 12 total, so exposure comes down as a journey, not
-  // a sprint to zero. (See lib/score.ts.)
-  const elapsedMonths = monthsSince(t?.history?.[0]?.at ?? null);
-  const effortDividend = calcEffortDividend(effort, elapsedMonths);
+  // Effort dividend — earned by doing the work: each month a member passes ≥8 reps
+  // (≥75%) and is active ≥3 of 4 weeks buys down one point of exposure, capped at 12
+  // total, so exposure comes down as a journey, not a sprint. (See lib/gym-gate.ts.)
+  const effortDividend = await qualifyingMonths(userId);
   const baseExp = t?.overall != null ? t.overall + marketShift : null;
   const exposureNow = baseExp != null ? currentExposure(baseExp, effortDividend) : null;
 

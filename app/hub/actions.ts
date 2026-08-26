@@ -7,6 +7,7 @@ import { db } from "@/db";
 import { commitments, lessonProgress, profiles } from "@/db/schema";
 import { LEVER_BY_SLUG } from "@/lib/moves";
 import { awardBadge } from "@/lib/badges";
+import { recordGymAttempt } from "@/lib/gym-gate";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { VIEW_COOKIE, type ViewMode } from "@/lib/gate";
 
@@ -44,6 +45,16 @@ export async function logBuildRep(key: string) {
   await awardBadge(userId, "operator");
   revalidatePath("/hub");
   revalidatePath("/hub/build");
+}
+
+/** Record a graded gym rep attempt (score 0–100) for the Effort-Dividend gate. */
+export async function recordGymScore(repSlug: string, career: string, pct: number) {
+  const { userId } = await auth();
+  if (!userId) return;
+  try {
+    await recordGymAttempt(userId, career, repSlug, pct);
+  } catch { /* best-effort; table may be pre-migration */ }
+  revalidatePath("/hub/build/gym");
 }
 
 /** Mark the Learn space started on first genuine visit. */

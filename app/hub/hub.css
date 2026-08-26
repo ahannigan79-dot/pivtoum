@@ -1776,3 +1776,17 @@ a.pod-member:hover span { color:var(--ink); }
 .pwa-install-x:hover { background:var(--panel2); color:var(--ink); }
 @keyframes pwa-rise { from { opacity:0; transform:translate(-50%, 8px); } to { opacity:1; transform:translate(-50%, 0); } }
 @media (prefers-reduced-motion: no-preference) { .pwa-install { animation:pwa-rise .28s ease-out; } }
+
+/* Effort-Dividend gate readout on the Judgment Gym landing */
+.gymgate { border:1px solid var(--rule); border-radius:14px; padding:16px 18px; margin:0 0 22px; background:var(--bg); }
+.gymgate.on { border-color:var(--accent); background:var(--accent-wash); }
+.gymgate-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+.gymgate-status { font-family:var(--sans); font-size:0.82rem; color:var(--soft); }
+.gymgate.on .gymgate-status { color:var(--accent-deep); font-weight:600; }
+.gymgate-bars { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.gymgate-bar-l { font-family:var(--sans); font-size:0.82rem; color:var(--soft); margin-bottom:6px; }
+.gymgate-bar-l b { color:var(--ink); font-size:0.95rem; }
+.gymgate-bar-l span { color:var(--pencil); }
+.gymgate-track { height:7px; border-radius:99px; background:var(--panel3); overflow:hidden; }
+.gymgate-track span { display:block; height:100%; border-radius:99px; background:var(--accent); transition:width .3s; }
+@media (max-width:520px){ .gymgate-bars { grid-template-columns:1fr; } }

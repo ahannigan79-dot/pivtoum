@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { logBuildRep } from "@/app/hub/actions";
+import { logBuildRep, recordGymScore } from "@/app/hub/actions";
 import { scoreLine, type Scenario } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
@@ -25,7 +25,14 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   }
   function reveal() {
     setPhase("revealed");
-    if (!logged.current) { logged.current = true; void logBuildRep(`gym:${scenario.slug}`); }
+    if (!logged.current) {
+      logged.current = true;
+      void logBuildRep(`gym:${scenario.slug}`);
+      // The graded score for the Effort-Dividend gate (right calls / total items).
+      const right = scenario.items.reduce((acc, it, i) => acc + (choices[i] === it.verdict ? 1 : 0), 0);
+      const pct = Math.round((100 * right) / scenario.items.length);
+      void recordGymScore(scenario.slug, scenario.career, pct);
+    }
   }
 
   // Results

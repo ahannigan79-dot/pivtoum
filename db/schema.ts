@@ -291,6 +291,26 @@ export const workflowTransforms = pgTable("workflow_transforms", {
   createdAt: now(),
 }, (t) => ({ memberIdx: index("workflow_transforms_member_idx").on(t.memberId, t.createdAt) }));
 
+/* ---------- Judgment Gym: one row per rep attempt, with the score. Feeds the
+   monthly Effort-Dividend gate (≥8 reps at ≥75% + active 3 of 4 weeks). */
+export const gymAttempts = pgTable("gym_attempts", {
+  id: uid(),
+  memberId: memberFk(),
+  repSlug: text("rep_slug").notNull(),   // the Scenario slug (authored) or gen id
+  career: text("career").notNull(),      // the lane/career the rep belongs to
+  pct: integer("pct").notNull(),         // score 0–100 (right calls / total items)
+  passed: boolean("passed").notNull(),   // pct >= PASS_PCT
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("gym_attempts_member_idx").on(t.memberId, t.createdAt) }));
+
+/* ---------- Weekly presence: one row per member per ISO week they show up.
+   The "active 3 of 4 weeks" half of the Effort-Dividend gate. */
+export const memberWeeks = pgTable("member_weeks", {
+  memberId: memberFk(),
+  week: text("week").notNull(),          // ISO week key, e.g. "2026-W35"
+  createdAt: now(),
+}, (t) => ({ pk: primaryKey({ columns: [t.memberId, t.week] }) }));
+
 /* ---------- Pivotum market baselines: founder-set exposure baseline per lane.
    Overrides the lane's baseline the Map tool computed. When it moves, every
    member in the lane moves with it — their earned improvement carries forward. */

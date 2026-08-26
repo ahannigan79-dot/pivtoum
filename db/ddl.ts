@@ -197,6 +197,22 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "workflow_transforms_member_idx" ON "workflow_transforms" ("member_id","created_at")`,
+  `CREATE TABLE IF NOT EXISTS "gym_attempts" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "rep_slug" text NOT NULL,
+     "career" text NOT NULL,
+     "pct" integer NOT NULL,
+     "passed" boolean NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "gym_attempts_member_idx" ON "gym_attempts" ("member_id","created_at")`,
+  `CREATE TABLE IF NOT EXISTS "member_weeks" (
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "week" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL,
+     CONSTRAINT "member_weeks_pk" PRIMARY KEY("member_id","week")
+   )`,
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('welcomed','Welcomed','🤝','Booked your 1:1 welcome with Adam'),
      ('mapped','Mapped','🧭','Built your first Winning Map'),
