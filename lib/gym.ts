@@ -3,6 +3,7 @@
    Adding a lane is just another Scenario here — no bespoke tool per career. */
 
 import { ACCOUNTING_SCENARIOS } from "@/lib/gym-accounting";
+import { MARKETING_SCENARIOS } from "@/lib/gym-marketing";
 
 export type Severity = "minor" | "major" | "critical";
 export type GymItem = {
@@ -28,56 +29,9 @@ export type Scenario = {
 };
 
 export const GYM_SCENARIOS: Record<string, Scenario> = {
-  // Audit & Accounting — the first lane built 12 reps deep. See lib/gym-accounting.ts.
+  // Full 12-rep lanes live in their own modules. See lib/gym-accounting.ts, lib/gym-marketing.ts.
   ...ACCOUNTING_SCENARIOS,
-
-  marketing: {
-    slug: "marketing", career: "Marketing",
-    short: "Judge an AI-built paid campaign against the brief — targeting, budget, claims, creative.",
-    client: "FreshBowl — healthy meal delivery",
-    artifact: "FreshBowl_Launch_Campaign.draft",
-    thesis: "The AI has built a paid campaign to your brief — polished, confident, complete. Some of it is subtly wrong. Catch what doesn't hold, at speed, and ship only what's right.",
-    brief: [
-      { l: "Launch", v: "New high-protein range · 30g protein/bowl · from $7.99" },
-      { l: "Audience", v: "Budget-conscious young professionals, ~25–35" },
-      { l: "Budget", v: "$8,000 over 30 days" },
-      { l: "Goal", v: "Free-trial signups" },
-      { l: "Brand tone", v: "Upbeat, encouraging — no guilt" },
-    ],
-    items: [
-      { area: "Audience targeting", verdict: "flag", severity: "major",
-        output: "Adults 18–65 · Income: top 15% ($70k+) · Interests: fitness, wellness, meal kits · IG + TikTok feeds",
-        why: "It contradicts the brief. You wanted budget-conscious professionals aged ~25–35 — this targets high earners ($70k+) across an 18–65 span. Finished-looking spec, pointed at the wrong people.",
-        cost: "$8,000 spent reaching high earners who don't want budget meals. The campaign under-delivers and the client asks what they're paying you for.",
-        trains: "Cross-checking AI output against the brief — reading for correctness, not polish." },
-      { area: "Headline copy", verdict: "ship",
-        output: "“30g of protein. Zero hassle. New high-protein bowls, from $7.99.”",
-        why: "This one is right. 30g matches, $7.99 matches, tone is on-brief. The specific price looks like somewhere AI would hallucinate — but it checks out.",
-        cost: "Flagging good work sends it back for no reason — a delay, and a hit to trust when you cry wolf.",
-        trains: "Proportionate scrutiny — not flagging good work just because it could have been wrong." },
-      { area: "Budget allocation", verdict: "flag", severity: "minor",
-        output: "$8,000 / 30 days — Instagram 70% ($5,400) · TikTok 30% ($2,400)",
-        why: "The math doesn't add up. 70% of $8,000 is $5,600, not $5,400 — and $5,400 + $2,400 = $7,800, leaving $200 unspent. Official-looking numbers you have to re-add.",
-        cost: "$200 of the client's budget quietly goes unspent and your reported split is wrong. Small — but it's the sloppiness that erodes trust one detail at a time.",
-        trains: "Re-doing the numbers the machine hands you — beating the lull of official-looking figures." },
-      { area: "Creative concept", verdict: "ship",
-        output: "Hero: 15-sec vertical — a commuter swaps a sad desk sandwich for a FreshBowl. End card: “Real food, real fast.”",
-        why: "Solid. On-brief for time-poor young professionals, upbeat, no guilt. Nothing to flag.",
-        cost: "Over-flagging good creative stalls the work and trains the team to route around you.",
-        trains: "Recognizing genuinely good work — and having the confidence to let it through." },
-      { area: "Primary ad text", verdict: "flag", severity: "critical",
-        output: "Opens with: “The healthiest meal you'll eat all week — guaranteed.”",
-        why: "A regulatory landmine. An unsubstantiated absolute health claim plus “guaranteed” — exactly the line an ad-standards body pulls.",
-        cost: "An ASA complaint. The ad is pulled, the brand takes a public hit, and it traces straight back to your sign-off — no one else's.",
-        trains: "Domain scrutiny — spotting the claim that quietly becomes your legal accountability." },
-      { area: "Call to action", verdict: "ship",
-        output: "CTA button: “Start my free trial” → freshbowl.com/protein-trial",
-        why: "On the money. Matches the goal (trial signups) and points to a sensible landing page.",
-        cost: "Sending a correct CTA back for review just burns time you don't have.",
-        trains: "Confirming the fundamentals are right — fast — and moving on." },
-    ],
-    lesson: "The wrong audience and the “guaranteed” claim were the two that would have been yours to answer for. Judging fast and right is the operator's edge — the machine drafts, you own the call.",
-  },
+  ...MARKETING_SCENARIOS,
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",
@@ -124,54 +78,6 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
         trains: "Letting good operational hygiene through." },
     ],
     lesson: "The injection and the swallowed error were the two that would have been yours to answer for. The AI writes more code, faster — which means the judgment in the review is where your value now lives.",
-  },
-
-  "marketing-email": {
-    slug: "marketing-email", career: "Marketing",
-    short: "Sign off an AI-drafted win-back email to lapsed customers — offer, list, and claims.",
-    client: "FreshBowl — lapsed-customer win-back",
-    artifact: "FreshBowl_Winback_Email.draft",
-    thesis: "The AI has drafted a re-engagement email to customers who've drifted — warm, on-brand, ready to send. Some of it will cost you if it goes out. Ship only what's right.",
-    brief: [
-      { l: "Audience", v: "Customers with no order in 90+ days" },
-      { l: "Offer", v: "20% off the next order, one use per customer" },
-      { l: "Goal", v: "Win-back orders — not unsubscribes" },
-      { l: "Tone", v: "Warm, we-miss-you — never guilt-trippy" },
-      { l: "Rule", v: "Marketing consent required; honor suppressions" },
-    ],
-    items: [
-      { area: "Subject line", verdict: "ship",
-        output: "“We saved your spot 🥗 — 20% off your next FreshBowl”",
-        why: "On-brief. Warm, names the offer, no guilt. A clean subject line.",
-        cost: "Rewriting a good subject line delays the send for nothing.",
-        trains: "Recognizing on-brand copy and letting it go." },
-      { area: "Discount code setup", verdict: "flag", severity: "critical",
-        output: "Code WELCOME20 — 20% off, stackable with active promotions, no minimum, unlimited uses.",
-        why: "It contradicts the brief and the margin. “One use per customer” became unlimited and stackable — on top of live promos with no minimum. A margin bomb dressed as a win-back.",
-        cost: "A discount that stacks and repeats with no floor — resold, shared, and combined with other offers. The campaign loses money on every order and finance traces it to this send.",
-        trains: "Checking the offer mechanics against the brief, not just the headline number." },
-      { area: "Send list", verdict: "flag", severity: "major",
-        output: "Recipients: all 12,400 lapsed contacts, including 380 who previously unsubscribed.",
-        why: "It includes unsubscribed contacts. Mailing people who opted out is a consent breach — and it tanks your deliverability with spam complaints.",
-        cost: "A CAN-SPAM/GDPR breach and a deliverability hit that pushes your whole domain toward the spam folder. One of the most expensive mistakes in email.",
-        trains: "Catching the suppression the machine quietly ignored." },
-      { area: "Preheader", verdict: "ship",
-        output: "“It's been a while — here's a little something to come back to.”",
-        why: "Warm, on-tone, complements the subject. Nothing to flag.",
-        cost: "Over-editing good supporting copy just adds cycles.",
-        trains: "Proportionate scrutiny on the small stuff." },
-      { area: "Body claim", verdict: "flag", severity: "minor",
-        output: "“The best deal we've ever offered — you won't see 20% off again.”",
-        why: "An unsubstantiated scarcity claim. You run 20% offers regularly; “you won't see it again” isn't true and erodes trust when the next one lands.",
-        cost: "A small credibility leak — customers notice when “last chance” keeps coming back, and your future urgency stops working.",
-        trains: "Spotting the claim that's technically false and quietly costs trust." },
-      { area: "CTA & link", verdict: "ship",
-        output: "Button “Reorder my favorite” → freshbowl.com/reorder",
-        why: "Matches the goal and points to a sensible page. On the money.",
-        cost: "Sending a correct CTA back burns time you don't have.",
-        trains: "Confirming the fundamentals fast and moving on." },
-    ],
-    lesson: "The stackable code and the unsubscribed contacts were the two that would have been yours to answer for. The AI writes the email in seconds — you're the one who catches what it costs.",
   },
 
   "software-auth": {
