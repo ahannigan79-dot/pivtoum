@@ -34,11 +34,11 @@ export default async function WelcomePackPage() {
           <h3>Embrace, and Together</h3>
           <div className="pack-two">
             <div className="pack-found">
-              <b>◆ Embrace</b>
+              <b>Embrace</b>
               <p>Run toward the change, not away from it. Bring AI into your actual work, do the reps, learn its limits by using it. The people who win make the machine their instrument — you stop competing with it and become the one who wields it best.</p>
             </div>
             <div className="pack-found">
-              <b>✦ Together</b>
+              <b>Together</b>
               <p>Nobody navigates a shift this big alone. Being seen, held to your word, and learning from people on the same climb is what turns intention into motion. Your pod, the feed, the events — that&apos;s Together, and it&apos;s the engine.</p>
             </div>
           </div>
