@@ -26,10 +26,10 @@ export async function POST(req: Request) {
   if (!process.env.STRIPE_SECRET_KEY) {
     return new NextResponse(
       `<!doctype html><meta charset="utf-8"><title>Checkout opening soon</title>` +
-        `<body style="font-family:system-ui;max-width:34rem;margin:15vh auto;padding:0 1.5rem;color:#211E1B;line-height:1.6">` +
+        `<body style="font-family:system-ui;max-width:34rem;margin:15vh auto;padding:0 1.5rem;background:#FBFAF6;color:#1C1A16;line-height:1.6">` +
         `<h1 style="font-weight:600">Checkout is opening soon</h1>` +
         `<p>The paid Career Value Guide isn’t quite live yet. In the meantime the free samplers and the full computer science guide are open.</p>` +
-        `<p><a href="/" style="color:#AC3A34">← Back to Pivotum</a></p></body>`,
+        `<p><a href="/" style="color:#10605E">← Back to Pivotum</a></p></body>`,
       { status: 503, headers: { "content-type": "text/html; charset=utf-8" } },
     );
   }
