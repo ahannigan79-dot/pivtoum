@@ -65,7 +65,7 @@ export function ExposureCheck({ checks, preselect }: {
     <div className="chk">
       <div className="chk-pick">
         <span className="chk-pick-label">Which role is closest to yours?</span>
-        <RoleSelect options={sorted} value={slug} onChange={choose} />
+        <RoleSelect options={sorted} value={slug} onChange={choose} disabled={unlocked} />
       </div>
 
       {base && (
@@ -75,7 +75,7 @@ export function ExposureCheck({ checks, preselect }: {
             <div className="chk-tap-row">
               {SENIORITY.map((o) => (
                 <button key={o.key} type="button" className={"chk-tap-btn" + (seniority === o.key ? " on" : "")}
-                  onClick={() => setSeniority(o.key)} aria-pressed={seniority === o.key}>{o.label}</button>
+                  onClick={() => setSeniority(o.key)} aria-pressed={seniority === o.key} disabled={unlocked}>{o.label}</button>
               ))}
             </div>
           </div>
@@ -84,7 +84,7 @@ export function ExposureCheck({ checks, preselect }: {
             <div className="chk-tap-row">
               {ROUTINE.map((o) => (
                 <button key={o.key} type="button" className={"chk-tap-btn" + (routine === o.key ? " on" : "")}
-                  onClick={() => setRoutine(o.key)} aria-pressed={routine === o.key}>{o.label}</button>
+                  onClick={() => setRoutine(o.key)} aria-pressed={routine === o.key} disabled={unlocked}>{o.label}</button>
               ))}
             </div>
           </div>
@@ -154,21 +154,26 @@ export function ExposureCheck({ checks, preselect }: {
                 <div className="chk-opp">
                   <span className="chk-opp-k">You came here out of concern — here&rsquo;s the opportunity</span>
                   <p className="chk-opp-h">This is your <b>starting line</b>, not your verdict.</p>
-                  <div className="chk-journey" aria-hidden="true">
-                    <span className="cjn-now">
-                      <b style={{ color: scoreColor }}>{score}</b>
-                      <i>you, today</i>
-                    </span>
-                    <span className="cjn-track"><span className="cjn-arrow">→</span></span>
-                    <span className="cjn-goal">
-                      <b>DOWN</b>
-                      <i>every month<br />you do the work</i>
-                    </span>
+
+                  <div className="chk-scale2" aria-hidden="true">
+                    <div className="chk-scale2-bar">
+                      <span className="chk-scale2-pin" style={{ left: `${score}%` }}>
+                        <b style={{ color: scoreColor }}>{score}</b>
+                      </span>
+                    </div>
+                    <div className="chk-scale2-ends">
+                      <span className="safe">← Safer ground to gain</span>
+                      <span className="exp">More exposed →</span>
+                    </div>
                   </div>
+
+                  <p className="chk-opp-statement">
+                    The community is your opportunity to <b>win in the age of AI</b>.
+                  </p>
                   <p className="chk-opp-p">
                     The shift that exposed your work is the same one opening the ground for whoever moves first.
-                    Inside <b>Winning in the Age of AI</b>, your Map re-scores as you do the reps and a pod in your
-                    exact lane keeps you at it — so this number comes down and you come out ahead.
+                    Inside, your Map re-scores as you do the reps and a pod in your exact lane keeps you at it —
+                    so this number moves toward the safe end, and you come out ahead.
                   </p>
                   <div className="chk-opp-cta">
                     <a className="scr-btn" href={SITE.join}>Start your free trial →</a>
