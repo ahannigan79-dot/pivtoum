@@ -63,7 +63,7 @@ export default function Home() {
                 </Link>
               </div>
               <p className="lp-hero-browse">
-                <Link href="/community">Explore the community &rarr;</Link> · <a href="#index">All {careerCount} scores</a>
+                <a href="#inside">See what&rsquo;s inside &darr;</a> · <a href="#index">All {careerCount} scores</a>
               </p>
               <p className="lp-creed">{SITE.creedWorker}</p>
             </div>
@@ -160,7 +160,7 @@ export default function Home() {
         <section id="subscribe">
           <StarterKitCta />
         </section>
-        <SiteFooter />
+        <SiteFooter creed={SITE.creedWorker} />
       </div>
     </div>
   );

@@ -232,7 +232,7 @@ export default function CommunityPage() {
           <p style={{ marginTop: "0.6rem" }}>Winning in the Age of AI · a Pivotum community</p>
         </footer>
       </div>
-      <SiteFooter />
+      <SiteFooter creed={SITE.creedWorker} />
     </div>
   );
 }
