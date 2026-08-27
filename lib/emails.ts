@@ -39,12 +39,12 @@ export function purchaseEmail(
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
-    <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
-        <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+    <tr><td align="center" style="padding:24px 16px 40px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+        <tr><td style="padding:16px 8px 26px;">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your Career Value Guides &middot; Fall 2026</div>
@@ -167,12 +167,12 @@ export function packageEmail(opts: {
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
-    <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
-        <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+    <tr><td align="center" style="padding:24px 16px 40px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+        <tr><td style="padding:16px 8px 26px;">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your Career Map, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
@@ -247,12 +247,12 @@ export function pdfWelcomeEmail(opts: {
   const button = (url: string, label: string, bg: string) =>
     `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
-    <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
-        <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+    <tr><td align="center" style="padding:24px 16px 40px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+        <tr><td style="padding:16px 8px 26px;">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your free Pivotum PDF, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
