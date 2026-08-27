@@ -115,9 +115,6 @@ export default function Home() {
               <strong>Every career below is scored free.</strong> Tap any row for the read &mdash; the
               deeper breakdown, and your personal number, open with your free Career Map.
             </p>
-            <div className="lp-cta-row" style={{ justifyContent: "center", marginTop: "1.2rem", marginBottom: "0.2rem" }}>
-              <Link className="lp-btn" href="/map">Get your free Career Map &rarr;</Link>
-            </div>
           </div>
 
           <CareerIndex rows={indexRows} />
@@ -154,8 +151,8 @@ export default function Home() {
             <Link className="lp-btn" href={SITE.join}>
               Start your free trial &rarr;
             </Link>
-            <Link className="lp-btn ghost" href="/map">
-              Not ready? Get your free Career Map
+            <Link className="lp-btn ghost" href="/community">
+              See everything inside &rarr;
             </Link>
           </div>
         </section>
