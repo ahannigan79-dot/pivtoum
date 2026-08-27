@@ -34,7 +34,7 @@ function careers() {
     .sort((a, b) => a.safest - b.safest || a.exposed - b.exposed);
 }
 
-const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-tight.svg"), "utf8");
+const LOGO_SVG = readFileSync(join(REPO, "public/brand/pivotum-logo-plain.svg"), "utf8");
 
 // A one-line read per career — the safe end vs the exposed end — so this PDF is
 // worth more than the bare ranked list on the homepage. Keyed by the career name.
@@ -105,7 +105,7 @@ async function main() {
     .ixname{ flex:0 0 33%; font-family:var(--serif); font-size:11pt; color:var(--ink); }
     .ixbar{ flex:1 1 auto; }
     .ixbar .track{ position:relative; display:block; height:9px; border-radius:5px; background:#EFEDE6; }
-    .ixbar .fill{ position:absolute; top:0; height:9px; border-radius:5px; background:rgba(255,226,110,.92); }
+    .ixbar .fill{ position:absolute; top:0; height:9px; border-radius:5px; background:linear-gradient(90deg, var(--pen-safe), var(--pen)); }
     .ixnum{ flex:0 0 15%; text-align:right; font-family:var(--sans); font-size:10.5pt; font-variant-numeric:tabular-nums; white-space:nowrap; }
     .ixnum .dash{ color:var(--pencil); padding:0 3px; }
     .ixnote{ font-family:var(--serif); font-size:9pt; color:var(--ink-soft); line-height:1.42; margin:3px 0 0; padding-right:8%; }
@@ -118,7 +118,7 @@ async function main() {
     .ixstep-n{ flex:0 0 auto; width:21px; height:21px; border-radius:50%; background:var(--ink); color:#FBF9F3; font-family:var(--sans); font-weight:700; font-size:9.5pt; line-height:21px; text-align:center; }
     .ixstep-b{ font-family:var(--serif); font-size:10pt; color:var(--ink-soft); line-height:1.48; }
     .ixstep-b b{ color:var(--ink); }
-    .ixclose-cta{ font-family:var(--sans); font-weight:700; font-size:10.5pt; color:var(--pen); margin:.45cm 0 0; text-align:center; letter-spacing:.01em; }`;
+    .ixclose-cta{ font-family:var(--sans); font-weight:700; font-size:10.5pt; color:var(--accent); margin:.45cm 0 0; text-align:center; letter-spacing:.01em; }`;
 
   // Group the 28 into three tiers by how protected even their safest role is —
   // so the page reads as a story in three chunks, not a wall of 28 rows.
@@ -168,10 +168,10 @@ async function main() {
     <div class="ixclose-sub">Twenty-eight fields is a shortlist, not a verdict. Three steps, and each one narrows the map for your family.</div>
     <div class="ixsteps">
       <div class="ixstep"><span class="ixstep-n">1</span><div class="ixstep-b"><b>This index is the lay of the land.</b> Every field scored the same way — enough good directions here to start the conversation about which paths are worth walking, and which begin in a hole.</div></div>
-      <div class="ixstep"><span class="ixstep-n">2</span><div class="ixstep-b"><b>The free read is the signpost.</b> Pick the career your kid keeps circling back to and read its free breakdown — a first look at where the safe and exposed tracks sit, and the six factors that decide which is which.</div></div>
-      <div class="ixstep"><span class="ixstep-n">3</span><div class="ixstep-b"><b>The Career Value Guide is the map that gets you there.</b> Every track in one career scored and ranked, with the specific degrees and first jobs that land on the safe side — and the ones to steer around. The map you actually travel with.</div></div>
+      <div class="ixstep"><span class="ixstep-n">2</span><div class="ixstep-b"><b>The free Career Map is the signpost.</b> Pick the career your kid keeps circling back to and open its free Career Map — a first look at where the safe and exposed tracks sit, and the six factors that decide which is which.</div></div>
+      <div class="ixstep"><span class="ixstep-n">3</span><div class="ixstep-b"><b>Winning in the Age of AI is how you act on it.</b> Your living Career Map re-scored as the field moves, the reps that build real judgment, and a pod in your exact lane — the community that turns the read into your opening instead of just watching the ground shift.</div></div>
     </div>
-    <div class="ixclose-cta">Start any career free at pivotum.ai</div>
+    <div class="ixclose-cta">Start free at pivotum.ai/community</div>
   </div>
 </body></html>`;
 
