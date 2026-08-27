@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { MapCapture } from "@/components/MapCapture";
+import { RoleSelect } from "@/components/RoleSelect";
 import { trackEvent } from "@/lib/analytics";
 import {
   BAND_LABELS, bandByStep, tunedStep, personalWhy, tunedScore, scoreFactors,
@@ -63,11 +64,8 @@ export function ExposureCheck({ checks, preselect }: {
   return (
     <div className="chk">
       <div className="chk-pick">
-        <label htmlFor="chk-role">Which role is closest to yours?</label>
-        <select id="chk-role" value={slug} onChange={(e) => choose(e.target.value)}>
-          <option value="">Choose your role…</option>
-          {sorted.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
-        </select>
+        <span className="chk-pick-label">Which role is closest to yours?</span>
+        <RoleSelect options={sorted} value={slug} onChange={choose} />
       </div>
 
       {base && (
@@ -131,14 +129,7 @@ export function ExposureCheck({ checks, preselect }: {
             )}
 
             {!unlocked && (
-              <div className="chk-locked">
-                <div className="chk-locked-rows">
-                  <span>🔒 Your exact exposure score</span>
-                  <span>🔒 Your winning strategy</span>
-                  <span>🔒 The moves that lower it</span>
-                </div>
-                <p className="chk-locked-cta">Reveal it below ↓</p>
-              </div>
+              <p className="chk-locked-cta">Get your detailed score and the reason why, below ↓</p>
             )}
 
             {unlocked && score != null && (
