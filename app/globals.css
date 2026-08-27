@@ -479,6 +479,13 @@ ol.ranked li::before {
 /* ---- Buy block ----------------------------------------------------------- */
 .buy { border-top: 1.5px solid var(--ink); padding-top: 1.4rem; margin-top: 2.5rem; }
 .buy h2 { margin-top: 0; }
+.buy-cta-row { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.2rem 0 .9rem; }
+.buy-cta { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .78rem; letter-spacing: .04em;
+  text-transform: uppercase; text-decoration: none; padding: .72rem 1.2rem; border-radius: 999px;
+  background: var(--ink); color: var(--on-fill); border: 1px solid var(--ink); transition: background .15s, border-color .15s, color .15s; }
+.buy-cta:hover { background: var(--accent); border-color: var(--accent); }
+.buy-cta.ghost { background: transparent; color: var(--ink); border-color: var(--rule2); }
+.buy-cta.ghost:hover { border-color: var(--accent); color: var(--accent); }
 .tiers { display: grid; gap: .5rem; margin: 1.1rem 0 1rem; }
 .tier {
   display: flex; align-items: baseline; gap: .85rem; padding: .75rem .9rem;

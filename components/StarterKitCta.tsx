@@ -50,8 +50,8 @@ export function StarterKitCta({
         <Link className="kit-cta-btn" href={mapHref}>
           Build my free Career Map &rarr;
         </Link>
-        <Link className="kit-cta-buy" href="/buy">
-          or get the Career Value Guide now &rarr;
+        <Link className="kit-cta-buy" href="/community">
+          or see everything inside the community &rarr;
         </Link>
       </div>
     </aside>
