@@ -40,8 +40,11 @@ export default function Home() {
         <section className="lp-hero dark">
           <div className="lp-hero-grid">
             <div>
-              <div className="lp-eyebrow">
-                <b>Pivotum</b> · Winning in the Age of AI · {SITE.communityName ? "Fall 2026" : ""}
+              <div className="lp-hero-brand">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="lp-hero-logo" src="/brand/pivotum-logo-plain.svg" alt="Pivotum" />
+                <span className="lp-hero-sub">Winning in the Age of AI</span>
+                <span className="lp-hero-ed">Fall 2026</span>
               </div>
               <h1 className="lp-h1">
                 <span className="hl">Win</span> in the age of AI.
@@ -60,7 +63,7 @@ export default function Home() {
                 </Link>
               </div>
               <p className="lp-hero-browse">
-                <a href="#inside">See what&rsquo;s inside &darr;</a> · <a href="#index">All {careerCount} scores</a>
+                <Link href="/community">Explore the community &rarr;</Link> · <a href="#index">All {careerCount} scores</a>
               </p>
               <p className="lp-creed">{SITE.creedWorker}</p>
             </div>
@@ -69,14 +72,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* What it is */}
-        <a className="lp-community-strip" href="#inside">
-          <span className="lp-community-strip-k">Not another course</span>
+        {/* Front-and-center: learn more about the community (the full guide) */}
+        <Link className="lp-community-strip" href="/community">
+          <span className="lp-community-strip-k">New here?</span>
           <span>
-            A working community — a plan that&rsquo;s <b>yours</b>, and people who keep you at it.
-            <span className="go"> See how it works →</span>
+            See everything inside <b>Winning in the Age of AI</b> — the Map, the reps, the pod, and the year.
+            <span className="go"> Explore the community →</span>
           </span>
-        </a>
+        </Link>
 
         {/* Inside — the Winning Loop */}
         <section className="lp-inside" id="inside">

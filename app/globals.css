@@ -681,18 +681,26 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule2); }
 .lp-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-.lp-contrast { display: flex; flex-direction: column; gap: 1.6rem; justify-self: end; }
-.lp-contrast-item { display: flex; align-items: center; gap: 1.1rem; }
-.lp-num-lo { font-family: var(--serif); font-weight: 700; font-size: 3.1rem; line-height: 1; }
-.lp-num-lo .mark { background: rgba(var(--hl2), .55); padding: .02em .16em; border-radius: 2px; }
-.lp-cap { font-family: var(--sans); font-size: .8rem; line-height: 1.35; color: var(--ink-soft); max-width: 16ch; }
-.lp-cap b { display: block; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--pencil); margin-bottom: .2rem; }
-/* Single-tone contrast numbers — no drawn circle; the exposure palette carries
-   the meaning (protected green vs exposed coral) as the numeral color itself. */
-.lp-draw { display: inline-flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--pen); }
-.lp-draw.big { font-size: 4.8rem; }
-.lp-draw.dual { font-size: 3.05rem; }
-.lp-draw.safe { color: var(--pen-safe); }
+/* The exposure spread — a small framed data panel. Aligned numeral column so
+   the decimals line up; the exposure palette (protected green vs exposed coral)
+   carries the meaning as the numeral color itself. */
+.lp-spread { justify-self: end; width: 100%; max-width: 300px; display: flex; flex-direction: column;
+  gap: 1.1rem; border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.35rem; background: var(--paper); }
+.lp-spread-k { font-family: var(--sans); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); }
+.lp-spread-row { display: grid; grid-template-columns: 3.1rem 1fr; align-items: center; gap: 1rem; }
+.lp-spread-row + .lp-spread-row { border-top: 1px solid var(--rule); padding-top: 1.1rem; }
+.lp-spread-n { font-family: var(--serif); font-weight: 700; font-size: 2.7rem; line-height: 1; letter-spacing: -.02em; text-align: right; font-variant-numeric: tabular-nums; color: var(--pen); }
+.lp-spread-n.safe { color: var(--pen-safe); }
+.lp-spread-n.exp { color: var(--pen); }
+.lp-spread-cap { font-family: var(--sans); font-size: .82rem; line-height: 1.35; color: var(--ink-soft); }
+.lp-spread-cap b { display: block; font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pencil); margin-bottom: .15rem; }
+.lp-spread-foot { border-top: 1px solid var(--rule); padding-top: .8rem; font-family: var(--sans); font-size: .72rem; font-weight: 600; color: var(--accent); }
+
+/* Prominent hero brand lockup — Pivotum mark + the community name. */
+.lp-hero-brand { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; margin-bottom: 1.35rem; }
+.lp-hero-logo { height: 2.1rem; width: auto; display: block; }
+.lp-hero-sub { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--accent); letter-spacing: .005em; padding-left: .85rem; border-left: 1px solid var(--rule2); }
+.lp-hero-ed { font-family: var(--sans); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); padding: .2rem .5rem; border: 1px solid var(--rule2); border-radius: 999px; }
 
 .lp-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; padding: 2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .lp-value h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); text-transform: none; margin: 0 0 .35rem; }
@@ -762,7 +770,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 
 @media (max-width: 52rem) {
   .lp-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .lp-contrast { justify-self: start; flex-direction: row; flex-wrap: wrap; gap: 1.75rem; }
+  .lp-spread { justify-self: start; max-width: 340px; }
   .lp-values { grid-template-columns: 1fr; gap: 1.1rem; }
   .lp-loop { grid-template-columns: 1fr 1fr; }
 }
@@ -864,18 +872,12 @@ footer {
    (The `.dark` class stays in the markup; these rules make it read light so no
    JSX change is needed.) */
 .lp-hero.dark { background: transparent; border: 0; border-radius: 0; padding: 3rem 0 2.4rem; margin-top: .4rem; }
-.lp-hero.dark .lp-eyebrow { color: var(--pencil); }
-.lp-hero.dark .lp-eyebrow b { color: var(--accent); }
 .lp-hero.dark .lp-h1 { color: var(--ink); }
 .lp-hero.dark .lp-h1 .hl { color: var(--accent); }
 .lp-hero.dark .lp-lede { color: var(--ink); }
 .lp-hero.dark .lp-hero-cta { margin-top: 1.6rem; }
 /* buttons + browse links inherit the light base styles */
 .lp-hero.dark .lp-creed { color: var(--ink-soft); }
-/* the 2.8-vs-8.1 contrast visual — coral (exposed) vs protected green, on paper */
-.lp-hero.dark .lp-contrast { color: var(--ink); }
-.lp-hero.dark .lp-cap { color: var(--ink-soft); }
-.lp-hero.dark .lp-cap b { color: var(--pencil); }
 
 /* /map as a light card floating on paper — the same inset look as the homepage
    hero (paper page + rounded hairline card). */
