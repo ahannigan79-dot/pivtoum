@@ -950,8 +950,43 @@ footer {
 .scr .chk-locked-cta { margin: 0; font-family: var(--sans); font-size: .92rem; font-weight: 700; color: var(--accent); }
 
 .scr .chk-capture { margin-top: 1.5rem; }
+
+/* Unlocked reveal — the exact score, the 4 factors, and the opportunity pivot. */
+.scr .chk-unlocked { border-top: 1px solid var(--rule); padding-top: 1.4rem; display: flex; flex-direction: column; gap: 1.4rem; }
+.scr .chk-score { display: flex; align-items: center; gap: 1.1rem; }
+.scr .chk-score-n { font-family: var(--serif); font-weight: 700; font-size: 3.6rem; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.scr .chk-score-n i { font-style: normal; font-size: 1.2rem; color: var(--pencil); font-weight: 400; margin-left: .05rem; }
+.scr .chk-score-cap { font-family: var(--sans); font-size: .84rem; line-height: 1.4; color: var(--ink-soft); }
+.scr .chk-score-cap b { color: var(--ink); }
+
+.scr .chk-factors ul { list-style: none; margin: .5rem 0 0; padding: 0; display: grid; gap: .55rem; }
+.scr .chk-factors li { font-family: var(--serif); font-size: .98rem; line-height: 1.45; color: var(--ink); }
+.scr .fx-tag { display: inline-block; font-family: var(--sans); font-size: .56rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; border-radius: 99px; padding: .12rem .5rem; margin-right: .5rem; vertical-align: middle; }
+.scr .fx-expose .fx-tag { color: var(--pen); border: 1px solid var(--pen); }
+.scr .fx-protect .fx-tag { color: var(--pen-safe); border: 1px solid var(--pen-safe); }
+
+.scr .chk-opp { border: 1px solid var(--rule2); border-radius: 12px; background: var(--paper); padding: 1.25rem 1.25rem; }
+.scr .chk-opp-k { display: block; font-family: var(--sans); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--pen-safe); margin-bottom: .5rem; }
+.scr .chk-opp-h { margin: 0 0 1rem; font-family: var(--serif); font-size: 1.2rem; line-height: 1.35; color: var(--ink); }
+.scr .chk-opp-h b { color: var(--pen-safe); }
+.scr .chk-journey-line { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.1rem; }
+.scr .cjn { font-family: var(--serif); font-weight: 700; font-size: 1.5rem; line-height: 1; display: flex; flex-direction: column; align-items: center; gap: .18rem; font-variant-numeric: tabular-nums; }
+.scr .cjn i { font-style: normal; font-family: var(--sans); font-size: .54rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--pencil); }
+.scr .cjn-track { flex: 1; height: 3px; border-radius: 99px; background: linear-gradient(90deg, var(--pen), var(--pen-safe)); }
+.scr .chk-opp-p { margin: 0 0 1.15rem; font-family: var(--serif); font-size: .98rem; line-height: 1.55; color: var(--ink-soft); }
+.scr .chk-opp-p b { color: var(--ink); }
+.scr .chk-opp-cta { display: flex; flex-wrap: wrap; gap: .6rem; }
+.scr .chk-opp-fine { margin: .9rem 0 0; font-family: var(--sans); font-size: .78rem; color: var(--pencil); }
+
+.scr .scr-btn { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; padding: .72rem 1.2rem; border-radius: 999px; background: var(--ink); color: var(--on-fill); border: 1px solid var(--ink); transition: background .15s, border-color .15s, color .15s; }
+.scr .scr-btn:hover { background: var(--accent); border-color: var(--accent); }
+.scr .scr-btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule2); }
+.scr .scr-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
 @media (max-width: 560px) {
   .scr .chk-band-word { font-size: 2.1rem; }
   .scr .chk-why { grid-template-columns: 1fr; gap: .9rem; }
   .scr .chk-seg { font-size: .54rem; }
+  .scr .chk-score-n { font-size: 3rem; }
+  .scr .scr-btn { flex: 1 1 auto; text-align: center; }
 }

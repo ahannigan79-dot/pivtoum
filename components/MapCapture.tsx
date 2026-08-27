@@ -13,8 +13,12 @@ import { captureClickIds, readClickIds } from "@/lib/attribution";
  * de-dupe, Google Ads, click-id attribution) intact.
  */
 export function MapCapture({
-  careerSlug, careerName, stage,
-}: { careerSlug: string; careerName: string; stage: "planning" | "active" }) {
+  careerSlug, careerName, stage, score, factors, onUnlock,
+}: {
+  careerSlug: string; careerName: string; stage: "planning" | "active";
+  score?: number; factors?: { label: string; kind: "expose" | "protect" }[];
+  onUnlock?: () => void;
+}) {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
@@ -28,26 +32,40 @@ export function MapCapture({
     setHint("");
     setStatus("sending");
     const eventId = crypto.randomUUID();
-    const res = await fetch("/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        firstName: firstName.trim(),
-        source: "index",
-        stage,
-        audience: "self",       // /map is self-framing ("your career")
-        careers: [careerSlug],  // locked to the one role they picked above
-        eventId,
-        ...readClickIds(),
-      }),
-    });
+    let res: Response;
+    try {
+      res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          firstName: firstName.trim(),
+          source: "index",
+          stage,
+          audience: "self",       // /map is self-framing ("your career")
+          careers: [careerSlug],  // locked to the one role they picked above
+          score, factors,         // the number + 4 factors to echo into the email
+          eventId,
+          ...readClickIds(),
+        }),
+      });
+    } catch {
+      setHint("Something went wrong — try again.");
+      return setStatus("error");
+    }
     if (res.ok) {
       trackPixel("Lead", {}, eventId);
       gtagConversion(GADS_LEAD_LABEL);
       trackEvent("map_signup");
+      if (onUnlock) { onUnlock(); return; }  // parent reveals the score inline
+      setStatus("done");
+      return;
     }
-    setStatus(res.ok ? "done" : "error");
+    // A deliverability rejection (422) carries a friendly message; show it and
+    // let them fix the address — nothing is revealed to an unreachable inbox.
+    const body = await res.json().catch(() => ({}));
+    setHint(body?.error || "Something went wrong — try again.");
+    setStatus("error");
   }
 
   if (status === "done") {
@@ -65,8 +83,8 @@ export function MapCapture({
   return (
     <form className="pkg pkg-lean" onSubmit={submit}>
       <p className="pkg-lean-lede">
-        Enter your details and we&rsquo;ll build your full Career Map for <b>{careerName}</b> — your
-        exact score, your winning strategy, and the moves that lower it.
+        Enter your details to reveal your <b>exact exposure score</b> for <b>{careerName}</b> and the{" "}
+        <b>4 factors driving it</b> — on screen now, and in your inbox with the 28-career index and the community guide.
       </p>
       <div className="pkg-final">
         <input
@@ -78,12 +96,11 @@ export function MapCapture({
           value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Your email"
         />
         <button type="submit" className="pkg-go" disabled={status === "sending"}>
-          {status === "sending" ? "Building…" : "Build my free Career Map"}
+          {status === "sending" ? "Revealing…" : "Reveal my score"}
         </button>
       </div>
       <p className="pkg-fine">Free · instant · no spam · unsubscribe anytime</p>
       {hint ? <p className="pkg-hint">{hint}</p> : null}
-      {status === "error" ? <p className="pkg-hint">Something went wrong — try again.</p> : null}
     </form>
   );
 }

@@ -3,9 +3,10 @@ import { useMemo, useState } from "react";
 import { MapCapture } from "@/components/MapCapture";
 import { trackEvent } from "@/lib/analytics";
 import {
-  BAND_LABELS, bandByStep, tunedStep, personalWhy,
+  BAND_LABELS, bandByStep, tunedStep, personalWhy, tunedScore, scoreFactors,
   type CheckResult, type Seniority, type Routine,
 } from "@/lib/exposure";
+import { SITE } from "@/lib/site";
 
 // Brand exposure palette — legible on the light paper ground both as the band
 // word (text) and as the filled scale segment (with white text). Exposed coral →
@@ -31,6 +32,7 @@ export function ExposureCheck({ checks, preselect }: {
   const [slug, setSlug] = useState<string>(preselect && checks.some((c) => c.slug === preselect) ? preselect : "");
   const [seniority, setSeniority] = useState<Seniority | "">("");
   const [routine, setRoutine] = useState<Routine | "">("");
+  const [unlocked, setUnlocked] = useState(false);
   const base = checks.find((c) => c.slug === slug) ?? null;
   const ready = base && seniority && routine;
 
@@ -51,6 +53,12 @@ export function ExposureCheck({ checks, preselect }: {
         };
       })()
     : null;
+
+  // The exact score + the 4 driving factors — revealed on-page once a deliverable
+  // email is captured (the email echoes the same). Higher = more exposed.
+  const score = ready ? tunedScore(base!.headlineScore, seniority as Seniority, routine as Routine) : null;
+  const factors = ready ? scoreFactors(base!, seniority as Seniority, routine as Routine) : [];
+  const scoreColor = score == null ? undefined : score >= 60 ? TONE_COLOR.red : score <= 39 ? TONE_COLOR.green : TONE_COLOR.yellow;
 
   return (
     <div className="chk">
@@ -119,23 +127,73 @@ export function ExposureCheck({ checks, preselect }: {
               )}
             </div>
 
-            <div className="chk-locked">
-              <div className="chk-locked-rows">
-                <span>🔒 Your exact exposure score</span>
-                <span>🔒 Your winning strategy</span>
-                <span>🔒 The moves that lower it</span>
+            {!unlocked && (
+              <div className="chk-locked">
+                <div className="chk-locked-rows">
+                  <span>🔒 Your exact exposure score</span>
+                  <span>🔒 Your winning strategy</span>
+                  <span>🔒 The moves that lower it</span>
+                </div>
+                <p className="chk-locked-cta">Enter your email below to reveal your exact score + the 4 factors driving it ↓</p>
               </div>
-              <p className="chk-locked-cta">Unlock your full Career Map — and see your exact score — below ↓</p>
-            </div>
+            )}
+
+            {unlocked && score != null && (
+              <div className="chk-unlocked">
+                <div className="chk-score">
+                  <span className="chk-score-n" style={{ color: scoreColor }}>{score}<i>/100</i></span>
+                  <span className="chk-score-cap">Your exposure score · <b>{result.name}</b><br />Higher means more exposed to what AI can already do.</span>
+                </div>
+
+                <div className="chk-factors">
+                  <span className="chk-k">The 4 factors driving it</span>
+                  <ul>
+                    {factors.map((f, i) => (
+                      <li key={i} className={f.kind === "expose" ? "fx-expose" : "fx-protect"}>
+                        <span className="fx-tag">{f.kind === "expose" ? "Exposing you" : "On your side"}</span>
+                        {f.label}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="chk-opp">
+                  <span className="chk-opp-k">You came here out of concern — here&rsquo;s the opportunity</span>
+                  <p className="chk-opp-h">This is your starting number. Inside, you drive it <b>down</b>.</p>
+                  <div className="chk-journey" aria-hidden="true">
+                    <div className="chk-journey-line">
+                      <span className="cjn cjn-start" style={{ color: TONE_COLOR.red }}>{score}<i>today</i></span>
+                      <span className="cjn-track"><span className="cjn-fill" /></span>
+                      <span className="cjn cjn-end" style={{ color: TONE_COLOR.green }}>{Math.max(1, score - 18)}<i>ahead</i></span>
+                    </div>
+                  </div>
+                  <p className="chk-opp-p">
+                    The shift that exposed your work is the same one opening the ground for whoever moves first.
+                    Inside <b>Winning in the Age of AI</b> your Map re-scores as you do the reps, a pod in your
+                    exact lane keeps you at it, and your number comes down — so you come out ahead.
+                  </p>
+                  <div className="chk-opp-cta">
+                    <a className="scr-btn" href={SITE.join}>Start your free trial →</a>
+                    <a className="scr-btn ghost" href="/community">See everything inside →</a>
+                  </div>
+                  <p className="chk-opp-fine">Your score, the 28-career index, and the community guide are on their way to your inbox.</p>
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="chk-capture">
-            <MapCapture
-              careerSlug={slug}
-              careerName={base!.name}
-              stage={seniority === "student" ? "planning" : "active"}
-            />
-          </div>
+          {!unlocked && (
+            <div className="chk-capture">
+              <MapCapture
+                careerSlug={slug}
+                careerName={base!.name}
+                stage={seniority === "student" ? "planning" : "active"}
+                score={score ?? undefined}
+                factors={factors}
+                onUnlock={() => setUnlocked(true)}
+              />
+            </div>
+          )}
         </>
       )}
     </div>

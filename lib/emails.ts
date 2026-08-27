@@ -97,6 +97,10 @@ export function packageEmail(opts: {
   buyUrl: string;
   audience?: "child" | "self"; // parent-of-child vs the reader themselves
   careerNames?: string[]; // the picked careers, to personalize the sell
+  score?: number | null; // the exposure score the on-page reveal showed
+  factors?: { label: string; kind: "expose" | "protect" }[]; // the 4 drivers
+  careerName?: string | null; // the role the score is for
+  communityUrl?: string; // link to the Community guide (/community)
 }) {
   const { items, code, discountLabel, expiresDays, buyUrl } = opts;
   const forChild = opts.audience === "child";
@@ -118,12 +122,42 @@ export function packageEmail(opts: {
   const pencil = "#8C857A";
   const rule = "#E7E4DC";
   const pen = "#AC3A34";
+  const prot = "#2E7D55";
+  const amber = "#B8873A";
   const hl = "#FFE26E";
 
   const link = (url: string, label: string) =>
     `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
   const button = (url: string, label: string, bg: string) =>
     `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
+
+  // The exposure score + the 4 factors the on-page reveal showed — echoed here
+  // so the number they saw is theirs to keep. Higher = more exposed.
+  const score = typeof opts.score === "number" ? opts.score : null;
+  const factors = opts.factors ?? [];
+  const scoreColor = score == null ? ink : score >= 60 ? pen : score <= 39 ? prot : amber;
+  const forName = opts.careerName ? ` for <strong>${opts.careerName}</strong>` : "";
+  const factorRow = (f: { label: string; kind: "expose" | "protect" }) => `
+    <tr><td style="padding:7px 0;vertical-align:top;">
+      <span style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:${f.kind === "expose" ? pen : prot};">${f.kind === "expose" ? "Exposing you" : "On your side"}</span>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.45;color:${ink};margin-top:2px;">${f.label}</div>
+    </td></tr>`;
+  const scoreBlock = score == null ? "" : `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-radius:6px;margin:0 0 22px;"><tr><td style="padding:20px 22px;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${pencil};margin:0 0 4px;">Your exposure score${forName}</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:46px;font-weight:bold;line-height:1;color:${scoreColor};margin:0 0 4px;">${score}<span style="font-size:20px;color:${pencil};font-weight:normal;">/100</span></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${pencil};margin:0 0 14px;">Higher means more exposed to what AI can already do. Inside, you drive it down.</div>
+      ${factors.length ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:${ink};border-top:1px solid ${rule};padding-top:12px;">The 4 factors driving it</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${factors.map(factorRow).join("")}</table>` : ""}
+    </td></tr></table>`;
+  const communityBlock = !opts.communityUrl ? "" : `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-radius:6px;margin:0 0 4px;"><tr><td style="padding:20px 22px;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${prot};margin:0 0 6px;">You came here out of concern — here's the opportunity</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 8px;">Turn that number into your opening</div>
+      <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 14px;">The shift that exposed your work is the same one opening the ground for whoever moves first. Inside <strong>Winning in the Age of AI</strong> you get your living Map, the reps that build your edge, and a pod in your exact lane — so your score comes <em>down</em> and you come out ahead. Here's the full look inside:</p>
+      <p style="margin:0 0 6px;">${button(opts.communityUrl, "See everything inside", prot)}</p>
+      <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${pencil};margin:10px 0 0;">And <strong>${discountLabel} your first purchase</strong> with code <strong>${code}</strong> — good for ${expiresDays} days.</p>
+    </td></tr></table>`;
 
   const rows = items
     .map(
@@ -149,11 +183,15 @@ export function packageEmail(opts: {
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Career Map is here</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Because you signed up, I&rsquo;ve also tucked <strong>${discountLabel} the Career Value Guide</strong> in below.</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Your exposure score and the factors behind it are up top &mdash; and below, the full look inside the community, with <strong>${discountLabel} your first purchase</strong>.</p>
+
+          ${scoreBlock}
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1.5px solid ${ink};margin:0 0 22px;">
             ${rows}
           </table>
+
+          ${communityBlock}
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding:22px 0 4px;">
             <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 10px;">When you&rsquo;re ready to decide, not just look</div>
@@ -177,10 +215,20 @@ export function packageEmail(opts: {
   </table>
   </body></html>`;
 
+  const scoreText = score == null ? "" :
+    `YOUR EXPOSURE SCORE${opts.careerName ? ` (${opts.careerName})` : ""}: ${score}/100 — higher means more exposed to what AI can already do. Inside, you drive it down.\n` +
+    (factors.length ? `The 4 factors driving it:\n${factors.map((f) => `  • [${f.kind === "expose" ? "exposing you" : "on your side"}] ${f.label}`).join("\n")}\n` : "") + `\n`;
+  const communityText = !opts.communityUrl ? "" :
+    `\nYOU CAME HERE OUT OF CONCERN — HERE'S THE OPPORTUNITY:\n` +
+    `The shift that exposed your work is the same one opening the ground for whoever moves first. Inside Winning in the Age of AI you get your living Map, the reps that build your edge, and a pod in your exact lane — so your score comes down and you come out ahead.\n${opts.communityUrl}\n` +
+    `And ${discountLabel} your first purchase with code ${code} — good for ${expiresDays} days.\n`;
+
   const text =
     `Your Career Map is here.\n\n` +
+    scoreText +
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
+    communityText +
     `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +
     `The free reads show you where a career splits — the safe side and the exposed side. What they stop short of is the part that decides it: which side your kid ends up on, how durable that safe side really is, and what it takes to reach it. That's the Career Value Guide, and it's the key to the whole map. For ${sellCareers} it gives you every sub-track scored, the honest downsides, the routes in, and the specific plan.\n` +
     `\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +

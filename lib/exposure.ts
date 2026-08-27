@@ -60,7 +60,7 @@ const PROTECT: Record<string, string> = {
   "Does it have to be done in person, with your hands?": "Much of it is hands-on and in person — out of the machine's reach.",
 };
 
-export type CheckResult = { slug: string; name: string; band: CheckBand; expose: string[]; protect: string[] };
+export type CheckResult = { slug: string; name: string; band: CheckBand; headlineScore: number; expose: string[]; protect: string[] };
 
 /** Build the band-only check payload for one career. */
 export function buildCheck(c: Career): CheckResult {
@@ -68,10 +68,41 @@ export function buildCheck(c: Career): CheckResult {
   const exp = c.factors.filter((f) => f.direction === "exposure").sort((a, b) => b.rating - a.rating);
   const pro = c.factors.filter((f) => f.direction === "protection").sort((a, b) => b.rating - a.rating);
   return {
-    slug: c.slug, name: c.name, band,
+    slug: c.slug, name: c.name, band, headlineScore: c.headlineScore,
     expose: exp.map((f) => EXPOSE[f.question]).filter(Boolean).slice(0, 2) as string[],
-    protect: pro.map((f) => PROTECT[f.question]).filter(Boolean).slice(0, 1) as string[],
+    protect: pro.map((f) => PROTECT[f.question]).filter(Boolean).slice(0, 2) as string[],
   };
+}
+
+/** The exact 0–100 exposure score — the role's headline (0–10 → ×10) nudged by
+ *  the two personal taps. Higher = more exposed. This is the number the email
+ *  gate unlocks; the full living Map inside refines it and tracks it over time. */
+export function tunedScore(headlineScore: number, seniority: Seniority, routine: Routine): number {
+  const sen: Record<Seniority, number> = { student: 8, early: 5, mid: 0, senior: -5, leader: -8 };
+  const rou: Record<Routine, number> = { repeatable: 7, mix: 0, judgment: -7 };
+  const s = headlineScore * 10 + sen[seniority] + rou[routine];
+  return Math.max(1, Math.min(99, Math.round(s)));
+}
+
+export type ScoreFactor = { label: string; kind: "expose" | "protect" };
+
+/** The 4 factors driving the score — the top exposers and protectors, personalised
+ *  by the taps. Balanced (exposer / protector / exposer / protector), deduped. */
+export function scoreFactors(r: CheckResult, seniority: Seniority, routine: Routine): ScoreFactor[] {
+  const pw = personalWhy(seniority, routine);
+  const ex = [...new Set([...pw.expose, ...r.expose])];
+  const pr = [...new Set([...pw.protect, ...r.protect])];
+  const out: ScoreFactor[] = [];
+  for (let i = 0; i < 2; i++) {
+    if (ex[i]) out.push({ label: ex[i], kind: "expose" });
+    if (pr[i]) out.push({ label: pr[i], kind: "protect" });
+  }
+  const rest: ScoreFactor[] = [
+    ...ex.slice(2).map((label) => ({ label, kind: "expose" as const })),
+    ...pr.slice(2).map((label) => ({ label, kind: "protect" as const })),
+  ];
+  while (out.length < 4 && rest.length) out.push(rest.shift()!);
+  return out.slice(0, 4);
 }
 
 export const BAND_LABELS = ["High", "Mod–High", "Moderate", "Low–Mod", "Low"];

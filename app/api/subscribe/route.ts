@@ -4,6 +4,7 @@ import { addSubscriber, recordAdConversion } from "@/lib/db";
 import { getCareer } from "@/data/careers";
 import { hasSamplerPage } from "@/content/careers/registry";
 import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
+import { verifyEmail } from "@/lib/email-validate";
 import { mintLeadPromoCode } from "@/lib/stripe";
 import { sendMetaLead } from "@/lib/capi";
 import { derivePrimaryCluster } from "@/lib/clusters";
@@ -20,7 +21,7 @@ const GADS_IMPORT_NAME = process.env.GADS_IMPORT_CONVERSION_NAME ?? "Website sig
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, firstName, source, stage, audience, careers, eventId, fbclid, gclid } = await req
+  const { email, firstName, source, stage, audience, careers, score, factors, eventId, fbclid, gclid } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
   // The Career Map capture sends the two package flags + up to three career
@@ -35,6 +36,18 @@ export async function POST(req: Request) {
   };
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
+  }
+
+  // Deliverability gate — the score reveals on submit, but the PDF + Community
+  // guide + nurture land in the inbox, so we require an address that can receive
+  // them. Blocks disposable domains and domains with no MX. A friendly 422 the
+  // client shows without revealing; transient DNS blips fall through as valid.
+  const verdict = await verifyEmail(email);
+  if (!verdict.ok) {
+    const error = verdict.reason === "disposable"
+      ? "That looks like a temporary inbox — use a real email and we'll send your score, the 28-career index, and the community guide."
+      : "That email doesn't look deliverable — pop in a real one and we'll send your score and the guide.";
+    return NextResponse.json({ error }, { status: 422 });
   }
 
   // Their career picks define the cluster we route them to in the community —
@@ -160,6 +173,14 @@ export async function POST(req: Request) {
             };
           }),
         ];
+        // The score + 4 factors the on-page reveal showed, echoed into the email.
+        const cleanScore = Number.isFinite(score) ? Math.max(1, Math.min(99, Math.round(Number(score)))) : null;
+        const cleanFactors = Array.isArray(factors)
+          ? factors
+              .filter((f) => f && typeof f.label === "string" && (f.kind === "expose" || f.kind === "protect"))
+              .slice(0, 4)
+              .map((f) => ({ label: String(f.label).slice(0, 160), kind: f.kind as "expose" | "protect" }))
+          : [];
         const { html, text } = packageEmail({
           items,
           code,
@@ -168,6 +189,10 @@ export async function POST(req: Request) {
           buyUrl: `${SITE.url}/buy`,
           audience: pkg.audience,
           careerNames: pkg.careers.map((s) => getCareer(s)?.name ?? s),
+          score: cleanScore,
+          factors: cleanFactors,
+          careerName: pkg.careers[0] ? getCareer(pkg.careers[0])?.name ?? null : null,
+          communityUrl: `${SITE.url}/community`,
         });
         await resend.emails.send({
           from,

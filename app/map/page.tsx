@@ -43,8 +43,8 @@ export default async function MapLanding({
           ?
         </h1>
         <p className="scr-sub">
-          Pick your role and see where you stand — in ten seconds, free. Then unlock your full
-          Career Map: your exact score, your winning strategy, and the moves that put you ahead.
+          Pick your role and see where you stand — in ten seconds, free. Then get your exact score and
+          the 4 factors driving it, and see how to turn it into your opening.
         </p>
 
         <ExposureCheck checks={checks} preselect={preselect} />
