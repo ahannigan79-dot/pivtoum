@@ -227,7 +227,7 @@ export function pdfWelcomeEmail(opts: {
   expiresDays: number; // e.g. 7
   buyUrl: string;
 }) {
-  const { pdfUrl, pdfLabel, code, discountLabel, expiresDays, buyUrl } = opts;
+  const { pdfUrl, pdfLabel, code, discountLabel, expiresDays } = opts;
   const ink = "#1C1A16";
   const inkSoft = "#6B655B";
   const pencil = "#948D80";
@@ -250,18 +250,18 @@ export function pdfWelcomeEmail(opts: {
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Hi &mdash; I&rsquo;m ${SITE.founder}, I built Pivotum</div>
 
-          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} the Career Value Guide</strong> in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
+          <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 14px;">Thanks for signing up. Here&rsquo;s the <strong>${pdfLabel}</strong> you asked for &mdash; and because you did, I&rsquo;ve tucked <strong>${discountLabel} your first purchase</strong> inside the community in below (your code&rsquo;s at the bottom, good for ${expiresDays} days).</p>
 
           <p style="margin:0 0 24px;">${button(pdfUrl, "Download your PDF", ink)}</p>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding-top:22px;">
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m figuring out my own kid&rsquo;s future alongside you. The sampler tells you where a career stands. The <strong>Career Value Guide</strong> is how you act on it &mdash; whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend, every source, and a version written directly to the student. It&rsquo;s how you make one of your family&rsquo;s biggest bets on evidence, not a hunch.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">I started Pivotum because I work in AI for a living and I&rsquo;m navigating my own future alongside you. The sampler tells you where a career stands. <strong>Winning in the Age of AI</strong> is how you act on it &mdash; your living Career Map re-scored as the field moves, the reps that build real judgment, a pod in your exact lane, and live events. It&rsquo;s how you turn the read into your opening instead of just watching the ground shift.</p>
           </td></tr></table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Founding Subscriber Discount</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", ink)}</p>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${accent};margin:0 0 6px;">Founding Member Discount</div>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> your first purchase with code <strong>${code}</strong>. Try it free for 7 days &mdash; the code&rsquo;s good for ${expiresDays} days.</p>
+            <p style="margin:0;">${button(`${SITE.url}/community`, "See everything inside", ink)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">Either way, I hope the PDF helps. Reply any time &mdash; I read every one.</p>
@@ -278,8 +278,8 @@ export function pdfWelcomeEmail(opts: {
   const text =
     `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
     `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
-    `I started Pivotum because I work in AI for a living and I'm figuring out my own kid's future alongside you. The sampler tells you where a career stands. The Career Value Guide is how you act on it — whether your kid is still choosing a path or already on one: all six factors scored and explained, the sub-tracks that split a field in two, the three-year trend, every source, and a version written directly to the student. It's how you make one of your family's biggest bets on evidence, not a hunch.\n\n` +
-    `YOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
+    `I started Pivotum because I work in AI for a living and I'm navigating my own future alongside you. The sampler tells you where a career stands. Winning in the Age of AI is how you act on it — your living Career Map re-scored as the field moves, the reps that build real judgment, a pod in your exact lane, and live events. It's how you turn the read into your opening instead of just watching the ground shift.\n\n` +
+    `YOUR FOUNDING MEMBER OFFER: ${discountLabel} your first purchase with code ${code}. Try it free for 7 days — the code's good for ${expiresDays} days.\n${SITE.url}/community\n\n` +
     `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SITE } from "@/lib/site";
 
 /**
  * The Parent's AI-Proofing Starter Kit — the free lead magnet delivered after a
@@ -116,20 +117,18 @@ export default function StarterKitPage() {
         </ul>
 
         <div className="buy" style={{ marginTop: "2.5rem" }}>
-          <h2>When you&rsquo;re ready to choose, not just check</h2>
+          <h2>When you&rsquo;re ready to act, not just check</h2>
           <p>
-            The test tells you the shape. The Career Value Guide is how you act on it — whether your
-            kid is still choosing a path or already on one: the whole picture for the careers they&rsquo;re
-            weighing, with all six factors scored and explained, the sub-tracks that split a field in
-            two (the specialty that&rsquo;s safe versus the one that isn&rsquo;t), the three-year trend
-            so you know which way it&rsquo;s moving, every source behind the numbers, and a version
-            written directly to the student. It&rsquo;s how you make one of your family&rsquo;s biggest
+            The test tells you the shape. <strong>Winning in the Age of AI</strong> is how you act on
+            it — the full profile for every career they&rsquo;re weighing, your living Career Map
+            re-scored as the field moves, the reps that build real judgment, and a community of people
+            navigating the same decision. It&rsquo;s how you make one of your family&rsquo;s biggest
             bets on evidence, not a hunch.
           </p>
-          <p className="fine">
-            <Link href="/careers/computer-science">See a complete Career Value Guide free &rarr;</Link>{" "}
-            then <Link href="/buy">pick a pack for your kid&rsquo;s shortlist &rarr;</Link>
-          </p>
+          <div className="buy-cta-row">
+            <Link className="buy-cta" href={SITE.join}>Start your free trial &rarr;</Link>
+            <Link className="buy-cta ghost" href="/community">See everything inside &rarr;</Link>
+          </div>
           <p className="fine">
             Know another parent staring down the same decision? Forward them this — they can grab the
             kit at <Link href="/">pivotum.ai</Link>.

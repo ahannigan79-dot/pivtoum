@@ -11,7 +11,6 @@ const NAV = [
   { href: "/community", label: "Community" },
   { href: "/methodology", label: "Methodology" },
   { href: "/articles", label: "Articles" },
-  { href: "/buy", label: "Career guides" },
 ];
 
 /** Thin, quiet global header — wordmark plus wayfinding. On phones the links
