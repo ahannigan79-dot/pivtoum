@@ -10,12 +10,13 @@ export function purchaseEmail(
   token: string,
   expert?: { bookingUrl?: string },
 ) {
-  const ink = "#211E1B";
-  const inkSoft = "#57534D";
-  const pencil = "#8C857A";
-  const rule = "#E7E4DC";
-  const pen = "#AC3A34";
-  const hl = "#FFE26E";
+  const ink = "#1C1A16";
+  const inkSoft = "#6B655B";
+  const pencil = "#948D80";
+  const rule = "#E7E2D8";
+  const accent = "#10605E"; // petrol — chrome accent for links
+  const pen = "#B4442F";
+  const hl = "#E4EDEC"; // petrol accent-wash — the highlighter yellow is retired
 
   const expertBlock = expert
     ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:0 0 20px;"><tr><td style="padding:18px 20px;">
@@ -26,7 +27,7 @@ export function purchaseEmail(
     : "";
 
   const link = (url: string, label: string) =>
-    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
+    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${accent};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
 
   const rows = items
     .map(
@@ -38,12 +39,12 @@ export function purchaseEmail(
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
     <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
         <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your Career Value Guides &middot; Fall 2026</div>
@@ -110,16 +111,18 @@ export function packageEmail(opts: {
   const introText = forChild
     ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose."
     : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose.";
-  const ink = "#211E1B";
-  const inkSoft = "#57534D";
-  const pencil = "#8C857A";
-  const rule = "#E7E4DC";
-  const pen = "#AC3A34";
-  const prot = "#2E7D55";
-  const amber = "#B8873A";
+  // Brand tokens (light) — exact hex from the design system.
+  const ink = "#1C1A16";
+  const inkSoft = "#6B655B";
+  const pencil = "#948D80";
+  const rule = "#E7E2D8";
+  const accent = "#10605E";   // petrol — the single chrome accent (links, labels, rules)
+  const pen = "#B4442F";      // exposed coral — DATA only (high score, exposing factors)
+  const prot = "#2E7D55";     // protected green — DATA only (low score, protecting factors)
+  const amber = "#B8873A";    // moderate — DATA only
 
   const link = (url: string, label: string) =>
-    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
+    `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${accent};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
   const button = (url: string, label: string, bg: string) =>
     `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
 
@@ -143,11 +146,11 @@ export function packageEmail(opts: {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${factors.map(factorRow).join("")}</table>` : ""}
     </td></tr></table>`;
   const communityBlock = !opts.communityUrl ? "" : `
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-radius:6px;margin:0 0 4px;"><tr><td style="padding:20px 22px;">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${prot};margin:0 0 6px;">You came here out of concern — here's the opportunity</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-left:3px solid ${accent};border-radius:8px;background:#F4F1EA;margin:0 0 4px;"><tr><td style="padding:20px 22px;">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${accent};margin:0 0 6px;">You came here out of concern — here's the opportunity</div>
       <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 8px;">Turn that number into your opening</div>
       <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 14px;">The shift that exposed your work is the same one opening the ground for whoever moves first. Inside <strong>Winning in the Age of AI</strong> you get your living Map, the reps that build your edge, and a pod in your exact lane — so your score comes <em>down</em> and you come out ahead. Here's the full look inside:</p>
-      <p style="margin:0 0 6px;">${button(opts.communityUrl, "See everything inside", prot)}</p>
+      <p style="margin:0 0 6px;">${button(opts.communityUrl, "See everything inside", ink)}</p>
       <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${pencil};margin:10px 0 0;">And <strong>${discountLabel} your first purchase</strong> with code <strong>${code}</strong> — good for ${expiresDays} days.</p>
     </td></tr></table>`;
 
@@ -162,12 +165,12 @@ export function packageEmail(opts: {
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
     <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
         <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your Career Map, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
@@ -230,22 +233,23 @@ export function pdfWelcomeEmail(opts: {
   buyUrl: string;
 }) {
   const { pdfUrl, pdfLabel, code, discountLabel, expiresDays, buyUrl } = opts;
-  const ink = "#211E1B";
-  const inkSoft = "#57534D";
-  const pencil = "#8C857A";
-  const rule = "#E7E4DC";
-  const pen = "#AC3A34";
-  const hl = "#FFE26E";
+  const ink = "#1C1A16";
+  const inkSoft = "#6B655B";
+  const pencil = "#948D80";
+  const rule = "#E7E2D8";
+  const accent = "#10605E"; // petrol — chrome accent for links
+  const pen = "#B4442F";
+  const hl = "#E4EDEC"; // petrol accent-wash — the highlighter yellow is retired
 
   const button = (url: string, label: string, bg: string) =>
     `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FEFEFC;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FEFEFC;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F4F1EA;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F1EA;">
     <tr><td align="center" style="padding:32px 16px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${rule};border-radius:4px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;border:1px solid ${rule};border-radius:8px;">
         <tr><td style="padding:34px 36px 26px;">
-          <img src="${SITE.url}/brand/wordmark.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
+          <img src="${SITE.url}/brand/wordmark-plain.png" alt="Pivotum" width="150" style="display:block;border:0;height:auto;outline:none;text-decoration:none;" />
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your free Pivotum PDF, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>
@@ -262,7 +266,7 @@ export function pdfWelcomeEmail(opts: {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Founding Subscriber Discount</div>
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
+            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", ink)}</p>
           </td></tr></table>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">Either way, I hope the PDF helps. Reply any time &mdash; I read every one.</p>
