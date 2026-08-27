@@ -59,8 +59,8 @@ export default function ComputerSciencePage() {
           your free Career Map.
         </p>
         <GatedBlur
-          label="The complete guide — read it free"
-          cta="This is the full Computer Science Career Value Guide. Get the free Career Map to read all of it — and everything for the other 27 careers."
+          label="The complete Computer Science breakdown"
+          cta="The full read — every sub-track scored and explained. This one's here in full so you can judge the depth; every other career's breakdown is inside the community."
         >
           <CS />
         </GatedBlur>

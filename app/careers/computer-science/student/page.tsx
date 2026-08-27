@@ -45,8 +45,8 @@ export default function ComputerScienceStudentPage() {
           <Link href="/careers/computer-science">See the full guide →</Link>
         </p>
         <GatedBlur
-          label="The student version — read it free"
-          cta="The short version written straight to the student. Get the free Career Map to read it in full."
+          label="The student version"
+          cta="The short version, written straight to the student. Read it in full inside the community."
         >
           <CSStudent />
         </GatedBlur>

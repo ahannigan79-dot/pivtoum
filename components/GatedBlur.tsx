@@ -2,7 +2,7 @@
  * Content gate. Keeps the server-rendered HTML in the DOM — so Googlebot still
  * reads the score table, factors and reasoning, and the Article / FAQ structured
  * data is unaffected — while visually blurring it for human visitors and
- * offering the free Career Map to unlock it. This is a metered-content pattern,
+ * pointing them into the community to read it. This is a metered-content pattern,
  * not cloaking: Google and people are served the identical HTML; only CSS
  * obscures it.
  *
@@ -12,7 +12,7 @@
 export function GatedBlur({
   children,
   label = "Members read the rest",
-  cta = "The full breakdown — every sub-track score, the six factors, and the safe-vs-exposed split — unlocks free with your Career Map.",
+  cta = "The full breakdown — every sub-track score, the six factors, and the safe-vs-exposed split — is yours to read inside the community.",
   compact = false,
 }: {
   children: React.ReactNode;
@@ -29,8 +29,8 @@ export function GatedBlur({
         <div className="gated-card">
           <p className="gated-k">🔒 {label}</p>
           {!compact ? <p className="gated-t">{cta}</p> : null}
-          <a className="gated-go" href="/map">
-            Get the free Career Map →
+          <a className="gated-go" href="/community">
+            Read it in the community →
           </a>
         </div>
       </div>
