@@ -994,9 +994,11 @@ footer {
 .scr .chk-opp-k { display: block; font-family: var(--sans); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
 .scr .chk-opp-h { margin: 0 0 1.1rem; font-family: var(--serif); font-size: 1.24rem; line-height: 1.3; color: var(--ink); }
 .scr .chk-opp-h b { color: var(--accent); }
-/* Your marker on the 0–100 exposure scale — safe end left, exposed end right. */
-.scr .chk-scale2 { margin: 1.7rem 0 1.4rem; }
-.scr .chk-scale2-bar { position: relative; height: 9px; border-radius: 99px; margin-top: 2.5rem;
+/* Your marker on the 0–100 exposure scale — safe end left, exposed end right.
+   padding-top reserves space for the floating number (non-collapsing), so it
+   never rides up into the headline above. */
+.scr .chk-scale2 { margin: 1.5rem 0 1.4rem; padding-top: 3.4rem; }
+.scr .chk-scale2-bar { position: relative; height: 9px; border-radius: 99px; margin-top: 0;
   background: linear-gradient(90deg, var(--pen-safe) 0%, #B8873A 55%, var(--pen) 100%); }
 .scr .chk-scale2-pin { position: absolute; top: -5px; bottom: -5px; width: 3px; background: var(--ink); border-radius: 2px; transform: translateX(-50%); }
 .scr .chk-scale2-pin b { position: absolute; left: 50%; bottom: calc(100% + 7px); transform: translateX(-50%);
