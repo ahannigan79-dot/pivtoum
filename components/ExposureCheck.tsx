@@ -112,20 +112,23 @@ export function ExposureCheck({ checks, preselect }: {
               ))}
             </div>
 
-            <div className="chk-why">
-              {result.expose.length > 0 && (
-                <div className="chk-why-col">
-                  <span className="chk-why-h expose">What&apos;s exposing you</span>
-                  <ul>{result.expose.map((l, i) => <li key={i}>{l}</li>)}</ul>
-                </div>
-              )}
-              {result.protect.length > 0 && (
-                <div className="chk-why-col">
-                  <span className="chk-why-h protect">What&apos;s on your side</span>
-                  <ul>{result.protect.map((l, i) => <li key={i}>{l}</li>)}</ul>
-                </div>
-              )}
-            </div>
+            {/* The qualitative read — replaced by the tagged "4 factors" once unlocked. */}
+            {!unlocked && (
+              <div className="chk-why">
+                {result.expose.length > 0 && (
+                  <div className="chk-why-col">
+                    <span className="chk-why-h expose">What&apos;s exposing you</span>
+                    <ul>{result.expose.map((l, i) => <li key={i}>{l}</li>)}</ul>
+                  </div>
+                )}
+                {result.protect.length > 0 && (
+                  <div className="chk-why-col">
+                    <span className="chk-why-h protect">What&apos;s on your side</span>
+                    <ul>{result.protect.map((l, i) => <li key={i}>{l}</li>)}</ul>
+                  </div>
+                )}
+              </div>
+            )}
 
             {!unlocked && (
               <div className="chk-locked">
@@ -134,7 +137,7 @@ export function ExposureCheck({ checks, preselect }: {
                   <span>🔒 Your winning strategy</span>
                   <span>🔒 The moves that lower it</span>
                 </div>
-                <p className="chk-locked-cta">Enter your email below to reveal your exact score + the 4 factors driving it ↓</p>
+                <p className="chk-locked-cta">Reveal it below ↓</p>
               </div>
             )}
 
@@ -159,18 +162,16 @@ export function ExposureCheck({ checks, preselect }: {
 
                 <div className="chk-opp">
                   <span className="chk-opp-k">You came here out of concern — here&rsquo;s the opportunity</span>
-                  <p className="chk-opp-h">This is your starting number. Inside, you drive it <b>down</b>.</p>
+                  <p className="chk-opp-h">This is your <b>starting line</b>, not your verdict.</p>
                   <div className="chk-journey" aria-hidden="true">
-                    <div className="chk-journey-line">
-                      <span className="cjn cjn-start" style={{ color: TONE_COLOR.red }}>{score}<i>today</i></span>
-                      <span className="cjn-track"><span className="cjn-fill" /></span>
-                      <span className="cjn cjn-end" style={{ color: TONE_COLOR.green }}>{Math.max(1, score - 18)}<i>ahead</i></span>
-                    </div>
+                    <span className="cjn-start" style={{ color: scoreColor }}>{score}</span>
+                    <span className="cjn-track"><span className="cjn-arrow">↘</span></span>
+                    <span className="cjn-label">lower, month<br />by month</span>
                   </div>
                   <p className="chk-opp-p">
                     The shift that exposed your work is the same one opening the ground for whoever moves first.
-                    Inside <b>Winning in the Age of AI</b> your Map re-scores as you do the reps, a pod in your
-                    exact lane keeps you at it, and your number comes down — so you come out ahead.
+                    Inside <b>Winning in the Age of AI</b>, your Map re-scores as you do the reps and a pod in your
+                    exact lane keeps you at it — so this number comes down and you come out ahead.
                   </p>
                   <div className="chk-opp-cta">
                     <a className="scr-btn" href={SITE.join}>Start your free trial →</a>

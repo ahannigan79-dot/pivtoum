@@ -102,15 +102,8 @@ export function packageEmail(opts: {
   careerName?: string | null; // the role the score is for
   communityUrl?: string; // link to the Community guide (/community)
 }) {
-  const { items, code, discountLabel, expiresDays, buyUrl } = opts;
+  const { items, code, discountLabel, expiresDays } = opts;
   const forChild = opts.audience === "child";
-  const names = (opts.careerNames ?? []).filter(Boolean);
-  const sellCareers =
-    names.length === 0
-      ? "the careers you picked"
-      : names.length === 1
-        ? names[0]
-        : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
   const introLine = forChild
     ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose. Go through it together; the guide ties it together."
     : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose. Work through them in order; the guide ties it together.";
@@ -124,7 +117,6 @@ export function packageEmail(opts: {
   const pen = "#AC3A34";
   const prot = "#2E7D55";
   const amber = "#B8873A";
-  const hl = "#FFE26E";
 
   const link = (url: string, label: string) =>
     `<a href="${url}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${pen};text-decoration:none;white-space:nowrap;">${label} &rarr;</a>`;
@@ -193,17 +185,6 @@ export function packageEmail(opts: {
 
           ${communityBlock}
 
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid ${rule};"><tr><td style="padding:22px 0 4px;">
-            <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;color:${ink};margin:0 0 10px;">When you&rsquo;re ready to decide, not just look</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:0 0 12px;">The free reads show you <em>where</em> a career splits &mdash; the safe side and the exposed side. What they stop short of is the part that actually decides it: which side your kid ends up on, how durable that safe side really is as AI keeps moving, and what it takes to reach it. That is the <strong>Career Value Guide</strong>, and it&rsquo;s the key to the whole map. For <strong>${sellCareers}</strong> it gives you every sub-track scored, the honest downsides no admissions page will list, the routes in, and the specific plan &mdash; the difference between seeing the split and knowing what to do about it.</p>
-          </td></tr></table>
-
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:4px 0 4px;"><tr><td style="padding:18px 20px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${ink};margin:0 0 6px;">Founding Subscriber Discount</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> any pack with code <strong>${code}</strong>. Expires in ${expiresDays} days.</p>
-            <p style="margin:0;">${button(buyUrl, "Get the Career Value Guide", pen)}</p>
-          </td></tr></table>
-
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${ink};margin:22px 0 2px;">I hope the map helps. Reply any time &mdash; I read every one.</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:${inkSoft};margin:0;">&mdash; ${SITE.founder}, founder, Pivotum</p>
         </td></tr>
@@ -229,10 +210,7 @@ export function packageEmail(opts: {
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +
     communityText +
-    `\n\nWHEN YOU'RE READY TO DECIDE, NOT JUST LOOK:\n` +
-    `The free reads show you where a career splits — the safe side and the exposed side. What they stop short of is the part that decides it: which side your kid ends up on, how durable that safe side really is, and what it takes to reach it. That's the Career Value Guide, and it's the key to the whole map. For ${sellCareers} it gives you every sub-track scored, the honest downsides, the routes in, and the specific plan.\n` +
-    `\nYOUR SUBSCRIBER OFFER: ${discountLabel} any pack with code ${code}. Expires in ${expiresDays} days.\n${buyUrl}\n\n` +
-    `I hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
+    `\nI hope the map helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };
 }

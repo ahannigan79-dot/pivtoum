@@ -83,8 +83,8 @@ export function MapCapture({
   return (
     <form className="pkg pkg-lean" onSubmit={submit}>
       <p className="pkg-lean-lede">
-        Enter your details to reveal your <b>exact exposure score</b> for <b>{careerName}</b> and the{" "}
-        <b>4 factors driving it</b> — on screen now, and in your inbox with the 28-career index and the community guide.
+        Your score shows here instantly — and lands in your inbox with the <b>28-career index</b> and the{" "}
+        <b>community guide</b> (10% off your first purchase inside).
       </p>
       <div className="pkg-final">
         <input
