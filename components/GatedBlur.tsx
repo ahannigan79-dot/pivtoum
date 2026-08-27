@@ -29,9 +29,14 @@ export function GatedBlur({
         <div className="gated-card">
           <p className="gated-k">🔒 {label}</p>
           {!compact ? <p className="gated-t">{cta}</p> : null}
-          <a className="gated-go" href="/community">
-            Read it in the community →
-          </a>
+          <div className="gated-actions">
+            <a className="gated-go" href="/community">
+              Read it in the community →
+            </a>
+            <a className="gated-go ghost" href="/map">
+              Or start with your free Career Map →
+            </a>
+          </div>
         </div>
       </div>
     </div>

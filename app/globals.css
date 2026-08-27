@@ -245,8 +245,11 @@ header { padding: 2rem 0 0; }
 .gated-card { max-width: 30rem; text-align: center; background: var(--card, #fff); border: 1.5px solid var(--rule); border-radius: 12px; padding: 1.15rem 1.3rem; box-shadow: 0 8px 26px rgba(33, 30, 27, 0.10); }
 .gated-k { font-family: var(--sans); font-weight: 800; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin: 0 0 .4rem; }
 .gated-t { font-family: var(--serif); font-size: 1rem; line-height: 1.5; color: var(--ink-soft); margin: 0 0 .9rem; }
-.gated-go { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .8rem; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--ink); border-radius: 9px; padding: .6rem 1.1rem; text-decoration: none; }
-.gated-go:hover { background: var(--accent); }
+.gated-actions { display: flex; flex-direction: column; align-items: center; gap: .55rem; margin-top: .2rem; }
+.gated-go { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: .8rem; letter-spacing: .02em; text-transform: uppercase; color: #fff; background: var(--ink); border: 1px solid var(--ink); border-radius: 9px; padding: .6rem 1.1rem; text-decoration: none; transition: background .15s, border-color .15s, color .15s; }
+.gated-go:hover { background: var(--accent); border-color: var(--accent); }
+.gated-go.ghost { background: transparent; color: var(--ink); border-color: var(--rule2); }
+.gated-go.ghost:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
 @media (max-width: 460px) {
   .scr-h1 { font-size: 2.05rem; }
   .scr-sub { font-size: 1.02rem; }
