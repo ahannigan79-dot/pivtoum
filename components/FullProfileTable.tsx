@@ -47,7 +47,7 @@ export function FullProfileTable({ career }: { career: Career }) {
     <div className="incl" data-career={career.slug}>
       <div className="h">
         <span />
-        <span>Sample</span>
+        <span>Career Map</span>
         <span>Community</span>
       </div>
       {ROWS.map((r, i) =>
