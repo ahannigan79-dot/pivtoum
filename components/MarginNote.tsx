@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 /**
  * A pencil-grey margin annotation. Sits in the outer column beside the paragraph
- * it follows in source order; collapses inline with a yellow rule under 62rem.
+ * it follows in source order; collapses inline with a petrol rule under 62rem.
  * One or two per page.
  */
 export function MarginNote({ label, children }: { label: string; children: ReactNode }) {

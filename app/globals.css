@@ -16,7 +16,6 @@
   --rule: #E7E2D8;
   --rule2: #DAD3C6;
   --pen: #B4442F;         /* the exposed side — data mark, never a fill or button */
-  --hl:  255, 226, 110;   /* yellow — the finding */
   --hl2: 163, 214, 190;   /* green  — protection */
   --hl3: 247, 166, 166;   /* coral  — exposure */
   --hl4: 166, 198, 236;   /* blue   — method and honesty */
@@ -130,7 +129,6 @@ header { padding: 2rem 0 0; }
   position: absolute; left: -.1em; right: -.1em; width: calc(100% + .2em);
   bottom: .02em; height: .5em; z-index: 0; overflow: visible; pointer-events: none;
 }
-.wordmark-hl path { fill: none; stroke: rgba(var(--hl), .8); }
 .site-header .wordmark { font-size: 1.2rem; }
 /* Brand logo image (header/samplers) */
 .wordmark-logo { display: block; height: 1.75rem; width: auto; }
@@ -809,7 +807,7 @@ footer {
   .page { max-width: var(--col); }
   .note {
     position: static; width: auto; margin: .9rem 0 1.3rem; padding-left: .9rem;
-    border-left: 2px solid rgba(var(--hl), .9);
+    border-left: 2px solid var(--accent);
   }
 }
 @media (max-width: 34rem) {
