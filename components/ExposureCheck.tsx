@@ -155,9 +155,15 @@ export function ExposureCheck({ checks, preselect }: {
                   <span className="chk-opp-k">You came here out of concern — here&rsquo;s the opportunity</span>
                   <p className="chk-opp-h">This is your <b>starting line</b>, not your verdict.</p>
                   <div className="chk-journey" aria-hidden="true">
-                    <span className="cjn-start" style={{ color: scoreColor }}>{score}</span>
-                    <span className="cjn-track"><span className="cjn-arrow">↘</span></span>
-                    <span className="cjn-label">lower, month<br />by month</span>
+                    <span className="cjn-now">
+                      <b style={{ color: scoreColor }}>{score}</b>
+                      <i>you, today</i>
+                    </span>
+                    <span className="cjn-track"><span className="cjn-arrow">→</span></span>
+                    <span className="cjn-goal">
+                      <b>DOWN</b>
+                      <i>every month<br />you do the work</i>
+                    </span>
                   </div>
                   <p className="chk-opp-p">
                     The shift that exposed your work is the same one opening the ground for whoever moves first.

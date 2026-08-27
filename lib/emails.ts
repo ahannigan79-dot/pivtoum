@@ -104,13 +104,8 @@ export function packageEmail(opts: {
   communityUrl?: string; // link to the Community guide (/community)
 }) {
   const { items, code, discountLabel, expiresDays } = opts;
-  const forChild = opts.audience === "child";
-  const introLine = forChild
-    ? "Thanks for building your kid&rsquo;s map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose. Go through it together; the guide ties it together."
-    : "Thanks for building your map. Everything you picked is below &mdash; the full 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose. Work through them in order; the guide ties it together.";
-  const introText = forChild
-    ? "Thanks for building your kid's map. Everything you picked is below — the 28-career index, a short guide written for exactly where they are, and a free read on each of the careers you chose."
-    : "Thanks for building your map. Everything you picked is below — the 28-career index, a short guide written for exactly where you are, and a free read on each of the careers you chose.";
+  const introLine = "Thanks for running your Exposure Check. Your score and the four factors behind it are below, along with the full 28-career index &mdash; and the look inside the community, where you turn that number into your opening.";
+  const introText = "Thanks for running your Exposure Check. Your score and the four factors behind it are below, along with the full 28-career index — and the look inside the community, where you turn that number into your opening.";
   // Brand tokens (light) — exact hex from the design system.
   const ink = "#1C1A16";
   const inkSoft = "#6B655B";

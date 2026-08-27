@@ -163,15 +163,6 @@ export async function POST(req: Request) {
             sub: "Every career scored, safest to most exposed.",
             cta: "Download PDF",
           },
-          ...pkg.careers.map((s) => {
-            const c = getCareer(s);
-            return {
-              name: `${c?.name ?? s} — your high-level review`,
-              url: `${SITE.url}/careers/${s}`,
-              sub: "Where it sits, safest to most exposed, and the honest read on the split.",
-              cta: "Read online",
-            };
-          }),
         ];
         // The score + 4 factors the on-page reveal showed, echoed into the email.
         const cleanScore = Number.isFinite(score) ? Math.max(1, Math.min(99, Math.round(Number(score)))) : null;

@@ -894,7 +894,7 @@ footer {
 .scr .pkg-hint { color: var(--accent); }
 /* pkg controls use the light base styles defined above — no dark overrides. */
 .pkg-lean { gap: 0.9rem; }
-.pkg-lean-lede { font-family: var(--serif); font-size: 1.02rem; line-height: 1.5; margin: 0; color: var(--ink-soft); }
+.pkg-lean-lede { font-family: var(--sans); font-size: .88rem; line-height: 1.5; margin: 0; color: var(--ink-soft); }
 .pkg-lean-lede b { color: var(--ink); font-weight: 700; }
 .scr .scr-community { background: var(--paper); border-color: var(--rule); border-left-color: var(--accent); }
 .scr .scr-community-k { color: var(--accent); }
@@ -960,7 +960,7 @@ footer {
 .scr .chk-locked { border-top: 1px solid var(--rule); padding-top: 1.1rem; }
 .scr .chk-locked-rows { display: flex; flex-direction: column; gap: .45rem; margin-bottom: .8rem; }
 .scr .chk-locked-rows span { font-family: var(--sans); font-size: .9rem; color: var(--pencil); filter: blur(0.4px); }
-.scr .chk-locked-cta { margin: 1.3rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: .95rem; font-weight: 700; color: var(--accent); }
+.scr .chk-locked-cta { margin: 1.3rem 0 0; padding-top: 1.3rem; border-top: 1px solid var(--rule); font-family: var(--serif); font-size: 1.32rem; line-height: 1.3; font-weight: 700; color: var(--ink); }
 
 .scr .chk-capture { margin-top: 1.5rem; }
 
@@ -983,11 +983,14 @@ footer {
 .scr .chk-opp-k { display: block; font-family: var(--sans); font-size: .62rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
 .scr .chk-opp-h { margin: 0 0 1.1rem; font-family: var(--serif); font-size: 1.24rem; line-height: 1.3; color: var(--ink); }
 .scr .chk-opp-h b { color: var(--accent); }
-.scr .chk-journey { display: flex; align-items: center; gap: 1rem; margin: 0 0 1.2rem; }
-.scr .cjn-start { font-family: var(--serif); font-weight: 700; font-size: 2.5rem; line-height: 1; font-variant-numeric: tabular-nums; }
-.scr .cjn-track { flex: 1; height: 2px; border-radius: 99px; background: linear-gradient(90deg, var(--pen), var(--pen-safe)); position: relative; }
-.scr .cjn-arrow { position: absolute; right: -3px; top: 50%; transform: translateY(-52%); color: var(--pen-safe); font-size: 1.15rem; line-height: 1; }
-.scr .cjn-label { font-family: var(--sans); font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--pen-safe); line-height: 1.25; }
+.scr .chk-journey { display: flex; align-items: center; gap: .9rem; margin: .3rem 0 1.3rem; }
+.scr .cjn-now, .scr .cjn-goal { display: flex; flex-direction: column; line-height: 1; flex: none; }
+.scr .cjn-now b { font-family: var(--serif); font-weight: 700; font-size: 3.1rem; line-height: .92; font-variant-numeric: tabular-nums; }
+.scr .cjn-now i, .scr .cjn-goal i { font-style: normal; font-family: var(--sans); font-size: .58rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--pencil); margin-top: .35rem; line-height: 1.25; }
+.scr .cjn-goal { text-align: right; }
+.scr .cjn-goal b { font-family: var(--sans); font-weight: 800; font-size: 1.5rem; letter-spacing: .02em; color: var(--pen-safe); }
+.scr .cjn-track { flex: 1; height: 4px; border-radius: 99px; background: linear-gradient(90deg, var(--pen), var(--pen-safe)); position: relative; align-self: center; }
+.scr .cjn-arrow { position: absolute; right: -6px; top: 50%; transform: translateY(-52%); color: var(--pen-safe); font-size: 1.5rem; font-weight: 700; line-height: 1; }
 .scr .chk-opp-p { margin: 0 0 1.15rem; font-family: var(--serif); font-size: .98rem; line-height: 1.55; color: var(--ink-soft); }
 .scr .chk-opp-p b { color: var(--ink); }
 .scr .chk-opp-cta { display: flex; flex-wrap: wrap; gap: .6rem; }
