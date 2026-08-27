@@ -100,12 +100,14 @@ export function packageEmail(opts: {
   careerNames?: string[]; // the picked careers, to personalize the sell
   score?: number | null; // the exposure score the on-page reveal showed
   factors?: { label: string; kind: "expose" | "protect" }[]; // the 4 drivers
+  band?: string | null; // the band word they saw, e.g. "Low–Moderate"
+  bandPhrase?: string | null; // the one-line read, e.g. "lightly-to-moderately exposed"
   careerName?: string | null; // the role the score is for
   communityUrl?: string; // link to the Community guide (/community)
 }) {
   const { items, code, discountLabel, expiresDays } = opts;
-  const introLine = "Thanks for running your Exposure Check. Your score and the four factors behind it are below, along with the full 28-career index &mdash; and the look inside the community, where you turn that number into your opening.";
-  const introText = "Thanks for running your Exposure Check. Your score and the four factors behind it are below, along with the full 28-career index — and the look inside the community, where you turn that number into your opening.";
+  const introLine = "Thanks for running your Exposure Check. Your Free Career Map is below &mdash; your score and the four factors behind it, your career&rsquo;s full breakdown, and the Career Index for all 28 &mdash; plus the look inside the community, where you turn that number into your opening.";
+  const introText = "Thanks for running your Exposure Check. Your Free Career Map is below — your score and the four factors behind it, your career's full breakdown, and the Career Index for all 28 — plus the look inside the community, where you turn that number into your opening.";
   // Brand tokens (light) — exact hex from the design system.
   const ink = "#1C1A16";
   const inkSoft = "#6B655B";
@@ -132,10 +134,15 @@ export function packageEmail(opts: {
       <span style="font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:${f.kind === "expose" ? pen : prot};">${f.kind === "expose" ? "Exposing you" : "On your side"}</span>
       <div style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.45;color:${ink};margin-top:2px;">${f.label}</div>
     </td></tr>`;
+  const bandTag = opts.band ? `<span style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;color:${scoreColor};text-transform:uppercase;letter-spacing:.04em;margin-left:8px;">${opts.band}</span>` : "";
+  const verdictLine = opts.bandPhrase
+    ? `<div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.5;color:${ink};margin:0 0 12px;">Based on <strong>${opts.careerName ?? "your role"}</strong> and your answers, your work looks <strong>${opts.bandPhrase}</strong>.</div>`
+    : "";
   const scoreBlock = score == null ? "" : `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-radius:6px;margin:0 0 22px;"><tr><td style="padding:20px 22px;">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${pencil};margin:0 0 4px;">Your exposure score${forName}</div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-size:46px;font-weight:bold;line-height:1;color:${scoreColor};margin:0 0 4px;">${score}<span style="font-size:20px;color:${pencil};font-weight:normal;">/100</span></div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${pencil};margin:0 0 4px;">Your Career Map${forName}</div>
+      <div style="margin:0 0 4px;"><span style="font-family:Georgia,'Times New Roman',serif;font-size:46px;font-weight:bold;line-height:1;color:${scoreColor};">${score}<span style="font-size:20px;color:${pencil};font-weight:normal;">/100</span></span>${bandTag}</div>
+      ${verdictLine}
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${pencil};margin:0 0 14px;">Higher means more exposed to what AI can already do. Inside, you drive it down.</div>
       ${factors.length ? `<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:${ink};border-top:1px solid ${rule};padding-top:12px;">The 4 factors driving it</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${factors.map(factorRow).join("")}</table>` : ""}
@@ -170,7 +177,7 @@ export function packageEmail(opts: {
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:${pencil};margin:0 0 12px;">Careers, mapped for the age of AI</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Career Map is here</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Free Career Map is here</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Your exposure score and the factors behind it are up top &mdash; and below, the full look inside the community, with <strong>${discountLabel} your first purchase</strong>.</p>
@@ -195,7 +202,8 @@ export function packageEmail(opts: {
   </body></html>`;
 
   const scoreText = score == null ? "" :
-    `YOUR EXPOSURE SCORE${opts.careerName ? ` (${opts.careerName})` : ""}: ${score}/100 — higher means more exposed to what AI can already do. Inside, you drive it down.\n` +
+    `YOUR CAREER MAP${opts.careerName ? ` (${opts.careerName})` : ""}: ${score}/100${opts.band ? ` · ${opts.band}` : ""} — higher means more exposed to what AI can already do. Inside, you drive it down.\n` +
+    (opts.bandPhrase ? `Based on ${opts.careerName ?? "your role"} and your answers, your work looks ${opts.bandPhrase}.\n` : "") +
     (factors.length ? `The 4 factors driving it:\n${factors.map((f) => `  • [${f.kind === "expose" ? "exposing you" : "on your side"}] ${f.label}`).join("\n")}\n` : "") + `\n`;
   const communityText = !opts.communityUrl ? "" :
     `\nYOU CAME HERE OUT OF CONCERN — HERE'S THE OPPORTUNITY:\n` +
@@ -203,7 +211,7 @@ export function packageEmail(opts: {
     `And ${discountLabel} your first purchase with code ${code} — good for ${expiresDays} days.\n`;
 
   const text =
-    `Your Career Map is here.\n\n` +
+    `Your Free Career Map is here.\n\n` +
     scoreText +
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +

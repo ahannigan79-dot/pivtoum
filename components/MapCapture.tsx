@@ -13,10 +13,11 @@ import { captureClickIds, readClickIds } from "@/lib/attribution";
  * de-dupe, Google Ads, click-id attribution) intact.
  */
 export function MapCapture({
-  careerSlug, careerName, stage, score, factors, onUnlock,
+  careerSlug, careerName, stage, score, factors, band, bandPhrase, onUnlock,
 }: {
   careerSlug: string; careerName: string; stage: "planning" | "active";
   score?: number; factors?: { label: string; kind: "expose" | "protect" }[];
+  band?: string; bandPhrase?: string;
   onUnlock?: () => void;
 }) {
   const [firstName, setFirstName] = useState("");
@@ -44,7 +45,7 @@ export function MapCapture({
           stage,
           audience: "self",       // /map is self-framing ("your career")
           careers: [careerSlug],  // locked to the one role they picked above
-          score, factors,         // the number + 4 factors to echo into the email
+          score, factors, band, bandPhrase, // the map verdict to echo into the email
           eventId,
           ...readClickIds(),
         }),

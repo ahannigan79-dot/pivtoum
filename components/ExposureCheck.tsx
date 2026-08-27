@@ -193,6 +193,8 @@ export function ExposureCheck({ checks, preselect }: {
                 stage={seniority === "student" ? "planning" : "active"}
                 score={score ?? undefined}
                 factors={factors}
+                band={result.band.word}
+                bandPhrase={result.band.phrase}
                 onUnlock={() => setUnlocked(true)}
               />
             </div>

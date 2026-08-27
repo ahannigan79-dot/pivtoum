@@ -21,7 +21,7 @@ const GADS_IMPORT_NAME = process.env.GADS_IMPORT_CONVERSION_NAME ?? "Website sig
  * is a sampler slug or "index".
  */
 export async function POST(req: Request) {
-  const { email, firstName, source, stage, audience, careers, score, factors, eventId, fbclid, gclid } = await req
+  const { email, firstName, source, stage, audience, careers, score, factors, band, bandPhrase, eventId, fbclid, gclid } = await req
     .json()
     .catch(() => ({ email: "", source: "index" }));
   // The Career Map capture sends the two package flags + up to three career
@@ -157,6 +157,15 @@ export async function POST(req: Request) {
         // Value Guide + /buy. That copy is being rewritten to sell the community
         // (the Day 0 email pass) — pending the Mighty link.
         const items = [
+          ...pkg.careers.map((s) => {
+            const c = getCareer(s);
+            return {
+              name: `Your ${c?.name ?? s} Career Map`,
+              url: `${SITE.url}/careers/${s}`,
+              sub: "Where the safe and exposed tracks sit, and the six factors that decide which is which.",
+              cta: "Open your Career Map",
+            };
+          }),
           {
             name: "The Career Index — all 28 careers",
             url: `${SITE.url}/api/sampler-pdf?s=index`,
@@ -182,13 +191,15 @@ export async function POST(req: Request) {
           careerNames: pkg.careers.map((s) => getCareer(s)?.name ?? s),
           score: cleanScore,
           factors: cleanFactors,
+          band: typeof band === "string" ? band.slice(0, 40) : null,
+          bandPhrase: typeof bandPhrase === "string" ? bandPhrase.slice(0, 120) : null,
           careerName: pkg.careers[0] ? getCareer(pkg.careers[0])?.name ?? null : null,
           communityUrl: `${SITE.url}/community`,
         });
         await resend.emails.send({
           from,
           to: email,
-          subject: "Your Career Map — the 28 scores + your reviews",
+          subject: "Your Free Career Map is here",
           html,
           text,
         });
