@@ -19,7 +19,7 @@ export function CareerHeader({ career }: { career: Career }) {
         <span>{career.edition}</span>
       </div>
       <h1>{career.title}</h1>
-      <p className="kicker">Free sampler. Re-scored every six months.</p>
+      <p className="kicker">Free Career Map. Re-scored every six months.</p>
       <MarkerLegend />
     </header>
   );
