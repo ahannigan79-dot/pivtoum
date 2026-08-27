@@ -471,6 +471,8 @@ ol.ranked li::before {
 }
 .incl span { text-align: center; font-family: var(--sans); font-size: .8125rem; }
 .incl span:first-child { text-align: left; font-family: var(--serif); font-size: .9375rem; }
+.incl div.grp { grid-template-columns: 1fr; padding: 1rem 0 .35rem; border-bottom: 1px solid var(--rule); }
+.incl div.grp span { text-align: left; font-family: var(--sans); font-size: .625rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
 .yes { color: var(--pen); font-weight: 600; }
 .no { color: #D6D2C9; }
 
