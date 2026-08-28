@@ -204,6 +204,31 @@ header { padding: 2rem 0 0; }
   .voice-seg-tab { flex: 1; text-align: center; }
 }
 
+/* ---- Exposure→opportunity flip (the AI Exposure Report payoff) ----------- */
+.opp {
+  margin: 2.4rem 0 0; padding: 1.6rem 1.5rem; border-radius: 14px;
+  background: var(--panel); border: 1px solid var(--rule2); border-left: 4px solid var(--accent);
+}
+.opp-k {
+  font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--accent);
+}
+.opp-h {
+  font-size: 1.6rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.15;
+  margin: .35em 0 .5em; text-wrap: balance;
+}
+.opp-body { font-size: 1.0625rem; line-height: 1.55; margin: 0 0 .8rem; }
+.opp-body b { font-weight: 600; }
+.opp-line { font-size: 1.15rem; font-weight: 600; color: var(--ink); margin: 0 0 1.1rem; }
+.opp-line b { color: var(--accent); }
+.opp-cta {
+  display: inline-block; font-family: var(--sans); font-size: .95rem; font-weight: 700;
+  text-decoration: none; padding: .8rem 1.5rem; border-radius: 10px;
+  background: var(--ink); color: var(--on-fill); transition: background .15s;
+}
+.opp-cta:hover { background: var(--accent); }
+.opp-sub { margin-top: .75rem; font-family: var(--sans); font-size: .78rem; color: var(--pencil); }
+
 /* ---- Articles index ------------------------------------------------------ */
 .artindex-head { padding-top: 1.2rem; }
 .artindex-head .sub { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.55; max-width: 34rem; margin: .2rem 0 2.2rem; }

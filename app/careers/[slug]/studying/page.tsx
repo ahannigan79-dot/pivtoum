@@ -16,6 +16,7 @@ import { RelatedCareers } from "@/components/RelatedCareers";
 import { FullProfileTable } from "@/components/FullProfileTable";
 import { GatedBlur } from "@/components/GatedBlur";
 import { BuyBlock } from "@/components/BuyBlock";
+import { OpportunityFlip } from "@/components/OpportunityFlip";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageView } from "@/components/PageView";
 import { StarterKitCta } from "@/components/StarterKitCta";
@@ -75,13 +76,11 @@ export default async function CareerStudyingPage({
     ScoreTable: () => (
       <>
         <StarterKitCta source={career.slug} title={career.name} />
-        <GatedBlur>
-          <ScoreTable career={career} />
-        </GatedBlur>
+        <ScoreTable career={career} />
       </>
     ),
     FactorList: () => (
-      <GatedBlur compact label="The six factors, scored — members">
+      <GatedBlur compact label="The six factors behind your number — members">
         <FactorList career={career} />
       </GatedBlur>
     ),
@@ -92,15 +91,12 @@ export default async function CareerStudyingPage({
     ),
     MarginNote: MarginNote as MDXComponents[string],
     VersusGrid: VersusGrid as MDXComponents[string],
+    OpportunityFlip: () => <OpportunityFlip career={career} voice="studying" />,
     FaqList: () => <FaqList career={career} />,
     RelatedCareers: () => <RelatedCareers career={career} />,
     FullProfileTable: () => <FullProfileTable career={career} />,
     BuyBlock: () => <BuyBlock source={career.slug} title={career.name} />,
-    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-      <GatedBlur compact label="The safe-vs-exposed ranking — members">
-        <ol className="ranked" {...props} />
-      </GatedBlur>
-    ),
+    ol: (props: React.HTMLAttributes<HTMLOListElement>) => <ol className="ranked" {...props} />,
   };
 
   const articleLd = {
@@ -139,7 +135,6 @@ export default async function CareerStudyingPage({
         <SampleVoiceToggle slug={career.slug} current="studying" />
         <ScoreBadge career={career} />
         <Body components={components} />
-        <StarterKitCta source={career.slug} title={career.name} placement="bottom" />
         <SiteFooter />
       </div>
       <script

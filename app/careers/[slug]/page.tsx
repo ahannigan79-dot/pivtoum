@@ -17,6 +17,7 @@ import { RelatedCareers } from "@/components/RelatedCareers";
 import { FullProfileTable } from "@/components/FullProfileTable";
 import { GatedBlur } from "@/components/GatedBlur";
 import { BuyBlock } from "@/components/BuyBlock";
+import { OpportunityFlip } from "@/components/OpportunityFlip";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageView } from "@/components/PageView";
 import { StarterKitCta } from "@/components/StarterKitCta";
@@ -64,20 +65,19 @@ export default async function CareerPage({
 
   const { default: Body } = await loader();
 
-  // Premium blocks are gated: the HTML stays server-rendered (SEO + JSON-LD
-  // intact) but is blurred behind the free AI Exposure Report. Free/visible: the
-  // headline score, the voiced lede, and VersusGrid — the "high-level review."
+  // The AI Exposure Report reveals where you stand — the lane scores and the
+  // safe-vs-exposed ranking are free (they add value and build trust). What's
+  // gated is the *methodology and the depth*: the six factors behind the number
+  // and the full reasoning. The gated HTML still server-renders for SEO.
   const components: MDXComponents = {
     ScoreTable: () => (
       <>
         <StarterKitCta source={career.slug} title={career.name} />
-        <GatedBlur>
-          <ScoreTable career={career} />
-        </GatedBlur>
+        <ScoreTable career={career} />
       </>
     ),
     FactorList: () => (
-      <GatedBlur compact label="The six factors, scored — members">
+      <GatedBlur compact label="The six factors behind your number — members">
         <FactorList career={career} />
       </GatedBlur>
     ),
@@ -88,16 +88,13 @@ export default async function CareerPage({
     ),
     MarginNote: MarginNote as MDXComponents[string],
     VersusGrid: VersusGrid as MDXComponents[string],
+    OpportunityFlip: () => <OpportunityFlip career={career} voice="career" />,
     FaqList: () => <FaqList career={career} />,
     RelatedCareers: () => <RelatedCareers career={career} />,
     FullProfileTable: () => <FullProfileTable career={career} />,
     BuyBlock: () => <BuyBlock source={career.slug} title={career.name} />,
-    // Every sampler's single ordered list is the safe-vs-exposed ranking — gate it.
-    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-      <GatedBlur compact label="The safe-vs-exposed ranking — members">
-        <ol className="ranked" {...props} />
-      </GatedBlur>
-    ),
+    // The single ordered list is the safe-vs-exposed ranking — free, part of the read.
+    ol: (props: React.HTMLAttributes<HTMLOListElement>) => <ol className="ranked" {...props} />,
   };
 
   const articleLd = {
@@ -136,7 +133,6 @@ export default async function CareerPage({
         {hasStudyingVersion(career.slug) && <SampleVoiceToggle slug={career.slug} current="career" />}
         <ScoreBadge career={career} />
         <Body components={components} />
-        <StarterKitCta source={career.slug} title={career.name} placement="bottom" />
         <SiteFooter />
       </div>
       <script
