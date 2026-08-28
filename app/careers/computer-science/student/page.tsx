@@ -12,7 +12,7 @@ const career = getCareer("computer-science")!;
 export const metadata: Metadata = {
   title: "The Student Version — Computer Science",
   description:
-    "The Pivotum student version for computer science — the Career Value Guide written directly to the student. Free to read in full.",
+    "The Pivotum student version for computer science — the AI Exposure Report, written directly to the student. Free to read in full.",
   alternates: { canonical: "/careers/computer-science/student" },
   openGraph: {
     title: "Computer science — the student version",
@@ -40,9 +40,9 @@ export default function ComputerScienceStudentPage() {
           <span>Student version</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          The student version — the short read written directly to the student; every Career Value
-          Guide includes one.{" "}
-          <Link href="/careers/computer-science">See the full guide →</Link>
+          The student version — the short read written directly to the student; every AI Exposure
+          Report includes one.{" "}
+          <Link href="/careers/computer-science">See the full report →</Link>
         </p>
         <GatedBlur
           label="The student version"
@@ -51,7 +51,7 @@ export default function ComputerScienceStudentPage() {
           <CSStudent />
         </GatedBlur>
         <EmailSignup
-          label="Parents: get the test behind our scores"
+          label="Get the test behind our scores"
           sub="The free Starter Kit — the three-question test to size up any career, plus each new article and edition. Free, no spam."
         />
         <SiteFooter />

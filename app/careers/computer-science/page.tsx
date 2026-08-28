@@ -10,7 +10,7 @@ import { EmailSignup } from "@/components/EmailSignup";
 const career = getCareer("computer-science")!;
 
 export const metadata: Metadata = {
-  title: `${career.title} The ${career.edition} Career Value Guide`,
+  title: `${career.title} The ${career.edition} AI Exposure Report`,
   description: career.description,
   alternates: { canonical: "/careers/computer-science" },
   openGraph: {
@@ -54,9 +54,9 @@ export default function ComputerSciencePage() {
           <span>{career.edition}</span>
         </div>
         <p className="kicker" style={{ marginTop: "1rem" }}>
-          A preview of the complete Career Value Guide. The full read — durability, the honest
-          downsides, the routes in, the program checklist and the admissions questions — opens with
-          your free AI Exposure Report.
+          The complete Computer Science AI Exposure Report — published free, in full, so you can see
+          the depth behind every score. Every other career&rsquo;s full breakdown opens inside the
+          community.
         </p>
         <GatedBlur
           label="The complete Computer Science breakdown"
@@ -65,8 +65,8 @@ export default function ComputerSciencePage() {
           <CS />
         </GatedBlur>
         <EmailSignup
-          label="Want the test behind this guide?"
-          sub="Grab the free Starter Kit — the three-question test to size up any career your kid names — plus each new article and edition. Free, no spam."
+          label="Want the test behind these scores?"
+          sub="Grab the free Starter Kit — the three-question test to size up any career you're weighing — plus each new article and edition. Free, no spam."
         />
         <SiteFooter />
       </div>
