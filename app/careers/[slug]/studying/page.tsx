@@ -6,7 +6,6 @@ import { careerMdxStudying } from "@/content/careers/registry";
 import { SITE } from "@/lib/site";
 import { CareerHeader } from "@/components/CareerHeader";
 import { ScoreBadge } from "@/components/ScoreBadge";
-import { QuickAnswer } from "@/components/QuickAnswer";
 import { ScoreTable } from "@/components/ScoreTable";
 import { FactorList } from "@/components/FactorList";
 import { WorkedExample } from "@/components/WorkedExample";
@@ -139,7 +138,6 @@ export default async function CareerStudyingPage({
         <CareerHeader career={career} />
         <SampleVoiceToggle slug={career.slug} current="studying" />
         <ScoreBadge career={career} />
-        <QuickAnswer career={career} />
         <Body components={components} />
         <StarterKitCta source={career.slug} title={career.name} placement="bottom" />
         <SiteFooter />

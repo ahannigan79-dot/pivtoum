@@ -7,7 +7,6 @@ import { SampleVoiceToggle } from "@/components/SampleVoiceToggle";
 import { SITE } from "@/lib/site";
 import { CareerHeader } from "@/components/CareerHeader";
 import { ScoreBadge } from "@/components/ScoreBadge";
-import { QuickAnswer } from "@/components/QuickAnswer";
 import { ScoreTable } from "@/components/ScoreTable";
 import { FactorList } from "@/components/FactorList";
 import { WorkedExample } from "@/components/WorkedExample";
@@ -67,7 +66,7 @@ export default async function CareerPage({
 
   // Premium blocks are gated: the HTML stays server-rendered (SEO + JSON-LD
   // intact) but is blurred behind the free Career Map. Free/visible: the
-  // headline score, QuickAnswer, and VersusGrid — the "high-level review."
+  // headline score, the voiced lede, and VersusGrid — the "high-level review."
   const components: MDXComponents = {
     ScoreTable: () => (
       <>
@@ -136,7 +135,6 @@ export default async function CareerPage({
         <CareerHeader career={career} />
         {hasStudyingVersion(career.slug) && <SampleVoiceToggle slug={career.slug} current="career" />}
         <ScoreBadge career={career} />
-        <QuickAnswer career={career} />
         <Body components={components} />
         <StarterKitCta source={career.slug} title={career.name} placement="bottom" />
         <SiteFooter />

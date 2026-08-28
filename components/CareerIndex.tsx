@@ -59,7 +59,7 @@ export function CareerIndex({ rows }: { rows: IndexRow[] }) {
             <span>10 Most exposed</span>
           </span>
           <span />
-          <span className="idx-head-go">Free sample</span>
+          <span className="idx-head-go">Career Map</span>
         </div>
         {sorted.map((r) => {
           const left = (r.safest / DOMAIN) * 100;
