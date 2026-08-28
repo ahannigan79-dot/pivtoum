@@ -55,7 +55,7 @@ export default async function MapLanding({
             The Exposure Check shows you where you stand. Inside the community you turn it into your
             opening — your living Map, your pod, and people in your exact lane, so you come out <b>ahead.</b>
           </p>
-          <a className="scr-community-go" href={SITE.join}>See inside the community →</a>
+          <a className="scr-community-go" href="/community">See inside the community →</a>
         </div>
 
         <p className="scr-foot">
