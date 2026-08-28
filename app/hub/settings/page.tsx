@@ -1,3 +1,4 @@
+import { SignOutButton } from "@clerk/nextjs";
 import { getOrCreateProfile } from "@/lib/member";
 import { updateEmailPrefs } from "./actions";
 import { PrefsForm } from "@/components/hub/settings/PrefsForm";
@@ -29,6 +30,16 @@ export default async function SettingsPage() {
         <div className="prefs">
           <PushToggle />
         </div>
+
+        <div className="hub-sectlabel" style={{ marginTop: 26 }}>Session</div>
+        <p className="settings-lead">
+          Sign out to see the site as a logged-out visitor — the trial gate and the marketing funnel.
+          You&rsquo;ll land back on the homepage; from there any &ldquo;Start your free trial&rdquo; link takes you to
+          the sign-in page.
+        </p>
+        <SignOutButton>
+          <button type="button" className="settings-signout">Sign out &rarr;</button>
+        </SignOutButton>
       </div>
     </>
   );
