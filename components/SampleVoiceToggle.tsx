@@ -5,6 +5,9 @@ import Link from "next/link";
  * *career* version speaks to someone already in the field; the *studying*
  * version to someone still choosing what to study. Mirrors the Deep Dive's
  * active/planning toggle. Only rendered when both voices exist for a career.
+ *
+ * A neutral segmented control — no accent wash, no icons — so it reads as
+ * plain chrome, not data.
  */
 export function SampleVoiceToggle({
   slug,
@@ -13,19 +16,25 @@ export function SampleVoiceToggle({
   slug: string;
   current: "career" | "studying";
 }) {
-  const toStudying = current === "career";
-  const href = toStudying ? `/careers/${slug}/studying` : `/careers/${slug}`;
   return (
-    <div className="voice-toggle" role="group" aria-label="Choose your version">
-      <span className={`voice-tab${current === "career" ? " on" : ""}`} aria-current={current === "career"}>
-        💼 In a career
-      </span>
-      <span className={`voice-tab${current === "studying" ? " on" : ""}`} aria-current={current === "studying"}>
-        📚 Studying
-      </span>
-      <Link className="voice-switch" href={href}>
-        {toStudying ? "Still choosing what to study? Read the studying version →" : "Already working in the field? Read the career version →"}
-      </Link>
+    <div className="voice-seg-wrap">
+      <span className="voice-seg-label">Written for</span>
+      <div className="voice-seg" role="group" aria-label="Choose your version">
+        <Link
+          className={`voice-seg-tab${current === "career" ? " on" : ""}`}
+          href={`/careers/${slug}`}
+          aria-current={current === "career" ? "page" : undefined}
+        >
+          People in the field
+        </Link>
+        <Link
+          className={`voice-seg-tab${current === "studying" ? " on" : ""}`}
+          href={`/careers/${slug}/studying`}
+          aria-current={current === "studying" ? "page" : undefined}
+        >
+          People still studying
+        </Link>
+      </div>
     </div>
   );
 }
