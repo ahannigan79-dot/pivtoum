@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { addSubscriber, recordAdConversion } from "@/lib/db";
 import { getCareer } from "@/data/careers";
-import { hasSamplerPage } from "@/content/careers/registry";
+import { hasSamplerPage, hasStudyingVersion } from "@/content/careers/registry";
 import { packageEmail, pdfWelcomeEmail } from "@/lib/emails";
 import { verifyEmail } from "@/lib/email-validate";
 import { mintLeadPromoCode } from "@/lib/stripe";
@@ -159,9 +159,11 @@ export async function POST(req: Request) {
         const items = [
           ...pkg.careers.map((s) => {
             const c = getCareer(s);
+            // Point studiers at the studying voice of the Career Map when one exists.
+            const studying = pkg.stage === "planning" && hasStudyingVersion(s);
             return {
               name: `Your ${c?.name ?? s} Career Map`,
-              url: `${SITE.url}/careers/${s}`,
+              url: `${SITE.url}/careers/${s}${studying ? "/studying" : ""}`,
               sub: "Where the safe and exposed tracks sit, and the six factors that decide which is which.",
               cta: "Open your Career Map",
             };
