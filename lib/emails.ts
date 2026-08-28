@@ -202,7 +202,7 @@ export function packageEmail(opts: {
   </body></html>`;
 
   const scoreText = score == null ? "" :
-    `YOUR CAREER MAP${opts.careerName ? ` (${opts.careerName})` : ""}: ${score}/100${opts.band ? ` · ${opts.band}` : ""} — higher means more exposed to what AI can already do. Inside, you drive it down.\n` +
+    `YOUR AI EXPOSURE REPORT${opts.careerName ? ` (${opts.careerName})` : ""}: ${score}/100${opts.band ? ` · ${opts.band}` : ""} — higher means more exposed to what AI can already do. Inside, you drive it down.\n` +
     (opts.bandPhrase ? `Based on ${opts.careerName ?? "your role"} and your answers, your work looks ${opts.bandPhrase}.\n` : "") +
     (factors.length ? `The 4 factors driving it:\n${factors.map((f) => `  • [${f.kind === "expose" ? "exposing you" : "on your side"}] ${f.label}`).join("\n")}\n` : "") + `\n`;
   const communityText = !opts.communityUrl ? "" :

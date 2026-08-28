@@ -5,6 +5,7 @@ import { getCareer } from "@/data/careers";
 import { SITE } from "@/lib/site";
 import { SiteFooter } from "@/components/SiteFooter";
 import { GatedBlur } from "@/components/GatedBlur";
+import { OpportunityFlip } from "@/components/OpportunityFlip";
 import { EmailSignup } from "@/components/EmailSignup";
 
 const career = getCareer("computer-science")!;
@@ -64,6 +65,7 @@ export default function ComputerSciencePage() {
         >
           <CS />
         </GatedBlur>
+        <OpportunityFlip career={career} voice="career" />
         <EmailSignup
           label="Want the test behind these scores?"
           sub="Grab the free Starter Kit — the three-question test to size up any career you're weighing — plus each new article and edition. Free, no spam."

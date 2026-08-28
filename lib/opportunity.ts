@@ -14,6 +14,12 @@ import type { Career } from "@/data/careers";
 type Opening = { career: string; studying: string };
 
 export const OPENINGS: Record<string, Opening> = {
+  "computer-science": {
+    career:
+      "The entry rung is the most exposed work in the whole index at 8.1 — but the same tools clearing it are raising the value of the judgment above: architecture, security, and the safety-critical systems where a wrong call costs more than code (4.7–5.4). Move toward owning the system, become the engineer who commands the machine rather than competing with it on output, and the exposure at the bottom becomes your climb.",
+    studying:
+      "Don't train to be the entry developer the score puts at 8.1 — train to own systems, security and architecture, the judgment tier that holds at 4.7–5.4, and go in already commanding AI as your tooling rather than racing it on throughput. The field isn't dying; its entrance is, so aim past the entrance.",
+  },
   "accounting": {
     career:
       "The same shift that's automating the transactional layer is opening the licensed, judgment-heavy tier — and it's short-handed. Move toward it now, learn to run the machine on everything below it, and your exposure becomes your advantage.",
