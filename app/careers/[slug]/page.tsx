@@ -65,7 +65,7 @@ export default async function CareerPage({
   const { default: Body } = await loader();
 
   // Premium blocks are gated: the HTML stays server-rendered (SEO + JSON-LD
-  // intact) but is blurred behind the free Career Map. Free/visible: the
+  // intact) but is blurred behind the free AI Exposure Report. Free/visible: the
   // headline score, the voiced lede, and VersusGrid — the "high-level review."
   const components: MDXComponents = {
     ScoreTable: () => (

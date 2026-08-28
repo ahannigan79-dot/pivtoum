@@ -54,7 +54,7 @@ export async function generateMetadata({
 }
 
 /**
- * The *studying* voice of a career's free Career Map — same scores and
+ * The *studying* voice of a career's free AI Exposure Report — same scores and
  * components as /careers/[slug], framed for someone still choosing what to
  * study rather than someone already in the field. Distinct canonical URL so
  * each version ranks for its own search intent.

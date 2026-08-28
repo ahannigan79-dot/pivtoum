@@ -162,10 +162,10 @@ export async function POST(req: Request) {
             // Point studiers at the studying voice of the Career Map when one exists.
             const studying = pkg.stage === "planning" && hasStudyingVersion(s);
             return {
-              name: `Your ${c?.name ?? s} Career Map`,
+              name: `Your ${c?.name ?? s} AI Exposure Report`,
               url: `${SITE.url}/careers/${s}${studying ? "/studying" : ""}`,
               sub: "Where the safe and exposed tracks sit, and the six factors that decide which is which.",
-              cta: "Open your Career Map",
+              cta: "Open your AI Exposure Report",
             };
           }),
           {
@@ -201,7 +201,7 @@ export async function POST(req: Request) {
         await resend.emails.send({
           from,
           to: email,
-          subject: "Your Free Career Map is here",
+          subject: "Your Free AI Exposure Report is here",
           html,
           text,
         });

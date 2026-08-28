@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /**
- * Two-voice switch on a free Career Map. Same scores, two framings: the
+ * Two-voice switch on a free AI Exposure Report. Same scores, two framings: the
  * *career* version speaks to someone already in the field; the *studying*
  * version to someone still choosing what to study. Mirrors the Deep Dive's
  * active/planning toggle. Only rendered when both voices exist for a career.

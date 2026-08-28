@@ -56,7 +56,7 @@ export default function ComputerSciencePage() {
         <p className="kicker" style={{ marginTop: "1rem" }}>
           A preview of the complete Career Value Guide. The full read — durability, the honest
           downsides, the routes in, the program checklist and the admissions questions — opens with
-          your free Career Map.
+          your free AI Exposure Report.
         </p>
         <GatedBlur
           label="The complete Computer Science breakdown"

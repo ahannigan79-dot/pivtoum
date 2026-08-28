@@ -59,7 +59,7 @@ export default function Home() {
                   Start your free trial &rarr;
                 </Link>
                 <Link className="lp-btn ghost" href="/map">
-                  Get your free Career Map
+                  Get your free AI Exposure Report
                 </Link>
               </div>
               <p className="lp-hero-browse">
@@ -113,7 +113,7 @@ export default function Home() {
             </p>
             <p className="idx-free">
               <strong>Every career below is scored free.</strong> Tap any row for the read &mdash; the
-              deeper breakdown, and your personal number, open with your free Career Map.
+              deeper breakdown, and your personal number, open with your free AI Exposure Report.
             </p>
           </div>
 

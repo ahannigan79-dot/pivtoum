@@ -22,7 +22,7 @@ export function buildIndexRows(): IndexRow[] {
         loSafe: scoreTier(safest) === "safe",
         hiExposed: scoreTier(exposed) === "exposed",
         isLink: hasSamplerPage(c.slug) || isFreeProfile,
-        goLabel: isFreeProfile ? "Free profile" : "Career Map",
+        goLabel: isFreeProfile ? "Free profile" : "Exposure Report",
       };
     });
 }

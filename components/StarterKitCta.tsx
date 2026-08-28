@@ -28,20 +28,20 @@ export function StarterKitCta({
         {isSampler ? (
           bottom ? (
             <>
-              <strong>This is the read on {title}. Now get your own.</strong> Your free Career Map
+              <strong>This is the read on {title}. Now get your own.</strong> Your free AI Exposure Report
               scores your exact situation, lays all 28 careers side by side, and names your next
               move — emailed, yours to keep.
             </>
           ) : (
             <>
-              <strong>This is the read on {title}. Get yours, scored for you.</strong> Your free
-              Career Map: your exposure for your exact situation, all 28 careers side by side, and
-              your next move.
+              <strong>This is the read on {title}. Get yours, scored for you.</strong> Your free AI
+              Exposure Report: your exposure for your exact situation, all 28 careers side by side,
+              and your next move.
             </>
           )
         ) : (
           <>
-            <strong>Build your free Career Map</strong> — all 28 careers scored, a short guide
+            <strong>Build your free AI Exposure Report</strong> — all 28 careers scored, a short guide
             written for exactly where you stand, and the full read on the careers that matter most
             to you. Yours to keep, print, and share.
           </>
@@ -49,7 +49,7 @@ export function StarterKitCta({
       </p>
       <div className="kit-cta-actions">
         <Link className="kit-cta-btn" href={mapHref}>
-          Build my free Career Map &rarr;
+          Build my free AI Exposure Report &rarr;
         </Link>
         <Link className="kit-cta-buy" href="/community">
           or see everything inside the community &rarr;

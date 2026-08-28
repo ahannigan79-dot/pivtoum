@@ -21,7 +21,7 @@ export default function CommunityPage() {
           <p className="ck">Winning in the Age of AI · The community</p>
           <h1>The biggest shift in a century is <span className="hl">your biggest opening.</span></h1>
           <p className="lede">
-            Your free Career Map showed you where you stand. This is where you turn it into an advantage —
+            Your free AI Exposure Report showed you where you stand. This is where you turn it into an advantage —
             get ahead of the people frozen by fear, become the one who wields AI best, and come out further
             ahead than you went in.
           </p>
@@ -222,7 +222,7 @@ export default function CommunityPage() {
           </ul>
           <div className="cta">
             <Link className="btn" href={SITE.join}>Start your free trial →</Link>
-            <Link className="btn ghost" href="/map">Not ready? Get your free Career Map</Link>
+            <Link className="btn ghost" href="/map">Not ready? Get your free AI Exposure Report</Link>
           </div>
           <p className="fine">Seven days free · cancel anytime · your Map and progress come with you.</p>
         </section>

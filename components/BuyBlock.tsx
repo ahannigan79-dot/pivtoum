@@ -10,7 +10,7 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
       <div className="buy-secondary">
         <h3>Turn the read into your next move — together</h3>
         <p>
-          Your Career Map tells you where {title ?? "a career"} stands. <strong>Winning in the Age of AI</strong> is
+          Your AI Exposure Report tells you where {title ?? "a career"} stands. <strong>Winning in the Age of AI</strong> is
           how you act on it — your living Career Map re-scored as the field moves, a pod in your exact
           lane, the reps that build your edge, and live events with the founder. The full profile for
           every career that matters to you, plus the community that keeps you moving.

@@ -34,7 +34,7 @@ export function GatedBlur({
               Read it in the community →
             </a>
             <a className="gated-go ghost" href="/map">
-              Or start with your free Career Map →
+              Or start with your free AI Exposure Report →
             </a>
           </div>
         </div>

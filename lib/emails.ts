@@ -85,7 +85,7 @@ export function purchaseEmail(
 }
 
 /**
- * The Career Map package email — delivered from the /map capture. Lists the
+ * The AI Exposure Report package email — delivered from the /map capture. Lists the
  * assembled package (index + the stage/voice guide + overview + the chosen
  * career breakdowns) as a download list, then surfaces the same subscriber
  * discount. Same branded, table-based, inline-styled construction as the others.
@@ -106,8 +106,8 @@ export function packageEmail(opts: {
   communityUrl?: string; // link to the Community guide (/community)
 }) {
   const { items, code, discountLabel, expiresDays } = opts;
-  const introLine = "Thanks for running your Exposure Check. Your Free Career Map is below &mdash; your score and the four factors behind it, your career&rsquo;s full breakdown, and the Career Index for all 28 &mdash; plus the look inside the community, where you turn that number into your opening.";
-  const introText = "Thanks for running your Exposure Check. Your Free Career Map is below — your score and the four factors behind it, your career's full breakdown, and the Career Index for all 28 — plus the look inside the community, where you turn that number into your opening.";
+  const introLine = "Thanks for running your Exposure Check. Your Free AI Exposure Report is below &mdash; your score and the four factors behind it, your career&rsquo;s full breakdown, and the Career Index for all 28 &mdash; plus the look inside the community, where you turn that number into your opening.";
+  const introText = "Thanks for running your Exposure Check. Your Free AI Exposure Report is below — your score and the four factors behind it, your career's full breakdown, and the Career Index for all 28 — plus the look inside the community, where you turn that number into your opening.";
   // Brand tokens (light) — exact hex from the design system.
   const ink = "#1C1A16";
   const inkSoft = "#6B655B";
@@ -140,7 +140,7 @@ export function packageEmail(opts: {
     : "";
   const scoreBlock = score == null ? "" : `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${rule};border-radius:6px;margin:0 0 22px;"><tr><td style="padding:20px 22px;">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${pencil};margin:0 0 4px;">Your Career Map${forName}</div>
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${pencil};margin:0 0 4px;">Your AI Exposure Report${forName}</div>
       <div style="margin:0 0 4px;"><span style="font-family:Georgia,'Times New Roman',serif;font-size:46px;font-weight:bold;line-height:1;color:${scoreColor};">${score}<span style="font-size:20px;color:${pencil};font-weight:normal;">/100</span></span>${bandTag}</div>
       ${verdictLine}
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${pencil};margin:0 0 14px;">Higher means more exposed to what AI can already do. Inside, you drive it down.</div>
@@ -173,11 +173,11 @@ export function packageEmail(opts: {
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
         <tr><td style="padding:16px 8px 26px;">
           <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
-          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your Career Map, plus ${discountLabel} for subscribers.</span>
+          <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your AI Exposure Report, plus ${discountLabel} for subscribers.</span>
 
-          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The Career Map &middot; Fall 2026</div>
+          <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The AI Exposure Report &middot; Fall 2026</div>
           <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:13px;color:${pencil};margin:0 0 12px;">Careers, mapped for the age of AI</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Free Career Map is here</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:${ink};margin:0 0 16px;">Your Free AI Exposure Report is here</div>
 
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 6px;">${introLine}</p>
           <p style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:${ink};margin:0 0 20px;">Your exposure score and the factors behind it are up top &mdash; and below, the full look inside the community, with <strong>${discountLabel} your first purchase</strong>.</p>
@@ -211,7 +211,7 @@ export function packageEmail(opts: {
     `And ${discountLabel} your first purchase with code ${code} — good for ${expiresDays} days.\n`;
 
   const text =
-    `Your Free Career Map is here.\n\n` +
+    `Your Free AI Exposure Report is here.\n\n` +
     scoreText +
     `${introText}\n\n` +
     items.map((it) => `• ${it.name}\n    ${it.url}`).join("\n\n") +

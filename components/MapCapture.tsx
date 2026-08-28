@@ -72,9 +72,9 @@ export function MapCapture({
   if (status === "done") {
     return (
       <div className="pkg pkg-done">
-        <p className="pkg-done-h">Your Career Map is on its way.</p>
+        <p className="pkg-done-h">Your AI Exposure Report is on its way.</p>
         <p className="pkg-done-s">
-          Check your inbox — your Career Map for <b>{careerName}</b>, plus the 28-career index, is
+          Check your inbox — your AI Exposure Report for <b>{careerName}</b>, plus the 28-career index, is
           landing now. Didn&rsquo;t arrive? Check spam, it&rsquo;ll be there.
         </p>
       </div>

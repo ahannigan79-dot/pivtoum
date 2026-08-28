@@ -9,11 +9,11 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How exposed is your career to AI?",
   description:
-    "Run the free Exposure Check — see how exposed your role is to AI, and why. Then unlock your full Career Map: your exact score, your winning strategy, and the moves that lower it.",
+    "Run the free Exposure Check — see how exposed your role is to AI, and why. Then unlock your full AI Exposure Report: your exact score, your winning strategy, and the moves that lower it.",
   alternates: { canonical: "/map" },
 };
 
-/** The Career Map landing — the band-only Exposure Check is the hero (run it,
+/** The AI Exposure Report landing — the band-only Exposure Check is the hero (run it,
  *  see your band, then capture email for the package + the community). Distraction-
  *  free capture for paid ad traffic; nav hidden via SiteHeader. */
 export default async function MapLanding({
@@ -59,7 +59,7 @@ export default async function MapLanding({
         </div>
 
         <p className="scr-foot">
-          Pivotum · The Career Map · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+          Pivotum · The AI Exposure Report · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
         </p>
       </div>
     </main>

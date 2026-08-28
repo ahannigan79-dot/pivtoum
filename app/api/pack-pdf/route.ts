@@ -5,7 +5,7 @@ import { blobToken } from "@/lib/blob";
 export const dynamic = "force-dynamic";
 
 /**
- * Public redirect to a free Career Map package doc in Blob — the stage/voice
+ * Public redirect to a free AI Exposure Report package doc in Blob — the stage/voice
  * guides and overviews delivered by the /map capture. Allowlisted so the `doc`
  * param can't reach arbitrary Blob paths. Uploaded by /api/upload-samplers.
  * Free content, so no signed link (unlike the paid profiles via /api/download).

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE.name}`,
   },
   description:
-    "Pivotum scores careers on how exposed they are to AI, on a fixed published methodology, re-scored every six months. A free Career Map for anyone weighing a career or a course.",
+    "Pivotum scores careers on how exposed they are to AI, on a fixed published methodology, re-scored every six months. A free AI Exposure Report for anyone weighing a career or a course.",
   verification: {
     other: { "facebook-domain-verification": "s9vudqllxjp89v7ou91g0ssnhev02p" },
   },
