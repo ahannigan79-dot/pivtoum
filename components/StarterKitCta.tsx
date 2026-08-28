@@ -28,14 +28,15 @@ export function StarterKitCta({
         {isSampler ? (
           bottom ? (
             <>
-              <strong>Read this far? Take {title} with you.</strong> Build your free Career Map —
-              this read, all 28 careers scored, and a short guide for exactly where you stand. Yours
-              to keep, print, and talk through with your family.
+              <strong>This is the read on {title}. Now get your own.</strong> Your free Career Map
+              scores your exact situation, lays all 28 careers side by side, and names your next
+              move — emailed, yours to keep.
             </>
           ) : (
             <>
-              <strong>Want {title} to keep — and the rest?</strong> Build your free Career Map: this
-              read, all 28 careers scored, and a short guide written for exactly where you stand.
+              <strong>This is the read on {title}. Get yours, scored for you.</strong> Your free
+              Career Map: your exposure for your exact situation, all 28 careers side by side, and
+              your next move.
             </>
           )
         ) : (
