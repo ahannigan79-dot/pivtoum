@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { MDXComponents } from "mdx/types";
 import { getCareer } from "@/data/careers";
-import { careerMdx, samplerSlugs, hasStudyingVersion } from "@/content/careers/registry";
-import { SampleVoiceToggle } from "@/components/SampleVoiceToggle";
+import { careerMdxStudying } from "@/content/careers/registry";
 import { SITE } from "@/lib/site";
 import { CareerHeader } from "@/components/CareerHeader";
 import { ScoreBadge } from "@/components/ScoreBadge";
@@ -21,11 +20,12 @@ import { BuyBlock } from "@/components/BuyBlock";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageView } from "@/components/PageView";
 import { StarterKitCta } from "@/components/StarterKitCta";
+import { SampleVoiceToggle } from "@/components/SampleVoiceToggle";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return samplerSlugs.map((slug) => ({ slug }));
+  return Object.keys(careerMdxStudying).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -36,15 +36,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const career = getCareer(slug);
   if (!career) return {};
-  const title = `${career.title} The ${career.edition} Degree Risk Score`;
-  const url = `${SITE.url}/careers/${career.slug}`;
+  const title = `Should You Study ${career.name}? The ${career.edition} AI Exposure Score`;
+  const url = `${SITE.url}/careers/${career.slug}/studying`;
+  const description = `${career.name} for students choosing what to study — the AI exposure score, the six factors, and what it means before you commit.`;
   return {
     title,
-    description: career.description,
-    alternates: { canonical: `/careers/${career.slug}` },
+    description,
+    alternates: { canonical: `/careers/${career.slug}/studying` },
     openGraph: {
       title,
-      description: career.description,
+      description,
       url,
       type: "article",
       publishedTime: career.datePublished,
@@ -53,21 +54,24 @@ export async function generateMetadata({
   };
 }
 
-export default async function CareerPage({
+/**
+ * The *studying* voice of a career's free Career Map — same scores and
+ * components as /careers/[slug], framed for someone still choosing what to
+ * study rather than someone already in the field. Distinct canonical URL so
+ * each version ranks for its own search intent.
+ */
+export default async function CareerStudyingPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const career = getCareer(slug);
-  const loader = careerMdx[slug];
+  const loader = careerMdxStudying[slug];
   if (!career || !loader) notFound();
 
   const { default: Body } = await loader();
 
-  // Premium blocks are gated: the HTML stays server-rendered (SEO + JSON-LD
-  // intact) but is blurred behind the free Career Map. Free/visible: the
-  // headline score, QuickAnswer, and VersusGrid — the "high-level review."
   const components: MDXComponents = {
     ScoreTable: () => (
       <>
@@ -93,7 +97,6 @@ export default async function CareerPage({
     RelatedCareers: () => <RelatedCareers career={career} />,
     FullProfileTable: () => <FullProfileTable career={career} />,
     BuyBlock: () => <BuyBlock source={career.slug} title={career.name} />,
-    // Every sampler's single ordered list is the safe-vs-exposed ranking — gate it.
     ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
       <GatedBlur compact label="The safe-vs-exposed ranking — members">
         <ol className="ranked" {...props} />
@@ -104,13 +107,13 @@ export default async function CareerPage({
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: career.title,
+    headline: `Should You Study ${career.name}?`,
     description: career.description,
     datePublished: career.datePublished,
     dateModified: career.dateModified,
     author: { "@type": "Organization", name: SITE.name },
     publisher: { "@type": "Organization", name: SITE.name },
-    mainEntityOfPage: `${SITE.url}/careers/${career.slug}`,
+    mainEntityOfPage: `${SITE.url}/careers/${career.slug}/studying`,
   };
 
   const faqLd =
@@ -134,7 +137,7 @@ export default async function CareerPage({
       <div className="body">
         <PageView event="sampler_view" />
         <CareerHeader career={career} />
-        {hasStudyingVersion(career.slug) && <SampleVoiceToggle slug={career.slug} current="career" />}
+        <SampleVoiceToggle slug={career.slug} current="studying" />
         <ScoreBadge career={career} />
         <QuickAnswer career={career} />
         <Body components={components} />

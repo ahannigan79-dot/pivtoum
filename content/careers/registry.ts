@@ -34,5 +34,16 @@ export const careerMdx: Record<string, () => Promise<MDXModule>> = {
   "veterinary": () => import("./veterinary.mdx"),
 };
 
+/**
+ * slug → the *studying* voice of the same Career Map (for someone still choosing
+ * what to study), where one exists. The default sampler above is the *career*
+ * voice (for someone already in the field). Same scores, same components; the
+ * framing prose differs. Hand-maintained alongside the two-voice MDX.
+ */
+export const careerMdxStudying: Record<string, () => Promise<MDXModule>> = {
+  "accounting": () => import("./accounting-studying.mdx"),
+};
+
 export const samplerSlugs = Object.keys(careerMdx);
 export function hasSamplerPage(slug: string): boolean { return slug in careerMdx; }
+export function hasStudyingVersion(slug: string): boolean { return slug in careerMdxStudying; }
