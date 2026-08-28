@@ -141,13 +141,7 @@ export const careers: Career[] = [
         "a": "It is already substantial in testing, sampling and workpaper preparation. What it does not do is form the opinion or carry the liability, and that distinction is what the score rests on."
       }
     ],
-    "related": [
-      "finance",
-      "business",
-      "law",
-      "computer-science",
-      "nursing"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -272,13 +266,7 @@ export const careers: Career[] = [
         "a": "Field ecology scores 4.7 and consultancy 5.2. Both have growing demand driven by regulation and climate adaptation, though report-writing and analysis are automating."
       }
     ],
-    "related": [
-      "veterinary",
-      "trades",
-      "engineering",
-      "data-science",
-      "construction"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -403,13 +391,7 @@ export const careers: Career[] = [
         "a": "Both score very well — 2.6 and 3.1. Speech-language pathology is consistently under-recruited, and OT assistant roles are projected to grow strongly with a shorter training route."
       }
     ],
-    "related": [
-      "nursing",
-      "medicine",
-      "psychology",
-      "veterinary",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -525,13 +507,7 @@ export const careers: Career[] = [
         "a": "Construction management scores better on exposure and is chronically short of people. Architecture offers design work that construction management does not. The choice is about what they actually want to do all day."
       }
     ],
-    "related": [
-      "engineering",
-      "construction",
-      "design",
-      "trades",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -647,13 +623,7 @@ export const careers: Career[] = [
         "a": "At entry, marginally — 7.6 against 8.1, both high. At senior level business management (4.9) and software architecture (5.4) are close. Neither field protects its own entry route."
       }
     ],
-    "related": [
-      "finance",
-      "accounting",
-      "marketing",
-      "computer-science",
-      "trades"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -769,13 +739,7 @@ export const careers: Career[] = [
         "a": "At the site end, yes — 3.3 against 4.0 for licensed engineering. Engineering carries stronger licensing protection; construction management carries stronger physical protection."
       }
     ],
-    "related": [
-      "trades",
-      "engineering",
-      "architecture",
-      "transport",
-      "business"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -891,13 +855,7 @@ export const careers: Career[] = [
         "a": "Incident response and threat hunting at 5.0. Anything playbook-driven scores considerably worse."
       }
     ],
-    "related": [
-      "computer-science",
-      "data-science",
-      "engineering",
-      "law",
-      "trades"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1013,13 +971,7 @@ export const careers: Career[] = [
         "a": "Statistical depth tends to travel better than tooling. Knowing why a method applies survives the automation of running it."
       }
     ],
-    "related": [
-      "computer-science",
-      "cybersecurity",
-      "engineering",
-      "finance",
-      "business"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1135,13 +1087,7 @@ export const careers: Career[] = [
         "a": "Comparable — general dentistry 2.7 against patient-facing medicine 2.9. Dentistry has a much shorter path to independent practice and no equivalent of radiology's exposure."
       }
     ],
-    "related": [
-      "medicine",
-      "nursing",
-      "allied-health",
-      "veterinary",
-      "pharmacy"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1257,13 +1203,7 @@ export const careers: Career[] = [
         "a": "If the aptitude is genuine, aim it at direction, UX, or a domain-paired path from the start rather than assuming a production job will lead there. That progression is the part that has broken."
       }
     ],
-    "related": [
-      "marketing",
-      "architecture",
-      "journalism",
-      "computer-science",
-      "trades"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1379,13 +1319,7 @@ export const careers: Career[] = [
         "a": "Substantially, and it is among the faster-moving tracks we score. A degree used as a generic analysis credential at a desk is the exposed version of engineering."
       }
     ],
-    "related": [
-      "computer-science",
-      "trades",
-      "architecture",
-      "construction",
-      "data-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1501,13 +1435,7 @@ export const careers: Career[] = [
         "a": "At the top, finance advisory (4.6) beats CPA advisory (5.2). At the bottom, finance is worse — entry analyst 8.0 against bookkeeping 7.9, and accounting's licensure props its on-ramp open in a way finance's does not."
       }
     ],
-    "related": [
-      "accounting",
-      "business",
-      "computer-science",
-      "law",
-      "data-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1632,13 +1560,7 @@ export const careers: Career[] = [
         "a": "No, and this is one of the few fields where progression genuinely runs on demonstrated competence. Hospitality management degrees exist and help at the corporate end; they are not required to run a kitchen or a venue."
       }
     ],
-    "related": [
-      "trades",
-      "business",
-      "construction",
-      "transport",
-      "marketing"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1754,13 +1676,7 @@ export const careers: Career[] = [
         "a": "If the pull is genuine, the defensible version is journalism plus a domain. If the pull is writing rather than reporting specifically, worth reading our marketing and content profiles alongside this one, since those score worse."
       }
     ],
-    "related": [
-      "design",
-      "marketing",
-      "law",
-      "computer-science",
-      "data-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -1876,13 +1792,7 @@ export const careers: Career[] = [
         "a": "On exposure alone, yes if the destination is advocacy or counsel. The question to put to any law school is where its graduates actually work in year one, and what they spend their days doing."
       }
     ],
-    "related": [
-      "computer-science",
-      "accounting",
-      "business",
-      "finance",
-      "nursing"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2007,13 +1917,7 @@ export const careers: Career[] = [
         "a": "They are very different bets. Nursing scores 2.8, takes two to four years, and leads directly to licensed practice. Biology scores 7.2 on its own and requires a further step to reach anything comparable."
       }
     ],
-    "related": [
-      "medicine",
-      "nursing",
-      "psychology",
-      "agriculture",
-      "data-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2129,13 +2033,7 @@ export const careers: Career[] = [
         "a": "They score similarly at the exposed end — content execution 8.2 against business analyst 7.6 — and business has slightly better protected destinations. Neither has any structural moat. If the interest is genuinely in marketing, the analytics route is the defensible version."
       }
     ],
-    "related": [
-      "design",
-      "business",
-      "journalism",
-      "computer-science",
-      "nursing"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2269,13 +2167,7 @@ export const careers: Career[] = [
         "a": "On exposure alone, yes — medicine holds the strongest protection stack we score. The harder questions are the ones that always applied: the length of training, the cost, and whether the work suits the person."
       }
     ],
-    "related": [
-      "nursing",
-      "allied-health",
-      "pharmacy",
-      "psychology",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2400,13 +2292,7 @@ export const careers: Career[] = [
         "a": "On our scoring, considerably. Bedside nursing scores 2.8; entry-level software development scores 8.1. That surprises most people, and it is the most consistent finding in this index."
       }
     ],
-    "related": [
-      "medicine",
-      "allied-health",
-      "psychology",
-      "teaching",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2522,13 +2408,7 @@ export const careers: Career[] = [
         "a": "No — community pharmacy at 4.9 against patient-facing medicine at 2.9. Pharmacy is closer to radiology, medicine's most exposed specialty."
       }
     ],
-    "related": [
-      "medicine",
-      "nursing",
-      "allied-health",
-      "veterinary",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2653,13 +2533,7 @@ export const careers: Career[] = [
         "a": "Licensed clinical psychology scores 3.5; bedside nursing 2.8. Both are well protected. Nursing gets there in two to four years; psychology in six to eight."
       }
     ],
-    "related": [
-      "nursing",
-      "medicine",
-      "teaching",
-      "business",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2775,13 +2649,7 @@ export const careers: Career[] = [
         "a": "It already is, and it is the clearest benefit of AI in any profession we score. Whether that time returns to practice or is absorbed by higher caseloads depends on funding decisions rather than the technology."
       }
     ],
-    "related": [
-      "psychology",
-      "nursing",
-      "teaching",
-      "law",
-      "business"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -2897,13 +2765,7 @@ export const careers: Career[] = [
         "a": "Be careful with the ones built on content delivery. Tutoring businesses, online course instruction and test prep share the online track's exposure rather than the classroom's protection."
       }
     ],
-    "related": [
-      "psychology",
-      "nursing",
-      "social-work",
-      "business",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -3019,13 +2881,7 @@ export const careers: Career[] = [
         "a": "Less hard than most graduate schemes. The sector is short of entrants, and public investment in registered apprenticeships has been expanding."
       }
     ],
-    "related": [
-      "engineering",
-      "construction",
-      "computer-science",
-      "nursing",
-      "business"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -3150,13 +3006,7 @@ export const careers: Career[] = [
         "a": "General document translation, at 8.8 — ahead of graphic design production at 8.4 and entry-level software development at 8.1."
       }
     ],
-    "related": [
-      "design",
-      "journalism",
-      "marketing",
-      "law",
-      "nursing"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -3281,13 +3131,7 @@ export const careers: Career[] = [
         "a": "On exposure, it scores well. The genuine obstacles are training cost and the time to a first commercial seat, not automation."
       }
     ],
-    "related": [
-      "trades",
-      "construction",
-      "business",
-      "engineering",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
@@ -3412,13 +3256,7 @@ export const careers: Career[] = [
         "a": "Comparable at the clinical end — small animal practice 2.7 against primary care 2.9. Veterinary has no equivalent of radiology, which is human medicine's most exposed specialty at 4.9."
       }
     ],
-    "related": [
-      "medicine",
-      "nursing",
-      "allied-health",
-      "agriculture",
-      "computer-science"
-    ],
+    "related": [],
     "hasFullProfile": true
   },
   {
