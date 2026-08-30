@@ -16,7 +16,9 @@ import { PodComposer } from "@/components/hub/pods/PodComposer";
 import { ThreadNav } from "@/components/hub/pods/ThreadNav";
 import { PodGoal } from "@/components/hub/pods/PodGoal";
 import { PodProfile } from "@/components/hub/pods/PodProfile";
+import { PodCheckin } from "@/components/hub/pods/PodCheckin";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
+import { hasCheckedIn } from "@/lib/pod-ritual";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -52,6 +54,8 @@ export default async function PodPage({
   await ensurePodWelcome(pod.id, pod.name, pod.goal, announcements?.id ?? null);
   const active = threads.find((t) => t.slug === threadSlug) ?? threads[0];
   const feed = active ? await getThreadFeed(active.id, userId) : [];
+  const onCheckinThread = active?.slug === "check-in";
+  const myCheckedIn = onCheckinThread && iAmIn ? await hasCheckedIn(pod.id, userId) : false;
 
   return (
     <>
@@ -80,6 +84,7 @@ export default async function PodPage({
         <div className="pod-layout">
           <div className="pod-main hub-feed">
             <ValuesBanner variant="pod" />
+            {iAmIn && onCheckinThread && <PodCheckin slug={pod.slug} checkedIn={myCheckedIn} />}
             {iAmIn ? (
               <PodComposer slug={pod.slug} threadId={active?.id ?? null} shareText={shareText}
                 placeholder={active ? `Post in ${active.emoji ?? ""} ${active.name}… 🎉` : undefined} />
@@ -102,6 +107,9 @@ export default async function PodPage({
 
           <aside className="pod-side">
             <div className="card">
+              {pod.streakWeeks > 0 && (
+                <p className="pod-streak">🔥 {pod.streakWeeks}-week streak</p>
+              )}
               <p className="ck">{members.length} {members.length === 1 ? "member" : "members"}</p>
               <div className="pod-members">
                 {members.map((m) => (

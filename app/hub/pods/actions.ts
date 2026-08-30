@@ -8,6 +8,7 @@ import { podMembers, pods, posts, podThreads, profiles } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { getPodBySlug, setPodLeader, leadsPod, syncPodHelper, joinMemberToPod, podRoom } from "@/lib/pods";
 import { autoPlaceMember } from "@/lib/pod-match";
+import { recordCheckin } from "@/lib/pod-ritual";
 import { createThreadIn } from "@/lib/threads";
 import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
@@ -159,6 +160,23 @@ export async function createPodPost(slug: string, threadId: string | null, formD
     .values({ authorId: userId, podId: pod.id, threadId: validThread, body: body.slice(0, 5000) })
     .returning({ id: posts.id });
   if (inserted[0]) await attachFiles(inserted[0].id, formData);
+  revalidatePath(`/hub/pods/${slug}`);
+}
+
+/** Submit (or update) this week's pod check-in — the 3-line ritual. Members only. */
+export async function submitCheckin(slug: string, formData: FormData) {
+  const { userId } = await auth();
+  if (!userId) return;
+  const pod = await getPodBySlug(slug);
+  if (!pod) return;
+  const member = await db.select({ podId: podMembers.podId }).from(podMembers)
+    .where(and(eq(podMembers.podId, pod.id), eq(podMembers.memberId, userId))).limit(1);
+  if (!member.length) return;
+  await recordCheckin(userId, pod.id, {
+    shipped: String(formData.get("shipped") ?? ""),
+    stuck: String(formData.get("stuck") ?? ""),
+    move: String(formData.get("move") ?? ""),
+  });
   revalidatePath(`/hub/pods/${slug}`);
 }
 

@@ -4,7 +4,7 @@ import { posts, profiles } from "@/db/schema";
 import { getFounderIds } from "@/lib/pods";
 
 /** First founder id, or null if none exists yet. Seed posts are authored by them. */
-async function seedAuthor(): Promise<string | null> {
+export async function seedAuthor(): Promise<string | null> {
   const founders = await getFounderIds();
   if (!founders.length) return null;
   // Prefer a founder that actually has a profile row (FK target).

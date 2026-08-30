@@ -858,6 +858,27 @@ a.pod-member:hover span { color:var(--ink); }
 .place-auto:disabled { opacity:0.6; cursor:default; }
 .place-foot { margin:20px 0 0; color:var(--soft); font-size:0.88rem; }
 
+/* Weekly pod check-in (the ritual) + streak chip. */
+.checkin-open { width:100%; text-align:left; font-family:var(--sans); font-weight:600; font-size:0.9rem;
+  color:var(--green-deep); background:rgba(127,192,138,0.08); border:1px solid var(--green-deep);
+  border-radius:12px; padding:12px 15px; cursor:pointer; margin:0 0 12px; }
+.checkin-open:hover { background:rgba(127,192,138,0.14); }
+.checkin { display:flex; flex-direction:column; gap:10px; border:1px solid var(--rule); border-radius:14px;
+  background:var(--panel); padding:15px 17px; margin:0 0 14px; }
+.checkin-title { margin:0; font-family:var(--sans); font-weight:800; font-size:0.7rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--green); }
+.checkin label { display:flex; flex-direction:column; gap:5px; font-size:0.82rem; color:var(--pencil); }
+.checkin input { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:9px 12px;
+  color:var(--ink); font-family:var(--sans); font-size:0.94rem; outline:none; }
+.checkin-foot { display:flex; justify-content:flex-end; gap:8px; margin-top:2px; }
+.checkin-foot button { font-family:var(--sans); font-weight:700; font-size:0.84rem; color:var(--on-fill);
+  background:var(--green); border:0; border-radius:9px; padding:8px 14px; cursor:pointer; }
+.checkin-foot button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
+.checkin-foot button:disabled { opacity:0.6; cursor:default; }
+.pod-streak { margin:0 0 8px; font-family:var(--sans); font-weight:800; font-size:0.82rem; color:var(--amber);
+  background:var(--amber-bg, rgba(184,135,58,0.12)); border:1px solid var(--rule2); border-radius:20px;
+  padding:5px 12px; display:inline-block; }
+
 /* ---- exposure gauge ---- */
 .gauge { display:block; width:100%; height:auto; margin:8px 0 6px; }
 .gauge-val { fill:var(--ink); font-family:var(--mono); font-weight:600; font-size:14px; }
