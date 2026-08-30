@@ -17,7 +17,7 @@ export type NotifPayload = {
   entityId?: string; // for de-duping bursts (e.g. the post id)
 };
 
-export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore" | "submission";
+export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore" | "submission" | "pod";
 
 export type NotifItem = {
   id: string;
@@ -27,7 +27,7 @@ export type NotifItem = {
 } & NotifPayload;
 
 const ICON: Record<NotifKind, string> = {
-  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊", submission: "📝",
+  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊", submission: "📝", pod: "👥",
 };
 
 export function notifIcon(kind: string): string {
@@ -56,7 +56,7 @@ const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
 };
 
 /** Kinds worth a lock-screen push (reactions stay in-app only to avoid noise). */
-const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission"]);
+const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission", "pod"]);
 
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
@@ -103,6 +103,14 @@ async function maybeEmail(memberId: string, kind: NotifKind, payload: NotifPaylo
 }
 
 /* ── Typed emitters, called from server actions ────────────────────────── */
+
+/** A pod-lifecycle nudge (no actor): "pick your pod" follow-up, or "you're placed". */
+export async function notifyPod(
+  memberId: string,
+  opts: { title: string; preview?: string; href: string; entityId?: string },
+): Promise<void> {
+  await notify(memberId, "pod", { title: opts.title, preview: opts.preview, href: opts.href, entityId: opts.entityId });
+}
 
 /** Someone replied to / commented on a post → tell the author. */
 export async function notifyReply(postId: string, actorId: string, preview: string): Promise<void> {
