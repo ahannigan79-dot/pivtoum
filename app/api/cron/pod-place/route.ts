@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { runPlacementSweep } from "@/lib/pod-sweep";
+import { runTrialNudges } from "@/lib/trial-lifecycle";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 /**
- * Daily placement safety net (see vercel.json). Nudges day-1 solo members and
- * auto-places day-2 ones. Authenticates like the other crons: Vercel sends
+ * Daily membership-lifecycle sweep (see vercel.json): nudges day-1 solo members,
+ * auto-places day-2 ones, and sends the end-of-trial continuity nudge to trials
+ * ending within ~2 days. Authenticates like the other crons: Vercel sends
  * `Authorization: Bearer ${CRON_SECRET}`; `?key=` is accepted for manual runs.
  * With no secret configured the endpoint is closed.
  */
@@ -20,8 +22,8 @@ async function handle(req: Request): Promise<NextResponse> {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const result = await runPlacementSweep();
-  return NextResponse.json({ ok: true, ...result });
+  const [placement, trials] = await Promise.all([runPlacementSweep(), runTrialNudges()]);
+  return NextResponse.json({ ok: true, ...placement, trialNudged: trials.nudged });
 }
 
 export const GET = handle;

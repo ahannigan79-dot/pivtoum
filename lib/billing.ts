@@ -111,16 +111,31 @@ export async function syncSubscription(sub: Stripe.Subscription, memberId?: stri
   const periodEnd =
     (sub as unknown as { current_period_end?: number }).current_period_end ??
     (sub.items.data[0] as unknown as { current_period_end?: number })?.current_period_end;
-  const fields = { subStatus: sub.status, subRenewsAt: periodEnd ? new Date(periodEnd * 1000) : null, subPlan: planLabel(sub) };
+  const newStatus = sub.status;
+  const fields = { subStatus: newStatus, subRenewsAt: periodEnd ? new Date(periodEnd * 1000) : null, subPlan: planLabel(sub) };
+
+  // A trialing → active flip is a conversion — send a warm "you're staying".
+  async function maybeCelebrate(id: string, prev: string | null) {
+    if (prev === "trialing" && newStatus === "active") {
+      try { const { celebrateConversion } = await import("@/lib/trial-lifecycle"); await celebrateConversion(id); }
+      catch { /* non-fatal */ }
+    }
+  }
 
   if (memberId) {
+    const before = await db.select({ prev: profiles.subStatus }).from(profiles).where(eq(profiles.clerkUserId, memberId)).limit(1);
     await db.update(profiles).set({ stripeCustomerId: customerId, ...fields }).where(eq(profiles.clerkUserId, memberId));
+    await maybeCelebrate(memberId, before[0]?.prev ?? null);
     return;
   }
   // Already linked to this customer? Update in place.
-  const updated = await db.update(profiles).set(fields)
-    .where(eq(profiles.stripeCustomerId, customerId)).returning({ id: profiles.clerkUserId });
-  if (updated.length) return;
+  const before = await db.select({ id: profiles.clerkUserId, prev: profiles.subStatus })
+    .from(profiles).where(eq(profiles.stripeCustomerId, customerId)).limit(1);
+  if (before.length) {
+    await db.update(profiles).set(fields).where(eq(profiles.stripeCustomerId, customerId));
+    await maybeCelebrate(before[0].id, before[0].prev);
+    return;
+  }
 
   // Not linked yet → match by the customer's email and link.
   let email: string | null = null;
