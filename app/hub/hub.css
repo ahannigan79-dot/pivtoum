@@ -800,6 +800,33 @@ a.pod-member:hover span { color:var(--ink); }
   border:1px dashed var(--green-deep); border-radius:12px; padding:10px 15px; cursor:pointer; margin:0 0 16px; width:100%; text-align:left; }
 .pod-goal-set:hover { color:var(--ink); background:rgba(127,192,138,0.06); }
 
+/* Pod profile — the captain-written vibe + lane/region (identity for placement). */
+.pod-profile { border:1px solid var(--rule); border-radius:12px; background:var(--panel); padding:13px 16px; margin:0 0 16px; }
+.pod-profile-vibe { margin:0 0 9px; color:var(--ink); font-size:0.98rem; line-height:1.5; }
+.pod-profile-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.pod-tag { font-family:var(--sans); font-size:0.72rem; font-weight:700; color:var(--green); background:rgba(127,192,138,0.1);
+  border:1px solid var(--rule2); border-radius:20px; padding:3px 10px; }
+.pod-profile-edit { margin-left:auto; font-size:0.8rem; color:var(--soft); background:transparent;
+  border:1px solid var(--rule2); border-radius:20px; padding:4px 11px; cursor:pointer; }
+.pod-profile-edit:hover { border-color:var(--pencil); color:var(--ink); }
+.pod-profile-set { display:block; width:100%; text-align:left; font-family:var(--sans); font-size:0.86rem;
+  color:var(--soft); background:transparent; border:1px dashed var(--green-deep); border-radius:12px;
+  padding:11px 15px; cursor:pointer; margin:0 0 16px; }
+.pod-profile-set span { color:var(--pencil); }
+.pod-profile-set:hover { color:var(--ink); background:rgba(127,192,138,0.06); }
+.pod-profile.editing { display:flex; flex-direction:column; gap:11px; }
+.pod-profile.editing label { display:flex; flex-direction:column; gap:5px; font-size:0.78rem; color:var(--pencil); }
+.pod-profile.editing textarea, .pod-profile.editing input, .pod-profile.editing select {
+  background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:9px 12px;
+  color:var(--ink); font-family:var(--sans); font-size:0.95rem; outline:none; resize:vertical; }
+.pod-profile-row { display:flex; gap:10px; flex-wrap:wrap; }
+.pod-profile-row label { flex:1; min-width:120px; }
+.pod-profile-foot { display:flex; justify-content:flex-end; gap:8px; }
+.pod-profile-foot button { font-family:var(--sans); font-weight:700; font-size:0.84rem; color:var(--on-fill);
+  background:var(--green); border:0; border-radius:9px; padding:8px 14px; cursor:pointer; }
+.pod-profile-foot button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
+.lbl-hint { color:var(--pencil); font-weight:400; }
+
 /* ---- exposure gauge ---- */
 .gauge { display:block; width:100%; height:auto; margin:8px 0 6px; }
 .gauge-val { fill:var(--ink); font-family:var(--mono); font-weight:600; font-size:14px; }

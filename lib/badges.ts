@@ -26,6 +26,7 @@ export const BADGES: BadgeDef[] = [
   { key: "in-the-room", name: "In the Room", icon: "💬", note: "Posted in the community" },
   { key: "engaged", name: "Engaged", icon: "🙌", note: "Reacted and replied — being part of it" },
   { key: "regular", name: "Regular", icon: "⭐", note: "Showed up 7 days" },
+  { key: "captain", name: "Pod Captain", icon: "🎖️", note: "Led your pod" },
 ];
 
 export const BADGE_BY_KEY: Record<string, BadgeDef> = Object.fromEntries(BADGES.map((b) => [b.key, b]));

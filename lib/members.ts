@@ -81,7 +81,7 @@ export async function getDirectory(): Promise<DirectoryMember[]> {
 
 export type MemberProfile = {
   clerkUserId: string; name: string; handle: string | null; avatarUrl: string | null; role: string;
-  bio: string | null; career: string | null; lane: string | null; stage: string | null;
+  bio: string | null; career: string | null; lane: string | null; stage: string | null; podIntro: string | null;
   overall: number | null; computed: MapComputed | null;
   pods: { name: string; slug: string }[];
   recentPosts: { id: string; body: string; createdAt: Date }[];
@@ -110,7 +110,7 @@ export async function getMemberProfile(idOrHandle: string, meId: string | null):
 
   return {
     clerkUserId: p.clerkUserId, name: displayName(p), handle: p.handle, avatarUrl: p.avatarUrl, role: p.role,
-    bio: p.bio, career: p.careerSlug, lane: p.currentLane, stage: p.careerStage,
+    bio: p.bio, career: p.careerSlug, lane: p.currentLane, stage: p.careerStage, podIntro: p.podIntro,
     overall: mapVisible && typeof latest?.overall === "number" ? Math.round(latest.overall) : null,
     computed: mapVisible ? ((latest?.computed ?? null) as MapComputed | null) : null,
     pods: podRows, recentPosts: postRows, isMe, mapVisible,

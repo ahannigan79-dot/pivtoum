@@ -290,6 +290,10 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "pod_weeks_uniq" ON "pod_weeks" ("pod_id","iso_week")`,
+  // Pod-captain credential (Phase 1b).
+  `INSERT INTO "badges" ("key","name","icon","description") VALUES
+     ('captain','Pod Captain','🎖️','Led your pod')
+   ON CONFLICT ("key") DO NOTHING`,
 ];
 
 export const DDL_STATEMENTS: string[] = [

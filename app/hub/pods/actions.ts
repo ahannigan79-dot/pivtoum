@@ -2,11 +2,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, posts, podThreads } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { getFounderIds, getPodBySlug, setPodLeader } from "@/lib/pods";
+import { getFounderIds, getPodBySlug, setPodLeader, leadsPod } from "@/lib/pods";
 import { createThreadIn } from "@/lib/threads";
 import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
@@ -35,14 +35,46 @@ async function syncPodHelper(podId: string) {
   }
 }
 
-/** Founder appoints or removes a pod leader — the tier that runs check-ins and
- *  hosts the monthly Wins and SME sessions. */
+/** A pod is listable in guided placement only once it has a vibe profile AND a
+ *  captain — no unlabeled empty rooms in the shortlist. Recompute after either
+ *  the profile or the captaincy changes. */
+async function recomputeListable(podId: string) {
+  const row = await db.select({ vibe: pods.vibe }).from(pods).where(eq(pods.id, podId)).limit(1);
+  const hasVibe = !!row[0]?.vibe?.trim();
+  const captain = await db.select({ m: podMembers.memberId }).from(podMembers)
+    .where(sql`${podMembers.podId} = ${podId} and ${podMembers.leader} = true`).limit(1);
+  await db.update(pods).set({ listable: hasVibe && captain.length > 0 }).where(eq(pods.id, podId));
+}
+
+/** Founder appoints or removes a pod captain (Phase 1: reuses pod_members.leader)
+ *  — the tier that runs check-ins and hosts the monthly Wins and SME sessions. */
 export async function setPodLeaderAction(slug: string, memberId: string, on: boolean) {
   const profile = await getOrCreateProfile();
   if (!isFounder(profile)) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
   await setPodLeader(pod.id, memberId, on);
+  if (on) await awardBadge(memberId, "captain");
+  await recomputeListable(pod.id);
+  revalidatePath(`/hub/pods/${slug}`);
+}
+
+/** The captain writes the pod's identity: its vibe, crest, lane and US region.
+ *  These drive guided placement (§C) and the pod's pride. Captain or founder. */
+export async function setPodProfile(slug: string, formData: FormData) {
+  const { userId } = await auth();
+  if (!userId) return;
+  const pod = await getPodBySlug(slug);
+  if (!pod) return;
+  const profile = await getOrCreateProfile();
+  const allowed = isFounder(profile) || (await leadsPod(userId, pod.id));
+  if (!allowed) return;
+  const vibe = String(formData.get("vibe") ?? "").trim().slice(0, 400) || null;
+  const crest = String(formData.get("crest") ?? "").trim().slice(0, 8) || null;
+  const lane = String(formData.get("lane") ?? "").trim().slice(0, 60) || null;
+  const region = String(formData.get("region") ?? "").trim().slice(0, 40) || null;
+  await db.update(pods).set({ vibe, crest, lane, region }).where(eq(pods.id, pod.id));
+  await recomputeListable(pod.id);
   revalidatePath(`/hub/pods/${slug}`);
 }
 

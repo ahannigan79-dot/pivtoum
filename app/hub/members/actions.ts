@@ -16,6 +16,7 @@ export async function updateProfile(_prev: UpdateResult | null, formData: FormDa
   const STAGES = ["Student", "Early-career", "Mid-career", "Senior", "Leader"];
   const displayName = String(formData.get("displayName") ?? "").trim().slice(0, 80) || null;
   const bio = String(formData.get("bio") ?? "").trim().slice(0, 600) || null;
+  const podIntro = String(formData.get("podIntro") ?? "").trim().slice(0, 240) || null;
   const rawStage = String(formData.get("careerStage") ?? "").trim();
   const careerStage = STAGES.includes(rawStage) ? rawStage : null;
   let handle: string | null = String(formData.get("handle") ?? "").trim().toLowerCase().replace(/^@/, "");
@@ -29,7 +30,7 @@ export async function updateProfile(_prev: UpdateResult | null, formData: FormDa
     handle = null;
   }
 
-  await db.update(profiles).set({ displayName, bio, handle, careerStage }).where(eq(profiles.clerkUserId, userId));
+  await db.update(profiles).set({ displayName, bio, handle, careerStage, podIntro }).where(eq(profiles.clerkUserId, userId));
   revalidatePath("/hub/members");
   revalidatePath(`/hub/members/${handle ?? userId}`);
   return { ok: true };

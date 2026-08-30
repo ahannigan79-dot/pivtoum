@@ -15,6 +15,7 @@ import { ValuesBanner } from "@/components/hub/community/ValuesBanner";
 import { PodComposer } from "@/components/hub/pods/PodComposer";
 import { ThreadNav } from "@/components/hub/pods/ThreadNav";
 import { PodGoal } from "@/components/hub/pods/PodGoal";
+import { PodProfile } from "@/components/hub/pods/PodProfile";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -43,6 +44,8 @@ export default async function PodPage({
     getTrajectory(userId),
   ]);
   const canModerate = isFounder(profile);
+  const amCaptain = members.some((m) => m.id === userId && m.leader);
+  const canEditProfile = amCaptain || canModerate;
   const shareText = mapShareText(traj.computed, traj.overall);
   // Never an empty room: seed a pinned welcome in Announcements on first visit.
   const announcements = threads.find((t) => t.slug === "announcements") ?? threads[0];
@@ -59,11 +62,14 @@ export default async function PodPage({
       <div className="hub-body pod-space">
         <header className="pod-header">
           <div>
-            <h1>{pod.name}</h1>
+            <h1>{pod.crest ? `${pod.crest} ` : ""}{pod.name}</h1>
             {pod.description && <p>{pod.description}</p>}
           </div>
           <JoinButton slug={pod.slug} joined={iAmIn} />
         </header>
+
+        <PodProfile slug={pod.slug} vibe={pod.vibe} crest={pod.crest} lane={pod.lane}
+          region={pod.region} canEdit={canEditProfile} />
 
         {(pod.goal || iAmIn || canModerate) && (
           <PodGoal slug={pod.slug} goal={pod.goal} canEdit={iAmIn || canModerate} />

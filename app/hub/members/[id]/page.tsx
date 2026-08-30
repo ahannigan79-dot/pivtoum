@@ -51,7 +51,7 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
           </div>
           <div className="prof-head-actions">
             {m.isMe ? (
-              <ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage }} />
+              <ProfileEditor initial={{ displayName: m.name, handle: m.handle, bio: m.bio, stage: m.stage, podIntro: m.podIntro }} />
             ) : (
               <>
                 {!blocked && (
