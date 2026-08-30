@@ -19,6 +19,8 @@ import { PodProfile } from "@/components/hub/pods/PodProfile";
 import { PodCheckin } from "@/components/hub/pods/PodCheckin";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 import { hasCheckedIn } from "@/lib/pod-ritual";
+import { activeCadenceMonth } from "@/lib/cadence-state";
+import { weekOfMonth, promptForWeek } from "@/lib/cadence";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -54,8 +56,10 @@ export default async function PodPage({
   await ensurePodWelcome(pod.id, pod.name, pod.goal, announcements?.id ?? null);
   const active = threads.find((t) => t.slug === threadSlug) ?? threads[0];
   const feed = active ? await getThreadFeed(active.id, userId) : [];
-  const onCheckinThread = active?.slug === "check-in";
-  const myCheckedIn = onCheckinThread && iAmIn ? await hasCheckedIn(pod.id, userId) : false;
+  const myCheckedIn = iAmIn ? await hasCheckedIn(pod.id, userId) : false;
+  // This week's team move, derived live from the cadence curriculum.
+  const month = await activeCadenceMonth();
+  const movePrompt = promptForWeek(month, weekOfMonth());
 
   return (
     <>
@@ -75,6 +79,15 @@ export default async function PodPage({
         <PodProfile slug={pod.slug} vibe={pod.vibe} crest={pod.crest} lane={pod.lane}
           region={pod.region} canEdit={canEditProfile} />
 
+        <section className="pod-week">
+          <div className="pod-week-head">
+            <span className="pod-week-k">This week · {month.subject}</span>
+            {pod.streakWeeks > 0 && <span className="pod-streak">🔥 {pod.streakWeeks}-week streak</span>}
+          </div>
+          <p className="pod-week-move">{movePrompt}</p>
+          {iAmIn && <PodCheckin slug={pod.slug} checkedIn={myCheckedIn} />}
+        </section>
+
         {(pod.goal || iAmIn || canModerate) && (
           <PodGoal slug={pod.slug} goal={pod.goal} canEdit={iAmIn || canModerate} />
         )}
@@ -84,7 +97,6 @@ export default async function PodPage({
         <div className="pod-layout">
           <div className="pod-main hub-feed">
             <ValuesBanner variant="pod" />
-            {iAmIn && onCheckinThread && <PodCheckin slug={pod.slug} checkedIn={myCheckedIn} />}
             {iAmIn ? (
               <PodComposer slug={pod.slug} threadId={active?.id ?? null} shareText={shareText}
                 placeholder={active ? `Post in ${active.emoji ?? ""} ${active.name}… 🎉` : undefined} />
@@ -107,10 +119,7 @@ export default async function PodPage({
 
           <aside className="pod-side">
             <div className="card">
-              {pod.streakWeeks > 0 && (
-                <p className="pod-streak">🔥 {pod.streakWeeks}-week streak</p>
-              )}
-              <p className="ck">{members.length} {members.length === 1 ? "member" : "members"}</p>
+              <p className="ck">{members.length} {members.length === 1 ? "member" : "members"} · cap {pod.capacity}</p>
               <div className="pod-members">
                 {members.map((m) => (
                   <div key={m.id} className="pod-member">
@@ -118,7 +127,7 @@ export default async function PodPage({
                       <Avatar name={m.name} url={m.avatarUrl} size={30} />
                       <span>{m.name}</span>
                     </Link>
-                    {m.leader && <span className="pod-lead-tag">Leader</span>}
+                    {m.leader && <span className="pod-lead-tag">Captain</span>}
                     {canModerate && <PodLeaderToggle slug={pod.slug} memberId={m.id} leader={m.leader} />}
                   </div>
                 ))}

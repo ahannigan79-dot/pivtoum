@@ -875,9 +875,19 @@ a.pod-member:hover span { color:var(--ink); }
   background:var(--green); border:0; border-radius:9px; padding:8px 14px; cursor:pointer; }
 .checkin-foot button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
 .checkin-foot button:disabled { opacity:0.6; cursor:default; }
-.pod-streak { margin:0 0 8px; font-family:var(--sans); font-weight:800; font-size:0.82rem; color:var(--amber);
-  background:var(--amber-bg, rgba(184,135,58,0.12)); border:1px solid var(--rule2); border-radius:20px;
-  padding:5px 12px; display:inline-block; }
+.pod-streak { font-family:var(--sans); font-weight:800; font-size:0.8rem; color:var(--amber);
+  background:rgba(184,135,58,0.12); border:1px solid var(--rule2); border-radius:20px;
+  padding:5px 12px; display:inline-block; white-space:nowrap; }
+
+/* "This week" — the pod's team move + check-in, front and centre on the home. */
+.pod-week { border:1px solid var(--rule); border-radius:14px; background:var(--wash, var(--panel));
+  padding:15px 17px; margin:0 0 16px; }
+.pod-week-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 8px; }
+.pod-week-k { font-family:var(--sans); font-weight:800; font-size:0.66rem; letter-spacing:0.09em;
+  text-transform:uppercase; color:var(--green-deep); }
+.pod-week-move { margin:0 0 12px; color:var(--ink); font-size:1rem; line-height:1.5; }
+.pod-week .checkin-open { margin:0; }
+.pod-week .checkin { margin:0; background:var(--card); }
 
 /* ---- exposure gauge ---- */
 .gauge { display:block; width:100%; height:auto; margin:8px 0 6px; }
