@@ -4,35 +4,16 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { podMembers, pods, posts, podThreads } from "@/db/schema";
+import { podMembers, pods, posts, podThreads, profiles } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { getFounderIds, getPodBySlug, setPodLeader, leadsPod } from "@/lib/pods";
+import { getPodBySlug, setPodLeader, leadsPod, syncPodHelper, joinMemberToPod, podRoom } from "@/lib/pods";
+import { autoPlaceMember } from "@/lib/pod-match";
 import { createThreadIn } from "@/lib/threads";
 import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
 
 function slugify(s: string): string {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "pod";
-}
-
-/** Keep a founder in a pod as a helper while it has fewer than 2 real members;
- *  drop the auto-added founder(s) once the pod can stand on its own. */
-async function syncPodHelper(podId: string) {
-  const founders = await getFounderIds();
-  const members = await db.select({ memberId: podMembers.memberId }).from(podMembers).where(eq(podMembers.podId, podId));
-  const founderSet = new Set(founders);
-  const realCount = members.filter((m) => !founderSet.has(m.memberId)).length;
-
-  if (realCount >= 2) {
-    await db.delete(podMembers).where(and(eq(podMembers.podId, podId), eq(podMembers.auto, true)));
-  } else if (realCount === 1) {
-    for (const fid of founders) {
-      await db.insert(podMembers).values({ podId, memberId: fid, auto: true }).onConflictDoNothing();
-    }
-  } else {
-    // no real members — don't leave the founder sitting in an empty pod
-    await db.delete(podMembers).where(and(eq(podMembers.podId, podId), eq(podMembers.auto, true)));
-  }
 }
 
 /** A pod is listable in guided placement only once it has a vibe profile AND a
@@ -95,11 +76,7 @@ export async function createPod(formData: FormData) {
     .values({ name: name.slice(0, 120), slug, description: description?.slice(0, 500) ?? null })
     .returning({ id: pods.id });
   const podId = inserted[0]?.id;
-  if (podId) {
-    await db.insert(podMembers).values({ podId, memberId: userId }).onConflictDoNothing();
-    await awardBadge(userId, "cohort");
-    await syncPodHelper(podId);
-  }
+  if (podId) await joinMemberToPod(userId, podId);
   revalidatePath("/hub");
   revalidatePath("/hub/pods");
   revalidatePath(`/hub/pods/${slug}`);
@@ -110,12 +87,38 @@ export async function joinPod(slug: string) {
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
-  await db.insert(podMembers).values({ podId: pod.id, memberId: userId }).onConflictDoNothing();
-  await awardBadge(userId, "cohort");
-  await syncPodHelper(pod.id);
+  const room = await podRoom(pod.id);
+  if (!room.hasRoom) return; // pod is full (cap 7) — placement reroutes elsewhere
+  await joinMemberToPod(userId, pod.id);
   revalidatePath("/hub");
   revalidatePath("/hub/pods");
   revalidatePath(`/hub/pods/${slug}`);
+}
+
+/** Guided placement: persist the member's pod-intro + region, then join the pod
+ *  they chose (capacity-checked) — or auto-place into their best fit. Never solo. */
+export async function placeMember(slug: string | null, podIntro?: string | null, region?: string | null) {
+  const { userId } = await auth();
+  if (!userId) return;
+
+  const patch: { podIntro?: string | null; region?: string } = {};
+  if (typeof podIntro === "string") patch.podIntro = podIntro.trim().slice(0, 240) || null;
+  if (region === "East" || region === "West") patch.region = region;
+  if (Object.keys(patch).length) await db.update(profiles).set(patch).where(eq(profiles.clerkUserId, userId));
+
+  let joined: string | null = null;
+  if (slug) {
+    const pod = await getPodBySlug(slug);
+    if (pod && (await podRoom(pod.id)).hasRoom) {
+      await joinMemberToPod(userId, pod.id);
+      joined = pod.slug;
+    }
+  }
+  if (!joined) joined = await autoPlaceMember(userId); // chosen pod full, or "just place me"
+
+  revalidatePath("/hub");
+  revalidatePath("/hub/pods");
+  redirect(joined ? `/hub/pods/${joined}` : "/hub/pods/browse");
 }
 
 export async function leavePod(slug: string) {

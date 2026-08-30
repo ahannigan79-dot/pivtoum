@@ -267,6 +267,8 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "streak_weeks" integer DEFAULT 0 NOT NULL`,
   // 2-line pod-facing member intro (matching fuel + a warm first touch).
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "pod_intro" text`,
+  // Member US band (East | West) for guided-placement live-session meetability.
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "region" text`,
   // The weekly pod check-in (the 3-line ritual: shipped / stuck / one move).
   `CREATE TABLE IF NOT EXISTS "pod_checkins" (
      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,

@@ -1,6 +1,7 @@
 import { asc, eq, inArray, or, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, profiles } from "@/db/schema";
+import { awardBadge } from "@/lib/badges";
 
 /** Clerk ids of founders/moderators (role in DB or FOUNDER_EMAILS allowlist). */
 export async function getFounderIds(): Promise<string[]> {
@@ -106,4 +107,37 @@ export async function isPodMember(podId: string, meId: string | null): Promise<b
     .where(sql`${podMembers.podId} = ${podId} and ${podMembers.memberId} = ${meId}`)
     .limit(1);
   return r.length > 0;
+}
+
+/** Keep a founder in a pod as a helper while it has fewer than 2 real members;
+ *  drop the auto-added founder(s) once the pod can stand on its own. */
+export async function syncPodHelper(podId: string): Promise<void> {
+  const founders = await getFounderIds();
+  const members = await db.select({ memberId: podMembers.memberId }).from(podMembers).where(eq(podMembers.podId, podId));
+  const founderSet = new Set(founders);
+  const realCount = members.filter((m) => !founderSet.has(m.memberId)).length;
+  if (realCount >= 2 || realCount === 0) {
+    await db.delete(podMembers).where(sql`${podMembers.podId} = ${podId} and ${podMembers.auto} = true`);
+  } else {
+    for (const fid of founders) {
+      await db.insert(podMembers).values({ podId, memberId: fid, auto: true }).onConflictDoNothing();
+    }
+  }
+}
+
+/** Real (non-helper) member count + capacity for a pod. */
+export async function podRoom(podId: string): Promise<{ count: number; capacity: number; hasRoom: boolean }> {
+  const p = await db.select({ capacity: pods.capacity }).from(pods).where(eq(pods.id, podId)).limit(1);
+  const rows = await db.select({ n: sql<number>`count(*)::int` }).from(podMembers)
+    .where(sql`${podMembers.podId} = ${podId} and ${podMembers.auto} = false`);
+  const count = rows[0]?.n ?? 0;
+  const capacity = p[0]?.capacity ?? 7;
+  return { count, capacity, hasRoom: count < capacity };
+}
+
+/** Join a member to a pod (idempotent): membership + cohort badge + helper sync. */
+export async function joinMemberToPod(userId: string, podId: string): Promise<void> {
+  await db.insert(podMembers).values({ podId, memberId: userId }).onConflictDoNothing();
+  await awardBadge(userId, "cohort");
+  await syncPodHelper(podId);
 }

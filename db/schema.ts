@@ -30,6 +30,7 @@ export const profiles = pgTable("profiles", {
   currentLane: text("current_lane"),
   careerStage: text("career_stage"), // Student | Early-career | Mid-career | Senior | Leader
   podIntro: text("pod_intro"),       // 2-line pod-facing intro (lane · what you're navigating · one thing you want)
+  region: text("region"),            // US band (East | West) — pod live-session meetability
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
   lastSeenAt: timestamp("last_seen_at", { withTimezone: true }),
   streakDays: integer("streak_days").notNull().default(0),

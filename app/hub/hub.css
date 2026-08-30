@@ -827,6 +827,37 @@ a.pod-member:hover span { color:var(--ink); }
 .pod-profile-foot button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
 .lbl-hint { color:var(--pencil); font-weight:400; }
 
+/* Guided placement (/hub/pods/place). */
+.place-head { margin:0 0 18px; }
+.place-head h1 { margin:0 0 6px; }
+.place-head p { color:var(--soft); max-width:60ch; font-size:0.96rem; }
+.place-you { display:flex; flex-direction:column; gap:13px; border:1px solid var(--rule); border-radius:14px;
+  background:var(--panel); padding:15px 17px; margin:0 0 18px; }
+.place-you label { display:flex; flex-direction:column; gap:6px; font-size:0.8rem; color:var(--pencil); }
+.place-you textarea { background:var(--panel2); border:1px solid var(--rule2); border-radius:9px; padding:9px 12px;
+  color:var(--ink); font-family:var(--sans); font-size:0.95rem; outline:none; resize:vertical; }
+.place-bands { display:flex; gap:8px; }
+.place-band { font-family:var(--sans); font-weight:700; font-size:0.9rem; color:var(--soft); background:var(--panel2);
+  border:1px solid var(--rule2); border-radius:10px; padding:9px 20px; cursor:pointer; }
+.place-band.on { color:var(--on-fill); background:var(--green); border-color:var(--green); }
+.place-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:13px; margin:0 0 16px; }
+.place-card { border:1px solid var(--rule); border-radius:14px; background:var(--card); padding:15px 16px;
+  display:flex; flex-direction:column; gap:10px; }
+.place-card-top { display:flex; align-items:center; gap:11px; }
+.place-crest { font-size:1.7rem; line-height:1; flex:none; }
+.place-card-id h3 { margin:0; font-size:1.02rem; }
+.place-card-meta { margin:2px 0 0; font-size:0.76rem; color:var(--pencil); }
+.place-card-vibe { margin:0; color:var(--soft); font-size:0.9rem; line-height:1.45; flex:1; }
+.place-join { font-family:var(--sans); font-weight:700; font-size:0.88rem; color:var(--on-fill); background:var(--green);
+  border:0; border-radius:10px; padding:10px 14px; cursor:pointer; }
+.place-join:disabled { opacity:0.6; cursor:default; }
+.place-empty { color:var(--soft); font-size:0.94rem; margin:0 0 16px; }
+.place-auto { font-family:var(--sans); font-weight:700; font-size:0.92rem; color:var(--ink); background:transparent;
+  border:1px solid var(--pencil); border-radius:12px; padding:12px 22px; cursor:pointer; }
+.place-auto:hover { background:var(--panel); }
+.place-auto:disabled { opacity:0.6; cursor:default; }
+.place-foot { margin:20px 0 0; color:var(--soft); font-size:0.88rem; }
+
 /* ---- exposure gauge ---- */
 .gauge { display:block; width:100%; height:auto; margin:8px 0 6px; }
 .gauge-val { fill:var(--ink); font-family:var(--mono); font-weight:600; font-size:14px; }
