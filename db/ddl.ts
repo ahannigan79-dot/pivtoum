@@ -255,6 +255,41 @@ export const PATCH_STATEMENTS: string[] = [
      ('shipped','First Ship','🚀','Shipped your first move'),
      ('operator','Operator','🎯','Logged your first Build rep')
    ON CONFLICT ("key") DO NOTHING`,
+  // ---- Pod System, Phase 1a: pods become teams (placement, ritual, streak) ----
+  // New pod fields: vibe/crest identity, lane+region for guided placement,
+  // a size cap, a listable gate (profile required), and a materialised streak.
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "vibe" text`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "crest" text`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "lane" text`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "region" text`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "capacity" integer DEFAULT 7 NOT NULL`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "listable" boolean DEFAULT false NOT NULL`,
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "streak_weeks" integer DEFAULT 0 NOT NULL`,
+  // 2-line pod-facing member intro (matching fuel + a warm first touch).
+  `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "pod_intro" text`,
+  // The weekly pod check-in (the 3-line ritual: shipped / stuck / one move).
+  `CREATE TABLE IF NOT EXISTS "pod_checkins" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "pod_id" uuid NOT NULL REFERENCES "pods"("id") ON DELETE cascade,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "iso_week" text NOT NULL,
+     "shipped" text,
+     "stuck" text,
+     "move" text,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "pod_checkins_uniq" ON "pod_checkins" ("pod_id","member_id","iso_week")`,
+  // One row per pod per ISO week: participation snapshot + streak-bar hit.
+  `CREATE TABLE IF NOT EXISTS "pod_weeks" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "pod_id" uuid NOT NULL REFERENCES "pods"("id") ON DELETE cascade,
+     "iso_week" text NOT NULL,
+     "active_count" integer DEFAULT 0 NOT NULL,
+     "size" integer DEFAULT 0 NOT NULL,
+     "hit" boolean DEFAULT false NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "pod_weeks_uniq" ON "pod_weeks" ("pod_id","iso_week")`,
 ];
 
 export const DDL_STATEMENTS: string[] = [

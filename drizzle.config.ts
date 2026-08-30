@@ -8,7 +8,7 @@ export default {
   // The marketing site's `orders` table etc. are managed elsewhere — only touch our tables.
   tablesFilter: [
     "profiles", "map_states", "badges", "member_badges", "lesson_progress",
-    "pods", "pod_members", "posts", "comments", "reactions",
+    "pods", "pod_members", "pod_checkins", "pod_weeks", "posts", "comments", "reactions",
     "events", "event_rsvps", "dm_threads", "dm_thread_members", "dm_messages",
     "notifications", "commitments",
   ],

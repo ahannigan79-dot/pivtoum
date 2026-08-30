@@ -5,7 +5,7 @@
    ============================================================================ */
 import {
   pgTable, pgEnum, text, uuid, timestamp, jsonb, boolean, integer, real,
-  primaryKey, index,
+  primaryKey, index, uniqueIndex,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
@@ -29,6 +29,7 @@ export const profiles = pgTable("profiles", {
   careerSlug: text("career_slug"),
   currentLane: text("current_lane"),
   careerStage: text("career_stage"), // Student | Early-career | Mid-career | Senior | Leader
+  podIntro: text("pod_intro"),       // 2-line pod-facing intro (lane · what you're navigating · one thing you want)
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
   lastSeenAt: timestamp("last_seen_at", { withTimezone: true }),
   streakDays: integer("streak_days").notNull().default(0),
@@ -91,7 +92,14 @@ export const pods = pgTable("pods", {
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
   description: text("description"),
-  goal: text("goal"), // pinned pod focus/goal
+  goal: text("goal"),                                       // pinned pod focus/goal
+  vibe: text("vibe"),                                       // captain-written "what we're about / our vibe"
+  crest: text("crest"),                                     // pod crest (emoji in Phase 1; art later)
+  lane: text("lane"),                                       // career lane, for guided placement matching
+  region: text("region"),                                   // US timezone band, so live sessions can meet
+  capacity: integer("capacity").notNull().default(7),       // size cap (locked: 7)
+  listable: boolean("listable").notNull().default(false),   // shown in guided placement only once vibe + captain set
+  streakWeeks: integer("streak_weeks").notNull().default(0),// materialised shared pod streak
   createdAt: now(),
 });
 export const podMembers = pgTable("pod_members", {
@@ -113,6 +121,31 @@ export const podThreads = pgTable("pod_threads", {
   isCore: boolean("is_core").notNull().default(false),
   createdAt: now(),
 }, (t) => ({ podSlug: index("pod_threads_pod_slug_idx").on(t.podId, t.slug) }));
+
+// The weekly pod ritual: one row per member per ISO week they check in.
+// Drives the pod streak and the "your pod is waiting" nudge. The 3-line format.
+export const podCheckins = pgTable("pod_checkins", {
+  id: uid(),
+  podId: uuid("pod_id").notNull().references(() => pods.id, { onDelete: "cascade" }),
+  memberId: memberFk(),
+  isoWeek: text("iso_week").notNull(),   // ISO week key, e.g. "2026-W35"
+  shipped: text("shipped"),              // "what I shipped"
+  stuck: text("stuck"),                  // "where I'm stuck"
+  move: text("move"),                    // "my one move this week"
+  createdAt: now(),
+}, (t) => ({ uniq: uniqueIndex("pod_checkins_uniq").on(t.podId, t.memberId, t.isoWeek) }));
+
+// One row per pod per ISO week: participation snapshot + whether the streak bar
+// (≥60% active) was cleared. History/audit behind pods.streakWeeks.
+export const podWeeks = pgTable("pod_weeks", {
+  id: uid(),
+  podId: uuid("pod_id").notNull().references(() => pods.id, { onDelete: "cascade" }),
+  isoWeek: text("iso_week").notNull(),
+  activeCount: integer("active_count").notNull().default(0),
+  size: integer("size").notNull().default(0),
+  hit: boolean("hit").notNull().default(false), // active/size >= 0.60
+  createdAt: now(),
+}, (t) => ({ uniq: uniqueIndex("pod_weeks_uniq").on(t.podId, t.isoWeek) }));
 
 /* ---------- Community feed ---------- */
 export const posts = pgTable("posts", {
