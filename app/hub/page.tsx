@@ -146,16 +146,18 @@ export default async function Dashboard() {
           </div>
         )}
 
-        <Link href="/hub/community" className="month-band">
-          <span className="mb-tag">This month{cadence.reScore ? " · re-score" : ""}</span>
-          <div className="mb-main">
-            <h3>{cadence.subject}</h3>
-            <p>{cadenceWeekPrompt}</p>
-          </div>
-          <span className="mb-go">→</span>
-        </Link>
+        {t?.hasMap && (
+          <Link href="/hub/community" className="month-band">
+            <span className="mb-tag">This month{cadence.reScore ? " · re-score" : ""}</span>
+            <div className="mb-main">
+              <h3>{cadence.subject}</h3>
+              <p>{cadenceWeekPrompt}</p>
+            </div>
+            <span className="mb-go">→</span>
+          </Link>
+        )}
 
-        {prompt && (
+        {t?.hasMap && prompt && (
           <div className="week-prompt-wrap">
             <Link href="/hub/community" className="week-prompt week-prompt-link">
               <span className="wp-tag">This week</span>
@@ -291,17 +293,20 @@ export default async function Dashboard() {
             )}
           </>
         ) : (
-          <div className="cta-hero">
-            <div>
-              <p className="ck">Activate your dashboard</p>
-              <h3>Build your Winning Map</h3>
-              <p>Your command dashboard comes alive once you&apos;ve mapped where you stand. New here? Start with your Welcome.</p>
+          <section className="welcome-hero">
+            <p className="ck">Welcome to Pivotum</p>
+            <h2>See exactly where AI leaves your career standing — and your opening.</h2>
+            <p className="welcome-lede">Your dashboard comes alive the moment you build your Winning Map — your exposure score, the lanes AI is coming for, and the one move that turns exposure into your edge. About two minutes.</p>
+            <div className="welcome-steps">
+              <div className="wstep"><span className="wstep-n">1</span><div className="wstep-t"><b>Build your Map</b><span>Where you stand, scored by lane.</span></div></div>
+              <div className="wstep"><span className="wstep-n">2</span><div className="wstep-t"><b>Find your move</b><span>The edge that compounds.</span></div></div>
+              <div className="wstep"><span className="wstep-n">3</span><div className="wstep-t"><b>Meet your pod</b><span>A small team in your exact lane.</span></div></div>
             </div>
-            <div className="cta-hero-actions">
+            <div className="welcome-actions">
               <Link href="/hub/map" className="btn-primary">Build your Map →</Link>
-              <Link href="/hub/welcome" className="btn-ghost">Open Welcome</Link>
+              <Link href="/hub/welcome" className="btn-ghost">Take the guided Welcome</Link>
             </div>
-          </div>
+          </section>
         )}
       </div>
     </>

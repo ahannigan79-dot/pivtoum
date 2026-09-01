@@ -1996,3 +1996,34 @@ a.pod-member:hover span { color:var(--ink); }
 .sub-decline-foot { display:flex; justify-content:flex-end; gap:9px; }
 .sub-decline-foot .ghost { background:transparent; color:var(--soft); border:1px solid var(--rule2);
   border-radius:9px; padding:8px 14px; font-family:var(--sans); font-weight:700; font-size:0.82rem; cursor:pointer; }
+
+/* ============================================================================
+   Welcome hero (new member, no Map yet) + breathing-room pass. A warm, clear
+   first impression, and more air between and inside the main dashboard blocks.
+   ============================================================================ */
+.welcome-hero { border:1px solid var(--rule); border-radius:20px; background:var(--panel);
+  padding:34px 34px 30px; margin:6px 0 24px; }
+.welcome-hero .ck { color:var(--green); }
+.welcome-hero h2 { font-family:var(--serif); font-weight:700; font-size:1.9rem; line-height:1.18;
+  letter-spacing:-0.01em; margin:8px 0 12px; max-width:22ch; text-wrap:balance; }
+.welcome-lede { margin:0 0 24px; color:var(--soft); font-size:1.02rem; line-height:1.6; max-width:60ch; }
+.welcome-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 0 26px; }
+@media (max-width:680px){ .welcome-steps { grid-template-columns:1fr; } }
+.wstep { display:flex; align-items:flex-start; gap:12px; border:1px solid var(--rule); border-radius:14px;
+  background:var(--panel2); padding:15px 16px; }
+.wstep-n { flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center;
+  font-family:var(--sans); font-weight:800; font-size:0.82rem; color:var(--on-fill); background:var(--green); }
+.wstep-t { display:flex; flex-direction:column; gap:3px; min-width:0; }
+.wstep-t b { font-family:var(--sans); font-weight:700; font-size:0.94rem; color:var(--ink); }
+.wstep-t span { font-size:0.85rem; color:var(--soft); line-height:1.4; }
+.welcome-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+
+/* Breathing-room pass — more air so the dashboard doesn't feel cramped. */
+.hub-body { padding:16px 32px 76px; }
+@media (max-width:640px){ .hub-body { padding:12px 18px 64px; } }
+.escore, .ck-card, .month-band, .week-prompt-wrap, .checklist, .nextact { margin-bottom:22px; }
+.ck-card { padding:24px 26px; }
+.statline { margin:22px 2px 26px; }
+.hub-sectlabel { margin-top:32px; margin-bottom:12px; }
+.reminders { display:flex; flex-direction:column; gap:12px; }
+.newhere, .earned { margin-bottom:18px; }
