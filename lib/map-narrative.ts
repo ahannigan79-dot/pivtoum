@@ -26,6 +26,8 @@ Say one clear thing per paragraph:
 2. What's keeping them safe — the parts of their job AI genuinely can't do.
 3. The single most useful thing to do next, from their strategy. End plainly and encouragingly — no slogan.
 
+If the facts include "changing_lanes": they are moving FROM moving_from_lane TOWARD target_lane (the scored lane). Frame the whole reading around that move — paragraph 1 contrasts where they are now with where they're heading (use current_lane_exposure vs exposure_now), paragraph 2 is what they carry across and what the target lane rewards, and paragraph 3 is the bridge from strategy_line: go AI-native in the current work now, build what the target lane runs on. Never imply they're stuck where they are.
+
 Write so they understand it on the first read. Ordinary words, complete sentences, no clever turns of phrase. Ground every claim in the facts provided — use the given score, band, driver and strategy exactly, never invent others. Second person throughout. Plain text only.`;
 
 /** Compact, already-computed facts handed to Claude — never asks it to score. */
@@ -41,10 +43,19 @@ function factSheet(c: MapComputed, overall: number, effortDividend: number): str
     deepen: strip(c.driverDetail?.down) || null, // what AI can't take, to lean into
     first_action: strip(c.driverDetail?.action) || null,
     strategy_stance: c.move?.stance ?? null,
+    strategy_line: strip(c.move?.line) || null, // the winning-move framing, in plain words
     aiming_for: winningAim(c.move?.edge2, band.cls),
     second_move: c.move?.edge2 ?? null, // guard | shift | relocate
     urgency: c.urgency?.level ?? null,
   };
+  // Career-change: they're moving FROM their current lane TOWARD a more protected
+  // target (c.lane is the target). Tell Claude so the read is about the bridge.
+  if (c.changing && c.fromLane) {
+    facts.changing_lanes = true;
+    facts.moving_from_lane = c.fromLane;
+    if (c.fromScore != null) facts.current_lane_exposure = Math.round(c.fromScore * 10);
+    facts.target_lane = c.lane ?? null; // where they're heading (already the scored lane)
+  }
   if (c.personal?.laneBaseline != null) {
     facts.lane_average_exposure = c.personal.laneBaseline;
     facts.vs_lane = c.personal.delta ?? 0; // negative = better than lane average

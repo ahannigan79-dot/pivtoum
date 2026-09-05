@@ -14,7 +14,12 @@ export type MapComputed = {
   personal?: { laneBaseline?: number; delta?: number; helps?: string[]; hurts?: string[] };
   lever?: string;
   urgency?: { level?: string; why?: string };
-  move?: { stance?: string; edge2?: string; weight?: number; e2short?: string };
+  move?: { stance?: string; edge2?: string; weight?: number; e2short?: string; line?: string };
+  // Career-change: the member is moving from one lane toward a target (= lane above).
+  changing?: boolean;
+  fromLane?: string | null;
+  fromScore?: number | null;
+  fromBand?: string | null;
 };
 
 export type TrajectoryPoint = {

@@ -695,7 +695,7 @@
         opts.push({v:'__stay', label:'Actually — keep my current lane'});
         control(chips(opts, function(v,l){
           if(v==='__stay'){ A.changing=false; me('Keep my current lane'); clearCtrl(); advisor("No problem — I’ll keep you where you are and show the moves from there.", null, incRecap); return; }
-          var t=others[+v]; A.changing=true; A.changeFrom=A.lane; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; me('Move toward '+t.n); clearCtrl();
+          var t=others[+v]; A.changing=true; A.changeFrom=A.lane; A.changeFromScore=A.laneScore; A.changeFromBand=A.laneBand; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; me('Move toward '+t.n); clearCtrl();
           advisor("Good move — "+t.n.toLowerCase()+", a more protected lane than where you are now. I’ll build your Map and openings around getting there.", null, incRecap);
         }));
       });
@@ -705,7 +705,9 @@
     var t=A.tasks;
     var aimT={defend:'Defend & future-proof this role',promote:'Get promoted / level up',change:'Change field or career',unsure:'Not sure — show options'}[A.aim];
     var licT={no:'Open profession',some:'Some regulated duties',yes:'Licensed'}[A.licence];
-    var laneV = A.lane ? (esc(A.lane) + (A.laneScore==null ? ' · <em>general profile</em>' : '')) : '—';
+    var laneV = (A.changing && A.changeFrom)
+      ? (esc(A.changeFrom) + ' &rarr; ' + esc(A.lane) + ' <em>(target)</em>')
+      : (A.lane ? (esc(A.lane) + (A.laneScore==null ? ' · <em>general profile</em>' : '')) : '—');
     var rows=[['Role',esc(A.role)],['Scored lane',laneV],['Phase',A.phase],['Your week','Routine '+label01(t.routine)+' · complex '+label01(t.complex)+' · relationships '+label01(t.people)+' · hands-on '+label01(t.physical)],
       ['People rely on you',(function(t){var h=Math.max(t.name,t.relationships,t.accountable,t.judgment);return h<25?'lightly':h<45?'somewhat':'strongly';})(A.trust)],['Licensing',licT],['Employer pace',A.pace],['You want',aimT]];
     advisor("Okay — here’s what I’ve got. Does this look right to you?", null, function(){
@@ -959,7 +961,15 @@
       move={stance:'Renovate now · plan Relocate', edge2:'relocate', weight:58, e2short:'Scout protected careers while you can.',
         line:'Master the machine to buy time — but this ground is thin. Start scouting protected careers while you still have the runway.'};
     }
-    return {A:A,career:career,incumbent:incumbent,lane:lane,laneScore:laneScore,laneBand:laneBand,laneTrend:laneTrend,base:base,you:you,bands:bands,overall:overall,driver:driver,lever:lever,leverNoun:leverNoun,urgency:{level:urgLevel,why:urgWhy},drier:drier,move:move};
+    // Changing lanes: the winning move is the BRIDGE — edge 1 (go AI-native where
+    // you are, to buy time + credibility) into edge 2 (build what the target lane runs on).
+    if(A.changing && A.changeFrom){
+      move={stance:'Renovate now · Relocate to '+A.lane, edge2:'relocate', weight:55,
+        e2short:'Build toward '+A.lane.toLowerCase()+' while you have runway.',
+        line:'Two edges, in order: <b>go AI-native in your '+A.changeFrom.toLowerCase()+' work now</b> — it buys time and credibility — <b>while you build the judgment, trust and licensing that '+A.lane.toLowerCase()+' runs on.</b> That’s the bridge from where you are to where you’re going.'};
+    }
+    return {A:A,career:career,incumbent:incumbent,lane:lane,laneScore:laneScore,laneBand:laneBand,laneTrend:laneTrend,base:base,you:you,bands:bands,overall:overall,driver:driver,lever:lever,leverNoun:leverNoun,urgency:{level:urgLevel,why:urgWhy},drier:drier,move:move,
+      changing:!!A.changing, fromLane:(A.changing?A.changeFrom:null), fromScore:((A.changing&&A.changeFromScore!=null)?A.changeFromScore:null), fromBand:(A.changing?A.changeFromBand:null)};
   }
 
   function sigContent(k,M){
@@ -1086,7 +1096,9 @@
     document.getElementById('mSub').innerHTML = M.incumbent ? (M.A.changing ? (esc(M.A.role)+' · moving toward <b>'+M.lane+'</b>') : (esc(M.A.role)+' · <b>'+M.lane+'</b> lane · '+(M.A.phase||'')+' phase')) : (M.career.name+' · aiming at <b>'+M.lane+'</b> · '+({student:'still studying',grad:'recent grad',changer:'new to the field'}[M.A.situation]||''));
     document.getElementById('mFieldName').textContent=M.career.name;
     document.getElementById('kExp').textContent=M.overall;
-    document.getElementById('kExpT').innerHTML='<b>'+cap(ew(M.overall))+'.</b> '+M.lane+' ('+M.laneScore+'/10).';
+    document.getElementById('kExpT').innerHTML = (M.changing && M.fromScore!=null)
+      ? ('<b>'+M.fromLane+' '+M.fromScore+'/10 &rarr; '+M.lane+' '+M.laneScore+'/10.</b> Moving to more protected ground.')
+      : ('<b>'+cap(ew(M.overall))+'.</b> '+M.lane+' ('+M.laneScore+'/10).');
     document.getElementById('kDriver').textContent=M.driver.name;
     document.getElementById('kDriverT').innerHTML='<b>'+M.driver.rating+'/10</b> — the sharpest force on your work.';
     document.getElementById('kLever').textContent=M.lever.label;
@@ -1154,7 +1166,7 @@
     ['phys','trust','lic','judg'].forEach(function(k){ var diff=M.you[k]-M.base[k];
       if(diff<=-5) helps.push(protNames[k]); else if(diff>=5) hurts.push(protNames[k]); });
     var personal = { laneBaseline:laneBaseline, delta: Math.round(M.overall - laneBaseline), helps:helps, hurts:hurts };
-    window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, driverDetail:dDetail, personal:personal, lever:M.lever, urgency:M.urgency, move:M.move } }, "*");
+    window.parent.postMessage({type:"pivotum:map", answers:A, overall:M.overall, computed:{ overall:M.overall, career:M.career.name, lane:M.lane, laneScore:M.laneScore, band:M.laneBand, driver:M.driver, driverDetail:dDetail, personal:personal, lever:M.lever, urgency:M.urgency, move:M.move, changing:!!M.changing, fromLane:M.fromLane||null, fromScore:(M.fromScore!=null?M.fromScore:null), fromBand:M.fromBand||null } }, "*");
   } }catch(e){} }
   function renderDisplay(M){ lastM=M; renderHead(M); renderWinMove(M); renderSignals(M); renderWaterline(M); renderOpenings(M); renderPlan(M); renderTrajectory(M); emitMap(M); }
   function refresh(){ renderDisplay(computeMap(A)); }
