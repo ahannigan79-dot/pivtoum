@@ -23,8 +23,8 @@
 
   header{ flex:none; background:rgba(251,250,246,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
   .hin{ max-width:760px; margin:0 auto; display:flex; align-items:center; gap:11px; padding:12px 20px; }
-  .mk{ width:30px; height:30px; border:2px solid var(--green); border-radius:8px; position:relative; flex:none; }
-  .mk::after{ content:""; position:absolute; inset:4px; border-radius:4px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.55; }
+  .mk{ width:30px; height:30px; background:var(--green); border-radius:9px; position:relative; flex:none; box-shadow:0 1px 3px rgba(31,92,63,0.28); }
+  .mk::after{ content:""; position:absolute; inset:8px; border-radius:3px; background:rgba(251,250,246,0.88); }
   .htext small{ font-weight:800; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--pencil); display:block; line-height:1; }
   .htext .ht{ font-weight:700; font-size:1.02rem; line-height:1.2; }
   .hin .sp{ flex:1; }
@@ -37,19 +37,19 @@
 
   .msg{ display:flex; gap:11px; max-width:100%; animation:rise .32s ease both; }
   @keyframes rise{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
-  .msg .av{ width:30px; height:30px; border:1.5px solid var(--green-deep); border-radius:8px; position:relative; flex:none; margin-top:2px; }
-  .msg .av::after{ content:""; position:absolute; inset:4px; border-radius:3px; background:linear-gradient(135deg,var(--green),transparent 70%); opacity:.5; }
-  .bubble{ background:var(--panel); border:1px solid var(--rule); border-radius:4px 15px 15px 15px; padding:13px 16px; max-width:80%; font-size:1.02rem; }
+  .msg .av{ width:30px; height:30px; background:var(--green); border-radius:9px; position:relative; flex:none; margin-top:2px; box-shadow:0 1px 3px rgba(31,92,63,0.28); }
+  .msg .av::after{ content:""; position:absolute; inset:8px; border-radius:3px; background:rgba(251,250,246,0.88); }
+  .bubble{ background:var(--panel); border:1px solid var(--rule); border-radius:6px 17px 17px 17px; padding:14px 17px; max-width:80%; font-size:1.02rem; box-shadow:0 1px 2px rgba(28,26,22,0.05); }
   .bubble.serif{ font-family:var(--serif); }
   .bubble p{ margin:0 0 9px; } .bubble p:last-child{ margin:0; }
-  .bubble b{ color:#fff; }
+  .bubble b{ color:var(--ink); font-weight:700; }
   /* questions keep the normal chat font/size — they're marked by the bubble's outline, not the type */
   .bubble .q{ font-family:inherit; font-size:inherit; line-height:inherit; }
   .msg.advisor .bubble:has(.q){ border-color:color-mix(in srgb,var(--green) 60%,transparent); background:color-mix(in srgb,var(--green) 7%,var(--panel)); box-shadow:0 0 0 1px color-mix(in srgb,var(--green) 22%,transparent); }
   .msg.me{ justify-content:flex-end; }
   .msg.me .bubble{ background:var(--me); border:1px solid var(--me-brd); border-radius:15px 15px 4px 15px; color:var(--ink); font-weight:600; }
   .heads-note{ border-color:var(--pen-dim) !important; background:linear-gradient(180deg,#F6EAE6,#F1E4E0) !important; }
-  .heads-note b{ color:#fff; }
+  .heads-note b{ color:var(--pen); }
 
   .typing{ display:inline-flex; gap:4px; padding:15px 16px; background:var(--panel); border:1px solid var(--rule); border-radius:4px 15px 15px 15px; }
   .typing i{ width:7px; height:7px; border-radius:50%; background:var(--pencil); animation:blink 1.2s infinite both; }
@@ -201,12 +201,19 @@
   .legend .k{ display:inline-flex; align-items:center; gap:6px; }
   .swatch{ width:20px; height:9px; border-radius:5px; } .swatch.band{ background:var(--band); border:1px dashed rgba(0,0,0,0.18); } .swatch.you{ width:5px; height:15px; background:var(--ink); border-radius:2px; }
 
-  .water .line{ position:relative; height:60px; margin:0 0 6px; border-radius:11px; background:linear-gradient(180deg,#F1F6F2 0%,#F1F6F2 46%,#DDEAE0 46%,#E9F0EA 100%); overflow:hidden; }
-  .water .surf{ position:absolute; left:0; right:0; top:46%; height:2px; background:var(--green); }
-  .water .rung{ position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:16px; height:16px; border-radius:50%; background:var(--ink); box-shadow:0 0 0 3px #CBDDCF; transition:top .35s ease; }
-  .water .tag2{ position:absolute; font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; }
-  .water .above{ top:8px; left:14px; color:var(--soft); } .water .below{ bottom:8px; left:14px; color:#6B655B; } .water .surflab{ top:calc(46% - 19px); right:14px; color:var(--green); }
-  .water p.lead{ margin:0 0 14px; font-size:0.98rem; color:var(--soft); } .water p.lead b{ color:var(--ink); }
+  /* waterline: AI's reach RISES from the bottom to the exposure level; you want your work above it */
+  .water .line{ position:relative; height:132px; margin:2px 0 10px; border-radius:13px; overflow:hidden;
+    background:linear-gradient(180deg,#F7FBF8,#EFF5F0); border:1px solid var(--rule); }
+  .water .fill{ position:absolute; left:0; right:0; bottom:0; height:0;
+    background:linear-gradient(180deg,color-mix(in srgb,var(--pen) 15%,transparent),color-mix(in srgb,var(--pen) 22%,transparent));
+    border-top:2px solid var(--pen); transition:height .55s ease; }
+  .water .surflab{ position:absolute; right:13px; transform:translateY(50%); font-size:0.6rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; color:var(--pen); background:var(--bg); padding:2px 7px; border-radius:100px; border:1px solid color-mix(in srgb,var(--pen) 35%,transparent); transition:bottom .55s ease; z-index:3; }
+  .water .rung{ position:absolute; left:14px; transform:translateY(50%); display:flex; align-items:center; gap:6px; font-size:0.6rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink); transition:bottom .55s ease; z-index:3; }
+  .water .rung::before{ content:""; width:11px; height:11px; border-radius:50%; background:var(--ink); box-shadow:0 0 0 3px var(--bg); }
+  .water .tag2{ position:absolute; font-size:0.6rem; letter-spacing:0.06em; text-transform:uppercase; z-index:2; }
+  .water .dry{ top:10px; left:14px; color:var(--green); font-weight:700; }
+  .water .sub{ bottom:9px; left:14px; color:var(--pen); }
+  .water p.lead{ margin:0 0 12px; font-size:0.98rem; color:var(--soft); } .water p.lead b{ color:var(--ink); }
   .ifnothing{ margin:14px 0 0; font-size:0.92rem; color:var(--soft); border-left:3px solid var(--pen); padding:8px 14px; background:var(--panel2); border-radius:0 9px 9px 0; } .ifnothing b{ color:var(--pen); }
 
   .opintro{ font-size:0.9rem; color:var(--soft); margin:0 0 14px; } .opintro b{ color:var(--ink); }
@@ -362,7 +369,7 @@
 
     <div class="panel water"><div class="phead"><span class="pt">Your waterline</span></div><div class="pbody">
       <p class="lead" id="mWaterLead"></p>
-      <div class="line"><span class="tag2 above" id="mWaterAbove"></span><span class="tag2 surflab">the waterline</span><span class="surf"></span><span class="rung" id="mRung"></span><span class="tag2 below" id="mWaterBelow"></span></div>
+      <div class="line"><span class="tag2 dry">▲ Dry — judgment · trust · seniority (AI can&rsquo;t reach)</span><span class="fill" id="mWaterFill"></span><span class="surflab" id="mSurfLab">Your exposure</span><span class="tag2 sub">▼ Submerged — the automatable work</span></div>
       <p class="ifnothing" id="mIfNothing"></p>
     </div></div>
 
@@ -418,12 +425,12 @@
     typing.innerHTML='<span class="av"></span><span class="typing"><i></i><i></i><i></i></span>';
     var len = html.replace(/<[^>]+>/g,'').length; // visible characters, tags stripped
     // 1) a beat, then the typing dots appear
-    var pre = reduce?0:300;
+    var pre = reduce?0:200;
     setTimeout(function(){
       if(g!==chatGen) return;
       chat.appendChild(typing); scrollDown();
       // 2) the advisor "types" for a moment (scales gently with length)
-      var typingTime = reduce?60 : Math.min(1200, 380 + len*5);
+      var typingTime = reduce?60 : Math.min(780, 240 + len*3.5);
       setTimeout(function(){
         if(g!==chatGen){ typing.remove(); return; }
         typing.remove();
@@ -431,7 +438,7 @@
         m.innerHTML='<span class="av"></span><div class="bubble'+(cls?' '+cls:'')+'">'+html+'</div>';
         chat.appendChild(m); scrollDown();
         // 3) hold — give a human time to actually READ this before the next thing happens
-        var readPause = reduce?0 : Math.min(4200, 1100 + len*30);
+        var readPause = reduce?0 : Math.min(2400, 550 + len*16);
         setTimeout(function(){ if(g!==chatGen) return; if(cb) cb(); }, readPause);
       }, typingTime);
     }, pre);
@@ -1080,14 +1087,16 @@
     document.getElementById('mDeltas').innerHTML='<div class="delta up"><span class="m">▲</span><span><b>The line moved.</b> AI got materially better at the routine parts of this work over the last year.</span></div><div class="delta win"><span class="m">◆</span><span><b>Your read reflects your answers.</b> Change anything in <i>Tune your answers</i> below and every number here recomputes.</span></div><div class="delta note"><span class="m">↳</span><span>Re-scored twice a year, so the map keeps pace with the field.</span></div>';
   }
   function renderWaterline(M){
-    var rungTop=Math.max(12,Math.min(80, 20+(M.overall-40)*0.6));
-    document.getElementById('mRung').style.top=rungTop+'%';
-    document.getElementById('mWaterAbove').textContent='▲ drier — judgment & seniority';
-    document.getElementById('mWaterBelow').textContent='▼ automated — the exposed rungs';
-    var phaseW={Establishing:'early in',Advancing:'building through',Leading:'senior in'}[M.A.phase]||'in';
-    var lvl=M.overall>=70?'high':M.overall>=50?'rising':'low-ish';
-    document.getElementById('mWaterLead').innerHTML="<b>The water is "+lvl+" for "+M.lane.toLowerCase()+".</b> "+(M.incumbent?("As someone "+phaseW+" the field, "):"As an entrant, ")+"the move is to climb toward the drier rungs — judgment, relationships, seniority — while going AI-native on the work itself.";
-    document.getElementById('mIfNothing').innerHTML="<b>If you do nothing:</b> the line keeps rising and the exposed rungs go under first. In a spot like this, standing still is the move the water rewards least.";
+    // The water = AI's reach in this lane, risen to the member's exposure. Fill from
+    // the bottom to that level; the surface is labelled with the number. Above the
+    // line is the dry, protected work to climb into.
+    var lvl=Math.max(5,Math.min(95,M.overall));
+    document.getElementById('mWaterFill').style.height=lvl+'%';
+    var sl=document.getElementById('mSurfLab'); sl.style.bottom=lvl+'%'; sl.textContent='Your exposure · '+M.overall;
+    var risen=M.overall>=70?'high — most of the work is within reach':M.overall>=50?'past halfway':'still low';
+    var toward=(M.changing && M.fromLane)?(" The good news: "+M.lane.toLowerCase()+" sits drier than where you are now — that climb is your move."):"";
+    document.getElementById('mWaterLead').innerHTML="<b>In "+M.lane.toLowerCase()+", AI&rsquo;s reach has risen "+risen+" — "+M.overall+" out of 100.</b> Everything under the line is work it can already do. The move is to get your hours above it, into the judgment, trust and seniority it can&rsquo;t reach."+toward;
+    document.getElementById('mIfNothing').innerHTML="<b>If you do nothing,</b> the line keeps rising — and the work just under it goes first. Standing still is the one move the water punishes.";
   }
   function renderHead(M){
     document.getElementById('mExp').textContent=M.overall;
