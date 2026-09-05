@@ -31,6 +31,7 @@ export default async function Dashboard() {
   const { userId } = await auth();
   const plan = await getPlan(userId);
   const onb = plan ? onboardingView(plan) : null;
+  const setupActive = !!(onb && !onb.complete); // guided setup still running → show the rail stepper, and hide reminders it already covers
   const t = plan?.traj ?? null;
   const c = t?.computed ?? null;
 
@@ -117,15 +118,17 @@ export default async function Dashboard() {
   const months = Math.max(2, Math.round((t?.daysSinceMap ?? 60) / 30));
   const reminders: Reminder[] = [];
   if (t?.hasMap) {
-    if (!stepDone("welcome")) reminders.push({ icon: "events", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
+    // While guided setup is running, the rail stepper is the one place for
+    // setup actions (welcome, move, learn, pod-join) — don't repeat them here.
+    if (!stepDone("welcome") && !setupActive) reminders.push({ icon: "events", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
     if (t.personalRescoreDue) reminders.push({ icon: "evolve", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
     else if (shippedSinceRescore) reminders.push({ icon: "evolve", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
-    if (moves.active.length === 0) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
-    else reminders.push({ icon: "build", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
+    if (moves.active.length === 0 && !setupActive) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
+    else if (moves.active.length > 0) reminders.push({ icon: "build", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
     if (!stepDone("build")) reminders.push({ icon: "build", text: "Train your judgment — log a Build rep", href: "/hub/build" });
-    if (!stepDone("learn")) reminders.push({ icon: "learn", text: "Learn your six levers", href: "/hub/learn" });
+    if (!stepDone("learn") && !setupActive) reminders.push({ icon: "learn", text: "Learn your six levers", href: "/hub/learn" });
     if (stepDone("pod")) reminders.push({ icon: "pods", text: "Check in with your pod this week", href: "/hub/pods" });
-    else reminders.push({ icon: "pods", text: "Join your Together Pod", href: "/hub/pods/browse" });
+    else if (!setupActive) reminders.push({ icon: "pods", text: "Join your Together Pod", href: "/hub/pods/browse" });
   }
   const shownReminders = reminders.slice(0, 5);
 
@@ -133,14 +136,6 @@ export default async function Dashboard() {
     <>
       <div className="hub-top"><h1>The Evolve Dashboard</h1><span className="sp" /></div>
       <div className="hub-body">
-        {onb && !onb.complete && onb.current && t?.hasMap && (
-          <Link href={onb.current.href} className="newhere">
-            <span className="nh-dot" />
-            <span>Getting set up · step {onb.stepNumber} of {onb.total} — next: <b>{onb.current.label}</b></span>
-            <span className="nh-go">{onb.current.cta} →</span>
-          </Link>
-        )}
-
         {recent.length > 0 && (
           <div className="earned">
             <span className="earned-spark"><Icon name="done" size={16} /></span>
@@ -182,7 +177,8 @@ export default async function Dashboard() {
         )}
 
         {t?.hasMap ? (
-          <>
+          <div className={setupActive ? "dash" : "dash dash-solo"}>
+            <div className="dash-col">
             {/* The lead: your exposure today, and how far you've moved from baseline. */}
             <section className="escore">
               <div className="escore-head">
@@ -241,11 +237,23 @@ export default async function Dashboard() {
                         ? <span className="neg">{c.personal.delta} worse than average</span>
                         : <span>right at the average</span>}.
                   </p>
-                  {c.personal.helps && c.personal.helps.length > 0 && (
-                    <p className="drv-line"><span className="drv-k pos-k">Working for you</span> {c.personal.helps.join(", ")}</p>
-                  )}
-                  {c.personal.hurts && c.personal.hurts.length > 0 && (
-                    <p className="drv-line"><span className="drv-k neg-k">Holding you back</span> {c.personal.hurts.join(", ")}</p>
+                  {((c.personal.helps?.length ?? 0) > 0 || (c.personal.hurts?.length ?? 0) > 0) && (
+                    <div className="drv-split">
+                      <div className="drv-half">
+                        <div className="drv-ht keep"><span className="d" />What stays yours</div>
+                        <ul>
+                          {(c.personal.helps ?? []).map((h, i) => <li key={i}>{h}</li>)}
+                          {(c.personal.helps?.length ?? 0) === 0 && <li>Judgment, trust and the calls only you can make</li>}
+                        </ul>
+                      </div>
+                      <div className="drv-half">
+                        <div className="drv-ht exp"><span className="d" />Holding you back</div>
+                        <ul>
+                          {(c.personal.hurts ?? []).map((h, i) => <li key={i}>{h}</li>)}
+                          {(c.personal.hurts?.length ?? 0) === 0 && <li>The routine, repeatable volume AI handles well</li>}
+                        </ul>
+                      </div>
+                    </div>
                   )}
                 </div>
               )}
@@ -293,7 +301,36 @@ export default async function Dashboard() {
             ) : (
               <p className="creds-empty">No credentials yet — they&apos;re earned by doing the work: your first Map, first move shipped, first rep.</p>
             )}
-          </>
+            </div>
+
+            {setupActive && onb && (
+              <aside className="dash-rail">
+                <section className="card setup-card">
+                  <div className="setup-head">
+                    <p className="ck">Get set up</p>
+                    <span className="setup-count">{onb.doneCount} / {onb.total} done</span>
+                  </div>
+                  <div className="setup-bar"><i style={{ width: `${Math.round((onb.doneCount / onb.total) * 100)}%` }} /></div>
+                  <div className="steps">
+                    {onb.steps.map((s) => {
+                      const state = s.done ? "done" : onb.current && s.key === onb.current.key ? "now" : s.locked ? "locked" : "";
+                      return (
+                        <div key={s.key} className={`stp ${state}`}>
+                          <span className="mk">{s.done ? "✓" : ""}</span>
+                          <div>
+                            <span className="sl">{s.label}</span>
+                            {state === "now" && <div className="sb">{s.blurb}</div>}
+                            {state === "now" && <Link href={s.href} className="scta btn btn-primary">{s.cta} →</Link>}
+                            {state === "locked" && s.lockNote && <div className="sb">{s.lockNote}</div>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
+              </aside>
+            )}
+          </div>
         ) : (
           <section className="welcome-hero">
             <p className="ck">Welcome to Pivotum</p>
