@@ -2,6 +2,7 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
 import { getPlan } from "@/lib/plan";
+import { onboardingView } from "@/lib/onboarding";
 import { exposureBand, bandWord } from "@/lib/trajectory";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
@@ -29,6 +30,7 @@ export default async function Dashboard() {
   const profile = await getOrCreateProfile();
   const { userId } = await auth();
   const plan = await getPlan(userId);
+  const onb = plan ? onboardingView(plan) : null;
   const t = plan?.traj ?? null;
   const c = t?.computed ?? null;
 
@@ -131,11 +133,11 @@ export default async function Dashboard() {
     <>
       <div className="hub-top"><h1>The Evolve Dashboard</h1><span className="sp" /></div>
       <div className="hub-body">
-        {plan && !plan.fullyActivated && (
-          <Link href="/hub/welcome" className="newhere">
+        {onb && !onb.complete && onb.current && t?.hasMap && (
+          <Link href={onb.current.href} className="newhere">
             <span className="nh-dot" />
-            <span>New here? Your <b>Welcome</b> walks you through your opening, step by step.</span>
-            <span className="nh-go">Open Welcome →</span>
+            <span>Getting set up · step {onb.stepNumber} of {onb.total} — next: <b>{onb.current.label}</b></span>
+            <span className="nh-go">{onb.current.cta} →</span>
           </Link>
         )}
 
