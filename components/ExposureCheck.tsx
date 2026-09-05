@@ -9,11 +9,11 @@ import {
 } from "@/lib/exposure";
 import { SITE } from "@/lib/site";
 
-// Brand exposure palette — legible on the light paper ground both as the band
-// word (text) and as the filled scale segment (with white text). Exposed coral →
-// amber → protected green, matching the hub's data colors.
+// Exposure palette — a diverging blue↔red scale matching the hub's electric
+// system: exposed (red) → neutral (slate) → protected (blue). Legible on white
+// both as the band word (text) and as a filled scale segment (with white text).
 const TONE_COLOR: Record<string, string> = {
-  red: "#B4442F", orange: "#BC6A2C", yellow: "#B8873A", lime: "#5F8A4C", green: "#2E7D55",
+  red: "#F5333F", orange: "#F26B6B", yellow: "#8A93A3", lime: "#7FA0FF", green: "#2F6BFF",
 };
 
 const SENIORITY: { key: Seniority; label: string }[] = [
