@@ -311,7 +311,7 @@
 <header>
   <div class="hin">
     <span class="mk"></span>
-    <span class="htext"><small>Pivotum</small><span class="ht">Map advisor</span></span>
+    <span class="htext"><small>Pivotum</small><span class="ht">Eva · your Map guide</span></span>
     <span class="sp"></span>
     <span class="hstatus"><span class="dot"></span> building your Map</span>
   </div>
@@ -320,7 +320,7 @@
 
 <div class="scroll" id="scroll"><div class="chat" id="chat"></div></div>
 
-<div class="prodnote"><div><b>Illustrative intake — the Map advisor in conversation.</b> Answer the questions and hit <b>Build my Map</b> — your answers compute a real Map. Your answers then stay <b>locked</b> on the Map; re-scoring unlocks them. Nothing is saved.</div></div>
+<div class="prodnote"><div><b>Illustrative intake — Eva, your Map guide, in conversation.</b> Answer the questions and hit <b>Build my Map</b> — your answers compute a real Map. Your answers then stay <b>locked</b> on the Map; re-scoring unlocks them. Nothing is saved.</div></div>
 </div>
 
 <div id="mapView">
@@ -334,9 +334,9 @@
 
   <div class="wrap">
     <div class="hero"><div><h1>Your Map</h1><div class="sub" id="mSub"></div></div>
-      <button class="sorttog" id="backChat">Change or unlock with the advisor →</button>
+      <button class="sorttog" id="backChat">Change or unlock with Eva →</button>
     </div>
-    <div class="mapnote"><b>Live from your answers.</b> Every number below is computed from what you told the advisor, against our scored career data (<code>careers.ts</code>). Scroll to <b>Tune your answers</b> at the bottom — drag a slider and watch the Map move.</div>
+    <div class="mapnote"><b>Live from your answers.</b> Every number below is computed from what you told Eva, against our scored career data (<code>careers.ts</code>). Scroll to <b>Tune your answers</b> at the bottom — drag a slider and watch the Map move.</div>
 
     <div class="kpis">
       <div class="kpi warn"><div class="kl">Overall exposure</div><div class="kv" id="kExp">0</div><div class="kt" id="kExpT"></div></div>
@@ -397,7 +397,7 @@
     </div></div>
 
     <div class="tune" id="tunePanel"><div class="phead"><span class="pt">Tune your answers</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">live</span></div><div class="pbody">
-      <p class="tnote"><b>This is the point.</b> Change anything here and the whole Map above recomputes instantly — the same math the live advisor runs.</p>
+      <p class="tnote"><b>This is the point.</b> Change anything here and the whole Map above recomputes instantly — the same math Eva runs live.</p>
       <div id="tuneBody"></div>
     </div></div>
 
@@ -559,7 +559,7 @@
   function setProg(n){ var t=A.path==='ent'?8:10; prog.style.width=Math.round(n/t*100)+'%'; }
 
   function start(){
-    advisor("Hey — good to meet you. I’m going to help you build your <b>Winning in the Age of AI Map</b> — a clear read on where AI leaves your work standing, and where your best openings are.", null, function(){
+    advisor("Hey — I’m <b>Eva</b>, good to meet you. I’m going to help you build your <b>Winning in the Age of AI Map</b> — a clear read on where AI leaves your work standing, and where your best openings are.", null, function(){
       advisor("I’ll just ask you a handful of things — takes a couple of minutes, and nothing’s set in stone. You can change any of it later.", null, function(){
         advisor("<span class=\"q\">So, first up — where are you on your career journey?</span>", null, function(){
           control(chips([

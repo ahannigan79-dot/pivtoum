@@ -44,7 +44,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
   return (
     <>
       <div className="hub-top"><h1>Events</h1><span className="sp" /></div>
-      <div className="hub-body hub-feed">
+      <div className="hub-body events-body">
         <Link href="/hub/events/welcome" className="welcome-cta">
           <div>
             <p className="ck">★ Start here</p>

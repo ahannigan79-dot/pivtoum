@@ -214,7 +214,10 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .event-admin-btn.del:hover { border-color:var(--pen); color:var(--pen); }
 
 /* calendar */
-.cal { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:16px 16px 18px; margin:0 0 24px; }
+/* Events: wider than the feed so the calendar uses the space (mobile stays full-width). */
+.events-body { max-width:960px; }
+.cal { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:16px 16px 18px; margin:0 0 24px;
+  box-shadow:0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05); }
 .cal-top { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
 .cal-top h2 { font-family:var(--serif); font-weight:700; font-size:1.24rem; margin:0; }
 .cal-nav { margin-left:auto; display:flex; align-items:center; gap:7px; }
@@ -1359,11 +1362,11 @@ a.pod-member:hover span { color:var(--ink); }
 .learn-lessons { display: flex; flex-direction: column; gap: 6px; }
 .learn-lesson { display: flex; align-items: flex-start; gap: 13px; padding: 13px 15px; border: 1px solid var(--rule);
   border-radius: 12px; background: var(--panel); transition: .12s; }
-.learn-lesson:hover { border-color: var(--rule2); background: var(--panel2); }
-.learn-lesson.done { border-color: var(--green-deep); }
+.learn-lesson:hover { border-color: color-mix(in srgb, var(--accent) 40%, white); background: var(--accent-wash); }
+.learn-lesson.done { border-color: color-mix(in srgb, var(--accent) 30%, white); }
 .learn-check { flex: none; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-  font-size: 0.8rem; font-weight: 800; color: var(--pencil); border: 1px solid var(--rule2); margin-top: 1px; }
-.learn-lesson.done .learn-check { color: var(--on-fill); background: var(--green); border-color: var(--green); }
+  font-size: 0.8rem; font-weight: 800; color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 40%, white); margin-top: 1px; }
+.learn-lesson.done .learn-check { color: var(--on-fill); background: var(--accent); border-color: var(--accent); }
 .learn-lesson-main { flex: 1; min-width: 0; }
 .learn-lesson-main b { display: block; font-size: 0.96rem; color: var(--ink); }
 .learn-lesson-sum { display: block; margin-top: 3px; font-size: 0.85rem; color: var(--soft); line-height: 1.45; }
@@ -1495,9 +1498,10 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ===== Career Deep Dives (Learn) ===== */
 .learn-dd { display:flex; flex-direction:column; gap:10px; margin:0 0 20px; }
-.learn-dd-card { display:block; border:1px solid var(--rule); border-radius:16px; padding:18px 20px;
-  background:var(--panel); text-decoration:none; transition:.14s; }
-.learn-dd-card:hover { filter:brightness(1.05); }
+.learn-dd-card { display:block; border:1px solid color-mix(in srgb, var(--accent) 30%, white); border-radius:16px; padding:18px 20px;
+  background:var(--panel); text-decoration:none; transition:.14s;
+  box-shadow:0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05); }
+.learn-dd-card:hover { border-color:var(--accent); background:var(--accent-wash); }
 .learn-dd-card .ck { color:var(--green); }
 .learn-dd-card h3 { font-family:var(--serif); font-weight:700; font-size:1.3rem; margin:6px 0 6px; color:var(--ink); }
 .learn-dd-card p { margin:0; color:var(--soft); font-size:0.95rem; line-height:1.55; max-width:70ch; }
@@ -1559,26 +1563,26 @@ a.pod-member:hover span { color:var(--ink); }
   text-decoration:none; transition:.14s; }
 .moves-playbook:hover { background:rgba(47,107,255,0.12); }
 /* grouped, scannable layout */
-.pb-group { margin:0 0 40px; padding:0 0 0 18px; border-left:2px solid var(--rule2); }
-.pb-group.rec { border-left-color:var(--green); }
-.pb-group.aim-master { border-left-color:var(--green-deep); }
-.pb-group.aim-guard { border-left-color:var(--amber); }
-.pb-group.aim-shift { border-left-color:#7FA0FF; }
-.pb-group.aim-relocate { border-left-color:var(--pen); }
-.pb-group-head { margin:0 0 18px; }
-.pb-aim-tag { font-size:0.64rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); }
+/* flush layout like Build — no indented coloured bars; section head + card grid */
+.pb-group { margin:0 0 36px; }
+.pb-group-head { margin:0 0 16px; }
+.pb-aim-tag { font-size:0.66rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--pencil); }
 .pb-aim-tag.rec { color:var(--accent); }
 .pb-aim-title { font-family:var(--serif); font-weight:600; font-size:1.2rem; line-height:1.18; letter-spacing:-0.01em; margin:8px 0 6px; color:var(--ink); }
 .pb-aim-blurb { color:var(--soft); font-size:0.95rem; line-height:1.55; margin:0; max-width:68ch; }
 .pb-alllabel { font-family:var(--serif); font-weight:700; font-size:1.05rem; color:var(--ink);
   margin:6px 0 16px; padding-top:14px; border-top:1px solid var(--rule); }
-.play-card { display:flex; flex-direction:column; }
-.play-card.rec { border-color:var(--green-deep); background:var(--panel); }
-.play-lever { font-size:0.58rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber); margin:0 0 7px; }
-.play-lever.big { color:var(--amber); font-size:0.64rem; margin-bottom:9px; }
-.play-card h3 { font-family:var(--serif); font-weight:700; font-size:1.12rem; line-height:1.2; margin:0 0 6px; color:var(--ink); }
-.play-tag { color:var(--soft); font-size:0.9rem; line-height:1.5; margin:0 0 10px; }
-.play-go { margin-top:auto; font-size:0.8rem; font-weight:700; color:var(--green); }
+/* play cards match Build's .build-tile exactly */
+.play-card { display:flex; flex-direction:column; border:1px solid var(--rule); border-radius:16px;
+  background:var(--panel); padding:24px 26px; transition:.14s;
+  box-shadow:0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05); }
+.play-card:hover { border-color:var(--rule2); background:var(--panel2); }
+.play-card.rec { border-color:color-mix(in srgb,var(--accent) 35%,white); }
+.play-lever { font-size:0.66rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin:0 0 9px; }
+.play-lever.big { color:var(--accent); font-size:0.66rem; margin-bottom:9px; }
+.play-card h3 { font-family:var(--serif); font-weight:600; font-size:1.18rem; line-height:1.2; letter-spacing:-0.01em; margin:0 0 9px; color:var(--ink); }
+.play-tag { color:var(--soft); font-size:0.92rem; line-height:1.55; margin:0 0 14px; }
+.play-go { margin-top:auto; font-size:0.86rem; font-weight:700; color:var(--accent); }
 /* play detail */
 .play-head { margin:0 0 8px; }
 .play-head h2 { font-family:var(--serif); font-weight:700; font-size:1.7rem; line-height:1.14; margin:0 0 8px; color:var(--ink); }

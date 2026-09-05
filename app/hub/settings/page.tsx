@@ -1,13 +1,16 @@
 import { SignOutButton } from "@clerk/nextjs";
-import { getOrCreateProfile } from "@/lib/member";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { updateEmailPrefs } from "./actions";
+import { resetToNewUser } from "./reset-actions";
 import { PrefsForm } from "@/components/hub/settings/PrefsForm";
 import { PushToggle } from "@/components/hub/settings/PushToggle";
+import { ResetTester } from "@/components/hub/settings/ResetTester";
 
 export const metadata = { title: "Settings — Winning in the Age of AI" };
 
 export default async function SettingsPage() {
   const profile = await getOrCreateProfile();
+  const founder = isFounder(profile);
 
   return (
     <>
@@ -40,6 +43,18 @@ export default async function SettingsPage() {
         <SignOutButton>
           <button type="button" className="settings-signout">Sign out &rarr;</button>
         </SignOutButton>
+
+        {founder && (
+          <>
+            <div className="hub-sectlabel" style={{ marginTop: 26 }}>Founder testing</div>
+            <p className="settings-lead">
+              Reset your own account to a brand-new member — clears your Map, moves, pod, learn progress
+              and credentials — so you can re-run the guided onboarding (build the Map with Eva, choose a pod,
+              test the welcome bot). Only affects you; your subscription and profile stay put.
+            </p>
+            <ResetTester action={resetToNewUser} />
+          </>
+        )}
       </div>
     </>
   );

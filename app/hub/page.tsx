@@ -259,13 +259,16 @@ export default async function Dashboard() {
               )}
             </section>
 
-            {/* The rest of your numbers, kept quiet — the score above is the point. */}
-            <div className="statline">
-              <span><b>{t.movesDone}</b> shipped</span>
-              <span><b>{t.movesActive}</b> in flight</span>
-              <span><b>{t.editions}</b> re-scores</span>
-              <span><b>{t.badgeCount}</b> credentials</span>
-            </div>
+            {/* The rest of your numbers, kept quiet — the score above is the point.
+                While setup is running, these live in the rail as tiles instead. */}
+            {!setupActive && (
+              <div className="statline">
+                <span><b>{t.movesDone}</b> shipped</span>
+                <span><b>{t.movesActive}</b> in flight</span>
+                <span><b>{t.editions}</b> re-scores</span>
+                <span><b>{t.badgeCount}</b> credentials</span>
+              </div>
+            )}
 
             {/* To evolve to win — automated reminders from map, build, activity */}
             {shownReminders.length > 0 && (
@@ -326,6 +329,16 @@ export default async function Dashboard() {
                         </div>
                       );
                     })}
+                  </div>
+                </section>
+
+                <section className="card setup-card">
+                  <p className="ck">Your progress</p>
+                  <div className="rail-tiles">
+                    <div className="rail-tile"><div className="tn">{t.movesDone}</div><div className="tl">Shipped</div></div>
+                    <div className="rail-tile"><div className="tn">{t.movesActive}</div><div className="tl">In flight</div></div>
+                    <div className="rail-tile"><div className="tn">{t.editions}</div><div className="tl">Re-scores</div></div>
+                    <div className="rail-tile"><div className="tn">{t.badgeCount}</div><div className="tl">Credentials</div></div>
                   </div>
                 </section>
               </aside>
