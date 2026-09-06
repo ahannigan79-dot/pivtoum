@@ -73,7 +73,10 @@ export default async function PodPage({
             <h1>{pod.crest ? `${pod.crest} ` : ""}{pod.name}</h1>
             {pod.description && <p>{pod.description}</p>}
           </div>
-          <JoinButton slug={pod.slug} joined={iAmIn} />
+          <div className="pod-head-actions">
+            {amCaptain && <Link href={`/hub/pods/${pod.slug}/manage`} className="pod-manage-link">Manage pod →</Link>}
+            <JoinButton slug={pod.slug} joined={iAmIn} />
+          </div>
         </header>
 
         <PodProfile slug={pod.slug} vibe={pod.vibe} crest={pod.crest} lane={pod.lane}

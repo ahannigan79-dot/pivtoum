@@ -4,11 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { podMembers, pods, posts, podThreads, profiles } from "@/db/schema";
+import { podMembers, pods, posts, podThreads, profiles, podCheckins } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { getPodBySlug, setPodLeader, leadsPod, syncPodHelper, joinMemberToPod, podRoom } from "@/lib/pods";
 import { autoPlaceMember } from "@/lib/pod-match";
 import { recordCheckin } from "@/lib/pod-ritual";
+import { notifyPod } from "@/lib/notifications";
+import { isoWeekKey } from "@/lib/gym-gate";
 import { createThreadIn } from "@/lib/threads";
 import { attachFiles } from "@/app/hub/community/actions";
 import { awardBadge } from "@/lib/badges";
@@ -208,4 +210,55 @@ export async function createThread(slug: string, formData: FormData) {
   const thread = await createThreadIn(pod.id, name, emoji);
   revalidatePath(`/hub/pods/${slug}`);
   if (thread) redirect(`/hub/pods/${slug}?t=${thread.slug}`);
+}
+
+/* ---------- Captain console: managing the pod ---------- */
+/** May the caller manage this pod? Its current captain, or a founder. */
+async function mayManage(userId: string | null, podId: string): Promise<boolean> {
+  if (!userId) return false;
+  const profile = await getOrCreateProfile();
+  return isFounder(profile) || (await leadsPod(userId, podId));
+}
+
+/** Hand the captaincy to another member (monthly rotation). The new captain gets
+ *  the badge; the outgoing captain steps down. Captain or founder. */
+export async function handOverCaptain(slug: string, memberId: string) {
+  const { userId } = await auth();
+  const pod = await getPodBySlug(slug);
+  if (!pod || !(await mayManage(userId, pod.id))) return;
+  await setPodLeader(pod.id, memberId, true);
+  await awardBadge(memberId, "captain");
+  if (userId && userId !== memberId) await setPodLeader(pod.id, userId, false);
+  await recomputeListable(pod.id);
+  await notifyPod(memberId, { title: "You're the pod captain", preview: `${pod.name} is yours to run — welcome to the helm.`, href: `/hub/pods/${slug}/manage` });
+  revalidatePath(`/hub/pods/${slug}`);
+  revalidatePath(`/hub/pods/${slug}/manage`);
+}
+
+/** Remove a member from the pod. Captain or founder; never removes the caller. */
+export async function removePodMember(slug: string, memberId: string) {
+  const { userId } = await auth();
+  const pod = await getPodBySlug(slug);
+  if (!pod || !(await mayManage(userId, pod.id)) || memberId === userId) return;
+  await db.delete(podMembers).where(and(eq(podMembers.podId, pod.id), eq(podMembers.memberId, memberId)));
+  await syncPodHelper(pod.id);
+  revalidatePath(`/hub/pods/${slug}`);
+  revalidatePath(`/hub/pods/${slug}/manage`);
+}
+
+/** Nudge everyone in the pod who hasn't checked in this week. Captain or founder. */
+export async function nudgePod(slug: string) {
+  const { userId } = await auth();
+  const pod = await getPodBySlug(slug);
+  if (!pod || !(await mayManage(userId, pod.id))) return;
+  const week = isoWeekKey();
+  const done = await db.select({ m: podCheckins.memberId }).from(podCheckins)
+    .where(sql`${podCheckins.podId} = ${pod.id} and ${podCheckins.isoWeek} = ${week}`);
+  const doneSet = new Set(done.map((d) => d.m));
+  const members = await db.select({ m: podMembers.memberId }).from(podMembers).where(eq(podMembers.podId, pod.id));
+  for (const mem of members) {
+    if (mem.m === userId || doneSet.has(mem.m)) continue;
+    await notifyPod(mem.m, { title: "Your pod is waiting on you", preview: `${pod.name} — drop your check-in for the week.`, href: `/hub/pods/${slug}` });
+  }
+  revalidatePath(`/hub/pods/${slug}/manage`);
 }

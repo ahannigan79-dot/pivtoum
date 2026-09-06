@@ -247,6 +247,28 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .play-actions .adopt-btn { align-self:flex-start; }
 .adopt-note { font-size:0.9rem; color:var(--soft); margin:0; } .adopt-note a { color:var(--accent); font-weight:600; }
 
+/* Captain console — /hub/pods/[slug]/manage */
+.pod-head-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.pod-manage-link { font-size:0.84rem; font-weight:600; color:var(--accent); white-space:nowrap; }
+.cm-card { margin-top:16px; }
+.cm-count { font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--accent); }
+.cm-sub { font-size:0.88rem; color:var(--soft); line-height:1.5; margin:0 0 14px; }
+.cm-goal { display:flex; gap:10px; }
+.cm-goal-input { flex:1; min-width:0; border:1px solid var(--rule2); border-radius:10px; background:var(--panel); padding:11px 13px; font:inherit; color:var(--ink); }
+.cm-goal-input:focus { outline:none; border-color:var(--accent); }
+.cm-roster { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.cm-member + .cm-member { border-top:1px solid var(--rule); padding-top:14px; }
+.cm-member-id { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.cm-member-name { font-weight:600; color:var(--ink); }
+.cm-trial { font-size:0.62rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-wash); border-radius:6px; padding:2px 7px; }
+.cm-checked { margin-left:auto; font-size:0.8rem; color:var(--pencil); font-weight:500; }
+.cm-checked.on { color:var(--accent); }
+.cm-member-intro { font-size:0.86rem; color:var(--soft); line-height:1.5; margin:6px 0 0; }
+.cm-member-acts { display:flex; gap:8px; margin-top:9px; }
+.cm-act { font-size:0.78rem; font-weight:600; color:var(--soft); background:var(--panel2); border:1px solid var(--rule2); border-radius:8px; padding:6px 12px; cursor:pointer; }
+.cm-act:hover { border-color:var(--accent); color:var(--accent); }
+.cm-act.danger:hover { border-color:color-mix(in srgb,var(--exp) 40%,white); color:var(--exp); }
+
 /* "Your momentum" — engagement block: scoreboard + streak + credentials + CTA. */
 .mom-card .ck { margin-bottom:18px; }
 .mom-list { display:flex; flex-direction:column; gap:16px; }
