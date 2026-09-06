@@ -643,11 +643,11 @@
         opts.push({v:'__mix', label:'A mix / not one lane'});
         control(chips(opts, function(v,l){ me(l); clearCtrl(); STEP=3; setProg(3);
           if(v==='__mix'){
-            A.lane='General '+c.name.toLowerCase(); A.laneScore=null; A.laneBand='range';
+            A.lane='General '+c.name.toLowerCase(); A.laneScore=null; A.laneBand='range'; A.licence=licFromScore(c.f[4]);
             advisor("No worries — I’ll take the general read for now, and we’ll pin down exactly where you sit with the next few questions.", null, incWork);
           } else {
             var t = c.tracks.filter(function(x){ return x.n===v; })[0];
-            A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b;
+            A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; A.licence=licFromScore(t.lic);
             advisor("Right — "+t.n.toLowerCase()+", got it. That’s a distinct corner of "+c.name.toLowerCase()+", and it reads quite differently from the rest. I’ll show you exactly where it lands on your Map.", null, incWork);
           }
         }));
@@ -724,11 +724,16 @@
     });
   }
   function incContext(){
-    advisor("<span class=\"q\">Two quick ones about your world.</span>", null, function(){
-      control(combinedContext(function(lic,pace){ A.licence=lic; A.pace=pace; clearCtrl(); me('Answered'); STEP=5; setProg(5);
-        var la=lic==='no'?"Got it — no licence, so we’ll lean on your other protections.":"A licence is real cover — the kind AI can’t just get around.";
-        advisor(la, null, function(){ if(A.mode==='change'){ incTargetPick(); } else { incAim(); } });
-      }), true);
+    advisor("<span class=\"q\">One quick one — how fast is AI moving where you work?</span>", null, function(){
+      advisor("No wrong answer — a slower employer just buys you a bit more time.", null, function(){
+        control(chips([
+          {v:'behind',label:'Behind — barely started'},
+          {v:'mid',label:'Somewhere in the middle'},
+          {v:'fast',label:'Fast — reshaping workflows'}
+        ], function(v,l){ A.pace=v; me(l); clearCtrl(); STEP=5; setProg(5);
+          advisor("Got it.", null, function(){ if(A.mode==='change'){ incTargetPick(); } else { incAim(); } });
+        }));
+      });
     });
   }
   function incAim(){
@@ -753,7 +758,7 @@
         opts.push({v:'__stay', label:'Actually — keep my current lane'});
         control(chips(opts, function(v,l){
           if(v==='__stay'){ A.changing=false; me('Keep my current lane'); clearCtrl(); advisor("No problem — I’ll keep you where you are and show the moves from there.", null, incRecap); return; }
-          var t=others[+v]; A.changing=true; A.changeFrom=A.lane; A.changeFromScore=A.laneScore; A.changeFromBand=A.laneBand; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; me('Move toward '+t.n); clearCtrl();
+          var t=others[+v]; A.changing=true; A.changeFrom=A.lane; A.changeFromScore=A.laneScore; A.changeFromBand=A.laneBand; A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b; A.licence=licFromScore(t.lic); me('Move toward '+t.n); clearCtrl();
           advisor("Good move — "+t.n.toLowerCase()+", a more protected lane than where you are now. I’ll build your Map and openings around getting there.", null, incRecap);
         }));
       });
@@ -826,7 +831,7 @@
     var careers = (A.direction.indexOf('__open')>=0 || !A.direction.length) ? CAREERS.slice()
       : A.direction.map(function(f){ return findCareer(f); }).filter(Boolean);
     var lanes=[];
-    careers.forEach(function(c){ c.tracks.forEach(function(t){ lanes.push({c:c, n:t.n, s:t.s, b:t.b}); }); });
+    careers.forEach(function(c){ c.tracks.forEach(function(t){ lanes.push({c:c, n:t.n, s:t.s, b:t.b, lic:t.lic}); }); });
     lanes.sort(function(a,b){ return a.s-b.s; });
     var many = (A.direction.indexOf('__open')>=0 || A.direction.length>1);
     var top = lanes.slice(0, many?7:5);
@@ -834,7 +839,7 @@
       advisor("Compare them and pick the one that pulls at you — your Map builds around getting in there AI-native.", null, function(){
         var opts=top.map(function(l,i){ return {v:String(i), label: l.n+(many?' · '+l.c.name:'')+'  ·  '+l.s+'/10' }; });
         control(chips(opts, function(v,l){
-          var pk=top[+v]; A.careerSlug=pk.c.slug; A.lane=pk.n; A.laneScore=pk.s; A.laneBand=pk.b; me(pk.n); clearCtrl(); STEP=4; setProg(4);
+          var pk=top[+v]; A.careerSlug=pk.c.slug; A.lane=pk.n; A.laneScore=pk.s; A.laneBand=pk.b; A.licence=licFromScore(pk.lic); me(pk.n); clearCtrl(); STEP=4; setProg(4);
           advisor("Nice — "+pk.n.toLowerCase()+" it is. That’s one of the more protected corners of "+pk.c.name.toLowerCase()+". I’ll build your Map around getting in there AI-native.", null, entStrengths);
         }));
       });
@@ -932,6 +937,9 @@
   // DON'T guess a field for these; we ask which world they're in.
   var CROSS_DOMAIN=['project manager','product manager','program manager','consultant','consulting','coordinator',' analyst','operations analyst','business analyst'];
   function isCrossDomain(text){ var t=' '+(text||'').toLowerCase()+' '; for(var i=0;i<CROSS_DOMAIN.length;i++){ if(t.indexOf(CROSS_DOMAIN[i])>=0) return true; } return false; }
+  // Licensing is inherent to the lane, not something to ask — derive it from the
+  // lane's own lic factor (0–10). High = licensed/chartered, mid = some regulation.
+  function licFromScore(l){ return l>=7?'yes':(l>=4?'some':'no'); }
   function resolveTypedCareer(text){
     var t=' '+(text||'').toLowerCase()+' ';
     for(var i=0;i<CAREER_ALIASES.length;i++){ var kws=CAREER_ALIASES[i][0]; for(var j=0;j<kws.length;j++){ if(t.indexOf(kws[j])>=0) return findCareer(CAREER_ALIASES[i][1]); } }
