@@ -721,8 +721,9 @@ a.nm:hover { color:var(--ink); }
 @media (max-width:640px){ .strat-stance { font-size:1.35rem; } }
 
 /* Adam's read — Claude's in-voice narrative of the member's Map */
-.mapread { border:1px solid var(--rule); border-radius:16px;
-  background:var(--panel); padding:28px 30px; margin:0 0 26px; }
+.mapread { border:1px solid color-mix(in srgb, var(--accent) 22%, var(--rule)); border-radius:16px;
+  background:linear-gradient(180deg, var(--accent-wash), var(--panel) 58%); padding:28px 30px; margin:0 0 26px;
+  box-shadow:0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05); }
 .mapread-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0 0 10px; }
 .mapread-head > .ck { margin:0; }
 .mapread-regen { flex:none; background:transparent; border:1px solid var(--rule2); border-radius:8px;
