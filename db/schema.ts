@@ -148,6 +148,32 @@ export const podWeeks = pgTable("pod_weeks", {
   createdAt: now(),
 }, (t) => ({ uniq: uniqueIndex("pod_weeks_uniq").on(t.podId, t.isoWeek) }));
 
+/* ---------- Focus goals — the member's 1–2 chosen plays, tracked on Evolve ----------
+   A play adopted from the Map/Playbook becomes a focus goal; its how-to steps are
+   copied in as a checklist. Completing steps drives a capped "goal dividend" on the
+   relevant protection lever, so the exposure score visibly moves as the goal is done. */
+export const focusGoals = pgTable("focus_goals", {
+  id: uid(),
+  memberId: memberFk(),
+  playSlug: text("play_slug").notNull(),
+  title: text("title").notNull(),
+  lever: text("lever").notNull(),                          // judgment | ai-native | trust | relocate | ...
+  aim: text("aim"),                                        // master | guard | shift | relocate (the play's edge)
+  status: text("status").notNull().default("active"),      // active | done | dropped
+  completedAt: timestamp("completed_at", { withTimezone: true }),
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("focus_goals_member_idx").on(t.memberId, t.status) }));
+export const focusSteps = pgTable("focus_steps", {
+  id: uid(),
+  goalId: uuid("goal_id").notNull().references(() => focusGoals.id, { onDelete: "cascade" }),
+  memberId: memberFk(),
+  idx: integer("idx").notNull(),                            // order within the goal
+  title: text("title").notNull(),
+  detail: text("detail"),
+  done: boolean("done").notNull().default(false),
+  completedAt: timestamp("completed_at", { withTimezone: true }),
+}, (t) => ({ goalIdx: index("focus_steps_goal_idx").on(t.goalId) }));
+
 /* ---------- Community feed ---------- */
 export const posts = pgTable("posts", {
   id: uid(),

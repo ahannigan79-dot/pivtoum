@@ -218,6 +218,35 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .event-admin-btn.del:hover { border-color:var(--pen); color:var(--pen); }
 
 /* calendar */
+/* "Your focus" — chosen plays with step checklists, tracked on Evolve. */
+.focus-card { border-color: color-mix(in srgb, var(--accent) 22%, var(--rule)); }
+.focus-goals { display:flex; flex-direction:column; gap:20px; }
+.focus-goal + .focus-goal { border-top:1px solid var(--rule); padding-top:20px; }
+.focus-goal-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:0 0 8px; }
+.focus-goal-head h3 { font-family:var(--serif); font-weight:600; font-size:1.12rem; line-height:1.25; margin:0; color:var(--ink); }
+.focus-prog { font-family:var(--mono); font-size:0.78rem; font-weight:600; color:var(--accent); flex:none; }
+.focus-bar { height:6px; border-radius:100px; background:var(--panel2); overflow:hidden; margin:0 0 14px; }
+.focus-bar i { display:block; height:100%; background:var(--pop); border-radius:100px; transition:width .25s; }
+.focus-steps { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+.focus-steps li { display:grid; grid-template-columns:24px 1fr; gap:12px; align-items:start; }
+.focus-check { width:24px; height:24px; border-radius:7px; border:1.5px solid color-mix(in srgb,var(--accent) 40%,white); background:var(--panel);
+  display:grid; place-items:center; font-size:0.8rem; font-weight:800; color:#fff; cursor:pointer; flex:none; transition:.12s; padding:0; }
+.focus-check:hover { border-color:var(--accent); }
+.focus-steps li.done .focus-check { background:var(--accent); border-color:var(--accent); }
+.focus-step-body { display:flex; flex-direction:column; min-width:0; }
+.fs-t { font-size:0.94rem; color:var(--ink); font-weight:500; line-height:1.35; }
+.focus-steps li.done .fs-t { color:var(--soft); text-decoration:line-through; text-decoration-color:var(--rule2); }
+.fs-d { font-size:0.82rem; color:var(--soft); line-height:1.45; margin-top:2px; }
+.focus-goal-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; }
+.focus-drop { background:transparent; border:0; color:var(--pencil); font-size:0.8rem; font-weight:600; cursor:pointer; padding:0; }
+.focus-drop:hover { color:var(--exp); }
+.focus-note { font-size:0.82rem; color:var(--soft); line-height:1.5; margin:18px 0 0; padding-top:16px; border-top:1px solid var(--rule); }
+
+/* play page: focus + commit actions sit together */
+.play-actions { display:flex; flex-direction:column; gap:14px; margin-top:20px; }
+.play-actions .adopt-btn { align-self:flex-start; }
+.adopt-note { font-size:0.9rem; color:var(--soft); margin:0; } .adopt-note a { color:var(--accent); font-weight:600; }
+
 /* "Your momentum" — engagement block: scoreboard + streak + credentials + CTA. */
 .mom-card .ck { margin-bottom:18px; }
 .mom-list { display:flex; flex-direction:column; gap:16px; }

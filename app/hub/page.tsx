@@ -17,6 +17,8 @@ import { currentExposure, clampScore } from "@/lib/score";
 import { getLaneOverride } from "@/lib/baselines";
 import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
+import { FocusPanel } from "@/components/hub/dashboard/FocusPanel";
+import { getFocus, focusDividend } from "@/lib/focus";
 import { Icon } from "@/components/hub/Icon";
 import { ArticleWhy } from "@/components/hub/dashboard/ArticleWhy";
 
@@ -90,8 +92,15 @@ export default async function Dashboard() {
   // (≥75%) and is active ≥3 of 4 weeks buys down one point of exposure, capped at 12
   // total, so exposure comes down as a journey, not a sprint. (See lib/gym-gate.ts.)
   const effortDividend = await qualifyingMonths(userId);
+  // Focus dividend — earned by completing the steps of your chosen goals; capped,
+  // so doing the work on your focus visibly brings exposure down.
+  const [focus, focusDiv] = await Promise.all([
+    t?.hasMap ? getFocus(userId) : Promise.resolve([]),
+    focusDividend(userId),
+  ]);
+  const totalDividend = effortDividend + focusDiv;
   const baseExp = t?.overall != null ? t.overall + marketShift : null;
-  const exposureNow = baseExp != null ? currentExposure(baseExp, effortDividend) : null;
+  const exposureNow = baseExp != null ? currentExposure(baseExp, totalDividend) : null;
 
   const band = exposureBand(exposureNow);
   const laneBandWord = bandWord(c?.band);
@@ -134,8 +143,8 @@ export default async function Dashboard() {
         kind: "market",
       });
     }
-    if (effortDividend > 0 && exposureNow != null) {
-      journey.push({ value: exposureNow, label: "Today", sub: `Effort dividend −${effortDividend}`, kind: "today" });
+    if (totalDividend > 0 && exposureNow != null) {
+      journey.push({ value: exposureNow, label: "Today", sub: `Your work −${totalDividend}`, kind: "today" });
     } else if (journey.length) {
       journey[journey.length - 1] = { ...journey[journey.length - 1], label: "Today", kind: "today" };
     }
@@ -243,6 +252,9 @@ export default async function Dashboard() {
 
             {/* Adam's read — Claude's in-voice narrative of their Map, grounded in `computed` */}
             <MapRead />
+
+            {/* Your focus — the chosen plays + their steps, tracked toward the goal */}
+            <FocusPanel goals={focus} />
 
             {/* What's driving this — the single reason behind the score */}
             <section className="ck-card ck-driver ck-driver-solo">

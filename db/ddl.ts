@@ -292,6 +292,30 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "pod_weeks_uniq" ON "pod_weeks" ("pod_id","iso_week")`,
+  // Focus goals — the member's chosen plays, tracked on Evolve with a step checklist.
+  `CREATE TABLE IF NOT EXISTS "focus_goals" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "play_slug" text NOT NULL,
+     "title" text NOT NULL,
+     "lever" text NOT NULL,
+     "aim" text,
+     "status" text DEFAULT 'active' NOT NULL,
+     "completed_at" timestamp with time zone,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "focus_goals_member_idx" ON "focus_goals" ("member_id","status")`,
+  `CREATE TABLE IF NOT EXISTS "focus_steps" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "goal_id" uuid NOT NULL REFERENCES "focus_goals"("id") ON DELETE cascade,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "idx" integer NOT NULL,
+     "title" text NOT NULL,
+     "detail" text,
+     "done" boolean DEFAULT false NOT NULL,
+     "completed_at" timestamp with time zone
+   )`,
+  `CREATE INDEX IF NOT EXISTS "focus_steps_goal_idx" ON "focus_steps" ("goal_id")`,
   // Pod-captain credential (Phase 1b).
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('captain','Pod Captain','🎖️','Led your pod')

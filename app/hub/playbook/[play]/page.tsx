@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 import { getPlay, playLeverLabel, AIMS } from "@/lib/plays";
+import { getFocus, canAddFocus } from "@/lib/focus";
 import { CommitPlay } from "@/components/hub/playbook/CommitPlay";
+import { AdoptFocus } from "@/components/hub/playbook/AdoptFocus";
 
 export async function generateMetadata({ params }: { params: Promise<{ play: string }> }) {
   const { play } = await params;
@@ -14,6 +17,12 @@ export default async function PlayPage({ params }: { params: Promise<{ play: str
   const p = getPlay(play);
   if (!p) notFound();
   const aim = AIMS.find((a) => a.key === p.aim);
+  const { userId } = await auth();
+  const [myFocus, roomForFocus] = await Promise.all([
+    userId ? getFocus(userId) : Promise.resolve([]),
+    userId ? canAddFocus(userId) : Promise.resolve(false),
+  ]);
+  const alreadyFocus = myFocus.some((g) => g.playSlug === p.slug);
 
   return (
     <>
@@ -39,7 +48,10 @@ export default async function PlayPage({ params }: { params: Promise<{ play: str
           ))}
         </ol>
 
-        <CommitPlay title={p.firstMove} lever={p.lever} />
+        <div className="play-actions">
+          <AdoptFocus slug={p.slug} already={alreadyFocus} atCap={!roomForFocus && !alreadyFocus} />
+          <CommitPlay title={p.firstMove} lever={p.lever} />
+        </div>
       </div>
     </>
   );
