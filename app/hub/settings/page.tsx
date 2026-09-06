@@ -1,7 +1,7 @@
 import { SignOutButton } from "@clerk/nextjs";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { updateEmailPrefs } from "./actions";
-import { resetToNewUser } from "./reset-actions";
+import { resetToNewUser, seedDemoPods } from "./reset-actions";
 import { PrefsForm } from "@/components/hub/settings/PrefsForm";
 import { PushToggle } from "@/components/hub/settings/PushToggle";
 import { ResetTester } from "@/components/hub/settings/ResetTester";
@@ -53,6 +53,13 @@ export default async function SettingsPage() {
               test the welcome bot). Only affects you; your subscription and profile stay put.
             </p>
             <ResetTester action={resetToNewUser} />
+            <p className="settings-lead" style={{ marginTop: 18 }}>
+              Seed a few example pods (with vibes + crests, matched to your lane) so the guided
+              &ldquo;Find your pod&rdquo; flow has real cards to choose from. Demo data — safe to re-run.
+            </p>
+            <form action={seedDemoPods}>
+              <button type="submit" className="btn btn-ghost">Seed demo pods →</button>
+            </form>
           </>
         )}
       </div>
