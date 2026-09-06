@@ -5,7 +5,7 @@ import { Icon } from "@/components/hub/Icon";
 
 const SECTIONS: { label?: string; items: { href: string; icon: string; label: string }[] }[] = [
   { items: [
-    { href: "/hub/welcome", icon: "welcome", label: "Welcome" },
+    { href: "/hub/welcome", icon: "welcome", label: "Start with Eva" },
     { href: "/hub", icon: "evolve", label: "Evolve" },
     { href: "/hub/playbook", icon: "playbook", label: "Winning Playbook" },
   ] },

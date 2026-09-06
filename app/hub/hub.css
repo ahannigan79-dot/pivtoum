@@ -84,6 +84,10 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .btn-primary:hover { filter:brightness(1.05); }
 .btn-ghost { background:var(--accent-wash); color:var(--accent); border-color:color-mix(in srgb,var(--accent) 22%,white); }
 .btn-ghost:hover { background:color-mix(in srgb,var(--accent) 12%,white); }
+/* `.hub a { color:inherit }` (0,1,1) otherwise beats the button color (0,1,0) and
+   renders link-CTAs in dark ink — force white/accent text with higher specificity. */
+.hub a.btn-primary, .hub button.btn-primary { color:#fff; }
+.hub a.btn-ghost, .hub button.btn-ghost { color:var(--accent); }
 .card .ck { margin:0 0 8px; }
 .card h3 { font-family:var(--serif); font-weight:700; font-size:1.24rem; margin:0 0 6px; }
 .card p { margin:0; color:var(--soft); font-size:0.92rem; line-height:1.5; }
@@ -214,6 +218,13 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .event-admin-btn.del:hover { border-color:var(--pen); color:var(--pen); }
 
 /* calendar */
+/* Eva — the onboarding guide persona (welcome page). Electric avatar tile. */
+.eva-badge { display:inline-flex; align-items:center; gap:11px; margin:0 0 18px; }
+.eva-av { width:34px; height:34px; border-radius:10px; background:var(--pop); flex:none; position:relative; box-shadow:0 2px 8px rgba(47,107,255,.30); }
+.eva-av::after { content:""; position:absolute; inset:9px; border-radius:50%; background:rgba(255,255,255,.92); }
+.eva-nm { font-weight:700; font-size:0.95rem; color:var(--ink); line-height:1.1; }
+.eva-nm span { display:block; font-size:0.72rem; font-weight:500; color:var(--soft); margin-top:2px; }
+
 /* Events: wider than the feed so the calendar uses the space (mobile stays full-width). */
 .events-body { max-width:960px; }
 .cal { border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:16px 16px 18px; margin:0 0 24px;

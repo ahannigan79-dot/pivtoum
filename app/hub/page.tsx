@@ -310,7 +310,7 @@ export default async function Dashboard() {
               <aside className="dash-rail">
                 <section className="card setup-card">
                   <div className="setup-head">
-                    <p className="ck">Get set up</p>
+                    <p className="ck">Get set up with Eva</p>
                     <span className="setup-count">{onb.doneCount} / {onb.total} done</span>
                   </div>
                   <div className="setup-bar"><i style={{ width: `${Math.round((onb.doneCount / onb.total) * 100)}%` }} /></div>
@@ -355,8 +355,7 @@ export default async function Dashboard() {
               <div className="wstep"><span className="wstep-n">3</span><div className="wstep-t"><b>Meet your pod</b><span>A small team in your exact lane.</span></div></div>
             </div>
             <div className="welcome-actions">
-              <Link href="/hub/map" className="btn-primary">Build your Map →</Link>
-              <Link href="/hub/welcome" className="btn-ghost">Take the guided Welcome</Link>
+              <Link href="/hub/welcome" className="btn-primary">Start the guided Welcome with Eva →</Link>
             </div>
           </section>
         )}

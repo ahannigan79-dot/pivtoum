@@ -14,21 +14,26 @@ export default async function WelcomePage() {
 
   return (
     <>
-      <div className="hub-top"><h1>Get started</h1><span className="sp" /></div>
+      <div className="hub-top"><h1>Start with Eva</h1><span className="sp" /></div>
       <div className="hub-body">
+        <div className="eva-badge">
+          <span className="eva-av" />
+          <span className="eva-nm">Eva<span>your onboarding guide</span></span>
+        </div>
         {onb?.complete ? (
           <div className="onb-done">
             <span className="onb-done-star">★</span>
             <h2>You&apos;re all set, {first}.</h2>
-            <p>Setup&apos;s done — you&apos;ve mapped where you stand, you&apos;re in a pod, and your first move is in motion.
-              From here it&apos;s the Winning Loop: re-score, ship moves, show up for your pod.</p>
+            <p>That&apos;s your setup complete — you&apos;ve mapped where you stand, you&apos;re in a pod, and your first
+              move is in motion. From here it&apos;s the Winning Loop: re-score, ship moves, show up for your pod.
+              I&apos;ll be around whenever you re-map. — Eva</p>
             <Link href="/hub" className="btn-primary">Go to your dashboard →</Link>
           </div>
         ) : (
           <>
             <p className="hub-lead">
-              Welcome in, <b>{first}</b>. Here&apos;s your path in — five steps, in order. Do the one that&apos;s lit up,
-              and the next unlocks. It takes about half an hour end to end.
+              Hi <b>{first}</b> — I&apos;m Eva, and I&apos;ll get you set up. Here&apos;s your path in: five steps, in order.
+              Do the one that&apos;s lit up and the next unlocks. It takes about half an hour end to end.
             </p>
 
             {onb && (
