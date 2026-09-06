@@ -388,7 +388,7 @@
     <div class="panel"><div class="phead"><span class="pt">Your openings</span></div><div class="pbody">
       <p class="opintro" id="mOpIntro"></p>
       <div id="mOpenings"></div>
-      <div class="flagnote" id="mFlagnote"><b>Nothing flagged yet.</b> Tap the openings that appeal.</div>
+      <div class="flagnote" id="mFlagnote"><b>Pick one or two to focus on.</b> Everything after this is about hitting that goal — focus beats spread.</div>
     </div></div>
 
     <div class="panel" id="planPanel"><div class="phead"><span class="pt">Take it into your loop</span><span class="psp"></span><span style="font-size:0.66rem;color:var(--pencil);letter-spacing:0.1em;text-transform:uppercase;">openings, put to work</span></div><div class="pbody">
@@ -1147,7 +1147,10 @@
     if(pref){ var s=ops.filter(function(o){return o.edge===pref;})[0]; if(s) s.star=true; }
     return ops;
   }
-  function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote'); el.innerHTML = picked.length ? ('<b>'+picked.length+' flagged.</b> Take '+(picked.length>1?'these':'this')+' into your Playbook and commit '+(picked.length>1?'them':'it')+' in Evolve.') : '<b>Nothing flagged yet.</b> Tap the openings that appeal — then take them into your loop below.'; }
+  function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote');
+    el.innerHTML = picked.length===0 ? '<b>Pick one or two to focus on.</b> Everything after this is about hitting that goal — focus beats spread.'
+      : picked.length<=2 ? ('<b>'+picked.length+' chosen — good, that’s focused.</b> Take '+(picked.length>1?'them':'it')+' into your Playbook and commit '+(picked.length>1?'them':'it')+' in Evolve.')
+      : ('<b>'+picked.length+' chosen — that’s a lot.</b> Focus wins: consider narrowing to one or two you’ll actually run.'); }
   // Each opening maps to one Playbook play — so an opening, a play and a
   // committed move are the same thing under different verbs. This is the
   // one-to-one lookup that ties Map → Playbook → Evolve together.
@@ -1171,10 +1174,11 @@
     var html = leadProt ? (prHead(true)+aiHead(false)) : (aiHead(true)+prHead(false));
     document.getElementById('mOpenings').innerHTML=html;
     var ph=phaseBucket(M);
-    document.getElementById('mOpIntro').innerHTML = ent
-      ? "The smartest ways into "+field+" — how to <b>get in AI-native</b>, and the entries that <b>stay protected</b> as you grow. Each opening is a <b>play</b> you can open in your Playbook."
-      : (ph==='Leading' ? "At your level it’s about reshaping the work, not just doing it. Go AI-native across the function <b>and</b> own the judgment. Each opening opens as a <b>play</b> in your Playbook."
-        : "Hold <b>both edges</b> — go AI-native on your lane, and deepen what protects you. Each opening opens as a <b>play</b> in your Playbook.");
+    var focusLine = " <b>Pick just one or two to focus on</b> — we rank them for you, but you don’t have to chase them all. One clear goal you actually hit beats five you don’t.";
+    document.getElementById('mOpIntro').innerHTML = (ent
+      ? "The smartest ways into "+field+" — how to <b>get in AI-native</b>, and the entries that <b>stay protected</b> as you grow."
+      : (ph==='Leading' ? "At your level it’s about reshaping the work, not just doing it — go AI-native across the function <b>and</b> own the judgment."
+        : "Hold <b>both edges</b> — go AI-native on your lane, and deepen what protects you.")) + focusLine;
     var el=document.getElementById('mOpenings');
     [].forEach.call(el.querySelectorAll('.op'),function(c){ c.addEventListener('click',function(e){ if(e.target.closest('.opplay')) return; var id=c.getAttribute('data-op'); flags[id]=!flags[id]; c.classList.toggle('flagged'); updateFlagnote(); if(lastM) renderPlan(lastM); }); });
     updateFlagnote();
