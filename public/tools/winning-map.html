@@ -636,10 +636,7 @@
   }
   function incLane(){
     var c=curCareer();
-    var intro = A.xfunc
-      ? "These roles turn up in every field, and they score off a base of their own — then I adjust for the world you do it in."
-      : "So — "+c.name.toLowerCase()+" isn’t really one job. It’s a handful of pretty different lanes, and they score differently.";
-    advisor(intro, null, function(){
+    var askLane = function(){
      advisor("<span class=\"q\">"+(A.xfunc?"Which is closest to what you actually do?":"Which of these is closest to how you actually spend your days?")+"</span>", null, function(){
       advisor("Just pick the nearest one — we’ll fine-tune it in a moment.", null, function(){
         var opts = c.tracks.map(function(t){ return {v:t.n, label:t.n}; });
@@ -660,7 +657,9 @@
         }));
       });
      });
-    });
+    };
+    if(A.xfunc) askLane();
+    else advisor("So — "+c.name.toLowerCase()+" isn’t really one job. It’s a handful of pretty different lanes, and they score differently.", null, askLane);
   }
   // Cross-functional roles: adjust the role's base score for the domain the member
   // works in — a construction PM sits on far safer ground than a software one.

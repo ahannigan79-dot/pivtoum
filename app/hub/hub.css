@@ -247,6 +247,39 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .play-actions .adopt-btn { align-self:flex-start; }
 .adopt-note { font-size:0.9rem; color:var(--soft); margin:0; } .adopt-note a { color:var(--accent); font-weight:600; }
 
+/* Leadership — role article, interest prompt, domain console, founder review */
+.lead-article h1 { font-family:var(--serif); font-weight:700; font-size:1.7rem; line-height:1.2; letter-spacing:-0.02em; margin:6px 0 12px; color:var(--ink); }
+.lead-article h2 { font-family:var(--serif); font-weight:600; font-size:1.2rem; margin:26px 0 8px; color:var(--ink); }
+.lead-article p { font-size:1rem; line-height:1.65; color:var(--ink2, #2A303C); margin:0 0 12px; }
+.lead-article .lead-lede { font-size:1.1rem; color:var(--soft); line-height:1.6; margin-bottom:18px; }
+.lead-article .lead-back { margin-top:22px; padding-top:16px; border-top:1px solid var(--rule); font-size:0.94rem; }
+.lead-article a { color:var(--accent); font-weight:600; }
+
+.lead-interest { margin-top:22px; border-color:color-mix(in srgb, var(--accent) 22%, var(--rule)); }
+.li-body { font-size:0.95rem; line-height:1.6; color:var(--ink2, #2A303C); margin:4px 0 16px; } .li-body a { color:var(--accent); font-weight:600; }
+.li-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.li-done { font-size:0.92rem; color:var(--accent); font-weight:600; margin:0; }
+
+.dl-domain { margin-bottom:8px; }
+.dl-pods { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+.dl-pod { display:block; border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:18px 20px;
+  box-shadow:0 1px 2px rgba(11,14,20,.04),0 1px 2px rgba(11,14,20,.05); transition:border-color .12s,transform .08s; }
+.dl-pod:hover { border-color:color-mix(in srgb,var(--accent) 40%,white); transform:translateY(-2px); }
+.dl-pod-top { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.dl-crest { font-size:1.3rem; } .dl-pod-top h3 { font-family:var(--serif); font-weight:600; font-size:1.08rem; margin:0; color:var(--ink); }
+.dl-pod-stats { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:0.82rem; color:var(--soft); }
+.dl-pod-stats b { font-family:var(--mono); color:var(--ink); font-weight:600; }
+.dl-warn { color:var(--exp); font-weight:600; }
+
+.ir-list { display:flex; flex-direction:column; gap:14px; }
+.ir-item { border:1px solid var(--rule); border-radius:12px; background:var(--panel); padding:16px 18px; box-shadow:0 1px 2px rgba(11,14,20,.04),0 1px 2px rgba(11,14,20,.05); }
+.ir-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.ir-head b { color:var(--ink); }
+.ir-role { font-size:0.76rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent); }
+.ir-note { font-size:0.9rem; color:var(--soft); line-height:1.5; margin:8px 0 0; }
+.ir-acts { display:flex; gap:10px; margin-top:12px; }
+.ir-done { font-size:0.9rem; font-weight:600; color:var(--soft); margin:10px 0 0; }
+
 /* Captain console — /hub/pods/[slug]/manage */
 .pod-head-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 .pod-manage-link { font-size:0.84rem; font-weight:600; color:var(--accent); white-space:nowrap; }

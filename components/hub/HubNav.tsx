@@ -28,21 +28,28 @@ const SECTIONS: { label?: string; items: { href: string; icon: string; label: st
   ]},
 ];
 
-export function HubNav({ messagesUnread = 0, isFounder = false, openReports = 0, subsPending = 0 }: {
-  messagesUnread?: number; isFounder?: boolean; openReports?: number; subsPending?: number;
+export function HubNav({ messagesUnread = 0, isFounder = false, isDomainLeader = false, openReports = 0, subsPending = 0 }: {
+  messagesUnread?: number; isFounder?: boolean; isDomainLeader?: boolean; openReports?: number; subsPending?: number;
 }) {
   const pathname = usePathname();
   const isActive = (href: string) => (href === "/hub" ? pathname === "/hub" : pathname?.startsWith(href));
+  // Domain leaders get a "Your domain" link alongside the community nav.
+  const base = isDomainLeader
+    ? SECTIONS.map((s) => s.label === "Community"
+        ? { ...s, items: [...s.items, { href: "/hub/domain", icon: "pods", label: "Your domain" }] }
+        : s)
+    : SECTIONS;
   const sections = isFounder
-    ? [...SECTIONS, { label: "Founder", items: [
+    ? [...base, { label: "Founder", items: [
         { href: "/hub/cadence", icon: "events", label: "Cadence" },
         { href: "/hub/submissions", icon: "playbook", label: "Submissions" },
+        { href: "/hub/leadership", icon: "members", label: "Leadership" },
         { href: "/hub/health", icon: "health", label: "Member health" },
         { href: "/hub/market", icon: "exposure", label: "Market baselines" },
         { href: "/hub/scout", icon: "scout", label: "Article scout" },
         { href: "/hub/moderation", icon: "moderation", label: "Moderation" },
       ] }]
-    : SECTIONS;
+    : base;
   return (
     <nav className="hub-nav">
       {sections.map((s, i) => (

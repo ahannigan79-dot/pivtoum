@@ -2,7 +2,9 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
 import { getOnboarding } from "@/lib/onboarding";
+import { myOpenInterest } from "@/lib/leadership";
 import { MarkBooked } from "@/components/hub/welcome/MarkBooked";
+import { LeadInterest } from "@/components/hub/LeadInterest";
 
 export const metadata = { title: "Get started — Pivotum" };
 
@@ -10,7 +12,8 @@ export default async function WelcomePage() {
   const profile = await getOrCreateProfile();
   const first = (profile?.displayName ?? "there").split(" ")[0];
   const { userId } = await auth();
-  const onb = await getOnboarding(userId);
+  const [onb, interest] = await Promise.all([getOnboarding(userId), myOpenInterest(userId)]);
+  const interestedRoles = interest.map((i) => i.role);
 
   return (
     <>
@@ -70,6 +73,8 @@ export default async function WelcomePage() {
             </ol>
           </>
         )}
+
+        <LeadInterest interested={interestedRoles} />
       </div>
     </>
   );

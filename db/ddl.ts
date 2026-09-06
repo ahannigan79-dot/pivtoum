@@ -316,6 +316,24 @@ export const PATCH_STATEMENTS: string[] = [
      "completed_at" timestamp with time zone
    )`,
   `CREATE INDEX IF NOT EXISTS "focus_steps_goal_idx" ON "focus_steps" ("goal_id")`,
+  // Leadership — domain leaders + interest/applications.
+  `CREATE TABLE IF NOT EXISTS "domain_leaders" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "domain" text NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "domain_leaders_member_idx" ON "domain_leaders" ("member_id")`,
+  `CREATE TABLE IF NOT EXISTS "leadership_interest" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "role" text NOT NULL,
+     "domain" text,
+     "note" text,
+     "status" text DEFAULT 'open' NOT NULL,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "leadership_interest_member_idx" ON "leadership_interest" ("member_id","status")`,
   // Pod-captain credential (Phase 1b).
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('captain','Pod Captain','🎖️','Led your pod')

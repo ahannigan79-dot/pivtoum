@@ -174,6 +174,26 @@ export const focusSteps = pgTable("focus_steps", {
   completedAt: timestamp("completed_at", { withTimezone: true }),
 }, (t) => ({ goalIdx: index("focus_steps_goal_idx").on(t.goalId) }));
 
+/* ---------- Leadership — domain leaders + interest/applications ----------
+   Captains run one pod (pod_members.leader); domain leaders steward all the pods
+   in a domain (a lane grouping). Interest is expressed in onboarding and the
+   founder approves — the role is a responsibility, never sold on a perk. */
+export const domainLeaders = pgTable("domain_leaders", {
+  id: uid(),
+  memberId: memberFk(),
+  domain: text("domain").notNull(),                         // the lane grouping they steward
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("domain_leaders_member_idx").on(t.memberId) }));
+export const leadershipInterest = pgTable("leadership_interest", {
+  id: uid(),
+  memberId: memberFk(),
+  role: text("role").notNull(),                             // captain | domain
+  domain: text("domain"),                                   // named for domain interest
+  note: text("note"),
+  status: text("status").notNull().default("open"),         // open | approved | declined
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("leadership_interest_member_idx").on(t.memberId, t.status) }));
+
 /* ---------- Community feed ---------- */
 export const posts = pgTable("posts", {
   id: uid(),

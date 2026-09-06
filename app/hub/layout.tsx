@@ -8,6 +8,7 @@ import { getUnreadNotifCount } from "@/lib/notifications";
 import { openReportCount } from "@/lib/moderation";
 import { pendingSubmissionCount } from "@/lib/submissions";
 import { getAccess, getViewMode, isPreviewAllowed } from "@/lib/gate";
+import { isDomainLeader } from "@/lib/leadership";
 import { HubNav } from "@/components/hub/HubNav";
 import { MobileBar } from "@/components/hub/MobileBar";
 import { PwaRegister } from "@/components/hub/PwaRegister";
@@ -56,7 +57,7 @@ export default async function HubLayout({ children }: { children: React.ReactNod
             {notifUnread > 0 && <span className="hub-bell-dot">{notifUnread > 9 ? "9+" : notifUnread}</span>}
           </Link>
         </div>
-        <HubNav messagesUnread={messagesUnread} isFounder={founder} openReports={openReports} subsPending={subsPending} />
+        <HubNav messagesUnread={messagesUnread} isFounder={founder} isDomainLeader={access.member ? await isDomainLeader(userId) : false} openReports={openReports} subsPending={subsPending} />
         {realFounder && <ViewModeToggle current={viewMode} />}
         <div className="hub-side-foot">
           <UserButton />
