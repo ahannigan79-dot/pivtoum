@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" />
 <style>
   :root{
     /* Electric system — sharp white, one blue (+ pop gradient), red for exposed.
@@ -15,8 +15,8 @@
     --amber:#8A93A3; --amber-deep:#6B7482;
     --pop:linear-gradient(118deg,#2A54FF,#3F9CFF);
     --me:#EAF0FF; --me-brd:#CBD9FF;
-    --serif:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:'Archivo',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --sans:'Archivo',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   }
   *{ box-sizing:border-box; }
@@ -606,6 +606,8 @@
         var c=resolveTypedCareer(v);
         if(c){ A.careerSlug=c.slug;
           advisor("Cool. Here’s the thing, though — a job title’s a pretty blunt label. Two people with the same one can be doing completely different work.", null, incLane);
+        } else if(isCrossDomain(v)){
+          advisor("Ah — a role like that can sit in completely different worlds, and they score nothing alike (a construction PM is far safer than a software one). Let me pin down your field first.", null, incFieldPick);
         } else {
           advisor("Cool. Job titles are broad, though — let me make sure I’m scoring the right field.", null, incFieldPick);
         }
@@ -923,8 +925,13 @@
     [['farm','agricultur','agronom'],'agriculture'],[['hospitality','hotel','chef','restaurant','barista','catering'],'hospitality'],
     [['translat','interpret'],'translation'],[['transport','logistics','driver','supply chain','freight','warehouse'],'transport'],
     [['biolog','biotech','life scien','geneticist','microbiolog'],'life-sciences'],
-    [['business','operations','consult','project manager','product manager','analyst','procurement','human resources','administrat'],'business']
+    [['business','operations manager','procurement','human resources',' hr ','administrat','office manager'],'business']
   ];
+  // Cross-domain roles that mean something completely different by field — a
+  // construction PM (on-site, protected) vs a software PM (screen, exposed). We
+  // DON'T guess a field for these; we ask which world they're in.
+  var CROSS_DOMAIN=['project manager','product manager','program manager','consultant','consulting','coordinator',' analyst','operations analyst','business analyst'];
+  function isCrossDomain(text){ var t=' '+(text||'').toLowerCase()+' '; for(var i=0;i<CROSS_DOMAIN.length;i++){ if(t.indexOf(CROSS_DOMAIN[i])>=0) return true; } return false; }
   function resolveTypedCareer(text){
     var t=' '+(text||'').toLowerCase()+' ';
     for(var i=0;i<CAREER_ALIASES.length;i++){ var kws=CAREER_ALIASES[i][0]; for(var j=0;j<kws.length;j++){ if(t.indexOf(kws[j])>=0) return findCareer(CAREER_ALIASES[i][1]); } }
