@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import { getPlay, playLeverLabel, AIMS } from "@/lib/plays";
 import { getFocus, canAddFocus } from "@/lib/focus";
-import { CommitPlay } from "@/components/hub/playbook/CommitPlay";
 import { AdoptFocus } from "@/components/hub/playbook/AdoptFocus";
 
 export async function generateMetadata({ params }: { params: Promise<{ play: string }> }) {
@@ -50,7 +49,7 @@ export default async function PlayPage({ params }: { params: Promise<{ play: str
 
         <div className="play-actions">
           <AdoptFocus slug={p.slug} already={alreadyFocus} atCap={!roomForFocus && !alreadyFocus} />
-          <CommitPlay title={p.firstMove} lever={p.lever} />
+          <p className="play-commit-first"><span>Your first move:</span> {p.firstMove}</p>
         </div>
       </div>
     </>

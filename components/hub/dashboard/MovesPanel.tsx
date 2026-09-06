@@ -9,7 +9,7 @@ function fmtDue(d: Date | null): string {
   return "due " + new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
-export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; shipped: Move[]; suggestions: Suggestion[] }) {
+export function MovesPanel({ active, shipped, suggestions, hasFocus = false }: { active: Move[]; shipped: Move[]; suggestions: Suggestion[]; hasFocus?: boolean }) {
   const [pending, start] = useTransition();
   const [adding, setAdding] = useState(false);
   const [showShipped, setShowShipped] = useState(false);
@@ -26,12 +26,12 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
   return (
     <section className="moves">
       <div className="moves-head">
-        <p className="ck">Your moves · pull the levers</p>
+        <p className="ck">{hasFocus ? "Quick moves · pull the levers" : "Your moves · pull the levers"}</p>
         {!adding && <button className="moves-add" onClick={() => setAdding(true)}>+ Commit to a move</button>}
       </div>
 
       <Link href="/hub/playbook" className="moves-playbook">
-        📋 Not sure what to do? Browse the Playbook — proven plays with how-to guides →
+        📋 {hasFocus ? "Add another play from the Playbook" : "Not sure what to do? Browse the Playbook — proven plays with how-to guides"} →
       </Link>
 
       {fresh.length > 0 && !adding && (
@@ -64,7 +64,7 @@ export function MovesPanel({ active, shipped, suggestions }: { active: Move[]; s
         </form>
       )}
 
-      {active.length === 0 && !adding && fresh.length === 0 && (
+      {active.length === 0 && !adding && fresh.length === 0 && !hasFocus && (
         <p className="feed-empty">No moves in flight. Commit to one — it&apos;s how the score bends.</p>
       )}
 

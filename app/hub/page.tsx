@@ -160,8 +160,11 @@ export default async function Dashboard() {
     if (!stepDone("welcome") && !setupActive) reminders.push({ icon: "events", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
     if (t.personalRescoreDue) reminders.push({ icon: "evolve", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
     else if (shippedSinceRescore) reminders.push({ icon: "evolve", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
-    if (moves.active.length === 0 && !setupActive) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
-    else if (moves.active.length > 0) reminders.push({ icon: "build", text: `Keep shipping — ${moves.active.length} move${moves.active.length > 1 ? "s" : ""} in flight`, href: "#moves" });
+    if (moves.active.length + focus.length === 0 && !setupActive) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
+    else if (moves.active.length + focus.length > 0) {
+      const n = moves.active.length + focus.length;
+      reminders.push({ icon: "build", text: `Keep shipping — ${n} move${n > 1 ? "s" : ""} in flight`, href: "#moves" });
+    }
     if (!stepDone("build")) reminders.push({ icon: "build", text: "Train your judgment — log a Build rep", href: "/hub/build" });
     if (!stepDone("learn") && !setupActive) reminders.push({ icon: "learn", text: "Learn your six levers", href: "/hub/learn" });
     if (stepDone("pod")) reminders.push({ icon: "pods", text: "Check in with your pod this week", href: "/hub/pods" });
@@ -253,9 +256,6 @@ export default async function Dashboard() {
             {/* Adam's read — Claude's in-voice narrative of their Map, grounded in `computed` */}
             <MapRead />
 
-            {/* Your focus — the chosen plays + their steps, tracked toward the goal */}
-            <FocusPanel goals={focus} />
-
             {/* What's driving this — the single reason behind the score */}
             <section className="ck-card ck-driver ck-driver-solo">
               <p className="ck">What&apos;s driving this{c?.driver?.name ? ` · ${c.driver.name}` : ""}</p>
@@ -302,7 +302,7 @@ export default async function Dashboard() {
             {/* The rest of your numbers, kept quiet — the score above is the point.
                 While setup is running, these live in the rail as tiles instead. */}
             {!setupActive && (
-              <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive} shipped={t.movesDone} />
+              <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive + focus.length} shipped={t.movesDone} />
             )}
 
             {/* To evolve to win — automated reminders from map, build, activity */}
@@ -321,9 +321,11 @@ export default async function Dashboard() {
               </>
             )}
 
-            {/* Your moves — commitments you control */}
+            {/* Your moves — everything you've committed to: tracked focus plays first,
+                then any quick freeform commitments and Map-seeded suggestions. */}
             <div className="hub-sectlabel" id="moves">Your moves</div>
-            <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} />
+            <FocusPanel goals={focus} />
+            <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} hasFocus={focus.length > 0} />
 
             {/* Achievements */}
             <div className="hub-sectlabel">Achievements</div>
@@ -367,7 +369,7 @@ export default async function Dashboard() {
                   </div>
                 </section>
 
-                <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive} shipped={t.movesDone} />
+                <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive + focus.length} shipped={t.movesDone} />
               </aside>
             )}
           </div>

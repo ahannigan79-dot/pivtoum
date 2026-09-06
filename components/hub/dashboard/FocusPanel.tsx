@@ -13,7 +13,7 @@ export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
   return (
     <section className="card focus-card">
       <div className="chead">
-        <span className="eyebrow">Your focus</span>
+        <span className="eyebrow">Committed plays · tracked steps</span>
         <Link className="link" href="/hub/playbook">Add a play →</Link>
       </div>
       <div className="focus-goals">
