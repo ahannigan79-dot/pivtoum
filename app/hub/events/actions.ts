@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { events, eventRsvps } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { leadsPod } from "@/lib/pods";
+import { leadsDomainPod } from "@/lib/leadership";
 
 export async function toggleRsvp(eventId: string) {
   const { userId } = await auth();
@@ -54,12 +55,15 @@ export async function createEvent(formData: FormData) {
   revalidatePath("/hub/events");
 }
 
-/** A pod leader hosts a session for a pod they lead. Pod-scoped, hosted by them. */
+/** A pod captain — or a domain leader whose domain contains the pod — hosts a
+ *  session for that pod. Pod-scoped, hosted by them. */
 export async function hostSession(formData: FormData) {
   const { userId } = await auth();
   if (!userId) return;
   const podId = String(formData.get("podId") ?? "").trim();
-  if (!podId || !(await leadsPod(userId, podId))) return;
+  if (!podId) return;
+  const authorized = (await leadsPod(userId, podId)) || (await leadsDomainPod(userId, podId));
+  if (!authorized) return;
 
   const title = String(formData.get("title") ?? "").trim();
   const startsRaw = String(formData.get("startsAt") ?? "").trim();

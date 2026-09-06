@@ -1,5 +1,5 @@
 import "server-only";
-import { and, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, or, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { domainLeaders, leadershipInterest, pods, podMembers, podCheckins, profiles } from "@/db/schema";
 import { isoWeekKey } from "@/lib/gym-gate";
@@ -14,6 +14,25 @@ export async function ledDomains(userId: string | null): Promise<string[]> {
 }
 export async function isDomainLeader(userId: string | null): Promise<boolean> {
   return (await ledDomains(userId)).length > 0;
+}
+
+/** {id, name} of every pod in the domains this member leads — the pods they may
+ *  host a session for. Deduped across domains. */
+export async function domainPodOptions(userId: string | null): Promise<{ id: string; name: string }[]> {
+  const domains = await ledDomains(userId);
+  if (!domains.length) return [];
+  const rows = await db.select({ id: pods.id, name: pods.name }).from(pods)
+    .where(or(...domains.map((d) => sql`${pods.lane} ILIKE ${"%" + d + "%"}`)));
+  const seen = new Map<string, string>();
+  for (const r of rows) seen.set(r.id, r.name);
+  return [...seen].map(([id, name]) => ({ id, name }));
+}
+
+/** Whether the member leads a domain that contains this pod (server-side auth
+ *  for domain-scoped hosting). */
+export async function leadsDomainPod(userId: string | null, podId: string): Promise<boolean> {
+  if (!userId || !podId) return false;
+  return (await domainPodOptions(userId)).some((p) => p.id === podId);
 }
 
 export type DomainPod = {

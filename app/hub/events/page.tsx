@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getUpcomingEvents, getPastEvents, getEventsInMonth } from "@/lib/events";
-import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { getOrCreateProfile } from "@/lib/member";
+import { getAccess } from "@/lib/gate";
 import { getMyLedPods } from "@/lib/pods";
+import { domainPodOptions } from "@/lib/leadership";
 import { EventCard } from "@/components/hub/events/EventCard";
 import { EventCalendar } from "@/components/hub/events/EventCalendar";
 import { NewEventForm } from "@/components/hub/events/NewEventForm";
@@ -26,16 +28,21 @@ const mKey = (y: number, m0: number) => `${y}-${m0 + 1}`;
 export default async function EventsPage({ searchParams }: { searchParams: Promise<{ m?: string }> }) {
   const { userId } = await auth();
   const profile = await getOrCreateProfile();
-  const founder = isFounder(profile);
+  const founder = (await getAccess(userId, profile)).founder;  // effective — respects the founder's view-mode preview
   const { m } = await searchParams;
   const { year, month0 } = parseMonth(m);
 
-  const [monthEvents, upcoming, past, ledPods] = await Promise.all([
+  const [monthEvents, upcoming, past, ledPods, domainPods] = await Promise.all([
     getEventsInMonth(userId, year, month0),
     getUpcomingEvents(userId),
     getPastEvents(userId),
     getMyLedPods(userId),
+    domainPodOptions(userId),
   ]);
+  // Pods this member may host a session for: pods they captain, plus every pod
+  // in a domain they lead. Deduped by id.
+  const hostPods = [...new Map([...ledPods.map((p) => [p.id, p.name] as const),
+    ...domainPods.map((p) => [p.id, p.name] as const)]).entries()].map(([id, name]) => ({ id, name }));
 
   const prev = month0 === 0 ? { y: year - 1, m: 11 } : { y: year, m: month0 - 1 };
   const next = month0 === 11 ? { y: year + 1, m: 0 } : { y: year, m: month0 + 1 };
@@ -55,8 +62,8 @@ export default async function EventsPage({ searchParams }: { searchParams: Promi
         </Link>
 
         {founder && <NewEventForm />}
-        {!founder && ledPods.length > 0 && <HostSessionForm pods={ledPods} />}
-        {!founder && ledPods.length === 0 && (
+        {!founder && hostPods.length > 0 && <HostSessionForm pods={hostPods} />}
+        {!founder && hostPods.length === 0 && (
           <Link href="/hub/contribute" className="newevent-toggle">+ Propose a session to host</Link>
         )}
 
