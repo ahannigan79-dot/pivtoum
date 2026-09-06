@@ -218,6 +218,17 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .event-admin-btn.del:hover { border-color:var(--pen); color:var(--pen); }
 
 /* calendar */
+/* "Your momentum" — engagement block: scoreboard + streak + credentials + CTA. */
+.mom-card .ck { margin-bottom:18px; }
+.mom-list { display:flex; flex-direction:column; gap:16px; }
+.mom-stat { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center; }
+.mom-stat .n { font-family:var(--mono); font-size:1.9rem; font-weight:600; line-height:1; color:var(--ink); letter-spacing:-.02em; min-width:2.1ch; }
+.mom-stat.up .n { background:var(--pop); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.mom-stat .lab { display:flex; flex-direction:column; line-height:1.25; min-width:0; }
+.mom-stat .lab b { font-size:0.9rem; color:var(--ink); font-weight:600; }
+.mom-stat .lab i { font-size:0.76rem; color:var(--soft); font-style:normal; margin-top:2px; }
+.mom-cta { justify-content:center; width:100%; margin-top:18px; }
+
 /* Eva — the onboarding guide persona (welcome page). Electric avatar tile. */
 .eva-badge { display:inline-flex; align-items:center; gap:11px; margin:0 0 18px; }
 .eva-av { width:34px; height:34px; border-radius:10px; background:var(--pop); flex:none; position:relative; box-shadow:0 2px 8px rgba(47,107,255,.30); }

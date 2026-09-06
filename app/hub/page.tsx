@@ -26,6 +26,34 @@ const strip = (s: string | undefined) => (s ?? "").replace(/<[^>]+>/g, "").trim(
 
 type Reminder = { icon: string; text: string; href: string; tone?: string };
 
+/** "Your momentum" — the engagement block. Leads with the scoreboard (exposure
+ *  bought down), then streak + credentials, and a forward CTA. Framed to pull
+ *  a member forward even at zero, never to advertise a lack of progress. */
+function MomentumCard({ dividend, streak, reps, credentials, active, shipped }: {
+  dividend: number; streak: number; reps: number; credentials: number; active: number; shipped: number;
+}) {
+  return (
+    <section className="card mom-card">
+      <p className="ck">Your momentum</p>
+      <div className="mom-list">
+        <div className="mom-stat up">
+          <span className="n">{dividend > 0 ? `↓${dividend}` : "0"}</span>
+          <span className="lab"><b>exposure bought down</b><i>{dividend > 0 ? "your reps are working" : "your moves move this number"}</i></span>
+        </div>
+        <div className="mom-stat">
+          <span className="n">{streak}</span>
+          <span className="lab"><b>day streak</b><i>{streak > 0 ? "showing up compounds" : "show up tomorrow to start it"}</i></span>
+        </div>
+        <div className="mom-stat">
+          <span className="n">{credentials}</span>
+          <span className="lab"><b>credential{credentials === 1 ? "" : "s"} earned</b><i>{reps} training rep{reps === 1 ? "" : "s"} logged</i></span>
+        </div>
+      </div>
+      <Link href="#moves" className="mom-cta btn btn-primary">{active > 0 || shipped > 0 ? "Keep shipping →" : "Commit your first move →"}</Link>
+    </section>
+  );
+}
+
 export default async function Dashboard() {
   const profile = await getOrCreateProfile();
   const { userId } = await auth();
@@ -262,12 +290,7 @@ export default async function Dashboard() {
             {/* The rest of your numbers, kept quiet — the score above is the point.
                 While setup is running, these live in the rail as tiles instead. */}
             {!setupActive && (
-              <div className="statline">
-                <span><b>{t.movesDone}</b> shipped</span>
-                <span><b>{t.movesActive}</b> in flight</span>
-                <span><b>{t.editions}</b> re-scores</span>
-                <span><b>{t.badgeCount}</b> credentials</span>
-              </div>
+              <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive} shipped={t.movesDone} />
             )}
 
             {/* To evolve to win — automated reminders from map, build, activity */}
@@ -332,15 +355,7 @@ export default async function Dashboard() {
                   </div>
                 </section>
 
-                <section className="card setup-card">
-                  <p className="ck">Your progress</p>
-                  <div className="rail-tiles">
-                    <div className="rail-tile"><div className="tn">{t.movesDone}</div><div className="tl">Shipped</div></div>
-                    <div className="rail-tile"><div className="tn">{t.movesActive}</div><div className="tl">In flight</div></div>
-                    <div className="rail-tile"><div className="tn">{t.editions}</div><div className="tl">Re-scores</div></div>
-                    <div className="rail-tile"><div className="tn">{t.badgeCount}</div><div className="tl">Credentials</div></div>
-                  </div>
-                </section>
+                <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive} shipped={t.movesDone} />
               </aside>
             )}
           </div>
