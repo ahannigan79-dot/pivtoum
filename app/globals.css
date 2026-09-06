@@ -727,7 +727,8 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
    Landing page — scoped under .lp so it never touches the document pages.
    Whiter ground, bolder type, the red circle as a recurring motif.
    ============================================================================ */
-.lp { background: var(--paper); }
+.lp { background: var(--paper); font-family: var(--sans); }
+.lp p, .lp li, .lp .sub { font-family: var(--sans); }
 .lp-wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.75rem; }
 
 .lp-hero { padding: 4rem 0 3.25rem; }
@@ -735,20 +736,35 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-eyebrow { font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--pencil); }
 .lp-eyebrow b { color: var(--accent); font-weight: 600; }
 .lp-h1 {
-  font-family: var(--serif); font-weight: 600; font-size: clamp(2.5rem, 5.6vw, 4.1rem);
+  font-family: var(--sans); font-weight: 600; font-size: clamp(2.5rem, 5.6vw, 4.1rem);
   line-height: 1.04; letter-spacing: -.025em; margin: 1rem 0 1.15rem; text-wrap: balance;
   font-variation-settings: "opsz" 60;
 }
 .lp-lede { font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.5; color: var(--ink); max-width: 34ch; margin: 0; }
 .lp-cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
 .lp-btn {
-  font-family: var(--sans); font-weight: 600; font-size: .78rem; letter-spacing: .05em;
-  text-transform: uppercase; text-decoration: none; padding: .72rem 1.25rem; border-radius: 999px;
-  background: var(--ink); color: var(--on-fill); border: 1px solid var(--ink); transition: background .15s, color .15s, border-color .15s;
+  font-family: var(--sans); font-weight: 700; font-size: .78rem; letter-spacing: .04em;
+  text-transform: uppercase; text-decoration: none; padding: .8rem 1.4rem; border-radius: 11px;
+  background: var(--pop); color: #fff; border: 1px solid transparent; transition: filter .15s, background .15s, border-color .15s;
+  box-shadow: 0 1px 2px rgba(47,107,255,.28), 0 4px 14px rgba(47,107,255,.28);
 }
-.lp-btn:hover { background: #000; border-color: #000; }
-.lp-btn.ghost { background: transparent; color: var(--ink); border-color: var(--rule2); }
-.lp-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.lp-btn:hover { filter: brightness(1.05); }
+.lp-btn.ghost { background: var(--accent-wash); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 22%, white); box-shadow: none; }
+.lp-btn.ghost:hover { filter: none; background: color-mix(in srgb, var(--accent) 12%, white); }
+
+/* app-consistency: electric card lift + eyebrow ticks on the landing sections */
+.lp-loopcard, .lp-membership, .lp-community {
+  background: var(--panel);
+  box-shadow: 0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05);
+}
+.lp-loopcard { transition: border-color .12s, transform .08s; }
+.lp-loopcard:hover { border-color: color-mix(in srgb, var(--accent) 40%, white); transform: translateY(-2px); }
+.lp-community-strip { background: var(--panel); box-shadow: 0 1px 2px rgba(11,14,20,.04), 0 1px 2px rgba(11,14,20,.05); }
+.lp-community-eyebrow, .lp-community-strip-k { display: inline-flex; align-items: center; gap: 8px; }
+.lp-community-eyebrow::before, .lp-community-strip-k::before {
+  content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--pop); flex: none;
+}
+.lp-loopnum { background: var(--accent-wash); border-color: transparent; }
 
 /* The exposure spread — a small framed data panel. Aligned numeral column so
    the decimals line up; the exposure palette (protected green vs exposed coral)
@@ -758,7 +774,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-spread-k { font-family: var(--sans); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); }
 .lp-spread-row { display: grid; grid-template-columns: 3.1rem 1fr; align-items: center; gap: 1rem; }
 .lp-spread-row + .lp-spread-row { border-top: 1px solid var(--rule); padding-top: 1.1rem; }
-.lp-spread-n { font-family: var(--serif); font-weight: 700; font-size: 2.7rem; line-height: 1; letter-spacing: -.02em; text-align: right; font-variant-numeric: tabular-nums; color: var(--pen); }
+.lp-spread-n { font-family: var(--sans); font-weight: 700; font-size: 2.7rem; line-height: 1; letter-spacing: -.02em; text-align: right; font-variant-numeric: tabular-nums; color: var(--pen); }
 .lp-spread-n.safe { color: var(--pen-safe); }
 .lp-spread-n.exp { color: var(--pen); }
 .lp-spread-cap { font-family: var(--sans); font-size: .82rem; line-height: 1.35; color: var(--ink-soft); }
@@ -768,18 +784,18 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 /* Prominent hero brand lockup — Pivotum mark + the community name. */
 .lp-hero-brand { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; margin-bottom: 1.35rem; }
 .lp-hero-logo { height: 2.1rem; width: auto; display: block; }
-.lp-hero-sub { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--accent); letter-spacing: .005em; padding-left: .85rem; border-left: 1px solid var(--rule2); }
+.lp-hero-sub { font-family: var(--sans); font-weight: 600; font-size: 1.1rem; color: var(--accent); letter-spacing: .005em; padding-left: .85rem; border-left: 1px solid var(--rule2); }
 .lp-hero-ed { font-family: var(--sans); font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pencil); padding: .2rem .5rem; border: 1px solid var(--rule2); border-radius: 999px; }
 
 .lp-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; padding: 2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.lp-value h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); text-transform: none; margin: 0 0 .35rem; }
+.lp-value h3 { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0; color: var(--ink); text-transform: none; margin: 0 0 .35rem; }
 .lp-value p { font-size: .92rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
 
 .lp-finding { padding: 2.75rem 0; }
-.lp-finding p { font-family: var(--serif); font-size: clamp(1.3rem, 2.8vw, 1.7rem); line-height: 1.45; max-width: 42ch; margin: 0; }
+.lp-finding p { font-family: var(--sans); font-size: clamp(1.3rem, 2.8vw, 1.7rem); line-height: 1.45; max-width: 42ch; margin: 0; }
 
 .lp-index { padding: .5rem 0 2rem; }
-.lp-index-head h2 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; letter-spacing: -.01em; margin: 0 0 .3rem; }
+.lp-index-head h2 { font-family: var(--sans); font-weight: 600; font-size: 1.6rem; letter-spacing: -.01em; margin: 0 0 .3rem; }
 .lp-index-head .sub { font-family: var(--sans); font-size: .8rem; color: var(--pencil); margin: 0 0 .6rem; }
 .idx-free {
   font-family: var(--sans); font-size: .9rem; line-height: 1.4; color: var(--ink);
@@ -795,7 +811,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .idx-hi.exposed { color: var(--pen); font-weight: 600; }
 
 .lp-closing { padding: 3rem 0 1.5rem; border-top: 1px solid var(--rule); text-align: center; }
-.lp-closing h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; letter-spacing: -.01em; margin: 0 0 .5rem; }
+.lp-closing h2 { font-family: var(--sans); font-weight: 600; font-size: 1.7rem; letter-spacing: -.01em; margin: 0 0 .5rem; }
 .lp-closing p { font-size: 1rem; color: var(--ink-soft); max-width: 46ch; margin: 0 auto 1.4rem; }
 .lp-closing .lp-cta-row { justify-content: center; }
 
@@ -808,32 +824,32 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 
 .lp-community { background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
 .lp-community-list { list-style: none; margin: 1.7rem auto 0; padding: 0; max-width: 620px; text-align: left; display: grid; gap: .7rem; }
-.lp-community-list li { font-family: var(--serif); font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft); padding-left: 1.4rem; position: relative; }
+.lp-community-list li { font-family: var(--sans); font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft); padding-left: 1.4rem; position: relative; }
 .lp-community-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .lp-community-list b { color: var(--ink); font-weight: 600; }
 .lp-community-eyebrow { font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
-.lp-community h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.35rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; color: var(--ink); text-wrap: balance; }
+.lp-community h2 { font-family: var(--sans); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.35rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; color: var(--ink); text-wrap: balance; }
 .lp-community p { font-size: 1.08rem; line-height: 1.6; color: var(--ink-soft); max-width: 56ch; margin: 0 auto 1.8rem; }
 .lp-community .lp-cta-row { justify-content: center; }
 
 /* Inside — the Winning Loop */
 .lp-inside { padding: 2.75rem 0 1rem; }
 .lp-inside-head { margin-bottom: 1.6rem; }
-.lp-inside-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; letter-spacing: -.01em; margin: .2rem 0 .5rem; text-wrap: balance; max-width: 26ch; }
+.lp-inside-head h2 { font-family: var(--sans); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; letter-spacing: -.01em; margin: .2rem 0 .5rem; text-wrap: balance; max-width: 26ch; }
 .lp-inside-head .sub { font-size: 1rem; color: var(--ink-soft); line-height: 1.6; max-width: 62ch; margin: 0; }
 .lp-loop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .lp-loopcard { border: 1px solid var(--rule); border-radius: 12px; background: transparent; padding: 1.1rem 1.15rem; }
 .lp-loopnum { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--win); color: var(--win); font-family: monospace; font-size: .8rem; font-weight: 700; }
-.lp-loopcard h3 { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; margin: .6rem 0 .35rem; color: var(--ink); }
+.lp-loopcard h3 { font-family: var(--sans); font-weight: 600; font-size: 1.1rem; margin: .6rem 0 .35rem; color: var(--ink); }
 .lp-loopcard p { font-size: .9rem; line-height: 1.5; color: var(--ink-soft); margin: 0; }
 
 /* Membership — light single-tone card, the trial */
 .lp-membership { background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 20px; padding: 3.1rem 2.6rem; margin: 3rem 0 1.5rem; text-align: center; }
 .lp-membership .lp-community-eyebrow { color: var(--accent); }
-.lp-membership h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.35rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; color: var(--ink); text-wrap: balance; }
+.lp-membership h2 { font-family: var(--sans); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.35rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 1rem; color: var(--ink); text-wrap: balance; }
 .lp-membership p { font-size: 1.08rem; line-height: 1.6; color: var(--ink-soft); max-width: 56ch; margin: 0 auto 1.6rem; }
 .lp-membership-list { list-style: none; margin: 0 auto 1.8rem; padding: 0; max-width: 560px; text-align: left; display: grid; gap: .7rem; }
-.lp-membership-list li { font-family: var(--serif); font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft); padding-left: 1.6rem; position: relative; }
+.lp-membership-list li { font-family: var(--sans); font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft); padding-left: 1.6rem; position: relative; }
 .lp-membership-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .lp-membership .lp-cta-row { justify-content: center; }
 
