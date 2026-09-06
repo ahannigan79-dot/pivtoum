@@ -5,6 +5,7 @@ import { ensureCommunityWelcome } from "@/lib/seed-content";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { getTrajectory } from "@/lib/trajectory";
 import { mapShareText } from "@/lib/moves";
+import { mapShareGate } from "@/lib/plan";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { TOPICS, TOPIC_BY_SLUG, postableTopics } from "@/lib/feed-topics";
 import { Composer } from "@/components/hub/community/Composer";
@@ -25,7 +26,9 @@ export default async function CommunityPage({
   const profile = await getOrCreateProfile();
   const founder = isFounder(profile);
   await ensureCommunityWelcome();
-  const [feed, traj, prompt] = await Promise.all([getCommunityFeed(userId, activeTopic), getTrajectory(userId), getCurrentPrompt()]);
+  const [feed, traj, prompt, shareGate] = await Promise.all([
+    getCommunityFeed(userId, activeTopic), getTrajectory(userId), getCurrentPrompt(), mapShareGate(userId),
+  ]);
   const shareText = mapShareText(traj.computed, traj.overall);
 
   return (
@@ -43,7 +46,7 @@ export default async function CommunityPage({
             </div>
           </div>
         )}
-        <Composer topics={postableTopics(founder)} shareText={shareText} />
+        <Composer topics={postableTopics(founder)} shareText={shareText} shareReady={shareGate.ready} shareNeeds={shareGate.needs} />
 
         <nav className="feed-tabs">
           <Link href="/hub/community" className={!activeTopic ? "on" : ""}>All</Link>

@@ -5,7 +5,9 @@ import type { Topic } from "@/lib/feed-topics";
 
 const EMOJI = ["🎉", "🔥", "💪", "🙌", "👏", "✅", "🤔", "❤️"];
 
-export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: string | null }) {
+export function Composer({ topics, shareText, shareReady = true, shareNeeds = [] }: {
+  topics: Topic[]; shareText?: string | null; shareReady?: boolean; shareNeeds?: string[];
+}) {
   const ref = useRef<HTMLFormElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -53,7 +55,12 @@ export function Composer({ topics, shareText }: { topics: Topic[]; shareText?: s
           <div className="emoji-row">
             {EMOJI.map((e) => <button key={e} type="button" className="emoji-btn" onClick={() => addEmoji(e)}>{e}</button>)}
             <button type="button" className="attach-btn" onClick={() => fileRef.current?.click()}>📎</button>
-            {shareText && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
+            {shareText && shareReady && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
+            {shareText && !shareReady && (
+              <span className="share-map-locked" title={`Share your Map once you've finished: ${shareNeeds.join(", ")}`}>
+                🔒 Share my Map after: {shareNeeds.join(" · ")}
+              </span>
+            )}
           </div>
           <button type="button" className="ghost" onClick={() => { ref.current?.reset(); setOpen(false); }}>Cancel</button>
           <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post"}</button>

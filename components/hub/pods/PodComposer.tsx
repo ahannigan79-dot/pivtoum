@@ -4,8 +4,9 @@ import { createPodPost } from "@/app/hub/pods/actions";
 
 const EMOJI = ["🎉", "🔥", "💪", "🙌", "👏", "✅", "🤔", "❤️"];
 
-export function PodComposer({ slug, threadId, placeholder, shareText }: {
+export function PodComposer({ slug, threadId, placeholder, shareText, shareReady = true, shareNeeds = [] }: {
   slug: string; threadId: string | null; placeholder?: string; shareText?: string | null;
+  shareReady?: boolean; shareNeeds?: string[];
 }) {
   const ref = useRef<HTMLFormElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -41,7 +42,12 @@ export function PodComposer({ slug, threadId, placeholder, shareText }: {
         <div className="emoji-row">
           {EMOJI.map((e) => <button key={e} type="button" className="emoji-btn" onClick={() => addEmoji(e)}>{e}</button>)}
           <button type="button" className="attach-btn" onClick={() => fileRef.current?.click()}>📎</button>
-          {shareText && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
+          {shareText && shareReady && <button type="button" className="share-map-btn" onClick={shareMap}>📊 Share my Map</button>}
+          {shareText && !shareReady && (
+            <span className="share-map-locked" title={`Share your Map once you've finished: ${shareNeeds.join(", ")}`}>
+              🔒 Share my Map after: {shareNeeds.join(" · ")}
+            </span>
+          )}
         </div>
         <button type="submit" disabled={pending}>{pending ? "Posting…" : "Post to pod"}</button>
       </div>

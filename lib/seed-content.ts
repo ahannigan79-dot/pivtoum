@@ -28,9 +28,11 @@ export async function ensurePodWelcome(podId: string, podName: string, goal: str
     `Welcome to ${podName} 👋\n\n` +
     (goal ? `Our focus: ${goal}\n\n` : "") +
     `This is your Together pod — a small group holding each other accountable while the field shifts. ` +
-    `Two ways to start:\n\n` +
-    `• Introduce yourself: where you are, and the one move you're working on right now.\n` +
-    `• Share your Map — post your exposure and winning strategy so we can back each other.\n\n` +
+    `Here's how to land well:\n\n` +
+    `1. Say hello 👋 — introduce yourself: where you are, and what brought you here.\n` +
+    `2. Do the work: finish your Map, get into the Learn material, and lock your openings.\n` +
+    `3. Then share your Map — once it's final you'll be able to post it here, and we'll back each other's moves.\n\n` +
+    `No rush to post your Map on day one — it means more once you've absorbed it. ` +
     `We keep it Embrace (own the change) and Together (nobody wins alone). Glad you're here. — Adam`;
   await db.insert(posts).values({
     authorId: author, podId, threadId, title: `Welcome to ${podName}`, body, pinned: true, pinnedAt: new Date(),

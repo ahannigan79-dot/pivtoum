@@ -7,6 +7,7 @@ import { getPodThreads } from "@/lib/threads";
 import { ensurePodWelcome } from "@/lib/seed-content";
 import { getTrajectory } from "@/lib/trajectory";
 import { mapShareText } from "@/lib/moves";
+import { mapShareGate } from "@/lib/plan";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { PostCard } from "@/components/hub/community/PostCard";
 import { Avatar } from "@/components/hub/community/Avatar";
@@ -40,12 +41,13 @@ export default async function PodPage({
   const pod = await getPodBySlug(slug);
   if (!pod) notFound();
 
-  const [members, iAmIn, profile, threads, traj] = await Promise.all([
+  const [members, iAmIn, profile, threads, traj, shareGate] = await Promise.all([
     getPodMembers(pod.id),
     isPodMember(pod.id, userId),
     getOrCreateProfile(),
     getPodThreads(pod.id),
     getTrajectory(userId),
+    mapShareGate(userId),
   ]);
   const canModerate = isFounder(profile);
   const amCaptain = members.some((m) => m.id === userId && m.leader);
@@ -102,6 +104,7 @@ export default async function PodPage({
             <ValuesBanner variant="pod" />
             {iAmIn ? (
               <PodComposer slug={pod.slug} threadId={active?.id ?? null} shareText={shareText}
+                shareReady={shareGate.ready} shareNeeds={shareGate.needs}
                 placeholder={active ? `Post in ${active.emoji ?? ""} ${active.name}… 🎉` : undefined} />
             ) : (
               <div className="pod-locked">

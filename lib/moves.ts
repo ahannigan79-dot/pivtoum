@@ -25,17 +25,29 @@ export function leverLabel(slug: string): string {
   return LEVER_BY_SLUG[slug]?.label ?? slug;
 }
 
-/** A shareable one-tap summary of the member's Map, for posting into the feed/pods. */
+/** A shareable summary of the member's Map, for posting into the feed/pods. Built
+ *  to invite a response — it names where they stand, what's driving it, what
+ *  protects them, and the move they've committed to — then asks the pod to back
+ *  them. Strip HTML from the driver lines (they carry markup in the Map). */
 export function mapShareText(computed: MapComputed | null, overall: number | null): string | null {
   if (!computed || overall == null) return null;
+  const strip = (s: string | undefined | null) => (s ?? "").replace(/<[^>]+>/g, "").trim();
   const band = exposureBand(overall);
   const aim = winningAim(computed.move?.edge2, band.cls);
   const where = [computed.career, computed.lane].filter(Boolean).join(" · ");
+  const driver = strip(computed.driver?.name);
+  const protects = (computed.personal?.helps ?? []).map(strip).filter(Boolean)[0];
+  const stance = computed.move?.stance ? strip(computed.move.stance) : "";
+
   const lines = [
-    `📊 My AI Career Map${where ? " — " + where : ""}`,
+    `📊 My Winning Map${where ? " — " + where : ""}`,
     `Exposure ${overall}/100${band.word ? ` (${band.word})` : ""}`,
-    `Aiming to: ${aim}${computed.move?.stance ? ` · strategy: ${computed.move.stance}` : ""}`,
   ];
+  if (driver) lines.push(`🔺 Biggest driver: ${driver}`);
+  if (protects) lines.push(`🛡️ What protects me: ${protects}`);
+  lines.push(`🎯 My move: ${aim}${stance ? ` · ${stance}` : ""}`);
+  lines.push("");
+  lines.push("This is where I'm starting from — would love a gut-check and to back each other's moves. 🙌");
   return lines.join("\n");
 }
 

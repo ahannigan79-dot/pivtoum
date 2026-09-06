@@ -95,3 +95,24 @@ export async function getPlan(userId: string | null): Promise<Plan | null> {
 
   return { traj, steps, next, activatedCount, activationTotal, fullyActivated, onboarded };
 }
+
+export type MapShareGate = {
+  ready: boolean;
+  needs: string[];   // human-readable list of what's still outstanding, in order
+};
+
+/** Sharing your Map should come AFTER you've absorbed it — not the moment you
+ *  land in a pod. A member is ready to post their Map once they've built it,
+ *  started Learn, and committed a first move (i.e. finalized their openings).
+ *  Until then they should introduce themselves and settle in; the Map post is
+ *  the payoff, not the icebreaker. */
+export async function mapShareGate(userId: string | null): Promise<MapShareGate> {
+  const plan = await getPlan(userId);
+  if (!plan) return { ready: false, needs: ["Build your Map"] };
+  const done = (k: string) => !!plan.steps.find((s) => s.key === k)?.done;
+  const needs: string[] = [];
+  if (!done("map")) needs.push("Build your Map");
+  if (!done("learn")) needs.push("Start in Learn");
+  if (!done("move")) needs.push("Set your first move");
+  return { ready: needs.length === 0, needs };
+}
