@@ -80,7 +80,9 @@
   .send{ background:var(--green); color:#FBFAF6; border:none; border-radius:12px; width:48px; font-size:1.2rem; cursor:pointer; flex:none; }
   .send:hover{ background:var(--green-bright); }
 
-  .sliders{ border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:16px 17px; }
+  .sgroup-h{ font-size:0.68rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:var(--soft); margin:14px 0 8px; }
+  .sgroup-h:first-child{ margin-top:0; }
+  .sliders{ border:1px solid var(--rule); border-radius:14px; background:var(--panel); padding:16px 17px; margin-bottom:10px; }
   .slider{ margin:0 0 15px; } .slider:last-of-type{ margin-bottom:6px; }
   .slider .sl{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px; }
   .slider .sl .nm{ font-weight:700; font-size:0.92rem; } .slider .sl .vv{ font-family:var(--mono); font-size:0.78rem; color:var(--green); }
@@ -559,16 +561,32 @@
 
   /* ---------------- conversation ---------------- */
   var STEP=0;
-  function setProg(n){ var t=A.path==='ent'?8:10; prog.style.width=Math.round(n/t*100)+'%'; }
+  function setProg(n){ var t=A.path==='ent'?6:7; prog.style.width=Math.round(n/t*100)+'%'; }
 
   function start(){
     advisor("Hey — I’m <b>Eva</b>, good to meet you. I’m going to help you build your <b>Winning in the Age of AI Map</b> — a clear read on where AI leaves your work standing, and where your best openings are.", null, function(){
       advisor("I’ll just ask you a handful of things — takes a couple of minutes, and nothing’s set in stone. You can change any of it later.", null, function(){
-        advisor("<span class=\"q\">So, first up — where are you on your career journey?</span>", null, function(){
+        advisor("<span class=\"q\">First up — where are you with work right now?</span>", null, function(){
           control(chips([
-            {v:'inc',label:'I’m in a role now'},
-            {v:'ent',label:'I’m just entering — student or new grad'}
-          ], function(v,l){ A.path=v; me(l); clearCtrl(); STEP=1; setProg(1); v==='inc'?incRole():entSituation(); }));
+            {v:'early',    label:'Working — early in my career'},
+            {v:'advancing',label:'Working — a few years in'},
+            {v:'leading',  label:'Working — senior / running things'},
+            {v:'changing', label:'Moving into a new field'},
+            {v:'entering', label:'Just entering — student or new grad'}
+          ], function(v,l){
+            me(l); clearCtrl(); STEP=1; setProg(1);
+            if(v==='entering'){
+              A.path='ent'; A.situation='student'; A.phase='Establishing';
+              advisor("Perfect — and honestly your edge: you get to start <b>AI-native from day one</b>, with none of the old habits to unlearn. Let me show you the ways in that genuinely work.", null, entField);
+            } else if(v==='changing'){
+              A.path='inc'; A.mode='change'; A.phase='Advancing'; A.aim='change';
+              advisor("A move — nice. First tell me the work you do now, then we’ll pick where you’re heading.", null, incRole);
+            } else {
+              A.path='inc'; A.mode='work';
+              A.phase={early:'Establishing',advancing:'Advancing',leading:'Leading'}[v];
+              advisor({early:"Early days — honestly the best time to be thinking about this.",advancing:"Right in the thick of it — exactly when this matters most.",leading:"Senior, so you’ve got real judgment and standing to lean on. That counts for a lot."}[v], null, incRole);
+            }
+          }));
         });
       });
     });
@@ -617,70 +635,91 @@
         control(chips(opts, function(v,l){ me(l); clearCtrl(); STEP=3; setProg(3);
           if(v==='__mix'){
             A.lane='General '+c.name.toLowerCase(); A.laneScore=null; A.laneBand='range';
-            advisor("No worries — I’ll take the general read for now, and we’ll pin down exactly where you sit with the next few questions.", null, incPhase);
+            advisor("No worries — I’ll take the general read for now, and we’ll pin down exactly where you sit with the next few questions.", null, incWork);
           } else {
             var t = c.tracks.filter(function(x){ return x.n===v; })[0];
             A.lane=t.n; A.laneScore=t.s; A.laneBand=t.b;
-            advisor("Right — "+t.n.toLowerCase()+", got it. That’s a distinct corner of "+c.name.toLowerCase()+", and it reads quite differently from the rest. I’ll show you exactly where it lands on your Map.", null, incPhase);
+            advisor("Right — "+t.n.toLowerCase()+", got it. That’s a distinct corner of "+c.name.toLowerCase()+", and it reads quite differently from the rest. I’ll show you exactly where it lands on your Map.", null, incWork);
           }
         }));
       });
      });
     });
   }
-  function incPhase(){
-    advisor("<span class=\"q\">And how long have you been doing this kind of work?</span>", null, function(){
-      control(chips([
-        {v:'Establishing',label:'Just starting out'},
-        {v:'Advancing',label:'A few years — building seniority'},
-        {v:'Leading',label:'Senior — running things'}
-      ], function(v,l){ A.phase=v; me(l); clearCtrl(); STEP=4; setProg(4);
-        var pa={Establishing:"Early days, then — honestly, that’s the best time to be thinking about this.",Advancing:"Right in the thick of it — which is exactly when this matters most.",Leading:"Senior — so you’ve got real judgment and standing to lean on. That counts for a lot."}[v];
-        advisor(pa, null, incTasks); }));
-    });
+  /* combined "your work" screen — the week + who relies on you, in one step */
+  function combinedSignals(done){
+    var wrap=document.createElement('div');
+    function group(title, defs, store){
+      var h=document.createElement('div'); h.className='sgroup-h'; h.textContent=title; wrap.appendChild(h);
+      var box=document.createElement('div'); box.className='sliders';
+      defs.forEach(function(d){
+        var v=store[d[0]];
+        var s=document.createElement('div'); s.className='slider';
+        s.innerHTML='<div class="sl"><span class="nm">'+d[1]+'</span><span class="vv">'+label01(v)+'</span></div>'
+          +'<input type="range" min="0" max="100" value="'+v+'" style="--fill:'+v+'%">'
+          +'<div class="ends"><span>'+d[2]+'</span><span>'+d[3]+'</span></div>';
+        var r=s.querySelector('input'), vv=s.querySelector('.vv');
+        r.addEventListener('input',function(){ store[d[0]]=+r.value; r.style.setProperty('--fill',r.value+'%'); vv.textContent=label01(+r.value); });
+        box.appendChild(s);
+      });
+      wrap.appendChild(box);
+    }
+    group('How your week breaks down', [
+      ['routine','Routine analysis & processing','little','most of it'],
+      ['complex','Complex, novel decisions','rare','constant'],
+      ['people','Relationships & stakeholders','little','central'],
+      ['physical','Hands-on / physical / on-site','none','core']], A.tasks);
+    group('Who relies on you — personally', [
+      ['name','People come to you by name','rarely','all the time'],
+      ['relationships','You own key relationships','none','they’re yours'],
+      ['accountable','Accountable when it matters','not really','the buck stops with you'],
+      ['judgment','Others lean on your judgment','little','constantly']], A.trust);
+    var row=document.createElement('div'); row.className='rowbtns'; row.style.marginTop='12px';
+    var go=document.createElement('button'); go.className='go'; go.textContent='That’s about right →';
+    go.onclick=function(){ done(); };
+    row.appendChild(go); wrap.appendChild(row);
+    return wrap;
   }
-  function incTasks(){
-    advisor("<span class=\"q\">Okay, the big one — how does a normal week actually break down for you?</span>", null, function(){
-      advisor("Just drag each one to what feels true. This is the bit that makes it about <b>you</b>, not your job title.", null, function(){
-        control(sliders(function(t,l){ me(l); clearCtrl(); STEP=5; setProg(5);
-          advisor("Perfect — that tells me a lot. Now I actually know where <b>you</b> sit, not just the average for your role.", null, incTrust);
+  /* combined context screen — licensing + employer pace in one step */
+  function combinedContext(done){
+    var sel={licence:null, pace:null};
+    var wrap=document.createElement('div');
+    function rowGroup(title, key, opts){
+      var h=document.createElement('div'); h.className='sgroup-h'; h.textContent=title; wrap.appendChild(h);
+      var w=document.createElement('div'); w.className='chips';
+      opts.forEach(function(o){
+        var b=document.createElement('button'); b.className='chip'; b.textContent=o.label;
+        b.onclick=function(){ sel[key]=o.v; [].forEach.call(w.children,function(x){x.classList.remove('sel');}); b.classList.add('sel'); upd(); };
+        w.appendChild(b);
+      });
+      wrap.appendChild(w);
+    }
+    rowGroup('Does the work need a licence or formal sign-off?', 'licence', [
+      {v:'no',label:'No — open profession'},{v:'some',label:'Some regulated bits'},{v:'yes',label:'Yes — licensed / chartered'}]);
+    rowGroup('How fast is AI moving where you work?', 'pace', [
+      {v:'behind',label:'Behind — barely started'},{v:'mid',label:'Somewhere in the middle'},{v:'fast',label:'Fast — reshaping workflows'}]);
+    var row=document.createElement('div'); row.className='rowbtns'; row.style.marginTop='12px';
+    var go=document.createElement('button'); go.className='go'; go.textContent='Next →'; go.disabled=true;
+    function upd(){ go.disabled = !(sel.licence && sel.pace); }
+    go.onclick=function(){ done(sel.licence, sel.pace); };
+    row.appendChild(go); wrap.appendChild(row);
+    return wrap;
+  }
+  function incWork(){
+    advisor("<span class=\"q\">Okay, the big one — how does your week break down, and who leans on you?</span>", null, function(){
+      advisor("Drag each to what feels true. This is what makes it about <b>you</b>, not your job title.", null, function(){
+        control(combinedSignals(function(){ clearCtrl(); me('That’s about right'); STEP=4; setProg(4);
+          advisor("Perfect — now I know where <b>you</b> sit, not just the average for your role.", null, incContext);
         }), true);
       });
     });
   }
-  function incTrust(){
-    advisor("<span class=\"q\">When something important’s on the line at work, who’s actually relying on <i>you</i> — personally?</span>", null, function(){
-      advisor("Slide each to how true it is — a lot, or a little. This is the stuff AI can’t easily take from you.", null, function(){
-        control(trustSliders(function(t,l){ me(l); clearCtrl(); STEP=6; setProg(6);
-          var hi = Math.max(t.name,t.relationships,t.accountable,t.judgment);
-          var warm = hi<40
-            ? "Fair enough — sounds like your work’s fairly behind-the-scenes. We’ll lean on your other strengths, then."
-            : "That’s real cover, actually. When people rely on you like that, you’re a lot harder to replace.";
-          advisor(warm, null, incLicence);
-        }), true);
-      });
-    });
-  }
-  function incLicence(){
-    advisor("<span class=\"q\">Does your job need a licence, or some kind of formal sign-off?</span>", null, function(){
-      control(chips([
-        {v:'no',label:'No — open profession'},
-        {v:'some',label:'Some regulated bits'},
-        {v:'yes',label:'Yes — licensed / chartered'}
-      ], function(v,l){ A.licence=v; me(l); clearCtrl(); STEP=7; setProg(7);
-        var la=v==='no'?"Right, no licence — so there’s nothing legal protecting the role. We’ll lean on your other strengths.":"That helps — a licence is real protection, the kind AI can’t just get around.";
-        advisor(la, null, incPace); }));
-    });
-  }
-  function incPace(){
-    advisor("<span class=\"q\">And how fast is where you work actually moving on AI?</span>", null, function(){
-      advisor("No wrong answer here — a slower employer just buys you a bit more time, that’s all.", null, function(){
-        control(chips([
-          {v:'behind',label:'Behind — barely started'},
-          {v:'mid',label:'Somewhere in the middle'},
-          {v:'fast',label:'Fast — reshaping workflows'}
-        ], function(v,l){ A.pace=v; me(l); clearCtrl(); STEP=8; setProg(8); incAim(); }));
-      });
+  function incContext(){
+    advisor("<span class=\"q\">Two quick ones about your world.</span>", null, function(){
+      control(combinedContext(function(lic,pace){ A.licence=lic; A.pace=pace; clearCtrl(); me('Answered'); STEP=5; setProg(5);
+        var la=lic==='no'?"Got it — no licence, so we’ll lean on your other protections.":"A licence is real cover — the kind AI can’t just get around.";
+        advisor(la, null, function(){ if(A.mode==='change'){ incTargetPick(); } else { incAim(); } });
+      }), true);
     });
   }
   function incAim(){
@@ -700,8 +739,8 @@
     var c=curCareer();
     var others=c.tracks.filter(function(t){ return t.n!==A.lane; }).sort(function(a,b){ return a.s-b.s; });
     advisor("<span class=\"q\">Which lane would you want to move toward?</span>", null, function(){
-      advisor("These are the other lanes in "+c.name.toLowerCase()+", listed roughly safest-first. Your Map will rebuild around the one you pick.", null, function(){
-        var opts=others.map(function(t,i){ return {v:String(i), label:t.n}; });
+      advisor("Here are the other lanes in "+c.name.toLowerCase()+", safest-first — the score is AI exposure out of 10, so lower is more protected. Your Map rebuilds around the one you pick.", null, function(){
+        var opts=others.map(function(t,i){ return {v:String(i), label:t.n+'  ·  '+t.s+'/10'}; });
         opts.push({v:'__stay', label:'Actually — keep my current lane'});
         control(chips(opts, function(v,l){
           if(v==='__stay'){ A.changing=false; me('Keep my current lane'); clearCtrl(); advisor("No problem — I’ll keep you where you are and show the moves from there.", null, incRecap); return; }
@@ -732,7 +771,7 @@
       control(wrap, true);
     });
   }
-  function finishInc(){ clearCtrl(); setProg(10); me('Build my Map →');
+  function finishInc(){ clearCtrl(); setProg(7); me('Build my Map →');
     advisor("Perfect. Give me a second — putting your Map together now…", null, function(){ buildMap(); });
   }
 
@@ -782,9 +821,9 @@
     lanes.sort(function(a,b){ return a.s-b.s; });
     var many = (A.direction.indexOf('__open')>=0 || A.direction.length>1);
     var top = lanes.slice(0, many?7:5);
-    advisor("<span class=\"q\">Here are some of the safer, more durable ways in — the lanes AI is least likely to take. Which appeals most?</span>", null, function(){
-      advisor("These are the better-protected corners of the field. Pick the one that pulls at you, and your Map builds around getting in there.", null, function(){
-        var opts=top.map(function(l,i){ return {v:String(i), label: l.n+(many?' · '+l.c.name:'') }; });
+    advisor("<span class=\"q\">Here are the ways in, safest-first — the score is AI exposure out of 10, so lower is more protected. Which appeals most?</span>", null, function(){
+      advisor("Compare them and pick the one that pulls at you — your Map builds around getting in there AI-native.", null, function(){
+        var opts=top.map(function(l,i){ return {v:String(i), label: l.n+(many?' · '+l.c.name:'')+'  ·  '+l.s+'/10' }; });
         control(chips(opts, function(v,l){
           var pk=top[+v]; A.careerSlug=pk.c.slug; A.lane=pk.n; A.laneScore=pk.s; A.laneBand=pk.b; me(pk.n); clearCtrl(); STEP=4; setProg(4);
           advisor("Nice — "+pk.n.toLowerCase()+" it is. That’s one of the more protected corners of "+pk.c.name.toLowerCase()+". I’ll build your Map around getting in there AI-native.", null, entStrengths);
@@ -805,7 +844,7 @@
           A.strengths, "That’s me →",
           function(s){ var ks=Object.keys(s).sort(function(a,b){return s[b]-s[a];}); var nm={people:'people',care:'empathy',handson:'hands-on',creative:'creative',analytical:'analytical',persuasion:'persuasion'}; return 'Strongest: '+nm[ks[0]]+' &amp; '+nm[ks[1]]; },
           function(store,l){ me(l.replace(/&amp;/g,'&')); clearCtrl(); STEP=5; setProg(5);
-            advisor("Great — I’ll lean your openings toward where you’re strongest.", null, entExp);
+            advisor("Great — I’ll lean your openings toward where you’re strongest.", null, entAim);
           }, strengthLabel), true);
       });
     });
@@ -831,12 +870,11 @@
   }
   function entRecap(){
     var sitT={student:'Still studying',grad:'Recent grad',changer:'New to a field'}[A.situation];
-    var expT={none:'None yet',some:'A bit',solid:'Solid'}[A.experience];
     var aimT={firstrole:'Land a strong first role',native:'Start AI-native',protected:'Protected / human path',explore:'Still exploring'}[A.aim];
     var fieldV = (A.directionLabel==='exploring') ? '<em>exploring — open</em>' : esc(A.directionLabel||'—');
     var st=A.strengths, ks=Object.keys(st).sort(function(a,b){return st[b]-st[a];}), nm={people:'People',care:'Empathy',handson:'Hands-on',creative:'Creative',analytical:'Analytical',persuasion:'Persuasion'};
     var laneV = A.lane ? esc(A.lane) : '—';
-    var rows=[['Situation',sitT],['Fields',fieldV],['Target lane',laneV],['Strongest',nm[ks[0]]+' · '+nm[ks[1]]],['Experience',expT],['Winning is',aimT]];
+    var rows=[['Situation',sitT],['Fields',fieldV],['Target lane',laneV],['Strongest',nm[ks[0]]+' · '+nm[ks[1]]],['Winning is',aimT]];
     advisor("Okay — here’s what I’ve got. Does this look right to you?", null, function(){
       var wrap=document.createElement('div');
       var r=document.createElement('div'); r.className='recap';
@@ -849,7 +887,7 @@
       control(wrap, true);
     });
   }
-  function finishEnt(){ clearCtrl(); setProg(8); me('Build my Map →');
+  function finishEnt(){ clearCtrl(); setProg(6); me('Build my Map →');
     advisor("Perfect — putting your Map together now. I’ll show you where the field stands, and the smartest ways in…", null, function(){ buildMap(); });
   }
 
