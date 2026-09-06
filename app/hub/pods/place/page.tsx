@@ -16,7 +16,7 @@ export default async function PlacePage() {
   if (mine.length > 0) redirect(`/hub/pods/${mine[0].slug}`); // already placed
 
   const [suggested, profile] = await Promise.all([
-    userId ? suggestPods(userId, 3) : Promise.resolve([]),
+    userId ? suggestPods(userId, 5) : Promise.resolve([]),
     getOrCreateProfile(),
   ]);
 
