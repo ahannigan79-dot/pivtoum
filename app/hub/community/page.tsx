@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getCommunityFeed } from "@/lib/community";
-import { ensureCommunityWelcome } from "@/lib/seed-content";
+import { ensureCommunityWelcome, ensureFeedTopicSeeds } from "@/lib/seed-content";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { getTrajectory } from "@/lib/trajectory";
 import { mapShareText } from "@/lib/moves";
@@ -26,6 +26,7 @@ export default async function CommunityPage({
   const profile = await getOrCreateProfile();
   const founder = isFounder(profile);
   await ensureCommunityWelcome();
+  await ensureFeedTopicSeeds();
   const [feed, traj, prompt, shareGate] = await Promise.all([
     getCommunityFeed(userId, activeTopic), getTrajectory(userId), getCurrentPrompt(), mapShareGate(userId),
   ]);
