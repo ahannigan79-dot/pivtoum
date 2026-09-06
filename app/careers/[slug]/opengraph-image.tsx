@@ -17,7 +17,7 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
   const name = career?.name ?? "Pivotum";
   // Single-tone brand: the score carries the meaning in the exposure palette —
   // protected green if low, exposed coral if high. No circle.
-  const scoreColor = career && headlineFlag(career.headlineScore) === "safe" ? "#2E7D55" : "#B4442F";
+  const scoreColor = career && headlineFlag(career.headlineScore) === "safe" ? "#2F6BFF" : "#F5333F";
 
   return new ImageResponse(
     (
@@ -28,13 +28,13 @@ export default async function OgImage({ params }: { params: Promise<{ slug: stri
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#FBFAF6",
-          color: "#1C1A16",
+          background: "#FFFFFF",
+          color: "#0B0E14",
           padding: "72px 80px",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 26, letterSpacing: 6, color: "#10605E", fontWeight: 700 }}>
+        <div style={{ display: "flex", fontSize: 26, letterSpacing: 6, color: "#2F6BFF", fontWeight: 700 }}>
           PIVOTUM · AI EXPOSURE · FALL 2026
         </div>
 

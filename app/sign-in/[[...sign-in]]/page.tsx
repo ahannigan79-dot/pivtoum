@@ -4,8 +4,8 @@ export const metadata = { title: "Sign in — Pivotum", robots: { index: false, 
 
 export default function Page() {
   return (
-    <div style={{ minHeight: "100dvh", display: "grid", placeItems: "center", background: "#FBFAF6", padding: 24 }}>
-      <SignIn />
+    <div style={{ minHeight: "100dvh", display: "grid", placeItems: "center", background: "#F7F9FC", padding: 24 }}>
+      <SignIn appearance={{ variables: { colorPrimary: "#2F6BFF", borderRadius: "10px" } }} />
     </div>
   );
 }

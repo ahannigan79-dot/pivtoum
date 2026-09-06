@@ -2,10 +2,10 @@
    with its own light tokens so it stays self-contained and never collides with
    the global or hub styles. Matches the site's paper + petrol brand. */
 .cg {
-  --cg-paper:#FBFAF6; --cg-panel:#F4F1EA; --cg-panel2:#EEEAE0; --cg-ink:#1C1A16;
-  --cg-soft:#6B655B; --cg-pencil:#948D80; --cg-rule:#E7E2D8; --cg-rule2:#DAD3C6;
-  --cg-accent:#10605E; --cg-accent-wash:#E7EEED; --cg-prot:#2E7D55; --cg-mod:#B8873A;
-  --cg-exp:#B4442F; --cg-on-fill:#FBFAF6;
+  --cg-paper:#FFFFFF; --cg-panel:#F5F8FC; --cg-panel2:#E7ECF3; --cg-ink:#0B0E14;
+  --cg-soft:#5B6472; --cg-pencil:#96A0AE; --cg-rule:#E7EBF1; --cg-rule2:#DCE2EA;
+  --cg-accent:#2F6BFF; --cg-accent-wash:#EAF0FF; --cg-prot:#2F6BFF; --cg-mod:#8A93A3;
+  --cg-exp:#F5333F; --cg-on-fill:#FFFFFF;
   --cg-serif:"Literata",Georgia,serif; --cg-sans:"Archivo",system-ui,sans-serif;
   color: var(--cg-ink); font-family: var(--cg-serif); line-height: 1.6;
 }
