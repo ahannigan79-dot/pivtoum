@@ -12,9 +12,9 @@ export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
 
   return (
     <section className="card focus-card">
-      <div className="chead">
-        <span className="eyebrow">Committed plays · tracked steps</span>
-        <Link className="link" href="/hub/playbook">Add a play →</Link>
+      <div className="focus-head">
+        <span className="ck">Committed plays</span>
+        <Link className="focus-add" href="/hub/playbook">+ Add a play</Link>
       </div>
       <div className="focus-goals">
         {goals.map((g) => {
@@ -57,7 +57,7 @@ export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
                 })}
               </ul>
               <div className="focus-goal-foot">
-                <Link href={`/hub/playbook/${g.playSlug}`} className="link">Open the play →</Link>
+                <Link href={`/hub/playbook/${g.playSlug}`} className="focus-open">Open the play →</Link>
                 <button className="focus-drop" disabled={pending}
                   onClick={() => start(() => { void dropGoal(g.id); })}>Drop</button>
               </div>
