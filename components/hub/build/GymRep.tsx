@@ -1,12 +1,27 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, type Scenario } from "@/lib/gym";
-
-const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, type Scenario, type ScenarioKind } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
+
+const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+
+// How each artifact kind is framed — the chrome that makes it read like the real thing.
+const CHROME: Record<ScenarioKind, { icon: string; label: string }> = {
+  document:    { icon: "📄", label: "Document" },
+  email:       { icon: "✉️", label: "Email" },
+  spreadsheet: { icon: "▦", label: "Spreadsheet" },
+  ticket:      { icon: "🎫", label: "Ticket" },
+  contract:    { icon: "§", label: "Contract" },
+  code:        { icon: "‹∕›", label: "Pull request" },
+  message:     { icon: "💬", label: "Message" },
+  order:       { icon: "🧾", label: "Order" },
+  memo:        { icon: "📝", label: "Memo" },
+};
+// Kinds whose content is code/tabular and reads best in monospace.
+const MONO: Set<ScenarioKind> = new Set(["code", "spreadsheet", "order"]);
 
 export function GymRep({ scenario }: { scenario: Scenario }) {
   const [phase, setPhase] = useState<Phase>("brief");
@@ -15,6 +30,11 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const logged = useRef(false);
   const n = scenario.items.length;
   const judged = Object.keys(choices).length;
+  const kind: ScenarioKind = scenario.kind ?? "document";
+  const chrome = CHROME[kind];
+  const mono = MONO.has(kind);
+  const aiDid = scenario.aiDid
+    ?? "AI generated this deliverable end-to-end — it looks finished and confident. You own the sign-off.";
 
   useEffect(() => {
     if (phase !== "judging") return;
@@ -22,31 +42,26 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
     return () => clearInterval(id);
   }, [phase]);
 
-  function reset() {
-    setChoices({}); setSecs(0); setPhase("brief"); logged.current = false;
-  }
+  function reset() { setChoices({}); setSecs(0); setPhase("brief"); logged.current = false; }
   function reveal() {
     setPhase("revealed");
     if (!logged.current) {
       logged.current = true;
       void logBuildRep(`gym:${scenario.slug}`);
-      // The graded score for the Effort-Dividend gate (right calls / total items).
       const right = scenario.items.reduce((acc, it, i) => acc + (choices[i] === it.verdict ? 1 : 0), 0);
       const pct = Math.round((100 * right) / scenario.items.length);
       void recordGymScore(scenario.slug, scenario.career, pct);
     }
   }
 
-  // Results
   const results = scenario.items.map((it, i) => {
     const choice = choices[i];
-    const correct = it.verdict;
     return {
       it, i, choice,
-      caught: correct === "flag" && choice === "flag",
-      missed: correct === "flag" && choice === "ship",
-      over: correct === "ship" && choice === "flag",
-      right: choice === correct,
+      caught: it.verdict === "flag" && choice === "flag",
+      missed: it.verdict === "flag" && choice === "ship",
+      over: it.verdict === "ship" && choice === "flag",
+      right: choice === it.verdict,
     };
   });
   const nCaught = results.filter((r) => r.caught).length;
@@ -55,11 +70,28 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const missedCrit = results.filter((r) => r.missed && r.it.severity === "critical").length;
   const totalFlags = scenario.items.filter((it) => it.verdict === "flag").length;
 
-  // The pressure: a benchmark pace, and a live cost that starts ticking once you pass it.
   const par = scenarioPar(scenario);
   const overSecs = Math.max(0, secs - par);
   const liveOvertime = Math.round((overSecs / 60) * OVERTIME_PER_MIN);
   const cost = reviewCost(scenario, choices, secs);
+
+  // The pinned "what you're checking against" panel — inputs + the AI's remit.
+  const contextPanel = (
+    <aside className="gym-context">
+      <div className="gym-ctx-block">
+        <p className="gym-ctx-k">The inputs</p>
+        <div className="gym-ctx-brief">
+          {scenario.brief.map((b, i) => (
+            <div key={i} className="gym-ctx-bf"><span className="l">{b.l}</span><span className="v">{b.v}</span></div>
+          ))}
+        </div>
+      </div>
+      <div className="gym-ctx-block">
+        <p className="gym-ctx-k">What the AI did</p>
+        <p className="gym-ctx-ai">{aiDid}</p>
+      </div>
+    </aside>
+  );
 
   return (
     <div className="gym">
@@ -74,6 +106,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
               ))}
             </div>
           </div>
+          <p className="gym-brief-ai"><span className="gym-ctx-k">What the AI did</span> {aiDid}</p>
           <button className="gym-cta" onClick={() => setPhase("judging")}>Start the rep — the clock starts ▸</button>
         </div>
       )}
@@ -87,25 +120,39 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                 ? <>over benchmark · <b className="gym-burn">+{money(liveOvertime)} and counting</b></>
                 : <>benchmark {mmss(par)} · a human would be done by then</>}
             </span>
-            <span className="gym-prog">{judged} / {n} judged</span>
+            <span className="gym-prog">{judged} / {n} reviewed</span>
           </div>
-          <p className="gym-aihead"><b>{scenario.artifact}</b> — generated, ready for your sign-off. Some of it is wrong; nothing tells you which.</p>
-          <div className="gym-items">
-            {scenario.items.map((it, i) => (
-              <div key={i} className={"gym-item" + (choices[i] ? " done" : "")}>
-                <div className="gym-area"><span className="gym-num">{String(i + 1).padStart(2, "0")}</span> {it.area}</div>
-                <div className="gym-out">{it.output}</div>
-                <div className="gym-choice">
-                  <button className={"gym-cb ship" + (choices[i] === "ship" ? " on" : "")}
-                    onClick={() => setChoices((c) => ({ ...c, [i]: "ship" }))}>✓ Ship it</button>
-                  <button className={"gym-cb flag" + (choices[i] === "flag" ? " on" : "")}
-                    onClick={() => setChoices((c) => ({ ...c, [i]: "flag" }))}>⚑ Flag it</button>
-                </div>
+
+          <div className="gym-judge">
+            <div className={`gym-artifact k-${kind}` + (mono ? " mono" : "")}>
+              <div className="gym-artifact-head">
+                <span className="gym-artifact-kind">{chrome.icon} {chrome.label}</span>
+                <span className="gym-artifact-name">{scenario.artifact}</span>
+                <span className="gym-artifact-tag">AI-generated · unreviewed</span>
               </div>
-            ))}
+              <p className="gym-artifact-hint">This looks finished. Some of it is wrong, and nothing marks which — mark each part <b>Looks right</b> or <b>Flag</b> against the inputs.</p>
+              <div className="gym-segs">
+                {scenario.items.map((it, i) => (
+                  <div key={i} className={"gym-seg" + (choices[i] ? ` j-${choices[i]}` : "")}>
+                    <div className="gym-seg-main">
+                      <span className="gym-seg-area">{it.area}</span>
+                      <div className="gym-seg-out">{it.output}</div>
+                    </div>
+                    <div className="gym-seg-judge">
+                      <button className={"gym-jb ok" + (choices[i] === "ship" ? " on" : "")}
+                        onClick={() => setChoices((c) => ({ ...c, [i]: "ship" }))}>✓ Looks right</button>
+                      <button className={"gym-jb flag" + (choices[i] === "flag" ? " on" : "")}
+                        onClick={() => setChoices((c) => ({ ...c, [i]: "flag" }))}>⚑ Flag</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {contextPanel}
           </div>
+
           <button className="gym-cta" onClick={reveal} disabled={judged < n}>
-            {judged < n ? `Judge all ${n} to reveal` : "Reveal the verdicts ▸"}
+            {judged < n ? `Review all ${n} to sign off` : "Sign off — reveal the verdicts ▸"}
           </button>
         </>
       )}
@@ -148,7 +195,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                     {r.right ? " · you got it" : r.missed ? " · you shipped it" : r.over ? " · you over-flagged" : ""}
                   </span>
                 </div>
-                <div className="gym-out sm">{r.it.output}</div>
+                <div className={"gym-out sm" + (mono ? " mono" : "")}>{r.it.output}</div>
                 <p className="gym-why">{r.it.why}</p>
                 <p className="gym-cost"><b>Cost of the wrong call:</b> {r.it.cost}</p>
                 <p className="gym-trains">Trains: {r.it.trains}</p>

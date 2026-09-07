@@ -1452,6 +1452,46 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-cb.ship.on { border-color: var(--green); background: rgba(47,107,255,0.10); color: var(--green); }
 .gym-cb.flag.on { border-color: var(--pen); background: rgba(245,51,63,0.10); color: var(--pen); }
 
+/* ── The artifact + pinned context (judge it like the real thing) ── */
+.gym-brief-ai { font-size: 0.9rem; line-height: 1.55; color: var(--soft); margin: 12px 0 0; }
+.gym-judge { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 18px; align-items: start; margin: 0 0 20px; }
+@media (max-width: 880px) { .gym-judge { grid-template-columns: 1fr; } }
+/* the artifact frame — kind gives it its chrome */
+.gym-artifact { border: 1px solid var(--rule2); border-radius: 14px; background: var(--panel); overflow: hidden; }
+.gym-artifact-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 16px; border-bottom: 1px solid var(--rule);
+  background: var(--panel2); }
+.gym-artifact-kind { font-weight: 800; font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent-deep);
+  background: var(--accent-wash); border-radius: 100px; padding: 3px 10px; }
+.gym-artifact-name { font-family: var(--mono); font-size: 0.84rem; color: var(--ink); }
+.gym-artifact-tag { margin-left: auto; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--pencil); }
+.gym-artifact-hint { font-size: 0.8rem; line-height: 1.5; color: var(--soft); margin: 0; padding: 11px 16px; border-bottom: 1px solid var(--rule); background: var(--bg2); }
+.gym-artifact-hint b { color: var(--ink2); }
+.gym-segs { display: flex; flex-direction: column; }
+.gym-seg { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 14px; align-items: start; padding: 15px 16px; border-bottom: 1px solid var(--rule);
+  border-left: 3px solid transparent; transition: .12s; }
+.gym-seg:last-child { border-bottom: 0; }
+.gym-seg.j-ship { border-left-color: color-mix(in srgb, var(--green) 45%, transparent); background: color-mix(in srgb, var(--green) 3%, transparent); }
+.gym-seg.j-flag { border-left-color: var(--pen); background: color-mix(in srgb, var(--pen) 4%, transparent); }
+.gym-seg-area { display: block; font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 6px; }
+.gym-seg-out { font-size: 0.9rem; line-height: 1.55; color: var(--ink2); word-break: break-word; }
+.gym-artifact.mono .gym-seg-out { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); }
+.gym-seg-judge { display: flex; flex-direction: column; gap: 6px; flex: none; }
+.gym-jb { font-family: var(--sans); font-weight: 700; font-size: 0.76rem; border-radius: 8px; padding: 6px 11px; cursor: pointer; white-space: nowrap;
+  background: transparent; border: 1px solid var(--rule2); color: var(--pencil); transition: .12s; }
+.gym-jb:hover { border-color: var(--rule2); color: var(--soft); }
+.gym-jb.ok.on { border-color: var(--green); background: rgba(47,107,255,0.10); color: var(--green); }
+.gym-jb.flag.on { border-color: var(--pen); background: rgba(245,51,63,0.10); color: var(--pen); }
+/* the pinned inputs + AI remit — always in view while judging */
+.gym-context { position: sticky; top: 56px; display: flex; flex-direction: column; gap: 14px; }
+.gym-ctx-block { border: 1px solid var(--rule); border-radius: 12px; background: var(--panel); padding: 14px 15px; }
+.gym-ctx-k { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pencil); margin: 0 0 9px; }
+.gym-ctx-brief { display: flex; flex-direction: column; gap: 9px; }
+.gym-ctx-bf { display: flex; flex-direction: column; gap: 1px; }
+.gym-ctx-bf .l { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--pencil); }
+.gym-ctx-bf .v { font-size: 0.84rem; line-height: 1.4; color: var(--ink2); }
+.gym-ctx-ai { font-size: 0.84rem; line-height: 1.55; color: var(--ink2); margin: 0; }
+@media (max-width: 880px) { .gym-context { position: static; } }
+
 .gym-scorecard { border: 1px solid var(--rule2); border-radius: 16px; background: var(--panel2); padding: 22px 20px; margin: 0 0 18px; }
 .gym-kk { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); }
 .gym-scorecard h2 { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; margin: 6px 0 16px; color: var(--ink); }

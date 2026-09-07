@@ -7,8 +7,8 @@ import { MARKETING_SCENARIOS } from "@/lib/gym-marketing";
 
 export type Severity = "minor" | "major" | "critical";
 export type GymItem = {
-  area: string;              // "Audience targeting"
-  output: string;            // what the AI produced (the thing you're judging)
+  area: string;              // the segment's label — a section / field / line of the artifact
+  output: string;            // what the AI produced in that segment (the thing you're judging)
   verdict: "ship" | "flag";  // the correct call
   severity?: Severity;       // for flag items
   why: string;               // why it's right/wrong
@@ -16,16 +16,23 @@ export type GymItem = {
   trains: string;            // the judgment muscle it builds
 };
 
+/** The shape of the AI's output. Drives how the artifact is framed and rendered —
+ *  an email reads as an email, a spreadsheet as a grid, code as a diff, and so on. */
+export type ScenarioKind =
+  | "document" | "email" | "spreadsheet" | "ticket" | "contract" | "code" | "message" | "order" | "memo";
+
 export type Scenario = {
   slug: string;
   career: string;
   short: string;             // one-line card blurb
   client: string;            // the subject of the brief
-  artifact: string;          // the AI's deliverable filename
+  artifact: string;          // the AI's deliverable filename / subject
   thesis: string;            // the intro framing
   brief: { l: string; v: string }[];
   items: GymItem[];
   lesson: string;            // closing line
+  kind?: ScenarioKind;       // artifact shape (default: document)
+  aiDid?: string;            // what the AI was responsible for — always visible while judging
   parSecs?: number;          // the benchmark review time (a good reviewer's pace); default derived from item count
 };
 
@@ -36,6 +43,8 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",
+    kind: "code",
+    aiDid: "An AI coding agent wrote this entire pull request from the ticket — the code, the tests, and a confident description. It builds and the demo passes. Your job is the review: approve only what should merge.",
     short: "Review an AI-written pull request against the ticket — correctness, security, and the tests.",
     client: "Checkout service — “add promo codes” PR",
     artifact: "feat-promo-codes.diff",
@@ -83,6 +92,8 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
 
   "software-auth": {
     slug: "software-auth", career: "Software Engineering",
+    kind: "code",
+    aiDid: "An AI coding agent built this destructive admin endpoint from the ticket, tests and all. It builds and reads clean. Some of it should never merge — your review is the gate.",
     short: "Review an AI-written admin endpoint against the ticket — authorization, audit, and safety.",
     client: "Admin API — “delete a user” endpoint",
     artifact: "feat-admin-delete-user.diff",
@@ -126,6 +137,56 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
         trains: "Confirming the tests exercise the stated behavior." },
     ],
     lesson: "The missing role check and the absent audit log (with a leaked hash) were the two that would have been yours to answer for. More AI-written code means the review is where your judgment now earns its keep.",
+  },
+
+  "sales-renewal-email": {
+    slug: "sales-renewal-email", career: "Sales & Account Management",
+    kind: "email",
+    aiDid: "AI drafted this client renewal email from the CRM notes and the signed contract. It's warm, confident, and ready to send. Some lines don't match the contract or your authority — you're the one hitting send.",
+    short: "Sign off an AI-drafted client renewal email against the contract — numbers, promises, and authority.",
+    client: "Meridian Corp — annual renewal email to Sarah (buyer)",
+    artifact: "Re: Your Meridian renewal ✨",
+    thesis: "The AI drafted a warm, polished renewal email to a key client — it reads perfectly. Some of it over-promises, misprices, or commits things you can't. Send only what's true and within your authority.",
+    brief: [
+      { l: "Account", v: "Meridian Corp · current ARR $84,000 · renewal due" },
+      { l: "Contract", v: "Uptime SLA 99.5% · annual price uplift capped at 5%" },
+      { l: "List renewal", v: "$88,200 (the 5% uplift)" },
+      { l: "Authority", v: "Discounts over 10% need VP sign-off; never commit an SLA beyond contract" },
+      { l: "Goal", v: "A warm renewal email that confirms terms and protects the relationship" },
+    ],
+    items: [
+      { area: "Opening", verdict: "ship",
+        output: "“Hi Sarah — it's been a strong year working together, and the team has genuinely valued partnering with you on the rollout.”",
+        why: "Warm, accurate, on-brand. A good relationship opener with nothing to correct.",
+        cost: "Rewriting a perfectly good opener wastes time and dulls the warmth.",
+        trains: "Letting genuinely good copy through." },
+      { area: "Renewal price", verdict: "flag", severity: "major",
+        output: "“Your renewal comes in at $92,400 for the year — a small increase in line with your agreement.”",
+        why: "Wrong, and it breaches the contract. A 5% uplift on $84,000 is $88,200. $92,400 is a 10% increase — over the contractual cap, sent in writing as \"in line with your agreement.\"",
+        cost: "You overbill by $4,200 and breach the price cap on the way — a dispute, a credit note, and a dent in trust at exactly the wrong moment.",
+        trains: "Re-performing the number against the contract, not trusting a confident figure." },
+      { area: "SLA commitment", verdict: "flag", severity: "critical",
+        output: "“And yes — we can absolutely guarantee 99.9% uptime going forward.”",
+        why: "The contract SLA is 99.5%. Committing 99.9% in writing over-promises beyond both the contract and what operations can stand behind — a new, unbacked liability created in one friendly line.",
+        cost: "A written commitment you can't keep. The first breach triggers penalties or a churn conversation, and it traces to this email.",
+        trains: "Catching the over-promise the AI made to sound helpful." },
+      { area: "Goodwill discount", verdict: "flag", severity: "major",
+        output: "“To say thanks for your loyalty, I've applied a 15% discount to this renewal.”",
+        why: "Over your authority. Discounts above 10% need VP sign-off, and this commits 15% to the client in writing before anyone approved it.",
+        cost: "An unauthorized ~$13k giveaway you can't walk back without looking like you're clawing it away — worse for the relationship than never offering it.",
+        trains: "Knowing the limit of your own authority before the machine spends it for you." },
+      { area: "Next step", verdict: "ship",
+        output: "“I'd love to set up a call next week to walk through the roadmap and hear what's next for your team.”",
+        why: "Appropriate, genuine relationship-building — exactly the human touch that keeps the account. Nothing to flag.",
+        cost: "Cutting a warm, well-judged next step removes the point of the email.",
+        trains: "Recognizing the relationship move worth keeping." },
+      { area: "Sign-off", verdict: "flag", severity: "critical",
+        output: "“Consider this email your binding renewal confirmation — no further paperwork needed.”",
+        why: "An email isn't the executed renewal. Declaring it \"binding, no paperwork\" invents a contract-formation claim that skips the signed order — and does it on terms that are already wrong.",
+        cost: "A legal mess: is there now a binding contract, on incorrect price and SLA? Untangling it costs far more than the renewal.",
+        trains: "Spotting where the AI casually created legal exposure." },
+    ],
+    lesson: "The mispriced renewal, the 99.9% promise, and the \"binding, no paperwork\" line were the three that would have been yours to answer for. AI writes a warm, confident client email in seconds — but a wrong number or an over-promise in writing is a real liability, and catching it before send is the judgment you're paid for.",
   },
 };
 
