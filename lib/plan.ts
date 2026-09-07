@@ -1,6 +1,6 @@
-import { eq, sql, like, and } from "drizzle-orm";
+import { eq, sql, like, and, ne } from "drizzle-orm";
 import { db } from "@/db";
-import { lessonProgress, podMembers, profiles } from "@/db/schema";
+import { lessonProgress, podMembers, profiles, focusGoals } from "@/db/schema";
 import { getTrajectory, type Trajectory } from "@/lib/trajectory";
 
 /* The Evolve engine: read the member's whole state and decide the single
@@ -31,7 +31,7 @@ export type Plan = {
 export async function getPlan(userId: string | null): Promise<Plan | null> {
   if (!userId) return null;
 
-  const [traj, profileRows, podCountRows, learnRows, buildRows] = await Promise.all([
+  const [traj, profileRows, podCountRows, learnRows, buildRows, focusRows] = await Promise.all([
     getTrajectory(userId),
     db.select({ onboardedAt: profiles.onboardedAt }).from(profiles).where(eq(profiles.clerkUserId, userId)).limit(1),
     db.select({ n: sql<number>`count(*)::int` }).from(podMembers).where(eq(podMembers.memberId, userId)),
@@ -39,13 +39,17 @@ export async function getPlan(userId: string | null): Promise<Plan | null> {
       .where(and(eq(lessonProgress.memberId, userId), like(lessonProgress.lessonKey, "learn:%"))),
     db.select({ n: sql<number>`count(*)::int` }).from(lessonProgress)
       .where(and(eq(lessonProgress.memberId, userId), like(lessonProgress.lessonKey, "build:%"))),
+    db.select({ n: sql<number>`count(*)::int` }).from(focusGoals)
+      .where(and(eq(focusGoals.memberId, userId), ne(focusGoals.status, "dropped"))),
   ]);
 
   const onboarded = profileRows[0]?.onboardedAt != null;
   const podsJoined = podCountRows[0]?.n ?? 0;
   const learnCount = learnRows[0]?.n ?? 0;
   const buildCount = buildRows[0]?.n ?? 0;
-  const moves = traj.movesActive + traj.movesDone;
+  // A "move" is committed whether it came through the moves box OR by adopting a
+  // Playbook play as a focus — the two are one thing to the member.
+  const moves = traj.movesActive + traj.movesDone + (focusRows[0]?.n ?? 0);
 
   // Steps in leverage order. `next` is the first incomplete, unlocked step.
   const steps: PlanStep[] = [
