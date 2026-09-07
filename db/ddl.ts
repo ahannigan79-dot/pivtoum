@@ -76,6 +76,8 @@ export const PATCH_STATEMENTS: string[] = [
      ('Design & Creative','design-creative','Designers, writers and creatives deepening what AI can''t take.',true),
      ('Data & Analytics','data-analytics','Analysts and data people turning AI into leverage.',true),
      ('Sales & Customer','sales-customer','Sales, success and support — owning the relationships that matter.',true),
+     ('Project & Program Management','project-management','Project and program leads running delivery AI-native — planning, status and risk.',true),
+     ('Consulting & Strategy','consulting-strategy','Consultants and strategy pros — advisory work where judgment is the product.',true),
      ('People & HR','people-hr','HR, recruiting and people teams reshaping how work gets done.',true),
      ('Operations & Admin','operations-admin','Ops, project and admin roles rebuilding the back office.',true),
      ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.',true),

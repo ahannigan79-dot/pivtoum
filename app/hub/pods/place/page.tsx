@@ -16,7 +16,9 @@ export default async function PlacePage() {
   if (mine.length > 0) redirect(`/hub/pods/${mine[0].slug}`); // already placed
 
   const [suggested, profile] = await Promise.all([
-    userId ? suggestPods(userId, 5) : Promise.resolve([]),
+    // Show every available pod, best-matched first — the field set is broad, so
+    // a member must always see their own field here (not a capped subset of 5).
+    userId ? suggestPods(userId, 30) : Promise.resolve([]),
     getOrCreateProfile(),
   ]);
 

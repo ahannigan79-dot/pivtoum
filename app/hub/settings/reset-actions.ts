@@ -49,6 +49,8 @@ const FIELD_PODS = [
   { slug: "design-creative",       name: "Design & Creative",       description: "Designers, writers and creatives deepening what AI can't take." },
   { slug: "data-analytics",        name: "Data & Analytics",        description: "Analysts and data people turning AI into leverage." },
   { slug: "sales-customer",        name: "Sales & Customer",        description: "Sales, success and support — owning the relationships that matter." },
+  { slug: "project-management",    name: "Project & Program Management", description: "Project and program leads running delivery AI-native — planning, status and risk." },
+  { slug: "consulting-strategy",   name: "Consulting & Strategy",   description: "Consultants and strategy pros — advisory work where judgment is the product." },
   { slug: "people-hr",             name: "People & HR",             description: "HR, recruiting and people teams reshaping how work gets done." },
   { slug: "operations-admin",      name: "Operations & Admin",      description: "Ops, project and admin roles rebuilding the back office." },
   { slug: "education-training",    name: "Education & Training",    description: "Teachers, trainers and L&D adapting to AI in the room." },
