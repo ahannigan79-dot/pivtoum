@@ -5,8 +5,10 @@ import { getPlan } from "@/lib/plan";
 import { onboardingView } from "@/lib/onboarding";
 import { exposureBand, bandWord, PERSONAL_RESCORE_DAYS } from "@/lib/trajectory";
 import { getComingUp } from "@/lib/coming-up";
+import { memberSignals } from "@/lib/signals";
 import { myPodStanding } from "@/lib/competition";
 import { ComingUp } from "@/components/hub/dashboard/ComingUp";
+import { Signals } from "@/components/hub/dashboard/Signals";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity } from "@/lib/effort";
@@ -98,12 +100,13 @@ export default async function Dashboard() {
   const effortDividend = await qualifyingMonths(userId);
   // Focus dividend — earned by completing the steps of your chosen goals; capped,
   // so doing the work on your focus visibly brings exposure down.
-  const [focus, focusDiv, comingUp, podStanding, artifactStatus] = await Promise.all([
+  const [focus, focusDiv, comingUp, podStanding, artifactStatus, signals] = await Promise.all([
     t?.hasMap ? getFocus(userId) : Promise.resolve([]),
     focusDividend(userId),
     t?.hasMap ? getComingUp(userId) : Promise.resolve({ nextEvent: null, pod: null }),
     t?.hasMap ? myPodStanding(userId) : Promise.resolve(null),
     t?.hasMap ? artifactStatusByGoal(userId) : Promise.resolve({}),
+    memberSignals(userId),
   ]);
   // Days until the next personal re-score (every 2 months), for the Coming-up card.
   const rescoreDays = t?.daysSinceMap != null ? Math.max(0, PERSONAL_RESCORE_DAYS - t.daysSinceMap) : null;
@@ -232,6 +235,8 @@ export default async function Dashboard() {
             )}
           </div>
         )}
+
+        {t?.hasMap && signals && <Signals data={signals} />}
 
         {t?.hasMap ? (
           <div className={setupActive ? "dash" : "dash dash-solo"}>
