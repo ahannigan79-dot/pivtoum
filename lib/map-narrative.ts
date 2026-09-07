@@ -22,21 +22,29 @@ Explain this member's AI Career Map to them in plain, natural English — the wa
 Length: exactly 3 short paragraphs, ~110–150 words total. No headings, no lists, no preamble like "Here's your reading". Just talk to them, simply.
 
 Say one clear thing per paragraph:
-1. What their exposure score actually means for them in everyday terms — is this reassuring or worrying, and why. Name the real work AI is taking, in plain words.
+1. What their exposure score actually means for them in everyday terms — is this reassuring or worrying, and why. Name the real work AI is taking, in plain words. IF "bought_down_by_your_work" is greater than zero, open by acknowledging the progress: they started at "map_reading" and their work has brought their real exposure down to "exposure_now" — name that drop plainly and give them credit for it. Never talk as if they're starting from scratch when they've already moved the number.
 2. What's keeping them safe — the parts of their job AI genuinely can't do.
-3. The single most useful thing to do next, from their strategy. End plainly and encouragingly — no slogan.
+3. The single most useful thing to do next, from their strategy. IF they've already made progress, frame it as continuing the momentum — the next thing that keeps the number moving — not a fresh start. End plainly and encouragingly — no slogan.
 
 If the facts include "changing_lanes": they are moving FROM moving_from_lane TOWARD target_lane (the scored lane). Frame the whole reading around that move — paragraph 1 contrasts where they are now with where they're heading (use current_lane_exposure vs exposure_now), paragraph 2 is what they carry across and what the target lane rewards, and paragraph 3 is the bridge from strategy_line: go AI-native in the current work now, build what the target lane runs on. Never imply they're stuck where they are.
 
 Write so they understand it on the first read. Ordinary words, complete sentences, no clever turns of phrase. Ground every claim in the facts provided — use the given score, band, driver and strategy exactly, never invent others. Second person throughout. Plain text only.`;
 
+/** Current standing passed alongside the map so the read reflects banked work. */
+export type ReadStanding = { current: number; dividend: number };
+
 /** Compact, already-computed facts handed to Claude — never asks it to score. */
-function factSheet(c: MapComputed, overall: number, effortDividend: number): string {
-  const band = exposureBand(overall);
+function factSheet(c: MapComputed, overall: number, standing?: ReadStanding): string {
+  // The number to speak to is the CURRENT (post-work) exposure when we have it;
+  // the raw map reading is context for the improvement.
+  const exposureNow = standing ? standing.current : overall;
+  const band = exposureBand(exposureNow);
   const facts: Record<string, unknown> = {
     career: c.career ?? null,
     lane: c.lane ?? null,
-    exposure_now: overall,
+    exposure_now: exposureNow,
+    map_reading: overall,
+    bought_down_by_your_work: standing?.dividend ?? 0,
     exposure_band: band.word || bandWord(c.band) || null,
     driver: c.driver?.name ?? null, // the biggest single factor behind their exposure
     driver_why: strip(c.driverDetail?.why) || null,
@@ -62,7 +70,6 @@ function factSheet(c: MapComputed, overall: number, effortDividend: number): str
     if (c.personal.helps?.length) facts.working_for_you = c.personal.helps;
     if (c.personal.hurts?.length) facts.holding_you_back = c.personal.hurts;
   }
-  if (effortDividend > 0) facts.effort_has_lowered_exposure_by = effortDividend;
   return JSON.stringify(facts, null, 2);
 }
 
@@ -72,7 +79,7 @@ const strip = (s: string | undefined | null) => (s ?? "").replace(/<[^>]+>/g, ""
 export async function generateMapNarrative(
   computed: MapComputed | null,
   overall: number | null,
-  effortDividend = 0,
+  standing?: ReadStanding,
 ): Promise<string | null> {
   if (!aiConfigured() || !computed || overall == null) return null;
   return complete({
@@ -82,7 +89,7 @@ export async function generateMapNarrative(
       {
         role: "user",
         content:
-          `Here is the member's computed Map. Write their reading.\n\n${factSheet(computed, overall, effortDividend)}`,
+          `Here is the member's computed Map. Write their reading.\n\n${factSheet(computed, overall, standing)}`,
       },
     ],
   });
@@ -95,7 +102,7 @@ export type MapRead = { narrative: string; cached: boolean } | null;
  * the first time. Best-effort: returns null when AI is off, there's no map, or a
  * generation fails — callers render the rest of the dashboard regardless.
  */
-export async function getOrCreateMapNarrative(userId: string | null, effortDividend = 0, force = false): Promise<MapRead> {
+export async function getOrCreateMapNarrative(userId: string | null, standing?: ReadStanding, force = false): Promise<MapRead> {
   if (!userId) return null;
   const rows = await db
     .select({ id: mapStates.id, computed: mapStates.computed, overall: mapStates.overall, narrative: mapStates.narrative })
@@ -110,7 +117,7 @@ export async function getOrCreateMapNarrative(userId: string | null, effortDivid
   const text = await generateMapNarrative(
     (row.computed ?? null) as MapComputed | null,
     typeof row.overall === "number" ? Math.round(row.overall) : null,
-    effortDividend,
+    standing,
   );
   if (!text) return null;
 
