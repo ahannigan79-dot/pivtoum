@@ -4,6 +4,7 @@ import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { getBuildReps } from "@/lib/build";
 import { aiConfigured } from "@/lib/ai";
 import { catalogueCareers, catalogueForCareer } from "@/lib/gym-catalogue";
+import { KIND_CHROME } from "@/lib/gym";
 import { memberLane } from "@/lib/gym-generate";
 import { GymCareerPicker } from "@/components/hub/build/GymCareerPicker";
 import { SeedCatalogue } from "@/components/hub/build/SeedCatalogue";
@@ -60,11 +61,19 @@ export default async function GymBrowse({ searchParams }: { searchParams: Promis
                     const href = r.kind === "authored" ? `/hub/build/gym/${r.slug}` : `/hub/build/gym/g/${r.id}`;
                     const key = r.kind === "authored" ? `gym:${r.slug}` : `gym:gen-${r.id}`;
                     const isDone = done.has(key);
+                    const chrome = KIND_CHROME[r.scenario.kind ?? "document"];
                     return (
-                      <Link key={i} href={href} className="card gym-card">
-                        <p className="ck">🥊 {r.kind === "authored" ? "Core rep" : "Community rep"}{isDone ? " · done ✓" : ""}</p>
-                        <h3>{r.scenario.client}</h3>
-                        <p>{r.scenario.short}</p>
+                      <Link key={i} href={href} className="gym-repcard">
+                        <div className="gym-repcard-top">
+                          <span className="gym-repcard-icon" aria-hidden>{chrome.icon}</span>
+                          <span className="gym-repcard-rep">{r.kind === "authored" ? "Core" : "Community"} · {chrome.label}</span>
+                          <span className={"gym-status " + (isDone ? "ok" : "wait")}>
+                            {isDone ? "Signed off ✓" : "In your queue"}
+                          </span>
+                        </div>
+                        <h3 className="gym-repcard-title">{r.scenario.client}</h3>
+                        <p className="gym-repcard-desc">{r.scenario.short}</p>
+                        <span className="gym-repcard-open">{isDone ? "Run it again" : "Open the file"} →</span>
                       </Link>
                     );
                   })}
