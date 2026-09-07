@@ -326,6 +326,21 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .mom-stat .lab i { font-size:0.76rem; color:var(--soft); font-style:normal; margin-top:2px; }
 .mom-cta { justify-content:center; width:100%; margin-top:18px; }
 
+/* "Coming up" — time-bound reminders (re-score countdown, next event, pod week) */
+.cu-card .ck { margin-bottom:14px; }
+.cu-list { display:flex; flex-direction:column; gap:4px; }
+.cu-row { display:flex; align-items:center; gap:11px; padding:10px 8px; border-radius:10px; text-decoration:none; transition:.12s; }
+.cu-row:hover { background:var(--panel2); }
+.cu-row + .cu-row { border-top:1px solid var(--rule); border-radius:0; }
+.cu-ic { flex:none; width:30px; height:30px; display:grid; place-items:center; font-size:1rem; background:var(--panel2); border:1px solid var(--rule); border-radius:9px; }
+.cu-body { display:flex; flex-direction:column; min-width:0; flex:1; }
+.cu-body b { font-size:0.88rem; font-weight:600; color:var(--ink); line-height:1.3; }
+.cu-body i { font-size:0.76rem; color:var(--soft); font-style:normal; line-height:1.35; margin-top:1px; }
+.cu-flag { flex:none; font-size:0.58rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-deep); background:var(--accent-wash); border-radius:100px; padding:3px 9px; }
+.cu-flag.warn { color:var(--pen); background:color-mix(in srgb,var(--pen) 9%,white); }
+.cu-join { flex:none; font-size:0.76rem; font-weight:700; color:#fff; background:var(--accent); border-radius:8px; padding:5px 12px; text-decoration:none; }
+.cu-join:hover { filter:brightness(1.06); }
+
 /* Eva — the onboarding guide persona (welcome page). Electric avatar tile. */
 .eva-badge { display:inline-flex; align-items:center; gap:11px; margin:0 0 18px; }
 .eva-av { width:34px; height:34px; border-radius:10px; background:var(--pop); flex:none; position:relative; box-shadow:0 2px 8px rgba(47,107,255,.30); }

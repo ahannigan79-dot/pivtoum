@@ -3,7 +3,9 @@ import { auth } from "@clerk/nextjs/server";
 import { getOrCreateProfile } from "@/lib/member";
 import { getPlan } from "@/lib/plan";
 import { onboardingView } from "@/lib/onboarding";
-import { exposureBand, bandWord } from "@/lib/trajectory";
+import { exposureBand, bandWord, PERSONAL_RESCORE_DAYS } from "@/lib/trajectory";
+import { getComingUp } from "@/lib/coming-up";
+import { ComingUp } from "@/components/hub/dashboard/ComingUp";
 import { getMoves, suggestMoves, winningAim } from "@/lib/moves";
 import { getEarnedBadges, evaluateBadges, BADGES } from "@/lib/badges";
 import { getMemberActivity } from "@/lib/effort";
@@ -94,10 +96,14 @@ export default async function Dashboard() {
   const effortDividend = await qualifyingMonths(userId);
   // Focus dividend — earned by completing the steps of your chosen goals; capped,
   // so doing the work on your focus visibly brings exposure down.
-  const [focus, focusDiv] = await Promise.all([
+  const [focus, focusDiv, comingUp] = await Promise.all([
     t?.hasMap ? getFocus(userId) : Promise.resolve([]),
     focusDividend(userId),
+    t?.hasMap ? getComingUp(userId) : Promise.resolve({ nextEvent: null, pod: null }),
   ]);
+  // Days until the next personal re-score (every 2 months), for the Coming-up card.
+  const rescoreDays = t?.daysSinceMap != null ? Math.max(0, PERSONAL_RESCORE_DAYS - t.daysSinceMap) : null;
+  const rescoreDue = !!t?.personalRescoreDue;
   const totalDividend = effortDividend + focusDiv;
   // Committed work, counted consistently everywhere: focus goals in flight vs. done,
   // plus freeform commitments. Used by the momentum card and the reminders so a
@@ -309,7 +315,10 @@ export default async function Dashboard() {
             {/* The rest of your numbers, kept quiet — the score above is the point.
                 While setup is running, these live in the rail as tiles instead. */}
             {!setupActive && (
-              <MomentumCard dividend={totalDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={inFlight} shipped={doneCount} />
+              <>
+                <MomentumCard dividend={totalDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={inFlight} shipped={doneCount} />
+                <ComingUp data={comingUp} rescoreDays={rescoreDays} rescoreDue={rescoreDue} />
+              </>
             )}
 
             {/* To evolve to win — automated reminders from map, build, activity */}
@@ -377,6 +386,7 @@ export default async function Dashboard() {
                 </section>
 
                 <MomentumCard dividend={totalDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={inFlight} shipped={doneCount} />
+                <ComingUp data={comingUp} rescoreDays={rescoreDays} rescoreDue={rescoreDue} />
               </aside>
             )}
           </div>
