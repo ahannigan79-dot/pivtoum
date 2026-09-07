@@ -37,6 +37,18 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
     ?? "AI generated this deliverable end-to-end — it looks finished and confident. You own the sign-off.";
   const role = scenario.role ?? "You're the human in the loop — the one whose name goes on it. Nothing ships without your call.";
 
+  // Compact inline judgment control + mode chip — the annotation on the artifact.
+  const modeChip = (m?: "fact" | "judgment") =>
+    m ? <span className={"gym-mode m-" + m}>{m === "fact" ? "Fact-check" : "Judgment"}</span> : null;
+  const Mark = (i: number) => (
+    <div className="gym-mark">
+      <button className={"gym-mk ok" + (choices[i] === "ship" ? " on" : "")} title="Looks right"
+        aria-label="Looks right" onClick={() => setChoices((c) => ({ ...c, [i]: "ship" }))}>✓</button>
+      <button className={"gym-mk flag" + (choices[i] === "flag" ? " on" : "")} title="Flag this"
+        aria-label="Flag this" onClick={() => setChoices((c) => ({ ...c, [i]: "flag" }))}>⚑</button>
+    </div>
+  );
+
   useEffect(() => {
     if (phase !== "judging") return;
     const id = setInterval(() => setSecs((s) => s + 1), 1000);
@@ -129,31 +141,56 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
           </div>
 
           <div className="gym-judge">
-            <div className={`gym-artifact k-${kind}` + (mono ? " mono" : "")}>
+            <div className={`gym-artifact k-${kind}`}>
               <div className="gym-artifact-head">
                 <span className="gym-artifact-kind">{chrome.icon} {chrome.label}</span>
                 <span className="gym-artifact-name">{scenario.artifact}</span>
                 <span className="gym-artifact-tag">AI-generated · unreviewed</span>
               </div>
-              <p className="gym-artifact-hint">This looks finished. Some of it is wrong, and nothing marks which — mark each part <b>Looks right</b> or <b>Flag</b> against the inputs.</p>
-              <div className="gym-segs">
-                {scenario.items.map((it, i) => (
-                  <div key={i} className={"gym-seg" + (choices[i] ? ` j-${choices[i]}` : "")}>
-                    <div className="gym-seg-main">
-                      <span className="gym-seg-area">{it.area}
-                        {it.mode && <span className={"gym-mode m-" + it.mode}>{it.mode === "fact" ? "Fact-check" : "Judgment call"}</span>}
-                      </span>
-                      <div className="gym-seg-out">{it.output}</div>
+
+              {kind === "email" && (
+                <div className="gym-mail">
+                  <div className="gym-mail-row"><span>From</span><b>You</b></div>
+                  <div className="gym-mail-row"><span>To</span><b>{scenario.client}</b></div>
+                  <div className="gym-mail-row"><span>Subject</span><b>{scenario.artifact}</b></div>
+                </div>
+              )}
+
+              <p className="gym-artifact-hint">This looks finished. Some of it is wrong, and nothing marks which — mark each part <b>✓ looks right</b> or <b>⚑ flag</b> against the inputs.</p>
+
+              {(kind === "spreadsheet" || kind === "order") ? (
+                <div className="gym-grid">
+                  <div className="gym-grow head"><span>Line</span><span>Value</span><span /></div>
+                  {scenario.items.map((it, i) => (
+                    <div key={i} className={"gym-grow" + (choices[i] ? ` j-${choices[i]}` : "")}>
+                      <span className="gc-label">{it.area}{modeChip(it.mode)}</span>
+                      <span className="gc-val">{it.output}</span>
+                      {Mark(i)}
                     </div>
-                    <div className="gym-seg-judge">
-                      <button className={"gym-jb ok" + (choices[i] === "ship" ? " on" : "")}
-                        onClick={() => setChoices((c) => ({ ...c, [i]: "ship" }))}>✓ Looks right</button>
-                      <button className={"gym-jb flag" + (choices[i] === "flag" ? " on" : "")}
-                        onClick={() => setChoices((c) => ({ ...c, [i]: "flag" }))}>⚑ Flag</button>
+                  ))}
+                </div>
+              ) : kind === "code" ? (
+                <div className="gym-diff">
+                  {scenario.items.map((it, i) => (
+                    <div key={i} className={"gym-hunk" + (choices[i] ? ` j-${choices[i]}` : "")}>
+                      <div className="gym-hunk-head"><span className="gh-file">{it.area}</span>{modeChip(it.mode)}{Mark(i)}</div>
+                      <pre className="gym-code">{it.output}</pre>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="gym-doc">
+                  {scenario.items.map((it, i) => (
+                    <div key={i} className={"gym-para" + (choices[i] ? ` j-${choices[i]}` : "")}>
+                      <div className="gym-para-body">
+                        <span className="gym-para-label">{it.area}{modeChip(it.mode)}</span>
+                        <p className="gym-para-text">{it.output}</p>
+                      </div>
+                      {Mark(i)}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             {contextPanel}
           </div>

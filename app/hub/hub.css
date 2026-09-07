@@ -1594,6 +1594,52 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-ctx-ai { font-size: 0.84rem; line-height: 1.55; color: var(--ink2); margin: 0; }
 @media (max-width: 880px) { .gym-context { position: static; } }
 
+/* ═══ Judgment Gym artifact rendering — each kind looks like the real thing ═══ */
+/* compact inline mark control (the annotation) */
+.gym-mark { display: inline-flex; gap: 4px; flex: none; }
+.gym-mk { width: 30px; height: 30px; display: grid; place-items: center; font-size: 0.9rem; border-radius: 8px; cursor: pointer;
+  background: var(--panel); border: 1px solid var(--rule2); color: var(--pencil); transition: .1s; padding: 0; }
+.gym-mk:hover { border-color: var(--soft); color: var(--soft); }
+.gym-mk.ok.on { background: rgba(47,107,255,.12); border-color: var(--green); color: var(--green); }
+.gym-mk.flag.on { background: rgba(245,51,63,.12); border-color: var(--pen); color: var(--pen); }
+/* judged state accents, shared across kinds */
+.j-ship { --edge: color-mix(in srgb,var(--green) 45%,transparent); }
+.j-flag { --edge: var(--pen); }
+
+/* prose artifact — document / email / memo / contract / message / ticket */
+.gym-doc { padding: 6px 4px; }
+.gym-para { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 16px; align-items: start; padding: 15px 16px 17px;
+  border-left: 3px solid transparent; border-radius: 8px; transition: background .12s; }
+.gym-para + .gym-para { border-top: 1px solid var(--rule); }
+.gym-para.j-ship, .gym-para.j-flag { border-left-color: var(--edge); background: color-mix(in srgb, var(--edge) 6%, transparent); }
+.gym-para-label { display: block; font-size: 0.66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--pencil); margin-bottom: 6px; }
+.gym-para-text { font-family: var(--serif); font-size: 1rem; line-height: 1.6; color: var(--ink); margin: 0; }
+.k-email .gym-para-text, .k-message .gym-para-text { font-family: var(--sans); font-size: 0.96rem; }
+
+/* email header */
+.gym-mail { padding: 12px 16px; border-bottom: 1px solid var(--rule); background: var(--bg2); display: flex; flex-direction: column; gap: 3px; }
+.gym-mail-row { display: flex; gap: 10px; font-size: 0.86rem; }
+.gym-mail-row span { width: 60px; color: var(--pencil); font-size: 0.7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding-top: 2px; }
+.gym-mail-row b { color: var(--ink); font-weight: 600; }
+
+/* spreadsheet / order grid */
+.gym-grid { display: flex; flex-direction: column; }
+.gym-grow { display: grid; grid-template-columns: 220px minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 12px 16px;
+  border-top: 1px solid var(--rule); border-left: 3px solid transparent; }
+.gym-grow.head { border-top: 0; background: var(--panel2); font-size: 0.62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--pencil); padding: 9px 16px; }
+.gym-grow.j-ship, .gym-grow.j-flag { border-left-color: var(--edge); background: color-mix(in srgb, var(--edge) 6%, transparent); }
+.gc-label { font-weight: 700; font-size: 0.88rem; color: var(--ink); }
+.gc-val { font-family: var(--mono); font-size: 0.86rem; color: var(--ink2); word-break: break-word; }
+@media (max-width: 600px) { .gym-grow { grid-template-columns: 1fr auto; } .gym-grow .gc-val { grid-column: 1 / -1; } }
+
+/* code diff */
+.gym-diff { padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+.gym-hunk { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; border-left-width: 3px; border-left-color: transparent; }
+.gym-hunk.j-ship, .gym-hunk.j-flag { border-left-color: var(--edge); }
+.gym-hunk-head { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--panel2); border-bottom: 1px solid var(--rule); }
+.gh-file { font-family: var(--mono); font-size: 0.78rem; font-weight: 700; color: var(--ink); flex: 1; }
+.gym-code { font-family: var(--mono); font-size: 0.82rem; line-height: 1.6; color: var(--ink2); background: var(--bg2); margin: 0; padding: 12px 14px; white-space: pre-wrap; word-break: break-word; }
+
 .gym-scorecard { border: 1px solid var(--rule2); border-radius: 16px; background: var(--panel2); padding: 22px 20px; margin: 0 0 18px; }
 .gym-kk { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pencil); }
 .gym-scorecard h2 { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; margin: 6px 0 16px; color: var(--ink); }
