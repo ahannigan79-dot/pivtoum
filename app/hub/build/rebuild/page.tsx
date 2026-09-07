@@ -2,19 +2,12 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { REBUILDS, careerVariantCount } from "@/lib/rebuild";
 import { getBuildReps } from "@/lib/build";
-import { aiConfigured } from "@/lib/ai";
-import { memberLane } from "@/lib/gym-generate";
-import { GenerateRebuild } from "@/components/hub/build/GenerateRebuild";
 
 export const metadata = { title: "Workflow Rebuild — Pivotum" };
 
-export default async function RebuildLanding({ searchParams }: { searchParams: Promise<{ gen?: string }> }) {
+export default async function RebuildLanding() {
   const { userId } = await auth();
-  const [done, seed, { gen }] = await Promise.all([
-    getBuildReps(userId),
-    aiConfigured() ? memberLane(userId) : Promise.resolve(null),
-    searchParams,
-  ]);
+  const done = await getBuildReps(userId);
   const countDone = (c: (typeof REBUILDS)[number]) =>
     c.lanes.reduce((n, l) => n + l.variants.filter((v) => done.has(`rebuild:${v.slug}`)).length, 0);
 
@@ -37,10 +30,6 @@ export default async function RebuildLanding({ searchParams }: { searchParams: P
             <span className="bt-cta">Rebuild my workflow →</span>
           </div>
         </Link>
-
-        {aiConfigured() && (
-          <GenerateRebuild lane={seed?.lane ?? null} career={seed?.career ?? null} notice={gen ?? null} />
-        )}
 
         <div className="hub-grid">
           {REBUILDS.map((c) => (

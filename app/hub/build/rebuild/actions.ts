@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { pickOrCreateRebuild } from "@/lib/rebuild-generate";
 import { memberLane } from "@/lib/gym-generate";
-import { getOrCreateProfile } from "@/lib/member";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
 import {
   generateTransformation, storeTransform, latestTransform, daysUntilNext, assessInput,
   sanitizeTransformation, updateTransformDoc, ensureShareToken, revokeShareToken, type Transformation,
@@ -17,6 +17,11 @@ import {
 export async function generateRebuild(formData: FormData): Promise<void> {
   const { userId } = await auth();
   if (!userId) redirect("/hub/build/rebuild");
+  // On-demand lane rebuilds are FOUNDER-ONLY to keep AI costs controlled — no
+  // member UI points here; members use the capped 1/month "rebuild my workflow"
+  // and the authored catalogue. This gate backstops a direct call.
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) redirect("/hub/build/rebuild");
 
   let lane = String(formData.get("lane") ?? "").trim();
   let career = String(formData.get("career") ?? "").trim();
