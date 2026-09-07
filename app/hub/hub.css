@@ -1432,6 +1432,9 @@ a.pod-member:hover span { color:var(--ink); }
   background: var(--panel); padding: 10px 15px; margin: 0 0 14px; position: sticky; top: 6px; z-index: 3; }
 .gym-clock { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--amber); }
 .gym-clab { font-size: 0.78rem; color: var(--pencil); }
+.gym-clockbar.over { border-color: color-mix(in srgb, var(--pen) 45%, transparent); background: color-mix(in srgb, var(--pen) 5%, var(--panel)); }
+.gym-clockbar.over .gym-clock { color: var(--pen); }
+.gym-burn { color: var(--pen); font-variant-numeric: tabular-nums; }
 .gym-prog { margin-left: auto; font-family: var(--mono); font-size: 0.82rem; color: var(--soft); }
 .gym-aihead { font-size: 0.86rem; color: var(--soft); margin: 0 0 14px; }
 .gym-aihead b { font-family: var(--mono); color: var(--ink); }
@@ -1460,6 +1463,16 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-st.caught .gym-n { color: var(--green); } .gym-st.missed .gym-n { color: var(--pen); } .gym-st.over .gym-n { color: var(--amber); }
 .gym-l { margin-top: 6px; font-size: 0.68rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--pencil); }
 .gym-time { margin: 14px 0 0; font-family: var(--mono); font-size: 0.8rem; color: var(--pencil); }
+/* cost-of-review card — the money mechanic */
+.gym-cost-card { margin: 16px 0 0; padding: 16px 18px; border: 1px solid color-mix(in srgb, var(--pen) 30%, var(--rule2)); border-radius: 13px; background: var(--panel); }
+.gym-cost-card.clean { border-color: var(--green-deep); }
+.gym-cost-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.gym-cost-k { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pencil); }
+.gym-cost-n { font-family: var(--serif); font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--pen); font-variant-numeric: tabular-nums; }
+.gym-cost-card.clean .gym-cost-n { color: var(--green); }
+.gym-cost-break { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 0; font-size: 0.82rem; color: var(--soft); }
+.gym-cost-break b { color: var(--ink2); font-variant-numeric: tabular-nums; }
+.gym-cost-note { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 0.84rem; line-height: 1.55; color: var(--soft); }
 
 .gym-review { display: flex; flex-direction: column; gap: 10px; }
 .gym-rev { border: 1px solid var(--rule); border-left-width: 3px; border-radius: 12px; background: var(--panel); padding: 14px 16px; }

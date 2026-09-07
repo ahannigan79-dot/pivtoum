@@ -26,6 +26,7 @@ export type Scenario = {
   brief: { l: string; v: string }[];
   items: GymItem[];
   lesson: string;            // closing line
+  parSecs?: number;          // the benchmark review time (a good reviewer's pace); default derived from item count
 };
 
 export const GYM_SCENARIOS: Record<string, Scenario> = {
@@ -145,4 +146,41 @@ export function scoreLine(missedCritical: number, missed: number, over: number):
   if (missed === 0 && over === 0) return "Clean sweep. You caught every buried flaw and let the good work through.";
   if (missed === 0) return "Every flaw caught. Ease off the good work — over-flagging costs trust too.";
   return "Solid, with gaps. Some buried flaws still shipped — that's where the reps pay off.";
+}
+
+/* ── Cost model ─────────────────────────────────────────────────────────────
+   The gym is a review under real pressure, not a quiz. Three things cost money:
+   a buried flaw you ship (by severity), good work you over-flag (rework + trust),
+   and time — every minute past the benchmark pace is a minute a human elsewhere
+   is faster, and slowness in an AI workflow is a cost. Lower total wins. */
+export const MISS_COST: Record<Severity, number> = { critical: 40000, major: 8000, minor: 1500 };
+export const OVERFLAG_COST = 900;      // rework + "doesn't trust good work" per over-flag
+export const OVERTIME_PER_MIN = 600;   // the value of review time past the benchmark
+export const PACE_SECS_PER_ITEM = 12;  // default benchmark pace when a scenario sets no parSecs
+
+export function scenarioPar(s: Scenario): number {
+  return s.parSecs ?? s.items.length * PACE_SECS_PER_ITEM;
+}
+
+export type ReviewCost = { missed: number; over: number; time: number; total: number; overSecs: number };
+
+/** Dollarise a completed rep: shipped flaws (by severity) + over-flags + time past par. */
+export function reviewCost(
+  s: Scenario,
+  choices: Record<number, "ship" | "flag">,
+  secs: number,
+): ReviewCost {
+  let missed = 0, over = 0;
+  s.items.forEach((it, i) => {
+    const c = choices[i];
+    if (it.verdict === "flag" && c === "ship") missed += MISS_COST[it.severity ?? "minor"];
+    if (it.verdict === "ship" && c === "flag") over += OVERFLAG_COST;
+  });
+  const overSecs = Math.max(0, secs - scenarioPar(s));
+  const time = Math.round((overSecs / 60) * OVERTIME_PER_MIN);
+  return { missed, over, time, total: missed + over + time, overSecs };
+}
+
+export function money(n: number): string {
+  return "$" + Math.round(n).toLocaleString();
 }

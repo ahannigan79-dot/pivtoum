@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, type Scenario } from "@/lib/gym";
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, type Scenario } from "@/lib/gym";
+
+const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
@@ -52,7 +54,12 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const nOver = results.filter((r) => r.over).length;
   const missedCrit = results.filter((r) => r.missed && r.it.severity === "critical").length;
   const totalFlags = scenario.items.filter((it) => it.verdict === "flag").length;
-  const mmss = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+
+  // The pressure: a benchmark pace, and a live cost that starts ticking once you pass it.
+  const par = scenarioPar(scenario);
+  const overSecs = Math.max(0, secs - par);
+  const liveOvertime = Math.round((overSecs / 60) * OVERTIME_PER_MIN);
+  const cost = reviewCost(scenario, choices, secs);
 
   return (
     <div className="gym">
@@ -73,12 +80,16 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
 
       {phase === "judging" && (
         <>
-          <div className="gym-clockbar">
-            <span className="gym-clock">{mmss}</span>
-            <span className="gym-clab">judging at speed</span>
+          <div className={"gym-clockbar" + (overSecs > 0 ? " over" : "")}>
+            <span className="gym-clock">{mmss(secs)}</span>
+            <span className="gym-clab">
+              {overSecs > 0
+                ? <>over benchmark · <b className="gym-burn">+{money(liveOvertime)} and counting</b></>
+                : <>benchmark {mmss(par)} · a human would be done by then</>}
+            </span>
             <span className="gym-prog">{judged} / {n} judged</span>
           </div>
-          <p className="gym-aihead"><b>{scenario.artifact}</b> — generated, ready for your sign-off.</p>
+          <p className="gym-aihead"><b>{scenario.artifact}</b> — generated, ready for your sign-off. Some of it is wrong; nothing tells you which.</p>
           <div className="gym-items">
             {scenario.items.map((it, i) => (
               <div key={i} className={"gym-item" + (choices[i] ? " done" : "")}>
@@ -109,7 +120,22 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
               <div className="gym-st missed"><div className="gym-n">{nMissed}</div><div className="gym-l">Flaws you shipped</div></div>
               <div className="gym-st over"><div className="gym-n">{nOver}</div><div className="gym-l">Good work over-flagged</div></div>
             </div>
-            <p className="gym-time">Judged in {mmss}.</p>
+            <div className={"gym-cost-card" + (cost.total === 0 ? " clean" : "")}>
+              <div className="gym-cost-total">
+                <span className="gym-cost-k">What this review cost</span>
+                <span className="gym-cost-n">{money(cost.total)}</span>
+              </div>
+              <div className="gym-cost-break">
+                <span>Shipped flaws <b>{money(cost.missed)}</b></span>
+                <span>Over-flagging <b>{money(cost.over)}</b></span>
+                <span>Time over benchmark <b>{money(cost.time)}</b></span>
+              </div>
+              <p className="gym-cost-note">
+                Judged in {mmss(secs)} against a {mmss(par)} benchmark
+                {cost.overSecs > 0 ? ` — ${mmss(cost.overSecs)} slow` : " — on pace"}.
+                {cost.total === 0 ? " Nothing missed, nothing over-flagged, on time. That's the bar." : " Catch more, over-flag less, and beat the clock — that's the reviewer worth paying."}
+              </p>
+            </div>
           </div>
 
           <div className="gym-review">
