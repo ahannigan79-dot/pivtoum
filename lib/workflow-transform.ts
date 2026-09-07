@@ -35,6 +35,35 @@ export type Transformation = {
 
 const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 
+// Input-quality bar. The doc is only as good as the description; a two-line
+// input can't produce a credible rebuild, so we hold members to a real one.
+const MIN_WORDS = 45;   // enough to actually describe a process
+const MIN_STEPS = 3;    // a workflow is a sequence, not a sentence
+
+export type InputVerdict = { ok: true } | { ok: false; code: "name" | "thin" | "steps" };
+
+/**
+ * Deterministic input-quality gate — runs BEFORE the model, so a too-thin
+ * description never spends the month's generation (and never reaches the API).
+ * Returns a specific code the UI turns into an actionable nudge.
+ */
+export function assessInput(workflow: string, steps: string): InputVerdict {
+  const wf = workflow.trim();
+  const s = steps.trim();
+  const words = s.split(/\s+/).filter(Boolean).length;
+  const substantive = (t: string) => t.trim().split(/\s+/).filter(Boolean).length >= 4;
+  // Count "steps" the most generous way: distinct substantive lines, or, for a
+  // single paragraph, substantive sentences.
+  const byLine = s.split(/\n+/).filter(substantive).length;
+  const bySentence = s.split(/(?<=[.;!])\s+/).filter(substantive).length;
+  const stepCount = Math.max(byLine, bySentence);
+
+  if (wf.length < 4) return { ok: false, code: "name" };
+  if (words < MIN_WORDS) return { ok: false, code: "thin" };
+  if (stepCount < MIN_STEPS) return { ok: false, code: "steps" };
+  return { ok: true };
+}
+
 const SYSTEM = `${VOICE}
 
 ## What you are producing right now

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { pickOrCreateRebuild } from "@/lib/rebuild-generate";
 import { memberLane } from "@/lib/gym-generate";
 import { getOrCreateProfile } from "@/lib/member";
-import { generateTransformation, storeTransform, latestTransform, daysUntilNext } from "@/lib/workflow-transform";
+import { generateTransformation, storeTransform, latestTransform, daysUntilNext, assessInput } from "@/lib/workflow-transform";
 
 /**
  * Generate a fresh Workflow Rebuild for the member's lane (optionally a specific
@@ -43,6 +43,12 @@ export async function transformWorkflow(formData: FormData): Promise<void> {
   const steps = String(formData.get("steps") ?? "").trim().slice(0, 2000);
   const roleIn = String(formData.get("role") ?? "").trim().slice(0, 120);
   if (!workflow || !steps) redirect("/hub/build/rebuild/mine?err=input");
+
+  // Hold the input to a real standard before spending the month's generation —
+  // the doc is only as good as the description. A gated attempt costs nothing
+  // and does NOT use the monthly allowance.
+  const verdict = assessInput(workflow, steps);
+  if (!verdict.ok) redirect(`/hub/build/rebuild/mine?err=q_${verdict.code}`);
 
   const [profile, seed] = await Promise.all([getOrCreateProfile(), memberLane(userId)]);
   const inputs = {

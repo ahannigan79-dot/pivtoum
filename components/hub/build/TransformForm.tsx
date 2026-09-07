@@ -49,7 +49,7 @@ export function TransformForm({ role }: { role: string }) {
         <input name="role" maxLength={120} defaultValue={role} placeholder="e.g. Senior Financial Analyst" className="tf-input" />
       </label>
       <SubmitBtn />
-      <p className="tf-note">One rebuild per month. Give it a minute — it&apos;s building the full transformation. Thin detail still works: anything it has to guess is marked <b>“assumed — confirm”</b> for you to check.</p>
+      <p className="tf-note">One rebuild per month, so make it count. Describe the steps as they really run — at least three or four, who does each, and roughly how long. A thin, one-line description won&apos;t run; the sharper the input, the sharper the doc. <b>Start from a template</b> if you want the shape.</p>
     </form>
   );
 }
