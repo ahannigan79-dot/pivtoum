@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { mapStates, profiles } from "@/db/schema";
 import { awardBadge } from "@/lib/badges";
+import { requireMember } from "@/lib/gate";
 
 // Save a computed Map for the signed-in member (one snapshot per completion → the
 // Evolve trajectory). Also stamps the member's current career/lane on their profile.
 export async function POST(req: Request) {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return new NextResponse("Forbidden", { status: 403 });
 
   const body = await req.json().catch(() => null);
   if (!body?.answers || !body?.computed) return new NextResponse("Bad request", { status: 400 });
@@ -37,8 +37,8 @@ export async function POST(req: Request) {
 
 // Latest saved Map, for the dashboard.
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return new NextResponse("Forbidden", { status: 403 });
   const rows = await db
     .select()
     .from(mapStates)

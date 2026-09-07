@@ -1,15 +1,15 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { events, eventRsvps } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 import { leadsPod } from "@/lib/pods";
 import { leadsDomainPod } from "@/lib/leadership";
 
 export async function toggleRsvp(eventId: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const where = and(eq(eventRsvps.eventId, eventId), eq(eventRsvps.memberId, userId));
   const existing = await db.select().from(eventRsvps).where(where).limit(1);
@@ -58,7 +58,7 @@ export async function createEvent(formData: FormData) {
 /** A pod captain — or a domain leader whose domain contains the pod — hosts a
  *  session for that pod. Pod-scoped, hosted by them. */
 export async function hostSession(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const podId = String(formData.get("podId") ?? "").trim();
   if (!podId) return;

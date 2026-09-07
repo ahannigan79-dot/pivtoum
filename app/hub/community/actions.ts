@@ -1,10 +1,10 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { comments, postAttachments, postReports, posts, reactions } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 import { TOPIC_BY_SLUG } from "@/lib/feed-topics";
 import { uploadPostFiles } from "@/lib/blob";
 import { notifyReply, notifyReaction, notifyReport } from "@/lib/notifications";
@@ -28,7 +28,7 @@ function revalidateFeeds() {
 
 /** Delete a post — author or founder/moderator only. */
 export async function deletePost(postId: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const rows = await db.select({ authorId: posts.authorId }).from(posts).where(eq(posts.id, postId)).limit(1);
   if (!rows[0]) return;
@@ -40,7 +40,7 @@ export async function deletePost(postId: string) {
 
 /** Report a post to the founders. */
 export async function reportPost(postId: string, reason: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await db.insert(postReports).values({ postId, reporterId: userId, reason: reason.slice(0, 500) || null });
   await notifyReport(postId, userId, reason.slice(0, 500) || null);
@@ -48,7 +48,7 @@ export async function reportPost(postId: string, reason: string) {
 }
 
 export async function createPost(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const body = String(formData.get("body") ?? "").trim();
   if (!body) return;
@@ -81,7 +81,7 @@ export async function togglePin(postId: string) {
 }
 
 export async function addComment(postId: string, body: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const b = body.trim();
   if (!b) return;
@@ -94,7 +94,7 @@ export async function addComment(postId: string, body: string) {
 const REACTION_SET = new Set(["👍", "❤️", "🔥", "🎉", "💡", "👏"]);
 
 export async function toggleReaction(postId: string, emoji: string = "👍") {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const e = REACTION_SET.has(emoji) ? emoji : "👍";
   const where = and(eq(reactions.postId, postId), eq(reactions.memberId, userId), eq(reactions.emoji, e));

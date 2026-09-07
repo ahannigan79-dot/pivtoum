@@ -24,7 +24,7 @@ export async function DELETE(req: Request): Promise<NextResponse> {
   if (!userId) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   try {
     const { endpoint } = await req.json();
-    await deleteSubscription(String(endpoint ?? ""));
+    await deleteSubscription(String(endpoint ?? ""), userId);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "bad request" }, { status: 400 });

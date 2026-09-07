@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getAllOrders, subscriberCount, type Order } from "@/lib/db";
 import { getPack } from "@/lib/packs";
 import { getCareer } from "@/data/careers";
+import { requireFounderPageOr404 } from "@/lib/member";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Admin", robots: { index: false, follow: false } };
@@ -24,6 +25,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 export default async function AdminPage() {
+  await requireFounderPageOr404();
   let orders: Order[] = [];
   let subscribers = 0;
   let error: string | null = null;

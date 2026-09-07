@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { list, del } from "@vercel/blob";
 import { blobToken } from "@/lib/blob";
 import { claimableCareers } from "@/lib/profiles";
+import { requireBearer } from "@/lib/authz";
 
 export const dynamic = "force-dynamic";
 
@@ -10,16 +11,13 @@ export const dynamic = "force-dynamic";
  * <slug>-planning.pdf / <slug>-active.pdf for a sellable career. Cleans up old
  * placeholders and stale files after an edition. Gated by the signing secret.
  *
- *   GET /api/prune-profiles?key=<DOWNLOAD_SIGNING_SECRET>          (dry run)
- *   GET /api/prune-profiles?key=<DOWNLOAD_SIGNING_SECRET>&apply=1  (delete)
+ *   curl -H "Authorization: Bearer $DOWNLOAD_SIGNING_SECRET" https://…/api/prune-profiles          (dry run)
+ *   curl -H "Authorization: Bearer $DOWNLOAD_SIGNING_SECRET" https://…/api/prune-profiles?apply=1  (delete)
  */
 export async function GET(req: Request) {
+  const denied = requireBearer(req, "DOWNLOAD_SIGNING_SECRET");
+  if (denied) return denied;
   const url = new URL(req.url);
-  const key = url.searchParams.get("key");
-  const secret = process.env.DOWNLOAD_SIGNING_SECRET;
-  if (!secret || key !== secret) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
 
   const token = blobToken();
   if (!token) return NextResponse.json({ error: "blob not configured" }, { status: 503 });

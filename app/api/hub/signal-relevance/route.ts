@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { memberSignals } from "@/lib/signals";
 import { getArticleRelevance } from "@/lib/article-relevance";
+import { requireMember } from "@/lib/gate";
 import { aiConfigured } from "@/lib/ai";
 
 // "Why this matters to you" for the top signal on the dashboard. One cached call
@@ -10,8 +10,8 @@ import { aiConfigured } from "@/lib/ai";
 export const maxDuration = 30;
 
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return NextResponse.json({ note: null });
   if (!aiConfigured()) return NextResponse.json({ note: null });
 
   const sig = await memberSignals(userId, 5);

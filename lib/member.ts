@@ -1,4 +1,5 @@
 import { currentUser } from "@clerk/nextjs/server";
+import { notFound } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles } from "@/db/schema";
@@ -11,6 +12,16 @@ export function isFounder(p: { role?: string | null; email?: string | null } | n
   if (p.role === "founder" || p.role === "moderator") return true;
   const allow = (process.env.FOUNDER_EMAILS ?? "").toLowerCase().split(",").map((s) => s.trim()).filter(Boolean);
   return !!p.email && allow.includes(p.email.toLowerCase());
+}
+
+/** Page/route guard for founder-only areas (e.g. /admin, which shows customer
+ *  emails + revenue). 404s anyone who isn't a founder — using the SAME identity
+ *  check as the hub (profile role or FOUNDER_EMAILS), not a shared password.
+ *  Returns the founder's profile so the caller can use it. */
+export async function requireFounderPageOr404() {
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) notFound();
+  return profile!;
 }
 
 /** Fetch the signed-in member's profile row, creating it from Clerk on first visit. */

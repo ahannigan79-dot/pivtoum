@@ -11,7 +11,15 @@ export const dynamic = "force-dynamic";
  * app queries, with no chance of a wrong-branch mismatch.
  *
  *   GET  /api/admin/migrate          → diagnostics (which DB, does profiles exist)
- *   GET  /api/admin/migrate?run=1    → DROP + recreate the whole schema
+ *   GET  /api/admin/migrate?patch=1  → additive, non-destructive column/table patches
+ *   POST /api/admin/migrate          → DROP + recreate the whole schema (DESTRUCTIVE)
+ *
+ * The destructive reset is a POST that ALSO requires the custom header
+ *   x-migrate-confirm: RESET-SCHEMA
+ * A cross-origin page cannot set a custom header on a request (it would trip a
+ * CORS preflight), so this cannot be triggered by a stray link, prefetch, or
+ * CSRF form the way a bare GET could — which previously meant one wrong click
+ * would `DROP SCHEMA public CASCADE` on production.
  *
  * Gated to founders: the signed-in Clerk user's email must be in
  * FOUNDER_EMAILS (comma-separated), with a fallback to the account owner. */
@@ -57,6 +65,16 @@ export async function GET(req: Request) {
   const run = sp.get("run");
   const patch = sp.get("patch");
 
+  // The destructive reset is no longer reachable by GET (a bare GET can be
+  // triggered by a link/prefetch/CSRF and would wipe the database). Point the
+  // caller at the guarded POST instead of silently doing nothing.
+  if (run === "1") {
+    return NextResponse.json(
+      { error: "The destructive reset moved to POST for safety. Send: POST /api/admin/migrate with header 'x-migrate-confirm: RESET-SCHEMA'." },
+      { status: 405 },
+    );
+  }
+
   // Additive patch — safe, non-destructive. Adds new columns/tables only.
   if (patch === "1") {
     const done: string[] = [];
@@ -75,26 +93,39 @@ export async function GET(req: Request) {
   }
 
   // Diagnostic view — safe, read-only.
-  if (run !== "1") {
-    let profilesExists = false;
-    let dbError: string | null = null;
-    try {
-      const r = await sql`select to_regclass('public.profiles') as t`;
-      profilesExists = r.rows[0]?.t != null;
-    } catch (e) {
-      dbError = e instanceof Error ? e.message : String(e);
-    }
-    return NextResponse.json({
-      connectedTo: dbHost(),
-      profilesTableExists: profilesExists,
-      dbError,
-      hint: profilesExists
-        ? "Schema already present on this DB."
-        : "Tables are missing on the DB the app talks to. Call this URL with ?run=1 to install the schema here.",
-    });
+  let profilesExists = false;
+  let dbError: string | null = null;
+  try {
+    const r = await sql`select to_regclass('public.profiles') as t`;
+    profilesExists = r.rows[0]?.t != null;
+  } catch (e) {
+    dbError = e instanceof Error ? e.message : String(e);
+  }
+  return NextResponse.json({
+    connectedTo: dbHost(),
+    profilesTableExists: profilesExists,
+    dbError,
+    hint: profilesExists
+      ? "Schema already present on this DB. Use ?patch=1 to apply additive patches."
+      : "Tables are missing. POST to this route (header x-migrate-confirm: RESET-SCHEMA) to install a fresh schema, then GET ?patch=1 for the later tables + seeds.",
+  });
+}
+
+/** DESTRUCTIVE: drop the public schema and rebuild it from scratch. Founder
+ *  session AND the custom confirmation header both required (see file header). */
+export async function POST(req: Request) {
+  const gate = await requireFounder();
+  if (!gate.ok) return NextResponse.json({ error: gate.error }, { status: gate.status });
+
+  if (req.headers.get("x-migrate-confirm") !== "RESET-SCHEMA") {
+    return NextResponse.json(
+      { error: "Missing confirmation. Resend with header 'x-migrate-confirm: RESET-SCHEMA'. This drops and rebuilds the entire database." },
+      { status: 428 },
+    );
   }
 
-  // Destructive install — drops public schema and rebuilds. Safe: no data yet.
+  // Drops public schema and rebuilds. Destructive by design — intended only for
+  // a fresh/empty database at install time.
   const all = [...RESET_STATEMENTS, ...DDL_STATEMENTS];
   const done: string[] = [];
   try {
@@ -119,6 +150,6 @@ export async function GET(req: Request) {
     ok: true,
     connectedTo: dbHost(),
     ranStatements: done.length,
-    message: "Schema installed on the app's own database. Reload /hub.",
+    message: "Schema installed on the app's own database. Now GET ?patch=1 for the later tables + seeds, then reload /hub.",
   });
 }

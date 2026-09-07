@@ -4,6 +4,7 @@ import path from "node:path";
 import { put } from "@vercel/blob";
 import { blobToken } from "@/lib/blob";
 import { claimableCareers } from "@/lib/profiles";
+import { requireBearer } from "@/lib/authz";
 
 export const dynamic = "force-dynamic";
 
@@ -15,14 +16,11 @@ export const dynamic = "force-dynamic";
  * profiles/<slug>-active.pdf. Gated by the signing secret, same as the old seed
  * route.
  *
- *   GET /api/upload-profiles?key=<DOWNLOAD_SIGNING_SECRET>
+ *   curl -H "Authorization: Bearer $DOWNLOAD_SIGNING_SECRET" https://…/api/upload-profiles
  */
 export async function GET(req: Request) {
-  const key = new URL(req.url).searchParams.get("key");
-  const secret = process.env.DOWNLOAD_SIGNING_SECRET;
-  if (!secret || key !== secret) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
+  const denied = requireBearer(req, "DOWNLOAD_SIGNING_SECRET");
+  if (denied) return denied;
 
   const token = blobToken();
   if (!token) return NextResponse.json({ error: "blob not configured" }, { status: 503 });

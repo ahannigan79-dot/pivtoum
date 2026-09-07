@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { getCurrentPrompt } from "@/lib/ritual";
 import { resolvePromptArticle } from "@/lib/brief";
 import { getArticleRelevance } from "@/lib/article-relevance";
+import { requireMember } from "@/lib/gate";
 import { aiConfigured } from "@/lib/ai";
 
 // "Why this week's article matters to your lane" — personalised, grounded in the
@@ -11,8 +11,8 @@ import { aiConfigured } from "@/lib/ai";
 export const maxDuration = 45;
 
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return NextResponse.json({ note: null });
   if (!aiConfigured()) return NextResponse.json({ note: null });
 
   const prompt = await getCurrentPrompt();

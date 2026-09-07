@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { getOrCreateMapNarrative, type ReadStanding } from "@/lib/map-narrative";
 import { getStanding } from "@/lib/standing";
 import { getOrCreateProfile } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 import { aiConfigured } from "@/lib/ai";
 
 /** The member's current standing (map reading + work banked) so the read reflects
@@ -19,8 +19,8 @@ async function currentStanding(userId: string): Promise<ReadStanding | undefined
 export const maxDuration = 60;
 
 export async function GET() {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return NextResponse.json({ narrative: null });
   if (!aiConfigured()) return NextResponse.json({ narrative: null });
 
   const read = await getOrCreateMapNarrative(userId, await currentStanding(userId));
@@ -29,8 +29,8 @@ export async function GET() {
 
 // Force a fresh read (ignores the cached one) — the member's "regenerate".
 export async function POST() {
-  const { userId } = await auth();
-  if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+  const userId = await requireMember();
+  if (!userId) return new NextResponse("Forbidden", { status: 403 });
   if (!aiConfigured()) return NextResponse.json({ narrative: null });
 
   const read = await getOrCreateMapNarrative(userId, await currentStanding(userId), true);

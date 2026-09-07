@@ -13,6 +13,11 @@ export const dynamic = "force-dynamic";
  *
  *   GET /api/gads-conversions?key=<DOWNLOAD_SIGNING_SECRET>
  *
+ * NOTE: unlike the cron/admin routes, this one keeps the `?key=` query auth on
+ * purpose — Google Ads' scheduled "HTTPS source" pull cannot set a custom
+ * Authorization: Bearer header, so a header-only gate would break the import.
+ * The trade-off (secret in Ads' fetch URL) is accepted for this one route.
+ *
  * The "Conversion Name" column must match an import conversion action in the
  * Ads account (default "Website signup (import)", override with
  * GADS_IMPORT_CONVERSION_NAME). Times are UTC to match TimeZone=+0000.

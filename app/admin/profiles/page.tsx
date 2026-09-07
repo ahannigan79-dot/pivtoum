@@ -5,11 +5,13 @@ import { blobToken } from "@/lib/blob";
 import { claimableCareers } from "@/lib/profiles";
 import { getCareer } from "@/data/careers";
 import { headlineFlag } from "@/lib/tier";
+import { requireFounderPageOr404 } from "@/lib/member";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Documents", robots: { index: false, follow: false } };
 
 export default async function ProfilesPage() {
+  await requireFounderPageOr404();
   let urls = new Map<string, string>();
   let error: string | null = null;
   try {

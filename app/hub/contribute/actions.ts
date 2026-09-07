@@ -1,11 +1,11 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { createSubmission, MEMBER_SESSION_TYPES } from "@/lib/submissions";
+import { requireMember } from "@/lib/gate";
 
 /** A member proposes a session to host. Lands in the founder review queue. */
 export async function proposeSession(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const title = String(formData.get("title") ?? "").trim();
   const body = String(formData.get("body") ?? "").trim();
@@ -26,7 +26,7 @@ export async function proposeSession(formData: FormData) {
 
 /** A member submits an article for review. Publishes to the feed on approval. */
 export async function submitArticle(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const title = String(formData.get("title") ?? "").trim();
   const body = String(formData.get("body") ?? "").trim();

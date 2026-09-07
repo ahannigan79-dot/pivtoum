@@ -1,5 +1,5 @@
 import webpush from "web-push";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { pushSubscriptions } from "@/db/schema";
 
@@ -32,9 +32,17 @@ export async function saveSubscription(memberId: string, sub: PushSub): Promise<
     });
 }
 
-export async function deleteSubscription(endpoint: string): Promise<void> {
+/** Delete a device subscription by endpoint. When `memberId` is given, the
+ *  delete is scoped to that member too — so a user-initiated unsubscribe can
+ *  only remove their OWN device, never another member's (endpoints are opaque
+ *  but shouldn't be a deletion primitive for anyone who learns one). Internal
+ *  cleanup passes the owning memberId; leave it off only for trusted callers. */
+export async function deleteSubscription(endpoint: string, memberId?: string): Promise<void> {
   if (!endpoint) return;
-  await db.delete(pushSubscriptions).where(eq(pushSubscriptions.endpoint, endpoint));
+  const where = memberId
+    ? and(eq(pushSubscriptions.endpoint, endpoint), eq(pushSubscriptions.memberId, memberId))
+    : eq(pushSubscriptions.endpoint, endpoint);
+  await db.delete(pushSubscriptions).where(where);
 }
 
 export type PushPayload = { title: string; body?: string; url?: string; tag?: string };
@@ -51,7 +59,7 @@ export async function sendPushToMember(memberId: string, payload: PushPayload): 
       await webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, body);
     } catch (err: unknown) {
       const code = (err as { statusCode?: number })?.statusCode;
-      if (code === 404 || code === 410) await deleteSubscription(s.endpoint); // gone
+      if (code === 404 || code === 410) await deleteSubscription(s.endpoint, s.memberId); // gone
       else console.error("[push] send", code ?? String(err));
     }
   }));

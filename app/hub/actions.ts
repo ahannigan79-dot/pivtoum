@@ -1,5 +1,4 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { and, eq } from "drizzle-orm";
@@ -9,7 +8,7 @@ import { LEVER_BY_SLUG } from "@/lib/moves";
 import { awardBadge } from "@/lib/badges";
 import { recordGymAttempt } from "@/lib/gym-gate";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
-import { VIEW_COOKIE, type ViewMode } from "@/lib/gate";
+import { VIEW_COOKIE, requireMember, type ViewMode } from "@/lib/gate";
 
 /** Founder-only: switch the preview mode (full founder / plain member / guest). */
 export async function setViewMode(mode: ViewMode) {
@@ -23,7 +22,7 @@ export async function setViewMode(mode: ViewMode) {
 
 /** Member confirms they've booked their 1:1 welcome — advances the plan. */
 export async function markWelcomeBooked() {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await db.update(profiles).set({ onboardedAt: new Date() }).where(eq(profiles.clerkUserId, userId));
   await awardBadge(userId, "welcomed");
@@ -33,7 +32,7 @@ export async function markWelcomeBooked() {
 
 /** Log a completed Build rep (self-attested from the tool page). Ticks the plan + Operator badge. */
 export async function logBuildRep(key: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const lessonKey = key.startsWith("build:") ? key : `build:${key}`;
   await db.insert(lessonProgress)
@@ -49,7 +48,7 @@ export async function logBuildRep(key: string) {
 
 /** Record a graded gym rep attempt (score 0–100) for the Effort-Dividend gate. */
 export async function recordGymScore(repSlug: string, career: string, pct: number) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   try {
     await recordGymAttempt(userId, career, repSlug, pct);
@@ -59,7 +58,7 @@ export async function recordGymScore(repSlug: string, career: string, pct: numbe
 
 /** Mark the Learn space started on first genuine visit. */
 export async function markLearnStarted() {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await db.insert(lessonProgress)
     .values({ memberId: userId, lessonKey: "learn:levers", status: "started" })
@@ -69,7 +68,7 @@ export async function markLearnStarted() {
 
 /** Commit to a move against a lever. */
 export async function createMove(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const title = String(formData.get("title") ?? "").trim();
   const lever = String(formData.get("lever") ?? "").trim();
@@ -83,7 +82,7 @@ export async function createMove(formData: FormData) {
 
 /** Accept a Map-seeded suggestion straight into a commitment. */
 export async function acceptSuggestion(title: string, lever: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   if (!title.trim() || !LEVER_BY_SLUG[lever]) return;
   await db.insert(commitments).values({ memberId: userId, lever, title: title.slice(0, 240) });
@@ -92,7 +91,7 @@ export async function acceptSuggestion(title: string, lever: string) {
 }
 
 export async function shipMove(id: string, proof: string = "") {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await db.update(commitments)
     .set({ status: "done", completedAt: new Date(), proof: proof.trim().slice(0, 500) || null })
@@ -102,7 +101,7 @@ export async function shipMove(id: string, proof: string = "") {
 }
 
 export async function dropMove(id: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await db.update(commitments).set({ status: "dropped" })
     .where(and(eq(commitments.id, id), eq(commitments.memberId, userId)));

@@ -12,27 +12,18 @@ const CONSENT_REGION = new Set([
   "IS", "LI", "NO", "GB", "CH",
 ]);
 
-// The member platform. Everything under /hub requires a signed-in member.
-const isProtected = createRouteMatcher(["/hub(.*)"]);
+// Signed-in gate. The member platform (/hub) and the admin area (/admin) both
+// require a signed-in Clerk user; /admin additionally checks founder identity at
+// the page level (requireFounderPageOr404) rather than a shared password — a
+// shared Basic-Auth password gave no per-user identity, rotation, or lockout for
+// customer PII + revenue.
+const isProtected = createRouteMatcher(["/hub(.*)", "/admin(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
   const path = req.nextUrl.pathname;
 
-  // Keep the existing basic-auth gate for /admin.
-  if (path.startsWith("/admin")) {
-    const pass = process.env.ADMIN_PASSWORD;
-    if (!pass) return new NextResponse("Admin is not configured.", { status: 503 });
-    const user = process.env.ADMIN_USER || "admin";
-    const expected = "Basic " + btoa(`${user}:${pass}`);
-    if (req.headers.get("authorization") !== expected) {
-      return new NextResponse("Authentication required.", {
-        status: 401,
-        headers: { "WWW-Authenticate": 'Basic realm="Pivotum admin", charset="UTF-8"' },
-      });
-    }
-  }
-
-  // Gate the member platform.
+  // Gate the member platform and the admin area (sign-in required here; the
+  // founder-only check runs in the /admin pages themselves).
   if (isProtected(req)) await auth.protect();
 
   // Tag the visitor's consent region for the client. Unknown country → treat as

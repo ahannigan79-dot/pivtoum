@@ -1,10 +1,10 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { pickOrCreateRebuild } from "@/lib/rebuild-generate";
 import { memberLane } from "@/lib/gym-generate";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 import {
   generateTransformation, storeTransform, latestTransform, daysUntilNext, assessInput,
   sanitizeTransformation, updateTransformDoc, ensureShareToken, revokeShareToken, type Transformation,
@@ -15,7 +15,7 @@ import {
  * workflow they name) and open it. Best-effort: on failure, back to the landing.
  */
 export async function generateRebuild(formData: FormData): Promise<void> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) redirect("/hub/build/rebuild");
   // On-demand lane rebuilds are FOUNDER-ONLY to keep AI costs controlled — no
   // member UI points here; members use the capped 1/month "rebuild my workflow"
@@ -42,7 +42,7 @@ export async function generateRebuild(formData: FormData): Promise<void> {
  * doc (Claude). Capped to one per member per month (the API cost is real).
  */
 export async function transformWorkflow(formData: FormData): Promise<void> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) redirect("/hub/build/rebuild/mine");
 
   const last = await latestTransform(userId);
@@ -79,7 +79,7 @@ export async function transformWorkflow(formData: FormData): Promise<void> {
 
 /** Save the member's edits to their own transform doc (ownership-checked). */
 export async function saveTransformDoc(id: string, doc: Transformation): Promise<{ ok: boolean }> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return { ok: false };
   const clean = sanitizeTransformation(doc);
   if (!clean) return { ok: false };
@@ -90,7 +90,7 @@ export async function saveTransformDoc(id: string, doc: Transformation): Promise
 
 /** Turn on sharing and return the public link path (or null). */
 export async function shareTransform(id: string): Promise<{ token: string | null }> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return { token: null };
   const token = await ensureShareToken(userId, id);
   if (token) revalidatePath("/hub/build/rebuild/mine");
@@ -99,7 +99,7 @@ export async function shareTransform(id: string): Promise<{ token: string | null
 
 /** Turn off sharing — the public link stops resolving. */
 export async function unshareTransform(id: string): Promise<void> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   await revokeShareToken(userId, id);
   revalidatePath("/hub/build/rebuild/mine");

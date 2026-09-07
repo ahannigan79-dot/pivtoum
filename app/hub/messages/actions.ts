@@ -1,14 +1,14 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getOrCreateDMThread, sendDM } from "@/lib/dms";
 import { canDM } from "@/lib/safety";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 
 /** Open (or start) a DM with another member. */
 export async function startDM(otherId: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId || !otherId || otherId === userId) return;
   const profile = await getOrCreateProfile();
   // Founders can always reach a member; everyone else honors blocks + DM privacy.
@@ -18,7 +18,7 @@ export async function startDM(otherId: string) {
 }
 
 export async function sendMessage(threadId: string, formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const body = String(formData.get("body") ?? "");
   await sendDM(threadId, userId, body);

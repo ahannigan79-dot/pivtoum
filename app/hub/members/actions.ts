@@ -1,16 +1,16 @@
 "use server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles } from "@/db/schema";
 import { handleTaken } from "@/lib/members";
 import { blockMember, unblockMember, iBlocked } from "@/lib/safety";
+import { requireMember } from "@/lib/gate";
 
 export type UpdateResult = { ok: boolean; error?: string };
 
 export async function updateProfile(_prev: UpdateResult | null, formData: FormData): Promise<UpdateResult> {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return { ok: false, error: "Not signed in." };
 
   const STAGES = ["Student", "Early-career", "Mid-career", "Senior", "Leader"];
@@ -38,7 +38,7 @@ export async function updateProfile(_prev: UpdateResult | null, formData: FormDa
 
 /** Toggle a block on another member. */
 export async function toggleBlock(otherId: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId || !otherId || otherId === userId) return;
   if (await iBlocked(userId, otherId)) await unblockMember(userId, otherId);
   else await blockMember(userId, otherId);

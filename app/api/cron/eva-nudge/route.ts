@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { runEvaNudges } from "@/lib/eva-nudge";
+import { requireBearer } from "@/lib/authz";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
@@ -10,15 +11,8 @@ export const maxDuration = 300;
  * CRON_SECRET is unset.
  */
 async function handle(req: Request): Promise<NextResponse> {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 503 });
-
-  const url = new URL(req.url);
-  const auth = req.headers.get("authorization");
-  const key = url.searchParams.get("key");
-  if (auth !== `Bearer ${secret}` && key !== secret) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
+  const denied = requireBearer(req, "CRON_SECRET");
+  if (denied) return denied;
 
   const result = await runEvaNudges(new Date());
   return NextResponse.json({ ok: true, ...result });

@@ -1,8 +1,9 @@
 import { cookies } from "next/headers";
+import { auth } from "@clerk/nextjs/server";
 import { and, desc, eq, gte, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles, pods, podMembers, events } from "@/db/schema";
-import { isFounder } from "@/lib/member";
+import { isFounder, getOrCreateProfile } from "@/lib/member";
 import { getMembership } from "@/lib/billing";
 import { getCurrentPrompt, type WeeklyPrompt } from "@/lib/ritual";
 
@@ -38,6 +39,20 @@ export async function getAccess(userId: string | null, profile: { role?: string 
   if (!userId) return { member: false, founder: false };
   const m = await getMembership(userId);
   return { member: m.active, founder: false };
+}
+
+/** Authorization gate for member-only server actions and API routes.
+ *  Returns the signed-in member's userId ONLY when they have paid access
+ *  (active/trialing subscription, or a founder). Returns null otherwise —
+ *  the caller must bail: a server action should `return`, an API route
+ *  should respond 403. This is the enforcement the hub layout's render-time
+ *  gate cannot provide, since actions/routes are invoked directly. */
+export async function requireMember(): Promise<string | null> {
+  const { userId } = await auth();
+  if (!userId) return null;
+  const profile = await getOrCreateProfile();
+  const access = await getAccess(userId, profile);
+  return access.member ? userId : null;
 }
 
 export type GlassData = {

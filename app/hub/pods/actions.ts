@@ -6,6 +6,7 @@ import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, posts, podThreads, profiles, podCheckins } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { requireMember } from "@/lib/gate";
 import { isDomainLeader } from "@/lib/leadership";
 import { getPodBySlug, setPodLeader, leadsPod, syncPodHelper, joinMemberToPod, podRoom } from "@/lib/pods";
 import { autoPlaceMember } from "@/lib/pod-match";
@@ -47,7 +48,7 @@ export async function setPodLeaderAction(slug: string, memberId: string, on: boo
 /** The captain writes the pod's identity: its vibe, crest, lane and US region.
  *  These drive guided placement (§C) and the pod's pride. Captain or founder. */
 export async function setPodProfile(slug: string, formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -68,7 +69,7 @@ export async function setPodProfile(slug: string, formData: FormData) {
 /** Start a Together Pod. Founder or domain leaders only — members join existing
  *  pods rather than spinning up new ones, so the set stays coherent. */
 export async function createPod(formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const profile = await getOrCreateProfile();
   if (!isFounder(profile) && !(await isDomainLeader(userId))) return;
@@ -92,7 +93,7 @@ export async function createPod(formData: FormData) {
 }
 
 export async function joinPod(slug: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -107,7 +108,7 @@ export async function joinPod(slug: string) {
 /** Guided placement: persist the member's pod-intro + region, then join the pod
  *  they chose (capacity-checked) — or auto-place into their best fit. Never solo. */
 export async function placeMember(slug: string | null, podIntro?: string | null, region?: string | null) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
 
   const patch: { podIntro?: string | null; region?: string } = {};
@@ -131,7 +132,7 @@ export async function placeMember(slug: string | null, podIntro?: string | null,
 }
 
 export async function leavePod(slug: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -143,7 +144,7 @@ export async function leavePod(slug: string) {
 
 /** Post into a pod thread. Only members can post. */
 export async function createPodPost(slug: string, threadId: string | null, formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -173,7 +174,7 @@ export async function createPodPost(slug: string, threadId: string | null, formD
 
 /** Submit (or update) this week's pod check-in — the 3-line ritual. Members only. */
 export async function submitCheckin(slug: string, formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -190,7 +191,7 @@ export async function submitCheckin(slug: string, formData: FormData) {
 
 /** Set the pod's pinned goal. Pod members only. */
 export async function setPodGoal(slug: string, goal: string) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
@@ -203,7 +204,7 @@ export async function setPodGoal(slug: string, goal: string) {
 
 /** Create a new thread in a pod. Members only. */
 export async function createThread(slug: string, formData: FormData) {
-  const { userId } = await auth();
+  const userId = await requireMember();
   if (!userId) return;
   const pod = await getPodBySlug(slug);
   if (!pod) return;
