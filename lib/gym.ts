@@ -11,6 +11,7 @@ import { HEALTH_SCENARIOS } from "@/lib/gym-health";
 import { HR_SCENARIOS } from "@/lib/gym-hr";
 import { EDU_SCENARIOS } from "@/lib/gym-education";
 import { DESIGN_SCENARIOS } from "@/lib/gym-design";
+import { OPS_SCENARIOS } from "@/lib/gym-ops";
 
 export type Severity = "minor" | "major" | "critical";
 
@@ -117,6 +118,7 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
   ...HR_SCENARIOS,
   ...EDU_SCENARIOS,
   ...DESIGN_SCENARIOS,
+  ...OPS_SCENARIOS,
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",

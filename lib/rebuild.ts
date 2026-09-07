@@ -10,6 +10,7 @@ import { healthCareer } from "@/lib/rebuild-health";
 import { hrCareer } from "@/lib/rebuild-hr";
 import { eduCareer } from "@/lib/rebuild-education";
 import { designCareer } from "@/lib/rebuild-design";
+import { opsCareer } from "@/lib/rebuild-ops";
 
 export type RebuildStep = { label: string; today: string; own: string; ai: string; you: string };
 export type RebuildVariant = {
@@ -380,6 +381,7 @@ export const REBUILDS: CareerRebuild[] = [
   hrCareer,
   eduCareer,
   designCareer,
+  opsCareer,
 ];
 
 export const CAREER_BY_SLUG: Record<string, CareerRebuild> = Object.fromEntries(REBUILDS.map((c) => [c.slug, c]));
