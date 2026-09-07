@@ -26,15 +26,20 @@ export function MovesPanel({ active, shipped, suggestions, hasFocus = false }: {
   return (
     <section className="moves">
       <div className="moves-head">
-        <p className="ck">{hasFocus ? "Quick moves · pull the levers" : "Your moves · pull the levers"}</p>
-        {!adding && <button className="moves-add" onClick={() => setAdding(true)}>+ Commit to a move</button>}
+        <p className="ck">{hasFocus ? "Log a quick move" : "Your moves · pull the levers"}</p>
+        {!adding && <button className="moves-add" onClick={() => setAdding(true)}>+ {hasFocus ? "Add a one-off" : "Commit to a move"}</button>}
       </div>
 
-      <Link href="/hub/playbook" className="moves-playbook">
-        📋 {hasFocus ? "Add another play from the Playbook" : "Not sure what to do? Browse the Playbook — proven plays with how-to guides"} →
-      </Link>
+      {/* Once a member has committed plays above, the Playbook link and the
+          Map suggestions just duplicate what they've already committed — so we
+          drop them here and keep this section to ad-hoc one-off moves only. */}
+      {!hasFocus && (
+        <Link href="/hub/playbook" className="moves-playbook">
+          📋 Not sure what to do? Browse the Playbook — proven plays with how-to guides →
+        </Link>
+      )}
 
-      {fresh.length > 0 && !adding && (
+      {!hasFocus && fresh.length > 0 && !adding && (
         <div className="moves-sugg">
           <p className="sugg-lead">From your Map — turn your winning move into action:</p>
           {fresh.map((s, i) => (
