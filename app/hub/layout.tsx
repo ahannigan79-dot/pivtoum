@@ -70,6 +70,9 @@ export default async function HubLayout({ children }: { children: React.ReactNod
           )}
           <Link href="/hub/settings" className="hub-gear" aria-label="Settings"><Icon name="settings" size={18} /></Link>
         </div>
+        <div className="hub-side-legal" style={{ padding: "0 1rem 0.9rem", fontSize: "0.66rem", lineHeight: 1.7, opacity: 0.7 }}>
+          <Link href="/terms">Terms</Link> · <Link href="/privacy">Privacy</Link> · <Link href="/acceptable-use">Community rules</Link>
+        </div>
       </aside>
       <MobileBar notifUnread={notifUnread} messagesUnread={messagesUnread} openReports={openReports} isFounder={founder} />
       <PwaRegister />

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "@/app/hub/hub.css";
 import { getSharedTransform } from "@/lib/workflow-transform";
 import { TransformDocView } from "@/components/hub/build/TransformDocView";
+import { AiDisclaimer } from "@/components/legal/AiDisclaimer";
 
 export const metadata: Metadata = { title: "Workflow transformation — Pivotum", robots: { index: false } };
 
@@ -33,9 +34,13 @@ export default async function SharedTransformPage({ params }: { params: Promise<
           <span className="wtshare-tag">Shared workflow transformation</span>
         </div>
         <TransformDocView title={shared.title} doc={shared.doc} when={shared.when} />
+        <AiDisclaimer variant="full" />
         <div className="wtshare-foot">
-          <p>Rebuilt with <b>Pivotum</b> — Winning in the Age of AI.</p>
+          <p>Rebuilt with <b>Pivotum</b> — Winning in the Age of AI. Shared by its author, who owns it.</p>
           <Link href="/" className="wtshare-cta">See how it works →</Link>
+          <p className="wtshare-legal" style={{ marginTop: "0.6rem", fontSize: "0.75rem", opacity: 0.75 }}>
+            <Link href="/terms">Terms</Link> · <Link href="/privacy">Privacy</Link>
+          </p>
         </div>
       </div>
     </main>

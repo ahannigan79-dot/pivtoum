@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getMembership, getMembershipOffer, billingConfigured } from "@/lib/billing";
 import { openPortal, startMembership } from "./actions";
@@ -89,7 +90,19 @@ export default async function MembershipPage({ searchParams }: { searchParams: P
                 {offer.trialDays > 0 ? `Start your ${offer.trialDays}-day free trial →` : "Start your membership →"}
               </button>
             </form>
-            <p className="mbr-fine">Secure checkout by Stripe. Cancel anytime from your membership page.</p>
+            <p className="mbr-fine">
+              Secure checkout by Stripe.{" "}
+              {offer.trialDays > 0
+                ? `Your ${offer.trialDays}-day free trial converts to a paid subscription unless you cancel before it ends. `
+                : ""}
+              This is a recurring subscription{offer.priceLabel ? ` (${offer.priceLabel})` : ""} that renews
+              automatically until you cancel — cancel anytime from your membership page.
+            </p>
+            <p className="mbr-fine">
+              By joining you agree to our{" "}
+              <Link href="/terms">Terms</Link>, <Link href="/refunds">Refund Policy</Link>, and{" "}
+              <Link href="/privacy">Privacy Policy</Link>.
+            </p>
           </div>
         )}
       </div>

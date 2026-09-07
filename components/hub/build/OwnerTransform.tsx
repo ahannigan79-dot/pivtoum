@@ -2,6 +2,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { TransformDocView } from "@/components/hub/build/TransformDocView";
+import { AiDisclaimer } from "@/components/legal/AiDisclaimer";
 import { saveTransformDoc, shareTransform, unshareTransform } from "@/app/hub/build/rebuild/actions";
 import type { Transformation } from "@/lib/workflow-transform";
 
@@ -162,6 +163,7 @@ export function OwnerTransform({ id, workflow, doc, when, shareToken }: {
         )}
       </div>
       <TransformDocView title={workflow} doc={doc} when={when} />
+      <AiDisclaimer variant="full" />
     </div>
   );
 }

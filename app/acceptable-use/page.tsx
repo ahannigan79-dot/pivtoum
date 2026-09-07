@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Terms from "@/content/pages/terms.mdx";
+import AcceptableUse from "@/content/pages/acceptable-use.mdx";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Terms",
-  description: "Terms of use for Pivotum and the Winning in the Age of AI membership.",
-  alternates: { canonical: "/terms" },
+  title: "Acceptable Use Policy",
+  description: "The community rules for Winning in the Age of AI.",
+  alternates: { canonical: "/acceptable-use" },
   robots: { index: true, follow: false },
 };
 
-export default function TermsPage() {
+export default function AcceptableUsePage() {
   return (
     <div className="page">
       <div className="body">
@@ -19,9 +19,9 @@ export default function TermsPage() {
             <Link href="/">Pivotum</Link>
           </span>
           <i>/</i>
-          <span>Terms</span>
+          <span>Acceptable Use</span>
         </div>
-        <Terms />
+        <AcceptableUse />
         <SiteFooter />
       </div>
     </div>

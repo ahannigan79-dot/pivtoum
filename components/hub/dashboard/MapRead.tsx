@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { AiDisclaimer } from "@/components/legal/AiDisclaimer";
 
 /**
  * "Adam's read" — the member's personalised Map narrative. Fetched on mount so
@@ -72,6 +73,7 @@ export function MapRead() {
           {paras.map((p, i) => <p key={i}>{p}</p>)}
         </div>
       )}
+      {state === "ready" && !regen && <AiDisclaimer variant="compact" />}
     </section>
   );
 }

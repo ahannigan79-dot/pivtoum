@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
+import { AiDisclaimer } from "@/components/legal/AiDisclaimer";
 import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, modeFor, KIND_CHROME, type Scenario, type ScenarioKind, type GymItem } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
@@ -307,6 +308,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
           </div>
 
           <p className="gym-lesson">{scenario.lesson}</p>
+          <AiDisclaimer variant="compact" />
           <button className="gym-cta ghost" onClick={reset}>Run the rep again ▸</button>
         </>
       )}

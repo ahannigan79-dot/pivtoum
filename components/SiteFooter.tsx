@@ -21,7 +21,7 @@ export function SiteFooter({ creed = SITE.creed }: { creed?: string } = {}) {
       <a href="/methodology#how-this-is-written">how this is written</a>.
       <br />
       <a href="/methodology#press">Press</a> · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> ·{" "}
-      <a href="/refunds">Refunds</a>
+      <a href="/refunds">Refunds</a> · <a href="/acceptable-use">Community rules</a>
     </footer>
   );
 }
