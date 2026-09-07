@@ -10,13 +10,13 @@ export function purchaseEmail(
   token: string,
   expert?: { bookingUrl?: string },
 ) {
-  const ink = "#1C1A16";
-  const inkSoft = "#6B655B";
-  const pencil = "#948D80";
-  const rule = "#E7E2D8";
-  const accent = "#10605E"; // petrol — chrome accent for links
-  const pen = "#B4442F";
-  const hl = "#E4EDEC"; // petrol accent-wash — the highlighter yellow is retired
+  const ink = "#0B0E14";
+  const inkSoft = "#5B6472";
+  const pencil = "#96A0AE";
+  const rule = "#E7EBF1";
+  const accent = "#2F6BFF"; // electric blue — the one chrome accent (app + site)
+  const pen = "#F5333F";
+  const hl = "#EAF0FF"; // accent-wash
 
   const expertBlock = expert
     ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:0 0 20px;"><tr><td style="padding:18px 20px;">
@@ -39,12 +39,12 @@ export function purchaseEmail(
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F5F7FB;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F7FB;">
     <tr><td align="center" style="padding:24px 16px 40px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#F5F7FB;">
         <tr><td style="padding:16px 8px 26px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#0B0E14;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Pivotum</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your Career Value Guides &middot; Fall 2026</div>
@@ -109,12 +109,12 @@ export function packageEmail(opts: {
   const introLine = "Thanks for running your Exposure Check. Your Free AI Exposure Report is below &mdash; your score and the four factors behind it, your career&rsquo;s full breakdown, and the Career Index for all 28 &mdash; plus the look inside the community, where you turn that number into your opening.";
   const introText = "Thanks for running your Exposure Check. Your Free AI Exposure Report is below — your score and the four factors behind it, your career's full breakdown, and the Career Index for all 28 — plus the look inside the community, where you turn that number into your opening.";
   // Brand tokens (light) — exact hex from the design system.
-  const ink = "#1C1A16";
-  const inkSoft = "#6B655B";
-  const pencil = "#948D80";
-  const rule = "#E7E2D8";
-  const accent = "#10605E";   // petrol — the single chrome accent (links, labels, rules)
-  const pen = "#B4442F";      // exposed coral — DATA only (high score, exposing factors)
+  const ink = "#0B0E14";
+  const inkSoft = "#5B6472";
+  const pencil = "#96A0AE";
+  const rule = "#E7EBF1";
+  const accent = "#2F6BFF";   // electric blue — the single chrome accent (links, labels, rules)
+  const pen = "#F5333F";      // exposed coral — DATA only (high score, exposing factors)
   const prot = "#2E7D55";     // protected green — DATA only (low score, protecting factors)
   const amber = "#B8873A";    // moderate — DATA only
 
@@ -167,12 +167,12 @@ export function packageEmail(opts: {
     )
     .join("");
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F5F7FB;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F7FB;">
     <tr><td align="center" style="padding:24px 16px 40px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#F5F7FB;">
         <tr><td style="padding:16px 8px 26px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#0B0E14;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your AI Exposure Report, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 4px;">The AI Exposure Report &middot; Fall 2026</div>
@@ -236,23 +236,23 @@ export function pdfWelcomeEmail(opts: {
   buyUrl: string;
 }) {
   const { pdfUrl, pdfLabel, code, discountLabel, expiresDays } = opts;
-  const ink = "#1C1A16";
-  const inkSoft = "#6B655B";
-  const pencil = "#948D80";
-  const rule = "#E7E2D8";
-  const accent = "#10605E"; // petrol — chrome accent for links
-  const pen = "#B4442F";
-  const hl = "#E4EDEC"; // petrol accent-wash — the highlighter yellow is retired
+  const ink = "#0B0E14";
+  const inkSoft = "#5B6472";
+  const pencil = "#96A0AE";
+  const rule = "#E7EBF1";
+  const accent = "#2F6BFF"; // electric blue — the one chrome accent (app + site)
+  const pen = "#F5333F";
+  const hl = "#EAF0FF"; // accent-wash
 
   const button = (url: string, label: string, bg: string) =>
     `<a href="${url}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:${bg};text-decoration:none;padding:13px 26px;border-radius:3px;">${label}</a>`;
 
-  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#FBFAF6;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FBFAF6;">
+  const html = `<!doctype html><html><body style="margin:0;padding:0;background:#F5F7FB;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F7FB;">
     <tr><td align="center" style="padding:24px 16px 40px;">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FBFAF6;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#F5F7FB;">
         <tr><td style="padding:16px 8px 26px;">
-          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#1C1A16;line-height:1;">Pivotum</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:26px;letter-spacing:-0.015em;color:#0B0E14;line-height:1;">Pivotum</div>
           <span style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your free Pivotum PDF, plus ${discountLabel} for subscribers.</span>
 
           <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${pencil};margin:24px 0 6px;">Your free PDF &middot; Fall 2026</div>

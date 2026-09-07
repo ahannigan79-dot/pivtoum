@@ -2,14 +2,15 @@ import { SITE } from "@/lib/site";
 
 /* Branded, table-based, inline-styled emails for the community lifecycle —
    built to survive email clients (Georgia for reading, Arial for labels).
-   Light ground with a green accent to match "Winning in the Age of AI". */
+   Sharp-white ground with the one electric-blue accent, matching the app and
+   marketing site (the `green` alias below holds that blue). */
 
-const ink = "#1C1A15";
-const inkSoft = "#57534D";
-const pencil = "#8C857A";
-const rule = "#E7E4DC";
-const green = "#2E7D4E";
-const bg = "#F6F4EE";
+const ink = "#0B0E14";
+const inkSoft = "#5B6472";
+const pencil = "#96A0AE";
+const rule = "#E7EBF1";
+const green = "#2F6BFF";
+const bg = "#F5F7FB";
 
 const abs = (href: string) => (href.startsWith("http") ? href : `${SITE.url}${href}`);
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
