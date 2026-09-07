@@ -153,9 +153,8 @@ export async function POST(req: Request) {
         // where the review shows free and the deeper breakdown is gated). The
         // stage/voice guides and overviews have moved into the membership
         // library — they're no longer given away here.
-        // NOTE: packageEmail's sell copy still frames the old à-la-carte Career
-        // Value Guide + /buy. That copy is being rewritten to sell the community
-        // (the Day 0 email pass) — pending the Mighty link.
+        // The deliverable email sells the community (the one-time Career Value
+        // Guide is retired); its CTA points at /community.
         const items = [
           ...pkg.careers.map((s) => {
             const c = getCareer(s);
@@ -188,7 +187,7 @@ export async function POST(req: Request) {
           code,
           discountLabel: "10% off",
           expiresDays,
-          buyUrl: `${SITE.url}/buy`,
+          buyUrl: `${SITE.url}/community`,
           audience: pkg.audience,
           careerNames: pkg.careers.map((s) => getCareer(s)?.name ?? s),
           score: cleanScore,
@@ -212,7 +211,7 @@ export async function POST(req: Request) {
           code,
           discountLabel: "10% off",
           expiresDays,
-          buyUrl: `${SITE.url}/buy`,
+          buyUrl: `${SITE.url}/community`,
         });
         await resend.emails.send({
           from,
