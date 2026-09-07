@@ -6,6 +6,11 @@ import { ACCOUNTING_SCENARIOS } from "@/lib/gym-accounting";
 import { MARKETING_SCENARIOS } from "@/lib/gym-marketing";
 import { ADVISORY_SCENARIOS } from "@/lib/gym-advisory";
 import { LEGAL_SCENARIOS } from "@/lib/gym-legal";
+import { DATA_SCENARIOS } from "@/lib/gym-data";
+import { HEALTH_SCENARIOS } from "@/lib/gym-health";
+import { HR_SCENARIOS } from "@/lib/gym-hr";
+import { EDU_SCENARIOS } from "@/lib/gym-education";
+import { DESIGN_SCENARIOS } from "@/lib/gym-design";
 
 export type Severity = "minor" | "major" | "critical";
 
@@ -107,6 +112,11 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
   ...MARKETING_SCENARIOS,
   ...ADVISORY_SCENARIOS,
   ...LEGAL_SCENARIOS,
+  ...DATA_SCENARIOS,
+  ...HEALTH_SCENARIOS,
+  ...HR_SCENARIOS,
+  ...EDU_SCENARIOS,
+  ...DESIGN_SCENARIOS,
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",
