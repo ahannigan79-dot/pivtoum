@@ -337,6 +337,25 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "leadership_interest_member_idx" ON "leadership_interest" ("member_id","status")`,
+  // Move artifacts — proof-of-work for a completed play (Library asset + domain-leader review).
+  `CREATE TABLE IF NOT EXISTS "move_artifacts" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,
+     "goal_id" uuid,
+     "play_slug" text NOT NULL,
+     "play_title" text NOT NULL,
+     "kind" text DEFAULT 'link' NOT NULL,
+     "url" text,
+     "body" text,
+     "domain" text,
+     "status" text DEFAULT 'submitted' NOT NULL,
+     "reviewer_id" text,
+     "review_note" text,
+     "reviewed_at" timestamp with time zone,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "move_artifacts_member_idx" ON "move_artifacts" ("member_id")`,
+  `CREATE INDEX IF NOT EXISTS "move_artifacts_status_idx" ON "move_artifacts" ("status")`,
   // Pod-captain credential (Phase 1b).
   `INSERT INTO "badges" ("key","name","icon","description") VALUES
      ('captain','Pod Captain','🎖️','Led your pod')

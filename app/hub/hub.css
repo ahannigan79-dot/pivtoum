@@ -255,6 +255,46 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .focus-benefit .fb-k { font-weight:800; font-size:0.58rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); margin-right:8px; }
 .focus-note { font-size:0.82rem; color:var(--soft); line-height:1.5; margin:18px 0 0; padding-top:16px; border-top:1px solid var(--rule); }
 
+/* ── Move artifact: proof-of-work on a completed play ── */
+.art-state { font-size:0.84rem; line-height:1.5; margin:8px 0 2px; padding:9px 12px; border-radius:10px; }
+.art-state.verified { color:var(--green); background:color-mix(in srgb,var(--green) 10%,white); font-weight:600; }
+.art-state.submitted { color:var(--ink2); background:var(--panel2); }
+.art-state a { color:var(--accent); }
+.art-prompt { margin:8px 0 2px; padding:11px 13px; border-radius:10px; background:var(--accent-wash); }
+.art-prompt-t { font-size:0.84rem; line-height:1.5; color:var(--ink2); margin:0 0 8px; }
+.art-open { font-family:var(--sans); font-weight:700; font-size:0.82rem; color:#fff; background:var(--accent); border:0; border-radius:9px; padding:7px 13px; cursor:pointer; }
+.art-open:hover { filter:brightness(1.06); }
+.art-form { margin:8px 0 2px; display:flex; flex-direction:column; gap:9px; padding:12px 13px; border:1px solid var(--rule2); border-radius:11px; background:var(--panel); }
+.art-kind { display:flex; gap:7px; }
+.art-kind button { font-family:var(--sans); font-weight:700; font-size:0.78rem; color:var(--soft); background:transparent; border:1px solid var(--rule2); border-radius:8px; padding:5px 11px; cursor:pointer; }
+.art-kind button.on { color:var(--accent); border-color:var(--accent); background:var(--accent-wash); }
+.art-form input, .art-form textarea { font-family:var(--sans); font-size:0.88rem; border:1px solid var(--rule2); border-radius:9px; padding:9px 11px; width:100%; background:var(--bg2); color:var(--ink); }
+.art-form-foot { display:flex; justify-content:flex-end; gap:8px; }
+.art-form-foot button { font-family:var(--sans); font-weight:700; font-size:0.84rem; border-radius:9px; padding:7px 14px; cursor:pointer; border:0; background:var(--accent); color:#fff; }
+.art-form-foot button.ghost { background:transparent; color:var(--pencil); border:1px solid var(--rule2); }
+
+/* domain console — review queue */
+.dl-verify-note { font-size:0.86rem; line-height:1.55; color:var(--soft); max-width:70ch; margin:0 0 14px; }
+.art-queue { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
+.art-rev { border:1px solid var(--rule2); border-radius:13px; background:var(--panel); padding:14px 16px; }
+.art-rev-top { display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:8px; }
+.art-rev-who a { font-weight:700; font-size:0.94rem; color:var(--ink); text-decoration:none; }
+.art-rev-dom { margin-left:8px; font-size:0.68rem; color:var(--pencil); }
+.art-rev-play { font-size:0.84rem; color:var(--soft); }
+.art-rev-link { font-size:0.86rem; font-weight:700; color:var(--accent); text-decoration:none; }
+.art-rev-note { font-size:0.9rem; line-height:1.55; color:var(--ink2); background:var(--bg2); border-radius:9px; padding:10px 12px; margin:0; }
+.art-rev-actions, .art-rev-return { display:flex; gap:8px; align-items:center; margin-top:11px; }
+.art-rev-return input { flex:1; font-size:0.86rem; border:1px solid var(--rule2); border-radius:8px; padding:7px 10px; background:var(--bg2); }
+.art-rev-verify { font-weight:700; font-size:0.82rem; color:#fff; background:var(--green); border:0; border-radius:8px; padding:7px 13px; cursor:pointer; }
+.art-rev-back, .art-rev-send, .art-rev-x { font-weight:700; font-size:0.82rem; border-radius:8px; padding:7px 12px; cursor:pointer; border:1px solid var(--rule2); background:transparent; color:var(--soft); }
+.art-rev-send { background:var(--pen); color:#fff; border:0; }
+/* library assets */
+.lib-asset-state { display:inline-block; font-size:0.6rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:100px; padding:2px 9px; margin-bottom:9px; }
+.lib-asset-state.verified { color:var(--green); background:color-mix(in srgb,var(--green) 12%,white); }
+.lib-asset-state.submitted { color:var(--ink2); background:var(--panel2); }
+.lib-asset-state.returned { color:var(--pen); background:color-mix(in srgb,var(--pen) 9%,white); }
+.lib-asset-note { font-size:0.8rem; color:var(--pen); font-style:italic; margin:6px 0 0; }
+
 /* play page: focus + commit actions sit together */
 .play-actions { display:flex; flex-direction:column; gap:14px; margin-top:20px; }
 .play-actions .adopt-btn { align-self:flex-start; }

@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
+import { myArtifacts } from "@/lib/artifacts";
 
 export const metadata = { title: "Library — Winning in the Age of AI" };
+
+const ART_STATE: Record<string, { label: string; cls: string }> = {
+  verified: { label: "✓ Verified", cls: "verified" },
+  submitted: { label: "⏳ In review", cls: "submitted" },
+  returned: { label: "↩ Sent back", cls: "returned" },
+};
 
 type Item = { title: string; body: string; href?: string; tag?: string; external?: boolean };
 type Section = { label: string; items: Item[] };
@@ -52,7 +60,10 @@ function Card({ it }: { it: Item }) {
   return <Link href={it.href} className="card lib-card" {...(it.external ? { target: "_self" } : {})}>{inner}</Link>;
 }
 
-export default function LibraryPage() {
+export default async function LibraryPage() {
+  const { userId } = await auth();
+  const assets = await myArtifacts(userId);
+
   return (
     <>
       <div className="hub-top"><h1>Library</h1><span className="sp" /></div>
@@ -61,6 +72,30 @@ export default function LibraryPage() {
           Everything in one place — the Welcome pack, the framework, your tools, and the field signals worth reading.
           The backbone of <b>Winning in the Age of AI</b>.
         </p>
+
+        {assets.length > 0 && (
+          <div>
+            <div className="hub-sectlabel">Your assets · what your moves built</div>
+            <div className="hub-grid">
+              {assets.map((a) => {
+                const st = ART_STATE[a.status] ?? ART_STATE.submitted;
+                const inner = (
+                  <>
+                    <span className={`lib-asset-state ${st.cls}`}>{st.label}</span>
+                    <h3 className="lib-title">{a.playTitle}</h3>
+                    <p>{a.kind === "note" ? a.body : "A link to what you built for this play."}</p>
+                    {a.status === "returned" && a.reviewNote && <p className="lib-asset-note">Domain leader: “{a.reviewNote}”</p>}
+                    {a.kind === "link" && a.url ? <span className="lib-go">Open →</span> : null}
+                  </>
+                );
+                return a.kind === "link" && a.url
+                  ? <a key={a.id} href={a.url} target="_blank" rel="noopener noreferrer" className="card lib-card">{inner}</a>
+                  : <div key={a.id} className="card lib-card">{inner}</div>;
+              })}
+            </div>
+          </div>
+        )}
+
         {SECTIONS.map((s) => (
           <div key={s.label}>
             <div className="hub-sectlabel">{s.label}</div>

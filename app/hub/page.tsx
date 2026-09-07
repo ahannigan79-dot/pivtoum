@@ -22,6 +22,7 @@ import { MovesPanel } from "@/components/hub/dashboard/MovesPanel";
 import { MapRead } from "@/components/hub/dashboard/MapRead";
 import { FocusPanel } from "@/components/hub/dashboard/FocusPanel";
 import { getFocus, focusDividend } from "@/lib/focus";
+import { artifactStatusByGoal } from "@/lib/artifacts";
 import { Icon } from "@/components/hub/Icon";
 import { ArticleWhy } from "@/components/hub/dashboard/ArticleWhy";
 
@@ -97,11 +98,12 @@ export default async function Dashboard() {
   const effortDividend = await qualifyingMonths(userId);
   // Focus dividend — earned by completing the steps of your chosen goals; capped,
   // so doing the work on your focus visibly brings exposure down.
-  const [focus, focusDiv, comingUp, podStanding] = await Promise.all([
+  const [focus, focusDiv, comingUp, podStanding, artifactStatus] = await Promise.all([
     t?.hasMap ? getFocus(userId) : Promise.resolve([]),
     focusDividend(userId),
     t?.hasMap ? getComingUp(userId) : Promise.resolve({ nextEvent: null, pod: null }),
     t?.hasMap ? myPodStanding(userId) : Promise.resolve(null),
+    t?.hasMap ? artifactStatusByGoal(userId) : Promise.resolve({}),
   ]);
   // Days until the next personal re-score (every 2 months), for the Coming-up card.
   const rescoreDays = t?.daysSinceMap != null ? Math.max(0, PERSONAL_RESCORE_DAYS - t.daysSinceMap) : null;
@@ -342,7 +344,7 @@ export default async function Dashboard() {
             {/* Your moves — everything you've committed to: tracked focus plays first,
                 then any quick freeform commitments and Map-seeded suggestions. */}
             <div className="hub-sectlabel" id="moves">Your moves</div>
-            <FocusPanel goals={focus} />
+            <FocusPanel goals={focus} artifacts={artifactStatus} />
             <MovesPanel active={moves.active} shipped={moves.shipped} suggestions={suggestions} hasFocus={focus.length > 0} />
 
             {/* Achievements */}

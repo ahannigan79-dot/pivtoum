@@ -175,6 +175,28 @@ export const focusSteps = pgTable("focus_steps", {
   completedAt: timestamp("completed_at", { withTimezone: true }),
 }, (t) => ({ goalIdx: index("focus_steps_goal_idx").on(t.goalId) }));
 
+/* ---------- Move artifacts — proof-of-work for a completed play ----------
+   Completing a play requires submitting the artifact it built (a link or a
+   note). It files into the member's Library as an asset, and a domain leader
+   reviews it → verified. Kept independent of the focus goal (no cascade) so the
+   asset survives even if the goal is later dropped. */
+export const moveArtifacts = pgTable("move_artifacts", {
+  id: uid(),
+  memberId: memberFk(),
+  goalId: uuid("goal_id"),                                  // the completed focus goal (no FK: the asset outlives it)
+  playSlug: text("play_slug").notNull(),
+  playTitle: text("play_title").notNull(),
+  kind: text("kind").notNull().default("link"),             // link | note
+  url: text("url"),
+  body: text("body"),
+  domain: text("domain"),                                   // member's lane at submit, to route to the domain leader
+  status: text("status").notNull().default("submitted"),    // submitted | verified | returned
+  reviewerId: text("reviewer_id"),
+  reviewNote: text("review_note"),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+  createdAt: now(),
+}, (t) => ({ memberIdx: index("move_artifacts_member_idx").on(t.memberId), statusIdx: index("move_artifacts_status_idx").on(t.status) }));
+
 /* ---------- Leadership — domain leaders + interest/applications ----------
    Captains run one pod (pod_members.leader); domain leaders steward all the pods
    in a domain (a lane grouping). Interest is expressed in onboarding and the

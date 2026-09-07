@@ -3,10 +3,13 @@ import { useTransition } from "react";
 import Link from "next/link";
 import { toggleStep, dropGoal } from "@/app/hub/focus-actions";
 import type { FocusGoal } from "@/lib/focus";
+import type { ArtifactStatus } from "@/lib/artifacts";
+import { ArtifactForm } from "@/components/hub/dashboard/ArtifactForm";
 
 /** "Your focus" — the member's chosen plays with their how-to steps as a live
- *  checklist. Ticking a step calls the server action (which moves the score). */
-export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
+ *  checklist. Ticking a step calls the server action (which moves the score).
+ *  When a play is complete, proof-of-work: submit its artifact for verification. */
+export function FocusPanel({ goals, artifacts = {} }: { goals: FocusGoal[]; artifacts?: Record<string, ArtifactStatus> }) {
   const [pending, start] = useTransition();
   if (!goals.length) return null;
 
@@ -34,7 +37,10 @@ export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
                 up to <b>−{g.benefit}</b> when every step is done
               </p>
               {g.complete ? (
-                <p className="focus-eva done">✓ Every step done — nice. Re-score your Map to lock in the exposure you&rsquo;ve bought down. — Eva</p>
+                <>
+                  <p className="focus-eva done">✓ Every step done — nice. Now submit the artifact you built to confirm it, then re-score to lock in the exposure. — Eva</p>
+                  <ArtifactForm goalId={g.id} playSlug={g.playSlug} playTitle={g.title} status={artifacts[g.id] ?? null} />
+                </>
               ) : nextStep && (
                 <p className="focus-eva"><span className="focus-eva-k">Do this next</span> {nextStep.title} — Eva</p>
               )}
