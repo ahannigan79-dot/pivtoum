@@ -20,6 +20,7 @@ export type TransformInputs = {
 export type TransformStep = { step: string; owner: "AI" | "Human" | "AI + Human"; detail: string };
 export type Transformation = {
   workflow: string;
+  title: string;                                   // accurate name derived from the steps (may correct the member's label)
   thesis: string;                                  // one-line summary of the opportunity
   today: { step: string; who: string; time: string }[];   // current process
   rebuilt: TransformStep[];                        // the AI-native process, step by step
@@ -46,9 +47,16 @@ You are writing ONE "Workflow Transformation" — a short, boss-shareable docume
 - Actionable: a small pilot a manager could actually approve, with what it needs and who owns it. No hand-waving.
 - Voice: direct, no hype, no emoji. This reads like a sharp internal one-pager, not marketing.
 
+## Trust the STEPS over the labels
+The member types a workflow name and a role separately from the step description, and the two can disagree. The steps are the ground truth. Derive the "title" and the roles from what the steps actually describe — if the member's label says "Building a project plan" but the steps describe assembling a weekly status report, the title is "Weekly Status Report Assembly" and the owner is whoever the steps show doing the work. Never let a mislabeled name headline a document whose body says something else, and keep role names consistent with the steps (don't silently switch "Program Manager" to "Project Manager").
+
+## When the input is thin
+Some members write two vague lines; others paste a rich, structured description. Both must produce a credible doc. When the description is thin or missing detail: make the smallest reasonable, field-typical assumptions to fill the gaps — and mark each one plainly with "(assumed — confirm)" so the member knows to check it before sharing. Never fabricate a specific number, tool, or name as if it were given; estimates are labelled "est." and assumptions are labelled. A thin input yields a shorter, more clearly-flagged doc, not a hallucinated one.
+
 ## Output format — STRICT
 Return ONLY a JSON object (no prose, no markdown fence) with exactly these keys:
 {
+  "title": "an accurate, specific name for THIS workflow, derived from the steps — correct the member's label if it doesn't match what the steps describe",
   "thesis": "one sentence — the opportunity in this workflow, in plain words",
   "today": [ { "step": "current step", "who": "who does it now", "time": "rough time, e.g. '3 hrs/week'" }, ... 4-6 steps ],
   "rebuilt": [ { "step": "the AI-native step", "owner": "AI" | "Human" | "AI + Human", "detail": "what happens and who owns the call" }, ... 4-6 steps ],
@@ -82,10 +90,12 @@ function coerce(raw: unknown, inputs: TransformInputs): Transformation | null {
   const peopleMove = arr<unknown>(r.peopleMove).map((c) => str(c)).filter(Boolean);
   const measure = arr<unknown>(r.measure).map((c) => str(c)).filter(Boolean);
   const thesis = str(r.thesis, 300);
+  // The model derives an accurate title from the steps; fall back to the member's label.
+  const title = str(r.title, 160) || inputs.workflow;
 
   // Forgiving bar: need the spine of a real doc.
   if (!thesis || today.length < 2 || rebuilt.length < 2 || !changes.length || !value.length) return null;
-  return { workflow: inputs.workflow, thesis, today, rebuilt, changes, peopleMove, value, risks, pilot, rollout, measure };
+  return { workflow: inputs.workflow, title, thesis, today, rebuilt, changes, peopleMove, value, risks, pilot, rollout, measure };
 }
 
 /** Generate one transformation doc from the member's inputs. Best-effort (null on

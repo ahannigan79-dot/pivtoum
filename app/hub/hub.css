@@ -293,6 +293,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .lib-asset-state.verified { color:var(--green); background:color-mix(in srgb,var(--green) 12%,white); }
 .lib-asset-state.submitted { color:var(--ink2); background:var(--panel2); }
 .lib-asset-state.returned { color:var(--pen); background:color-mix(in srgb,var(--pen) 9%,white); }
+.lib-asset-state.doc { color:var(--accent-deep); background:var(--accent-wash); }
 .lib-asset-note { font-size:0.8rem; color:var(--pen); font-style:italic; margin:6px 0 0; }
 
 /* play page: focus + commit actions sit together */
@@ -2373,6 +2374,12 @@ a.pod-member:hover span { color:var(--ink); }
 .tf-go:hover:not(:disabled) { background:#000; }
 .tf-go:disabled { opacity:.6; cursor:progress; }
 .tf-note { margin:0; font-size:0.8rem; color:var(--pencil); }
+.tf-note b { color:var(--ink2); font-weight:700; }
+.tf-labrow { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.tf-tmpl { font-family:var(--sans); font-weight:700; font-size:0.72rem; letter-spacing:0; text-transform:none;
+  color:var(--accent); background:var(--accent-wash); border:1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius:8px; padding:4px 10px; cursor:pointer; transition:.12s; }
+.tf-tmpl:hover { background:color-mix(in srgb, var(--accent) 14%, var(--panel)); }
 .wt-alert { border:1px solid var(--rule2); background:var(--surface); border-radius:11px; padding:12px 15px; font-size:0.9rem; color:var(--soft); margin:0 0 20px; }
 .wt-locked { border:1px solid var(--rule); background:var(--panel2); border-radius:14px; padding:18px 20px; margin:0 0 24px; font-size:0.94rem; color:var(--soft); line-height:1.55; }
 .wt-locked b { color:var(--ink); }

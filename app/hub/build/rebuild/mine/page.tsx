@@ -13,7 +13,7 @@ function Doc({ workflow, doc, when }: { workflow: string; doc: Transformation; w
     <article className="wtdoc">
       <header className="wt-head">
         <p className="ck">Workflow transformation</p>
-        <h2>{workflow}</h2>
+        <h2>{doc.title || workflow}</h2>
         <p className="wt-thesis">{doc.thesis}</p>
         <p className="wt-meta">Prepared {date} · an opportunity for how we run this work</p>
       </header>

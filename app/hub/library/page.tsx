@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { myArtifacts } from "@/lib/artifacts";
+import { latestTransform } from "@/lib/workflow-transform";
 
 export const metadata = { title: "Library — Winning in the Age of AI" };
 
@@ -62,7 +63,11 @@ function Card({ it }: { it: Item }) {
 
 export default async function LibraryPage() {
   const { userId } = await auth();
-  const assets = await myArtifacts(userId);
+  const [assets, transform] = await Promise.all([
+    myArtifacts(userId),
+    userId ? latestTransform(userId) : Promise.resolve(null),
+  ]);
+  const hasAssets = assets.length > 0 || !!transform;
 
   return (
     <>
@@ -73,10 +78,18 @@ export default async function LibraryPage() {
           The backbone of <b>Winning in the Age of AI</b>.
         </p>
 
-        {assets.length > 0 && (
+        {hasAssets && (
           <div>
             <div className="hub-sectlabel">Your assets · what your moves built</div>
             <div className="hub-grid">
+              {transform && (
+                <Link href="/hub/build/rebuild/mine" className="card lib-card">
+                  <span className="lib-asset-state doc">◆ Workflow rebuild</span>
+                  <h3 className="lib-title">{transform.doc.title || transform.workflow}</h3>
+                  <p>Your workflow rebuilt AI-native — a boss-shareable transformation doc. Share it, act on it, bring it to your lead.</p>
+                  <span className="lib-go">Open →</span>
+                </Link>
+              )}
               {assets.map((a) => {
                 const st = ART_STATE[a.status] ?? ART_STATE.submitted;
                 const inner = (
