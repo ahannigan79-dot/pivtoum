@@ -1,13 +1,15 @@
 @import "brandfonts-embed.css";
 
 :root{
-  --ink:#1C1A16; --ink-soft:#6B655B; --pencil:#948D80;
-  --pen:#B4442F; --pen-safe:#2E7D55; --rule:#E7E2D8; --accent:#10605E;
+  /* Electric system (matches app/hub/hub.css + the marketing site): one blue
+     chrome accent, red for exposed / blue for protected, near-black ink. */
+  --ink:#0B0E14; --ink-soft:#5B6472; --pencil:#96A0AE;
+  --pen:#F5333F; --pen-safe:#2F6BFF; --rule:#E7EBF1; --accent:#2F6BFF;
   --serif:'Literata',Georgia,serif; --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
-  --hl-find:rgba(16,96,94,.10);
-  --hl-expo:rgba(180,68,47,.16);
-  --hl-prot:rgba(46,125,85,.16);
-  --hl-meth:rgba(16,96,94,.12);
+  --hl-find:rgba(47,107,255,.10);
+  --hl-expo:rgba(245,51,63,.12);
+  --hl-prot:rgba(47,107,255,.14);
+  --hl-meth:rgba(47,107,255,.12);
 }
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
@@ -63,7 +65,7 @@ h3 .w{ color:var(--pencil); font-style:normal; }
 p{ margin:0 0 .42cm; }
 strong{ font-weight:700; }
 em{ font-style:italic; }
-a{ color:var(--pen); text-decoration:none; border-bottom:1px solid rgba(172,58,52,.35); }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(47,107,255,.35); }
 ul{ margin:0 0 .5cm; padding-left:.6cm; list-style:none; }
 li{ position:relative; padding-left:.55cm; margin:0 0 .28cm; }
 li::before{ content:""; position:absolute; left:0; top:.42em; width:.22cm; height:.12cm;
@@ -94,26 +96,26 @@ th.num,td.num{ text-align:right; }
   padding:.2cm 0; border-bottom:1px solid var(--rule); font-size:10.5pt; }
 .fbar:first-child{ border-top:1.4px solid var(--ink); }
 .fq{ line-height:1.3; }
-.ftrack{ height:.3cm; background:#f3efe7; border-radius:3px; position:relative; overflow:hidden; }
+.ftrack{ height:.3cm; background:#EEF1F6; border-radius:3px; position:relative; overflow:hidden; }
 .ffill{ position:absolute; left:0; top:0; bottom:0; border-radius:3px; }
-.ffill.exp{ background:rgba(226,110,92,.34); }
-.ffill.prot{ background:rgba(62,156,110,.32); }
+.ffill.exp{ background:rgba(245,51,63,.26); }
+.ffill.prot{ background:rgba(47,107,255,.26); }
 .fval{ text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
 .flegend{ display:flex; gap:.8cm; font-family:var(--sans); font-size:8pt; letter-spacing:.05em;
   text-transform:uppercase; color:var(--pencil); margin-top:.3cm; }
 .flegend i{ display:inline-block; width:.4cm; height:.22cm; border-radius:2px;
   vertical-align:middle; margin-right:.15cm; }
-.flegend .exp{ background:rgba(226,110,92,.34); }
-.flegend .prot{ background:rgba(62,156,110,.32); }
+.flegend .exp{ background:rgba(245,51,63,.26); }
+.flegend .prot{ background:rgba(47,107,255,.26); }
 
 /* appendix */
 .appendix{ break-before:page; }
-pre{ background:#faf7f0; border:1px solid var(--rule); border-radius:3px;
+pre{ background:#F1F4F8; border:1px solid var(--rule); border-radius:3px;
   padding:.4cm .5cm; margin:.35cm 0 .6cm; overflow-x:auto; }
 pre code{ font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
   font-size:9pt; line-height:1.5; color:var(--ink); white-space:pre; }
 
 /* callout / blockquote */
 blockquote{ margin:.4cm 0 .6cm; padding:.35cm .55cm; border-left:2.5px solid var(--hl-meth);
-  background:rgba(96,142,208,.06); color:var(--ink-soft); }
+  background:rgba(47,107,255,.06); color:var(--ink-soft); }
 blockquote p:last-child{ margin-bottom:0; }
