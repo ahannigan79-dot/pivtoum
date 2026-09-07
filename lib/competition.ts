@@ -1,13 +1,15 @@
 import "server-only";
 import { and, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { pods, podMembers, podCheckins, commitments, focusGoals } from "@/db/schema";
+import { pods, podMembers, podCheckins, moveArtifacts } from "@/db/schema";
 
 /* The Pod Competition. Pods compete on doing the work together: showing up
- * (check-in participation), shipping moves, and training. Monthly leaderboard →
+ * (check-in participation) and shipping VERIFIED moves. Monthly leaderboard →
  * a smaller monthly prize; a six-month season → the grand winning pod.
  *
- * Score is per-capita so a small pod competes fairly with a big one, and
+ * A move only scores once a domain leader has verified its artifact — the honor
+ * system has teeth here, so the competition can't be gamed by clicking through
+ * steps. Score is per-capita so a small pod competes fairly with a big one, and
  * participation (the whole point of a pod) is the spine of it. Computed live
  * from existing activity — no separate scoring table to keep in sync. */
 
@@ -56,17 +58,14 @@ async function scoreMonth(year: number, month0: number): Promise<Map<string, Pod
     .groupBy(podCheckins.podId);
   const checkins = new Map(ciRows.map((r) => [r.podId, r.n]));
 
-  // Moves shipped (done commitments + completed focus goals) in the month, per member.
-  const [cmRows, fgRows] = await Promise.all([
-    db.select({ memberId: commitments.memberId, n: sql<number>`count(*)::int` }).from(commitments)
-      .where(and(eq(commitments.status, "done"), gte(commitments.completedAt, start), lt(commitments.completedAt, end)))
-      .groupBy(commitments.memberId),
-    db.select({ memberId: focusGoals.memberId, n: sql<number>`count(*)::int` }).from(focusGoals)
-      .where(and(eq(focusGoals.status, "done"), gte(focusGoals.completedAt, start), lt(focusGoals.completedAt, end)))
-      .groupBy(focusGoals.memberId),
-  ]);
+  // Verified moves in the month, per member — a move counts for the competition
+  // only once a domain leader has verified its artifact (bucketed by verify time).
+  const vaRows = await db.select({ memberId: moveArtifacts.memberId, n: sql<number>`count(*)::int` })
+    .from(moveArtifacts)
+    .where(and(eq(moveArtifacts.status, "verified"), gte(moveArtifacts.reviewedAt, start), lt(moveArtifacts.reviewedAt, end)))
+    .groupBy(moveArtifacts.memberId);
   const movesBy = new Map<string, number>();
-  for (const r of [...cmRows, ...fgRows]) movesBy.set(r.memberId, (movesBy.get(r.memberId) ?? 0) + r.n);
+  for (const r of vaRows) movesBy.set(r.memberId, (movesBy.get(r.memberId) ?? 0) + r.n);
 
   const out = new Map<string, PodScore>();
   for (const p of allPods) {

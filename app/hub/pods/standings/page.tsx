@@ -14,7 +14,7 @@ function Board({ rows, mySlug }: { rows: PodScore[]; mySlug: string | null }) {
           <span className="lb-rank">{i === 0 ? "🏆" : i + 1}</span>
           <span className="lb-crest">{p.crest ?? "👥"}</span>
           <Link href={`/hub/pods/${p.slug}`} className="lb-name">{p.name}{p.slug === mySlug && <span className="lb-you">you</span>}</Link>
-          <span className="lb-meta">{p.participation}% shown up · {p.moves} move{p.moves === 1 ? "" : "s"} shipped</span>
+          <span className="lb-meta">{p.participation}% shown up · {p.moves} verified move{p.moves === 1 ? "" : "s"}</span>
           <span className="lb-score">{p.score}</span>
         </li>
       ))}
@@ -63,8 +63,8 @@ export default async function StandingsPage() {
 
         <p className="lb-how">
           <b>How the score works.</b> Mostly showing up: the share of your pod checking in each week is the spine of it.
-          Then the moves your pod ships, counted per person so a small tight pod competes fairly with a big one. Do the
-          work together and you climb.
+          Then the moves your pod ships — counted per person, and only once a domain leader has verified the work, so
+          the leaderboard reflects real proof, not clicked-through steps. Do the work together and you climb.
         </p>
       </div>
     </>
