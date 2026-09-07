@@ -1511,6 +1511,54 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-cta:disabled { opacity: .45; cursor: default; }
 .gym-cta.ghost { background: transparent; color: var(--soft); border: 1px solid var(--rule2); margin-top: 22px; }
 
+/* ── Gym: the review-queue assignment (setup / brief phase) ─────── */
+.gym-assign { max-width: 720px; border: 1px solid var(--rule2); border-radius: 16px; background: var(--panel);
+  padding: 0; margin: 0 0 22px; overflow: hidden; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+.gym-assign-head { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 11px 18px; background: var(--accent-wash); border-bottom: 1px solid color-mix(in srgb, var(--accent) 14%, transparent); }
+.gym-assign-eyebrow { font-size: 0.64rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep); }
+.gym-assign-status { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #8A6D00;
+  background: #FBF2D2; border: 1px solid #EBD98A; border-radius: 20px; padding: 4px 11px; }
+.gym-assign-file { display: flex; align-items: center; gap: 14px; padding: 16px 18px 15px; }
+.gym-assign-ficon { flex: none; width: 42px; height: 42px; display: grid; place-items: center; font-size: 1.15rem;
+  border-radius: 11px; background: var(--panel2); border: 1px solid var(--rule); }
+.gym-assign-fmeta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.gym-assign-fname { font-family: var(--mono); font-size: 0.94rem; font-weight: 700; color: var(--ink); word-break: break-word; }
+.gym-assign-fsub { font-size: 0.8rem; color: var(--pencil); }
+.gym-assign-stamp { flex: none; font-family: var(--sans); font-weight: 800; font-size: 0.66rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--pen); border: 1.5px solid color-mix(in srgb, var(--pen) 55%, transparent);
+  border-radius: 6px; padding: 4px 9px; transform: rotate(-4deg); opacity: .85; }
+.gym-flow { display: flex; align-items: flex-start; gap: 4px; padding: 4px 18px 16px; }
+.gym-flow-step { display: flex; align-items: flex-start; gap: 9px; flex: 0 1 auto; }
+.gym-flow-dot { flex: none; width: 19px; height: 19px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 0.66rem; font-weight: 800; color: var(--pencil); background: var(--panel2); border: 1.5px solid var(--rule2); margin-top: 1px; }
+.gym-flow-step.done .gym-flow-dot { color: var(--on-fill); background: var(--accent); border-color: var(--accent); }
+.gym-flow-step.now .gym-flow-dot { color: var(--accent-deep); background: var(--panel); border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash); }
+.gym-flow-txt { display: flex; flex-direction: column; gap: 1px; }
+.gym-flow-txt b { font-size: 0.82rem; font-weight: 700; color: var(--ink); }
+.gym-flow-step:not(.done):not(.now) .gym-flow-txt b { color: var(--pencil); font-weight: 600; }
+.gym-flow-txt span { font-size: 0.72rem; line-height: 1.35; color: var(--pencil); }
+.gym-flow-arm { flex: 1 1 12px; min-width: 14px; height: 1.5px; background: var(--rule2); margin: 10px 2px 0; border-radius: 2px; }
+.gym-assign-note { margin: 0; padding: 14px 18px; border-top: 1px solid var(--rule); background: var(--bg2);
+  font-size: 0.86rem; line-height: 1.6; color: var(--soft); }
+.gym-assign-note b { color: var(--ink); font-weight: 700; }
+@media (max-width: 620px) {
+  .gym-flow { flex-direction: column; align-items: stretch; gap: 10px; }
+  .gym-flow-arm { display: none; }
+}
+.gym-brief-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gym-brief-bench { font-size: 0.8rem; color: var(--pencil); }
+
+/* ── Gym: the deliverable's paper header (workpaper / memo look) ── */
+.gym-paper { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  padding: 13px 16px; border-bottom: 1px solid var(--rule); background: var(--bg2); }
+.gym-paper-client { font-family: var(--serif); font-weight: 700; font-size: 1.02rem; color: var(--ink); }
+.gym-paper-sig { display: flex; gap: 20px; }
+.gym-paper-sig span { font-size: 0.7rem; color: var(--pencil); }
+.gym-paper-sig b { color: var(--ink2); font-weight: 700; }
+.gym-paper-sig b.pend { color: var(--pen); }
+
 .gym-clockbar { display: flex; align-items: center; gap: 12px; border: 1px solid var(--rule2); border-radius: 12px;
   background: var(--panel); padding: 10px 15px; margin: 0 0 14px; position: sticky; top: 6px; z-index: 3; }
 .gym-clock { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--amber); }
@@ -1546,7 +1594,9 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-artifact-kind { font-weight: 800; font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent-deep);
   background: var(--accent-wash); border-radius: 100px; padding: 3px 10px; }
 .gym-artifact-name { font-family: var(--mono); font-size: 0.84rem; color: var(--ink); }
-.gym-artifact-tag { margin-left: auto; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--pencil); }
+.gym-artifact-tag { margin-left: auto; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--pen); background: color-mix(in srgb, var(--pen) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pen) 30%, transparent); border-radius: 20px; padding: 3px 10px; }
 .gym-artifact-hint { font-size: 0.8rem; line-height: 1.5; color: var(--soft); margin: 0; padding: 11px 16px; border-bottom: 1px solid var(--rule); background: var(--bg2); }
 .gym-artifact-hint b { color: var(--ink2); }
 .gym-segs { display: flex; flex-direction: column; }

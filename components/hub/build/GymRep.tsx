@@ -114,9 +114,44 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
     <div className="gym">
       {phase === "brief" && (
         <div className="gym-brief-wrap">
+          <div className="gym-assign">
+            <div className="gym-assign-head">
+              <span className="gym-assign-eyebrow">● In your review queue</span>
+              <span className="gym-assign-status">Awaiting your sign-off</span>
+            </div>
+            <div className="gym-assign-file">
+              <span className="gym-assign-ficon" aria-hidden>{chrome.icon}</span>
+              <div className="gym-assign-fmeta">
+                <span className="gym-assign-fname">{scenario.artifact}</span>
+                <span className="gym-assign-fsub">{chrome.label} · {scenario.client}</span>
+              </div>
+              <span className="gym-assign-stamp">Draft</span>
+            </div>
+            <div className="gym-flow">
+              <div className="gym-flow-step done">
+                <span className="gym-flow-dot">✓</span>
+                <div className="gym-flow-txt"><b>AI drafted it</b><span>Full deliverable, start to finish</span></div>
+              </div>
+              <span className="gym-flow-arm" aria-hidden />
+              <div className="gym-flow-step now">
+                <span className="gym-flow-dot" />
+                <div className="gym-flow-txt"><b>Your review</b><span>Sign off only what holds</span></div>
+              </div>
+              <span className="gym-flow-arm" aria-hidden />
+              <div className="gym-flow-step">
+                <span className="gym-flow-dot" />
+                <div className="gym-flow-txt"><b>Released</b><span>Goes out under your name</span></div>
+              </div>
+            </div>
+            <p className="gym-assign-note">
+              You didn&rsquo;t prompt this. It landed on your desk finished — and that&rsquo;s how most AI shows up at work. You&rsquo;re <b>downstream</b> of a machine that already ran, not chatting with one. The skill isn&rsquo;t writing the request; it&rsquo;s catching what it got wrong before it ships.
+            </p>
+          </div>
+
           <p className="gym-thesis">{scenario.thesis}</p>
+
           <div className="gym-brief">
-            <p className="gym-brief-t">The brief · <span className="gym-client">{scenario.client}</span></p>
+            <p className="gym-brief-t">The engagement · <span className="gym-client">{scenario.client}</span></p>
             <div className="gym-brief-grid">
               {scenario.brief.map((b, i) => (
                 <div key={i} className="gym-bf"><span className="l">{b.l}</span><span className="v">{b.v}</span></div>
@@ -124,7 +159,10 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
             </div>
           </div>
           <p className="gym-brief-ai"><span className="gym-ctx-k">What the AI did</span> {aiDid}</p>
-          <button className="gym-cta" onClick={() => setPhase("judging")}>Start the rep — the clock starts ▸</button>
+          <div className="gym-brief-cta">
+            <button className="gym-cta" onClick={() => setPhase("judging")}>Open the file — the clock starts ▸</button>
+            <span className="gym-brief-bench">A reviewer clears this in about {mmss(par)}</span>
+          </div>
         </div>
       )}
 
@@ -145,18 +183,26 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
               <div className="gym-artifact-head">
                 <span className="gym-artifact-kind">{chrome.icon} {chrome.label}</span>
                 <span className="gym-artifact-name">{scenario.artifact}</span>
-                <span className="gym-artifact-tag">AI-generated · unreviewed</span>
+                <span className="gym-artifact-tag">Draft · AI-generated</span>
               </div>
 
-              {kind === "email" && (
+              {kind === "email" ? (
                 <div className="gym-mail">
                   <div className="gym-mail-row"><span>From</span><b>You</b></div>
                   <div className="gym-mail-row"><span>To</span><b>{scenario.client}</b></div>
                   <div className="gym-mail-row"><span>Subject</span><b>{scenario.artifact}</b></div>
                 </div>
+              ) : kind !== "code" && (
+                <div className="gym-paper">
+                  <span className="gym-paper-client">{scenario.client}</span>
+                  <div className="gym-paper-sig">
+                    <span>Prepared by <b>AI</b></span>
+                    <span>Reviewed by <b className="pend">you — pending</b></span>
+                  </div>
+                </div>
               )}
 
-              <p className="gym-artifact-hint">This looks finished. Some of it is wrong, and nothing marks which — mark each part <b>✓ looks right</b> or <b>⚑ flag</b> against the inputs.</p>
+              <p className="gym-artifact-hint">Nothing here is marked right or wrong — that&rsquo;s your call. Read it against the inputs on the right and mark each part <b>✓ looks right</b> or <b>⚑ flag</b>.</p>
 
               {(kind === "spreadsheet" || kind === "order") ? (
                 <div className="gym-grid">
