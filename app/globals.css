@@ -66,7 +66,7 @@ body {
 /* ---- Highlighter strokes ------------------------------------------------- */
 /* Emphasis: coloured text, replacing the yellow highlighter. One consistent
    device site-wide. Semantic variants keep their meaning as colour, in the brand
-   palette: finding = petrol, protection = green, exposure = coral, method = ink. */
+   palette: chrome/finding = electric blue, protection = blue, exposure = red, method = ink. */
 .hl { color: var(--win); font-weight: 600; }
 .hl.d2 { }
 .hl.g { color: var(--pen-safe); }
@@ -634,7 +634,9 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 }
 .idx-seg {
   position: absolute; top: -1px; bottom: -1px; border-radius: 2px;
-  background: rgba(16, 96, 94, .22);
+  /* the range from protected (blue) to exposed (red) — the diverging exposure
+     scale, matching the endpoint numbers and the app's Map. */
+  background: linear-gradient(90deg, rgba(47,107,255,.34), rgba(245,51,63,.34));
 }
 .idx-seg::before, .idx-seg::after {
   content: ""; position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink);
@@ -767,7 +769,7 @@ button.tier { width: 100%; font: inherit; cursor: pointer; text-align: left; }
 .lp-loopnum { background: var(--accent-wash); border-color: transparent; }
 
 /* The exposure spread — a small framed data panel. Aligned numeral column so
-   the decimals line up; the exposure palette (protected green vs exposed coral)
+   the decimals line up; the exposure palette (protected blue vs exposed red)
    carries the meaning as the numeral color itself. */
 .lp-spread { justify-self: end; width: 100%; max-width: 300px; display: flex; flex-direction: column;
   gap: 1.1rem; border: 1px solid var(--rule); border-radius: 14px; padding: 1.25rem 1.35rem; background: var(--paper); }
@@ -950,7 +952,7 @@ footer {
 
 /* ============================================================
    Hero + /map — the "winning" brand moments, now light single-tone
-   on the paper ground with the petrol accent, in step with the hub.
+   on the paper ground with the electric-blue accent, in step with the hub.
    ============================================================ */
 
 /* Homepage hero — light single-tone card on the paper ground, hairline outline.
