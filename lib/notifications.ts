@@ -17,7 +17,7 @@ export type NotifPayload = {
   entityId?: string; // for de-duping bursts (e.g. the post id)
 };
 
-export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore" | "submission" | "pod";
+export type NotifKind = "reply" | "reaction" | "dm" | "badge" | "report" | "mention" | "event" | "rescore" | "submission" | "pod" | "eva";
 
 export type NotifItem = {
   id: string;
@@ -27,7 +27,7 @@ export type NotifItem = {
 } & NotifPayload;
 
 const ICON: Record<NotifKind, string> = {
-  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊", submission: "📝", pod: "👥",
+  reply: "💬", reaction: "❤️", dm: "✉️", badge: "🏅", report: "🚩", mention: "@", event: "📅", rescore: "📊", submission: "📝", pod: "👥", eva: "✨",
 };
 
 export function notifIcon(kind: string): string {
@@ -56,7 +56,7 @@ const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
 };
 
 /** Kinds worth a lock-screen push (reactions stay in-app only to avoid noise). */
-const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission", "pod"]);
+const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission", "pod", "eva"]);
 
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
@@ -110,6 +110,17 @@ export async function notifyPod(
   opts: { title: string; preview?: string; href: string; entityId?: string },
 ): Promise<void> {
   await notify(memberId, "pod", { title: opts.title, preview: opts.preview, href: opts.href, entityId: opts.entityId });
+}
+
+/** An Eva nudge (no actor): a between-sessions prompt to take the next step on a
+ *  stalled focus goal. Rendered with the ✨ Eva icon. */
+export async function notifyEva(
+  memberId: string,
+  opts: { title: string; preview?: string; href: string; entityId?: string },
+): Promise<void> {
+  // No actorName → renders with the ✨ Eva icon (not a generic avatar); title is
+  // self-contained so the push reads cleanly.
+  await notify(memberId, "eva", { title: opts.title, preview: opts.preview, href: opts.href, entityId: opts.entityId });
 }
 
 /** Someone replied to / commented on a post → tell the author. */
