@@ -205,6 +205,130 @@ const dataQuestion: RebuildVariant = {
   pull: "Anyone can generate an analysis now — the value is framing the right question and standing behind the recommendation.",
 };
 
+/* ── Consulting & Strategy ─────────────────────────────────────── */
+const consultDiagnostic: RebuildVariant = {
+  slug: "consult-diagnostic", title: "Run a client diagnostic", field: "Client delivery",
+  short: "Scope a client problem, gather the data, and diagnose the real cause.",
+  thesis: "The opening move of any engagement — understand the client's problem and diagnose what's actually driving it. Here's that workflow today, then rebuilt AI-native.",
+  steps: [
+    { label: "Scope the problem", today: "Kickoff workshops and interviews to frame the question — days of calls.", own: "the real question", ai: "drafts the problem statement and hypotheses from the brief and prior work", you: "decide what the client is really asking, not just what they said." },
+    { label: "Gather the data", today: "Request lists, chase spreadsheets, clean and combine by hand.", own: "the gaps", ai: "ingests and cleans the client data and flags what's missing", you: "judge what the data can and can't support." },
+    { label: "Analyse", today: "Build models in Excel, cut the data every way, hunt for the pattern.", own: "the insight", ai: "runs the cuts and surfaces the patterns instantly", you: "separate signal from noise and name the driver." },
+    { label: "Benchmark", today: "Pull comparables and industry data manually.", own: "the relevance", ai: "assembles benchmarks and comparables in minutes", you: "decide which comparisons actually apply here." },
+    { label: "Diagnose", today: "Synthesise into a root-cause story on the whiteboard.", own: "the diagnosis", ai: "proposes candidate root causes from the evidence", you: "own the diagnosis you'll stake your name on." },
+    { label: "Frame the findings", today: "Draft the findings memo and structure the argument.", own: "the narrative", ai: "drafts the memo and the logic tree", you: "own the story and what it means for the client." },
+  ],
+  delta: [{ v: "Weeks → days", l: "Diagnostic cycle" }, { v: "Sample → all", l: "Client data analysed" }, { v: "Team → 1+AI", l: "To run it" }],
+  pull: "The machine gathers and cuts; you own the diagnosis — and the client pays for the judgment, not the spreadsheets.",
+};
+const consultDeck: RebuildVariant = {
+  slug: "consult-deck", title: "Build the recommendation", field: "Client delivery",
+  short: "Turn the analysis into a board-ready recommendation and deck.",
+  thesis: "The analysis is only worth what the client does with it. Here's how the recommendation gets built today, then rebuilt AI-native.",
+  steps: [
+    { label: "Structure the argument", today: "Storyboard on paper and argue the flow with the team.", own: "the logic", ai: "proposes a storyline from the findings", you: "own the argument the recommendation rests on." },
+    { label: "Build the slides", today: "Hand-build every slide and format for hours.", own: "the message", ai: "drafts the slides and charts from the analysis", you: "sharpen the one message on each page." },
+    { label: "Build the case", today: "Model the impact and ROI by hand.", own: "the numbers you'll defend", ai: "builds the impact model and scenarios", you: "own the assumptions and the number you'll defend." },
+    { label: "Pressure-test", today: "Internal review, red-team the logic.", own: "the weak points", ai: "stress-tests the argument and flags the gaps", you: "decide which risks to address and which to accept." },
+    { label: "Anticipate objections", today: "Prep the Q&A from experience.", own: "the room", ai: "drafts the likely objections and answers", you: "read the room and own the tough calls live." },
+    { label: "Deliver", today: "Polish, rehearse, present.", own: "the recommendation", ai: "assembles the final pack", you: "own the recommendation and the client relationship." },
+  ],
+  delta: [{ v: "Days → hours", l: "Deck build" }, { v: "Draft → board-ready", l: "Faster" }, { v: "Analyst hours ↓", l: "On production" }],
+  pull: "Anyone can generate a deck now — the value is the recommendation you'll stake your reputation on, and the trust to land it.",
+};
+const consultMarketScan: RebuildVariant = {
+  slug: "consult-market-scan", title: "Size and scan a market", field: "Strategy & research",
+  short: "Size a market, map the competitors, and read where it's heading.",
+  thesis: "Before a strategy call, the market gets sized and read. Here's that workflow today, then rebuilt AI-native.",
+  steps: [
+    { label: "Define the scope", today: "Frame the market definition and the questions.", own: "the boundaries", ai: "proposes the scope and segmentation", you: "decide the boundaries that make the answer useful." },
+    { label: "Gather sources", today: "Trawl reports, filings and databases for days.", own: "the credibility", ai: "pulls and summarises the sources in minutes", you: "judge which sources to trust." },
+    { label: "Size the market", today: "Build the TAM/SAM/SOM model by hand.", own: "the assumptions", ai: "builds the sizing model and scenarios", you: "own the assumptions the size rests on." },
+    { label: "Map the competition", today: "Profile competitors one by one.", own: "the read", ai: "assembles competitor profiles and positioning", you: "read what the map means for the client." },
+    { label: "Spot the shifts", today: "Read the trends from experience.", own: "the call on where it's going", ai: "surfaces the signals and emerging trends", you: "decide which shifts are real and which are hype." },
+    { label: "Synthesise", today: "Write the market view.", own: "the point of view", ai: "drafts the synthesis", you: "own the point of view the client will act on." },
+  ],
+  delta: [{ v: "Weeks → days", l: "Market study" }, { v: "Handful → hundreds", l: "Sources reviewed" }, { v: "Team → 1+AI", l: "To run it" }],
+  pull: "The data's a commodity now — the edge is the point of view on where the market goes, and what the client should do about it.",
+};
+const consultOpModel: RebuildVariant = {
+  slug: "consult-op-model", title: "Design a target operating model", field: "Strategy & research",
+  short: "Redesign how a function operates — process, org, and cost.",
+  thesis: "A transformation starts with the target model — how the business should run. Here's that workflow today, then rebuilt AI-native.",
+  steps: [
+    { label: "Map current state", today: "Process-map workshops — weeks of interviews.", own: "the real picture", ai: "drafts the current-state map from documents and data", you: "validate what actually happens vs. what's documented." },
+    { label: "Benchmark", today: "Compare to peers by hand.", own: "the relevant bar", ai: "assembles the benchmarks", you: "decide the bar that fits this business." },
+    { label: "Design the future state", today: "Whiteboard the target model.", own: "the design", ai: "proposes target-model options", you: "own the design and the trade-offs." },
+    { label: "Model the cost", today: "Build the cost-benefit case in Excel.", own: "the numbers", ai: "models cost, headcount and savings", you: "own the assumptions and the savings you'll commit to." },
+    { label: "Plan the change", today: "Draft the roadmap and the risks.", own: "the sequencing", ai: "drafts the transformation roadmap", you: "decide the sequencing and what's realistic." },
+    { label: "Build the case", today: "Write the business case.", own: "the recommendation", ai: "assembles the case", you: "own the recommendation to the board." },
+  ],
+  delta: [{ v: "Months → weeks", l: "Design cycle" }, { v: "Slides → model", l: "Depth of the case" }, { v: "Team → 1+AI", l: "To design it" }],
+  pull: "The model can be drawn in days now — the value is the judgment on what's achievable, and owning the number you commit the client to.",
+};
+
+/* ── Project & Program Management ──────────────────────────────── */
+const pmStatus: RebuildVariant = {
+  slug: "pm-status", title: "Run the weekly status report", field: "Delivery",
+  short: "Collect updates, reconcile against the plan, and report to the client.",
+  thesis: "The weekly heartbeat of any program — pull where everything stands and report it. Here's that workflow today, then rebuilt AI-native.",
+  steps: [
+    { label: "Collect updates", today: "Chase workstream leads over Teams and email — no standard format.", own: "the real blockers", ai: "sends a structured request and collates the replies into one view", you: "chase the real blockers, not the paperwork." },
+    { label: "Reconcile to the plan", today: "Open the plan and compare reported vs. actual by hand.", own: "the truth", ai: "diffs the plan week over week and flags the slippage", you: "decide what the variance actually means." },
+    { label: "Check the RAID", today: "Scan the log for changes from memory.", own: "the risk calls", ai: "diffs the RAID log and highlights what moved", you: "decide which risks need action now." },
+    { label: "Progress vs. burn", today: "Pull hours, compare to percent-complete, message leads.", own: "the disagreements", ai: "computes the variance and drafts the follow-up questions", you: "decide which numbers to challenge." },
+    { label: "Build the deck", today: "Copy four formats into the client template, rewrite to one voice.", own: "the RAG status", ai: "assembles a first-draft deck in the template", you: "set the RAG status and write the escalation." },
+    { label: "Review & send", today: "Read it end to end, fix formatting, send before noon.", own: "the call", ai: "checks consistency and formats it", you: "own what the client sees and hears." },
+  ],
+  delta: [{ v: "4–5 hrs → 1 hr", l: "PM time per report" }, { v: "Thu night → Thu AM", l: "Draft ready" }, { v: "Assembled → reviewed", l: "How it's made" }],
+  pull: "The collecting and formatting is the machine's now — your hours move to the judgment calls and the client conversation only a human can hold.",
+};
+const pmPlan: RebuildVariant = {
+  slug: "pm-plan", title: "Plan and schedule the project", field: "Delivery",
+  short: "Break the work down, build the schedule, and set the baseline.",
+  thesis: "Before anything ships, the project is planned — scoped, sequenced, resourced. Here's that workflow today, then rebuilt AI-native.",
+  steps: [
+    { label: "Define the scope", today: "Workshops to agree deliverables and boundaries.", own: "the boundaries", ai: "drafts the scope and deliverables from the brief", you: "decide what's in and firmly out." },
+    { label: "Break down the work", today: "Build the work-breakdown by hand.", own: "the structure", ai: "proposes a WBS from similar projects", you: "own the structure and the estimates." },
+    { label: "Build the schedule", today: "Sequence tasks and set dependencies in the tool.", own: "the critical path", ai: "drafts the schedule and the dependencies", you: "own the critical path and the dates you commit." },
+    { label: "Resource it", today: "Assign people and level the load manually.", own: "the calls on people", ai: "proposes an allocation and flags over-load", you: "make the calls on who does what." },
+    { label: "Risk-adjust", today: "Add contingency from experience.", own: "the buffers", ai: "suggests risk-based contingency", you: "decide the buffers you'll defend." },
+    { label: "Baseline", today: "Lock the plan and write the initiation doc.", own: "the commitment", ai: "assembles the plan document", you: "own the baseline you'll be held to." },
+  ],
+  delta: [{ v: "Days → hours", l: "To a first plan" }, { v: "Blank page → draft", l: "Starting point" }, { v: "Solo → 1+AI", l: "To plan it" }],
+  pull: "A plan can be drafted in an hour now — the value is the judgment on what's realistic, and owning the dates the business commits to.",
+};
+const pmRaid: RebuildVariant = {
+  slug: "pm-raid", title: "Manage risks and the RAID log", field: "Risk & governance",
+  short: "Keep risks, assumptions, issues and dependencies live and acted on.",
+  thesis: "A program lives or dies on its risks. Here's how the RAID log is run today, then rebuilt AI-native.",
+  steps: [
+    { label: "Capture", today: "Log risks from meetings and email by hand.", own: "the real ones", ai: "drafts RAID entries from meeting notes and comms", you: "decide what's a real risk vs. noise." },
+    { label: "Assess", today: "Score likelihood and impact from judgment.", own: "the scoring", ai: "proposes scores from similar programs", you: "own the scoring for this context." },
+    { label: "Prioritise", today: "Sort the log and decide what matters.", own: "the focus", ai: "ranks by exposure and flags the movers", you: "decide where attention goes this week." },
+    { label: "Plan the response", today: "Draft mitigations and assign owners.", own: "the mitigation", ai: "drafts mitigation options", you: "own the response and who's accountable." },
+    { label: "Track", today: "Chase owners and update the log.", own: "the follow-through", ai: "tracks the actions and flags what's overdue", you: "chase the ones that actually matter." },
+    { label: "Report", today: "Summarise the top risks for the steering pack.", own: "the escalation", ai: "drafts the risk summary", you: "decide what to escalate, and how hard." },
+  ],
+  delta: [{ v: "Stale → live", l: "The RAID log" }, { v: "Memory → tracked", l: "How risks are followed" }, { v: "Admin hours ↓", l: "On upkeep" }],
+  pull: "The log keeps itself now — your job is the judgment on which risks are real, and the nerve to escalate them early.",
+};
+const pmStakeholder: RebuildVariant = {
+  slug: "pm-stakeholder", title: "Stakeholder comms & steering", field: "Risk & governance",
+  short: "Read the stakeholders, shape the message, and run the steering pack.",
+  thesis: "Delivery is half the job; the other half is the room. Here's how stakeholder comms run today, then rebuilt AI-native.",
+  steps: [
+    { label: "Map stakeholders", today: "List who matters and their stance, by hand.", own: "the map", ai: "drafts a stakeholder map from the org and history", you: "own the read on who really holds sway." },
+    { label: "Read the position", today: "Judge where each one stands.", own: "the politics", ai: "summarises each stakeholder's likely position", you: "decide the real politics in play." },
+    { label: "Shape the message", today: "Draft tailored comms per audience.", own: "the framing", ai: "drafts audience-specific messaging", you: "own how the news is framed." },
+    { label: "Build the steering pack", today: "Assemble the pack from status and finance.", own: "the story", ai: "assembles the pack in the template", you: "own the story and the asks." },
+    { label: "Handle the meeting", today: "Run the room and field the hard questions.", own: "the room", ai: "preps the likely questions and answers", you: "read the room and own the calls live." },
+    { label: "Follow up", today: "Write the actions and chase the decisions.", own: "the decisions", ai: "drafts the minutes and actions", you: "own that the decisions actually land." },
+  ],
+  delta: [{ v: "Hours → minutes", l: "Pack assembly" }, { v: "Generic → tailored", l: "The comms" }, { v: "Prep ↓", l: "On production" }],
+  pull: "The pack builds itself now — the value is reading the politics and holding the room, which was always the human part.",
+};
+
 export const REBUILDS: CareerRebuild[] = [
   {
     slug: "accounting", career: "Audit & Accounting", blurb: "Assurance and tax — the core finance workflows.",
@@ -225,6 +349,20 @@ export const REBUILDS: CareerRebuild[] = [
     lanes: [
       { slug: "product", name: "Product Engineering", variants: [shipFeature, fixIncident] },
       { slug: "data", name: "Data & Analytics", variants: [dataPipeline, dataQuestion] },
+    ],
+  },
+  {
+    slug: "consulting", career: "Consulting & Strategy", blurb: "Advisory work — where judgment is the product.",
+    lanes: [
+      { slug: "delivery", name: "Client Delivery", variants: [consultDiagnostic, consultDeck] },
+      { slug: "strategy", name: "Strategy & Research", variants: [consultMarketScan, consultOpModel] },
+    ],
+  },
+  {
+    slug: "project-management", career: "Project & Program Management", blurb: "Delivery, risk and the room — running programs AI-native.",
+    lanes: [
+      { slug: "delivery", name: "Delivery", variants: [pmStatus, pmPlan] },
+      { slug: "governance", name: "Risk & Stakeholders", variants: [pmRaid, pmStakeholder] },
     ],
   },
 ];
