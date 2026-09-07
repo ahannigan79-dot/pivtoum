@@ -240,6 +240,9 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
 .focus-goal-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; }
 .focus-drop { background:transparent; border:0; color:var(--pencil); font-size:0.8rem; font-weight:600; cursor:pointer; padding:0; }
 .focus-drop:hover { color:var(--exp); }
+.focus-benefit { font-size:0.8rem; color:var(--soft); margin:8px 0 2px; }
+.focus-benefit b { color:var(--accent-deep); font-variant-numeric:tabular-nums; }
+.focus-benefit .fb-k { font-weight:800; font-size:0.58rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); margin-right:8px; }
 .focus-note { font-size:0.82rem; color:var(--soft); line-height:1.5; margin:18px 0 0; padding-top:16px; border-top:1px solid var(--rule); }
 
 /* play page: focus + commit actions sit together */

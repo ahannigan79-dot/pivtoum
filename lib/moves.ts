@@ -25,6 +25,25 @@ export function leverLabel(slug: string): string {
   return LEVER_BY_SLUG[slug]?.label ?? slug;
 }
 
+/* How much a lever moves *personal* exposure as you do the work on it, per step.
+ * Protective levers (judgment, trust, hands-on, licensing) directly deepen what
+ * AI can't take, so they buy down more; repositioning levers (shift/relocate)
+ * pay off mainly when you re-score in the new lane, so their in-place dividend is
+ * lighter. A multiplier on the base half-point per step. */
+export const LEVER_WEIGHT: Record<string, number> = {
+  renovate: 1.0,   // go AI-native on your own work
+  guard: 1.1,      // guard the moat
+  judgment: 1.2,   // deepen the judgment the machine can't give
+  trust: 1.1,      // own the relationships
+  physical: 1.2,   // hands-on / in-person work
+  licensing: 1.2,  // credentialed, gated work
+  shift: 0.8,      // reposition within the field — big gain lands on re-score
+  relocate: 0.7,   // relocate to protected ground — the move itself is the win
+};
+export function leverWeight(slug: string | null | undefined): number {
+  return (slug && LEVER_WEIGHT[slug]) || 1.0;
+}
+
 /** A shareable summary of the member's Map, for posting into the feed/pods. Built
  *  to invite a response — it names where they stand, what's driving it, what
  *  protects them, and the move they've committed to — then asks the pod to back

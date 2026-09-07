@@ -28,6 +28,11 @@ export function FocusPanel({ goals }: { goals: FocusGoal[] }) {
                 <span className="focus-prog">{g.doneCount}/{g.total}</span>
               </div>
               <div className="focus-bar"><i style={{ width: `${pct}%` }} /></div>
+              <p className="focus-benefit">
+                <span className="fb-k">↓ Exposure</span>
+                {g.earned > 0 ? <><b>−{g.earned}</b> bought down so far · </> : null}
+                up to <b>−{g.benefit}</b> when every step is done
+              </p>
               {g.complete ? (
                 <p className="focus-eva done">✓ Every step done — nice. Re-score your Map to lock in the exposure you&rsquo;ve bought down. — Eva</p>
               ) : nextStep && (

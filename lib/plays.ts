@@ -1,4 +1,4 @@
-import { LEVER_BY_SLUG } from "@/lib/moves";
+import { LEVER_BY_SLUG, leverWeight } from "@/lib/moves";
 import type { MapComputed } from "@/lib/trajectory";
 
 /* The Playbook — a curated library of recommended plays for the Evolve loop.
@@ -32,10 +32,10 @@ export type Play = {
 const PT_PER_STEP = 0.5;
 
 /** The exposure a play buys down as you complete its steps — grounded in the real
- *  focus-dividend scoring (0.5 pt/step), so the number on the card is the number
- *  the dashboard will actually move. */
+ *  focus-dividend scoring (half a point per step, scaled by the play's lever), so
+ *  the number on the card is the number the dashboard will actually move. */
 export function playBenefitPoints(p: Play): number {
-  return Math.round(p.steps.length * PT_PER_STEP * 10) / 10;
+  return Math.round(p.steps.length * PT_PER_STEP * leverWeight(p.lever) * 10) / 10;
 }
 
 /** A short, honest reading of what a play does to your exposure. "Master/guard"
