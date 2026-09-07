@@ -4,10 +4,12 @@
    primary signal, US band (East/West) a soft one, and a "healthy size" nudge so
    newcomers land in a pod with a few people already — never empty, never full.
    ============================================================================ */
-import { eq, inArray, sql } from "drizzle-orm";
+import { desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { podMembers, pods, profiles } from "@/db/schema";
+import { mapStates, podMembers, pods, profiles } from "@/db/schema";
 import { type Pod, joinMemberToPod } from "@/lib/pods";
+import { strategyFromComputed, type Strategy } from "@/lib/pod-strategy";
+import type { MapComputed } from "@/lib/trajectory";
 
 // Captains pick one of four US zones; matching collapses them into two bands.
 export const REGION_ZONES = ["Eastern", "Central", "Mountain", "Pacific"] as const;
@@ -34,13 +36,17 @@ function laneScore(memberLane: string | null, memberCareer: string | null, podLa
 
 export type PodCandidate = Pod & { memberCount: number; trialCount: number };
 
-type MemberBits = { lane: string | null; career: string | null; band: "East" | "West" | null; isTrial: boolean };
+type MemberBits = { lane: string | null; career: string | null; band: "East" | "West" | null; isTrial: boolean; strategy: Strategy | null };
 async function memberBits(userId: string): Promise<MemberBits> {
-  const rows = await db
-    .select({ lane: profiles.currentLane, career: profiles.careerSlug, region: profiles.region, sub: profiles.subStatus })
-    .from(profiles).where(eq(profiles.clerkUserId, userId)).limit(1);
+  const [rows, mapRows] = await Promise.all([
+    db.select({ lane: profiles.currentLane, career: profiles.careerSlug, region: profiles.region, sub: profiles.subStatus })
+      .from(profiles).where(eq(profiles.clerkUserId, userId)).limit(1),
+    db.select({ computed: mapStates.computed }).from(mapStates)
+      .where(eq(mapStates.memberId, userId)).orderBy(desc(mapStates.createdAt)).limit(1),
+  ]);
   const p = rows[0];
-  return { lane: p?.lane ?? null, career: p?.career ?? null, band: bandOf(p?.region), isTrial: p?.sub === "trialing" };
+  const strategy = mapRows[0] ? strategyFromComputed(mapRows[0].computed as MapComputed | null) : null;
+  return { lane: p?.lane ?? null, career: p?.career ?? null, band: bandOf(p?.region), isTrial: p?.sub === "trialing", strategy };
 }
 
 async function candidates(includeUnlistable: boolean): Promise<PodCandidate[]> {
@@ -76,7 +82,11 @@ function rank(cands: PodCandidate[], me: MemberBits): PodCandidate[] {
       const ls = laneScore(me.lane, me.career, p.lane);
       const region = me.band && bandOf(p.region) === me.band ? 1 : 0;
       const health = p.memberCount === 0 ? -1 : p.memberCount <= 5 ? 1 : 0; // prefer a few people, not empty/near-full
-      return { p, score: ls * 10 + region * 3 + health };
+      // Soft nudge toward a pod aligned to the member's winning strategy — an
+      // "all" pod is always a fit. Weighted below lane/region so it only breaks
+      // ties; experience level is deliberately never a factor (mix to learn).
+      const strat = me.strategy && (p.strategy === "all" || p.strategy === me.strategy) ? 1 : 0;
+      return { p, score: ls * 10 + region * 3 + strat * 2 + health };
     })
     .sort((a, b) => b.score - a.score)
     .map((x) => x.p);

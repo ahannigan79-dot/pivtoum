@@ -57,7 +57,9 @@ export async function setPodProfile(slug: string, formData: FormData) {
   const crest = String(formData.get("crest") ?? "").trim().slice(0, 8) || null;
   const lane = String(formData.get("lane") ?? "").trim().slice(0, 60) || null;
   const region = String(formData.get("region") ?? "").trim().slice(0, 40) || null;
-  await db.update(pods).set({ vibe, crest, lane, region }).where(eq(pods.id, pod.id));
+  const stratRaw = String(formData.get("strategy") ?? "all").trim();
+  const strategy = ["all", "grow", "defend", "pivot"].includes(stratRaw) ? stratRaw : "all";
+  await db.update(pods).set({ vibe, crest, lane, region, strategy }).where(eq(pods.id, pod.id));
   await recomputeListable(pod.id);
   revalidatePath(`/hub/pods/${slug}`);
 }

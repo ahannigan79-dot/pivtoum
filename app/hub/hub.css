@@ -983,6 +983,14 @@ a.pod-member:hover span { color:var(--ink); }
 .pod-profile-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .pod-tag { font-family:var(--sans); font-size:0.72rem; font-weight:700; color:var(--green); background:rgba(47,107,255,0.1);
   border:1px solid var(--rule2); border-radius:20px; padding:3px 10px; }
+/* win-strategy alignment chip (Grow / Defend / Pivot) */
+.pod-strat { display:inline-flex; align-items:center; gap:5px; font-family:var(--sans); font-size:0.68rem; font-weight:800;
+  letter-spacing:.02em; border-radius:20px; padding:3px 10px; border:1px solid transparent; }
+.pod-strat.s-grow { color:var(--accent-deep); background:var(--accent-wash); }
+.pod-strat.s-defend { color:#5B4A00; background:#FBF2D2; }
+.pod-strat.s-pivot { color:var(--pen); background:color-mix(in srgb,var(--pen) 9%,white); }
+.pod-card-link .pod-strat { margin-top:9px; }
+.place-card-id .pod-strat { margin-top:6px; }
 .pod-profile-edit { margin-left:auto; font-size:0.8rem; color:var(--soft); background:transparent;
   border:1px solid var(--rule2); border-radius:20px; padding:4px 11px; cursor:pointer; }
 .pod-profile-edit:hover { border-color:var(--pencil); color:var(--ink); }

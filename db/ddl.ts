@@ -265,6 +265,9 @@ export const PATCH_STATEMENTS: string[] = [
   `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "capacity" integer DEFAULT 7 NOT NULL`,
   `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "listable" boolean DEFAULT false NOT NULL`,
   `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "streak_weeks" integer DEFAULT 0 NOT NULL`,
+  // Win-strategy alignment label so members can find a pod matched to their move
+  // (Grow / Defend / Pivot), or an All-comers pod. Experience levels stay mixed.
+  `ALTER TABLE "pods" ADD COLUMN IF NOT EXISTS "strategy" text DEFAULT 'all' NOT NULL`,
   // 2-line pod-facing member intro (matching fuel + a warm first touch).
   `ALTER TABLE "profiles" ADD COLUMN IF NOT EXISTS "pod_intro" text`,
   // Member US band (East | West) for guided-placement live-session meetability.

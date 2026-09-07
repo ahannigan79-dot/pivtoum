@@ -1,10 +1,11 @@
 "use client";
 import { useState, useTransition } from "react";
 import { placeMember } from "@/app/hub/pods/actions";
+import { strategyMeta } from "@/lib/pod-strategy";
 
 type Suggested = {
   slug: string; name: string; crest: string | null; vibe: string | null;
-  lane: string | null; region: string | null; memberCount: number; capacity: number;
+  lane: string | null; region: string | null; strategy: string; memberCount: number; capacity: number;
 };
 
 export function PlaceFlow({ suggested, initialIntro, initialRegion }: {
@@ -48,6 +49,9 @@ export function PlaceFlow({ suggested, initialIntro, initialRegion }: {
                   <p className="place-card-meta">
                     {[p.lane, p.region && `${p.region} time`, `${p.memberCount}/${p.capacity}`].filter(Boolean).join(" · ")}
                   </p>
+                  {p.strategy && p.strategy !== "all" && (
+                    <span className={`pod-strat s-${p.strategy}`}>{strategyMeta(p.strategy).crest} {strategyMeta(p.strategy).label}</span>
+                  )}
                 </div>
               </div>
               {p.vibe && <p className="place-card-vibe">{p.vibe}</p>}

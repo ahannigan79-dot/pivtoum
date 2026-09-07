@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { getBrowsablePods, getMyPods } from "@/lib/pods";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 import { NewPodForm } from "@/components/hub/pods/NewPodForm";
+import { strategyMeta } from "@/lib/pod-strategy";
 
 export const metadata = { title: "Browse Pods — Pivotum" };
 
@@ -50,6 +51,9 @@ export default async function BrowsePodsPage() {
                 <Link href={`/hub/pods/${p.slug}`} className="pod-card-link">
                   <h3>{p.name}</h3>
                   {p.description && <p>{p.description}</p>}
+                  {p.strategy && p.strategy !== "all" && (
+                    <span className={`pod-strat s-${p.strategy}`}>{strategyMeta(p.strategy).crest} {strategyMeta(p.strategy).label}</span>
+                  )}
                 </Link>
                 <div className="pod-card-foot">
                   <span className="pod-count">{p.memberCount} {p.memberCount === 1 ? "member" : "members"}</span>

@@ -82,7 +82,7 @@ export default async function PodPage({
         </header>
 
         <PodProfile slug={pod.slug} vibe={pod.vibe} crest={pod.crest} lane={pod.lane}
-          region={pod.region} canEdit={canEditProfile} />
+          region={pod.region} strategy={pod.strategy} canEdit={canEditProfile} />
 
         <section className="pod-week">
           <div className="pod-week-head">

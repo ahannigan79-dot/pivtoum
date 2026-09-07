@@ -97,6 +97,7 @@ export const pods = pgTable("pods", {
   vibe: text("vibe"),                                       // captain-written "what we're about / our vibe"
   crest: text("crest"),                                     // pod crest (emoji in Phase 1; art later)
   lane: text("lane"),                                       // career lane, for guided placement matching
+  strategy: text("strategy").notNull().default("all"),      // win-strategy alignment: all | grow | defend | pivot
   region: text("region"),                                   // US timezone band, so live sessions can meet
   capacity: integer("capacity").notNull().default(7),       // size cap (locked: 7)
   listable: boolean("listable").notNull().default(false),   // shown in guided placement only once vibe + captain set

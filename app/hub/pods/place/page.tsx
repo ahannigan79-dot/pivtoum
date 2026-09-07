@@ -35,7 +35,7 @@ export default async function PlacePage() {
         <PlaceFlow
           suggested={suggested.map((p) => ({
             slug: p.slug, name: p.name, crest: p.crest, vibe: p.vibe, lane: p.lane,
-            region: p.region, memberCount: p.memberCount, capacity: p.capacity,
+            region: p.region, strategy: p.strategy, memberCount: p.memberCount, capacity: p.capacity,
           }))}
           initialIntro={profile?.podIntro ?? ""}
           initialRegion={profile?.region ?? ""}

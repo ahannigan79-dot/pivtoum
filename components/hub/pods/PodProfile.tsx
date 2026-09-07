@@ -1,12 +1,13 @@
 "use client";
 import { useState, useTransition } from "react";
 import { setPodProfile } from "@/app/hub/pods/actions";
+import { STRATEGIES, strategyMeta } from "@/lib/pod-strategy";
 
 // US timezone bands — pods run live sessions, so members are matched for meetability.
 const REGIONS = ["Eastern", "Central", "Mountain", "Pacific"];
 
-export function PodProfile({ slug, vibe, crest, lane, region, canEdit }: {
-  slug: string; vibe: string | null; crest: string | null; lane: string | null; region: string | null; canEdit: boolean;
+export function PodProfile({ slug, vibe, crest, lane, region, strategy = "all", canEdit }: {
+  slug: string; vibe: string | null; crest: string | null; lane: string | null; region: string | null; strategy?: string; canEdit: boolean;
 }) {
   const [editing, setEditing] = useState(false);
   const [pending, start] = useTransition();
@@ -31,6 +32,11 @@ export function PodProfile({ slug, vibe, crest, lane, region, canEdit }: {
             </select>
           </label>
         </div>
+        <label>Win strategy <span className="lbl-hint">— the move this pod is aligned to; experience levels stay mixed</span>
+          <select name="strategy" defaultValue={strategy}>
+            {STRATEGIES.map((s) => <option key={s.key} value={s.key}>{s.label} — {s.blurb}</option>)}
+          </select>
+        </label>
         <div className="pod-profile-foot">
           <button type="button" className="ghost" onClick={() => setEditing(false)}>Cancel</button>
           <button type="submit" disabled={pending}>{pending ? "Saving…" : "Save pod profile"}</button>
@@ -53,6 +59,7 @@ export function PodProfile({ slug, vibe, crest, lane, region, canEdit }: {
       <p className="pod-profile-vibe">{vibe}</p>
       <div className="pod-profile-meta">
         {lane && <span className="pod-tag">{lane}</span>}
+        {strategy && strategy !== "all" && <span className={`pod-tag pod-strat s-${strategy}`}>{strategyMeta(strategy).crest} {strategyMeta(strategy).label}</span>}
         {region && <span className="pod-tag">{region} time</span>}
         {canEdit && <button className="pod-profile-edit" onClick={() => setEditing(true)}>Edit</button>}
       </div>
