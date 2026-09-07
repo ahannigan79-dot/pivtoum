@@ -2110,6 +2110,12 @@ a.pod-member:hover span { color:var(--ink); }
 
 /* ===== Article scout (founder) ===== */
 .scout-intro { color:var(--soft); font-size:0.96rem; line-height:1.55; max-width:70ch; margin:0 0 16px; }
+.scout-intro b { color:var(--ink); font-weight:700; }
+.scout-monthly { border:1px solid color-mix(in srgb, var(--accent) 22%, var(--rule2)); border-radius:16px;
+  background:var(--accent-wash); padding:16px 18px 6px; margin:18px 0 26px; }
+.scout-monthly > .hub-sectlabel:first-child { margin-top:0; }
+.scout-monthly-note { color:var(--soft); font-size:0.9rem; line-height:1.55; max-width:72ch; margin:0 0 14px; }
+.hub-sectlabel.sub { font-size:0.66rem; opacity:0.85; margin-top:14px; }
 .scout-run { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 8px; }
 .scout-run-btn { border:0; cursor:pointer; border-radius:12px; padding:12px 18px; background:var(--green);
   color:var(--on-fill); font-weight:800; font-size:0.92rem; transition:filter .15s ease, opacity .15s ease; }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
 import { aiConfigured } from "@/lib/ai";
-import { getLatestScoutReport, type ScoutPick, type ScoutReport } from "@/lib/article-scout";
+import { getLatestScoutReport, monthlyRollup, type ScoutPick, type ScoutReport, type MonthlyRollup } from "@/lib/article-scout";
 import { RunScout } from "@/components/hub/scout/RunScout";
 
 export const metadata = { title: "Article scout — Winning in the Age of AI" };
@@ -48,7 +48,10 @@ export default async function ScoutPage() {
   const profile = await getOrCreateProfile();
   if (!isFounder(profile)) notFound();
 
-  const report: ScoutReport | null = await getLatestScoutReport();
+  const [report, rollup]: [ScoutReport | null, MonthlyRollup | null] = await Promise.all([
+    getLatestScoutReport(),
+    monthlyRollup(),
+  ]);
   const aiOn = aiConfigured();
 
   return (
@@ -61,18 +64,37 @@ export default async function ScoutPage() {
       <div className="hub-body">
         <p className="scout-intro">
           A weekly hunt for the most relevant real articles across our Learn areas and career lanes — tagged,
-          summarised, and linked to our thesis, with one counterpoint to keep us honest. Runs every Saturday;
-          use it to write Sunday&apos;s newsletter.
+          summarised, and linked to our thesis, with a counterpoint to keep us honest. Runs every Saturday. It now
+          powers two things: members get the field-tuned picks automatically as <b>“This week in AI”</b> on their
+          dashboard, and the <b>Monthly newsletter builder</b> below rolls the month&apos;s scans into one sit-down
+          so the newsletter is a monthly write, not a weekly one.
         </p>
 
         {aiOn ? <RunScout hasReport={!!report} /> : (
           <p className="feed-empty">Set <code>ANTHROPIC_API_KEY</code> to enable the scout.</p>
         )}
 
+        {rollup && (
+          <section className="scout-monthly">
+            <div className="hub-sectlabel">📰 Monthly newsletter builder</div>
+            <p className="scout-monthly-note">
+              The strongest {rollup.picks.length} pieces from the last {rollup.weeks} weekly scan{rollup.weeks === 1 ? "" : "s"},
+              deduped and ordered by impact — the shortlist to write this month&apos;s newsletter from. Newest week: {rollup.latestWeekOf}.
+            </p>
+            {byLane(rollup.picks).map(({ lane, picks }) => (
+              <div key={lane}>
+                <div className="hub-sectlabel sub">{lane}</div>
+                <div className="scout-grid">{picks.map((p) => <PickCard key={p.id} p={p} />)}</div>
+              </div>
+            ))}
+          </section>
+        )}
+
         {!report ? (
           aiOn && <p className="feed-empty" style={{ marginTop: 18 }}>No report yet. Run the scout to build your first briefing.</p>
         ) : (
           <>
+            <div className="hub-sectlabel">This week&apos;s scan · powers the member dashboard</div>
             <div className="scout-head">
               <span className="scout-week">{report.weekOf}</span>
               {report.generatedAt && (

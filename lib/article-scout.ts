@@ -1,5 +1,5 @@
 import "server-only";
-import { desc } from "drizzle-orm";
+import { desc, gte } from "drizzle-orm";
 import { db } from "@/db";
 import { scoutReports } from "@/db/schema";
 import { completeWithSearch, parseJSON, aiConfigured } from "@/lib/ai";
@@ -9,8 +9,10 @@ import { VOICE } from "@/lib/voice";
  * The weekly article scout — a Claude agent (with web search) that hunts the
  * week's most relevant real articles across the community's key Learn areas and
  * career lanes, tags and summarises them against our thesis, and finds one
- * counterpoint (hype / fearmongering / disagrees) worth engaging. It produces a
- * founder-facing report to seed the Sunday newsletter — it never publishes.
+ * counterpoint (hype / fearmongering / disagrees) worth engaging. It runs weekly
+ * and powers two things: the members' automatic "This week in AI" dashboard read
+ * (lib/signals), and the founder's MONTHLY newsletter, written from the roll-up
+ * below. It curates; it never publishes.
  */
 
 /** The career lanes (mirror the community's pods). Broad pieces group as "General". */
@@ -188,6 +190,41 @@ export async function getLatestScoutReport(): Promise<ScoutReport | null> {
   const row = rows[0];
   if (!row) return null;
   return { ...(row.report as ScoutReport), generatedAt: row.createdAt.toISOString() };
+}
+
+/** Reports from roughly the last month — the raw material for the monthly newsletter. */
+export async function getRecentScoutReports(sinceDays = 35): Promise<ScoutReport[]> {
+  const cutoff = new Date(Date.now() - sinceDays * 24 * 60 * 60 * 1000);
+  const rows = await db.select().from(scoutReports)
+    .where(gte(scoutReports.createdAt, cutoff)).orderBy(desc(scoutReports.createdAt));
+  return rows.map((r) => ({ ...(r.report as ScoutReport), generatedAt: r.createdAt.toISOString() }));
+}
+
+export type MonthlyRollup = {
+  weeks: number;          // how many weekly scans it consolidates
+  latestWeekOf: string;   // the newest week's label
+  picks: ScoutPick[];     // the month's strongest picks, deduped, impact-ordered
+  counterpoints: Counterpoint[];
+};
+
+/** Consolidate the month's weekly scans into one briefing so the monthly
+ *  newsletter is a single sit-down: dedupe by URL, keep the strongest, cap it. */
+export async function monthlyRollup(sinceDays = 35, cap = 12): Promise<MonthlyRollup | null> {
+  const reports = await getRecentScoutReports(sinceDays);
+  if (!reports.length) return null;
+  const seen = new Set<string>();
+  const picks: ScoutPick[] = [];
+  for (const r of reports) {
+    for (const p of r.picks) {
+      const key = p.url.trim().toLowerCase();
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      picks.push(p);
+    }
+  }
+  picks.sort((a, b) => (b.impact ?? 0) - (a.impact ?? 0));
+  const counterpoints = reports.map((r) => r.counterpoint).filter((c): c is Counterpoint => !!c).slice(0, 3);
+  return { weeks: reports.length, latestWeekOf: reports[0].weekOf, picks: picks.slice(0, cap), counterpoints };
 }
 
 /** Find a pick (by id) in the latest report — used to hand a scouted piece to the brief. */
