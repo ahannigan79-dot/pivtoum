@@ -86,11 +86,11 @@ export async function LookingGlass() {
       <div className="glass-cta">
         {offer.configured ? (
           <>
-            {offer.priceLabel && <p className="glass-price">{offer.priceLabel}{trial && <span> · {offer.trialDays}-day free trial</span>}</p>}
+            {offer.priceLabel && <p className="glass-price">{offer.priceLabel}{trial && <span> · {offer.trialDays}-day trial to start</span>}</p>}
             <form action={startMembership}>
-              <button type="submit" className="glass-join">{trial ? `Start your ${offer.trialDays}-day free trial →` : "Join the community →"}</button>
+              <button type="submit" className="glass-join">Take your seat →</button>
             </form>
-            <p className="glass-fine">Secure checkout by Stripe. Cancel anytime.</p>
+            <p className="glass-fine">Secure checkout by Stripe.{trial ? ` A ${offer.trialDays}-day trial to start,` : ""} cancel anytime — your Map and pod come with you.</p>
           </>
         ) : (
           <p className="glass-fine">Membership is opening soon — check back shortly.</p>
