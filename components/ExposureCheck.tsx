@@ -176,10 +176,10 @@ export function ExposureCheck({ checks, preselect }: {
                     so this number moves toward the safe end, and you come out ahead.
                   </p>
                   <div className="chk-opp-cta">
-                    <a className="scr-btn" href={SITE.join}>Start your free trial →</a>
+                    <a className="scr-btn" href={SITE.join}>Take your seat →</a>
                     <a className="scr-btn ghost" href="/community">See everything inside →</a>
                   </div>
-                  <p className="chk-opp-fine">Your score, the 28-career index, and the community guide are on their way to your inbox.</p>
+                  <p className="chk-opp-fine">A short trial to start, cancel anytime — your Map and pod come with you. Your score, the 28-career index, and the community guide are on their way to your inbox.</p>
                 </div>
               </div>
             )}

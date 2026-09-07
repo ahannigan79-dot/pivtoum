@@ -11,7 +11,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Winning in the Age of AI — the community for getting ahead",
   description:
-    "Winning in the Age of AI is the community where you turn the biggest shift in work into your opening — map where you stand, do the reps to get ahead, and win with people in your exact lane. Start free — 28 careers scored, plus a free trial inside.",
+    "Winning in the Age of AI is the community where you turn the biggest shift in work into your opening — map where you stand, do the reps to get ahead, and win with people in your exact lane. 28 careers scored free; membership opens the whole loop, your pod, and the room.",
   alternates: { canonical: "/" },
 };
 
@@ -56,7 +56,7 @@ export default function Home() {
               </p>
               <div className="lp-cta-row lp-hero-cta">
                 <Link className="lp-btn" href={SITE.join}>
-                  Start your free trial &rarr;
+                  Take your seat &rarr;
                 </Link>
                 <Link className="lp-btn ghost" href="/map">
                   Get your free AI Exposure Report
@@ -142,14 +142,14 @@ export default function Home() {
           <p>
             The people who come through this in front won&rsquo;t be the ones who did it alone — they&rsquo;ll
             be the ones who learned and grew together. Membership gives you the whole loop, your pod,
-            and the room. Try it free for seven days.
+            and the room. Start with a short trial, cancel anytime — your Map and pod come with you.
           </p>
           <ul className="lp-membership-list">
             {INCLUDED.map((it) => <li key={it}>{it}</li>)}
           </ul>
           <div className="lp-cta-row">
             <Link className="lp-btn" href={SITE.join}>
-              Start your free trial &rarr;
+              Take your seat &rarr;
             </Link>
             <Link className="lp-btn ghost" href="/community">
               See everything inside &rarr;

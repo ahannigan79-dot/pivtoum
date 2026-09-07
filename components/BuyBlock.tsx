@@ -16,10 +16,10 @@ export function BuyBlock({ source = "index", title }: { source?: string; title?:
           every career that matters to you, plus the community that keeps you moving.
         </p>
         <div className="buy-cta-row">
-          <Link className="buy-cta" href={SITE.join}>Start your free trial &rarr;</Link>
+          <Link className="buy-cta" href={SITE.join}>Take your seat &rarr;</Link>
           <Link className="buy-cta ghost" href="/community">See everything inside &rarr;</Link>
         </div>
-        <p className="fine">Seven days free · cancel anytime · your Map and progress come with you.</p>
+        <p className="fine">Short trial to start · cancel anytime · your Map and progress come with you.</p>
       </div>
     </div>
   );
