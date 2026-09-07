@@ -68,7 +68,7 @@ export default function ComputerSciencePage() {
         <OpportunityFlip career={career} voice="career" />
         <EmailSignup
           label="Want the test behind these scores?"
-          sub="Grab the free Starter Kit — the three-question test to size up any career you're weighing — plus each new article and edition. Free, no spam."
+          sub="Grab the free 28-career index — every career scored the same way — plus each new article and edition. Free, no spam."
         />
         <SiteFooter />
       </div>

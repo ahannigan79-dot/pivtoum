@@ -85,7 +85,7 @@ export function MapCapture({
     <form className="pkg pkg-lean" onSubmit={submit}>
       <p className="pkg-lean-lede">
         Your score shows here instantly — and lands in your inbox with the <b>28-career index</b> and the{" "}
-        <b>community guide</b> (10% off your first purchase inside).
+        <b>community guide</b> (with a founding-member offer to join).
       </p>
       <div className="pkg-final">
         <input

@@ -58,7 +58,9 @@ export async function createSubscriptionCheckout(userId: string, email: string |
       client_reference_id: userId,
       ...(cust ? { customer: cust } : email ? { customer_email: email } : {}),
       ...(trialDays ? { subscription_data: { trial_period_days: trialDays } } : {}),
-      success_url: `${SITE.url}/hub/membership?welcome=1`,
+      // Land on the public /joined page (outside /hub, so the ad pixels can
+      // fire the member-join conversion) — it then sends the member into the hub.
+      success_url: `${SITE.url}/joined?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE.url}/hub/membership`,
     });
     return session.url;

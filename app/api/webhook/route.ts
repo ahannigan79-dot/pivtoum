@@ -4,7 +4,8 @@ import { Resend } from "resend";
 import { getStripe } from "@/lib/stripe";
 import { upsertOrder } from "@/lib/db";
 import { syncSubscription, linkCustomer } from "@/lib/billing";
-import { EDITION } from "@/lib/site";
+import { sendMetaSubscribe } from "@/lib/capi";
+import { EDITION, SITE } from "@/lib/site";
 
 /** Stripe → order. Verifies the signature against the raw body, then records the order. */
 export async function POST(req: Request) {
@@ -39,6 +40,20 @@ export async function POST(req: Request) {
       const customerId = typeof session.customer === "string" ? session.customer : session.customer?.id;
       if (memberId && customerId) await linkCustomer(memberId, customerId);
       try { await syncSubscription(await getStripe().subscriptions.retrieve(subId), memberId); } catch { /* ignore */ }
+
+      // Fire the member-join conversion server-side (the browser pixel is
+      // blocked for much of our traffic). Shares its eventId with the /joined
+      // page's browser pixel so Meta de-duplicates. Best-effort.
+      const joinEmail = session.customer_details?.email ?? session.customer_email ?? "";
+      if (joinEmail) {
+        await sendMetaSubscribe({
+          email: joinEmail,
+          eventId: session.id, // /joined fires the same id → de-dupe
+          eventSourceUrl: `${SITE.url}/joined`,
+          value: session.amount_total ? session.amount_total / 100 : undefined,
+          currency: (session.currency ?? "usd").toUpperCase(),
+        }).catch(() => { /* telemetry must never break the webhook */ });
+      }
       return NextResponse.json({ received: true });
     }
     const email = session.customer_details?.email ?? session.customer_email ?? "";
