@@ -4,6 +4,7 @@
 
 import { ACCOUNTING_SCENARIOS } from "@/lib/gym-accounting";
 import { MARKETING_SCENARIOS } from "@/lib/gym-marketing";
+import { ADVISORY_SCENARIOS } from "@/lib/gym-advisory";
 
 export type Severity = "minor" | "major" | "critical";
 
@@ -103,6 +104,7 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
   // Full 12-rep lanes live in their own modules. See lib/gym-accounting.ts, lib/gym-marketing.ts.
   ...ACCOUNTING_SCENARIOS,
   ...MARKETING_SCENARIOS,
+  ...ADVISORY_SCENARIOS,
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",
