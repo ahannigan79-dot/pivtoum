@@ -783,16 +783,19 @@
     });
   }
   function incAim(){
-    advisor("<span class=\"q\">Last one — what do you actually want out of this?</span>", null, function(){
+    advisor("<span class=\"q\">Last one — what would winning look like for you right now?</span>", null, function(){
+      advisor("It&rsquo;s not binding — you&rsquo;ll see every option either way; this just tells me where to start. And &ldquo;still figuring it out&rdquo; is a perfectly good answer.", null, function(){
       control(chips([
-        {v:'defend',label:'Defend & future-proof this role'},
         {v:'promote',label:'Get promoted / level up'},
+        {v:'defend',label:'Defend & future-proof this role'},
         {v:'change',label:'Change field or career'},
-        {v:'unsure',label:'Not sure yet — show me my options'}
+        {v:'unsure',label:'Still figuring it out — show me the options'}
       ], function(v,l){ A.aim=v; me(l); clearCtrl(); STEP=9; setProg(9);
         if(v==='change'){ advisor("A move — nice. Let me show you the lanes you could step into.", null, incTargetPick); }
-        else { advisor("Got it. You’ll see all your options either way — this just tells me where to start.", null, incRecap); }
+        else if(v==='unsure'){ advisor("Totally fair — plenty of people start right here. I&rsquo;ll give you the balanced read: where you&rsquo;re most exposed, where you&rsquo;re protected, and the strongest first moves in both directions. You can pick a direction once you&rsquo;ve seen it.", null, incRecap); }
+        else { advisor("Got it. You&rsquo;ll see all your options either way — this just tells me where to start.", null, incRecap); }
       }));
+      });
     });
   }
   function incTargetPick(){
@@ -812,7 +815,7 @@
   }
   function incRecap(){
     var t=A.tasks;
-    var aimT={defend:'Defend & future-proof this role',promote:'Get promoted / level up',change:'Change field or career',unsure:'Not sure — show options'}[A.aim];
+    var aimT={defend:'Defend & future-proof this role',promote:'Get promoted / level up',change:'Change field or career',unsure:'Still figuring it out — showing all options'}[A.aim];
     var licT={no:'Open profession',some:'Some regulated duties',yes:'Licensed'}[A.licence];
     var laneV = (A.changing && A.changeFrom)
       ? (esc(A.changeFrom) + ' &rarr; ' + esc(A.lane) + ' <em>(target)</em>')
@@ -1267,7 +1270,7 @@
     var subj = M.incumbent ? (M.A.changing ? "The lane you’re eyeing —" : "Your work is") : (M.A.changing?"":"The lane you’re aiming at —");
     var verbRead = (M.incumbent && !M.A.changing) ? ("Your work is <b>"+expPhrase+"</b> — "+M.lane+" scores <b>"+M.laneScore+"/10</b>.") : (M.lane+" is <b>"+expPhrase+"</b> — it scores <b>"+M.laneScore+"/10</b>"+(M.incumbent?", more protected than where you are now.":", where you’re heading."));
     document.getElementById('mRead').innerHTML=verbRead+" The drivers are <b>"+M.driver.name+"</b> and an eroding ladder, and "+prot+". Your move is to go <b>AI-native</b> on the work itself and climb toward what it can't do. This is not a verdict — it's a map to your move.";
-    document.getElementById('mAim').innerHTML = M.incumbent ? ({defend:'<b>Defend &amp; future-proof</b> my role.',promote:'<b>Get promoted</b> / level up.',change:'<b>Change field</b> or career.',unsure:'Not sure yet — show me my options.'}[M.A.aim]||'—') : ({firstrole:'<b>Land a strong first role.</b>',native:'<b>Start AI-native</b> from day one.',protected:'Find a <b>protected / human</b> path.',explore:'Still exploring.'}[M.A.aim]||'—');
+    document.getElementById('mAim').innerHTML = M.incumbent ? ({defend:'<b>Defend &amp; future-proof</b> my role.',promote:'<b>Get promoted</b> / level up.',change:'<b>Change field</b> or career.',unsure:'<b>Still figuring it out</b> — showing all options.'}[M.A.aim]||'—') : ({firstrole:'<b>Land a strong first role.</b>',native:'<b>Start AI-native</b> from day one.',protected:'Find a <b>protected / human</b> path.',explore:'Still exploring.'}[M.A.aim]||'—');
     document.getElementById('mMove').innerHTML="Hold <b>both edges at once</b> — become the AI-native operator of your work <i>and</i> deepen the "+M.leverNoun+" AI can't take. For almost everyone, winning is <b>both</b>, not either/or.";
   }
   var planDone={};
