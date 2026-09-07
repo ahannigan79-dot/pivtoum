@@ -52,8 +52,24 @@ export type Scenario = {
   lesson: string;            // closing line
   kind?: ScenarioKind;       // artifact shape (default: document)
   aiDid?: string;            // what the AI was responsible for — always visible while judging
-  parSecs?: number;          // the benchmark review time (a good reviewer's pace); default derived from item count
+  role?: string;            // the member's seat — "You're the auditor signing this off"
+  parSecs?: number;          // the benchmark review time; default is complexity-derived
 };
+
+/** The AI failure pattern a flagged item belongs to — explicit when tagged, else
+ *  inferred from the explanation so every miss still teaches a named pattern. */
+export function patternFor(it: GymItem): PatternKey | null {
+  if (it.verdict !== "flag") return null;
+  if (it.pattern) return it.pattern;
+  const s = `${it.why} ${it.area}`.toLowerCase();
+  if (/injection|security|breach|privilege|exploit|leak|unauthenti|\bauth\b/.test(s)) return "security";
+  if (/missing|omit|absent|left out|never (surfaced|disclosed|logged)|no (audit|disclosure|record)|not disclosed/.test(s)) return "omission";
+  if (/guarantee|commit|promise|beyond|authoriz|exceeds|over-?commit|binding/.test(s)) return "overreach";
+  if (/without (corroborat|checking|evidence)|accepts|at face value|no further work|unsubstantiat|didn't verify/.test(s)) return "unverified";
+  if (/last year|prior year|old rate|superseded|stale|out of date|previous edition/.test(s)) return "stale";
+  if (/arithmetic|off by|off-by|doesn't add|adds up|foots|wrong (number|rate|figure|amount)|miscalc|percentage|backwards|sign/.test(s)) return "miscalc";
+  return "fabrication";
+}
 
 export const GYM_SCENARIOS: Record<string, Scenario> = {
   // Full 12-rep lanes live in their own modules. See lib/gym-accounting.ts, lib/gym-marketing.ts.
@@ -236,10 +252,18 @@ export function scoreLine(missedCritical: number, missed: number, over: number):
 export const MISS_COST: Record<Severity, number> = { critical: 40000, major: 8000, minor: 1500 };
 export const OVERFLAG_COST = 900;      // rework + "doesn't trust good work" per over-flag
 export const OVERTIME_PER_MIN = 600;   // the value of review time past the benchmark
-export const PACE_SECS_PER_ITEM = 12;  // default benchmark pace when a scenario sets no parSecs
-
+/** The benchmark review time — complexity-aware, not just item count. A judgment
+ *  call takes longer than a fact-check, and a long, dense segment longer than a
+ *  one-liner. So a harder rep earns a longer clock before the cost starts. */
 export function scenarioPar(s: Scenario): number {
-  return s.parSecs ?? s.items.length * PACE_SECS_PER_ITEM;
+  if (s.parSecs) return s.parSecs;
+  const secs = s.items.reduce((t, it) => {
+    let sec = 9;                                               // base: read the segment + decide
+    if (it.mode === "judgment") sec += 7;                      // no formula — weigh it
+    sec += Math.min(12, Math.floor((it.output?.length ?? 0) / 55)); // longer/denser content, more time
+    return t + sec;
+  }, 0);
+  return Math.max(45, secs);
 }
 
 export type ReviewCost = { missed: number; over: number; time: number; total: number; overSecs: number };

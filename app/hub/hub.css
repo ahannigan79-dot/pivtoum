@@ -1565,6 +1565,16 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-pattern { margin: 8px 0 0; font-size: 0.86rem; line-height: 1.55; color: var(--ink2); background: var(--panel2);
   border-left: 3px solid var(--pen); border-radius: 0 9px 9px 0; padding: 9px 13px; }
 .gym-pattern-k { display: block; font-weight: 800; font-size: 0.6rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pen); margin-bottom: 3px; }
+/* reveal teaching block — foreground "what AI got wrong" on every flag */
+.gym-teach { margin: 10px 0 0; padding: 13px 15px; border-radius: 12px; background: color-mix(in srgb, var(--pen) 5%, var(--panel2)); border: 1px solid color-mix(in srgb, var(--pen) 18%, transparent); }
+.gym-teach-h { font-weight: 800; font-size: 0.72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--pen); margin: 0 0 6px; }
+.gym-teach-pat { color: var(--pen); }
+.gym-teach .gym-why { margin: 0; }
+.gym-pattern-note { margin: 9px 0 0; padding-top: 9px; border-top: 1px dashed color-mix(in srgb, var(--pen) 25%, transparent); font-size: 0.84rem; line-height: 1.55; color: var(--soft); }
+.gym-pattern-note b { color: var(--ink2); }
+.gym-ok-h { color: var(--green); }
+.gym-ctx-role { background: var(--accent-wash); border-color: transparent; }
+.gym-ctx-role .gym-ctx-k { color: var(--accent-deep); }
 .gym-seg-out { font-size: 0.9rem; line-height: 1.55; color: var(--ink2); word-break: break-word; }
 .gym-artifact.mono .gym-seg-out { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); }
 .gym-seg-judge { display: flex; flex-direction: column; gap: 6px; flex: none; }

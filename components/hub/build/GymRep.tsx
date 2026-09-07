@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, type Scenario, type ScenarioKind } from "@/lib/gym";
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, type Scenario, type ScenarioKind } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
@@ -35,6 +35,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const mono = MONO.has(kind);
   const aiDid = scenario.aiDid
     ?? "AI generated this deliverable end-to-end — it looks finished and confident. You own the sign-off.";
+  const role = scenario.role ?? "You're the human in the loop — the one whose name goes on it. Nothing ships without your call.";
 
   useEffect(() => {
     if (phase !== "judging") return;
@@ -78,8 +79,12 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   // The pinned "what you're checking against" panel — inputs + the AI's remit.
   const contextPanel = (
     <aside className="gym-context">
+      <div className="gym-ctx-block gym-ctx-role">
+        <p className="gym-ctx-k">Your role</p>
+        <p className="gym-ctx-ai">{role}</p>
+      </div>
       <div className="gym-ctx-block">
-        <p className="gym-ctx-k">The inputs</p>
+        <p className="gym-ctx-k">The inputs · what the work must match</p>
         <div className="gym-ctx-brief">
           {scenario.brief.map((b, i) => (
             <div key={i} className="gym-ctx-bf"><span className="l">{b.l}</span><span className="v">{b.v}</span></div>
@@ -200,13 +205,19 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                   </span>
                 </div>
                 <div className={"gym-out sm" + (mono ? " mono" : "")}>{r.it.output}</div>
-                <p className="gym-why">{r.it.why}</p>
-                {r.it.verdict === "flag" && r.it.pattern && (
-                  <p className="gym-pattern">
-                    <span className="gym-pattern-k">AI failure pattern · {FAILURE_PATTERNS[r.it.pattern].label}</span>
-                    {FAILURE_PATTERNS[r.it.pattern].note}
-                  </p>
-                )}
+                {(() => {
+                  const pat = patternFor(r.it);
+                  if (r.it.verdict === "flag") {
+                    return (
+                      <div className="gym-teach">
+                        <p className="gym-teach-h">⚑ What AI got wrong{pat ? <> · <span className="gym-teach-pat">{FAILURE_PATTERNS[pat].label}</span></> : null}</p>
+                        <p className="gym-why">{r.it.why}</p>
+                        {pat && <p className="gym-pattern-note"><b>Why this is a common AI failure:</b> {FAILURE_PATTERNS[pat].note}</p>}
+                      </div>
+                    );
+                  }
+                  return <p className="gym-why"><b className="gym-ok-h">✓ Rightly left alone.</b> {r.it.why}</p>;
+                })()}
                 <p className="gym-cost"><b>Cost of the wrong call:</b> {r.it.cost}</p>
                 <p className="gym-trains">Trains: {r.it.trains}</p>
               </div>
