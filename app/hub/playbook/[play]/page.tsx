@@ -67,7 +67,7 @@ export default async function PlayPage({ params }: { params: Promise<{ play: str
 
         {example && (
           <div className="play-block play-example">
-            <p className="play-block-k">In {example.field.toLowerCase()}</p>
+            <p className="play-block-k">In practice · {example.field}</p>
             <p>{example.story}</p>
           </div>
         )}
