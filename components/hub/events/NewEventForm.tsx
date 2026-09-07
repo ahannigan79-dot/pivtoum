@@ -25,6 +25,9 @@ export function NewEventForm() {
         <input name="durationMins" type="number" defaultValue={60} min={15} step={15} title="Minutes" />
       </div>
       <input name="joinUrl" placeholder="Google Meet link — optional" maxLength={500} />
+      <p className="newevent-hint">
+        Paste a Google Meet or Zoom link — members see a “Join” button. Meet: meet.google.com → New meeting → “Create a meeting for later”, then copy the link.
+      </p>
       <input name="recordingUrl" placeholder="Recording link (Google Drive) — add after it runs" maxLength={500} />
       <textarea name="description" rows={2} placeholder="Description — optional" maxLength={2000} />
       <div className="newevent-foot">

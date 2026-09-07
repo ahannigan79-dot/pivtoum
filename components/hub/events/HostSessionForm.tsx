@@ -35,6 +35,9 @@ export function HostSessionForm({ pods }: { pods: { id: string; name: string }[]
         </select>
       </div>
       <input name="joinUrl" placeholder="Google Meet link — optional" maxLength={500} />
+      <p className="newevent-hint">
+        Paste a Google Meet or Zoom link — members see a “Join” button. Meet: meet.google.com → New meeting → “Create a meeting for later”, then copy the link.
+      </p>
       <textarea name="description" rows={2} placeholder="What's the session about? — optional" maxLength={2000} />
       <div className="newevent-foot">
         <button type="button" className="ghost" onClick={() => setOpen(false)}>Cancel</button>

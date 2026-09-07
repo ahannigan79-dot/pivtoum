@@ -203,6 +203,7 @@ a.card:hover { border-color:var(--rule2); background:var(--panel2); }
   display:flex; flex-direction:column; gap:9px; }
 .newevent input, .newevent select, .newevent textarea { background:var(--panel2); border:1px solid var(--rule2);
   border-radius:9px; padding:9px 11px; color:var(--ink); font-family:var(--sans); font-size:0.92rem; outline:none; width:100%; }
+.newevent-hint { margin:-4px 0 2px; font-family:var(--sans); font-size:0.72rem; line-height:1.45; color:var(--amber); }
 .newevent-row { display:flex; gap:9px; flex-wrap:wrap; } .newevent-row > * { flex:1; min-width:120px; }
 .newevent-foot { display:flex; justify-content:flex-end; gap:9px; }
 .newevent-foot button { font-family:var(--sans); font-weight:700; font-size:0.86rem; color:var(--on-fill); background:var(--green);
