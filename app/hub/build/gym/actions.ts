@@ -2,15 +2,20 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { pickOrCreateRep, memberLane } from "@/lib/gym-generate";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
 
 /**
- * Generate a fresh, Claude-written Judgment Gym rep and open it. Seeded by the
- * member's own Map lane when the form doesn't name one. Best-effort: on any
- * failure we send them back to the Gym with a flag rather than erroring out.
+ * Generate a fresh, Claude-written Judgment Gym rep and open it. On-demand
+ * generation is FOUNDER-ONLY to keep AI costs controlled — there is no member
+ * UI for it; members work the authored catalogue and the monthly rotating live
+ * set. This gate is the backstop against a direct call. Best-effort: on any
+ * failure we send back to the Gym with a flag rather than erroring out.
  */
 export async function generateGymRep(formData: FormData): Promise<void> {
   const { userId } = await auth();
   if (!userId) redirect("/hub/build/gym");
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile)) redirect("/hub/build/gym");
 
   let lane = String(formData.get("lane") ?? "").trim();
   let career = String(formData.get("career") ?? "").trim();

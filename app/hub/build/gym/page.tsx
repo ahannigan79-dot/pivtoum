@@ -2,20 +2,15 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { gymByLane, KIND_CHROME } from "@/lib/gym";
 import { getBuildReps } from "@/lib/build";
-import { aiConfigured } from "@/lib/ai";
-import { memberLane } from "@/lib/gym-generate";
 import { monthProgress } from "@/lib/gym-gate";
-import { GenerateRep } from "@/components/hub/build/GenerateRep";
 
 export const metadata = { title: "Judgment Gym — Pivotum" };
 
-export default async function GymLanding({ searchParams }: { searchParams: Promise<{ gen?: string }> }) {
+export default async function GymLanding() {
   const { userId } = await auth();
-  const [done, seed, gate, { gen }] = await Promise.all([
+  const [done, gate] = await Promise.all([
     getBuildReps(userId),
-    aiConfigured() ? memberLane(userId) : Promise.resolve(null),
     monthProgress(userId),
-    searchParams,
   ]);
   const lanes = gymByLane();
   const repsPct = Math.min(100, Math.round((gate.passed / gate.repsNeeded) * 100));
@@ -51,9 +46,6 @@ export default async function GymLanding({ searchParams }: { searchParams: Promi
           </div>
         </div>
 
-        {aiConfigured() && (
-          <GenerateRep lane={seed?.lane ?? null} career={seed?.career ?? null} notice={gen ?? null} />
-        )}
 
         {lanes.map(({ lane, reps }) => {
           const doneCount = reps.filter((r) => done.has(`gym:${r.slug}`)).length;
