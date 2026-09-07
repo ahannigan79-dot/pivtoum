@@ -1497,6 +1497,11 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-gen-input::placeholder { color:var(--pencil); }
 .gym-gen-form .gym-gen-btn { width:100%; }
 
+.gym-focus { border: 1px solid color-mix(in srgb, var(--accent) 16%, transparent); border-radius: 14px;
+  background: var(--accent-wash); padding: 13px 16px; margin: 0 0 18px; }
+.gym-focus .ck { margin: 0 0 5px; color: var(--accent-deep); }
+.gym-focus p:last-child { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--soft); }
+.gym-focus b { color: var(--ink); }
 .gym-lane { margin-bottom: 8px; }
 .gym-lane-head { display: flex; align-items: baseline; gap: 12px; }
 .gym-lane-head .hub-sectlabel { margin: 20px 0 12px; }

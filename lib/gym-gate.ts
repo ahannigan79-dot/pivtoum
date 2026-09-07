@@ -12,15 +12,13 @@ import { gymAttempts, memberWeeks } from "@/db/schema";
  *
  * The dividend is the count of qualifying months, capped at DIVIDEND_CAP — so it
  * accrues at most one point per month and never removes more than 12 in total,
- * matching lib/score.ts. Freshness comes from a rotating window: LIVE_PER_MONTH
- * reps are "live" each month, rotating deterministically through the career's
- * full pool (see liveRepSlugs).
+ * matching lib/score.ts. Reps are a field-based library (organised by career);
+ * the monthly cadence provides the lens on them (see the Gym landing), not a swap.
  */
 
 export const PASS_PCT = 75;
 export const REQUIRED_PASSES = 8;
 export const REQUIRED_WEEKS = 3;
-export const LIVE_PER_MONTH = 8;
 export const DIVIDEND_CAP = 12;
 
 // ---- time keys (UTC, stable across server timezones) ----------------------
@@ -41,29 +39,6 @@ export function isoWeekKey(d = new Date()): string {
   const week =
     1 + Math.round(((date.getTime() - firstThursday.getTime()) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
   return `${date.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
-}
-
-// ---- the monthly rotation (the "shuffle") ---------------------------------
-
-/** Months since a fixed epoch — the rotation index, so the live set advances by
- *  one each calendar month without any founder action. */
-function monthIndex(d = new Date()): number {
-  return d.getUTCFullYear() * 12 + d.getUTCMonth();
-}
-
-/**
- * The reps that are "live" this month for a career, given its full pool of slugs.
- * A deterministic rotating window of LIVE_PER_MONTH, advancing one step each
- * month, so members meet a fresh set and cycle through the whole pool over time.
- * Pools smaller than the window return everything.
- */
-export function liveRepSlugs(allSlugs: string[], d = new Date()): string[] {
-  const n = allSlugs.length;
-  if (n <= LIVE_PER_MONTH) return [...allSlugs];
-  const start = ((monthIndex(d) % n) + n) % n;
-  const out: string[] = [];
-  for (let i = 0; i < LIVE_PER_MONTH; i++) out.push(allSlugs[(start + i) % n]);
-  return out;
 }
 
 // ---- recording ------------------------------------------------------------

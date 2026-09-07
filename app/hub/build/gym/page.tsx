@@ -3,14 +3,16 @@ import { auth } from "@clerk/nextjs/server";
 import { gymByLane, KIND_CHROME } from "@/lib/gym";
 import { getBuildReps } from "@/lib/build";
 import { monthProgress } from "@/lib/gym-gate";
+import { activeCadenceMonth } from "@/lib/cadence-state";
 
 export const metadata = { title: "Judgment Gym — Pivotum" };
 
 export default async function GymLanding() {
   const { userId } = await auth();
-  const [done, gate] = await Promise.all([
+  const [done, gate, month] = await Promise.all([
     getBuildReps(userId),
     monthProgress(userId),
+    activeCadenceMonth(),
   ]);
   const lanes = gymByLane();
   const repsPct = Math.min(100, Math.round((gate.passed / gate.repsNeeded) * 100));
@@ -23,8 +25,13 @@ export default async function GymLanding() {
         <div className="build-hero">
           <p className="ck">🥊 The Judgment Gym</p>
           <h2>The AI hands you polished work. Some of it is wrong.</h2>
-          <p>Pick a rep. Judge each piece <b>Ship</b> or <b>Flag</b> at speed, then get scored on what you caught and what you shipped. This is Edge 2 — the judgment the machine can&apos;t hold. Fresh reps rotate in each lane; come back weekly.</p>
+          <p>Pick a rep. Judge each piece <b>Ship</b> or <b>Flag</b> at speed, then get scored on what you caught and what you shipped. This is Edge 2 — the judgment the machine can&apos;t hold. Train the reps in your own field; the month&apos;s focus sets the lens.</p>
           <Link href="/hub/build/gym/browse" className="build-hero-link">🗂 Browse the full catalogue by career →</Link>
+        </div>
+
+        <div className="gym-focus">
+          <p className="ck">This month in the Gym · {month.subject}</p>
+          <p>The community is training <b>{month.subject}</b> this month. Your reps stay in your field — bring that lens to them: {month.repsMuscle}</p>
         </div>
 
         <div className={"gymgate" + (gate.qualified ? " on" : "")}>
