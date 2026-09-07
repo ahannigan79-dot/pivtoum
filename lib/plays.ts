@@ -52,15 +52,17 @@ export function playExample(p: Play, career?: string | null, lane?: string | nul
   return p.examples.find((e) => e.match.some((m) => hay.includes(m.toLowerCase()))) ?? p.examples[0];
 }
 
-// Each completed step of a committed play buys down half a point of exposure
-// (see lib/focus.ts). We surface that here so a member sees the payoff up front.
-const PT_PER_STEP = 0.5;
+/* How much exposure a play buys down at full completion. Driven by EFFORT first
+ * — a demanding, longer play is worth more than a light one even with fewer
+ * steps — then modulated by the lever's power to cut exposure. Step count no
+ * longer drives the reward; it only paces how the potential is earned as you go
+ * (see lib/focus.ts). */
+export const DIFFICULTY_WEIGHT: Record<Difficulty, number> = { Light: 2.5, Moderate: 4.0, Demanding: 6.5 };
 
-/** The exposure a play buys down as you complete its steps — grounded in the real
- *  focus-dividend scoring (half a point per step, scaled by the play's lever), so
- *  the number on the card is the number the dashboard will actually move. */
+/** The exposure a play buys down when fully completed — effort × lever power. This
+ *  is the number the dashboard actually moves once every step is done. */
 export function playBenefitPoints(p: Play): number {
-  return Math.round(p.steps.length * PT_PER_STEP * leverWeight(p.lever) * 10) / 10;
+  return Math.round(DIFFICULTY_WEIGHT[p.difficulty] * leverWeight(p.lever) * 10) / 10;
 }
 
 /** A short, honest reading of what a play does to your exposure. "Master/guard"

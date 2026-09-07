@@ -99,8 +99,18 @@ export default async function Dashboard() {
     focusDividend(userId),
   ]);
   const totalDividend = effortDividend + focusDiv;
+  // Committed work, counted consistently everywhere: focus goals in flight vs. done,
+  // plus freeform commitments. Used by the momentum card and the reminders so a
+  // finished move is credited (and never re-prompts "commit your first move").
+  const focusActive = focus.filter((g) => !g.complete).length;
+  const focusDone = focus.length - focusActive;
+  const inFlight = moves.active.length + focusActive;
+  const doneCount = moves.shipped.length + focusDone;
   const baseExp = t?.overall != null ? t.overall + marketShift : null;
   const exposureNow = baseExp != null ? currentExposure(baseExp, totalDividend) : null;
+  // Your standing vs your lane, measured from your CURRENT score (post-work), so it
+  // moves in lockstep with the headline — not the frozen baseline.
+  const laneDelta = exposureNow != null && c?.personal?.laneBaseline != null ? exposureNow - c.personal.laneBaseline : null;
 
   const band = exposureBand(exposureNow);
   const laneBandWord = bandWord(c?.band);
@@ -160,11 +170,8 @@ export default async function Dashboard() {
     if (!stepDone("welcome") && !setupActive) reminders.push({ icon: "events", text: "Book your 1:1 welcome with Adam", href: "/hub/events/welcome" });
     if (t.personalRescoreDue) reminders.push({ icon: "evolve", text: `Re-score your protections — it's been ${months} months`, href: "/hub/map", tone: "warn" });
     else if (shippedSinceRescore) reminders.push({ icon: "evolve", text: "You've shipped moves — re-score to see your exposure move", href: "/hub/map", tone: "warn" });
-    if (moves.active.length + focus.length === 0 && !setupActive) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
-    else if (moves.active.length + focus.length > 0) {
-      const n = moves.active.length + focus.length;
-      reminders.push({ icon: "build", text: `Keep shipping — ${n} move${n > 1 ? "s" : ""} in flight`, href: "#moves" });
-    }
+    if (inFlight + doneCount === 0 && !setupActive) reminders.push({ icon: "playbook", text: "Turn your winning move into a commitment", href: "#moves" });
+    else if (inFlight > 0) reminders.push({ icon: "build", text: `Keep shipping — ${inFlight} move${inFlight > 1 ? "s" : ""} in flight`, href: "#moves" });
     if (!stepDone("build")) reminders.push({ icon: "build", text: "Train your judgment — log a Build rep", href: "/hub/build" });
     if (!stepDone("learn") && !setupActive) reminders.push({ icon: "learn", text: "Learn your six levers", href: "/hub/learn" });
     if (stepDone("pod")) reminders.push({ icon: "pods", text: "Check in with your pod this week", href: "/hub/pods" });
@@ -270,11 +277,11 @@ export default async function Dashboard() {
                 <div className="drv-personal">
                   <p className="drv-line">
                     <span className="drv-k">You vs your lane</span>
-                    Your lane averages <b>{c.personal.laneBaseline}</b>. You&apos;re at <b>{baseExp}</b> —{" "}
-                    {(c.personal.delta ?? 0) < 0
-                      ? <span className="pos">{Math.abs(c.personal.delta ?? 0)} better than average</span>
-                      : (c.personal.delta ?? 0) > 0
-                        ? <span className="neg">{c.personal.delta} worse than average</span>
+                    Your lane averages <b>{c.personal.laneBaseline}</b>. You&apos;re at <b>{exposureNow}</b> —{" "}
+                    {(laneDelta ?? 0) < 0
+                      ? <span className="pos">{Math.abs(laneDelta ?? 0)} better than average</span>
+                      : (laneDelta ?? 0) > 0
+                        ? <span className="neg">{laneDelta} worse than average</span>
                         : <span>right at the average</span>}.
                   </p>
                   {((c.personal.helps?.length ?? 0) > 0 || (c.personal.hurts?.length ?? 0) > 0) && (
@@ -302,7 +309,7 @@ export default async function Dashboard() {
             {/* The rest of your numbers, kept quiet — the score above is the point.
                 While setup is running, these live in the rail as tiles instead. */}
             {!setupActive && (
-              <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive + focus.length} shipped={t.movesDone} />
+              <MomentumCard dividend={totalDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={inFlight} shipped={doneCount} />
             )}
 
             {/* To evolve to win — automated reminders from map, build, activity */}
@@ -369,7 +376,7 @@ export default async function Dashboard() {
                   </div>
                 </section>
 
-                <MomentumCard dividend={effortDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={t.movesActive + focus.length} shipped={t.movesDone} />
+                <MomentumCard dividend={totalDividend} streak={activity?.streak ?? 0} reps={activity?.buildReps ?? 0} credentials={t.badgeCount} active={inFlight} shipped={doneCount} />
               </aside>
             )}
           </div>
