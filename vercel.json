@@ -4,6 +4,7 @@
     { "path": "/api/cron/article-scout", "schedule": "0 9 * * 6" },
     { "path": "/api/cron/pod-place", "schedule": "0 16 * * *" },
     { "path": "/api/cron/pod-week", "schedule": "0 14 * * *" },
-    { "path": "/api/cron/eva-nudge", "schedule": "0 17 * * 2,5" }
+    { "path": "/api/cron/eva-nudge", "schedule": "0 17 * * 2,5" },
+    { "path": "/api/cron/reminders", "schedule": "0 13 * * *" }
   ]
 }

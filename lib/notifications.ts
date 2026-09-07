@@ -56,7 +56,7 @@ const INSTANT_EMAIL: Partial<Record<NotifKind, string>> = {
 };
 
 /** Kinds worth a lock-screen push (reactions stay in-app only to avoid noise). */
-const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission", "pod", "eva"]);
+const PUSH_KINDS = new Set<NotifKind>(["reply", "dm", "report", "mention", "badge", "submission", "pod", "eva", "event", "rescore"]);
 
 /** Core insert. No-ops on self-notification. `dedupe` collapses repeat unread bursts. */
 export async function notify(
