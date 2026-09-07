@@ -20,7 +20,9 @@ export function LaneRow({ row }: { row: Row }) {
           <b className="lb-lane">{row.lane}</b>
           <span className="lb-career">{row.career}</span>
         </div>
-        <span className="lb-count">{row.members} member{row.members === 1 ? "" : "s"}</span>
+        {row.known && row.members === 0
+          ? <span className="lb-count known" title="A Pivotum default lane no member occupies yet — set a market baseline to have it ready.">Not yet occupied · default</span>
+          : <span className="lb-count">{row.members} member{row.members === 1 ? "" : "s"}</span>}
       </div>
 
       <div className="lb-nums">

@@ -18,6 +18,8 @@ export default async function MarketPage() {
           A lane&apos;s <b>market baseline</b> is the exposure the field carries before anyone&apos;s personal
           protections or effort. Re-score it when the market moves and every member in the lane moves with it —
           their earned improvement carries forward, and each gets a note explaining why their number changed.
+          Cross-functional lanes (PM, consulting, ops, analysis) show even before anyone&apos;s in them, so you can
+          set their baseline ahead of time.
         </p>
 
         {lanes.length === 0 ? (

@@ -2,6 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { laneBaselines, mapStates, profiles } from "@/db/schema";
 import type { MapComputed } from "@/lib/trajectory";
+import { CROSS_FUNCTIONAL_SLUG, CROSS_FUNCTIONAL_NAME, CROSS_FUNCTIONAL_TRACKS } from "@/lib/cross-functional";
 
 export type LaneRow = {
   careerSlug: string;
@@ -12,6 +13,7 @@ export type LaneRow = {
   override: number | null; // founder-set baseline (null = using the observed one)
   note: string | null;
   updatedAt: Date | null;
+  known?: boolean;         // a Pivotum-defined default lane not yet occupied by a member
 };
 
 /** The founder-set market baseline for a lane, or null when none is set. */
@@ -85,6 +87,15 @@ export async function listLanes(): Promise<LaneRow[]> {
     cur.note = o.note ?? null;
     cur.updatedAt = o.updatedAt;
     rows.set(k, cur);
+  }
+  // Surface the cross-functional field's lanes even when unoccupied, so the
+  // founder can pre-set a market baseline. `observed` is the Map's own default
+  // (score × 10); a real member's map, once present, supersedes it above.
+  for (const t of CROSS_FUNCTIONAL_TRACKS) {
+    const k = key(CROSS_FUNCTIONAL_SLUG, t.lane);
+    if (rows.has(k)) continue;
+    rows.set(k, { careerSlug: CROSS_FUNCTIONAL_SLUG, lane: t.lane, career: CROSS_FUNCTIONAL_NAME,
+      members: 0, observed: t.baseline, override: null, note: null, updatedAt: null, known: true });
   }
   return [...rows.values()].sort((a, b) => a.career.localeCompare(b.career) || a.lane.localeCompare(b.lane));
 }

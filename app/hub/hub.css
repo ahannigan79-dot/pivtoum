@@ -2007,6 +2007,7 @@ a.pod-member:hover span { color:var(--ink); }
 .lb-lane { font-family:var(--serif); font-weight:600; font-size:1.08rem; color:var(--ink); }
 .lb-career { display:block; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--pencil); margin-top:4px; }
 .lb-count { font-size:0.74rem; color:var(--soft); white-space:nowrap; }
+.lb-count.known { font-weight:700; color:var(--pencil); background:var(--panel2); border:1px solid var(--rule); border-radius:20px; padding:2px 9px; }
 .lb-nums { display:flex; gap:18px; font-size:0.82rem; color:var(--soft); }
 .lb-nums b { font-family:var(--mono); color:var(--ink); }
 .lb-ov b { color:var(--accent); }
