@@ -1,4 +1,5 @@
 import type { MemberSignals } from "@/lib/signals";
+import { SignalWhy } from "@/components/hub/dashboard/SignalWhy";
 
 /** "This week in AI" — a few curated articles, the member's field first, then
  *  broad AI news. Read-only; links open the source. Fed by the weekly scout. */
@@ -11,7 +12,7 @@ export function Signals({ data }: { data: MemberSignals }) {
         <span className="sig-wk">Curated · week of {data.weekOf}</span>
       </div>
       <ul className="sig-list">
-        {data.items.map((s) => (
+        {data.items.map((s, i) => (
           <li key={s.id} className="sig-item">
             <a href={s.url} target="_blank" rel="noopener noreferrer" className="sig-link">
               <span className="sig-row">
@@ -21,6 +22,7 @@ export function Signals({ data }: { data: MemberSignals }) {
               <span className="sig-title">{s.title}</span>
               <span className="sig-sum">{s.summary}</span>
             </a>
+            {i === 0 && <SignalWhy />}
           </li>
         ))}
       </ul>
