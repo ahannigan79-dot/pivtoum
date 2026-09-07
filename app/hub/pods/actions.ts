@@ -6,6 +6,7 @@ import { and, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { podMembers, pods, posts, podThreads, profiles, podCheckins } from "@/db/schema";
 import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { isDomainLeader } from "@/lib/leadership";
 import { getPodBySlug, setPodLeader, leadsPod, syncPodHelper, joinMemberToPod, podRoom } from "@/lib/pods";
 import { autoPlaceMember } from "@/lib/pod-match";
 import { recordCheckin } from "@/lib/pod-ritual";
@@ -64,10 +65,13 @@ export async function setPodProfile(slug: string, formData: FormData) {
   revalidatePath(`/hub/pods/${slug}`);
 }
 
-/** Any member can start a Together Pod when they don't see a good fit. */
+/** Start a Together Pod. Founder or domain leaders only — members join existing
+ *  pods rather than spinning up new ones, so the set stays coherent. */
 export async function createPod(formData: FormData) {
   const { userId } = await auth();
   if (!userId) return;
+  const profile = await getOrCreateProfile();
+  if (!isFounder(profile) && !(await isDomainLeader(userId))) return;
   const name = String(formData.get("name") ?? "").trim();
   if (!name) return;
   const description = String(formData.get("description") ?? "").trim() || null;

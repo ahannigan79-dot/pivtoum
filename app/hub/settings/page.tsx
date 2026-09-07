@@ -54,12 +54,13 @@ export default async function SettingsPage() {
             </p>
             <ResetTester action={resetToNewUser} />
             <p className="settings-lead" style={{ marginTop: 18 }}>
-              Seed the starter set of pods — an exciting spread across lanes and both regions (with
-              vibes + crests), so every member&rsquo;s guided &ldquo;Find your pod&rdquo; has real options
-              from day one. Idempotent — safe to re-run.
+              Reset the starter pods to the clean field-name set (Marketing &amp; Brand, Finance &amp;
+              Accounting, Software &amp; Engineering, …) so every member&rsquo;s &ldquo;Find your pod&rdquo;
+              shows clear, non-confusing options. Also removes the old branded demo pods. Idempotent —
+              safe to re-run.
             </p>
             <form action={seedStarterPods}>
-              <button type="submit" className="btn btn-ghost">Seed starter pods →</button>
+              <button type="submit" className="btn btn-ghost">Reset to field pods →</button>
             </form>
           </>
         )}

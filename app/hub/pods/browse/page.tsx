@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getBrowsablePods, getMyPods } from "@/lib/pods";
+import { getOrCreateProfile, isFounder } from "@/lib/member";
+import { isDomainLeader } from "@/lib/leadership";
 import { JoinButton } from "@/components/hub/pods/JoinButton";
 import { NewPodForm } from "@/components/hub/pods/NewPodForm";
 import { strategyMeta } from "@/lib/pod-strategy";
@@ -9,8 +11,11 @@ export const metadata = { title: "Browse Pods — Pivotum" };
 
 export default async function BrowsePodsPage() {
   const { userId } = await auth();
-  const [mine, all] = await Promise.all([getMyPods(userId), getBrowsablePods(userId)]);
+  const [mine, all, profile, domainLead] = await Promise.all([
+    getMyPods(userId), getBrowsablePods(userId), getOrCreateProfile(), isDomainLeader(userId),
+  ]);
   const others = all.filter((p) => !p.iAmIn);
+  const canCreate = isFounder(profile) || domainLead;
 
   return (
     <>
@@ -18,13 +23,12 @@ export default async function BrowsePodsPage() {
       <div className="hub-body hub-feed">
         <p className="pods-intro">
           A Together Pod is your accountability cohort — a small group on the same path who hold you to what you
-          commit to. Join one that fits, or don&apos;t see it? <b>Start your own</b> — Adam joins new pods to help
-          until they find their feet.
+          commit to. Find the one that fits your field and join it.{canCreate ? " Need a new one? Spin it up below." : ""}
         </p>
 
         <Link href="/hub/pods/standings" className="moves-playbook">🏆 The Pod Competition — see this month&rsquo;s standings and the season race →</Link>
 
-        <NewPodForm />
+        {canCreate && <NewPodForm />}
 
         {mine.length > 0 && (
           <>

@@ -66,20 +66,20 @@ export const PATCH_STATEMENTS: string[] = [
      ('engaged','Engaged','🙌','Reacted and replied — being part of it'),
      ('regular','Regular','⭐','Showed up 7 days')
    ON CONFLICT ("key") DO NOTHING`,
-  // Starter Together Pods — controlled naming, major fields. Idempotent by slug.
-  `INSERT INTO "pods" ("name","slug","description") VALUES
-     ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.'),
-     ('Software & Engineering','software-engineering','Engineers and builders navigating AI-native development.'),
-     ('Healthcare & Nursing','healthcare-nursing','Clinical and care roles — where judgment and presence still win.'),
-     ('Finance & Accounting','finance-accounting','Finance, accounting and audit pros steering through automation.'),
-     ('Legal & Compliance','legal-compliance','Lawyers, paralegals and compliance staff facing AI head-on.'),
-     ('Design & Creative','design-creative','Designers, writers and creatives deepening what AI can''t take.'),
-     ('Data & Analytics','data-analytics','Analysts and data people turning AI into leverage.'),
-     ('Sales & Customer','sales-customer','Sales, success and support — owning the relationships that matter.'),
-     ('People & HR','people-hr','HR, recruiting and people teams reshaping how work gets done.'),
-     ('Operations & Admin','operations-admin','Ops, project and admin roles rebuilding the back office.'),
-     ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.'),
-     ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.')
+  // Starter Together Pods — controlled naming, major fields, listable. Idempotent by slug.
+  `INSERT INTO "pods" ("name","slug","description","listable") VALUES
+     ('Marketing & Brand','marketing-brand','Marketers, brand and growth people rebuilding the function AI-native.',true),
+     ('Software & Engineering','software-engineering','Engineers and builders navigating AI-native development.',true),
+     ('Healthcare & Nursing','healthcare-nursing','Clinical and care roles — where judgment and presence still win.',true),
+     ('Finance & Accounting','finance-accounting','Finance, accounting and audit pros steering through automation.',true),
+     ('Legal & Compliance','legal-compliance','Lawyers, paralegals and compliance staff facing AI head-on.',true),
+     ('Design & Creative','design-creative','Designers, writers and creatives deepening what AI can''t take.',true),
+     ('Data & Analytics','data-analytics','Analysts and data people turning AI into leverage.',true),
+     ('Sales & Customer','sales-customer','Sales, success and support — owning the relationships that matter.',true),
+     ('People & HR','people-hr','HR, recruiting and people teams reshaping how work gets done.',true),
+     ('Operations & Admin','operations-admin','Ops, project and admin roles rebuilding the back office.',true),
+     ('Education & Training','education-training','Teachers, trainers and L&D adapting to AI in the room.',true),
+     ('Students & Early Career','students-early-career','Just starting out — going AI-native from day one.',true)
    ON CONFLICT ("slug") DO NOTHING`,
   // Web push subscriptions for the PWA (lock-screen notifications).
   `CREATE TABLE IF NOT EXISTS "push_subscriptions" (
