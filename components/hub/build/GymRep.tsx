@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, KIND_CHROME, type Scenario, type ScenarioKind } from "@/lib/gym";
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, modeFor, KIND_CHROME, type Scenario, type ScenarioKind, type GymItem } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
@@ -26,8 +26,11 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const role = scenario.role ?? "You're the human in the loop — the one whose name goes on it. Nothing ships without your call.";
 
   // Compact inline judgment control + mode chip — the annotation on the artifact.
-  const modeChip = (m?: "fact" | "judgment") =>
-    m ? <span className={"gym-mode m-" + m}>{m === "fact" ? "Fact-check" : "Judgment"}</span> : null;
+  // Mode is explicit when tagged, else inferred, so every segment carries a chip.
+  const modeChip = (it: GymItem) => {
+    const m = modeFor(it);
+    return <span className={"gym-mode m-" + m}>{m === "fact" ? "Fact-check" : "Judgment"}</span>;
+  };
   const Mark = (i: number) => (
     <div className="gym-mark">
       <button className={"gym-mk ok" + (choices[i] === "ship" ? " on" : "")} title="Looks right"
@@ -198,7 +201,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                   <div className="gym-grow head"><span>Line</span><span>Value</span><span /></div>
                   {scenario.items.map((it, i) => (
                     <div key={i} className={"gym-grow" + (choices[i] ? ` j-${choices[i]}` : "")}>
-                      <span className="gc-label">{it.area}{modeChip(it.mode)}</span>
+                      <span className="gc-label">{it.area}{modeChip(it)}</span>
                       <span className="gc-val">{it.output}</span>
                       {Mark(i)}
                     </div>
@@ -208,7 +211,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                 <div className="gym-diff">
                   {scenario.items.map((it, i) => (
                     <div key={i} className={"gym-hunk" + (choices[i] ? ` j-${choices[i]}` : "")}>
-                      <div className="gym-hunk-head"><span className="gh-file">{it.area}</span>{modeChip(it.mode)}{Mark(i)}</div>
+                      <div className="gym-hunk-head"><span className="gh-file">{it.area}</span>{modeChip(it)}{Mark(i)}</div>
                       <pre className="gym-code">{it.output}</pre>
                     </div>
                   ))}
@@ -218,7 +221,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                   {scenario.items.map((it, i) => (
                     <div key={i} className={"gym-para" + (choices[i] ? ` j-${choices[i]}` : "")}>
                       <div className="gym-para-body">
-                        <span className="gym-para-label">{it.area}{modeChip(it.mode)}</span>
+                        <span className="gym-para-label">{it.area}{modeChip(it)}</span>
                         <p className="gym-para-text">{it.output}</p>
                       </div>
                       {Mark(i)}
@@ -276,7 +279,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
               <div key={r.i} className={"gym-rev " + (r.right ? "right" : "wrong")}>
                 <div className="gym-rev-top">
                   <span className="gym-rev-area">{r.it.area}
-                    {r.it.mode && <span className={"gym-mode m-" + r.it.mode}>{r.it.mode === "fact" ? "Fact-check" : "Judgment call"}</span>}
+                    {(() => { const m = modeFor(r.it); return <span className={"gym-mode m-" + m}>{m === "fact" ? "Fact-check" : "Judgment call"}</span>; })()}
                   </span>
                   <span className={"gym-verdict v-" + r.it.verdict}>
                     {r.it.verdict === "flag" ? `⚑ Flag${r.it.severity ? ` · ${r.it.severity}` : ""}` : "✓ Ship"}

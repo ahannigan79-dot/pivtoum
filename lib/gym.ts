@@ -86,6 +86,19 @@ export function patternFor(it: GymItem): PatternKey | null {
   return "fabrication";
 }
 
+/** Is this call a fact-check (verify against the inputs) or an experience
+ *  judgment (no clean formula)? Explicit when tagged, else inferred — so every
+ *  segment shows the right chip and the fact-vs-judgment split reads on any rep. */
+export function modeFor(it: GymItem): JudgeMode {
+  if (it.mode) return it.mode;
+  const s = `${it.area} ${it.why} ${it.trains}`.toLowerCase();
+  // Judgment: skepticism, interpretation, soundness, tone, strategy — no formula.
+  if (/skeptic|reasonable|plausible|at face value|without (corroborat|evidence|checking)|tidy (narrative|explanation)|\bsound\b|defensible|appropriate|assumption|\btone\b|voice|narrative|\bstory\b|strateg|interpret|\btrust\b|relationship|over-?state|optimis|accepts management|no further work|judgment call/.test(s)) return "judgment";
+  // Fact-check: verify against a number, rule, date, spec, or a required item.
+  if (/arithmetic|calcul|\brate\b|percent|number|figure|amount|\$|\bdate\b|cut-?off|formula|rule|standard|\basc\b|§|gaap|ifrs|clause|spec|ticket|threshold|deadline|citation|cite|source|reconcil|foots|nexus|withhold|deduct|missing|omit|disclos|required|audit (log|trail)|duplicate|\bmatch\b/.test(s)) return "fact";
+  return "judgment";
+}
+
 export const GYM_SCENARIOS: Record<string, Scenario> = {
   // Full 12-rep lanes live in their own modules. See lib/gym-accounting.ts, lib/gym-marketing.ts.
   ...ACCOUNTING_SCENARIOS,
@@ -237,6 +250,104 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
         trains: "Spotting where the AI casually created legal exposure." },
     ],
     lesson: "The mispriced renewal, the 99.9% promise, and the \"binding, no paperwork\" line were the three that would have been yours to answer for. AI writes a warm, confident client email in seconds — but a wrong number or an over-promise in writing is a real liability, and catching it before send is the judgment you're paid for.",
+  },
+
+  "sales-contract-redline": {
+    slug: "sales-contract-redline", career: "Sales & Account Management", kind: "contract",
+    short: "Sign off an AI-marked-up enterprise contract before you counter-sign — liability, IP, renewal, and the SLA.",
+    client: "Northwind Retail — enterprise agreement",
+    artifact: "Northwind_MSA_Redline.docx",
+    thesis: "The AI marked up the customer's contract — clauses summarized, redlines proposed, ready to counter-sign. A contract is where a helpful AI quietly gives away the store. Sign off only the terms you'd actually stand behind.",
+    role: "You counter-sign this — every term ships under your name and binds the company.",
+    aiDid: "AI reviewed the customer's paper and proposed the accepted terms end-to-end. The clauses read like standard boilerplate; some of them aren't in your favor.",
+    brief: [
+      { l: "Deal", v: "3-year enterprise SaaS agreement" },
+      { l: "Your playbook", v: "Liability capped at fees paid; you keep your own IP" },
+      { l: "Watch", v: "Liability, IP, renewal notice, and the SLA" },
+      { l: "Rule", v: "Terms must match the playbook before they're signable" },
+    ],
+    items: [
+      { area: "Limitation of liability", verdict: "flag", severity: "critical", mode: "judgment", pattern: "overreach",
+        output: "“Vendor's total liability under this Agreement shall be unlimited for any breach.”",
+        why: "Straight off the playbook. Liability must be capped — normally at the fees paid — not left unlimited. Unlimited exposure on a routine SaaS deal is exactly the term you never sign.",
+        cost: "One incident and the company's exposure has no ceiling. This is the clause a GC escalates the moment they see it — signing it is the mistake you don't recover from.",
+        trains: "Catching the uncapped-liability term dressed up as ordinary boilerplate." },
+      { area: "Intellectual property", verdict: "flag", severity: "critical", mode: "fact", pattern: "overreach",
+        output: "“All intellectual property created or used in performance, including Customer's pre-existing materials, vests in Vendor.”",
+        why: "It sweeps in the customer's own pre-existing IP. Each side keeps what it brought; only newly-created work is negotiated. Assigning the customer's prior materials away is wrong and will blow up the deal — or worse, get missed.",
+        cost: "An unenforceable, bad-faith grab that either kills trust when the customer's counsel catches it, or creates a real dispute if they don't.",
+        trains: "Reading an IP clause for what it quietly claims beyond the work itself." },
+      { area: "Payment terms", verdict: "ship", mode: "fact",
+        output: "“Fees are due Net 30 from the invoice date; 1.5% per month accrues on late amounts.”",
+        why: "Standard and reasonable. Net 30 with a conventional late-payment rate — nothing to redline here.",
+        cost: "Reopening a standard payment term wastes cycles and signals you can't tell a clean clause from a risky one.",
+        trains: "Recognizing a market-standard term and letting it stand." },
+      { area: "Auto-renewal & notice", verdict: "flag", severity: "major", mode: "judgment", pattern: "overreach",
+        output: "“This Agreement renews for successive one-year terms unless either party gives written notice at least 90 days before the end of the then-current term.”",
+        why: "The 90-day non-renewal window is long and easy to miss. Blow the date by a day and you're locked into another full year. Auto-renewal is fine; the buried, lengthy notice window is the trap to shorten or diarize.",
+        cost: "A renewal nobody wanted, locked in because the notice window quietly closed — a year of fees on a contract someone meant to exit.",
+        trains: "Spotting the notice window inside an auto-renewal, not just that it renews." },
+      { area: "Governing law & venue", verdict: "ship", mode: "judgment",
+        output: "“This Agreement is governed by the laws of the State of Delaware, with exclusive venue in the state and federal courts located in Delaware.”",
+        why: "Reasonable and standard. Delaware governing law and venue is a conventional, defensible choice — no issue.",
+        cost: "Fighting a standard governing-law clause burns negotiation capital you'll want for the terms that matter.",
+        trains: "Letting a conventional, low-risk clause through." },
+      { area: "Service levels", verdict: "flag", severity: "major", mode: "fact", pattern: "omission",
+        output: "“The Service is provided ‘as is’; no uptime commitment or service credits are offered.”",
+        why: "A missing term, not a written-wrong one. An enterprise agreement needs an uptime commitment and service credits — “as is / no SLA” leaves the customer no remedy and won't survive their procurement review. The gap is the problem.",
+        cost: "Either the deal stalls in the customer's review over the missing SLA, or you sign away the service commitment that enterprise buyers require — and inherit the churn when uptime slips.",
+        trains: "Catching the clause that should be there and isn't — the omission you only see if you know the deal needs it." },
+    ],
+    lesson: "The unlimited liability and the IP grab were the two that would have been yours to answer for. AI redlines a contract in seconds — but the terms ship under your signature, and the give-aways read exactly like the boilerplate around them.",
+  },
+
+  "sales-quote-check": {
+    slug: "sales-quote-check", career: "Sales & Account Management", kind: "order",
+    short: "Sign off an AI-built customer quote before you send it — line math, the discount base, tax, and the total.",
+    client: "Brightline Media — new-business quote",
+    artifact: "Brightline_Quote_Q4.pdf",
+    thesis: "The AI built the customer quote — line items priced, a discount applied, a total at the bottom. A quote is a number the customer will hold you to. Sign off only the lines that add up.",
+    role: "You send this — the customer holds you to every number on it.",
+    aiDid: "AI priced the whole quote from the deal notes and the price book. It looks clean and itemized; some of the lines don't foot.",
+    brief: [
+      { l: "Deal", v: "80 seats + implementation, 2-year term" },
+      { l: "List price", v: "$1,200 / seat / year" },
+      { l: "Watch", v: "The line math, the discount base, and the total" },
+      { l: "Rule", v: "The quote must foot and match the price book" },
+    ],
+    items: [
+      { area: "License — 80 seats", verdict: "flag", severity: "critical", mode: "fact", pattern: "miscalc",
+        output: "80 seats × $1,200 = $84,000 / year",
+        why: "The math is wrong. 80 × $1,200 is $96,000, not $84,000 — the anchor line of the whole quote, understated by $12k a year.",
+        cost: "A quote sent $12k/year light. Either you honor a number that undercuts the deal, or you go back to the customer to correct it and lose credibility mid-close.",
+        trains: "Re-performing the line that anchors the quote, not trusting the printed product." },
+      { area: "Volume discount (15%)", verdict: "ship", mode: "fact",
+        output: "15% × $96,000 = $14,400",
+        why: "Correct on the true license value. 15% of $96,000 is $14,400 — the discount line itself computes right (even though the license line above it was mistyped).",
+        cost: "Re-deriving a correct discount wastes time on the line that's right.",
+        trains: "Judging each line on its own math, not assuming the whole sheet is wrong because one line was." },
+      { area: "Implementation (one-time)", verdict: "ship", mode: "fact",
+        output: "$18,000 flat, per the statement of work",
+        why: "Matches the SOW. A flat one-time implementation fee at the agreed figure — nothing to fix.",
+        cost: "Querying a fee that matches the SOW just delays the quote.",
+        trains: "Confirming a line ties to its source document and moving on." },
+      { area: "Annual support (18% of license)", verdict: "flag", severity: "major", mode: "fact", pattern: "miscalc",
+        output: "18% × $84,000 = $15,120",
+        why: "Wrong base. Support is 18% of the license, but the license is $96,000, not the mistyped $84,000 — so support should be $17,280. The error from line 1 flows straight through.",
+        cost: "Support under-quoted by ~$2k/year, compounding the license error — recurring revenue quietly given away for the life of the contract.",
+        trains: "Checking that a derived line is built on the corrected base, not the wrong number above it." },
+      { area: "Sales tax", verdict: "flag", severity: "major", mode: "fact", pattern: "fabrication",
+        output: "$0 — “SaaS is non-taxable.”",
+        why: "A blanket untruth. SaaS taxability is state-by-state — taxable in many jurisdictions. Zeroing tax with “SaaS is non-taxable” is a confident, wrong assumption, not a checked position.",
+        cost: "Tax under-collected on a taxable sale becomes the company's liability plus penalties — a silent exposure that grows with every quote sent the same way.",
+        trains: "Testing a tax assumption against the customer's state, not accepting a nationwide claim." },
+      { area: "Total contract value (2 yr)", verdict: "flag", severity: "critical", mode: "fact", pattern: "miscalc",
+        output: "Sum of all lines → $198,240",
+        why: "The total doesn't foot. It doesn't reconcile to the lines above it (even before their own errors) — a bottom-line plug rather than a sum. The one number the customer reads first, and it's invented.",
+        cost: "You send a contract value that ties to nothing. Whatever the customer signs to, you're bound to — and reconciling it later is the awkward conversation that stalls the deal.",
+        trains: "Re-adding the total against the lines, never trusting the figure at the bottom." },
+    ],
+    lesson: "The 80-seat line and the total that didn't foot were the two that would have been yours to answer for. AI prices a clean-looking quote in seconds — but the customer holds you to the number you send, and a slip on the anchor line flows all the way to the bottom.",
   },
 };
 
