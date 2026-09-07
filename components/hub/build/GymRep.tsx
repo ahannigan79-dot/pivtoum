@@ -1,25 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, type Scenario, type ScenarioKind } from "@/lib/gym";
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, patternFor, KIND_CHROME, type Scenario, type ScenarioKind } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
-// How each artifact kind is framed — the chrome that makes it read like the real thing.
-const CHROME: Record<ScenarioKind, { icon: string; label: string }> = {
-  document:    { icon: "📄", label: "Document" },
-  email:       { icon: "✉️", label: "Email" },
-  spreadsheet: { icon: "▦", label: "Spreadsheet" },
-  ticket:      { icon: "🎫", label: "Ticket" },
-  contract:    { icon: "§", label: "Contract" },
-  code:        { icon: "‹∕›", label: "Pull request" },
-  message:     { icon: "💬", label: "Message" },
-  order:       { icon: "🧾", label: "Order" },
-  memo:        { icon: "📝", label: "Memo" },
-};
 // Kinds whose content is code/tabular and reads best in monospace.
 const MONO: Set<ScenarioKind> = new Set(["code", "spreadsheet", "order"]);
 
@@ -31,7 +19,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
   const n = scenario.items.length;
   const judged = Object.keys(choices).length;
   const kind: ScenarioKind = scenario.kind ?? "document";
-  const chrome = CHROME[kind];
+  const chrome = KIND_CHROME[kind];
   const mono = MONO.has(kind);
   const aiDid = scenario.aiDid
     ?? "AI generated this deliverable end-to-end — it looks finished and confident. You own the sign-off.";
@@ -169,11 +157,12 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
       {phase === "judging" && (
         <>
           <div className={"gym-clockbar" + (overSecs > 0 ? " over" : "")}>
+            <span className="gym-clock-eyebrow">{overSecs > 0 ? "● Over benchmark" : "● Reviewing now"}</span>
             <span className="gym-clock">{mmss(secs)}</span>
             <span className="gym-clab">
               {overSecs > 0
-                ? <>over benchmark · <b className="gym-burn">+{money(liveOvertime)} and counting</b></>
-                : <>benchmark {mmss(par)} · a human would be done by then</>}
+                ? <><b className="gym-burn">+{money(liveOvertime)}</b> and counting</>
+                : <>benchmark {mmss(par)}</>}
             </span>
             <span className="gym-prog">{judged} / {n} reviewed</span>
           </div>
@@ -250,7 +239,13 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
       {phase === "revealed" && (
         <>
           <div className="gym-scorecard">
-            <span className="gym-kk">Your judgment, scored</span>
+            <div className="gym-cardhead">
+              <span className="gym-eyebrow">✓ Signed off · your judgment scored</span>
+              <span className={"gym-status " + (missedCrit > 0 ? "bad" : nMissed === 0 && nOver === 0 ? "ok" : "wait")}>
+                {missedCrit > 0 ? "Critical flaw shipped" : nMissed === 0 && nOver === 0 ? "Clean sign-off" : "Signed with slips"}
+              </span>
+            </div>
+            <div className="gym-scorecard-body">
             <h2 className={missedCrit > 0 ? "bad" : nMissed === 0 && nOver === 0 ? "ok" : ""}>{scoreLine(missedCrit, nMissed, nOver)}</h2>
             <div className="gym-stats">
               <div className="gym-st caught"><div className="gym-n">{nCaught}/{totalFlags}</div><div className="gym-l">Buried flaws caught</div></div>
@@ -272,6 +267,7 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                 {cost.overSecs > 0 ? ` — ${mmss(cost.overSecs)} slow` : " — on pace"}.
                 {cost.total === 0 ? " Nothing missed, nothing over-flagged, on time. That's the bar." : " Catch more, over-flag less, and beat the clock — that's the reviewer worth paying."}
               </p>
+            </div>
             </div>
           </div>
 

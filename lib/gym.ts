@@ -40,6 +40,21 @@ export type GymItem = {
 export type ScenarioKind =
   | "document" | "email" | "spreadsheet" | "ticket" | "contract" | "code" | "message" | "order" | "memo";
 
+/** How each artifact kind is framed in the UI — the chrome that makes a rep
+ *  read like the real deliverable (a file, an email, a PR…). Single source of
+ *  truth, shared by the landing page and the rep view. */
+export const KIND_CHROME: Record<ScenarioKind, { icon: string; label: string }> = {
+  document:    { icon: "📄", label: "Document" },
+  email:       { icon: "✉️", label: "Email" },
+  spreadsheet: { icon: "▦", label: "Spreadsheet" },
+  ticket:      { icon: "🎫", label: "Ticket" },
+  contract:    { icon: "§", label: "Contract" },
+  code:        { icon: "‹∕›", label: "Pull request" },
+  message:     { icon: "💬", label: "Message" },
+  order:       { icon: "🧾", label: "Order" },
+  memo:        { icon: "📝", label: "Memo" },
+};
+
 export type Scenario = {
   slug: string;
   career: string;

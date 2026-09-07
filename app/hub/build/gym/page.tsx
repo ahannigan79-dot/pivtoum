@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
-import { gymByLane } from "@/lib/gym";
+import { gymByLane, KIND_CHROME } from "@/lib/gym";
 import { getBuildReps } from "@/lib/build";
 import { aiConfigured } from "@/lib/ai";
 import { memberLane } from "@/lib/gym-generate";
@@ -64,13 +64,24 @@ export default async function GymLanding({ searchParams }: { searchParams: Promi
                 <span className="gym-lane-count">{doneCount}/{reps.length} reps done</span>
               </div>
               <div className="hub-grid">
-                {reps.map((s, i) => (
-                  <Link key={s.slug} href={`/hub/build/gym/${s.slug}`} className="card gym-card">
-                    <p className="ck">🥊 Rep {i + 1}{done.has(`gym:${s.slug}`) ? " · done ✓" : ""}</p>
-                    <h3>{s.client}</h3>
-                    <p>{s.short}</p>
-                  </Link>
-                ))}
+                {reps.map((s, i) => {
+                  const chrome = KIND_CHROME[s.kind ?? "document"];
+                  const isDone = done.has(`gym:${s.slug}`);
+                  return (
+                    <Link key={s.slug} href={`/hub/build/gym/${s.slug}`} className="gym-repcard">
+                      <div className="gym-repcard-top">
+                        <span className="gym-repcard-icon" aria-hidden>{chrome.icon}</span>
+                        <span className="gym-repcard-rep">Rep {i + 1} · {chrome.label}</span>
+                        <span className={"gym-status " + (isDone ? "ok" : "wait")}>
+                          {isDone ? "Signed off ✓" : "In your queue"}
+                        </span>
+                      </div>
+                      <h3 className="gym-repcard-title">{s.client}</h3>
+                      <p className="gym-repcard-desc">{s.short}</p>
+                      <span className="gym-repcard-open">{isDone ? "Run it again" : "Open the file"} →</span>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           );
