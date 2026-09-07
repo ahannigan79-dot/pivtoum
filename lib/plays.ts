@@ -6,13 +6,22 @@ import type { MapComputed } from "@/lib/trajectory";
    each with a how-to guide and a concrete first move they can commit in one tap.
    Content-as-data: adding a play is just another entry here. */
 
-export type PlayStep = { title: string; detail: string };
+/** A how-to step. `phase` groups steps into a campaign timeline; `artifact` is the
+ *  concrete thing the step produces (so a play is deliverables, not vibes). */
+export type PlayStep = { title: string; detail: string; phase?: string; artifact?: string };
 
 /** Which winning aim a play serves — mirrors the Map's edge-2 move (+ "master" = edge 1). */
 export type Aim = "master" | "guard" | "shift" | "relocate";
 
 /** How much lift a play asks of you. Sets expectations before you commit. */
 export type Difficulty = "Light" | "Moderate" | "Demanding";
+
+/** A phase of a play — an honest horizon with a goal and a checkpoint. */
+export type PlayPhase = { label: string; goal: string; milestone: string };
+
+/** A short, field-specific vignette; the detail page shows the one closest to the
+ *  member's own field, so a generic play reads like it was written for them. */
+export type PlayExample = { match: string[]; field: string; story: string };
 
 export type Play = {
   slug: string;
@@ -22,10 +31,26 @@ export type Play = {
   tagline: string;      // one line: what it is and why it works
   fit: string;          // who it's for / when it makes sense
   difficulty: Difficulty;
-  duration: string;     // realistic time to work through it, e.g. "This month"
-  steps: PlayStep[];    // the how-to guide
+  duration: string;     // realistic full arc, e.g. "A quarter, then ongoing"
+  steps: PlayStep[];    // the how-to guide (also the tracked checklist)
   firstMove: string;    // the concrete commitment seeded into their moves
+  // ── optional depth (v2 plays; absent ones render the classic layout) ──
+  thesis?: string;      // why this move wins right now — the shift it exploits
+  firstMoveWindow?: string; // honest time for the FIRST move only, e.g. "~3 weeks"
+  phases?: PlayPhase[]; // the campaign arc; steps carry a matching `phase`
+  artifacts?: string[]; // what you'll have built by the end (proof pieces)
+  traps?: string[];     // the common ways people blow it
+  signals?: string[];   // "you'll know it's working when…"
+  payoff?: string;      // the reputation / seat / outcome you earn
+  examples?: PlayExample[]; // field-specific vignettes (first match wins)
 };
+
+/** Pick the example closest to a member's field/lane; falls back to the first. */
+export function playExample(p: Play, career?: string | null, lane?: string | null): PlayExample | null {
+  if (!p.examples?.length) return null;
+  const hay = `${career ?? ""} ${lane ?? ""}`.toLowerCase();
+  return p.examples.find((e) => e.match.some((m) => hay.includes(m.toLowerCase()))) ?? p.examples[0];
+}
 
 // Each completed step of a committed play buys down half a point of exposure
 // (see lib/focus.ts). We surface that here so a member sees the payoff up front.
@@ -62,12 +87,37 @@ const PLAYS_RAW: Omit<Play, "difficulty" | "duration">[] = [
     slug: "take-control", title: "Take control of your function's AI transformation", lever: "renovate", aim: "master",
     tagline: "Don't wait for AI to be done to you — be the person driving how it lands in your team.",
     fit: "Anyone who'd rather shape the change than be reorganized by it. You don't need authority to start — you need a sharp recommendation that makes you the person who saw it first.",
+    thesis: "Every function is about to be redesigned around AI. That redesign is happening with or without you — the only question is whether you're the person holding the pen. The one who maps the work, runs the first credible pilot, and writes the plan becomes the owner of the new operating model. That role almost never goes to the most senior person; it goes to the first person who did the work.",
+    firstMoveWindow: "~3 weeks",
+    phases: [
+      { label: "Weeks 1–3 · See the board", goal: "Get an honest, evidence-based picture of where the work actually sits and what AI can already touch.", milestone: "An exposure map of your function nobody else has." },
+      { label: "Month 2 · Build the proof", goal: "Turn the analysis into one working pilot and a recommendation a decision-maker can act on.", milestone: "A live before/after on one workflow + a one-page plan." },
+      { label: "Month 3+ · Own the standard", goal: "Get the plan adopted and make yourself the person accountable for how it rolls out.", milestone: "A sanctioned pilot with your name on it." },
+    ],
     steps: [
-      { title: "Map your function's real workflows", detail: "List the 5–8 workflows your function actually runs each month. For each, note the hours and who does them today." },
-      { title: "Score each for exposure", detail: "Mark which steps AI can already do well, which it can't, and where the risk (and the opportunity) is highest." },
-      { title: "Design the AI-native version on paper", detail: "Take the highest-volume, most-exposed workflow and map it again — step by step, what AI does, what a human still owns, where the freed hours go. The Workflow Rebuild tool helps you lay this out." },
-      { title: "Build the transformation recommendation", detail: "Turn it into a sharp one-pager: the before/after, projected time saved, the quality and risk trade-offs, what stays human, and what a real trial would need. This is the artifact that puts you in the driver's seat." },
-      { title: "Take it to your lead (or IT) as a plan", detail: "Bring the recommendation as an opportunity, not a threat — here's what we could automate, here's where our people move up. Offer to help scope a proper pilot with whoever owns the tools." },
+      { phase: "Weeks 1–3 · See the board", title: "Map your function's real workflows", detail: "List the 5–8 workflows your function actually runs each month. For each, note the hours, who does them, and what a good vs. bad output looks like. Don't idealise it — map what really happens.", artifact: "A workflow inventory with hours attached" },
+      { phase: "Weeks 1–3 · See the board", title: "Score each for exposure — and for value", detail: "Mark which steps AI can already do well, which it can't, and — just as important — which are high-value vs. busywork. The gold is high-volume, low-judgment work: that's where automation frees the most hours with the least risk.", artifact: "An exposure × value grid" },
+      { phase: "Month 2 · Build the proof", title: "Design the AI-native version on paper", detail: "Take the highest-volume, most-exposed workflow and map it again — step by step: what AI does, what a human still owns, where the freed hours go. The Workflow Rebuild tool lays this out for you.", artifact: "A redesigned workflow diagram" },
+      { phase: "Month 2 · Build the proof", title: "Run a small, real pilot on your own work", detail: "Before you pitch anyone, actually run the redesigned workflow on your own real work for a week or two. Capture the time saved, where it broke, and how you caught the errors. Evidence beats a slide.", artifact: "A logged before/after with real numbers" },
+      { phase: "Month 2 · Build the proof", title: "Build the transformation recommendation", detail: "Turn the pilot into a sharp one-pager: the before/after, projected time saved across the team, the quality and risk trade-offs, what stays human, and what a proper trial would need. This is the artifact that puts you in the driver's seat.", artifact: "A one-page transformation recommendation" },
+      { phase: "Month 3+ · Own the standard", title: "Take it to your lead (or IT) — and offer to own it", detail: "Bring it as an opportunity, not a threat: here's what we could automate, here's where our people move up. Then do the thing most people don't — offer to own the pilot and write the guardrails. Owning the standard is what makes it your transformation, not just your idea.", artifact: "A scoped, sponsored pilot you lead" },
+    ],
+    traps: [
+      "Leading with the tech (\"we should use AI\") instead of the outcome (\"here's 200 hours a quarter and where they go\").",
+      "Pitching before you've run it yourself — a real before/after outranks any deck.",
+      "Automating the judgment work. Automate the volume; move your people up to the calls, don't hollow them out.",
+    ],
+    signals: [
+      "People start forwarding you the \"can AI do this?\" questions.",
+      "Your one-pager gets shared upward without your name being taken off it.",
+      "You're in the room when the pilot is scoped — not hearing about it after.",
+    ],
+    payoff: "You stop being a role that AI happens to and become the person who owns how it lands — the most durable seat in any function being redesigned.",
+    examples: [
+      { match: ["consult"], field: "Management consulting", story: "A consultant mapped their firm's proposal-and-deliverable pipeline, piloted an AI-native research-to-draft flow on one live engagement, and took the before/after to the partner. They now own the firm's AI delivery playbook — the seat, not the deck." },
+      { match: ["finance", "accounting", "audit", "cpa"], field: "Finance & accounting", story: "A finance lead mapped the monthly close, piloted AI on reconciliations and the first-draft commentary, and showed a 40% time cut with the judgment calls untouched. They now own the close redesign — and moved their own hours to advisory." },
+      { match: ["product", "project", "program", "delivery", "marketing"], field: "Product & delivery", story: "A PM mapped status-reporting, risk logs and stakeholder updates, piloted an AI-native version, and freed a day a week across the team. They pitched it as capacity for the decisions AI can't make — and got named owner of the rollout." },
+      { match: ["operations", "ops", "coordinat", "administ"], field: "Operations", story: "An ops lead mapped the team's request-handling and reporting, piloted an AI triage-and-draft flow, and took the numbers to their director. They now set the standard for how the function runs AI-native." },
     ],
     firstMove: "Map my function's workflows and build one AI-native transformation recommendation",
   },
@@ -215,7 +265,7 @@ const PLAYS_RAW: Omit<Play, "difficulty" | "duration">[] = [
 // expectations before a member commits. Difficulty is the lift asked of you;
 // duration is a realistic horizon to work the steps, not a deadline.
 const PLAY_META: Record<string, { difficulty: Difficulty; duration: string }> = {
-  "take-control":        { difficulty: "Demanding", duration: "2–4 weeks" },
+  "take-control":        { difficulty: "Demanding", duration: "A quarter, then ongoing" },
   "prove-mastery":       { difficulty: "Moderate",  duration: "1–2 weeks" },
   "build-fluency":       { difficulty: "Light",     duration: "A month of daily reps" },
   "become-promotion":    { difficulty: "Demanding", duration: "3–6 months" },
