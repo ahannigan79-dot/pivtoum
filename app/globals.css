@@ -5,9 +5,9 @@
    ============================================================================ */
 
 :root {
-  /* Aligned to the hub brand (app/hub/hub.css): one paper ground, hairline
-     rules, petrol as the single chrome accent, warm ink. Exposure data keeps
-     its own semantics — protected green / exposed coral — but chrome is petrol. */
+  /* Aligned to the hub brand (app/hub/hub.css): sharp white ground, hairline
+     rules, one electric-blue chrome accent, near-black ink. Exposure data keeps
+     its own semantics — protected/exposed — but the chrome is electric blue. */
   /* Electric system — sharp white, one electric blue accent (+ a pop gradient),
      red for exposure. Aligned to the hub (app/hub/hub.css). Highlight markers
      become blue (protection / method) and red (exposure). */
