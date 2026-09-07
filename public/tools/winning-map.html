@@ -242,6 +242,19 @@
   .op .star{ position:absolute; top:12px; right:12px; font-size:1.15rem; color:var(--pencil); line-height:1; } .op.flagged .star{ color:var(--green-bright); }
   .op.flagged .star::before{ content:"★"; } .op .star::before{ content:"☆"; }
   .flagnote{ font-size:0.82rem; color:var(--soft); margin-top:14px; padding:10px 14px; border-left:3px solid var(--green-deep); background:var(--panel2); border-radius:0 9px 9px 0; } .flagnote b{ color:var(--green); }
+  /* openings — make selecting unmissable */
+  .opcount{ font-size:0.6rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--on-fill);
+    background:var(--accent-deep); border-radius:100px; padding:4px 11px; white-space:nowrap; }
+  .opcount.picked{ background:var(--green); }
+  .opcta{ display:block; font-size:0.9rem; line-height:1.5; color:var(--ink); margin:0 0 16px; padding:13px 16px;
+    border-radius:12px; background:var(--accent-wash); border:1px solid color-mix(in srgb,var(--accent) 22%,transparent); }
+  .opcta b{ color:var(--accent-deep); } .opcta .sub{ display:block; margin-top:5px; font-size:0.8rem; color:var(--soft); }
+  .op .opsel{ display:inline-flex; align-items:center; gap:5px; margin-top:11px; font-size:0.72rem; font-weight:800;
+    letter-spacing:0.02em; color:var(--accent-deep); }
+  .op .opsel::before{ content:"＋"; font-size:0.9rem; line-height:1; }
+  .op.flagged .opsel{ color:var(--green); } .op.flagged .opsel::before{ content:"✓"; }
+  .op .opsel .txt::after{ content:"Tap to focus on this"; } .op.flagged .opsel .txt::after{ content:"In your focus"; }
+  .op{ outline:2px solid transparent; } .op.flagged{ outline-color:color-mix(in srgb,var(--green) 45%,transparent); }
   @media (max-width:700px){ .ocards{ grid-template-columns:1fr; } }
 
   .spark{ display:block; } .xlab{ display:flex; justify-content:space-between; font-family:var(--mono); font-size:0.66rem; color:var(--pencil); margin-top:6px; } .xlab span:last-child{ color:var(--pen); font-weight:600; }
@@ -385,8 +398,9 @@
       <p class="ifnothing" id="mIfNothing"></p>
     </div></div>
 
-    <div class="panel"><div class="phead"><span class="pt">Your openings</span></div><div class="pbody">
+    <div class="panel"><div class="phead"><span class="pt">Your openings</span><span class="psp"></span><span class="opcount" id="mOpCount">Pick 1–2</span></div><div class="pbody">
       <p class="opintro" id="mOpIntro"></p>
+      <div class="opcta" id="mOpCta"><b>This is the decision. Tap one or two cards below to set your focus.</b><span class="sub">New to these? Open a card&rsquo;s play to read the how-to, and learn the lever first — then choose. Focus beats spread.</span></div>
       <div id="mOpenings"></div>
       <div class="flagnote" id="mFlagnote"><b>Pick one or two to focus on.</b> Everything after this is about hitting that goal — focus beats spread.</div>
     </div></div>
@@ -1149,7 +1163,10 @@
   function updateFlagnote(){ var picked=Object.keys(flags).filter(function(k){return flags[k];}); var el=document.getElementById('mFlagnote');
     el.innerHTML = picked.length===0 ? '<b>Pick one or two to focus on.</b> Everything after this is about hitting that goal — focus beats spread.'
       : picked.length<=2 ? ('<b>'+picked.length+' chosen — good, that’s focused.</b> Take '+(picked.length>1?'them':'it')+' into your Playbook and commit '+(picked.length>1?'them':'it')+' in Evolve.')
-      : ('<b>'+picked.length+' chosen — that’s a lot.</b> Focus wins: consider narrowing to one or two you’ll actually run.'); }
+      : ('<b>'+picked.length+' chosen — that’s a lot.</b> Focus wins: consider narrowing to one or two you’ll actually run.');
+    // Keep the header counter and the top call-to-action in lockstep so selecting is unmissable.
+    var cnt=document.getElementById('mOpCount'); if(cnt){ cnt.textContent = picked.length===0 ? 'Pick 1–2' : (picked.length+' selected'); cnt.className='opcount'+(picked.length?' picked':''); }
+    var cta=document.getElementById('mOpCta'); if(cta){ cta.style.display = picked.length ? 'none' : 'block'; } }
   // Each opening maps to one Playbook play — so an opening, a play and a
   // committed move are the same thing under different verbs. This is the
   // one-to-one lookup that ties Map → Playbook → Evolve together.
@@ -1166,7 +1183,7 @@
   function renderOpenings(M){
     var ops=computeOpenings(M), ai=ops.filter(function(o){return o.edge==='ai';}), pr=ops.filter(function(o){return o.edge==='prot';});
     var ent=!M.incumbent, leadProt=(M.A.aim==='protected'), field=M.career.name.toLowerCase();
-    function card(o){ return '<div class="op'+(flags[o.id]?' flagged':'')+'" data-op="'+o.id+'"><span class="star"></span><span class="fit '+(o.fit==='strong'?'strong':'poss')+'">'+(o.star?'★ your winning strategy':(o.fit==='strong'?'strong fit':'possible fit'))+'</span><h4>'+o.title+'</h4><p>'+o.desc+'</p>'+opPlayLink(o.id)+'</div>'; }
+    function card(o){ return '<div class="op'+(flags[o.id]?' flagged':'')+'" data-op="'+o.id+'"><span class="star"></span><span class="fit '+(o.fit==='strong'?'strong':'poss')+'">'+(o.star?'★ your winning strategy':(o.fit==='strong'?'strong fit':'possible fit'))+'</span><h4>'+o.title+'</h4><p>'+o.desc+'</p>'+opPlayLink(o.id)+'<span class="opsel"><span class="txt"></span></span></div>'; }
     function head(first,label,sub,cards){ return '<div class="subhead"'+(first?'':' style="margin-top:16px;"')+'><span class="edge">'+label+'</span> '+sub+'</div><div class="ocards">'+cards+'</div>'; }
     var aiHead=function(first){ return head(first,'AI-native edge',(ent?'get in ahead of the pack':'master the machine'),ai.map(card).join('')); };
     var prHead=function(first){ return pr.length?head(first,'Protected edge',(ent?'the ways in that last':'deepen what AI can’t take'),pr.map(card).join('')):''; };
