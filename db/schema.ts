@@ -359,6 +359,18 @@ export const scoutReports = pgTable("scout_reports", {
   createdAt: now(),
 }, (t) => ({ whenIdx: index("scout_reports_when_idx").on(t.createdAt) }));
 
+/* ---------- Monthly newsletter issues (founder drafts → sent, from the scout roll-up) ---------- */
+export const newsletterIssues = pgTable("newsletter_issues", {
+  id: uid(),
+  subject: text("subject").notNull(),
+  body: text("body").notNull(),                              // founder-edited markdown-ish body
+  status: text("status").notNull().default("draft"),         // "draft" | "sent"
+  createdBy: text("created_by").references(() => profiles.clerkUserId, { onDelete: "set null" }),
+  recipientCount: integer("recipient_count").notNull().default(0),
+  sentAt: timestamp("sent_at", { withTimezone: true }),
+  createdAt: now(),
+}, (t) => ({ whenIdx: index("newsletter_issues_when_idx").on(t.createdAt) }));
+
 /* ---------- Per-member "why this article matters to your lane" (Claude, cached) ---------- */
 export const articleRelevance = pgTable("article_relevance", {
   memberId: memberFk(),

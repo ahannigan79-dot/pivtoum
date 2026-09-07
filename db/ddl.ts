@@ -148,6 +148,18 @@ export const PATCH_STATEMENTS: string[] = [
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
   `CREATE INDEX IF NOT EXISTS "scout_reports_when_idx" ON "scout_reports" ("created_at")`,
+  // Monthly newsletter issues — founder drafts (from the scout roll-up) → sent.
+  `CREATE TABLE IF NOT EXISTS "newsletter_issues" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "subject" text NOT NULL,
+     "body" text NOT NULL,
+     "status" text NOT NULL DEFAULT 'draft',
+     "created_by" text REFERENCES "profiles"("clerk_user_id") ON DELETE set null,
+     "recipient_count" integer NOT NULL DEFAULT 0,
+     "sent_at" timestamp with time zone,
+     "created_at" timestamp with time zone DEFAULT now() NOT NULL
+   )`,
+  `CREATE INDEX IF NOT EXISTS "newsletter_issues_when_idx" ON "newsletter_issues" ("created_at")`,
   // Per-member "why this article matters to your lane" — Claude, cached per (member, article).
   `CREATE TABLE IF NOT EXISTS "article_relevance" (
      "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,

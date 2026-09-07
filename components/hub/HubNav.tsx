@@ -47,6 +47,7 @@ export function HubNav({ messagesUnread = 0, isFounder = false, isDomainLeader =
         { href: "/hub/health", icon: "health", label: "Member health" },
         { href: "/hub/market", icon: "exposure", label: "Market baselines" },
         { href: "/hub/scout", icon: "scout", label: "Article scout" },
+        { href: "/hub/newsletter", icon: "playbook", label: "Newsletter" },
         { href: "/hub/moderation", icon: "moderation", label: "Moderation" },
       ] }]
     : base;

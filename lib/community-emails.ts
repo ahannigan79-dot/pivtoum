@@ -42,6 +42,46 @@ function button(href: string, label: string): string {
   return `<a href="${abs(href)}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:.04em;color:#ffffff;background:${green};text-decoration:none;padding:12px 24px;border-radius:4px;">${esc(label)} &rarr;</a>`;
 }
 
+/** Inline markdown (bold + links) on an already-escaped string, for email. */
+function inlineMd(escaped: string): string {
+  return escaped
+    .replace(/\*\*(.+?)\*\*/g, `<strong style="color:${ink};">$1</strong>`)
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_m, label: string, url: string) =>
+      `<a href="${abs(url)}" style="color:${green};text-decoration:underline;">${label}</a>`)
+    .replace(/\n/g, "<br/>");
+}
+
+/** A founder-written markdown-ish body → email-safe HTML blocks. */
+function mdToEmailHtml(body: string): string {
+  return body.split(/\n\s*\n/).map((block) => {
+    const b = block.trim();
+    if (!b) return "";
+    if (/^##\s+/.test(b)) {
+      return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.12em;text-transform:uppercase;color:${green};margin:22px 0 8px;">${inlineMd(esc(b.replace(/^##\s+/, "")))}</div>`;
+    }
+    return `<p style="font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.65;color:${inkSoft};margin:0 0 14px;">${inlineMd(esc(b))}</p>`;
+  }).join("");
+}
+
+/** Plain-text fallback of the body. */
+function mdToText(body: string): string {
+  return body
+    .replace(/^##\s+/gm, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, "$1 ($2)")
+    .trim();
+}
+
+/** The monthly newsletter — founder-written body rendered into the branded shell. */
+export function newsletterEmail(opts: { name: string; subject: string; body: string }): { subject: string; html: string; text: string } {
+  const first = (opts.name || "").split(" ")[0] || "there";
+  const inner = `
+    <p style="font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.4;color:${ink};margin:0 0 14px;">Hi ${esc(first)},</p>
+    ${mdToEmailHtml(opts.body)}
+    <p style="margin:24px 0 0;">${button("/hub", "Open your dashboard")}</p>`;
+  return { subject: opts.subject, html: shell(opts.subject, inner), text: `${mdToText(opts.body)}\n\nOpen your dashboard: ${SITE.url}/hub` };
+}
+
 /** A single high-signal event (reply / DM / report). */
 export function notificationEmail(opts: {
   actorName?: string; title: string; preview?: string; href: string; cta: string;

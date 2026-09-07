@@ -81,6 +81,7 @@ export default async function ScoutPage() {
               The strongest {rollup.picks.length} pieces from the last {rollup.weeks} weekly scan{rollup.weeks === 1 ? "" : "s"},
               deduped and ordered by impact — the shortlist to write this month&apos;s newsletter from. Newest week: {rollup.latestWeekOf}.
             </p>
+            <p className="scout-monthly-cta"><Link href="/hub/newsletter">✨ Draft &amp; send the monthly newsletter from this →</Link></p>
             {byLane(rollup.picks).map(({ lane, picks }) => (
               <div key={lane}>
                 <div className="hub-sectlabel sub">{lane}</div>
