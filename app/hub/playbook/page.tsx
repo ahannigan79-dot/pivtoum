@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { getTrajectory } from "@/lib/trajectory";
-import { playsByAim, recommendedPlays, playLeverLabel, type Play } from "@/lib/plays";
+import { playsByAim, recommendedPlays, playLeverLabel, playBenefitPoints, type Play } from "@/lib/plays";
 
 export const metadata = { title: "The Winning Playbook — Winning in the Age of AI" };
 
@@ -11,6 +11,11 @@ function PlayCard({ p, rec = false }: { p: Play; rec?: boolean }) {
       <p className="play-lever">{playLeverLabel(p)}</p>
       <h3>{p.title}</h3>
       <p className="play-tag">{p.tagline}</p>
+      <div className="play-card-meta">
+        <span className={`play-chip diff-${p.difficulty.toLowerCase()}`}>{p.difficulty}</span>
+        <span className="play-chip">⏱ {p.duration}</span>
+        <span className="play-chip benefit">↓ up to {playBenefitPoints(p)} pts</span>
+      </div>
       <span className="play-go">Read the how-to →</span>
     </Link>
   );

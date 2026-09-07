@@ -1715,6 +1715,32 @@ a.pod-member:hover span { color:var(--ink); }
 .play-commit-first { margin:10px 0 0; font-size:0.9rem; color:var(--ink); }
 .play-commit-first span { color:var(--pencil); }
 
+/* play meta chips — difficulty · duration · exposure benefit */
+.play-card-meta { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; }
+.play-meta { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 14px; }
+.play-chip { display:inline-flex; align-items:center; gap:4px; font-family:var(--sans); font-weight:700;
+  font-size:0.7rem; letter-spacing:.01em; color:var(--ink2); background:var(--panel2);
+  border:1px solid var(--rule); border-radius:999px; padding:3px 10px; white-space:nowrap; }
+.play-chip.diff-light { color:var(--accent-deep); background:var(--accent-wash); border-color:transparent; }
+.play-chip.diff-moderate { color:var(--ink2); }
+.play-chip.diff-demanding { color:var(--pen); background:color-mix(in srgb,var(--pen) 8%,white); border-color:transparent; }
+.play-chip.benefit { color:var(--accent-deep); background:transparent; border-color:var(--accent-wash); }
+.play-meta .play-chip.benefit { max-width:100%; white-space:normal; }
+/* first-step "start here" cue on the detail page */
+.play-step.first .play-sn { background:var(--accent-wash); border-color:transparent; color:var(--accent-deep); }
+.play-start { margin-left:8px; font-family:var(--sans); font-weight:800; font-size:0.58rem; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--accent-deep); background:var(--accent-wash); border-radius:999px; padding:2px 8px; vertical-align:middle; }
+
+/* focus step guidance — Eva's "do this next" */
+.focus-eva { display:block; font-size:0.86rem; line-height:1.5; color:var(--ink2); margin:2px 0 12px;
+  background:var(--accent-wash); border-radius:10px; padding:9px 12px; }
+.focus-eva.done { background:color-mix(in srgb,var(--accent) 10%,white); color:var(--accent-deep); font-weight:600; }
+.focus-eva-k { font-weight:800; font-size:0.6rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep);
+  margin-right:8px; }
+.focus-steps li.next .focus-check { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-wash); }
+.fs-next { margin-left:8px; font-family:var(--sans); font-weight:800; font-size:0.56rem; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--accent-deep); background:var(--accent-wash); border-radius:999px; padding:2px 7px; vertical-align:middle; }
+
 /* ===== Article scout (founder) ===== */
 .scout-intro { color:var(--soft); font-size:0.96rem; line-height:1.55; max-width:70ch; margin:0 0 16px; }
 .scout-run { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 8px; }

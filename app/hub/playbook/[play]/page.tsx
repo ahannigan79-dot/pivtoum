@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import { getPlay, playLeverLabel, AIMS } from "@/lib/plays";
+import { getPlay, playLeverLabel, playBenefitReading, AIMS } from "@/lib/plays";
 import { getFocus, canAddFocus } from "@/lib/focus";
 import { AdoptFocus } from "@/components/hub/playbook/AdoptFocus";
 
@@ -31,16 +31,21 @@ export default async function PlayPage({ params }: { params: Promise<{ play: str
           <p className="play-lever big">{playLeverLabel(p)}</p>
           <h2>{p.title}</h2>
           <p className="play-thesis">{p.tagline}</p>
+          <div className="play-meta">
+            <span className={`play-chip diff-${p.difficulty.toLowerCase()}`}>{p.difficulty}</span>
+            <span className="play-chip">⏱ {p.duration}</span>
+            <span className="play-chip benefit">↓ {playBenefitReading(p)}</span>
+          </div>
           <p className="play-fit"><span>Who it&rsquo;s for</span> {p.fit}</p>
         </div>
 
         <div className="hub-sectlabel">The how-to</div>
         <ol className="play-steps">
           {p.steps.map((s, i) => (
-            <li key={i} className="play-step">
+            <li key={i} className={"play-step" + (i === 0 ? " first" : "")}>
               <span className="play-sn">{i + 1}</span>
               <div>
-                <p className="play-st">{s.title}</p>
+                <p className="play-st">{s.title}{i === 0 && <span className="play-start">Start here</span>}</p>
                 <p className="play-sd">{s.detail}</p>
               </div>
             </li>

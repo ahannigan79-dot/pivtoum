@@ -11,6 +11,9 @@ export type PlayStep = { title: string; detail: string };
 /** Which winning aim a play serves — mirrors the Map's edge-2 move (+ "master" = edge 1). */
 export type Aim = "master" | "guard" | "shift" | "relocate";
 
+/** How much lift a play asks of you. Sets expectations before you commit. */
+export type Difficulty = "Light" | "Moderate" | "Demanding";
+
 export type Play = {
   slug: string;
   title: string;
@@ -18,9 +21,33 @@ export type Play = {
   aim: Aim;
   tagline: string;      // one line: what it is and why it works
   fit: string;          // who it's for / when it makes sense
+  difficulty: Difficulty;
+  duration: string;     // realistic time to work through it, e.g. "This month"
   steps: PlayStep[];    // the how-to guide
   firstMove: string;    // the concrete commitment seeded into their moves
 };
+
+// Each completed step of a committed play buys down half a point of exposure
+// (see lib/focus.ts). We surface that here so a member sees the payoff up front.
+const PT_PER_STEP = 0.5;
+
+/** The exposure a play buys down as you complete its steps — grounded in the real
+ *  focus-dividend scoring (0.5 pt/step), so the number on the card is the number
+ *  the dashboard will actually move. */
+export function playBenefitPoints(p: Play): number {
+  return Math.round(p.steps.length * PT_PER_STEP * 10) / 10;
+}
+
+/** A short, honest reading of what a play does to your exposure. "Master/guard"
+ *  plays buy the score down through the work; "shift/relocate" plays also move
+ *  your lane baseline when you re-score after repositioning. */
+export function playBenefitReading(p: Play): string {
+  const pts = playBenefitPoints(p);
+  const base = `Buys down up to ${pts} pt${pts === 1 ? "" : "s"} of exposure as you complete it`;
+  return p.aim === "shift" || p.aim === "relocate"
+    ? `${base} — and re-scoring after you reposition can move your baseline further.`
+    : `${base}.`;
+}
 
 export const AIMS: { key: Aim; label: string; blurb: string }[] = [
   { key: "master", label: "Master the machine", blurb: "Become AI-native at your own work — the move everyone makes first." },
@@ -29,7 +56,7 @@ export const AIMS: { key: Aim; label: string; blurb: string }[] = [
   { key: "relocate", label: "Relocate to protected ground", blurb: "Move toward work that stays human while you have runway." },
 ];
 
-export const PLAYS: Play[] = [
+const PLAYS_RAW: Omit<Play, "difficulty" | "duration">[] = [
   // ---------------- Master the machine (edge 1) ----------------
   {
     slug: "take-control", title: "Take control of your function's AI transformation", lever: "renovate", aim: "master",
@@ -183,6 +210,29 @@ export const PLAYS: Play[] = [
     firstMove: "Identify the credential that best protects my work and start the path",
   },
 ];
+
+// Effort + time expectations per play, kept beside the content so a card can set
+// expectations before a member commits. Difficulty is the lift asked of you;
+// duration is a realistic horizon to work the steps, not a deadline.
+const PLAY_META: Record<string, { difficulty: Difficulty; duration: string }> = {
+  "take-control":        { difficulty: "Demanding", duration: "2–4 weeks" },
+  "prove-mastery":       { difficulty: "Moderate",  duration: "1–2 weeks" },
+  "build-fluency":       { difficulty: "Light",     duration: "A month of daily reps" },
+  "become-promotion":    { difficulty: "Demanding", duration: "3–6 months" },
+  "deepen-judgment":     { difficulty: "Moderate",  duration: "Ongoing" },
+  "own-relationships":   { difficulty: "Light",     duration: "This month" },
+  "shift-resilient-lane":{ difficulty: "Demanding", duration: "3–6 months" },
+  "move-into-oversight": { difficulty: "Moderate",  duration: "1–3 months" },
+  "prepare-new-job":     { difficulty: "Moderate",  duration: "2–6 weeks" },
+  "relocate-protected":  { difficulty: "Demanding", duration: "12–18 months" },
+  "double-down-physical":{ difficulty: "Moderate",  duration: "This quarter" },
+  "earn-credential":     { difficulty: "Demanding", duration: "3–12 months" },
+};
+
+export const PLAYS: Play[] = PLAYS_RAW.map((p) => ({
+  ...p,
+  ...(PLAY_META[p.slug] ?? { difficulty: "Moderate" as Difficulty, duration: "This month" }),
+}));
 
 export const PLAY_BY_SLUG: Record<string, Play> = Object.fromEntries(PLAYS.map((p) => [p.slug, p]));
 
