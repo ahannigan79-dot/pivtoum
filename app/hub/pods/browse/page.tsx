@@ -22,6 +22,8 @@ export default async function BrowsePodsPage() {
           until they find their feet.
         </p>
 
+        <Link href="/hub/pods/standings" className="moves-playbook">🏆 The Pod Competition — see this month&rsquo;s standings and the season race →</Link>
+
         <NewPodForm />
 
         {mine.length > 0 && (

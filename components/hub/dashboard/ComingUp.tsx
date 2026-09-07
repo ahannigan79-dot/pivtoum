@@ -1,14 +1,20 @@
 import Link from "next/link";
 import { formatWhen, formatTime } from "@/lib/events";
 import type { ComingUp as Data } from "@/lib/coming-up";
+import type { MyStanding } from "@/lib/competition";
+
+const ord = (n: number) => {
+  const s = ["th", "st", "nd", "rd"], v = n % 100;
+  return n + (s[(v - 20) % 10] ?? s[v] ?? s[0]);
+};
 
 /** "Coming up" — the time-bound things worth keeping in view: your next re-score,
- *  your next event, and your pod's week (check-in + streak). */
-export function ComingUp({ data, rescoreDays, rescoreDue }: {
-  data: Data; rescoreDays: number | null; rescoreDue: boolean;
+ *  your next event, your pod's week (check-in + streak), and your pod's standing. */
+export function ComingUp({ data, rescoreDays, rescoreDue, standing }: {
+  data: Data; rescoreDays: number | null; rescoreDue: boolean; standing?: MyStanding | null;
 }) {
   const { nextEvent, pod } = data;
-  if (!nextEvent && !pod && rescoreDays == null) return null;
+  if (!nextEvent && !pod && rescoreDays == null && !standing) return null;
 
   return (
     <section className="card cu-card">
@@ -42,6 +48,16 @@ export function ComingUp({ data, rescoreDays, rescoreDue }: {
               <i>{pod.name}{pod.streakWeeks > 0 ? ` · 🔥 ${pod.streakWeeks}-week streak` : ""}</i>
             </span>
             {!pod.checkedIn && <span className="cu-flag warn">Due</span>}
+          </Link>
+        )}
+        {standing && (
+          <Link href="/hub/pods/standings" className="cu-row">
+            <span className="cu-ic">🏆</span>
+            <span className="cu-body">
+              <b>Your pod is {ord(standing.monthRank)} this month</b>
+              <i>{standing.total} pod{standing.total === 1 ? "" : "s"} in the race · see the standings</i>
+            </span>
+            {standing.monthRank === 1 && <span className="cu-flag">Leading</span>}
           </Link>
         )}
       </div>
