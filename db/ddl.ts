@@ -194,9 +194,14 @@ export const PATCH_STATEMENTS: string[] = [
      "workflow" text NOT NULL,
      "inputs" jsonb NOT NULL,
      "doc" jsonb NOT NULL,
+     "share_token" text,
+     "edited_at" timestamp with time zone,
      "created_at" timestamp with time zone DEFAULT now() NOT NULL
    )`,
+  `ALTER TABLE "workflow_transforms" ADD COLUMN IF NOT EXISTS "share_token" text`,
+  `ALTER TABLE "workflow_transforms" ADD COLUMN IF NOT EXISTS "edited_at" timestamp with time zone`,
   `CREATE INDEX IF NOT EXISTS "workflow_transforms_member_idx" ON "workflow_transforms" ("member_id","created_at")`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "workflow_transforms_share_idx" ON "workflow_transforms" ("share_token")`,
   `CREATE TABLE IF NOT EXISTS "gym_attempts" (
      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
      "member_id" text NOT NULL REFERENCES "profiles"("clerk_user_id") ON DELETE cascade,

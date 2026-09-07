@@ -2426,6 +2426,69 @@ a.pod-member:hover span { color:var(--ink); }
 .wt-owner { font-size:0.86rem; color:var(--soft); margin:8px 0 0; } .wt-owner b { color:var(--ink); }
 .wt-foot { margin:22px 0 0; padding-top:16px; border-top:1px solid var(--rule); font-size:0.78rem; color:var(--pencil); }
 
+/* ── Workflow doc: owner toolbar, share, and inline editor ─────── */
+.wt-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
+.wt-btn { font-family:var(--sans); font-weight:700; font-size:0.82rem; color:var(--ink2); background:var(--panel);
+  border:1px solid var(--rule2); border-radius:9px; padding:8px 13px; cursor:pointer; transition:.12s; }
+.wt-btn:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+.wt-btn:disabled { opacity:.55; cursor:default; }
+.wt-btn.primary { color:var(--on-fill); background:var(--accent); border-color:var(--accent); }
+.wt-btn.primary:hover:not(:disabled) { filter:brightness(1.06); color:var(--on-fill); }
+.wt-btn.ghost { background:transparent; color:var(--pencil); }
+.wt-btn.ghost:hover:not(:disabled) { border-color:var(--pen); color:var(--pen); }
+.wt-share { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-left:auto;
+  padding:6px 6px 6px 12px; border:1px solid color-mix(in srgb,var(--accent) 22%,transparent); border-radius:11px; background:var(--accent-wash); }
+.wt-share-lbl { font-size:0.72rem; font-weight:700; color:var(--accent-deep); }
+.wt-share-url { font-family:var(--mono); font-size:0.76rem; color:var(--ink2); background:var(--panel); border:1px solid var(--rule2);
+  border-radius:7px; padding:6px 9px; min-width:200px; max-width:340px; }
+@media (max-width:640px){ .wt-share { margin-left:0; width:100%; } .wt-share-url { flex:1; min-width:0; } }
+
+.wt-editwrap { display:flex; flex-direction:column; gap:16px; }
+.wt-editbar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding:12px 16px; border:1px solid color-mix(in srgb,var(--accent) 18%,transparent); border-radius:12px; background:var(--accent-wash);
+  position:sticky; top:6px; z-index:4; }
+.wt-editbar.bottom { position:static; justify-content:flex-end; background:transparent; border-color:var(--rule); }
+.wt-editbar-t { font-size:0.84rem; color:var(--accent-deep); font-weight:600; }
+.wt-editbar-btns { display:flex; gap:8px; flex:none; }
+.wt-edit { display:flex; flex-direction:column; gap:20px; border:1px solid var(--rule); border-radius:16px; background:var(--panel); padding:22px 22px; }
+.wt-e-field { display:flex; flex-direction:column; gap:6px; }
+.wt-e-field > span { font-size:0.66rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--pencil); }
+.wt-e-sect { display:flex; flex-direction:column; gap:10px; padding-top:18px; border-top:1px solid var(--rule); }
+.wt-e-sect h4 { margin:0; font-family:var(--serif); font-weight:700; font-size:1rem; color:var(--ink); }
+.wt-e-row { display:grid; grid-template-columns:1fr auto; gap:8px 10px; align-items:start; padding:10px; border:1px solid var(--rule); border-radius:10px; background:var(--panel2); }
+.wt-e-row > .wt-e-ta, .wt-e-row > .wt-e-in { grid-column:1; }
+.wt-e-2 { grid-column:1; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.wt-e-in, .wt-e-ta, .wt-e-sel { font-family:var(--sans); font-size:0.9rem; color:var(--ink); background:var(--panel);
+  border:1px solid var(--rule2); border-radius:8px; padding:8px 10px; width:100%; }
+.wt-e-ta { resize:vertical; line-height:1.5; }
+.wt-e-narrow { max-width:180px; }
+.wt-e-in:focus, .wt-e-ta:focus, .wt-e-sel:focus { outline:none; border-color:var(--accent); }
+.wt-e-del { grid-row:1 / span 3; grid-column:2; align-self:start; width:28px; height:28px; flex:none; border-radius:7px;
+  border:1px solid var(--rule2); background:var(--panel); color:var(--pencil); cursor:pointer; font-size:0.8rem; transition:.12s; }
+.wt-e-del:hover { border-color:var(--pen); color:var(--pen); }
+
+/* ── Public share page (/r/[token]) — standalone, single column ── */
+.hub.wtshare { display:block; min-height:100dvh; background:var(--bg); }
+.wtshare-wrap { max-width:820px; margin:0 auto; padding:40px 20px 64px; }
+.wtshare-top { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:0 0 18px; }
+.wtshare-brand { margin:0; font-family:var(--serif); font-weight:700; font-size:1.15rem; color:var(--accent-deep); letter-spacing:-0.01em; }
+.wtshare-tag { font-size:0.66rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--pencil); }
+.wtshare-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:24px 0 0; padding:18px 20px;
+  border:1px solid var(--rule2); border-radius:14px; background:var(--panel2); }
+.wtshare-foot p { margin:0; font-size:0.88rem; color:var(--soft); } .wtshare-foot b { color:var(--ink); }
+.wtshare-cta { font-weight:700; font-size:0.88rem; color:var(--accent); } .wtshare-cta:hover { color:var(--accent-deep); }
+.wtshare-gone { text-align:center; padding:60px 20px; border:1px solid var(--rule2); border-radius:16px; background:var(--panel); }
+.wtshare-gone h1 { font-family:var(--serif); font-weight:700; font-size:1.5rem; margin:0 0 10px; color:var(--ink); }
+.wtshare-gone p { margin:0 auto 18px; max-width:44ch; color:var(--soft); line-height:1.55; }
+
+/* Clean Print / PDF: drop the app chrome and controls, keep the doc */
+@media print {
+  .hub-side, .hub-toolbar, .hub-top, .wt-toolbar, .wt-editbar, .wtshare-top, .wtshare-foot, .pwa-install, .build-hero, .wt-alert, .wt-standard, .wt-formwrap, .wt-locked { display:none !important; }
+  .hub { display:block !important; background:#fff !important; }
+  .wtdoc { border:0 !important; padding:0 !important; }
+  .wt-two { grid-template-columns:1fr 1fr !important; }
+}
+
 /* Install-the-app nudge (components/hub/InstallPrompt) — branded, dismissible */
 .pwa-install { position:fixed; left:50%; transform:translateX(-50%); bottom:18px; z-index:60;
   width:min(440px, calc(100% - 24px)); display:flex; align-items:center; gap:12px;

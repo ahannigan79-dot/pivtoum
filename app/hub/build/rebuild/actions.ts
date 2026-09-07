@@ -1,10 +1,14 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { pickOrCreateRebuild } from "@/lib/rebuild-generate";
 import { memberLane } from "@/lib/gym-generate";
 import { getOrCreateProfile } from "@/lib/member";
-import { generateTransformation, storeTransform, latestTransform, daysUntilNext, assessInput } from "@/lib/workflow-transform";
+import {
+  generateTransformation, storeTransform, latestTransform, daysUntilNext, assessInput,
+  sanitizeTransformation, updateTransformDoc, ensureShareToken, revokeShareToken, type Transformation,
+} from "@/lib/workflow-transform";
 
 /**
  * Generate a fresh Workflow Rebuild for the member's lane (optionally a specific
@@ -66,4 +70,32 @@ export async function transformWorkflow(formData: FormData): Promise<void> {
     redirect("/hub/build/rebuild/mine?err=failed");
   }
   redirect("/hub/build/rebuild/mine?ok=1");
+}
+
+/** Save the member's edits to their own transform doc (ownership-checked). */
+export async function saveTransformDoc(id: string, doc: Transformation): Promise<{ ok: boolean }> {
+  const { userId } = await auth();
+  if (!userId) return { ok: false };
+  const clean = sanitizeTransformation(doc);
+  if (!clean) return { ok: false };
+  const ok = await updateTransformDoc(userId, id, clean);
+  if (ok) revalidatePath("/hub/build/rebuild/mine");
+  return { ok };
+}
+
+/** Turn on sharing and return the public link path (or null). */
+export async function shareTransform(id: string): Promise<{ token: string | null }> {
+  const { userId } = await auth();
+  if (!userId) return { token: null };
+  const token = await ensureShareToken(userId, id);
+  if (token) revalidatePath("/hub/build/rebuild/mine");
+  return { token };
+}
+
+/** Turn off sharing — the public link stops resolving. */
+export async function unshareTransform(id: string): Promise<void> {
+  const { userId } = await auth();
+  if (!userId) return;
+  await revokeShareToken(userId, id);
+  revalidatePath("/hub/build/rebuild/mine");
 }

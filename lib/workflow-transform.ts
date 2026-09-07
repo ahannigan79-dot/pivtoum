@@ -1,4 +1,5 @@
 import "server-only";
+import { randomUUID } from "node:crypto";
 import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { workflowTransforms } from "@/db/schema";
@@ -150,13 +151,13 @@ Return the transformation document as strict JSON per the format.`;
 /** Most recent transformation for a member (or null). Best-effort: if the table
  *  isn't there yet (migration not run) or the query fails, degrade to null so the
  *  page renders the empty state rather than crashing the render. */
-export async function latestTransform(memberId: string): Promise<{ id: string; workflow: string; doc: Transformation; createdAt: Date } | null> {
+export async function latestTransform(memberId: string): Promise<{ id: string; workflow: string; doc: Transformation; shareToken: string | null; createdAt: Date } | null> {
   try {
     const r = await db.select().from(workflowTransforms)
       .where(eq(workflowTransforms.memberId, memberId))
       .orderBy(desc(workflowTransforms.createdAt)).limit(1);
     const row = r[0];
-    return row ? { id: row.id, workflow: row.workflow, doc: row.doc as Transformation, createdAt: row.createdAt } : null;
+    return row ? { id: row.id, workflow: row.workflow, doc: row.doc as Transformation, shareToken: row.shareToken ?? null, createdAt: row.createdAt } : null;
   } catch (e) {
     console.error("latestTransform failed (is the workflow_transforms table migrated?)", e);
     return null;
@@ -173,4 +174,74 @@ export function daysUntilNext(last: Date | null | undefined): number {
 /** Store a generated doc. */
 export async function storeTransform(memberId: string, inputs: TransformInputs, doc: Transformation): Promise<void> {
   await db.insert(workflowTransforms).values({ memberId, workflow: inputs.workflow, inputs, doc });
+}
+
+/** Re-validate a doc the member has edited — same shape as generation, but the
+ *  member's title/text are authoritative (no dependence on the original inputs).
+ *  Returns null if the payload isn't a usable document. */
+export function sanitizeTransformation(raw: unknown): Transformation | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const today = arr<Record<string, unknown>>(r.today).map((s) => ({ step: str(s.step), who: str(s.who, 120), time: str(s.time, 60) })).filter((s) => s.step);
+  const rebuilt = arr<Record<string, unknown>>(r.rebuilt).map((s) => {
+    const o = str(s.owner, 20); const owner = o === "AI" || o === "Human" ? o : "AI + Human";
+    return { step: str(s.step), owner: owner as TransformStep["owner"], detail: str(s.detail) };
+  }).filter((s) => s.step);
+  const value = arr<Record<string, unknown>>(r.value).map((v) => ({ area: str(v.area, 40), gain: str(v.gain) })).filter((v) => v.area && v.gain);
+  const risks = arr<Record<string, unknown>>(r.risks).map((v) => ({ risk: str(v.risk), safeguard: str(v.safeguard) })).filter((v) => v.risk && v.safeguard);
+  const rollout = arr<Record<string, unknown>>(r.rollout).map((v) => ({ phase: str(v.phase, 40), detail: str(v.detail) })).filter((v) => v.phase && v.detail);
+  const pilotRaw = (r.pilot && typeof r.pilot === "object" ? r.pilot : {}) as Record<string, unknown>;
+  const pilot = { scope: str(pilotRaw.scope), needs: arr<unknown>(pilotRaw.needs).map((n) => str(n, 160)).filter(Boolean), owner: str(pilotRaw.owner, 120) };
+  const changes = arr<unknown>(r.changes).map((c) => str(c)).filter(Boolean);
+  const peopleMove = arr<unknown>(r.peopleMove).map((c) => str(c)).filter(Boolean);
+  const measure = arr<unknown>(r.measure).map((c) => str(c)).filter(Boolean);
+  const title = str(r.title, 160);
+  const workflow = str(r.workflow, 160) || title;
+  const thesis = str(r.thesis, 300);
+  if (!title || today.length < 1 || rebuilt.length < 1) return null;
+  return { workflow, title, thesis, today, rebuilt, changes, peopleMove, value, risks, pilot, rollout, measure };
+}
+
+/** Overwrite a member's own transform doc with their edits (ownership-checked). */
+export async function updateTransformDoc(memberId: string, id: string, doc: Transformation): Promise<boolean> {
+  const owns = await db.select({ id: workflowTransforms.id }).from(workflowTransforms)
+    .where(and(eq(workflowTransforms.id, id), eq(workflowTransforms.memberId, memberId))).limit(1);
+  if (!owns[0]) return false;
+  await db.update(workflowTransforms).set({ doc, editedAt: new Date() })
+    .where(and(eq(workflowTransforms.id, id), eq(workflowTransforms.memberId, memberId)));
+  return true;
+}
+
+/** Get (or mint) the share token for a member's own transform. Idempotent. */
+export async function ensureShareToken(memberId: string, id: string): Promise<string | null> {
+  const rows = await db.select({ token: workflowTransforms.shareToken })
+    .from(workflowTransforms).where(and(eq(workflowTransforms.id, id), eq(workflowTransforms.memberId, memberId))).limit(1);
+  if (!rows[0]) return null;
+  if (rows[0].token) return rows[0].token;
+  const token = randomUUID().replace(/-/g, "");
+  await db.update(workflowTransforms).set({ shareToken: token })
+    .where(and(eq(workflowTransforms.id, id), eq(workflowTransforms.memberId, memberId)));
+  return token;
+}
+
+/** Turn sharing off — the link stops resolving. */
+export async function revokeShareToken(memberId: string, id: string): Promise<void> {
+  await db.update(workflowTransforms).set({ shareToken: null })
+    .where(and(eq(workflowTransforms.id, id), eq(workflowTransforms.memberId, memberId)));
+}
+
+/** Public read by share token — no member identity leaked. Null if not shared. */
+export async function getSharedTransform(token: string): Promise<{ title: string; doc: Transformation; when: Date } | null> {
+  if (!token) return null;
+  try {
+    const rows = await db.select({ workflow: workflowTransforms.workflow, doc: workflowTransforms.doc, editedAt: workflowTransforms.editedAt, createdAt: workflowTransforms.createdAt })
+      .from(workflowTransforms).where(eq(workflowTransforms.shareToken, token)).limit(1);
+    const row = rows[0];
+    if (!row) return null;
+    const doc = row.doc as Transformation;
+    return { title: doc.title || row.workflow, doc, when: row.editedAt ?? row.createdAt };
+  } catch (e) {
+    console.error("getSharedTransform failed", e);
+    return null;
+  }
 }

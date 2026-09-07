@@ -396,9 +396,14 @@ export const workflowTransforms = pgTable("workflow_transforms", {
   memberId: memberFk(),
   workflow: text("workflow").notNull(),      // the workflow name the member gave
   inputs: jsonb("inputs").notNull(),          // what they told us (steps, role, lane)
-  doc: jsonb("doc").notNull(),                // the generated Transformation document
+  doc: jsonb("doc").notNull(),                // the generated Transformation document (member-editable)
+  shareToken: text("share_token"),            // unguessable slug for the public share link (null = not shared)
+  editedAt: timestamp("edited_at", { withTimezone: true }), // last member edit (null = untouched since generation)
   createdAt: now(),
-}, (t) => ({ memberIdx: index("workflow_transforms_member_idx").on(t.memberId, t.createdAt) }));
+}, (t) => ({
+  memberIdx: index("workflow_transforms_member_idx").on(t.memberId, t.createdAt),
+  shareIdx: uniqueIndex("workflow_transforms_share_idx").on(t.shareToken),
+}));
 
 /* ---------- Judgment Gym: one row per rep attempt, with the score. Feeds the
    monthly Effort-Dividend gate (≥8 reps at ≥75% + active 3 of 4 weeks). */
