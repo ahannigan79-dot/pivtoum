@@ -5,6 +5,7 @@
 import { ACCOUNTING_SCENARIOS } from "@/lib/gym-accounting";
 import { MARKETING_SCENARIOS } from "@/lib/gym-marketing";
 import { ADVISORY_SCENARIOS } from "@/lib/gym-advisory";
+import { LEGAL_SCENARIOS } from "@/lib/gym-legal";
 
 export type Severity = "minor" | "major" | "critical";
 
@@ -105,6 +106,7 @@ export const GYM_SCENARIOS: Record<string, Scenario> = {
   ...ACCOUNTING_SCENARIOS,
   ...MARKETING_SCENARIOS,
   ...ADVISORY_SCENARIOS,
+  ...LEGAL_SCENARIOS,
 
   "software-review": {
     slug: "software-review", career: "Software Engineering",

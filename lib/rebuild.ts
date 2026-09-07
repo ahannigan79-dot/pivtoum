@@ -4,6 +4,7 @@
    content rendered alongside every one. Adding a variant is just more data. */
 
 import { salesCareer } from "@/lib/rebuild-sales";
+import { legalCareer } from "@/lib/rebuild-legal";
 
 export type RebuildStep = { label: string; today: string; own: string; ai: string; you: string };
 export type RebuildVariant = {
@@ -368,6 +369,7 @@ export const REBUILDS: CareerRebuild[] = [
     ],
   },
   salesCareer,
+  legalCareer,
 ];
 
 export const CAREER_BY_SLUG: Record<string, CareerRebuild> = Object.fromEntries(REBUILDS.map((c) => [c.slug, c]));
