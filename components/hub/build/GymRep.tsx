@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { logBuildRep, recordGymScore } from "@/app/hub/actions";
-import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, type Scenario, type ScenarioKind } from "@/lib/gym";
+import { scoreLine, reviewCost, scenarioPar, money, OVERTIME_PER_MIN, FAILURE_PATTERNS, type Scenario, type ScenarioKind } from "@/lib/gym";
 
 type Choice = "ship" | "flag";
 type Phase = "brief" | "judging" | "revealed";
@@ -135,7 +135,9 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                 {scenario.items.map((it, i) => (
                   <div key={i} className={"gym-seg" + (choices[i] ? ` j-${choices[i]}` : "")}>
                     <div className="gym-seg-main">
-                      <span className="gym-seg-area">{it.area}</span>
+                      <span className="gym-seg-area">{it.area}
+                        {it.mode && <span className={"gym-mode m-" + it.mode}>{it.mode === "fact" ? "Fact-check" : "Judgment call"}</span>}
+                      </span>
                       <div className="gym-seg-out">{it.output}</div>
                     </div>
                     <div className="gym-seg-judge">
@@ -189,7 +191,9 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
             {results.map((r) => (
               <div key={r.i} className={"gym-rev " + (r.right ? "right" : "wrong")}>
                 <div className="gym-rev-top">
-                  <span className="gym-rev-area">{r.it.area}</span>
+                  <span className="gym-rev-area">{r.it.area}
+                    {r.it.mode && <span className={"gym-mode m-" + r.it.mode}>{r.it.mode === "fact" ? "Fact-check" : "Judgment call"}</span>}
+                  </span>
                   <span className={"gym-verdict v-" + r.it.verdict}>
                     {r.it.verdict === "flag" ? `⚑ Flag${r.it.severity ? ` · ${r.it.severity}` : ""}` : "✓ Ship"}
                     {r.right ? " · you got it" : r.missed ? " · you shipped it" : r.over ? " · you over-flagged" : ""}
@@ -197,6 +201,12 @@ export function GymRep({ scenario }: { scenario: Scenario }) {
                 </div>
                 <div className={"gym-out sm" + (mono ? " mono" : "")}>{r.it.output}</div>
                 <p className="gym-why">{r.it.why}</p>
+                {r.it.verdict === "flag" && r.it.pattern && (
+                  <p className="gym-pattern">
+                    <span className="gym-pattern-k">AI failure pattern · {FAILURE_PATTERNS[r.it.pattern].label}</span>
+                    {FAILURE_PATTERNS[r.it.pattern].note}
+                  </p>
+                )}
                 <p className="gym-cost"><b>Cost of the wrong call:</b> {r.it.cost}</p>
                 <p className="gym-trains">Trains: {r.it.trains}</p>
               </div>

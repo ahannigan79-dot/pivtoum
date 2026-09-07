@@ -1516,6 +1516,15 @@ a.pod-member:hover span { color:var(--ink); }
 .gym-seg.j-ship { border-left-color: color-mix(in srgb, var(--green) 45%, transparent); background: color-mix(in srgb, var(--green) 3%, transparent); }
 .gym-seg.j-flag { border-left-color: var(--pen); background: color-mix(in srgb, var(--pen) 4%, transparent); }
 .gym-seg-area { display: block; font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 6px; }
+/* fact-check vs experience-judgment chip */
+.gym-mode { margin-left: 8px; font-family: var(--sans); font-weight: 800; font-size: 0.56rem; letter-spacing: .06em; text-transform: uppercase;
+  border-radius: 100px; padding: 2px 8px; vertical-align: middle; }
+.gym-mode.m-fact { color: var(--accent-deep); background: var(--accent-wash); }
+.gym-mode.m-judgment { color: #5B4A00; background: #FBF2D2; }
+/* AI failure pattern (reveal) */
+.gym-pattern { margin: 8px 0 0; font-size: 0.86rem; line-height: 1.55; color: var(--ink2); background: var(--panel2);
+  border-left: 3px solid var(--pen); border-radius: 0 9px 9px 0; padding: 9px 13px; }
+.gym-pattern-k { display: block; font-weight: 800; font-size: 0.6rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pen); margin-bottom: 3px; }
 .gym-seg-out { font-size: 0.9rem; line-height: 1.55; color: var(--ink2); word-break: break-word; }
 .gym-artifact.mono .gym-seg-out { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); }
 .gym-seg-judge { display: flex; flex-direction: column; gap: 6px; flex: none; }
