@@ -3,6 +3,8 @@
    today-vs-AI-native flow; the ladder and the five moves are shared framework
    content rendered alongside every one. Adding a variant is just more data. */
 
+import { salesCareer } from "@/lib/rebuild-sales";
+
 export type RebuildStep = { label: string; today: string; own: string; ai: string; you: string };
 export type RebuildVariant = {
   slug: string; title: string; field: string; short: string; thesis: string;
@@ -365,6 +367,7 @@ export const REBUILDS: CareerRebuild[] = [
       { slug: "governance", name: "Risk & Stakeholders", variants: [pmRaid, pmStakeholder] },
     ],
   },
+  salesCareer,
 ];
 
 export const CAREER_BY_SLUG: Record<string, CareerRebuild> = Object.fromEntries(REBUILDS.map((c) => [c.slug, c]));
