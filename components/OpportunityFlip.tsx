@@ -27,7 +27,7 @@ export function OpportunityFlip({
       <Link className="opp-cta" href={SITE.join}>
         Start your free trial &rarr;
       </Link>
-      <div className="opp-sub">Seven days free &middot; your Map and progress come with you</div>
+      <div className="opp-sub">A short free trial &middot; your Map and progress come with you</div>
     </aside>
   );
 }

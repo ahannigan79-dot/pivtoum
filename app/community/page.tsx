@@ -210,7 +210,7 @@ export default function CommunityPage() {
 
         {/* OFFER */}
         <section className="offer" id="join">
-          <p className="ck">Membership · try it free for 7 days</p>
+          <p className="ck">Membership · start with a free trial</p>
           <h2>Everything you need to win, in one place.</h2>
           <p className="offer-lead">Don&rsquo;t just keep up with the shift — get out in front of it.</p>
           <ul className="incl">
@@ -224,7 +224,7 @@ export default function CommunityPage() {
             <Link className="btn" href={SITE.join}>Start your free trial →</Link>
             <Link className="btn ghost" href="/map">Not ready? Get your free AI Exposure Report</Link>
           </div>
-          <p className="fine">Seven days free · cancel anytime · your Map and progress come with you.</p>
+          <p className="fine">A short free trial · cancel anytime · your Map and progress come with you.</p>
         </section>
 
         <footer className="foot">

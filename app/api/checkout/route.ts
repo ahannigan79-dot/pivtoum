@@ -37,7 +37,7 @@ export async function POST(req: Request) {
   const stripe = getStripe();
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    // Subscriber discount (PARENT20) arrives by email; let buyers enter it at checkout.
+    // Subscriber discount (FOUNDING10) arrives by email; let buyers enter it at checkout.
     allow_promotion_codes: true,
     line_items: [
       {

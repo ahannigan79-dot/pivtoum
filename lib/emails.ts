@@ -230,7 +230,7 @@ export function packageEmail(opts: {
 export function pdfWelcomeEmail(opts: {
   pdfUrl: string;
   pdfLabel: string; // e.g. "Veterinary Medicine sampler" or "all 28 scores"
-  code: string; // e.g. "PARENT20"
+  code: string; // e.g. "FOUNDING10"
   discountLabel: string; // e.g. "20% off"
   expiresDays: number; // e.g. 7
   buyUrl: string;
@@ -268,7 +268,7 @@ export function pdfWelcomeEmail(opts: {
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${hl};border-radius:4px;margin:8px 0 4px;"><tr><td style="padding:18px 20px;">
             <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:${accent};margin:0 0 6px;">Founding Member Discount</div>
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> your first purchase with code <strong>${code}</strong>. Try it free for 7 days &mdash; the code&rsquo;s good for ${expiresDays} days.</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:${ink};margin:0 0 14px;"><strong>${discountLabel}</strong> your first purchase with code <strong>${code}</strong>. Start with a short free trial &mdash; the code&rsquo;s good for ${expiresDays} days.</p>
             <p style="margin:0;">${button(`${SITE.url}/community`, "See everything inside", ink)}</p>
           </td></tr></table>
 
@@ -287,7 +287,7 @@ export function pdfWelcomeEmail(opts: {
     `Hi — I'm ${SITE.founder}, I built Pivotum.\n\n` +
     `Thanks for signing up. Here's the ${pdfLabel} you asked for:\n${pdfUrl}\n\n` +
     `I started Pivotum because I work in AI for a living and I'm navigating my own future alongside you. The sampler tells you where a career stands. Winning in the Age of AI is how you act on it — your living Career Map re-scored as the field moves, the reps that build real judgment, a pod in your exact lane, and live events. It's how you turn the read into your opening instead of just watching the ground shift.\n\n` +
-    `YOUR FOUNDING MEMBER OFFER: ${discountLabel} your first purchase with code ${code}. Try it free for 7 days — the code's good for ${expiresDays} days.\n${SITE.url}/community\n\n` +
+    `YOUR FOUNDING MEMBER OFFER: ${discountLabel} your first purchase with code ${code}. Start with a short free trial — the code's good for ${expiresDays} days.\n${SITE.url}/community\n\n` +
     `Either way, I hope the PDF helps. Reply any time — I read every one.\n— ${SITE.founder}, founder, Pivotum`;
 
   return { html, text };
