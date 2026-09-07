@@ -679,12 +679,12 @@
   // works in — a construction PM sits on far safer ground than a software one.
   function incXDomain(){
     var roleName=A.lane, roleTk=curCareer().tracks.filter(function(t){return t.n===roleName;})[0];
-    advisor("<span class=\"q\">And which world do you do "+roleName.toLowerCase()+" in?</span>", null, function(){
-      advisor("This is what moves the score — the domain you operate in changes how exposed the same role is.", null, function(){
-        var opts=FIELDS.map(function(f){ return {v:f, label:f}; });
+    advisor("<span class=\"q\">And which industry do you do "+roleName.toLowerCase()+" in?</span>", null, function(){
+      advisor("This is what moves the score — the same role is far more exposed in some sectors than others.", null, function(){
+        var opts=XDOMAINS.map(function(d){ return {v:d.v, label:d.v}; });
         control(chips(opts, function(v,l){
-          var dc=findCareer(v)||curCareer();
-          var dPhys=dc.f[2], dLic=dc.f[4], dAuto=dc.f[0];
+          var dd=XDOMAINS.filter(function(d){return d.v===v;})[0] || {phys:2,lic:2,auto:6};
+          var dPhys=dd.phys, dLic=dd.lic, dAuto=dd.auto;
           var adj = -0.30*(dPhys-2) - 0.12*(dLic-2) + 0.10*(dAuto-6);
           var newS = Math.max(2, Math.min(9, +(roleTk.s + adj).toFixed(1)));
           var newPhys = Math.max(1, Math.min(9.5, +(roleTk.phys + 0.5*(dPhys-roleTk.phys)).toFixed(1)));
@@ -857,6 +857,25 @@
     'Cybersecurity','Data science','Dentistry','Design','Engineering','Finance','Hospitality',
     'Journalism','Law','Life sciences','Marketing','Medicine','Nursing','Pharmacy','Psychology',
     'Social work','Teaching','Trades','Translation','Transport','Veterinary','Computer science'];
+  // Industry sectors for cross-functional roles (PM, consultant, analyst, ops…).
+  // The "world" that changes a role's exposure isn't another occupation — it's the
+  // sector it operates in. Each carries phys/lic/auto proxies on the same 0–10
+  // scale the domain adjustment reads (baseline: phys 2, lic 2, auto 6 ⇒ no shift):
+  // phys = how hands-on/physical the sector's delivery is, lic = how licensed/
+  // regulated, auto = how digital/automatable the day-to-day is.
+  var XDOMAINS = [
+    { v:'Technology / software',        phys:1,   lic:1.5, auto:8   },
+    { v:'Financial services / banking', phys:1,   lic:4,   auto:7.5 },
+    { v:'Professional services',        phys:1,   lic:2,   auto:6.5 },
+    { v:'Media / marketing / creative', phys:1.5, lic:1,   auto:7.5 },
+    { v:'Retail / consumer / e-commerce', phys:2.5, lic:1.5, auto:7 },
+    { v:'Public sector / government',   phys:2,   lic:4,   auto:5   },
+    { v:'Education / non-profit',       phys:2,   lic:3,   auto:5   },
+    { v:'Healthcare / life sciences',   phys:4,   lic:6,   auto:4.5 },
+    { v:'Manufacturing / industrial',   phys:5,   lic:3,   auto:5   },
+    { v:'Energy / utilities',           phys:5,   lic:5,   auto:4.5 },
+    { v:'Construction / real estate',   phys:6,   lic:3,   auto:4   }
+  ];
   function entField(){
     advisor("<span class=\"q\">So which field are you heading into?</span>", null, function(){
       advisor("Pick the one you’re set on — or a few, if you’re still deciding.", null, function(){
