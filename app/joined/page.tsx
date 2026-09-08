@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MembershipConversion } from "@/components/MembershipConversion";
+import { getStripe } from "@/lib/stripe";
+import { billingConfigured } from "@/lib/billing";
 
 export const metadata: Metadata = {
   title: "You're in",
@@ -10,11 +12,27 @@ export const metadata: Metadata = {
 /**
  * Public checkout-success page (deliberately NOT under /hub, so the ad pixels
  * load and the member-join conversion can fire). Stripe returns here after a
- * subscription checkout; we fire the conversion, then send the member on to the
- * hub.
+ * subscription checkout.
+ *
+ * We only fire the conversion after CONFIRMING the session_id is a real,
+ * completed subscription checkout with Stripe — otherwise anyone loading
+ * /joined?session_id=anything (a bot, a bookmark, a guessed id) would inflate
+ * Google Ads / Meta conversions with no payment behind them.
  */
+async function verifiedCheckout(sessionId: string | undefined): Promise<boolean> {
+  if (!sessionId || !billingConfigured()) return false;
+  try {
+    const s = await getStripe().checkout.sessions.retrieve(sessionId);
+    // "complete" covers paid AND trialing (no_payment_required) subscriptions.
+    return s.mode === "subscription" && s.status === "complete";
+  } catch {
+    return false;
+  }
+}
+
 export default async function JoinedPage({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
   const { session_id } = await searchParams;
+  const verified = await verifiedCheckout(session_id);
 
   return (
     <main
@@ -23,7 +41,7 @@ export default async function JoinedPage({ searchParams }: { searchParams: Promi
         background: "#F7F9FC", padding: "24px",
       }}
     >
-      <MembershipConversion eventId={session_id} />
+      {verified && <MembershipConversion eventId={session_id} />}
       <div
         style={{
           maxWidth: 460, textAlign: "center", background: "#fff",

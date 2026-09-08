@@ -39,19 +39,30 @@ export async function POST(req: Request) {
       const memberId = session.client_reference_id ?? undefined; // the Clerk user id we set at checkout
       const customerId = typeof session.customer === "string" ? session.customer : session.customer?.id;
       if (memberId && customerId) await linkCustomer(memberId, customerId);
-      try { await syncSubscription(await getStripe().subscriptions.retrieve(subId), memberId); } catch { /* ignore */ }
+      let sub: Stripe.Subscription | null = null;
+      try {
+        sub = await getStripe().subscriptions.retrieve(subId);
+        await syncSubscription(sub, memberId);
+      } catch { /* ignore */ }
 
       // Fire the member-join conversion server-side (the browser pixel is
       // blocked for much of our traffic). Shares its eventId with the /joined
       // page's browser pixel so Meta de-duplicates. Best-effort.
       const joinEmail = session.customer_details?.email ?? session.customer_email ?? "";
       if (joinEmail) {
+        // On a trial, session.amount_total is 0 (the first charge is deferred),
+        // so fall back to the subscription's recurring price — otherwise Meta
+        // values every membership join at 0.
+        const price = sub?.items?.data?.[0]?.price;
+        const value = session.amount_total
+          ? session.amount_total / 100
+          : price?.unit_amount != null ? price.unit_amount / 100 : undefined;
         await sendMetaSubscribe({
           email: joinEmail,
           eventId: session.id, // /joined fires the same id → de-dupe
           eventSourceUrl: `${SITE.url}/joined`,
-          value: session.amount_total ? session.amount_total / 100 : undefined,
-          currency: (session.currency ?? "usd").toUpperCase(),
+          value,
+          currency: (session.currency ?? price?.currency ?? "usd").toUpperCase(),
         }).catch(() => { /* telemetry must never break the webhook */ });
       }
       return NextResponse.json({ received: true });
